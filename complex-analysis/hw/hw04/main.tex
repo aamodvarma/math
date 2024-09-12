@@ -1,0 +1,127 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{MATH 4320 HW04}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+
+\subsection*{Problem 3}
+(a).  We can write \[
+P(z) = a_0 + a_1z + \dots + a_nz^n 
+.\]
+Using results from section 20 we know that for $f(z),g(z)$\[
+    (f(z) + g(z))' = f'(z) + g'(z)
+.\] 
+
+Using this idea we can write the polynomial as, \[
+    P'(z) = (a_0+ a_1z + \dots)' + (a_nz^n)'
+.\] 
+Similary we can apply this for each functino as follows,\[
+    P'(z) = \frac{d}{dx}(a_0) + \frac{d}{dx}(a_1z) + \dots \frac{d}{dx}(a_nz^n)
+.\] 
+We know that $\frac{d}{dx}z^n = nz^{n - 1}$ 
+
+So we can write, \[
+    P'(z) = 0 + a_1 + 2a_2z + \dots + na_nz^{n-1}
+.\] 
+
+(b). We need to find the coefficients, $a_0,a_1,\dots,a_n$. To do this we need to remove the $z$ term that is multiplied it and set the polynomial to  $0$ to isolate our coefficient.
+
+So to find any $a_n$  for $n \ge 1$ we first derive $P(z), n$  times.
+\[
+    P^{n}(z) = (n)(n-1)(n-2)\dots(1)a_nz^0 + (n+1)(n)\dots(2)a_{n+1}z^1 + \dots
+.\] \[
+P^{n} (z) = (n!)a_n + \frac{(n+1)!}{1!}a_{n+1}z^1 + \frac{(n+2)!}{2!}a_{n + 2}z^2 + \dots
+.\] 
+\[
+P^n (0) = (n!)a_n + 0 + \dots + 0
+.\] 
+\[
+a_n = \frac{P^n(0)}{n!}
+.\] 
+
+For $n = 0$ it is obvious that we can plug in  $z = 0$ to get,  \[
+a_0 = P(0)
+.\] 
+
+
+\subsection*{Problem 1}
+(a). $f(z) = \bar z$;
+
+We need to satisfy the Cauchy-Remann equations for $f'(z)$ to be defined, so, \[
+    u_x = v_y, u_y = -v_x
+.\] 
+We have, $z = x + iy$ and $\bar z = x - iy$. So, $u(x,y) = x, v(x,y) = -y$
+
+We can write,  \[
+    u_x = 1, u_y = 0
+.\]
+\[
+    v_x = 0, v_y = -1
+.\] 
+
+So we can see that, $u_x \neq v_y$ which means that our derivate $f'(z)$ cannot exist.
+
+(b). $f(z) = z - \bar z$
+
+We have, $z = x + iy$ so  $f(z) = (x + iy) - (x - iy) = 2iy$
+
+We can write,  $u(x,y) = 0, v(x,y) =  2y$
+So, 
+ \[
+    u_x = 0, u_y = 0
+.\] 
+\[
+v_x = 0, v_y = 2
+.\] 
+We can see that, $u_x \neq v_y$, so the derivative, $f'(z)$ cannot exist.
+
+
+(c). $f(z) = 2x + ixy^2$
+
+We have, $f(z) = 2x + ixy^2$
+
+We can write, $u(x,y) = 2x, v(x,y) = xy^2$
+
+So, \[
+u_x = 2, u_y = 0
+.\]
+\[
+v_x = y^2, v_y = 2xy
+.\] 
+We see that for this to be satisfied we need, \[
+    2 = 2xy \text{ and } y^2 = 0
+.\] 
+
+But if $y^2 = 0$ then $y = 0$ So  $2xy = 0 \neq 2$
+
+So for no values of $x,y$ will the equation be satisfied. Hence our derivative,  $f'(z)$ cannot exist.
+
+(d). $f(z) = e^x e^{-iy}$
+
+If $z = x + iy$ and  $f(z) = e^x e^{-iy}$ we can write, \[
+f(z) = e^x (\cos(y) - i\sin(y)) = e^x\cos(y) - ie^x\sin(y)
+.\] 
+
+So, $u(x,y) = e^x\cos(y), v(x,y) = -e^x\sin(y)$
+
+We have, \[
+u_x = e^x\cos(y), u_y = -e^x\sin(y)
+.\] 
+\[
+v_x = -e^x\sin(y), v_y = -e^x\cos(y)
+.\] 
+
+So we need, $e^x\cos(y) = -e^x\cos(y)$ and $e^x\sin(y) = e^x\sin(y)$
+
+As $e^x \neq 0$ we have, $cos(y) = 0$ and  $sin(y) = 0$
+
+However there exist no value  $y$ to satisfy both these conditions, hence our derivative  $f'(z)$ cannot exist.
+
+
+\subsection*{Problem 8}
+
+
+
+
+\end{document}

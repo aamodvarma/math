@@ -1,0 +1,4 @@
+#!/home/ajrv/Documents/sb/sb/notes/math/.env/bin/python3
+
+from inkscapefigures import cli
+cli()

@@ -1,0 +1,78 @@
+\begin{definition}[Analytic function]
+   A function $f$ is analytic in an open set $S$, if $f$ has derivative everywhere in $S$. It is analytic at a point $z_0$ if it is analytic in some neighborhood of $z_0$
+\end{definition}
+\begin{remark}
+   Analytic functino has to be on an open set.
+\end{remark}
+\begin{remark}
+   For it to be analytic at $z_0$ derivative should exist in the neighborhood of $z_0$ (not just the point $z_0$)
+\end{remark}
+
+
+\begin{eg}
+   $f(z) = (|z|)^2 = \sqrt{x^2+y^2}^2 $
+
+   $$u = x^2 + y^2,v = 0$$
+
+   \[
+   u_x = 2x, u_y = 2y
+   .\] 
+   \[
+   v_x = 0, v_y = 0
+   .\] 
+
+   So the Cauchy-Reimann equation is only satisfied at $(0,0)$
+
+   $f'(0) = 0$ and it exists.
+\end{eg}
+
+
+\begin{remark}
+   $f(z)= |z|^2$ is not analytic anywhere. So even if the derivative exists at $z = 0$. The function is not analytic at $z = 0$ (or at any point)
+
+   Because, 
+   (1).  $f'(z)$ exists at $z = 0$ 
+
+   (2). $u_x,u_y,v_x,v_y$ exists  $\not \Rightarrow f'(z)$ 
+
+   (3). $f(z)$ is continuous $\not \Rightarrow$  $f'(z)$ 
+
+   Essentially it only exists for $z = 0$ and not in the neighborhood around it.
+\end{remark}
+
+
+\begin{definition}[Entire function]
+   A function $f$ is analytic at each point in the entire plane. 
+\end{definition}
+
+\begin{definition}[Singular point]
+   $z_0$ is a singular point if $f$ fails to be analytic at $z_0$ but is analytic at some point in every neighborhood at $z_0$
+\end{definition}
+\begin{eg}
+   $f(z) = 2 + 3z^2 + z^3$
+
+   Is analytic everywhere so it is an entire function
+\end{eg}
+\begin{eg}
+   $f(z) = \frac{1}{z}$
+
+   Is analytic at all non-zero, but $z = 0$ is a sigular point
+\end{eg}
+\begin{eg}
+  $f(z) = |z|^2 = x^2 + y^2$
+
+  Is not analytic, no singular points either.
+\end{eg}
+
+
+\section*{Polar Coordinates}
+
+
+
+
+
+
+
+
+
+

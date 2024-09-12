@@ -1,0 +1,119 @@
+\chapter{Analytic functions}
+\section*{13. Functions and Mappings}
+A translation translate a complex number to another location preserving direction and magnitude.
+\begin{eg}
+   $f(z) = z_0 + z$
+\end{eg}
+A rotation rotates the complex number changing magnitude or direction.
+\begin{eg}
+   $f(z) = z_0z$
+   This function rotates $z$ by multiplying it with $z_0$. We can see this when representing it in euler notation as follows, \[
+   \[
+      z_0z = rr_0e^{i(\theta + \theta_0)}
+   .\] 
+
+\end{eg}
+\begin{eg}
+   $f(z) = z^2$
+   $$z = re^{i\theta}$$
+   $$z^2 = r^2e^{2i\theta}$$
+   So magnitude is squared and angle is doubled
+\end{eg}
+A reflection will reflect $z$ along the $x$ axis.
+\begin{eg}
+   $f(z) = \bar z$ reflects $z$ along the $x$ axis.
+\end{eg}
+
+
+An analytic function is a differentiable function in the complex space.
+\[
+f(z) = w
+.\] 
+\[
+f(x + iy) = u + iv
+.\] 
+\[
+= u(x,y) + iv(x,y)
+.\] 
+\[
+   u(z) = iv(z)
+.\] 
+
+\section*{15. Limits}
+If a function $f$ is defined at all points $z$ in some deleted neighborhood of point $z_0$.  Then, $f(z)$ has a limit  $w_0$ as $z$ approaches $z_0$, or \[
+\lim_{z \to z_0} f(z) = w_0
+.\] 
+
+Essentially this means that the point $w= f(z)$ can be made arbitrary close to  $w_0$ if we choose a point $z$ close enouhg to $z_0$ but distinct from it (deleted neighborhood).
+\begin{definition}[Limit]
+   The limit of a function $f(z)$ as $z$ goes to $z_0$ is $w_0$ if, $\forall \epsilon > 0, \exists \delta > 0, s.t.$  \[
+      |f(z) - w_0| < \epsilon \text{ whenever, } 0 < |z - z_0| < \delta
+   .\] 
+\end{definition}
+\begin{remark}
+   Essentially this menas that for every $\epsilon$-neighborhood,  $|f(z) - w_0| < \epsilon$ there is a deleted-neighborhood, $0 < |z - z_0| < \delta$ of $z_0$ such that every point $z$ in it has an image $w$ in the $\epsilon$-neighborhood
+\end{remark}
+\begin{remark}
+   All points in the deleted-neighborhood are to be considered but their images need not fill up the $\epsilon$-neighborhood
+\end{remark}
+
+
+\begin{theorem}
+   When a limit of a function $f(z)$ exists at a point $z_0$, it is unique.
+\end{theorem}
+\begin{proof}
+Suppose, \[
+   \lim_{z \to z_0} f(z) = w_0 \text{ and } \lim_{z \to z_0} f(z) = w_1
+.\]    
+This means that, \[
+   |f(z) - w_0| < \epsilon \text{ when } 0 < |z - z_0| < \delta_0
+.\] 
+\[
+   |f(z) - w_1| < \epsilon \text{ when } 0 < |z - z_1| < \delta_1
+.\] 
+So, \[
+|f(z) - w_0| + |f(z) - w_1| < 2\epsilon
+.\] 
+
+We know that, $$w_1 - w_0 = (f(z) - w_0) - (f(z) - w_1) \leq |f(z) - w_0| - |f(z) - w_1|$$
+
+So, \[
+   w_1 - w_0 < 2 \epsilon, \text{where $\epsilon$ can be chosen arbitrary small}
+.\] 
+Hence, \[
+   w_1 - w_0 = 0, \text{or, } w_1 = w_0
+.\] 
+\end{proof}
+
+\begin{eg}
+   Show that, $f(z) = \frac{i\bar z}{2}$ in the open disk $|z| < 1$, then \[
+   \lim_{z \to 1} f(z) = \frac{i}{2}
+\]
+\[
+\bigg | f(z) - \frac{i}{2} \bigg | = \bigg | \frac{i \bar z}{2} - \frac{i}{2} \bigg | = \frac{|z - 1|}{2}
+.\] 
+Hence, for any $z$ and $\epsilon$, \[
+   \bigg | f(z) - \frac{i}{2}| < \epsilon \text { when } 0 < |z - 1| < 2\epsilon
+.\] 
+\end{eg}
+
+\begin{eg}
+   $f(z) = \frac{z}{\bar z}$
+   The limit, \[
+   \lim_{z \to 0} f(z)
+   .\] 
+   does not exist.
+
+   Assume that it exists, that implies that by letting the point $z = (x,y)$ we can approach the point,  $(0,0)$ in any manner and we would get the same limit. 
+   
+   Now if we approach the point from the  $x-$axis where  $z = (x,0)$ we get,  \[
+   \lim_{x \to 0} f((x,0)) = \frac{x + 0i}{x - 0i} = 1
+   .\] 
+
+   But if we approach it from the $y-$ axis where,  $z = (0,y)$ we get,  \[
+   \lim_{y \to 0} f((0,y)) = \frac{0 + iy}{0 - iy} = -1
+   .\] 
+
+   But we know that the limit should be unique, hence this implies that the limit does not exist.
+\end{eg}
+

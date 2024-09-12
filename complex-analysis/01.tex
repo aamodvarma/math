@@ -1,0 +1,77 @@
+% \section*{Testing}
+
+% \subsection*{New}
+\chapter{Complex Numbers}
+\setcounter{section}{11}
+\section{Regions in the Complex Plane}
+
+\begin{definition}[Epsilon neighborhood]
+   
+   An epsilon neighborhood around a point $z_0$ is the set of all  $z$ such that,
+$$|z - z_0| < \epsilon$$   
+\end{definition}
+
+\begin{definition}[Deleted neighborhood]
+   A deleted neighborhood around a point $z_0$  is the set of all $z$ such that,
+   $$0 < |z - z_0| < \epsilon$$
+\end{definition}
+
+\begin{remark}
+A deleted neighborhood is essentially an epsilon neighborhood but does not include the point $z_0$
+\end{remark}
+
+
+\begin{definition}[Interior point]
+$z_0$ is an interior point when there exists a neighborhood of $z_0$ that contains only points of $S$
+\end{definition}
+
+\begin{definition}[Exeterior point]
+$z_0$ is an exterior point when there exists a neighborhood of $z_0$ that contains no points of $S$
+\end{definition}
+
+
+\begin{definition}[Boundary point]
+$z_0$ is a boundary point otherwise, i.e. all of the neighborhoods of $z_0$ contains a point in $S$ and a point not in $S$
+\end{definition}
+
+\begin{definition}[Open set]
+   $S$ is an open set if $\forall z \in S, \exists \epsilon$ s.t. $B_{\epsilon}(z) \subset S$ 
+\end{definition}
+\begin{remark}
+   We can also say that an open set does not contain any of its boundary points.
+\end{remark}
+
+\begin{definition}[Closed set]
+   A set is closed if it doesn't contain its boundary points.
+\end{definition}
+
+\begin{definition}[Connected Set]
+   An open set is connected if $z_1, z_2$ can be joined by a polygonal line, consisting of finite number of line segments, joined end to end.
+\end{definition}
+
+
+\begin{definition}[domain]
+   A non empty open set that is connected is called a domain
+\end{definition}
+
+\begin{definition}[region]
+   A domain together with some, none, or all of its boundary points is referred to as a region
+\end{definition}
+
+
+\begin{definition}[accumulation point] An accumulation point or limit point of a set $S$ is  $z_0$ if, each deleted neighborhood of $z_0$ contains at least one point of $S$
+\end{definition}
+\begin{remark}
+   A closed set contains all of its accumulation points, but the opposite may not be true.
+\end{remark}
+\begin{remark}
+   Every boundary point is not an accumulation point.
+\end{remark}
+\begin{eg}
+   Consider the set, $S = {5} \cup (0,1)$
+
+   Here, the boundary points are $5,0$ and $1$ because they  $\epsilon$-neighborhood defined around these points contains both inerior points and exterior points.
+
+   However $5$ is not an accumulation point because the deleted-neighborhood does not contain any interior points (as it removes  $5$ ).
+\end{eg}
+

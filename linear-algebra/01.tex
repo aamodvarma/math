@@ -1,0 +1,98 @@
+\chapter*{2C}
+\begin{theorem}
+    If $V_1,V_2$ are subspace of $V$, then  $\dim(V_1+V_2) = \dim V_1 + \dim V_2 + \dim(V_1 \cap V_2)$
+\end{theorem}
+\begin{proof}
+    There exists a subspace of $W_1$ of $V_1$ s.t. \[
+        (V_1\cap V_2) \oplus W_1 = V_1
+    .\] 
+    Similarly we can find $W_2$ s.t. \[
+        (V_1\cap V_2) \oplus W_2 = V_2
+    .\] 
+
+    We can say $\dim V_1 = \dim (V_1\cap V_2) + \dim W_1$ and $\dim V_2 = \dim (V_1\cap V_2) + \dim W_2$ 
+
+    $\dim V_1 + V_2 = \dim W_1 + \dim W_2 + \dim V_1 \cap V_2$
+
+    Since, $\dim W_2 + \dim (V_1 \cap V_2) = \dim V_2$, we need to show that \[
+    \dim(V_1 + V_2) = \dim W_1 + \dim V_2
+    .\] 
+
+    It is enough to show that $V_1 + V_2 = W_1 \oplus V_2$
+
+    (1) To show $V_1 + V_2 = W_1 + V_2$ 
+
+    \qquad 1. $W_1 ,V_2$ are subspace of $V_1 + V_2 \Rightarrow W_1 + V_2 \subseteq V_1 + V_2$
+
+    \qquad 2. For any $v = v_1 + v_2$ we can write, $v = w_1 + v_{12}$
+     \[
+     v_{12} \in V_2, v_2 \in V_2 \implies v_{12} + v_2 \in V_2 
+     .\] 
+     So, $V_1 + V_2 \subseteq W_1 + V_2$
+
+     (2) To show $W_1 \cap V_2 = \phi$ 
+
+     Let $w \in W_1 \cap V_2 \implies w \in W_1 \subseteq V_1 $
+    
+\end{proof}
+
+\begin{theorem}
+    A list $v_1, \dots, v_n$ in $V$ is a basis of  $V \iff \forall v \in V, v$ can be written uniquely in the form, \[
+    v = a_1v_1 + \dots + a_nv_n
+    .\] 
+\end{theorem}
+\begin{proof}
+    
+\end{proof}
+
+
+\section*{Polynomials}
+
+\begin{definition}[Polynomial]
+    A polynomial $p$ is a are functions from $F \rightarrow F$ s.t. $p$ can be written as \[
+        p = a_nz^n + a_{n-1}z^{n-1} \dots + a_0
+    .\] 
+\end{definition}
+
+\begin{remark}
+    View, $a_nz^n + \dots + a_0$ as $(a_0,a_1,\dots,a_n)$
+\end{remark}
+
+
+\begin{remark}
+    $P(F) = $ the set of polynomials with coeff. in  $\F$
+\end{remark}
+
+\begin{eg}
+    $$\deg(z^2 + z + 1) = 2$$
+    $$\deg(1) = 0$$
+    $$\deg(0) = -\infty$$
+\end{eg}
+
+
+Dimention of $P_n(F) = \{p \in P(F) : \deg p \leq n\}$ is $n + 1$
+
+
+ $1, z, z_2 \dots z^n$ is a standard basis of $P_n(F)$
+
+\begin{eg}
+    $U = \{p \in P_3(F): p'(5) = 0\}$
+
+    $U$ is a subspace
+
+     A basis is, $1, (z-5)^2, (z-5)^3$
+
+     \begin{proof}
+         
+         First we show its linearly indpendent,
+         $a_0 + a_2(z-5)^2 + a_3(z-5)^3 = 0$
+
+         $$ a_0=a_2=a_3=0$$
+
+         We show its spanning, 
+
+     \end{proof}
+\end{eg}
+
+
+

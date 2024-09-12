@@ -1,0 +1,155 @@
+\section*{19. Derivatives}
+\begin{theorem}
+   If a function $f(z)$ is continuous and non-zero at a point $z_0$ then, there exists a neighborhood where, $f(z) \neq 0$ throughout.
+\end{theorem}
+\begin{proof}
+   
+   We know that $f(z)$ is continuous which means that, $\foall \epsilon > 0, \exists \delta$ such that,  \[
+      |f(z) - f(z_0)| < \epsilon, \text{ when } 0 < |z - z_0| < \delta
+   .\] 
+
+   But if we take, $\epsilon = \frac{f(z_0)}{2}$ then we have, \[
+   |f(z) - f(z_0)| < \frac{|f(z_0)|}{2}
+   .\] 
+   However, if $f(z) = 0$ for this neighborhood then we have,  \[
+   |f(z_0)|  < \frac{|f(z_0)|}{2}
+   .\] 
+   which is a contradiction.
+
+
+
+\end{proof}
+
+\begin{theorem}
+   $f$ is continuous on $R$ which is closed and bounded, $\exists M > 0$, real $|f(z)| \leq M, \forall z \in R$  equality holds for at least one  $z$.
+\end{theorem}
+
+
+\begin{definition}[Derivative]
+   $f$ is differntiable at $z_0$ when $f'(z_0)$ exists where, 
+   $$f'(z_0) = \lim_{z \to z_0} \frac{f(z) - f(z_0)}{z-z_0}$$
+\end{definition}
+\begin{remark}
+   Can also solve, \[
+   \lim_{z_0 \to 0} \frac{f(z + z_0) - f(z)}{z_0}$$
+   .\] 
+\end{remark}
+
+\begin{eg}
+   Find derivative of, $f(z) = \frac{1}{z}$
+
+   $$\lim_{z_0 \to 0} (\frac{1}{z + z_0} - \frac{1}{z}) \frac{1}{z_0}$$
+   $$\lim_{z_0 \to 0} \frac{z - z - z_0}{z(z + z_0)} \frac{1}{z_0}$$
+   $$\lim_{z_0 \to 0} \frac{-1}{z(z + z_0)}$$
+   $$= \frac{-1}{z^2}$$
+\end{eg}
+\begin{eg}
+   $f(z) = \bar z$
+
+   $$\lim_{z_0 \to 0} \frac{\bar{z + z_0} - \bar z}{z_0}$$
+
+   Go from $x$ and  $y$ axis.
+
+   From $x$,  \[
+   \lim_{x_0 \to 0} \frac{\bar z + x_0 - \bar z}{x_0}
+   =1
+   .\] 
+   Similarly if we go from $y$ we get  $-1$, so the derivative doesn't exist.
+
+
+\end{eg}
+
+If we have a function $f(z) = u(x,y) + iv(x,y)$ then, \[
+z_0 = x_0 + iy_0
+.\] 
+\[
+\Delta z = \Delta x + i \Delta y
+.\] 
+
+We have to show the following exist, \[
+\lim_{\Delta z \to 0} \frac{f(z_0 + \Delta z) - f(z_0)}{\Delta z} .\] 
+\[
+= \frac{u(x_0 + \Delta x, y_0 + \Delta y) + iv(x_0+\Delta x, y_0 + \Delta y) - (u(x_0,y_0) + iv(x_0,y_0))}{\Delta x + i\Delta y}
+.\] 
+Horizontally, \Delta y = 0.
+
+So, 
+\[\frac{u(x_0 + \Delta x, y_0) - u(x_0,y_0)}{\Delta x} + \frac{i(v(x_0 + \Delta x, y_0) - v(x_0,y_0))}{\Delta x}
+.\] 
+\[
+ = u_x + iv_x
+.\] 
+
+Similary, if we go vertically, $\Delta x = 0$ and we get,  \[
+= v_y - iu_y
+.\] 
+
+
+\begin{theorem}
+   If, $f(z) = u + iv, f'(z)$ exists at,  $z_0 = x_0 + iy_0$. Then, $u_x, u_y, v_x, v_y$ eixsts at  $(x_0, y_0)$ and must satisify the Cauchy-Reimann equation.
+   \[
+      f'(z_0) = u_x + iv_x \text { at } (x_0,y_0)
+   .\] 
+\end{theorem}
+
+\begin{theorem}
+   $f(z) = u(x,y) + iv(x,y)$ defined throughout the $\epsilon$-neighborhood of $z_0 = x_0 + iy_0$, 
+
+   (a) $u_x,u_y,v_x,v_y$ exists everywhere in the neighborhood
+
+   (b)  $u_x, u_y, v_x, v_y$ continuous at  $(x_0,y_0)$ and satisfy the Cauchy-Remainn equations $$u_x = v_y, u_y = -v_x \text{ at }  (x_0,y_0)$$
+
+   Then $f'(z_0)$  exists and, \[
+      f'(z_0) = u_x + iv_x \text{ at } (x_0,y_0)
+   .\]
+\end{theorem}
+\begin{proof}
+   We need to show,
+   \[
+   \lim_{\Delta z \to 0} \frac{f(z_0 + \Delta z) - f(z_0)}{\Delta z}
+   .\] 
+
+   \[
+   = \lim_{\Delta z \to 0} \frac{u(x_0+ \Delta x, y_0 + \Delta y) + iv(x_0+ \Delta x, y_0 + \Delta y) - (u(x_0,y_0) + iv(x_0,y_0))}{\Delta z}
+.\]
+Using taylor expansion we know, \[
+f(x + \Delta x) = f(x) + \Delta xf'(x) + \frac{(\Delta x)^2}{2}f''(x)
+.\] 
+\[
+   u(x_0+\Delta x, y_0 + \Delta y) - u(x_0,y_0)  = 
+\]   
+\[
+   = u(x_0,y_0) + \Delta x u_x(x_0,y_0) + \frac{(\Delta x)^2}{2} u_{xx}(x_0,y_0) + \Delta y u_y(x_0, y_0) + \frac{(\Delta y)^2}{2}u_{yy} (x_0, y_0) 
+.\] 
+
+
+We can write the limit as, \[
+   \frac{u_x(x_0,y_0)\Delta x + u_y (x_0,y_0)\Delta y +  \epsilon_1(\Delta x^2) + \epsilon_2(\Delta y^2)}{\Delta z} + 
+\] 
+\[
+   i\frac{v_x(x_0,y_0)\Delta x + v_y(x_0,y_0)\Delta y + \epsilon_3(\Delta x) + \epsilon_4(\Delta y)}{\Delta z}
+.\] 
+
+
+We know $u_x(x_0,y_0) = v_y(x_0,y_0)$ and $u_y(x_0,y_0) = - v_x(x_0,y_0)$, so,
+\[
+   \frac{u_x(x_0,y_0)\Delta x + -v_x (x_0,y_0)\Delta y +  \epsilon_1(\Delta x^2) + \epsilon_2(\Delta y^2)}{\Delta z} + 
+\] 
+\[
+   i\frac{v_x(x_0,y_0)\Delta x + u_x(x_0,y_0)\Delta y + \epsilon_3(\Delta x) + \epsilon_4(\Delta y)}{\Delta z}
+.\] 
+
+\[
+= \frac{u_x(x_0,y_0)(\Delta x + i \Delta y) + u_y(x_0,y_0)(\Delta y - i\Delta x) + \epsilon_4}{\Delta z}
+.\] 
+
+
+and $\Delta z = \Delta x + i \Delta y$
+
+\[
+= \frac{u_x(x_0,y_0)(\Delta x + i \Delta y) + u_y(x_0,y_0)(\Delta y - i\Delta x) + \epsilon_4}{\Delta x + i \Delta y}
+.\] 
+
+
+\end{proof}
+

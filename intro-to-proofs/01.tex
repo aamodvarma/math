@@ -1,0 +1,158 @@
+\chapter*{Real Numbers}
+\begin{definition}[Properties of real numbers] Properties of $\R$ are
+    
+    % (a).
+    
+    % (b).
+    
+    (d). $\exists$ an order on  $\R$ which means $\forall x,y \in \R, x < y \text{ or }, x > y, \text{ or } x = y$
+    Ordering follows the following properties, 
+
+    \qquad (1). $x < y, y < z \Rightarrow x < z$ (transitivity)
+    
+    \qquad (2). $x < y \Rightarrow x + z < y + z, \forall z \in \R$
+    
+    \qquad (3). $x < y, z > 0 \Rightarrow xz < yz$
+\end{definition}
+
+\begin{theorem}
+    $xy = 0 \iff x = 0 \text{ or } y = 0 $ 
+    \begin{proof} 
+        $\Leftarrow$
+        Without loss of generality take, $x = 0$
+        Then we get,  \[
+            0y
+        .\] 
+        We can write this as, \[
+            (0 + 0)y = 0y + 0y
+        .\] 
+        So, \[
+        0y = 0y + 0y
+        .\] 
+        Or, m
+
+        $\Rightarrow$
+
+        Assume the contrary that, $x \neq 0 \text{ and } y \neq 0$ 
+        We have, $xy = 0$.
+        Without loss of generality we take the multiplicative inverse of  $x$ so,
+         \[
+        \frac{xy}{x} = \frac{0}{x}
+        .\] 
+        We showed that $0(k) = 0$ so  $y = 0$
+
+        Which contradicts our assumption, hence our asusmptoin must be wrong and  $x = 0 \text{ or } y = 0$
+        
+    \end{proof}
+\end{theorem}
+\begin{theorem}
+    $(-)x = -x$
+    \begin{proof}
+        We start with $(-1)x$ and add $x$ to both sides so,  \[
+            (-1)x + x = x (1 - 1) = 0x = 0
+        .\] 
+        So we showed that $(-1)x$ is the additive identity of $x$. 
+
+        We know that the additive identity is unique for any  $x$
+
+        Therefore,  $(-1)x = -x$
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}
+    $\forall x < y, z < 0$  \[
+    xz > yz
+    .\] 
+
+    
+\end{theorem}
+
+\begin{theorem}
+    $\forall x \in \R, x^2 \geq 0$ and if $x \neq 0$ then  $x^2> 0$
+\end{theorem}
+
+\begin{theorem}
+    $x^2 = - (-x^2)$
+
+    Case 1, $x > 0$: 
+    $$x > 0$$
+    $$x\times x > x$$
+    $$x\times x > 0x$$
+    $$ x^2 > 0$$
+    
+    Case 2, $x < 0$:
+\end{theorem}
+
+\begin{eg}
+    $\forall a,b > 0$  \[
+        \frac{a + b}{2} \geq \sqrt{ab}
+    \begin{proof}
+        \[
+            0 \leq (\sqrt{a} - \sqrt{b})^2 = a - 2\sqrt{ab} + b
+        .\]      
+    \end{proof}
+\end{eg}
+
+\begin{eg}
+    $x^2 - x + 1$
+\end{eg}
+
+
+
+\begin{theorem}
+    $\forall x,y \in \R$ we have,  \[
+        |x| \geq x \text{ and } |x + y| \leq |x| + |y|
+    .\] 
+
+    \begin{proof}
+        
+    \end{proof}
+\end{theorem}
+
+
+\subsection*{Proof related to Sets}
+\begin{theorem}
+    \[
+    A \cup B \backslash (A \cap B) = (A \backslash B) \cup (B \backslash A)
+    .\] 
+
+    \begin{proof}
+        We need to show that, \[
+     A \cup B \backslash (A \cap B) \subseteq  (A \backslash B) \cup (B \backslash A)
+        .\] 
+        and,
+      \[
+      (A \backslash B) \cup (B \backslash A) \subseteq A \cup B \backslash (A \cap B) 
+      .\] 
+    \end{proof}
+\end{theorem}
+
+
+
+\begin{theorem}
+    $A \subseteq B \iff A \cup B = B$
+     \begin{proof}
+        $\Rightarrow$   
+        Take $\forall x \in A \cup B$, so either
+        
+        Case 1, $x \in A$:
+
+        We know that by deifnition if, $A \subseteq B$ then for  $x \in A, x \in B$ so  $x \in B$
+        
+        Case 2, $x \in B$:
+        If $x \in B$ then we don't need to go further.
+
+
+        So we get $\forall x \in A \cup B$,  $x \in B$
+
+        $\impliedby$
+
+        $\forall x \in A \Rightarrow x \in A \cup B = B$
+
+        So,  $x \in B$ which means that, $A \subseteq B$
+        
+    \end{proof}
+\end{theorem}
+
+
+
