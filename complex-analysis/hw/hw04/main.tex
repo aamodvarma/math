@@ -120,8 +120,132 @@ However there exist no value  $y$ to satisfy both these conditions, hence our de
 
 
 \subsection*{Problem 8}
+(a).
+
+\[
+    \frac{\partial  F}{\partial \bar z} =    \frac{\partial  F}{\partial x}    \frac{\partial  x}{\partial \bar z}   +    \frac{\partial  F}{\partial y}  \frac{\partial  y}{\partial \bar z}
+.\] 
+We know, \[
+\frac{\partial  x}{\partial \bar z}  = \frac{\partial }{\partial \bar z}  (\frac{z + \bar z}{2}) = \frac{1}{2}
+.\] 
+Similarly, 
+\[
+\frac{\partial  y}{\partial \bar z}  = \frac{\partial }{\partial \bar z}  (\frac{z - \bar z}{2i}) = \frac{-1}{2i} = \frac{i}{2}
+\]
+
+So we can write, \[
+    \frac{\partial  F}{\partial \bar z} =    \frac{\partial  F}{\partial x}   \frac{1}{2}   +    \frac{\partial  F}{\partial y}  \frac{i}{2} = \frac{1}{2}\bigg(   \frac{\partial  F}{\partial x} + i  \frac{\partial  F}{\partial y} \bigg)
+\]
+
+(b). \[
+    \frac{\partial  f}{\partial \bar z} = \frac{1}{2}\bigg(   \frac{\partial  f}{\partial x} + i  \frac{\partial  f}{\partial y} \bigg)
+.\] 
+We are give that, $f(z) = u(x,y) + iv(x,y)$
+
+So, \[
+    \frac{\partial  f}{\partial \bar z} = \frac{1}{2}\bigg(   \frac{\partial}{\partial x}(u(x,y) + iv(x,y)) + i  \frac{\partial  }{\partial y} (u(x,y) + iv(x,y))\bigg)
+.\] 
+\[
+= \frac{1}{2}\bigg(   u_x + iv_y + i(u_y + iv_y))\bigg)
+.\] 
+
+\[
+= \frac{1}{2}\bigg(   u_x + iv_y + iu_y - v_y\bigg)
+.\] 
+\[
+= \frac{1}{2}\bigg((u_x - v_y)+ i(u_y + v_x)\bigg)
+.\] 
+
+Now if $f(z)$ satisfies the Cauchy-Riemann equations then we know that  $u_x = v_y$ and  $u_y = -v_x$ and,  \[
+\frac{\partial f}{\partial \bar z} = \frac{1}{2}(0) = 0
+.\] 
 
 
+\subsection*{Problem 2}
+(a). $f(z) = xy + iy$
 
+Using the Cauchy-Riemann equations we see, \[
+u_x = y, u_y = x
+.\] 
+\[
+v_x = 0, u_y = 1
+.\] 
+
+So we have, $y = 1$ and $x = 0$
+
+Which means that the function has a derivate at only  $y = 1, x= 0$. However for a functino to be analytic at a point it has to have a derivative at everypoint in some neighborhood of the point. But in this case it only has it at the point  $(0,1)$ and nowhere else. So it is not analytic anywhere.
+
+
+(b). $f(z) = 2xy + i(x^2 - y^2)$
+We have, \[
+u_x = 2y, u_y = 2x
+.\] 
+\[
+v_x = 2x, v_y = -2y
+.\] 
+
+So we need, $2y = -2y$ and $2x = -2x$
+
+The only values that satisfy this are  $x = 0, y = 0$
+
+So the functino is not analytic anywhere because it has a derivative only at  $(0,0)$ and nowhere else.
+
+(c).  $f(z) = e^ye^{ix}$
+
+$$f(z) = e^y(\cos(x) + i\sin(x))$$
+
+
+So, \[
+u_x = e^y(-\sin(x)), u_y = e^y\cos(x)
+.\] 
+\[
+v_x = e^y(\cos(x)), v_y = e^y \sin(x)
+.\] 
+
+So we have, $u_x = v_y$ and $u_y = -v_x$
+
+So,  \[
+    2e^ysin(x) = 0 \text{ which means } sin(x) = 0
+.\] 
+and, \[
+    2e^ycos(x) = 0 \text { which mean } cos(x) = 0
+.\] 
+
+So our values of $x,y$ for which the eqations hold are, $x = n\pi, n \in Z$ and $y = \frac{\pi}{2} + n\pi$ for $n \in Z$. So we have a derivative only exactly at these point. However the derivate doesn't exist in any neighborhood of these points which means the functino isn't analytic.
+
+\subsection*{Problem 6}
+We have, \[
+g(z) = ln r + i \theta \quad (r > 0, 0 < \theta < 2\pi)
+.\] 
+
+The cauchy-reimann equation for polar coordinates tell us that, \[
+    ru_r = v_{\theta}, u_{\theta} = -r v_r
+.\] 
+
+$$u_r = \frac{1}{r}, u_\theta = 0$$
+$$v_r = 0, v_\theta = 1$$
+
+
+So we have, $r \frac{1}{r} = 1, 1 = 1$ and $0 = 0$ 
+
+Our functino satifies the cauchy-reimann equations at all points.
+
+It's derivative in the domain is, $f'(z) = e^{-i\theta}(\frac{1}{r}) = \frac{1}{re^{i\theta}} = \frac{1}{z}$ 
+
+We have $G(z) = g(z^2+ 1)$
+
+This is a composition of functions where $f(z) = z^2 + 1$ then $G(z) = g(f(z))$
+
+For this to be the case we need to show that both the functinos are analytic so that we can use the chain rule to differentiate them.
+
+We first know that $f(z) = z^2 + 1$ is analytic everywhere as it satisfies the Cuachy-Remiann equations.
+
+In the quadrant $x> 0, y > 0$ we have $Im(z^2 + 1) = 2xy > 0$. If this is the case then we know $rsin(\theta)$ has to be positive which means $ 0 < \theta < \pi < 2\pi$. Our functions are analytic here. 
+
+So we can use the chain rule to differnetiate as follows, \[
+G'(z) = g'(z^2 + 1) f'(z) = \frac{1}{z^2 + 1} f'(z)  = \frac{2z}{z^2 + 1}
+.\] 
+
+                                        
 
 \end{document}

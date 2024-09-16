@@ -1,0 +1,90 @@
+\section*{Disproofs}
+
+If we need to show existance, $\exists x. P(x)$. We can show using, 
+
+1. Direct constructions
+
+2. Indirectly (contradiction). For instance we can show that, $\forall x, \not P(x)$ is false
+
+
+\begin{eg}
+    $\exists a,b,c \in R - Q \text{ s.t. } a^b^c \in Q$
+\end{eg}
+
+\begin{eg}
+    Pigeonhole principle
+
+    Suppose there are $m$ balls in $n$ boxes, $m > n \geq 1$ then, $\exists$ a box where there are at least, $\frac{m}{n} + 1$ balls 
+\end{eg}
+
+\begin{proof}
+    Assume pigeonhole is false.
+
+    Then, there are at most $\frac{m}{n}$ balls in each box.
+
+    In case 1 where $\frac{m}{n} \not \in N \implies$  total balls $\leq n [\frac{m}{n}] = \frac{nm}{n} = m$ which is a contradiction.
+
+    In case 2 where $\frac{m}{n}\in N$ there are at most $\frac{m}{n} - 1$ balls in each box.
+    So total number of balls are $\frac{nm}{n} - n = m - n$ which is contradictory.
+\end{proof}
+
+
+To disprove $\forall x P(x)$ we can show that, $\exists \not P(x)$
+
+
+
+\[
+
+.\] 
+\begin{eg}
+    100 can't be written as the sum of two even integers and an odd integer.
+\end{eg}
+\begin{proof}
+    Suppose it's false $\implies \exists a,b,c \in Z$ s.t. $2 | a, 2 | b, 2 \not | c$ and  $100 = a + b + c$
+
+    But,  $2 | a, 2 | b \implies 2 | a + b$ but  $2 \not | c \implies 2 \not | (a + b) + c = 100$
+
+    So we get,  $2 \not | 100$ which is a contradiction.
+
+    Which means that the original statmeent is true.
+\end{proof}
+
+
+\begin{eg}
+    $\not \exists$ the smallest positive real number
+    
+    The smallest positive real number is defined as $x \in R$ s.t.  $x > 0$ and  $\forall y > 0, x \leq y$
+\end{eg}
+\begin{proof}
+    Let's assume it is true which mean that $\exists x \in R$ s.t.  $x > 0$ and  $\forall y > 0$,  $x \leq y$
+
+    We know that $x > 0 \implies \frac{x}{2} > 0$ 
+
+    So if we set $y = \frac{x}{2}$ then we get \[
+    x \leq \frac{x}{2}
+    .\] 
+    Which is a contradiction.
+
+    Hence it cannot be the case that there exists the smalest positive number.
+\end{proof}
+\begin{eg}
+    $\not \exists f(x): $ a polynomial with integer coefficients s.t.  $\forall n, f(n)$ is prime
+\end{eg}
+\begin{proof}
+    
+\end{proof}
+
+\begin{eg}
+    Let $f(x) = x^3 + 2x - 5$ then $\exists \text { unique }x_0 \in [1,2]$ s.t. $f(x_0) = 0$
+\end{eg}
+\begin{proof}
+    Using intermediate value theorem.
+
+    $$f(1) = -2$$
+    $$f(2) = 7$$
+
+
+    To show unique we need to show its strictly increasing.
+\end{proof}
+
+

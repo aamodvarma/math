@@ -1,0 +1,132 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Linear Alebgra HW04}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+
+\section*{2B}
+\subsection*{Problem 4}
+(a). We are given $U = \{(z_1,z_2,z_3,z_4,z_5) \in \C^5 : 6z_1 =z_2, z_3+2z_4+3z_5=0\}$
+
+The contraints are as follows, $6z_1 = z_2$ and $z_3+2z_4+3z_5=0$
+
+So we can rewrite each $z$ as  \[
+z_1 = \frac{z_2}{6}, z_2=z_2, z_3=-2z_4-3z_5, z_4=z_4,z_5=z_5
+.\] 
+
+We see we have two dependent variables and three independent variables which means our basis will be of length $3$ dependent on $z_2,z_4,z_5$ as follows, \[
+    (\frac{1}{6}, 1,0,0,0), (0,0,-2,1,0), (0,0,-3,0,1)
+.\] 
+
+(b). We need to extend this basis onto $\C^5$. We know from (a) that our dependent variables are  $z_1$ and $z_3$. So to extend our basis we need to be able to make these vectors our indepdent. For this we can add the following two vectors, \[
+    (1,0,0,0,0), (0,0,1,0,0)
+.\] 
+
+These additions are linearly independent because we can't represent these vectors as a linearly combination of our previous list (in our first list it was necessarily true that $z_1 = \frac{z_2}{6}$, so if $z_1=1, z_2\neq 0$, similary reasoning for $z_3$). We also know this new list spans $\C^5$ because our new additions give us control over the dependent variables from our previous list (we could also argue that because it is a linearly independent set of vectors and we have  $\dim(\C_5)$ of them.
+
+
+(c). We need to find a subspace $W$ such that  $U \oplus W = \C^5$. Take  $W$ from above as,  \[
+    W = {(1,0,0,0,0),(0,0,1,0,0)}
+.\] 
+
+First we need to show that $W + U =\C^5$.  That every vector in $\C^5$ can be represented as $v = u + w, u \in U, w \in W$ 
+
+Now, if $u \in U, u = a_1u_1+a_2u_2 + a_3u_3$ and if $w \in W, w = b_1w_1+b_2w_2$. 
+
+So $$v = a_1u_1+a_2u_2+a_3u_3 + b_{1}w_1+b_2w_2$$
+
+But we know from above that  $u_1,u_2,u_3,w_1,w_2$ is a basis for $\C^5$. Which means that the linear combination of these vectors can reprsent every vector in  $\C^5$. So we show that all of  $v \in \C^5$ can be written as a vecotr  $u \in U$ plus a vector  $w \in W$.
+
+
+\subsection*{Problem 5}
+If $V = W + U$ we can say that $\forall v \in V$,  \[
+    v = u + w \text{ for }u\in U, w \in W
+.\] 
+
+Now, $u$ can be written as a linear combinatino of vectors in $U$ and  similar can be done for $w$.
+
+So let $u = a_1u_1 + \dots + a_nu_n$ and $w = b_1w_1 + \dots + b_mw_m$. So we have a linear combination of $n + m$ vectors.  We know that $\dim(V) \leq n + m$ because  $\dim(V) \leq $ length of any spanning set in  $V$.
+
+If  $n + m > \dim V$. Then we can reduce it to a linearly independent set of vector such that it still spans  $V$. So now we have a basis of $V$ that consists of vectors that are either in $U$ or  $W$. Or in other words our basis are vectors in  $U \cup W$.
+
+If $n + m = \dim V$ then we already have a linearly independent set of vectors that span $V$ which consists of vectors either in  $U$ or  $V$. Which meanst hat the basis are vectors in $U \cup W$.
+
+So we have shown that there exists a basis of  $V$ in  $U \cup W$ if  $U + W = V$.
+
+\subsection*{11}
+We know that $v_1,\dots,v_n$ is a basis for $V$. We need to show that it is also a basis for  $V_C$. Now $V_\C$ is defined by $V \times V$ such that $(x,y) = x + iy \in V_\C$. 
+
+So we need to show that any vector of the form $u + iw \in V_C$ can be represented by a linear combinatino of  $v_1,\dots,v_n$.
+
+First we know that $u \in V, w \in V$. So we can write  $u = a_1v_1+\dots+a_nv_n$, similarly $w = b_1v_1 + \dots + b_nv_n$.
+
+Now because we also define scalar multiplication with complex numbers we can write, \[
+a_1v_1+ \dots + a_nv_n + i(b_1v_1 + \dots + b_nv_n) = u + iw
+.\] 
+Or, \[
+    \forall (u,w) \in V_C, u + iw = (a_1+ib_1)v_1 + \dots + (a_n + ib_n)v_n
+.\] 
+So we showed that we can represent all elements of $V_C$ as a linear combination of our vectors  $v_1, \dots, v_n$
+
+
+\section*{2C}
+\subsection*{Problem 1}
+We know that $\dim(\R^2) = 2$ which means that for a given subspace $V$ we have three cases, \[
+\dim(V) = 0,
+\dim(V) = 1,
+\dim(V) = 2
+.\] 
+
+If $\dim(V) = 0$ then our vector space if  $V = \{0\}$ by definition.
+
+If  $\dim(V) = 1$ then that means our vector space contains one vector so $V$ is spanned by  $\{v\}$. First we knwo that $0 \in V $ as $V$ is a subspace (we can take the coefficient to be 0). Now for any vector $v \in V, kv \in V$. We know that this defines any line in $\R^2$ that goes through the origin.
+
+If $\dim(V) = 2$ we also know that  $U \subseteq V$.  If $U \subseteq V$ and  $\dim(U) = \dim(V)$ then we know that  $ U = V$. So, $U$ determines  $\R^2$
+
+
+\subsection*{Problem 4}
+(a). A basis of $U$ would be one where $p''(6) = 0$. First we know that a basis of  $P_4(R)$ is  $1,x,x^2,x^3$ which can also be written as $1,(x-6),(x-6)^2,(x-6)^3$ where $x \in R$
+
+So any $p$ is written as $$p(x) = 1a_1 + a_2(x-6) + a_3(x-6)^2 + a_4 (x - 6)^3$$
+$$p''(6) = 2a_3$$
+So we see that for it to be equal to 0, $a_3 = 0$. Which means our basis is, \[
+1, (x - 6), (x-6)^3
+.\] 
+
+(b). As we discussed above, adding $(x-6)^2$ to the list will give us a basis for $P_4(R)$
+
+So our basis is, $$1, (x-6),(x-6)^2, (x-6)^3$$
+
+
+(c). Our subspace $W$ would be spanned by  $(x-6)^2$. We first show that $W + U = P_4(R)$. To do this we need to show any  $p \in P_4(R)$ can be represented as,  \[
+p = u + w, u \in U, w \in W
+.\] 
+
+We know for $u \in U, u = a_1 + a_2(x-6) + a_3(x-6)^3$ and for $w \in W, w= b_1(x-6)^2$.
+
+So, \[
+p = a_1 + a_2(x-6) + a_3(x-6)^3 + b_1(x-6)^2
+.\] 
+
+Which is a linear combination of the basis of $P_4(R)$ which means that $u + w$ can represent any vector  $p \in P_4(R)$ and hence we can say $U + W = P_4(F)$
+
+Now we need to show that  $ U \oplus W = P_4(F)$. To show this we can show that there is only one way of representing  $0$ as  $u + w$.
+
+Now if  $u + w = 0$ as we did abov ewe can write,  
+$$0 = a_1 + a_2(x-6) + a_3(x-6)^3 + b_1(x-6)^2$$
+
+First we know that $a_3 = 0$ as we can't represent $x^3$ using any of the other terms. Similary we can show that $b_1 =0, a_2 = 0, a_1 = 0$. Hence the only way of reprenseting $0$ is to have all coefficients as 0.
+
+Which means that $U \oplus W = P_4(R)$ 
+
+\subsection*{Problem 8}
+Given $v_1, \dots, v_m$ is linearly independent in $V$ and $w \in V$.
+Take $U := span($
+
+
+
+
+\end{document}

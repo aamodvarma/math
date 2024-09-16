@@ -17,47 +17,49 @@
 
 \begin{theorem}
     $xy = 0 \iff x = 0 \text{ or } y = 0 $ 
-    \begin{proof} 
-        $\Leftarrow$
-        Without loss of generality take, $x = 0$
-        Then we get,  \[
-            0y
-        .\] 
-        We can write this as, \[
-            (0 + 0)y = 0y + 0y
-        .\] 
-        So, \[
-        0y = 0y + 0y
-        .\] 
-        Or, m
-
-        $\Rightarrow$
-
-        Assume the contrary that, $x \neq 0 \text{ and } y \neq 0$ 
-        We have, $xy = 0$.
-        Without loss of generality we take the multiplicative inverse of  $x$ so,
-         \[
-        \frac{xy}{x} = \frac{0}{x}
-        .\] 
-        We showed that $0(k) = 0$ so  $y = 0$
-
-        Which contradicts our assumption, hence our asusmptoin must be wrong and  $x = 0 \text{ or } y = 0$
-        
-    \end{proof}
 \end{theorem}
+
+\begin{proof} 
+    $\Leftarrow$
+    Without loss of generality take, $x = 0$
+    Then we get,  \[
+        0y
+    .\] 
+    We can write this as, \[
+        (0 + 0)y = 0y + 0y
+    .\] 
+    So, \[
+    0y = 0y + 0y
+    .\] 
+    Or, m
+
+    $\Rightarrow$
+
+    Assume the contrary that, $x \neq 0 \text{ and } y \neq 0$ 
+    We have, $xy = 0$.
+    Without loss of generality we take the multiplicative inverse of  $x$ so,
+     \[
+    \frac{xy}{x} = \frac{0}{x}
+    .\] 
+    We showed that $0(k) = 0$ so  $y = 0$
+
+    Which contradicts our assumption, hence our asusmptoin must be wrong and  $x = 0 \text{ or } y = 0$
+    
+\end{proof}
 \begin{theorem}
     $(-)x = -x$
-    \begin{proof}
-        We start with $(-1)x$ and add $x$ to both sides so,  \[
-            (-1)x + x = x (1 - 1) = 0x = 0
-        .\] 
-        So we showed that $(-1)x$ is the additive identity of $x$. 
-
-        We know that the additive identity is unique for any  $x$
-
-        Therefore,  $(-1)x = -x$
-    \end{proof}
 \end{theorem}
+
+\begin{proof}
+    We start with $(-1)x$ and add $x$ to both sides so,  \[
+        (-1)x + x = x (1 - 1) = 0x = 0
+    .\] 
+    So we showed that $(-1)x$ is the additive identity of $x$. 
+
+    We know that the additive identity is unique for any  $x$
+
+    Therefore,  $(-1)x = -x$
+\end{proof}
 
 \begin{theorem}
     $\forall x < y, z < 0$  \[
@@ -86,12 +88,13 @@
 \begin{eg}
     $\forall a,b > 0$  \[
         \frac{a + b}{2} \geq \sqrt{ab}
-    \begin{proof}
-        \[
-            0 \leq (\sqrt{a} - \sqrt{b})^2 = a - 2\sqrt{ab} + b
-        .\]      
-    \end{proof}
 \end{eg}
+
+\begin{proof}
+    \[
+        0 \leq (\sqrt{a} - \sqrt{b})^2 = a - 2\sqrt{ab} + b
+    .\]      
+\end{proof}
 
 \begin{eg}
     $x^2 - x + 1$
@@ -104,10 +107,11 @@
         |x| \geq x \text{ and } |x + y| \leq |x| + |y|
     .\] 
 
-    \begin{proof}
-        
-    \end{proof}
 \end{theorem}
+
+\begin{proof}
+    
+\end{proof}
 
 
 \subsection*{Proof related to Sets}
@@ -116,43 +120,45 @@
     A \cup B \backslash (A \cap B) = (A \backslash B) \cup (B \backslash A)
     .\] 
 
-    \begin{proof}
-        We need to show that, \[
-     A \cup B \backslash (A \cap B) \subseteq  (A \backslash B) \cup (B \backslash A)
-        .\] 
-        and,
-      \[
-      (A \backslash B) \cup (B \backslash A) \subseteq A \cup B \backslash (A \cap B) 
-      .\] 
-    \end{proof}
 \end{theorem}
+
+\begin{proof}
+    We need to show that, \[
+ A \cup B \backslash (A \cap B) \subseteq  (A \backslash B) \cup (B \backslash A)
+    .\] 
+    and,
+  \[
+  (A \backslash B) \cup (B \backslash A) \subseteq A \cup B \backslash (A \cap B) 
+  .\] 
+\end{proof}
 
 
 
 \begin{theorem}
     $A \subseteq B \iff A \cup B = B$
-     \begin{proof}
-        $\Rightarrow$   
-        Take $\forall x \in A \cup B$, so either
-        
-        Case 1, $x \in A$:
-
-        We know that by deifnition if, $A \subseteq B$ then for  $x \in A, x \in B$ so  $x \in B$
-        
-        Case 2, $x \in B$:
-        If $x \in B$ then we don't need to go further.
-
-
-        So we get $\forall x \in A \cup B$,  $x \in B$
-
-        $\impliedby$
-
-        $\forall x \in A \Rightarrow x \in A \cup B = B$
-
-        So,  $x \in B$ which means that, $A \subseteq B$
-        
-    \end{proof}
 \end{theorem}
+
+ \begin{proof}
+    $\Rightarrow$   
+    Take $\forall x \in A \cup B$, so either
+    
+    Case 1, $x \in A$:
+
+    We know that by deifnition if, $A \subseteq B$ then for  $x \in A, x \in B$ so  $x \in B$
+    
+    Case 2, $x \in B$:
+    If $x \in B$ then we don't need to go further.
+
+
+    So we get $\forall x \in A \cup B$,  $x \in B$
+
+    $\impliedby$
+
+    $\forall x \in A \Rightarrow x \in A \cup B = B$
+
+    So,  $x \in B$ which means that, $A \subseteq B$
+    
+\end{proof}
 
 
 
