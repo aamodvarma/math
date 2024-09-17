@@ -1,0 +1,99 @@
+
+\section*{Harmonic Function}
+
+\begin{definition}[Harmonic function]
+   A real valued functino of $H(x,y)$ is said to be harmonic if in a given domain of the $x,y$ plane, it has a continuous partial derivative of the first and second order ($H_x,H_y,H_{xx},H_{yy},H_{xy}$) and satisfies,  \[
+      H_{xx}(x,y)  + H_{yy}(x,y) = 0 \text{ Laplace equation}
+   .\] 
+
+\end{definition}     
+
+
+\begin{theorem}
+   If $f = u(x,y) + i(x,y)$ is analytic in a domain $D$, then $u,v$ are harmonic in D
+\end{theorem}
+
+
+
+
+\chapter*{Elementary Functions}
+\section*{Exponential Function}
+The exponential function is $e^z$. But we can write this as 
+$$e^z = e^{x + iy} = e^x e^{iy} = e^x(cos(y) + isin(y))$$
+
+We can also write, $$e^z = \rho e^{i \phi} \text{ where } \rho = |e^x| \text{ and } \phi = y$$ 
+
+For a function, $e^{z_1}e^{z_2}$ we can write, 
+$$e^{z_1}e^{z_2} = e^{x_1 + iy_1}e^{x_2+iy_2}$$
+\[
+=e^{x_1 + x_2} e^{i(y_1+y_2)}
+.\] 
+\[
+   =e^{z_1+z_2}
+.\] 
+
+% Similarly we can write, $\frac{e^{z_1}}{e^{z_2} = e^{z_1-z_2}$s
+
+
+The derivative if $e^z$ is an entire function
+
+$$\frac{d}{dx} e^z = e^z \text{which is an entire function.}$$
+
+$$e^{z + 2\pini} = e^z + e^{2\pini} = e^z$$
+
+\section*{Log Function}
+The log function is $f(z) = log(z) = w = u + iv$. We know \[
+   e^w = z = e^{u + iv} = e^u e^{iv}
+.\] 
+We see that $r = e^u$ and $\theta = v + 2n\pi$
+
+$$r = e^u \implies ln(r) = u$$
+Similarly, \[
+\theta = v + 2n\pi
+.\] 
+
+So we have, \[
+f(z) = \log(z) = \ln|z| + i\arg(z)
+.\] 
+and the principal direction is, \[
+f(z) = \log(z) = \ln|z| + i\theta, \quad -\pi < \theta < \pi
+.\] 
+
+
+
+Some properties are, 
+
+   $(1). e^{\log z} = z, (z \neq 0)$
+
+   $(2). |e^z| = e^x$
+   
+   $(3). \log(e^z) = \ln|e^z| + i\arg(e^z)$
+\[
+= \ln|e^x| + i(y + 2n\pi), n = 0, \pm 1, \pm 2
+.\] 
+\[
+= \ln e^x + iy + i 2 n \pi
+.\] 
+\[
+= z + 2n\pi
+.\] 
+
+\subsection*{Branches}
+The principal branch is \[
+   \log z = \ln r + i \theta \text{ where } r > 0, -\pi < \theta < \pi
+.\] 
+A branch cut is a portion of a line or curve that is introduced in order to deifne a branch $F$ of a multiple-valued function $f$.
+
+Points on the branch cut for $F$ are singular points of $F$ and any point that is common to all branches of $f$ are called branch points.
+
+\begin{eg}
+   \[
+      \frac{d}{dz} \log z = \frac{1}{z}, \text{ where } |z | > 0
+\]
+The branches can be $\alpha < \arg z < \alpha + 2\pi$
+\end{eg}
+
+
+
+
+

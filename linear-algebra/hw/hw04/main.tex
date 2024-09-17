@@ -123,10 +123,161 @@ First we know that $a_3 = 0$ as we can't represent $x^3$ using any of the other 
 Which means that $U \oplus W = P_4(R)$ 
 
 \subsection*{Problem 8}
-Given $v_1, \dots, v_m$ is linearly independent in $V$ and $w \in V$.
-Take $U := span($
+Given $v_1, \dots, v_m$ is linearly independent in $V$ and $w \in V$. Let $U$ be the subspace spanned by $v_1,\dots, v_m$. We know $U \subseteq V$ so we have two cases, either, $$w \in U \text{ or }  w \not \in U$$
+
+Case 1:  $w \in U$
+
+\qquad First we know that $a_1v_1+ \dots + a_mv_m = u, \forall u \in U$
+
+\[
+span(v_1+w, \dots, v_m + w) = b_1(v_1+w) + \dots + b_m(v_m + w)
+.\] 
+Now if $-w \in [v_1,\dots,v_m]$ Then we have for some $n$,  $b_n(v_n-v_n) = 0$
+
+So we have  $m - 1$ linearly independent vectors. And we know that the dimension of the span of the subspace defined by $m - 1$ linearly independent vecots is $m - 1$.
+
+Else if $-w \not \in [v_1,\dots,v_m]$ then we are able to remove $kw$ from our list and still have it spanning and linearly indpendnet with  $m$ vectors. Hence the dimension of our spanning set is still $m$.
+
+Case 2: $w \not \in U$.
+If $w \not \in U$ then we have,  \[
+b_1v_1 + \dots + b_mv_m + w(b_1+\dots+b_m)
+.\] 
+As $w$ is not in $U$, the new list is linearly indpendent with  $m + 1$ lineralt indpendent vectors. So the diension is  $m + 1$
+
+So we showed that the dimensoin of the span is greater than or equal to  $m - 1$
 
 
 
+\subsection*{Problem 10}
+To show that it is a basis all we need to show is that it is a linearly indpendent set of polynoamials. Because linearly indpendent set of polynoamisl of $\dim(P_m(F)$ will span the space.
+
+To show linear independnece we need to show that there is only one unique way of preresenting 0. So consider, \[
+    a_0p_0 + a_1pp_1 + \dots + a_mp_m
+.\] 
+Now in our list, $p_0, \dots, p_m$ there is only one polynomials that represents degree 0 (constant term). That is, when $k = 0$ we get, \[
+p_0 = (1-x)^m
+.\] 
+and one of the terms is $1^m$. Notice that every other polynomials has a degree $n > 0$ attached to the left ($x^n$).
+
+So in our polynomial expantion the coefficient of $x^0$ is only $a_0$. So to have it equal to $0$ we need  $a_0 = 0$.
+
+Now similary we see that the term with degree 1 can only be represented by \[
+    p_1 = x(1-x)^{m - 1}
+.\] 
+This means that the only coefficient of $x$ is  $a_1$ and as we need the sum of all terms to be equal to 0 we have $a_1 = 0$.
+
+We can continue this till $n = m$ and we get that for all  $a$ we have  $a_n = 0$ for us to have the linear combination of our polynomials equal to 0.
+
+So we have shown that our set is linealry indpendent and because it has the same lenght as the dimension of the basis of  $P_m(F)$ we can say that it is a basis itself.
+
+
+
+
+
+\subsection*{Problem 14}
+\begin{proof}
+    We need to show that there exists at least one combinatino of subspaces of $V_1,V_2,V_3$ of dimension 7 in a 10 dimenstional vector space such that $V_1\cap V_2\cap V_3 \neq \{0\}$
+
+    First consider $V_1$ and $V_2$. We know that, \[
+    \dim(V_1+V_2) = \dim(V_1) + \dim(V_2) - \dim(V_1\cap V_2)
+    .\] 
+
+    Now, $W = V_1+V_2$ can be written as $w \in W$ such that  \[
+    w = a_1v_{11}+\dots + a_7v_{17} + b_1v_{21} + \dots + b_7v_{27}
+    .\] 
+
+
+    As $v_{11},\dots, v_{17}$ is linearly indpendent and $v_{21},\dots, v_{27}$ is linealry indpendent. There could eixst at most 3 vectors from $v_{21},\dots,v_{27}$ such that our list is stil llinearly indepndnent which would make our $W$ have a span of $10$. If all the vectors are in  $V_1$ then our span would be $7$. 
+
+    Hence we have,  $$7 \le \dim(V_1+V_2) \le 10$$
+
+
+
+    Now we know, $$\dim(V_1\capV_2) = \dim(V_1) + \dim(V_2) - \dim(V_1+V_2)$$
+    $$7 \le \dim(V_1+V_2) \le 10$$
+    $$-7 + \dim(V_1) + \dim(V_2)  \ge \dim(V_1+V_2) \ge -10 + \dim(V_1) + \dim(V_2)$$
+    $$7 + \dim(V_1) + \dim(V_2)  \ge \dim(V_1+V_2) \ge 4$$
+
+
+    Let $V_1\cap V_2 = W_0$.  Using similar reasoning as above we know, \[
+    \dim(W_0 + V_3) = \dim(W_0) + \dim(V_3) - \dim(W_0\cap V_3)
+    .\] 
+    If we take the case of $W_0 + V_3$ we know $W_0$ is of dimension 4 and $V_3$ is of dimension 7. Similar to above $7 \le \dim(W_0+V_3) \le 10$.
+
+    We know that, \[
+    \dim(W_0\cap V_3) = dim(V_1\cap V_2\cap V_3) = \dim(w_0) + \dim(V_3) - \dim(W_0+V_3)
+    .\] 
+
+    From (1) we know that $4 \le \dim(W_0) \le 7 $ and from above we showed that $7 \leq \dim(W_0 + V_3) \leq 10$ 
+
+    So we have  \[
+    11 \le \dim(W_0) + \dim(V_3) \le 14
+    .\] 
+    and, \[
+    -10 \le -\dim(W_0+V_3) \le -7
+    .\] 
+
+    So, \[
+    1 \le \dim(W_0) + \dim(V_3) - \dim(W_0+V_3) \le 7
+    .\] 
+
+    Or, \[
+    1 \le \dim(V_1\cap V_2\cap V_3) \le 7
+    .\] 
+
+\end{proof}
+
+
+
+\subsection*{Problem 18}
+
+\begin{proof}
+    We know that for any subspace $V_1$ of  $V$ we can find anoter subspace $W$ in $V$ such that $V_1 \oplus W = V$. 
+    
+    Let $V_1$ be the subspace spanned by any vector in $V$
+
+    Now consider the subspace $W$. We know that $W \cap V_1 = \{0\}$. Now consider a subspace in $W$ called  $V_2$ that is spanned by any vecotr in $W$. We are able to find another subspace $W_1$ within $W$ such that $W_1 \oplus V_2 = W$. 
+
+    So we can write $V = V_1 \oplus V_2 \oplus W_1$
+    
+    Now we could continue this for $W_1$ until $\dim(W_{n-2}) = 1$ which will give us,  \[
+    V = V_1 \oplus V_2 \oplus  \dots \oplus V_n
+    .\] 
+    Where $V_n = W_{n-2}$
+\end{proof}
+
+\subsection*{Problem 9}
+We might guess this formula because if we just add the dimensions of each subspace then if there eixsts vectors that are common to any two or three sets then we are double or tripple counting them. So after adding each dimension we are checking whether there are subspaces common in each of them and removing the ones that we are conting multiples times.
+
+\begin{proof}
+    The given formula doesn't work. For instance, consider, \[
+        V_1 := span((1,0,0))
+    .\] 
+\[
+        V_2 := span((0,1,0))
+    .\] 
+\[
+        V_3 := span((1,1,0))
+    .\] 
+
+    Now consider $W = V_1 + V_2 + V_3$. We have $w \in W$ such that \[
+    w = a(1,0,0) + b(0,1,0) + c(1,1,0)
+    .\] 
+    We see that this is a linarly dependent set of vectors and we can remove any one of them such that $\dim(W) = 2$
+
+    It is easy to see, $\dim(V_1) = 1, \dim(V_2) = 1, \dim(V_3) = 1$
+
+    Now looking at $\dim(V_1 \cap V_2)$ we see that there are no common vectors as they are spaned by linealry indepndent vectors. Similarly we can say that $$\dim(V_1 \cap V_2) = 0, \dim(V_1 \cap V_3) = 0, \dim(V_3 \cap V_2) = 0$$
+
+    Laslty it is trival to see why $\dim(V_1 \cap V_2\cap V_3) = 0$.
+
+    So using the formula we have, $\dim(V_1+V_2+V_3) = 1 + 1 + 1 - 0 - 0 - 0 + 0 = 3$
+
+    However we know that the actual number is 2. Hence the formula is not correct.
+
+
+
+
+\end{proof}
 
 \end{document}

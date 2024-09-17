@@ -1,0 +1,491 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{MATH 4320 HW03-4}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+
+
+\subsection*{Problem 3}
+(a). $lim_{z \rightarrow z_o} \frac{1}{z^n}(z_0 \neq 0)$
+
+We know, $$lim_{z \rightarrow z_o} \frac{1}{z^n} = \frac{lim_{z \rightarrow z_0}1} {lim_{z \rightarrow z_0}{z^n}} = \frac{1}{z_0^n}$$
+
+(b). $lim_{z \rightarrow i} \frac{iz^3 - 1}{z + i}$
+
+
+We know, $$lim_{z \rightarrow i} \frac{iz^3 - 1}{z + i} = \frac{lim_{z \rightarrow z_0}iz^3 - 1} {lim_{z \rightarrow z_0}{z + i}} = \frac{i^4 - 1}{2i} = \frac{0}{2i} = 0$$
+
+
+(c). $lim_{z \rightarrow z_0} \frac{P(z)}{Q(z)}$
+
+We know, $$lim_{z \rightarrow z_0} \frac{P(z)}{Q(z)} = \frac{lim_{z \rightarrow z_0}P(z)} {lim_{z \rightarrow z_0}{Q(z)}} = \frac{P(z_0)}{Q(z_0)}$$
+
+
+
+
+\subsection*{Problem 7}
+Using the definition of limits we know that, $\forall \epsilon > 0, \exists \delta$ such that. \[
+    |f(z) - w_0| < \epsilon \text{ whenever } 0 < z - z_0 < \delta
+.\] 
+We know from the triangle inequality that, \[
+|a - b| \ge ||a| - |b||
+.\] 
+Using this we can say, \[
+||f(z)| - |w_0|| \le |f(z) - w_0|
+.\] 
+
+So we have, \[
+||f(z)| - |w_0|| < \epsilon
+.\] 
+
+Now using the definition of limits once again, we get $\forall \epsilon > 0, \exists \delta$ the same as before, such that  \[
+    ||f(z)| - |w_0|| < \epsilon \text{ whenever } 0 < |z - z_0| < \delta
+.\] 
+This shows that we can write, \[
+\lim_{z \to z_0} |f(z)| = |w_0|
+.\] 
+
+\subsection*{Problem 10}
+(a). $\lim_{z \to \infty} \frac{4z^2}{(z-1)^2} = 4$ 
+
+We know that, \[
+\lim_{z \to 0} f\bigg (\frac{1}{z}\bigg ) = w_0
+.\] 
+then, \[
+\lim_{z \to \infty} f(z) = w_0
+.\] 
+
+So we can say, \[
+    \lim_{z \to \infty} \frac{4z^2}{(z-1)^2} = \lim_{z \to 0} \frac{\frac{4}{z^2}}{(\frac{1}{z} - 1)^2}
+.\]
+\[
+    = \lim_{z \to 0} \frac{4}{(1 - z)^2}
+.\] 
+\[
+    = \frac{4}{1-0} = 4
+.\] 
+
+(b). $\lim_{z \to 1} \frac{1}{(z-1)^3} = \infty$
+
+Using theorem we know that, \[
+    \lim_{z \to z_0} f(z) = \infty \text{ if } \lim_{z \to z_0} \frac{1}{f(z)} = 0
+.\] 
+\[
+    \lim_{z \to 1} \frac{(z-1)^3}{1} = \frac{(1-1)^3}{1} = 0
+.\] 
+So using the theorem we get, \[
+ \lim_{z \to 1} \frac{1}{(z-1)^3} = \infty
+.\] 
+
+(c). $\lim_{z \to \infty} \frac{z^2 + 1}{z-1} = \infty$
+Using theorem we know that, \[
+    \lim_{z \to \infty} f(z) = \infty \text{ if } \lim_{z \to 0} \frac{1}{f(\frac{1}{z})} = 0
+.\] 
+
+Using this, \[
+    \lim_{z \to 0} \frac{\frac{1}{z} - 1}{\frac{1}{z^2} + 1} = \frac{1 - 1}{1 + 1} = 0
+.\]         
+
+So, \[
+ \lim_{z \to \infty} \frac{z^2 + 1}{z-1} = \infty
+.\] 
+
+
+
+\subsection*{Problem 3}
+(a).  We can write \[
+P(z) = a_0 + a_1z + \dots + a_nz^n 
+.\]
+Using results from section 20 we know that for $f(z),g(z)$\[
+    (f(z) + g(z))' = f'(z) + g'(z)
+.\] 
+
+Using this idea we can write the polynomial as, \[
+    P'(z) = (a_0+ a_1z + \dots)' + (a_nz^n)'
+.\] 
+Similary we can apply this for each functino as follows,\[
+    P'(z) = \frac{d}{dx}(a_0) + \frac{d}{dx}(a_1z) + \dots \frac{d}{dx}(a_nz^n)
+.\] 
+We know that $\frac{d}{dx}z^n = nz^{n - 1}$ 
+
+So we can write, \[
+    P'(z) = 0 + a_1 + 2a_2z + \dots + na_nz^{n-1}
+.\] 
+
+(b). We need to find the coefficients, $a_0,a_1,\dots,a_n$. To do this we need to remove the $z$ term that is multiplied it and set the polynomial to  $0$ to isolate our coefficient.
+
+So to find any $a_n$  for $n \ge 1$ we first derive $P(z), n$  times.
+\[
+    P^{n}(z) = (n)(n-1)(n-2)\dots(1)a_nz^0 + (n+1)(n)\dots(2)a_{n+1}z^1 + \dots
+.\] \[
+P^{n} (z) = (n!)a_n + \frac{(n+1)!}{1!}a_{n+1}z^1 + \frac{(n+2)!}{2!}a_{n + 2}z^2 + \dots
+.\] 
+\[
+P^n (0) = (n!)a_n + 0 + \dots + 0
+.\] 
+\[
+a_n = \frac{P^n(0)}{n!}
+.\] 
+
+For $n = 0$ it is obvious that we can plug in  $z = 0$ to get,  \[
+a_0 = P(0)
+.\] 
+
+
+\subsection*{Problem 1}
+(a). $f(z) = \bar z$;
+
+We need to satisfy the Cauchy-Remann equations for $f'(z)$ to be defined, so, \[
+    u_x = v_y, u_y = -v_x
+.\] 
+We have, $z = x + iy$ and $\bar z = x - iy$. So, $u(x,y) = x, v(x,y) = -y$
+
+We can write,  \[
+    u_x = 1, u_y = 0
+.\]
+\[
+    v_x = 0, v_y = -1
+.\] 
+
+So we can see that, $u_x \neq v_y$ which means that our derivate $f'(z)$ cannot exist.
+
+(b). $f(z) = z - \bar z$
+
+We have, $z = x + iy$ so  $f(z) = (x + iy) - (x - iy) = 2iy$
+
+We can write,  $u(x,y) = 0, v(x,y) =  2y$
+So, 
+ \[
+    u_x = 0, u_y = 0
+.\] 
+\[
+v_x = 0, v_y = 2
+.\] 
+We can see that, $u_x \neq v_y$, so the derivative, $f'(z)$ cannot exist.
+
+
+(c). $f(z) = 2x + ixy^2$
+
+We have, $f(z) = 2x + ixy^2$
+
+We can write, $u(x,y) = 2x, v(x,y) = xy^2$
+
+So, \[
+u_x = 2, u_y = 0
+.\]
+\[
+v_x = y^2, v_y = 2xy
+.\] 
+We see that for this to be satisfied we need, \[
+    2 = 2xy \text{ and } y^2 = 0
+.\] 
+
+But if $y^2 = 0$ then $y = 0$ So  $2xy = 0 \neq 2$
+
+So for no values of $x,y$ will the equation be satisfied. Hence our derivative,  $f'(z)$ cannot exist.
+
+(d). $f(z) = e^x e^{-iy}$
+
+If $z = x + iy$ and  $f(z) = e^x e^{-iy}$ we can write, \[
+f(z) = e^x (\cos(y) - i\sin(y)) = e^x\cos(y) - ie^x\sin(y)
+.\] 
+
+So, $u(x,y) = e^x\cos(y), v(x,y) = -e^x\sin(y)$
+
+We have, \[
+u_x = e^x\cos(y), u_y = -e^x\sin(y)
+.\] 
+\[
+v_x = -e^x\sin(y), v_y = -e^x\cos(y)
+.\] 
+
+So we need, $e^x\cos(y) = -e^x\cos(y)$ and $e^x\sin(y) = e^x\sin(y)$
+
+As $e^x \neq 0$ we have, $cos(y) = 0$ and  $sin(y) = 0$
+
+However there exist no value  $y$ to satisfy both these conditions, hence our derivative  $f'(z)$ cannot exist.
+
+
+\subsection*{Problem 8}
+(a).
+
+\[
+    \frac{\partial  F}{\partial \bar z} =    \frac{\partial  F}{\partial x}    \frac{\partial  x}{\partial \bar z}   +    \frac{\partial  F}{\partial y}  \frac{\partial  y}{\partial \bar z}
+.\] 
+We know, \[
+\frac{\partial  x}{\partial \bar z}  = \frac{\partial }{\partial \bar z}  (\frac{z + \bar z}{2}) = \frac{1}{2}
+.\] 
+Similarly, 
+\[
+\frac{\partial  y}{\partial \bar z}  = \frac{\partial }{\partial \bar z}  (\frac{z - \bar z}{2i}) = \frac{-1}{2i} = \frac{i}{2}
+\]
+
+So we can write, \[
+    \frac{\partial  F}{\partial \bar z} =    \frac{\partial  F}{\partial x}   \frac{1}{2}   +    \frac{\partial  F}{\partial y}  \frac{i}{2} = \frac{1}{2}\bigg(   \frac{\partial  F}{\partial x} + i  \frac{\partial  F}{\partial y} \bigg)
+\]
+
+(b). \[
+    \frac{\partial  f}{\partial \bar z} = \frac{1}{2}\bigg(   \frac{\partial  f}{\partial x} + i  \frac{\partial  f}{\partial y} \bigg)
+.\] 
+We are give that, $f(z) = u(x,y) + iv(x,y)$
+
+So, \[
+    \frac{\partial  f}{\partial \bar z} = \frac{1}{2}\bigg(   \frac{\partial}{\partial x}(u(x,y) + iv(x,y)) + i  \frac{\partial  }{\partial y} (u(x,y) + iv(x,y))\bigg)
+.\] 
+\[
+= \frac{1}{2}\bigg(   u_x + iv_y + i(u_y + iv_y))\bigg)
+.\] 
+
+\[
+= \frac{1}{2}\bigg(   u_x + iv_y + iu_y - v_y\bigg)
+.\] 
+\[
+= \frac{1}{2}\bigg((u_x - v_y)+ i(u_y + v_x)\bigg)
+.\] 
+
+Now if $f(z)$ satisfies the Cauchy-Riemann equations then we know that  $u_x = v_y$ and  $u_y = -v_x$ and,  \[
+\frac{\partial f}{\partial \bar z} = \frac{1}{2}(0) = 0
+.\] 
+
+
+\subsection*{Problem 2}
+(a). $f(z) = xy + iy$
+
+Using the Cauchy-Riemann equations we see, \[
+u_x = y, u_y = x
+.\] 
+\[
+v_x = 0, u_y = 1
+.\] 
+
+So we have, $y = 1$ and $x = 0$
+
+Which means that the function has a derivate at only  $y = 1, x= 0$. However for a functino to be analytic at a point it has to have a derivative at everypoint in some neighborhood of the point. But in this case it only has it at the point  $(0,1)$ and nowhere else. So it is not analytic anywhere.
+
+
+(b). $f(z) = 2xy + i(x^2 - y^2)$
+We have, \[
+u_x = 2y, u_y = 2x
+.\] 
+\[
+v_x = 2x, v_y = -2y
+.\] 
+
+So we need, $2y = -2y$ and $2x = -2x$
+
+The only values that satisfy this are  $x = 0, y = 0$
+
+So the functino is not analytic anywhere because it has a derivative only at  $(0,0)$ and nowhere else.
+
+(c).  $f(z) = e^ye^{ix}$
+
+$$f(z) = e^y(\cos(x) + i\sin(x))$$
+
+
+So, \[
+u_x = e^y(-\sin(x)), u_y = e^y\cos(x)
+.\] 
+\[
+v_x = e^y(\cos(x)), v_y = e^y \sin(x)
+.\] 
+
+So we have, $u_x = v_y$ and $u_y = -v_x$
+
+So,  \[
+    2e^ysin(x) = 0 \text{ which means } sin(x) = 0
+.\] 
+and, \[
+    2e^ycos(x) = 0 \text { which mean } cos(x) = 0
+.\] 
+
+So our values of $x,y$ for which the eqations hold are, $x = n\pi, n \in Z$ and $y = \frac{\pi}{2} + n\pi$ for $n \in Z$. So we have a derivative only exactly at these point. However the derivate doesn't exist in any neighborhood of these points which means the functino isn't analytic.
+
+\subsection*{Problem 6}
+We have, \[
+g(z) = ln r + i \theta \quad (r > 0, 0 < \theta < 2\pi)
+.\] 
+
+The cauchy-reimann equation for polar coordinates tell us that, \[
+    ru_r = v_{\theta}, u_{\theta} = -r v_r
+.\] 
+
+$$u_r = \frac{1}{r}, u_\theta = 0$$
+$$v_r = 0, v_\theta = 1$$
+
+
+So we have, $r \frac{1}{r} = 1, 1 = 1$ and $0 = 0$ 
+
+Our functino satifies the cauchy-reimann equations at all points.
+
+It's derivative in the domain is, $f'(z) = e^{-i\theta}(\frac{1}{r}) = \frac{1}{re^{i\theta}} = \frac{1}{z}$ 
+
+We have $G(z) = g(z^2+ 1)$
+
+This is a composition of functions where $f(z) = z^2 + 1$ then $G(z) = g(f(z))$
+
+For this to be the case we need to show that both the functinos are analytic so that we can use the chain rule to differentiate them.
+
+We first know that $f(z) = z^2 + 1$ is analytic everywhere as it satisfies the Cuachy-Remiann equations.
+
+In the quadrant $x> 0, y > 0$ we have $Im(z^2 + 1) = 2xy > 0$. If this is the case then we know $rsin(\theta)$ has to be positive which means $ 0 < \theta < \pi < 2\pi$. Our functions are analytic here. 
+
+So we can use the chain rule to differnetiate as follows, \[
+G'(z) = g'(z^2 + 1) f'(z) = \frac{1}{z^2 + 1} f'(z)  = \frac{2z}{z^2 + 1}
+.\] 
+
+
+\section*{Week 5}
+\subsection*{1}
+We know from the Cauchy-Riemann equations in polar coordinates that $$ru_r = v_{\theta} \text{ and }  r v_r = -u_{\theta}$$
+
+So we have, $u_r = \frac{v_\theta}{r}$ which means, 
+$$ u_{rr} = \frac{1}{r}v_{\theta r} + -v_{\theta}\frac{1}{r^2}  $$ 
+and, $$ r^2u_{rr} = r v_{\theta r} -v_{\theta} $$ 
+
+We also know that $ru_r = v_\theta$
+
+And as $u_\theta = -rv_r$ $$ u_{\theta\theta} = -rv_{r\theta}$$ 
+
+So we get, $$ r^2u_{rr} + ru_r + u_{\theta\theta} = rv_{\theta r} - v_\theta + v_\theta -rv_{r \theta} = 0 $$ 
+
+Similarly taking the second order partial derivatives of $v(r,\theta)$.
+
+We first know that $v_r = -\frac{u_\theta}{r}$ 
+
+So we write, $$ v_{rr} =  -\frac{1}{r} u_{\theta r} + u_\theta \frac{1}{r^2}$$ 
+$$ r^2v_{rr} = -ru_{\theta r} + u_\theta $$ 
+
+We also know $v_r = -u_\theta \frac{1}{r}$ so $$ rv_r = -u \theta $$ 
+
+Laslty we can write, $$ v_{\theta\theta} = \frac{d}{d\theta} r u_r = r u_{r\theta} $$ 
+
+So putting it all together we get, $$ r^2v_{rr} + rv_r + v_{\theta\theta} = 0 $$ 
+
+\subsection*{Problem 1}
+(a). $\exp(2 \pm 3\pi i) = -e^2$ 
+
+We know $e^z = e^x e^{iy}$ so we get, $$ =e^2 e^{3n\pi i} $$ $n = \pm 1$ 
+
+We can write $e^{3n\pi i} = -1$ as  $\sin(3\pi) = -1$ and  $\cos(3\pi) = 0$
+
+So we have  $e^z = -e^2$
+
+(b). $\exp(\frac{1}{2} + \frac{\pi i}{4}) = \sqrt{\frac{e}{2}} (1 + i)$ 
+
+We write, $$ = e^{\frac{1}{2}} e^{i\frac{\pi}{4}} $$ 
+$$ = \sqrt{e} (\cos(\frac{\pi}{4}) + i \sin(\frac{\pi}{4})) $$ 
+$$ = \sqrt{e}\bigg (\frac{1}{\sqrt{2}} + i \frac{1}{\sqrt{2}}\bigg ) $$ 
+$$  = \sqrt{\frac{e}{2}}(1 + i) $$ 
+
+
+(c). $\exp(z + \pi i) = -\exp (z)$
+$$  = e^z e^{i\pi}$$
+$$ = e^z (-1) $$  as $e^{i\pi} = -1$
+
+So we have, $$ = -e^z$$
+
+\subsection*{Problem 6}
+
+$$|e^{z^2}| \le e^{|z|^2}$$
+
+We can write $z^2 = x^2 - y^2 + 2xy$ and $|z|^2 = x^2 + y^2$ 
+
+So we have, $$ |e^{z^2}| = |e^{x^2 - y^2} e^{2xyi}| $$ 
+$$ = |e^{x^2 - y^2} (\cos 2xy + i \sin 2xy)|  = e^{x^2 - y^2}$$ 
+
+We can write, $$ e^{|z|^2} = e^{x^2 + y^2} $$ 
+
+So now it is trivial to see why $e^{x^2 - y^2} \leq e^{x^2 + y^2}$
+
+\subsection*{Problem 13}
+ Consider the funciton $$ F(z) = U(x,y) + i V(x,y)$$ 
+
+ To show that $U(x,y)$ and  $V(x,y)$ are harmonic it is enough to show that  $F(z)$ is analytic in domain $D$.
+
+ To do this we need to show that it satisfies the Cauchy-Riemann equations. 
+
+ So we need to show that, $U_x = V_y$ and  $U_y = -V_x$ 
+
+ $$ U_x = e^u (-\sin v) v_x + (\cos v) e^u u_x $$ 
+ $$ V_y = e^u (\cos v) v_y + (\sin v) e^u u_y $$ 
+
+ As $f(z)$ is analytic we know $u_x = v_y$ and  $u_y = -v_x$
+So using this we have, $$ U_x = e^u u_y (\sin v) + e^u u_x (\cos v) $$ 
+$$ V_y = e^u u_x (\cos v) + e^u u_y (\sin v)$$
+
+Now we can easily see that $U_x = V_y$
+
+Similarly,  $$ U_y = e^u (-\sin v) v_y + e^u u_y (\cos v) $$ 
+$$ V_x = e^u \cos(v) v_x + \sin(v) e^u u_x $$ 
+
+Using our equation we get, $$ U_y = - e^u u_x(\sin v)  -e^u v_x (\cos v)$$  
+$$ V_x = e^u v_x \cos (v) + e^u u_x \sin(v) $$ 
+
+It is easy to see that $U_y = -V_x$
+
+This hows us that our function $F(z) = U(x,y) + iV(x,y)$ is analytic in some domain  $D$.
+
+Using theorem we know that this implies that  $U(x,y)$ and  $V(x,y)$ are harmonic in the domain  $D$.
+
+ \subsection*{Problem 3}
+ $$Log(i^3) \ne 3 Log(i)$$
+
+ We know $Log(z) = \ln r + i \theta$
+
+ Here, $i^3 = e^{\frac{3\pi}{2} i}$ so we have, 
+ $$ Log(i^3) = \ln|1| + i {\frac{-\pi}{2}} = i \frac{-\pi}{2} \text{ as $-\pi \le \theta \le \pi$ }$$ 
+
+ Now $3 Log(i) = 3 Log(e^{i\frac{\pi}{2}}) = 3 (i\frac{\pi}{2}) = i \frac{3\pi}{2}$ 
+
+ So we see that in the principal branch $3 Log(i)$ lies outside the branch where  $Log(i^3)$ is defined. Which means in this branch it is not the case that $3 Log(i) = Log(i^3)$
+
+
+ \subsection*{Problem 8}
+ To find roots of $log(z) = i \frac{\pi}{2}$ 
+
+ 
+ $$ z = e^{log(z)} = e^{i \frac{\pi}{2}} = i$$ 
+
+ \subsection*{Problem 3}
+ To show  $ \log(\frac{z_1}{z_2})  $ is not valid when we use $Log$
+
+ Let $z_1 = re^{i\theta}$   and $z_2 = \rho e^{i \phi}$
+
+ Then  
+ $$ Log\bigg(\frac{z_1}{z_2}\bigg) = Log \bigg (\frac{r}{\rho} e^{i(\theta - \phi)}\bigg) =  ln\bigg(\frac{r}{\rho}\bigg) + i(\theta - \phi)$$ 
+
+ However take a value of $z_1,z_2$ such that $\theta = \pi$ and $\phi = -\pi$ and $r = \rho = 1$ we have,  
+ $$ Log(\frac{z_1}{z_2}) = 2\pi i$$ 
+
+ However we know that $Log$ is only defined in the principal branch  $[-\pi, \pi]$. And even though both our values  $z_1, z_2$ was defined in the principal branch, our resultalt value $i_2\pi$ lies outside where $Log$ is defined.
+
+ Hence  when we switch to $Log$ it is not always valid.
+
+
+\subsection*{Problem 8}
+(a). $z^{c_1} z^{c_2} = z^{c_1 + c_2}$
+
+We know $z^{c_1} = e^{c_1 log(z)}$
+
+So, 
+$$ z^{c_1} z^{c_2} = e^{c_1 log(z)} e^{c_2 log(z)} = e^{c_1 log(z) + c_2log(z)}$$ 
+$$ = e^{log(z)(c_1 + c_2)} = z^{c_1 + c_2} $$ 
+
+(b). $\frac{z^{c_1}}{z^{c_2}} = z^{c_1- c_2}$ 
+
+We know $z^{c_1} = e^{c_1 \log z}$
+
+So, 
+$$ \frac{z^{c_1}}{z^{c_2}} = e^{c_1 \log z - c_2 \log z}  = e^{\log z(c_1 - c_2)}$$ 
+$$ = z^{c_1 - c_2} $$ 
+
+
+(c). $(z^{c})^n = z^{cn}$
+
+
+We know $z^{c} = e^{c \log z}$
+$$(z^{c})^n = e^{(c \log z)n} = e^{(cn \log z)} = z^{cn}$$
+
+
+\end{document}
