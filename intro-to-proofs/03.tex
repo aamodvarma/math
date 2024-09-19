@@ -1,0 +1,162 @@
+\chapter*{Mathematical Induction}
+\setcounter{chapter}{8}
+
+\begin{theorem}[Properties of Natural Numbers]
+
+    (a). $1 \in N$
+
+    (b). $\forall k \in N, \exists k + 1 \in N$
+
+    (c). $\forall k \in N - \{1\}, \exists | n \in N, \text { s.t. } k = n + 1 \in N$
+
+    (d). Needs to be well-ordered.
+
+\end{theorem}
+
+
+An ordered set $S$ is well-ordered if, 
+$$ \forall A \in S \text{ s.t. } A \ne \phi, \exists x = \min A $$ 
+
+$$\text{Or, } \exists x \in A \text{ s.t. } \forlal y \in A, x \le y$$
+
+\begin{eg}
+    $\Q$ is not well-ordered as it does not have a minimum
+\end{eg}
+
+\begin{eg}
+    $\Z$ is not well-ordered as it does not have a minimum
+\end{eg}
+
+\begin{axiom}
+    $N$ is well-ordered 
+\end{axiom}
+
+
+\begin{theorem}
+    If $A \subseteq S$ and $S$ is a well-ordered set then $A$ is well-ordered.
+\end{theorem}
+\begin{proof}
+    Let $B \subseteq A$ and  $B \ne \phi \implies B \subseteq S$
+
+    So $B$ has a $\min x$ which means that  $A$ is well-ordered by definition.
+\end{proof}
+
+\begin{eg}
+    $[1,\infty)$ is not well-ordered because a subset  $(1,\infty)$ does not have a $\min$
+\end{eg}
+
+
+\begin{theorem}
+    $\forall a \in \Z, d \in \N, \exists q,r \in \Z \times  \{0,1,\dots,d - 1\}$ s.t. 
+    $$ a = dq + r $$ 
+\end{theorem}
+\begin{proof}
+    Let $S = \{a - nd : n \in \Z, a - nd \in \N\}$
+     
+    First we can see that $S$ is non-empty as we can take $$n = -|a| - 1 \implies a - nd > 0$$
+
+    Now because this is a subset of $\N$ it follows the well-ordering principle implying that $\min S = a - nd = m$
+
+    $m \in S \implies \exists l \in \Z $ s.t. $m = a - ld$
+
+    Case 1: 
+    If $m > d$ then $$a - (l + 1)d > 0$$
+    
+    $$ a - (l + 1)d \in S \implies a - (l+1)d < m$$  
+    Which is a contradiction. This means that $m \not > d$
+
+    Case 2: $m = d$
+
+    Let $q = l + 1, r = 0$
+
+     $m = d \implies a - ld = d \implies a - (l + 1) d = 0$
+
+     Case 3:  $0 < m < d$
+     
+     Let $q = l,r = m$
+     $\implies a = dq + r$
+
+
+     Now  to show uniqueness,
+
+     Suppose, $(q,r), (q',r') \in \Z \times \{0,1,\dots, d-1\}$ and 
+     $$ a = qd + r = q'd + r' $$ 
+
+     We have, 
+     $$ (q - q')d = r' - r $$ 
+     
+     $$  0 - (d-1) \le r' - r \le d - 1 $$ 
+
+     And, $$d | r' - r \implies r' - r = 0$$
+
+
+
+    
+\end{proof}
+\begin{definition}
+    Let $a,b\in \N, d = GCD(a,b) \in N$  if 
+
+    (a). $d | a$ and $d | b$ and
+
+    (b). If $d' \in N$ s.t.  $d' | a$ and  $d' | b$ then  $d \ge d'$
+\end{definition}
+
+\begin{theorem}
+    $\forall a,b \in \N, \exists p,q \in \Z$ s.t.  $GCD(a,b) = ap + bq$
+\end{theorem}
+\begin{proof}
+    Let $S = \{a_m + b_n : m,n \in \Z, a_m + b_n \subseteq \N\}$
+
+    We know $S$ is non-empty as $m,n = 1$ makes it  $a + b > 0$ as  $a,b \in \N$
+
+    So by well-ordering principle we know that $\exists \min S = d$ and $p,q \in \Z$ s.t.
+     
+    $$ d = ap + bq $$ 
+
+    If $d' \in \N$ s.t.  $d' | a$ and  $d' | b \implies d' | ap + bq = d$
+
+    So, $d \in \N \implies d \ge d'$
+
+    $$d \in \N \implies \exists m \in \Z, r \in \{0,\dots,d - 1\} \text{ s.t. } a = md + r$$
+
+    Which means $r = a - md = a - m(ap + bq) = a (1 - mp) +  b(-mq)$
+
+    $r < d$ but $d = \min S \implies r \not \in S \implies r = 0$
+
+    So  $a = md$ so  $d | a$. Similarly, $d | b$
+
+    This means $d$ is the greatest common divisor.
+\end{proof}
+
+
+\begin{theorem}[Induction principle]
+    Suppose $ k \in N, S \subseteq N$ satisfy, 
+    
+    (a). k \in S
+
+    (b). if  $ n \in S$ then  $ n + 1 \in S$
+
+    then $\{k,k+1,\dots\} \subseteq$
+
+\end{theorem}
+\begin{proof}
+    Let $A = \{n \in \N, n \ge k: n \not \in S\}$
+
+    Suppose $A \ne \phi \implies n_0 = \min A$ exists
+
+    Which means $ n_0 \ge k$ but $k \not \in A$ due to (a). So, $n_0 > k \implies n_0 - 1 \ge k$ and $n_0 - 1 \not \in A$ as $n_0 = \min A$
+
+    (b). and $n_0 - 1 \not \in A \implies n_0 \not \in A$ contraidciont which implies that $A = \phi$
+
+\end{proof}
+
+\begin{corollary}
+    If a statement $P(n), n \in \N$ satisfies 
+
+    (a)  $P(k)$ is true
+
+    (b) $P(n) \implies P(n + 1)$
+
+    Then $P(n)$ is true for all  $n \ge k$
+    
+\end{corollary}

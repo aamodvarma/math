@@ -488,4 +488,84 @@ We know $z^{c} = e^{c \log z}$
 $$(z^{c})^n = e^{(c \log z)n} = e^{(cn \log z)} = z^{cn}$$
 
 
+\subsection*{Problem 2}
+(a). Expression 4 tells us that, 
+$$ e^{iz} = \cos(z) + i\sin(z) $$ 
+
+
+We have to find $e^{iz_1}e^{iz_2}$
+
+Using the expression above we get, 
+$$ = (\cos(z_1) + i\sin(z_1))(\cos(z_2) + i\sin(z_2))$$ 
+
+$$ = \cos{z_1}\cos{z_2} + i(\sin(z_2)\cos(z_1)) + i(\sin(z_1)\cos(z_2)) - \sin(z_1)\sin(z_2) $$ 
+$$ = \cos{z_1}\cos{z_2}  - \sin(z_1)\sin(z_2) + i(\sin(z_2)\cos(z_1) + \sin(z_1)\cos(z_2)) $$ 
+
+
+Now to expand, $e^{-iz_1}e^{-iz_2}$
+
+
+$$ = e^{i(-z_1)}e^{i(-z_2)} $$
+$$ = \cos(-z_1)\cos(-z_2)  - \sin(-z_1)\sin(-z_2) + i(\sin(-z_2)\cos(-z_1) + \sin(-z_1)\cos(-z_2)) $$ 
+$$ = \cos(z_1)\cos(z_2)  - (-\sin(z_1)\times -\sin(z_2)) + i(-\sin(z_2)\cos(z_1) + -\sin(z_1)\cos(z_2)) $$ 
+
+$$ = \cos(z_1)\cos(z_2)  - \sin(z_1)\sin(z_2)) - i(\sin(z_2)\cos(z_1) + \sin(z_1)\cos(z_2)) $$ 
+
+\subsection*{Problem 5}
+(a).
+
+We know from theorem that $$\sin^2(z) + \cos^2(z) = 1$$
+
+Dividing both sides by $\cos^2(z)$ we get, 
+$$ \frac{\sin^2(z)}{\cos^2(z)} + 1 = \frac{1}{\sin^2(z)} $$ 
+
+So we have, 
+$$ 1 + \tan^2(z) = \csc^2(z) $$ 
+
+(b)
+We know from theorem that $$\sin^2(z) + \cos^2(z) = 1$$
+
+Dividing both sides by $\sin^2(z)$ we get, 
+$$ 1 + \frac{\cos^2(z)}{\sin^2(z)} = \frac{1}{\cos^2(z)} $$ 
+
+So we have, 
+$$ 1 + \cot^2(z) = \sec^2(z) $$ 
+
+
+\subsection*{Problem 9}
+
+(a). We know that $|\sin z|^2 = \sin^2 x + \sinh^2 y$
+
+We see that, 
+$$ \sinh^2 y \le |\sin z|^2 \implies |\sinh y| \le |\sin z|$$ 
+
+
+To show the second part of the inequality we see that, 
+$$ |\sin z|^2  = |\sin(x + iy)|^2$$
+$$ =|\sin x \cos(iy) + \cos x \sin(iy) ^2$$ 
+$$ =|\sin x \cosh(y) + i(\cos x \sinh(y) ^2$$ 
+$$ =|\sin^2 x \cosh^2(y) + (\cos^2 x \sinh^2(y) $$ 
+$$ \le|\sin^2 x \cosh^2(y) + (\cos^2 x \cosh^2(y) $$ 
+$$ \cosh^2 y$$
+as $\sinh^2 y \le \cosh^2 y$
+
+So we have, $|\sin z | \le \cosh y$
+
+So, 
+$$ |\sinh y| \le |\sin z| \le \cosh y $$ 
+
+(b). Similar to the previous one we know that $|\cos z|^2 = \cos^2 x + \sinh^2 y$
+
+We get, 
+$$ \sinh^2 y \le |\cos z|^2 \implies |\sinh y| \le |\cos z| $$
+
+
+Using the same process as (a) we get, $|\cos z | \le \cosh y$
+
+So,  
+$$ |\sinh y| \le |\cos z| \le \cosh y $$ 
+
+
+
+
 \end{document}

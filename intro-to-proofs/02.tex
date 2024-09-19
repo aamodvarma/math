@@ -1,5 +1,6 @@
 \section*{Disproofs}
 
+
 If we need to show existance, $\exists x. P(x)$. We can show using, 
 
 1. Direct constructions
@@ -71,6 +72,21 @@ To disprove $\forall x P(x)$ we can show that, $\exists \not P(x)$
     $\not \exists f(x): $ a polynomial with integer coefficients s.t.  $\forall n, f(n)$ is prime
 \end{eg}
 \begin{proof}
+    Consider the general form of a polynomial, 
+    $$ f(x) = a_1x^n + \dots + a_n $$ 
+
+    Case 1: $a_n = 0$
+
+    If  $a_n=0$ then for any $x > 1$ we can take $x$ common and get $$f(x) = x(a_1x^{n-1}+\dots+a_{n-1})$$
+
+    So we get a factor $x \ne 1$
+
+    Case 2:  $a_n = 1$
+
+    In this case we can just plug  $x = 0$ and we get $f(x)$ is neither prime or composite
+
+Case 3: $a_n > 1$
+????
     
 \end{proof}
 
@@ -83,8 +99,29 @@ To disprove $\forall x P(x)$ we can show that, $\exists \not P(x)$
     $$f(1) = -2$$
     $$f(2) = 7$$
 
+    So because $-2 < 0 < 7$ we know that there must exists an $x_0 \in [1,2]$ s.t. this is the case.
 
-    To show unique we need to show its strictly increasing.
+
+    To show unique we need to show its strictly increasing. Or in other words, we need to show for every $x_1,x_2 \in [1,2], x_1 \le x_2 \implies f(x_1) \le f(x_2)$
+
+
+    So we need to show that, 
+    $$ x_1^3 + 2x_1 - 5 \le x_2^3 + 2x_2 - 5 $$ 
+    $$ x_1^3 + 2x_1  \le x_2^3 + 2x_2 $$ 
+    $$ (x_1^3 - x_2^3) + 2(x_1-x_2)  \le 0$$
+
+
+    It is enough to show that both $x_1^3 - x_2^3$ and $x_1 - x_2$ are smaller than or equal to $0$.
+
+    
+    $$ x_1^3 - x_2^3 = (x_1 - x_2)(x_1^2 + x_1x_2 + x_2^2) = k (x_1 - x_2) \le 0 $$ 
+
+    Similarly, $$2(x_1 - x_2) \le 0 \text{ a }  x_1-x_2 \le 0$$
+
+    So we have, $x_1^3 - x^3 + 2(x_1 - x_2) \le 0$
+
+    Which tells us that our function is strictly increasing which implies that we only have a unique $x_0 \in [1,2]$
+
 \end{proof}
 
 

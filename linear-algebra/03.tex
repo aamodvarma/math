@@ -1,0 +1,71 @@
+\begin{proof}
+    (1). $null(T) = \{0\} \implies T$ is injective.
+
+    Then for any  $w \in range(T)$, 
+    $$ T^{-1}(w) = \{\text{ a single element in $V$ }\} $$ 
+
+
+    (2). $T$ is injective $\implies null(T) = \{0\}$ 
+
+    We know $T(0) = \{0\}$ then  $v = 0$ because by definition an injective functino only has one vector curresponding to a vector in its range.
+\end{proof}
+
+\begin{lemma}
+    If $T(v) = w$ then, $T^{-1}(w) = v + null(T)$
+\end{lemma}
+
+\begin{eg}
+    $T: \R^3 \rightarrow \R, T(x,y,z) = z$
+\end{eg}
+
+\begin{proof}
+    (1) $v + null(T) \subseteq T^{-1}(w)$ 
+
+    Start with any $v + v_0 \in v + null(T)$ ($v_0 \in null(T)$)
+
+    We know $T(w) = \{v \in V: T(v) = w\}$. So it is enough to show that $T(v + v_0) = w$. So we can write, 
+    $$ T(v+ v_0) = T(v) + T(v_0) = w + 0 = w$$ 
+
+    (2) $T^{-1}(w) \subseteq v + null(v)$
+    
+    For any $x \in T^{-1}(w)$ we know that $T(x) = w = T(v)$, 
+    So we have, $$ T(x - v) = 0 $$ 
+
+    Taking, $x - v = v_0$ for some $v_0 \in null(T)$. So, $x \in v + null(T)$
+\end{proof}
+
+
+\begin{theorem}[Fundamental theorem of linear maps]
+    $V$ is a finite dimensional vector space.  $T \in L(v,w)$. Then 
+    $$\dim (V) = \dim null (T) + \dim range(T)$$ 
+\end{theorem}
+
+\begin{proof}
+    Let $v_1,v_2,\dots,v_k$ be a basis of $null(T)$.
+
+    Extend the basis to a basis of $V$. So 
+    $$ v_1,\dots,v_k,w_1,\dots,w_m$$ 
+
+    We want to show, 
+    $$ T(w_1),\dots,T(w_m) \text{ is a basis of $range(T)$}$$
+
+    (1). To show the list is spanning
+
+    Let $x \in range(T)$ then 
+    $$ x = T(a_1v_1,\dots+a_kv_k+b_1w_1+\dots+b_mw_m) $$ 
+    
+    $$  = a_1T(v_1) + \dots + a_kT(v_k) + b_1T(w_1) + \dots + b_mT(w_m) $$ 
+    
+    $$ =b_1T(w_1) + \dots + b_mT(w_m) $$ 
+
+    So $x$ is a linear combinatino of $Tw_1,\dots,Tw_m$
+
+    (2). To show the list is linearly  independent.
+
+    Let, 
+    $$ b_1T(w_1) + \dots + b_mT(w_m) = 0 $$ 
+    $$ T(b_1w_1) + \dots + (b_mw_m) = 0 $$ 
+
+    So, $b_1w_1+\dots+b_mw_m\in null T$. We can say, $b_1w_1+\dots+b_mw_m = a_1v_1 + \dots + a_nv_n$ for some $a_1,\dots,a_n \in F$. Since, $v_1,\dots,v_m,w_1,\dots,w_m$ is a basis. $b_1=b_2\dots=b_m = 0$
+
+\end{proof}

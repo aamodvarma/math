@@ -1,0 +1,84 @@
+
+\begin{property}
+   $\log z_1z_2 = \log z_1 + \log z_2$
+\end{property}
+\begin{proof}
+   
+   $$ \log z_1z_2 = \ln(r_1r_2) + i(\theta_1 + \theta_2 + 2n\pi) $$ 
+   $$= \log z_1z_2 = \ln(r_1)+ \ln(r_2) + i(\theta_1 + \theta_2 + 2n\pi) $$ 
+   $$= \log z_1z_2 = \ln(r_1) + i(\theta_1 + 2n\pi) +  \ln(r_2) + i(\theta_2 + 2n\pi) $$ 
+   $$= \log z_1z_2 = \ln(r_1) + i(\theta_1 + 2n\pi) +  \ln(r_2) + i(\theta_2 + 2n\pi) $$ 
+   $$= \log z_1z_2 = \log z_1 + \log z_2 $$ 
+\end{proof}
+
+\begin{property}
+   $\log |z_1z_2| = \log |z_1| + \log |z_2|$
+\end{property}
+\begin{property}
+   $\log (\frac{z_1}{z_2)} = \log (z_1) - \log(z_2)$
+\end{property}
+
+\begin{property}
+   $z^n = e^{n \log(z)}$
+\end{property}
+
+\section{Power Function}
+We have a complex number $c$ and we have $f(z) = z^c$. By definition we have $z^c = e^{c\log z}$
+
+The derivative is $\frac{d}{dz} f(z) = \frac{d}{dz} (z^c)$
+$$ \frac{d}{dz} e^{c \log z} = e^{c \log z} \frac{d}{dz} c \log z = e^{c\log z}  \frac{c}{z} $$ 
+
+
+But we can write $ \frac{e^{c \log z} c}{e^{\log z}} = ce^{(c -1)\log z} = cz^{c-1}$. The principal value of $z^{c} = e^{cLog z}$
+
+
+If the function is $f(z) = c^z$ then we have 
+$$ \frac{d}{dz} c^z = \frac{d}{z} e^{z \log c} = e^{z \log c} \frac{d}{dz} z \log c = e^{z \log c} \log c = c^{z}\log c$$ 
+
+\section{Trignometric Function}
+
+We know that $e^{i\theta} = \cos \theta + i \sin \theta$ and $ e^{-i \theta} = \cos \theta - i \sin \theta$. So we can write, 
+$$  \cos \theta = \frac{e^{i\theta} + e^{-i \theta}}{2} $$  and, 
+$$\sin \theta = \frac{e^{i\theta} - e^{-i \theta}}{2i}$$  
+
+We have $\frac{d}{dz} \sin z = \cos z$ and $\frac{d}{dz} \cos z = -\sin z$
+ 
+\begin{property}
+   $\sin(-z) = -\sin(z)$ and $\cos(-z) = \cos(z)$
+\end{property}
+\begin{property}
+   $\sin(z_1 + z_2) = \sin z_1 \cos z_2 + \cos z_1 \sin z_2 $
+\end{property}
+\begin{property}
+   $\sin(2z) = 2 \sin(z)\cos(z)$
+\end{property}
+\begin{property}
+   $\sin(z + \frac{\pi}{2}) = \cos(z)$
+\end{property}
+
+% In the real plane $\sin(x)$ and  $\cos(x)$ are bounded by $1$.  
+
+Consider the hyperbolic sin and cos functions,$$\sinh z = \frac{e^{z} - e^{-z}}{2}, \cosh z = \frac{e^{z} + e^{-z}}{2}$$
+
+We can write $\sin z = \sin(x + iy)$. Now expanding this we get,  
+$$ \sin(x)\cos(iy) + \cos(x)\sin(iy) = \sin(x) \cosh(y) + i\cos x \sinh(y)$$ 
+And we have, 
+$$ |\sin z|^2 = \sin^2 x + \sinh^2 y $$ 
+$$ |\cos z|^2 = \cos^2 x + \cosh^2 y $$ 
+
+
+
+
+\section{Inverse Trignometric Functions}
+The function is $w = f(z) = \sin^{-1}z$. So we have $$\sin(w) = z = \frac{e^{iw} - e^{-iw}}{2}$$
+
+We know $2iz = (e^{iw} -  e^{-iw}) \times  e^{iw}$, 
+$$ 2iz e^{iw}= e^{2iw} - e^{0} $$ 
+$$ e^{iw}^2 - 2ize^{iw} - 1 = 0 $$
+
+Solving this we get, 
+$$ e^{iw} = iz \pm (1-z^2)^{\frac{1}{2}} $$ 
+
+
+
+
