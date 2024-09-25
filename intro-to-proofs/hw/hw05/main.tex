@@ -1,0 +1,241 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Intro to Proofs: HW05}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+    
+\section*{9.4}
+\begin{proof}
+
+    If the polynomial is prime $\forall n \in N$  then $n^2 + 17n + 17$ has only 1 and itself as its factors.
+
+    However let us take $n = 17$ we have, $17^2 + 17^2 + 17 = 17 (17 + 17 + 1) = 17 \times  35$
+    We see that the polynomial has factors $17$ and $35$ in this case (also note that 35 can be furhter factored). So this shows us that $n^2 + 17n + 17$ is not prime $\forall n \in \N$
+
+    So the statement is false.
+\end{proof}
+
+
+\section*{9.9}
+\begin{proof}
+    Let $A = \{1,2\}$ and $B = \{2\}$. With this we have  $A - B = \{1\}$. 
+    $$ P(A) = \{ \{1\}, \{2\},\{1,2\}, \phi \}$$ 
+    $$ P(B) = \{ \{2\}, \phi \}$$ 
+    $$ P(A) - P(B) = \{ \{1\}, \{1,2\} \}$$ 
+    $$ P(A - B) = \{ \{1\}, \phi \}$$ 
+
+    It is easy to see that $P(A) - P(B) \not \subseteq P(A - B)$
+
+    So the statement is false.
+\end{proof}
+
+\section*{9.23}
+\begin{proof}
+    We have $x^3 < y^{3} $. We can write this as, 
+    $$ x^3 - y^3 < 0 $$ 
+    $$ (x - y)(x^2 + xy + y^2) < 0 $$ 
+
+    We know that $x^2 + xy + y^2$ is always positive as we can write it as, $(x + \frac{y}{2})^2 + \frac{3y^2}{4}$ so we can divide both sides by it.
+    $$ (x - y) < 0 \implies x < y$$ 
+\end{proof}
+
+
+\section*{9.34}
+\begin{proof}
+    We use a counter example to disprove this statement.
+
+    Consider $A = \{1,2,3\}$ and  $B = \{3,4, 5\}$ where $A \cup B = \{1,2,3,4,5\}$
+
+    We can take $X = \{2,3,4\}$. We see that  $X \subseteq A \cup B$. However it is not true that either $X \subseteq A$ as  $4 \not \in A$ and not true that  $X \subseteq B$ as  $2 \not \in B$
+
+\end{proof}
+\section*{10.2}
+\begin{proof}
+    First let us consider $n = 1$, we have, 
+    $$ 1^2 = \frac{1 ( 1 + 1) (2 + 1)}{6}  = \frac{6}{6}=1$$ 
+
+    Now let us assume the statement is true for an arbitrary $n = k$, we have, 
+    $$ 1^2 + 2^2 + \dots + k^2 = \frac{k(k + 1)(2k + 1)}{6} $$ 
+
+    We need to show just using this result that the statement holds true for $n = k + 1$ or that,  
+    $$ 1^2 + \dots + k^2 + (k +1)^2 = \frac{(k + 1)(k + 2)(2(k + 1) + 1)}{6} = \frac{(k + 1)(2k^2 + 7k + 6)}{6}$$ 
+
+    We can replace the first $k$ terms in the left with the formula above and we get, 
+    $$\frac{k(k + 1)(2k + 1)}{6} + (k + 1)^2   = \frac{k(k + 1)(2k + 1) + 6(k+1)^2}{6}$$
+    $$ \frac{(k + 1)(k(2k + 1) + 6(k + 1))}{6} = \frac{(k + 1)(2k^2 + 7k + 6)}{6}$$ 
+
+    We see that this is the same formula for the sum of $k + 1$ terms that we had to show.
+
+    Hence we showed that if the staement holds true for  $n = k$ then it will also hold true for  $n = k + 1$ and by inductino we can say that the statemetn is true for every positive integer $n$.
+
+
+\end{proof}
+
+\section*{10.8}
+\begin{proof}
+    First let us consider the case when $n = 1$. We get,  
+    $$ \frac{1}{2!} = 1 - \frac{1}{(n + 1)!} $$ 
+    The left hand side evaluates to $ \frac{1}{2!} = \frac{1}{2}$. And the right hand side evaluates to, 
+    $$ 1 - \frac{1}{2!} = 1 - \frac{1}{2} = \frac{1}{2} $$ 
+
+    So we have $\frac{1}{2!} = 1 - \frac{1}{(1 + 1)!} = \frac{1}{2}$ so the equality holds for $n = 1$.
+
+    Now let us assume the equality holds for an arbitreary  $n = k$, we get, 
+    $$ \frac{1}{2!} + \dots + \frac{k}{(k + 1)!}  = 1 - \frac{1}{(k + 1)!}$$ 
+
+    We need to show that the following equality is true given this, 
+    $$ \frac{1}{2!} + \dots + \frac{k}{(k + 1)!} + \frac{k + 1}{(k + 2)!}  = 1 - \frac{1}{(k + 2)!}$$ 
+
+
+    Using the righthand side from the equality we assumed for $n = k$ we have the lefthand side of what we want to prove as,  
+    $$   1 - \frac{1}{(k + 1)!} + \frac{k + 1}{(k + 2)!} $$
+    
+    $$ = 1 + \frac{k + 1}{(k + 2)!} - \frac{k + 2}{(k + 1)!} = 1 - \frac{1}{(k + 2)!} $$ 
+    Which is the righthand side of what we want to prove. 
+
+    Hence by inductino we showed that the statement holds for all $n \in N$
+
+\end{proof}
+
+\section*{10.14}
+\begin{proof}
+    We need to show $ 5 | 2^n a \implies 5 | a, \forall n \in N$
+    If $n = 1$ we see that 
+    $$ 5 | 2^{n}a = 5 | a \text{ as $2^n = 1$} $ $$ 
+
+    For an arbitrary $n = k$ we have,  
+    $$ 5 | 2^k a \implies 5 | a $$ 
+
+    We have to show that given this, the statemetn holds for $n = k + 1$ or,  
+    $$ 5 | 2^{k + 1} a \implies 5 | a $$ 
+
+    If the statement holds for $k$ then we know that $2^{k}a = 5m_0 \implies a = 5n_0$ for some $m \in Z$
+
+    Taking the lefthand side of what we have to prove we see, 
+    $$ 2^{k + 1}a = 5m_1 $$ 
+    First we start with $2^k a = 5m_0$. Multiplifying both sides by 2 we get, 
+    $$ 2^{k + 1} a = 10m_0 = 5(2m_0) = 5m_1$$ 
+
+    However notice that we have the same $a$ that we already assumed is divisbile in the case where $n = k$. Hence we show that even in the case where $n = k + 1$  a is still divisbile by $5$.
+
+
+\end{proof}
+
+\section*{10.17}
+\begin{proof}
+    Let us first check for $n = 2$. We have, 
+    $$ \overline{A_1 \cap A_2}=  \overline{A_1} \cup \overline{A_2} $$  which is true by using demoragans law.
+
+    Or in other words if $x \not \in A_1 \cap A_2$ means that $x \not \in A_1$ or $x \not \in A_2$ which means that $x \in \overline{A_1} \cup \overline{A_2}$
+
+    Let us now assume it is true for  an arbitrary $n = k$ we have, 
+    $$ \overline{A_1 \cap \dots \cap A_k} = \overline{A_1}\cup \dots \cup \overline{A_k} $$ 
+    we need to show that the following follows, 
+    $$ \overline{A_1 \cap \dots \cap A_k \cap A_{k+1}} = \overline{A_1}\cup \dots \cup \overline{A_k} \cup \overline{A_{k+1}}$$ 
+
+    Consider the intersectino of $A_1\cap \dots \cap A_k = A_0$. Now we have because of demorgans law (we also just showed it above for the case of n = 2),
+$$ = \overline{A_0\cap A_{k_1}} = \overline{A_0} \cup \overline{A_{k+1}}$$    
+$$ = \overline{A_1 \cap \dots \cap A_k} \cup \overline{A_{k + 1}}$$ 
+
+
+Now from our assumption we can write this as, 
+$$  =  \overline{A_1}\cup \dots \cup \overline{A_k} \cup \overline{A_{k + 1}}$$
+
+Which is the right hand side for the case of $n = k + 1$.
+
+Hence by induction we have shown that the satement is true for all  $n \ge 2$
+\end{proof}
+\section*{10.21}
+Let us take the case for $n = 1$. We have, 
+$$ \frac{1}{1} \le 2 - \frac{1}{1} = 2 $$ 
+Which is obviously true.
+
+Now let us assume the case for $n = k$. We get, 
+$$ \frac{1}{1} + \dots + \frac{1}{k^2} \le 2 - \frac{1}{k} $$ 
+
+We need to show that the case for $n = k + 1$ follows from this, or, 
+$$ \frac{1}{1} + \dots+ \frac{1}{k^2} + \frac{1}{(k + 1)^2} \le 2 - \frac{1}{k + 1} $$ 
+
+Let us take our inequality for $n = k$ and add the term $\frac{1}{(k + 1)^2}$ on both sides, we get, 
+$$ \frac{1}{1} + \dots + \frac{1}{k^2} + \frac{1}{(k + 1)^2} \le 2 - \frac{1}{k} + \frac{1}{(k + 1)^2} $$ 
+
+Now let us rearrange the terms in the right in this inequality, we have, 
+$$ 2 - \bigg (\frac{1}{k} - \frac{1}{(k + 1)^2}\bigg ) = 2 - \bigg(\frac{k^2 + k + 1}{k(k +1)^2} \bigg) $$ 
+
+It is obvious that, 
+$$ 2 - \bigg(\frac{k^2 + k + 1}{k(k +1)^2} \bigg) =  2 - \bigg(\frac{k^2 + k}{k(k +1)^2} \bigg) - \frac{1}{k(k+1)^2} \le 2 - \bigg (\frac{k^2 + k}{k(k + 1)^2} \bigg) = 2 - \frac{1}{(k+1)} $$ 
+
+So we have shown from the case $n = k$ that,  
+$$ \frac{1}{1} + \dots + \frac{1}{(k + 1)^2} \le 2 - \frac{1}{(k + 1)} $$
+
+which is the case for $n = k + 1$. Hence by induction we can say that our inequality is true for al $n \in N$
+
+\section*{10.30}
+
+\begin{proof}
+    Let us start witih the case for $n = 1$. We have, 
+    $$ F_1 = \frac{\big ( \frac{1 + \sqrt{5}}{2}\big)^{1} - \big ( \frac{1 - \sqrt{5}}{2}\big)^{1}}{\sqrt{5}} $$ 
+    
+    $$  = \frac{2\sqrt{5}}{\sqrt{5}} = 2  $$
+
+    which is true.
+
+    Now let us assume the case for $n = k$ this means that, $F_{n - 2} + F_{n - 1} = F_n$ or that,  
+    $$ F_k = \frac{\big ( \frac{1 + \sqrt{5}}{2}\big)^{k - 2} - \big ( \frac{1 - \sqrt{5}}{2}\big)^{k - 2}}{\sqrt{5}}  + \frac{\big ( \frac{1 + \sqrt{5}}{2}\big)^{ k - 1} - \big ( \frac{1 - \sqrt{5}}{2}\big)^{k - 1}}{\sqrt{5}} = \frac{\big ( \frac{1 + \sqrt{5}}{2}\big)^{k} - \big ( \frac{1 - \sqrt{5}}{2}\big)^{k}}{\sqrt{5}}$$ 
+
+    Now we need to show that it holds for $n = k + 1$ or that, 
+
+    $$ F_{k + 1} = \frac{\big ( \frac{1 + \sqrt{5}}{2}\big)^{k - 1} - \big ( \frac{1 - \sqrt{5}}{2}\big)^{k - 1}}{\sqrt{5}}  + \frac{\big ( \frac{1 + \sqrt{5}}{2}\big)^{ k} - \big ( \frac{1 - \sqrt{5}}{2}\big)^{k}}{\sqrt{5}} = \frac{\big ( \frac{1 + \sqrt{5}}{2}\big)^{k + 1} - \big ( \frac{1 - \sqrt{5}}{2}\big)^{k + 1}}{\sqrt{5}}$$ 
+
+    We have $F_{k + 1} = F_k + F_{k - 1}$. But we have an expression for  $F_k$ from our assumption. Putting that in here we get, 
+    $$ = \frac{\big ( \frac{1 + \sqrt{5}}{2}\big)^{k - 2} - \big ( \frac{1 - \sqrt{5}}{2}\big)^{k - 2}}{\sqrt{5}}  + \frac{\big ( \frac{1 + \sqrt{5}}{2}\big)^{ k - 1} - \big ( \frac{1 - \sqrt{5}}{2}\big)^{k - 1}}{\sqrt{5}} + \frac{\big ( \frac{1 + \sqrt{5}}{2}\big)^{ k - 1} - \big ( \frac{1 - \sqrt{5}}{2}\big)^{k - 1}}{\sqrt{5}}  $$ 
+
+    $$ = \frac{\big ( \frac{1 + \sqrt{5}}{2}\big)^{k - 2} - \big ( \frac{1 - \sqrt{5}}{2}\big)^{k - 2}}{\sqrt{5}}  + \frac{2\big ( \frac{1 + \sqrt{5}}{2}\big)^{ k - 1} - 2\big ( \frac{1 - \sqrt{5}}{2}\big)^{k - 1}}{\sqrt{5}} $$ 
+
+    $$ = \frac{1}{\sqrt{5}}\bigg( \bigg ( \frac{1 + \sqrt{5}}{2}\bigg)^{k - 2} - \bigg ( \frac{1 - \sqrt{5}}{2}\bigg)^{k - 2}  + 2\bigg ( \frac{1 + \sqrt{5}}{2}\bigg)^{ k - 1} - 2\bigg ( \frac{1 - \sqrt{5}}{2}\bigg)^{k - 1}\bigg) $$ 
+
+    $$ = \frac{1}{\sqrt{5}}\bigg( \frac{ \bigg ( \frac{1 + \sqrt{5}}{2}\bigg)^{k + 1}}{\frac{(1 + \sqrt{5})^{3}}{2^{3}}} +  \frac{ 2\bigg ( \frac{1 + \sqrt{5}}{2}\bigg)^{k + 1}}{\frac{(1 + \sqrt{5})^{2}}{2^{2}}} - \frac{ \bigg ( \frac{1 - \sqrt{5}}{2}\bigg)^{k + 1}}{\frac{(1 - \sqrt{5})^{3}}{2^{3}}} -  \frac{ 2\bigg ( \frac{1 - \sqrt{5}}{2}\bigg)^{k + 1}}{\frac{(1 - \sqrt{5})^{2}}{2^{2}}}   \bigg)   $$
+
+    $$ = \frac{1}{\sqrt{5}}\bigg(   \bigg (\frac{1 + \sqrt{5}}{2} \bigg )^{k + 1} \bigg( \frac{1}{\bigg (\frac{1 + \sqrt{5}}{2} \bigg )^3}   + \frac{2}{\bigg (\frac{1 + \sqrt{5}}{2} \bigg )^{2}} \bigg) - \bigg (\frac{1 - \sqrt{5}}{2} \bigg )^{k + 1} \bigg( \frac{1}{\bigg (\frac{1 - \sqrt{5}}{2} \bigg )^3}   + \frac{2}{\bigg (\frac{1 - \sqrt{5}}{2} \bigg )^{2}} \bigg) \bigg) $$
+
+    Simplfying this expression we have, 
+
+    $$ = \frac{1}{\sqrt{5}}\bigg(   \bigg (\frac{1 + \sqrt{5}}{2} \bigg )^{k + 1} \bigg(\frac{8( 2 + \sqrt{5})}{(1 + \sqrt{5})^3} \bigg) - \bigg (\frac{1 - \sqrt{5}}{2} \bigg )^{k + 1} \bigg( \frac{8(2 - \sqrt{5})}{(1 - \sqrt{5})^{3}} \bigg) \bigg) $$
+
+    $$ = \frac{1}{\sqrt{5}}\bigg(   \bigg (\frac{1 + \sqrt{5}}{2} \bigg )^{k + 1} \bigg(1\bigg) - \bigg (\frac{1 - \sqrt{5}}{2} \bigg )^{k + 1} \bigg( 1\bigg) \bigg) $$
+
+    $$=  \frac{\big ( \frac{1 + \sqrt{5}}{2}\big)^{k + 1} - \big ( \frac{1 - \sqrt{5}}{2}\big)^{k + 1}}{\sqrt{5}}$$
+
+    Which is what we had to show for the case of $n = k + 1$
+
+\end{proof}
+
+\section*{10.35}
+
+Let us take the case for $n = 2$ and $k = 1$. For the statement to be true we have $n \choose k$ is even.
+
+$$ {n \choose k}  = \frac{n!}{k!(n - k)!} = \frac{2!}{1!(1!)} = \frac{2}{1} = 2 \text{ which is even }$$  
+
+Now let us perform induction on both $n$ and $k$ independently. First let us fix $n$ and perform induction on $k$. Let $n = 2m$ for some integer $m \in N$. Assume the case for $k = 2k' + 1$ is true. This means that, 
+$$ {2m \choose 2k' + 1}  = \frac{(2m)!}{(2k' + 1)! (2m - 2k' - 1)!}\text{ is even }$$ 
+
+Now we need to show that it is also true for the next odd integer, $k' + 1$ or  $ k= 2k' + 3$
+
+$$ {2m \choose 2k' + 3}  = \frac{(2m)!}{(2k' + 3)! (2m - 2k' - 3)!}$$ 
+
+We can write $$(2k' + 3)! = (2k' + 1)! (2k' + 2)(2k' + 3)$$ and $$ (2m - 2k' - 3)! =  \frac{(2m - 2k' - 1)!}{ (2m - 2k' - 1) (2m - 2k' - 2)}$$
+
+So we get, 
+$$  $$ 
+$$ {2m \choose 2k' + 3}  = \frac{(2m)!}{(2k' + 1)! (2m - 2k' - 1)!} \frac{(2m - 2k' - 1) (2m - 2k' - 2)}{(2k' + 2)(2k' + 3)}$$ 
+
+
+
+
+
+$$  $$ 
+
+\end{document}
+

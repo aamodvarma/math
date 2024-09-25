@@ -1,0 +1,202 @@
+\documentclass[a4paper]{article}
+
+\usepackage[margin=0mm]{geometry}
+\usepackage[table]{xcolor}
+
+\begin{document}
+    \pagestyle{empty}%
+    \noindent
+    \begin{tabular}{@{}c@{}}
+    \begin{minipage}[t][\paperheight][t]{0.5\paperwidth}%
+        \textbf{Chapter 1: Set Theory}
+
+        1. \textbf{Cardinality} of a set $X$ is $|X|$: Size of the set, or the number of elements in it.
+        
+        \quad - $|\phi| = 0$ where $\phi = \{\}$ - no elements in it. $\phi \ne \{\phi\}$
+          
+        \quad- $|\{\phi\}| = 1$
+
+        2. Set Builder notation: $X = \{\text{expression : rule}\}$
+
+        \quad -  $E = \{n \in Z: n = 2k, k \in N\}$ 
+        
+        3. \textbf{Intervals}: Closed: [a,b] - $a \le x \le b$; Open: (a,b) -  $a < x < b$, Left-open: (a,b] -  $a < x \le b$ ; Right open: [a,b) - $a \le x < b$; Infinite: (a,$\infty$].
+        
+        \textbf{1.1 Cartesian Product}
+
+        1. $A \times  B = \{(a,b): a\in A, b \in B\}$ 
+        
+        2. $| A \times  B | = mn$ if $|A| = m, |B| = n$
+
+        3.  $A^n = A \times A \times \dots \times  A = \{(x_1,\dots,x_n): x_1,\dots,x_n \in A\}$ 
+        
+        \textbf{1.3 Subsets}
+
+        1. $\phi \subseteq A, \forall A$ as a set but $\phi \in A$ is not always true.
+
+        2.  $N \subseteq Z \subseteq Q \subseteq R$
+
+        3.  If $|A| = n$ then it has $2^{n}$ subsets.
+        
+        \quad  - $|P(A)| = 2^n$
+
+        
+        \textbf{1.4 Powersets}
+
+        1. $P(A) = \{X: X \subseteq A\}$
+
+        2.  $|P(A)| = 2^{|A|}$
+
+        \textbf{Complement:} $\bar A = U - A$ where  $U$ is a universal set.
+
+        \textbf{Division Algorithm:} Given $a,b, b > 0, \exists $ unique  $q,r$ s.t.  $a = qb + r$ and  $ 0 \le r < b$
+
+
+        \textbf{Chapter 2: Logic}
+        
+        1. A \textbf{statement} is a sentence that is either deinitely true or definitely false.
+        
+        \quad - 5 = 2 is a false statement
+
+        \quad -  $2 \in Z$ is a true statement
+
+        \quad - The interger $x$ is even is \textbf{not} a statement - open sentence
+
+        \textbf{2.2 And, Or, Not}
+        
+        1. AND: $\land$, OR: $\lor$, NOT: $\neg A$
+        
+        2. $P \land Q$:  $TT : T, TF:F, FT:F, FF:F$
+        
+        3. $P \lor Q: TT:T, TF:T, FT:T, FF:F$ 
+
+        4.  $\neg P: T:F, F:T$
+
+        \textbf{2.3 Conditionals}
+
+        1. $P \Rightarrow Q: TT:T, TF:F, FT:T, FF:T$. Only false if true implies false.
+
+
+        2. $P \iff Q: P \Rightarrow Q \land Q \Rightarrow P$. Only true if both true/false
+
+        3. $P \iff Q \equiv (P \land Q) \lor(\neg P \land \neg Q)$ 
+
+        \textbf{Demorgans}
+        
+        1. $\neg (P \land Q) = (\neg P) \lor (\neg Q)$
+        
+        2. $\neg (P \lor Q) = (\neg P) \land (\neg Q)$
+
+        Other laws: Contrapositive - $(\neg Q) \Rightarrow (\neg P)$; Commutative -  $P \land Q = Q \land P$; Distributive -  $P \land (Q \lor R) = (P \land Q) \lor (P\land R)$
+
+        \textbf{2.7 Quantifiers}
+
+        1. For all (Universal quantifier): $\forall$, There exists (Existential quantifier):  $\exists$
+
+        2. Every integer that is not odd is even is $\forall n \in Z, \neg$(n is odd)  $\Rightarrow$ (n is even)
+
+        3. Order is relevant. $\forall x \in R, \exists y \in R, y^3 = x$ is true but $\exists y \in R, \forall x \in R, y^3 = x $ is obviously false.
+
+
+        \textbf{2.10 Negations}
+
+        1. $\neg(P \land Q) = \neg P \lor \neg Q$
+
+        2. $\neg(\forall x \in N, P(x)) = \exists x \in N, \neg P(x)$
+
+        3.  $\neg (\forall x \in R, \exists y \in R, y^3 = x) = \exists x \in R, \forall y \in R, y^3 \ne x$
+
+
+
+        \textbf{Chapter 4: Direct Proofs}
+
+        1. Even: $n = 2a$, Odd:  $n = 2a + 1$
+
+        2. Two integers are both even - same parity, both odd - opposite parity
+
+        3. $a | b$ if  $b = ac, c \in Z$ - b is a multiple of a
+
+        4.  $n$ is composite $\iff n = ab, 1 <a,b<m$ 
+
+        5. $gcd(a,b)$ largest integer that divides a and b. 
+
+        \textbf{Chapter 5: Contrapositive Proof}
+
+
+        1. $P \Rightarrow Q \equiv \neg Q \Rightarrow \neg P$ 
+        \textbf{5.2 Congruence}
+
+        2. $a \equiv b$ (mod n)  if  $n | (a - b)$ 
+
+        \quad - $9 \equiv 1$ (mod 4) as $4 | 9 - 1$
+
+        \quad - basically means a and b have the same remainder when divided by n
+
+
+
+
+
+
+
+    \end{minipage}%
+    \end{tabular}%
+    \begin{tabular}{@{}c@{}}
+    \begin{minipage}[t][\paperheight][t]{0.5\paperwidth}%
+        \textbf{Chapter 6: Proof by contradiction}
+
+        1. $P \equiv (\neg P) \Rightarrow (C \land \neg C)$ 
+        
+        \quad - to prove $P$ we can just assume $\neg P$ and come to a known false statement
+
+        2. To show $P \Rightarrow Q$. We suppose  $P$ and  $\neg Q$ and prove a false statement
+
+        \textbf{Chapter 7: Non-Conditional Statements}
+
+        1. $P \iff Q \equiv P \Rightarrow Q \land Q \Rightarrow P$
+
+        \textbf{Existance/Uniqueness Proof}
+
+        1. To prove $\exist x, R(x)$: We just need one example.
+        
+        \textbf{Chapter 8: Sets}
+
+        1. To show $A \subseteq B$ we take $x \in A$ and show  $x \in B$. Or  $x \notin B$ and show  $x \notin A$ 
+
+        2. To show $A = B$ we show  $A \subseteq B$ and  $B \subseteq A$
+
+        \textbf{Perfect Numbers}
+
+        1. 6 is a perfect number beacuse  $6 = 1 + 2 + 3$
+
+        \textbf{Chapter 9: Disproof}
+
+        1. To disprove  $P$ : Prove $\neg P$
+
+        2. Disprove  $P(x) \Rightarrow Q(x)$: We only need to give one example where this isn't true.
+
+        3. To disprove  $\exists x \in S, P(x)$: We need to show  $\forall x \in S, \neg P(x)$
+
+        4. Disprove  $P$ with contradiction: Assume $P$, deduce a contradiction.
+
+        \textbf{Chapter 10: Induction}
+
+        Proposition: $S_1,S_2,\dots$ are all true.
+
+        Proof. (1). Prove that $S_1$ is true.
+
+        (2). Given $k \ge 1$, prove that  $S_k \Rightarrow S_{k+1}$ is true.
+
+        By inductino this shows that all $S_n$ is true.
+
+        \textbf{Strong Induction}
+
+        (1) Prove $S_1$
+
+        (2) Given $k \ge 1$, prove  $S_1\land S_2 \dots \land S_k \Rightarrow S_{k + 1}$  
+
+
+
+
+    \end{minipage}%
+    \end{tabular}%
+\end{document}

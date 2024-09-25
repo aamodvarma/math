@@ -1,0 +1,51 @@
+\begin{theorem}
+    $\sum_{k = 1}^n k = \frac{n + 1}{2} n$
+\end{theorem}
+\begin{proof}
+    Proof by induction.
+
+    If $n = 1$, then (1) holds.
+
+    If $n = k$ then we have, 
+    $$ 1 + \dots + k = k \frac{k + 1}{2} $$ 
+
+    Now we need to show that $1 + \dots + k + k + 1 = (k+1)\frac{k + 2}{2}$
+
+    Using the statement for $n = k$ we can do,  
+    $$ k \frac{k + 1}{2} + k + 1 = (k + 1) \frac{k + 2}{2} $$ 
+    Simplyfying the left hand side we get, 
+    $$ (k + 2) \frac{k + 1}{2} = (k + 1) \frac{k + 2}{2} $$ 
+
+    It is trivial to see that this is true.
+
+    Hence by induction our statement is true.
+
+    
+\end{proof}
+\begin{definition}
+    $C_n^m = {n \choose m} =  \frac{n!}{m! (n - m)!}$ if $n \ge m \ge 0$ and  $0$ otherwise
+\end{definition}
+\begin{remark}
+$\Gamma(z) = \int_0^\infty r^z e^{-t} dt$ is a stronger definition of factorial
+\end{remark}
+
+\begin{theorem}
+    ${n + 1 \choose m} = {n \choose m} + {n \choose m + 1}, \forall n,m \in \Z$ 
+\end{theorem}
+\begin{proof}
+    We prove by cases.
+
+    Case 1: $m \le -2$ or  $m > n$
+
+    Case 2:  $n = m = -1$
+
+    Case 3: $n > m = -1$
+
+    Case 4:   $m \ge 0$ and  $m \le n$
+\end{proof}
+
+
+\begin{theorem}
+    $\forall n \in N \cup \{0\}, a,b \in \R$  
+    $$ (a + b)^n = \sum_{k = 0}^n {n \choose k} a^{n - k} b^k $$ 
+\end{theorem}
