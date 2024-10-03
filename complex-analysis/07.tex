@@ -1,0 +1,86 @@
+\chapter{Integrals}
+
+Consider $f(z) = f(x + iy) = u(x,y) + iv(x,y)$. We can write this as, 
+$$ w(t) = u(t) + iv(t) $$ 
+$$ w'(t) = u'(t) + iv'(y)  $$ 
+
+
+\begin{eg}
+   $\frac{d}{dt} (w(t))^2 = \frac{d}{dt} (u + iv)^2$
+   \begin{align*}
+    &= \frac{d}{dt}(u^2 - v^2 + 2uvi) \\
+    &= 2uu' - 2vv' + i(2u'v + 2uv')  \\
+    &= 2(u + iv)(u' + iv')  \\
+    &= 2w(t) w'(t)  
+   \end{align*}
+\end{eg}
+
+\section{Definite Integrals}
+The integeral of $w(t)$ with respect to  $t$ is, 
+$$ \int_a^b w(t)dt = \int_a^b u(t) dt + i\int_a^b v(t) dt $$ 
+
+\begin{ex}
+   Find $c$ such that,
+   $$ \int_a^b w(t) dt = w(c) (b-a) \text{ where } w(t) = e^{it}, a= 0, b = 2\pi$$ 
+
+   \begin{solution}
+      We have, 
+      $$ \int_0^{2\pi} e^{it}  = \int_0^{2\pi} (\cos(t) + i\sin(t) = [\sin(t) - i \cos(t)]_0^{2\pi} = 0$$ 
+
+      Generally for arbitrary $a$ and $b$ we can show that, $\dots$
+   \end{solution}
+\end{ex}
+
+\begin{remark}
+   In this case $t$ is moving from $0$ to $2\pi$. But because we are in the complex plane it represents a loop.
+\end{remark}
+
+\section{Contour}
+\begin{definition}
+We have $z(t) = x(t) = iy(t)$ is a contour if, 
+
+(1) C is simple arc or Jordan arc, it does not cross itself.
+$$ z(t_1) \ne z(t_2), t_1\net_2 $$ 
+
+(2) $z(a) = z(b); $ C simple closed curve.
+
+It is positively oriented if the direction is anticlockwise
+\end{definition}
+
+\begin{eg}
+   $ x = \begin{cases}x + ix, 0 \le x \le 1 \\ x + i, 1 \le x \le 2\end{cases} $
+\end{eg}
+
+\begin{eg}
+   $z = re^{i\theta}, 0 \le \theta \le 2\pi$
+\end{eg}
+
+\begin{eg}
+   $z = re^{i3\theta}, 0 \le \theta \le 2\pi$
+
+   Not a simple arc 
+\end{eg}
+
+\begin{eg}
+   $\int_C w(z) dz = \int_{C_1} f[z(x)]z'(x) dx + \int_{C_2}f[z(x)] z'(x)dx$
+
+   Here $C$ is the contour from example (1).
+\end{eg}
+
+We can define the differential arc to be $z'(t) = x'(t) + y'(t)i$ which is continuous on  $a \le t \le b$ then,  $C:z(t) \text{ is a differential arc}$ and 
+
+$$ \int_a^b |z'(t)|dt = \int_a^b \sqrt{|x'(t)|^2 + |y'(t)|^2} \text{ length.}$$  
+$$ L = \int_a^b |z'(t)|dt $$ 
+$$ t = \phi(\tau), dt = \phi'(\tau)d\tau $$ 
+$$ L = \int_a^b |z'(t)|dt = \int_{\alpha}^{\beta} |z'(\phi(\tau))| \phi'(\tau)d\tau$$ 
+$$ T = \frac{z'(t)}{|z'(t)|} \text{ tangent vector}$$ 
+
+Contour: piecewise smooth arc.
+
+\section{Contour Integral}
+Consider the integer, 
+$$ \int_C f(z) dz \text{ or } \int_{z_1}^{z_2} f(z) dz $$ 
+
+We can parametrize in terms of $t$ as, 
+$$ \int_C f(z)dz = \int_a^b f(z(t))z'(t) dt $$ 
+

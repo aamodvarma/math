@@ -148,29 +148,20 @@ Which is the right hand side for the case of $n = k + 1$.
 Hence by induction we have shown that the satement is true for all  $n \ge 2$
 \end{proof}
 \section*{10.21}
-Let us take the case for $n = 1$. We have, 
-$$ \frac{1}{1} \le 2 - \frac{1}{1} = 2 $$ 
-Which is obviously true.
+First lets consider the base case wher $n = 1$ we get,  
+$$ \frac{1}{1} + \frac{1}{2} \ge   1 + \frac{1}{2} $$ 
 
-Now let us assume the case for $n = k$. We get, 
-$$ \frac{1}{1} + \dots + \frac{1}{k^2} \le 2 - \frac{1}{k} $$ 
+Assume the case for $n = k$ we get,  
+$$ \frac{1}{1} + \dots + \frac{1}{2^k - 1} + \frac{1}{2^{k}} \ge 1 + \frac{k}{2} $$ 
 
-We need to show that the case for $n = k + 1$ follows from this, or, 
-$$ \frac{1}{1} + \dots+ \frac{1}{k^2} + \frac{1}{(k + 1)^2} \le 2 - \frac{1}{k + 1} $$ 
+We need to shwo the case for $n = k + 1$.  Which is, 
 
-Let us take our inequality for $n = k$ and add the term $\frac{1}{(k + 1)^2}$ on both sides, we get, 
-$$ \frac{1}{1} + \dots + \frac{1}{k^2} + \frac{1}{(k + 1)^2} \le 2 - \frac{1}{k} + \frac{1}{(k + 1)^2} $$ 
+$$ \frac{1}{1} + \dots + \frac{1}{2^k - 1} + \frac{1}{2^{k}} + \dots + \frac{1}{2 \times  2^k } \ge 1 + \frac{k + 1}{2} $$ 
 
-Now let us rearrange the terms in the right in this inequality, we have, 
-$$ 2 - \bigg (\frac{1}{k} - \frac{1}{(k + 1)^2}\bigg ) = 2 - \bigg(\frac{k^2 + k + 1}{k(k +1)^2} \bigg) $$ 
+We can easily see that $\frac{1}{2^k + 1} + \dots + \frac{1}{2^{k + 1}}$ is lowerboukded by $\frac{1}{2}$ because $2^k \frac{1}{2 \times 2^k} = \frac{1}{2}$ So we can write, 
 
-It is obvious that, 
-$$ 2 - \bigg(\frac{k^2 + k + 1}{k(k +1)^2} \bigg) =  2 - \bigg(\frac{k^2 + k}{k(k +1)^2} \bigg) - \frac{1}{k(k+1)^2} \le 2 - \bigg (\frac{k^2 + k}{k(k + 1)^2} \bigg) = 2 - \frac{1}{(k+1)} $$ 
+$$ \frac{1}{1} + \dots + \frac{1}{2^k - 1} + \frac{1}{2^{k}} + \dots + \frac{1}{2 \times  2^k } \ge 1 + \frac{k}{2} + \frac{1}{2} =1 + \frac{k +1}{2} $$ 
 
-So we have shown from the case $n = k$ that,  
-$$ \frac{1}{1} + \dots + \frac{1}{(k + 1)^2} \le 2 - \frac{1}{(k + 1)} $$
-
-which is the case for $n = k + 1$. Hence by induction we can say that our inequality is true for al $n \in N$
 
 \section*{10.30}
 
@@ -214,22 +205,21 @@ which is the case for $n = k + 1$. Hence by induction we can say that our inequa
 
 \section*{10.35}
 
-Let us take the case for $n = 2$ and $k = 1$. For the statement to be true we have $n \choose k$ is even.
+Let us consider the base cases of  $n = 2, 4$ and $k = 1,3$. For $n=2,k=1$ we have  $2$ which is even. For  $n = 4, k = 3$ we have  $4$ which is even. For $n = 2, k = 3$ we have 0 which is even. And laslty for $n = 4, k = 1$ we have,  $4$ which is even.
 
-$$ {n \choose k}  = \frac{n!}{k!(n - k)!} = \frac{2!}{1!(1!)} = \frac{2}{1} = 2 \text{ which is even }$$  
+Now for our base case, assume that ${n - 2a\choose k - 2b}$ is even for some even  $n$ and odd $k$ and $a,b \in N$. We can write,  
+$$ {n \choose k} = {n - 1 \choose k - 1} + {n - 1 \choose k}$$ 
+$$ = {n - 2 \choose k - 2} + {n -2 \choose k- 1} + {n - 2 \choose k - 1} + {n-2 \choose k}$$ 
+$$ = {n - 2 \choose k - 2} + 2{n -2 \choose k- 1}+ {n-2 \choose k}$$ 
 
-Now let us perform induction on both $n$ and $k$ independently. First let us fix $n$ and perform induction on $k$. Let $n = 2m$ for some integer $m \in N$. Assume the case for $k = 2k' + 1$ is true. This means that, 
-$$ {2m \choose 2k' + 1}  = \frac{(2m)!}{(2k' + 1)! (2m - 2k' - 1)!}\text{ is even }$$ 
 
-Now we need to show that it is also true for the next odd integer, $k' + 1$ or  $ k= 2k' + 3$
+We know that this term is even because based on our assumption we know the first and last term is even. And because the second term is multiplied by 2 we know that is evne anyways. Hence by induction we showed that the statement is true.
 
-$$ {2m \choose 2k' + 3}  = \frac{(2m)!}{(2k' + 3)! (2m - 2k' - 3)!}$$ 
 
-We can write $$(2k' + 3)! = (2k' + 1)! (2k' + 2)(2k' + 3)$$ and $$ (2m - 2k' - 3)! =  \frac{(2m - 2k' - 1)!}{ (2m - 2k' - 1) (2m - 2k' - 2)}$$
 
-So we get, 
-$$  $$ 
-$$ {2m \choose 2k' + 3}  = \frac{(2m)!}{(2k' + 1)! (2m - 2k' - 1)!} \frac{(2m - 2k' - 1) (2m - 2k' - 2)}{(2k' + 2)(2k' + 3)}$$ 
+
+
+
 
 
 

@@ -1,0 +1,103 @@
+\section{Branch Cuts}
+\begin{eg}
+   $z = 3e^{i\theta}, (0 \le \theta \le \pi)$
+\end{eg}
+
+
+
+\begin{lemma}
+   If $w(t)$ is piecewise cont. then, 
+   $$ \bigg | \int_a^b w(t) dt \bigg| \le \int_a^b |w(t)| dt$$       
+\end{lemma}
+\begin{proof}
+   Let, 
+   $$\int_a^b w(t) dt = re^{i\theta}$$
+
+   $r = \int_a^b e^{-i\theta}w(t)dt$. Both sides of this equations are real.
+
+   $$r = \int_a^b Re[e^{i\theta}w(t)]dt$$ 
+
+   But, 
+$$Re[e^{i\theta}w(t)] \le |e^{-i\theta}w(t)| = |e^{-i\theta}||w(t)| \le |w(t)|$$ 
+
+So, 
+$$ r \le \int_a^b |w(t)| dt $$ 
+Or, 
+$$ \bigg|\int_a^b w(t) dt \bigg| \le \int_a^b |w(t)|dt $$ 
+\end{proof}
+
+\begin{theorem}
+   $C$ has a length $L$ and $f(z)$ is piecewise cont. on $C$ and let $|f(z)| \le M$ then, 
+   $$ \bigg |\int_C f(z) dz \bigg | \le  ML  $$ 
+\end{theorem}
+\begin{proof}
+   $\int_C f(z) dz = \int_a^b f(z(t)) z'(t) dt$. So we have, 
+   $$ \bigg | \int_C f(z)dz \bigg | \le \int_a^b |f(z(t))z'(t)|dt \le \int_a^b |Mz'(t)|dt  = ML$$ 
+\end{proof}
+
+
+\begin{theorem}
+   $f(z)$ is cont. over $D$ then, 
+
+   (a). $f(z)$ has antiderivative $F(z)$ throughout D
+
+   (b). $\int_{z_1}^{z_2} f(z) dz = F(z_2) - F(z_1)$
+
+   The antiderivative is independent to the path.
+
+
+   (c). $\int_C f(z)$ where $c$ is a closed contour entirely in $D$
+\end{theorem}
+
+\begin{proof}
+   1. (a) $\implies$ (b). We have, $c: z= z(t), z_1 = z(a), z_2 = z(b)$
+   $$\frac{d}{dt} [F[z(t)]] = F'[z(t)] z'(t) = f(z) z'(t)$$
+
+   So taking, 
+   $$ \int_C f(z) dz = \int_a^b f[z(t)]z'(t) dt = F[z(t)]$$ 
+   
+   $$ = F[z(t)]_a^{b} = F(z_2) - F(z_1)  $$ 
+
+   2. (b) $\implies$ (c)
+
+   $$\int_{C_1} f(z) dz = F(z_2) - F(z_1)$$
+   $$\int_{C_2} f(z) dz = F(z_2) - F(z_1)$$
+   So, 
+   $$\int_{C_1} f(z) dz = F(z_2) - F(z_1) = \int_{C_2} f(z) dz = F(z_2) - F(z_1)$$
+   $$\int_{C_1} f(z) dz = F(z_2) - F(z_1) - \int_{C_2} f(z) dz = F(z_2) - F(z_1) = 0$$
+
+   $C = C_1 - C_2:$ a closed contour in $D$ 
+
+   
+   $$ \int_C f(z) dz = 0 $$ 
+
+
+   3. (c) $\implies$ (a)
+
+   We define  $$F(z) = \int_{z_1}^{z_2} f(s) ds$$
+
+   
+   $$ \lim_{\Delta z \to 0}  \frac{F(z + \Delta z) - F(z)}{\Delta z} = \lim_{\Delta z \to 0} \frac{1}{\Delta z}\bigg[ \int_{z_0}^{z + \Delta z} f(s) ds - \int_{z_0}^{z} f(z) ds \bigg ]$$ 
+   
+   $$ = \lim_{\Delta z \to 0} \frac{1}{\Delta z}\int_z^{z+\Delta z} f(s) ds $$ 
+
+\begin{remark}
+   $$\int_z^{z + \Delta z} ds = s]_z^{z + \Delta z} = \Delta z$$
+\end{remark}
+\begin{remark}
+   $$ f(z) = \frac{1}{\Delta z} \int_z^{z + \Delta z} f(z) ds$$ 
+\end{remark}
+
+
+
+$$ \frac{F(z + \Delta z) - F(z)}{\Delta z} - f(z) = \frac{1}{\Delta z} \int_z^{z + \Delta z} [f(s) - f(z)] ds $$ 
+
+By cont. of $f(z), \forall \epsilon, \exists \delta$,  
+$$ |f(s) - f(z)| < \epsilon \text{ whenever } |s - z| < \delta $$
+
+
+\end{proof}
+
+
+
+

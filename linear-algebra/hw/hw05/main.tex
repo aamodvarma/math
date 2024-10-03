@@ -1,0 +1,126 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Linear Alebgra HW05}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+
+\section*{3A}
+
+\subsection*{1}
+
+\begin{proof}
+    
+We know for a linear map, $T(u + v) = T(u) + T(v)$ and $T(\lambda v ) = \lambda T(v)$
+
+First we look at additivity, 
+
+Consider an arbitrary  $u = (x_1,y_1,z_1)$ and $v = (x_2,y_2,z_2)$. So we have, 
+$$ T(u + v) = T((x_1+x_2),(y_1+y_2),(z_1+z_2))$$ $$ = (2(x_1+x_2) - 4(y_1+y_2) + 3(z_1+z_2) + b, 6(x_1+x_2) + c(x_1+x_2)(y_1+y_2)(z_1+z_2)) $$ 
+
+
+We need the above to be equal to, 
+$$ T(u) + T(v) = (2x_1-4y_1+3z_1 + b, 6x_1 + cx_1y_1z_1) + (2x_2-4y_2+3z_2 + b, 6x_2 + cx_2y_2z_2) $$ 
+$$ = (2(x_1+x_2) - 4(y_1+y_2) + 3(z_1+z_2) + 2b, 6(x_1+x_2) + c(x_1y_1z_1+x_2y_2z_2)$$ 
+
+Comparing each of the terms we have, 
+$$ 2(x_1+x_2) - 4(y_1+y_2) + 3(z_1+z_2)  + 2b  =  2(x_1+x_2) - 4(y_1+y_2) + 3(z_1+z_2) + b$$ 
+$$ 2b = b $$ 
+$$ b = 0 $$ 
+
+Similarly comparing the second term we have, 
+$$ 6(x_1+x_2) + c(x_1+x_2)(y_1+y_2)(z_1+z_2) =  6(x_1+x_2) + c(x_1y_1z_1+x_2y_2z_2) $$ 
+$$ c(x_1+x_2)(y_1+y_2)(z_1+z_2) = c(x_1y_1z_1+x_2y_2z_2) $$ 
+$$ c((x_1+x_2)(y_1+y_2)(z_1+z_2) - (x_1y_1z_1+x_2y_2z_2)) = 0 $$ 
+
+For this to be true for any $x,y,z$ we need  $c = 0$. Hence for additvity we need $b = c = 0$
+
+Now we check if $T(k v) = k T(v)$. Consider $v = (x,y,z)$. Then we have 
+$$ T(k v) = T(k x,k y,k z) = (2kx - k4y + 3kz + b, 6kx + k^{3}cxyz) $$ 
+
+We need this to be equal to $$kT(v) = k(2x - 4y + 3z + b, 6x + cxyz) = (2kx- 4ky + 3kz + bk, 6kx + kcxyz) $$
+
+Comparing the terms we have, 
+$$ 2kx - 4ky + 3kz + bk  = 2kx - 4ky + 3kz + b$$ 
+$$ bk = b $$ 
+$$b = 0$$
+
+$6kx + kcxyz = 6kx+ k^{3}cxyz$ 
+$$ c = k^2 c$$ 
+$$ c = 0 $$ 
+
+So we have $b = c = 0$
+
+\end{proof}
+\subsection*{6}
+\begin{proof}
+     
+1. Associativity. We have $(T_1T_2)T_3 = T_1(T_2T_3)$
+
+Consider the operation on a vector $v$ so we have,  $(T_1T_2)T_3v$ which is, 
+$$ ((T_1T_2)(T_3(v)) = T_1(T_2(T_3(v)))$$ 
+
+Now looking at the right side we have, $T_1(T_2T_3) = T_1(T_2(T_3(v)))$. So we showed tha tthe LHS is equal to the RHS.
+
+2. Identity. Consider a vector $v$ we have,  
+$$ TIv = T(I(v)) = T(v)$$ 
+
+Now, 
+$$ ITv = I(T(v))  = T(v) \text{ because $Iv = v, \forall v$}  $$ 
+
+3. Distributive Property
+
+To show that, 
+$$ (S_1+S_2)T  = S_1T + S_2T$$ 
+
+Consider an abitrary vector $v$ in the domain of $T$. We have,  
+$$ (S_1+S_2)Tv = (S_1+S_2)(T(v)) $$ 
+By definitino of addition of linera maps we have, 
+$$= (S_1(T(v))) + (S_2(T(v)))$$ 
+
+Simliary we have, 
+$$ (S_1T + S_2T)v = S_1T(v) + S_2T(v) = S_1(T(v)) + S_2(T(v))$$ 
+
+We see that the distributive property holds.
+
+
+Now To show that $S(T_1+T_2) = ST_1 + ST_2$. Consider $v$ we have, 
+$$ S(T_1+T_2)v = S(T_1(v) + T_2(v)) = S(T_1(v)) + S(T_2(v)) $$ 
+
+And we have, 
+$$ (ST_1 + ST_2)v = ST_1(v) + ST_2(v) = S(T_1(v)) + S(T_2(v))$$ 
+
+We see that the property holds again.
+
+
+
+\end{proof}
+
+\subsection*{7}
+\begin{proof}
+    Let $V$ be a one dimentional vector space. This means that the basis of $V$ contains a single vector, let the basis be $\{v\}$. Now we are considering a linear map from  $V$ to itself. 
+
+    So assume that the linear map $T$ maps some $v_0$ in $V$ to $w_0$. We need to show that $w_0 = \lambda v_0$ for some $\lambda \in F$. Because $T$ maps $V$ to itself we known that that $w_0 \in V$ for any $w_0$. If $w_0 \in V$ then wek now that it can be written as a linear compbination of its basis. As the basis only has one vector we can write $w_0 = \lambda_1 v$. Similarly as $v_0 \in V$ we can write $v_0 = \lambda_2 v$. 
+
+    So we have, 
+    $$ \frac{v_0}{\lambda_2} = v $$ 
+    $$ w_0 = \lambda_1 \frac{v_0}{\lambda_2}  = \lambda v_0$$ 
+
+
+    
+\end{proof}
+
+\subsection*{8}
+\begin{proof}
+    Consider the function that maps any vecotor $(x,y)$ to the $max(|x|,|y|)$. We can see that this satisfies homogeneity. For instance consider  $(2,6)$. Our function maps this to  $6$. Now consider  $(2 \times 3, 6 \times 3)$  which is mapped to $18$ which is  $3 \times  6$ as we saw above. 
+
+    Now consider two vector $(1,0)$ and  $(0,4)$. Our function maps both these vectors to  $1$ and $4$ respectively. However it maps its sum  $(1,4)$ to  $4 \ne 4 + 1$. Hence it does not follow additvity. Hence not a linear space.
+\end{proof}
+
+
+
+
+\end{document}
+
