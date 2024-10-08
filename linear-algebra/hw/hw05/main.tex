@@ -121,6 +121,166 @@ We see that the property holds again.
 
 
 
+\subsection*{13}
+\begin{proof}
+    First let us define a linear map $ S$  from $U$ to $W$ that maps all $u \in U$ to a  $w \in W$.
+
+    We need to extend this map to $T$ from  $U$ to $V$  such that all values from  $V$ can be mapped to a $w \in W$ such that $T(u) = S(u) $ is true for any $u \in U$.
+
+    Let us define a map $T$ as follows, 
+    $$ T(a_1u_1+\dots + a_ku_k + b_1v_1+\dots + b_{n - k}v_{n - k}) = T(a_1u_1) + \dots + T(a_ku_k) + T(b_1v_1) + \dots + T(b_{n - k}v_{n - k}) $$ 
+
+    such that $T(k_1v_1) = \dots = T(k_nv_{n - k}) = 0$ and $T(u) = S(u)$ for any  $u \in U$
+
+    Now we need to show that this map is a linear maps.
+
+
+    1. Addivitiy, we need to show that $T(a + b) = T(a) + T(b)$. Consider  $a \in V$ s.t. $a = a_1u_1 + \dots b_{n-k}v_{n-k}$ and $b = c_1u_1+ \dots + d_{n-k}v_{n-k}$
+
+    So $$T(a_1u_1+ \dots + b_{n-k}v_{n-k} + c_1u_1 + \dots + d_{n-k}v_{n-k}) = $$
+    $$ = T(a_1u_1) + \dots T(a_nu_n) + T(c_1u_1) + \dots + T(c_nu_n) + 0$$  as $T(kv_k) = 0$
+    
+    By definition, 
+    $$ T(a + b ) = T((a_1+c_1)u_1 + \dots + (b_{n-k} + d_{n-k})v_{n-k})  = T((a_1+c_1)u_1) + \dots + T((b_{n-k} + d_{n-k})v_{n-k}) $$ 
+    $$ = T((a_1+c_1)u_1) + \dots + T((a_n + c_n)u_n) $$ 
+    $$ = T(a_1u_1) + \dots T(a_nu_n) + T(c_1u_1) + \dots + T(c_nu_n)$$
+
+    So we have shown that it is linear.
+
+    Now we need to show its homogenous. We need to show that $T(\lambda(v)) = \lambda T(v)$
+
+    We have, 
+    $$ T(\lambda(a_1u_1+ \dots + b_{n-k}v_{n-k}))  = T(\lambda a_1u_1+ \dots + \lambda b_{n-k}v_{n-k})$$ 
+    $$ = T(\lambda a_1u_1)+ \dots + T(\lambda b_{n-k}v_{n-k}) $$ 
+
+    We know $T(\lambda v_k) = 0$ so this is equal to,  
+    $$ = T(\lambda a_1u_1) + \dots T(\lambda a_nu_n) $$ 
+    $$ = S(\lambda a_1u_1) + \dots T(\lambda a_nu_n) $$ 
+    $$ = \lambda S(a_1u_1) + \dots \lambda S(a_nu_n) $$ 
+    $$ =\lambda T(a_1u_1) + \dots + \lambda T(a_nu_n)$$ 
+    $$ = \lambda (T(a_1u_1) + \dots T(a_nu_n) + T(b_1v_1) + \dots + T(b_{n-k}v_{n-k}))$$ 
+    $$ =\lambda(T(a_1u_1+\dots + a_nu_n + b_1v_1+\dots+b_{n-k}v_{n-k})) $$ 
+    $$ = \lambda(T(a+b)) $$ 
+
+    Hence it is homogenous.
+
+    So we have construted a linear map from $V$ to $W$ that has $T(u) = S(u)$ for all $u \in U$
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+\end{proof}
+
+\section*{3B}
+\subsection*{2}
+
+\begin{proof}
+    We need to show that $(ST)^2 = 0$. Or that, 
+    $$ S(T(S(T(v)))) = 0 $$ 
+
+    We are given that, range S $\subseteq $ null T. Or that for any  $v \in $ domain S. $S(v) = u$ then  $T(u) = 0$.
+
+    We know that $T(v) = v_0$. Then we have $S(v_0)$ is a vector in null space of $T$. Which means that $T(S(v_0)) = 0$. We know that if L is a linear map then $L(0) =0$. So $S(T(S(v_0))) = S(0) =0$
+    
+
+\end{proof}
+\subsection*{9}
+\begin{proof}
+    
+We have, 
+$$ (v_1,\dots,v_n) \text{ is linearly independent}$$  
+
+This means that, 
+$$ a_1v_1+ \dots + a_nv_n = 0 $$  then $a_1= \dots = a_n = 0$
+
+Let us apply the linear map on both sides and we get, 
+$$ T(a_1v_1+ \dots + a_nv_n) = T(0) = 0 $$ 
+$$ = T(a_1v_1) + \dots + T(a_nv_n) \text{ as T is a linear map}$$
+$$ = a_1T(v_1) + \dots + a_nT(v_n) = 0 $$ 
+
+We know from before that $a_1= \dots = a_n = 0$. This means that 
+$$ T(v_1),\dots,T(v_n)$$ is linearly independent as the only way to represent $0$ is having all the coefficients as 0.
+
+
+\end{proof}
+\subsection*{10}
+\begin{proof}
+    
+First we know that dim(range T) = dim(V) = n. So it is enough to show that $T(v_1), \dots, T(v_n)$ are $n$ linearly indepenmdent vectors in range T.
+
+If $v_1,\dots,v_n$ span V then we know that $v_1,\dots,v_n$ are linearly independent. So, 
+$$ a_1v_1+\dots+a_nv_n = 0 $$  such that $a_1=\dots=a_n = 0$
+
+Applying the operator on both sides we get, 
+$$ T(a_1v_1+\dots + a_nv_n) = T(0) = 0 $$ 
+$$ = T(a_1v_1) + \dots + T(a_nv_n) = 0 $$ 
+$$ = a_1T(v_1) + \dots +a_nT(v_n) = 0 $$ 
+
+We know from above, $a_1 = \dots = a_n = 0$ which means that $T(v_1), \dots, T(v_n)$ is linearly independent set of vectors in range T such that  $dim(a_1T(v_1) + \dots + a_nT(v_n)) = dim(range(V)) = n$ which makes it span range T.
+
+\end{proof}
+
+\subsection*{12}
+
+We have null T = $\{(x_1,x_2,x_3,x_4) \in F^4 : x_1 = 5x_2, x_3 = 7x_4\}$
+
+So this means that we have two independent variables which implies that the null space has dimension of two. 
+
+So we have range of T as dimension of 2. Because dim of range is equal to the dimension of the codomain the linear map is surrjective.
+
+\subsection*{15}
+
+we know dim V = dim (null(T)) + dim (range(T))
+
+If null space and range of $T$ are finite dimensional that means that dim V is a finite number. Or that V is a finite dimentional space.
+
+
+\subsection*{27}
+Given $P(P(v)) = P(v)$ we need to shwo that $V = null P \oplus range P$.
+
+We have to show two things, $null P \cap range P = \{0\}$ and  $\forall v, v = u + v, u \in null P, v \in range P$.
+
+1. Assue  $v \in null P \cap range P$. So that means $v \in null P $ and  $v \in range P$. If $v \in null P$ then, 
+$$ P(v) = 0 $$
+If $v \in range(P)$ then $\exists w\in V, v = P(w)$. We are given that $P(P(v)) = P(v)$ and we know that $P(v) = 0$ and $P(w) = v$. So we get,  
+$$P(v) = P(P(w)) = P(w)$$
+
+Or in other words $P(v) = 0 $ so  $P(w) = v = 0$. Hence we show that their intersectino only consist of the zero vector.
+
+Now we need to show that every vecotr $v \in V$ can be written as $u + w$ such that $u \in $ null P and $v \in $ range P.
+
+Consider  any $v \in V$ such that $P(v) = v_1$. This means that $v_1 \in range P$. Also $P(v_1) = P(P(v)) = P(v)$ so $P(v_1) = P(v)$.
+
+Now consider $v_2 = v - v_1$. Appling the operator on both sides we get, 
+$$ P(v_2) = P(v - v_1) = P(v) - P(v_1) = 0 $$  which implies that $v_2 \in null P$.
+
+So now we have a $v_1 + v_2 = v - v_1 + v_1 = v$  such that $v_1 \in range P$ and $v_2 \in null P$
+
+
+\section*{3C}
+\subsection*{1}
+
+
+
+
+
+
+
+
+
+
+
+
 
 \end{document}
 

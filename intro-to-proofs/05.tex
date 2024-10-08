@@ -1,0 +1,110 @@
+\setcounter{chapter}{10}
+\chapter{Relations}
+
+\begin{theorem}
+    Relatoin from $A$ to $B$ is described by a subset of $A \times  B$ which is a graph of the relation.
+\end{theorem}
+
+\begin{theorem}[Equivalence Relation]
+    $R$ on $A$ is an equivalence relation if it is, reflexive, symmetric and transitive.
+\end{theorem}
+
+\begin{definition}[Equivalence Classes]
+    $[a]_R = \{x \in A: aRx\}$ 
+\end{definition}
+\begin{property}
+    $a \in [a]_R$  since $R$ is reflexive
+\end{property}
+
+
+\begin{theorem}
+    Let $R$ be an equivalence relatoin on $A$ then, 
+
+    1. $a Rb$
+
+    2. $[a]_R = [b]_R$
+
+    3.  $[a]_R \cap [b]_R \ne \phi$
+\end{theorem}
+\begin{definition}
+
+A partition of $A$ is a family of subsets, $(A_i)_{i\in I}$ where $A_i \subseteq A$. We have,  
+
+1. $A_i \ne \phi, \forall i \in I$
+
+2. $UA_i = A$
+
+3. If $i_1\ne i_2$ then $A{i_1} \cap A{i_2} = \phi$
+
+\end{definition}
+
+\begin{definition}
+    Let $R$ be an equivalence relation on $A$, $A/R = $ \{equivalence classes of $R$\}
+\end{definition}
+
+
+\begin{theorem}
+    Let $R$ be an equivalence relation on $A$ then $A/R = $ \{...\} form a partiiton of $A$.
+\end{theorem}
+
+\begin{proof}
+    (i) $\forall \alpha \in A/R, \exists a \in A, s.t. \alpha = [a]_R$
+    
+    $\implies a \in \alpha \implies \alpha \ne \phi$
+
+    (ii)  $\forall a \in A, a \in [a]_R \implies a \in U$
+
+    (iii) Suppose,  $\alpha, \beta \in A/R, \alpha \ne \beta$ 
+
+    $\implies \exists a,b \in A, s.t.$  $\alpha = [a]_R, \beta = [b]_R$
+    
+    So,  $\alpha \cap \beta \ne \phi$ 
+
+    Therefore, $A / R$ form a partition of $A$
+\end{proof}
+
+
+\begin{eg}
+    $A = Z, n \in N R \equiv_n $
+
+    $Z/\equiv_n = \{[0]_n, [1]_n, \dots, [n-1]_n\}$
+\end{eg}
+
+\begin{eg}
+    $A \ne \phi$ and  $R = \pho$ then  $R$ is not equivalent because of reflexivity
+
+\end{eg}
+
+\begin{theorem}
+    Let $A \ne \phi$ and $\{S_i\}_{i \in I}$ is a parittion of  $A$ then $\exists |$ equivalence relatoin $R$ on $A$ s.t. $A / R = \{S_i\}_{i \in I}$
+\end{theorem}
+\begin{proof}
+
+    Let $R = \{(a,b) \in A \times  A : \exists i \in I, s.t. a,b \in S_i\}$
+
+    (a) $\forall a \in A = U S_i \implies \exists i \in I$ s.t.  $a \in S_i$
+
+    Since,  $a,a \in S_i \implies (a,a) \in R$. So it is reflexive
+
+    (b). Suppose $(a,b) \in R \implies \exists i \in I$ s.t.$a,b \in S_i \implies b,a \in S_i \implies (b,a) \in R$
+
+    So, it is symmetric.
+
+    (c). Suppose $(a,b),(b,c) \in R \implies \exists i_1,i_2 \in I$ s.t. $a,b \in S_i, b,c \in S_2 \implies b \in S_1 \cap S_2 \implies S_1 \cap S_2 \ne \phi \implies S_1 = S_2 \implies a ,c \in Si \implies (a,c) \in R$
+
+    So we have $R$ is an equivalence relation.
+
+    (d) $\forall i \in I, S_i \ne \phi \implies \exists a \in S_i$. If  $b \in [a]_R \implies (a,b) \in R \implies \exists j \in I, s.t. a,b \in S_j$. 
+
+    $a \in Si \implies S_i \cap S_j \ne \phi \implies S_j = S_i so, $
+
+    $a,b \in S_i \implies [a]_R \subseteq S_i$
+
+    $\forall c \in S_i$ by definition of $R$, $aRc \implies c \in [a]_R \implies S_i \subseteq [a]_R$ 
+
+    Hence  $S_i = [a]_R$
+
+
+    (e) Now we show that  $A / R \subseteq \{S_i\}_{i \in I}$
+    
+\end{proof}

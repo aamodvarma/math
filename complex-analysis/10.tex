@@ -1,0 +1,125 @@
+\section{Cauchy-Goursat Theorem}
+We have $\int_c f(z) dz = \int_a^b f(z(t)) z'(t) dt$. We want to show that  $\int_C f(z) = 0$ if $C$ is a closed contour. Here, 
+$$ f(z) = u(x,y) + iv(x,y) $$  
+\begin{align*}
+   z(t) &= x(t) + iy(t)\\
+   z'(t) &= (x'(t) + iy'(t))dt
+\end{align*}
+
+
+\begin{align*}
+   \int_Cf(z)dz &= \int_a^b (u + iv)(x' + iy')dt\\
+                &= \int_a^b (ux' - vy') dt + i\int_a^b (vx' + uy')dt\\
+                &= \int_C udx - vdy + i \int_C vdx + udy\\
+\end{align*}
+$$\text{Greens theorem says that,} \int_C Pdx + Qdy = \int\int_R (Qx - Py)dA$$
+\begin{align*}
+   = \int\int_R (-vx - uy)dA + \int \int_R (ux - vy) dA
+\end{align*}
+
+We know that if $f$ is analytic then it satisfies the cauchy reimann equatoin such that, 
+$$ u_x = v_y, u_y = -v_x $$ 
+\begin{align*}
+&= \int\int_R (0)dA + \int \int_R (0) dA\\
+&= 0
+\end{align*}
+
+So for any closed curve $f$ such that $f$ is analytic and $f'$ is cont. the integral over the countour is 0.
+
+\begin{theorem}
+   If a function $f$ is analytic at all points interior to and on a simple closed contour $C$, then 
+   $$ \int_C f(z) dz = 0$$ 
+\end{theorem}
+\begin{proof}
+   We need to show that $\forall \epsilon$,  
+   $$ \bigg| \int_c f(z) dz - 0 \bigg| < \epsilon $$ 
+
+   For any region $R$ consisitng of points interior to our contour $R$ can be covered with a finite number of square san dpartial squares such that in each one there is a fixed oint $z_j$ for which, 
+   $$ \bigg | \frac{f(z) - f(z_j)}{z - z_j}  - f'(z_j) \bigg | < \delta_j(z) $$ 
+
+   We can say, 
+   $$ \int_C f(z) dz = \sum_{j= 1}^n \int_{c_j} f(z) dz $$ 
+
+   We have, 
+
+   (i). $C_i$ is defined
+
+   (ii) $\delta_j(z) = \frac{f(z) - f(z_j)}{z - z_j} - f'(z_j)$ when $z \ne z_j$
+
+   $$  \lim_{z  \to z_j} \delta_j(z) = 0$$ 
+
+   We approximate, 
+
+   $$ f(z) = f(z_j) + (z - z_j)f'(z_j) + (z - z_j)\delta_j(z)  $$ 
+
+   So, 
+      $$\int_{C_j} f(z) dz &= [ f(z_j) - z_jf'(z_j)] \int_{C_j} dz$$
+      $$ + \int_{C_j}f'(z_j) z dz + \int_{Cj} (z - z_j) \delta_j(z) dz $$ 
+
+The first and secodn term is equal to 0. So we can rewrite it as, 
+$$ = \int_{C_j} (z - z_j) \delta_j(z) dz $$ 
+
+(iii). 
+$$ \bigg | \int_C f(z) dz \bigg| \le \sum_{j = 1}^n \bigg | \int_{C_j} (z - z_j) \delta_j(z) dz \bigg | $$ 
+
+
+$$ \bigg | \int_C f(z) dz \bigg | \le \sum \bigg | \int_{C_j} f(z) dz \bigg | $$ 
+
+
+$$ f(z) = f(z_j) - z_jf'(z_j) + f'(z_j)z + (z - z_j) \delta_j(z) $$ 
+
+The integral of the first three terms cancel out so, 
+$$ \int_C f(z) = \int_C (z - z_j) \delta_j(z) dz $$ 
+
+$$ \le \sum \bigg | \int_{C_j} (z - z_j) \delta_j(z) dz \bigg | $$ 
+
+$$ | z - z_j| \le \sqrt{2} S_j $$  where $S_j$ is the length of the square. So, 
+$$ |(z - z_j) \delta_j(z) | < \sqrt{2} S_j\epsilon $$ 
+$$ \int_{C_j}|(z - z_j) S_j(z)| < \sqrt{2} S_j \epsilon 4 S_j $$ 
+$$ \int_{C_j} |(z - z_j)\delta_j(z)| < \sqrt{2} S_j \epsilon(4S_j + L_j)$$ 
+
+So, 
+$$\sum \bigg | (z - z_j) \delta_j(z) dz \bigg | < (4\sqrt{2}S^2 + \sqrt{2} S L) \epsilon $$
+   
+
+
+
+\end{proof}
+
+\section*{Simply Connnected Domain}
+
+\begin{theorem}
+   If $f$ is analytic throughout a simply connected domain $D$, then, 
+   $$ \int_C f(z) = 0 $$ for every closed contour lying in $D$
+\end{theorem}
+
+\begin{ex}
+   $C$ is in the open disk $|z| < 2$, compute, 
+   $$ \int_C \frac{\sin z}{(z^2 + 9)^{5}}dz $$ 
+\end{ex}
+
+\begin{solution}
+   
+\end{solution}
+
+\begin{ex}
+   Givne $C: |z| = 1$,  
+   $$ \int_C z e^{-z}dz =  $$ 
+\end{ex}
+
+\begin{theorem} Suppose, 
+
+   (a). $C$ is a closed contour in the counterclockwise direction
+
+   (b). $C_k(k = 1,2,\dots, n)$ are simply closed contours that are interior to  $C$ and are disjoint from each other.
+   
+   $$ \int_C f(z) dz + \sum_{k = 1}^n \int_{C_j} f(z) dz = 0 $$ 
+\end{theorem}
+\begin{proof}
+   We disect the contour such that it goes around our closed interior contours. This means that we have,
+   $$ \int_{C*} f(z) dz = 0 $$ 
+
+   We can rewrite this as  
+   $$ \int_{C + L_1 + \frac{1}{2}C_1 + L_2 + C_2 - L_2 + \frac{1}{2}C_1 - L_1} f(z) dz $$ 
+   $$ = \int_{C} f(z) + \sum_{i = 1}^n \int_{C_i} f(z) dz = 0 $$ 
+\end{proof}

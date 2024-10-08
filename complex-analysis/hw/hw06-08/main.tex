@@ -1,0 +1,325 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{MATH 4320 HW06-8}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+
+
+\subsection*{Problem 2}
+
+(a). We know $\sinh(z) =  \frac{e^{z}-e^{-z}}{2}$ and $\cosh(z) =\frac{e^{z}+e^{-z}}{2} $
+
+So, $$2\sinh(z)\cosh(z) = 2 \frac{e^{z}-e^{-z}}{2}\frac{e^{z}+e^{-z}}{2} $$
+$$ =  2\frac{e^{2z} + 1 - 1 - e^{-z}}{4}$$ 
+$$ = \frac{e^{2z} - e^{-2z}}{2}$$ 
+$$ = \sinh(2z) $$ 
+
+
+
+(b). $\sin(2z) = 2\sin(z)\cos(z)$
+
+We know that  $-i\sinh(iz) = \sin(z)$ and  $\cosh(iz) = \cos(z)$. Let $iz = z'$ then,  
+$$ \sinh(z') = \frac{-\sin(\frac{z'}{i})}{i} $$  
+$$ \cosh(z') = \cos(\frac{z'}{i}) $$  
+
+So, $$2\sinh(z')\cosh(z') = -2\frac{\sin(\frac{z'}{i})}{i}\cos(\frac{z'}{i}) $$
+
+$$= -2\sin\frac{\frac{2z'}{i}}{i}$$
+$$= \sinh(2z')$$
+
+\subsection*{Problem 6}
+(a). $|\cosh z|^2 = \sinh^2 x + \cos^2 y$
+
+This means that  
+$$ \sinh^2 x \le |\cosh z|^2 $$ 
+$$ |\sinh x| \le |\cosh z| $$ 
+
+
+Now we need to show that $|\cosh z| \le |\cosh x|$. We know that, 
+$$ |\cosh z| = |\cosh x \cos y + i \sinh x \sin y| $$ 
+$$ \cosh^2 z = \cosh^2 x \cos^2 y -  \sinh^2 x \sin^2 y $$ 
+$$ \cosh^2 z  + \sinh^2 x \sin^2 y  = \cosh^2 x \cos^2 y $$ 
+So, 
+$$ \cosh^2 y \le \cosh^2x \cos^2 y $$ 
+
+But we know that $\cos^2y \le 1$ so, 
+$$ \cos^2 y \le \cosh^2 y $$  or 
+$$ |\cosh z | \le |\cosh x| $$ 
+
+
+So we've shown that 
+$$ |\sinh x| \le |\cosh z| \le |\cosh x| $$ 
+
+
+(b). $|\sinh x| \le |\cosh z| \le \cosh x$
+
+
+\subsection*{Problem 14}
+We have $\cosh^2 x - \sinh^2 x = 1 $
+
+(a). 
+\begin{align*}
+    \cosh^2 z - \sinh^2 z &= (\cosh x \cos y + i \sinh x \sin y)^2 - (\sinh x \cos y + i \cosh x \sin y)^2\\
+                          &= (\cosh^2 x \cos^2 y - \sinh^2 x \sin^2 y + 2i\cosh x \cos y \sinh x \sin y)\\
+                          &-(\sinh^2 x \cos^2 y - \cosh^2 x \sin^2 y + 2i\cosh x \cos y \sinh x \sin y)\\
+                          &=(\cosh^2 x \cos^2 y - \sinh^2 x \sin^2 y) - (\sinh^2 x \cos^2 y - \cosh^2 x \sin^2 y)\\
+                          &=(\cos^2y (\cosh^2 x - \sinh^2 x)) + (\sin^2y (\cosh^2 x - \sinh^2 x))\\
+                          &=(\cos^2y) + (\sin^2 y)\\
+                          &=1
+\end{align*}
+
+
+(b). We have $\sinh x + \cosh x = e^x$
+
+
+\begin{align*}
+    \sinh z + \cosh z &= \sinh x \cos y + i\cosh x \sin y +  \cosh x \cos y + i\sinh x \sin y\\
+                      &= \cos y(\sinh x + \cosh x) + i \sin y(\sinh x + \cosh x)\\
+                      &= \cos y(e^x) + i\siny(e^{x})\\
+                      &= e^{x}(\cos y + i \sin y)\\
+                      &= e^{x}e^{iy} =  e^{x + iy}\\
+                      &= e^{z}
+\end{align*}
+
+
+\subsection*{Problem 2}
+
+\begin{align*}
+    \sin z &= 2\\
+    z &= \sin^{-1}(2)\\
+      &= -i \log [2i + (1- 4)^{\frac{1}{2}}]\\
+      &= -i \log [i(2 + \sqrt{3})]\\
+      &= -i (\ln [2 + \sqrt{3}] + i(\frac{\pi}{2} + 2n\pi))\\
+      &=  (\frac{\pi}{2} + 2n\pi) -i\ln [2 + \sqrt{3}]\\
+\end{align*}
+
+            
+
+\subsection*{Problem 2}
+(a). $\int_{{0}}^{{1}} {1+it}^2 \: dt $
+\begin{align*}
+&=\int_{{0}}^{{1}} {1 - t^2 + 2it} \: d{t} {}\\
+&=(t - \frac{t^{3}}{3}+it^2)]_0^1\\
+&=(1 - \frac{1}{3} + i) - (0)\\
+&=\frac{2}{3}+ i
+\end{align*}
+
+(b). $\int_{{1}}^{{2}} {\frac{1}{t}-i}^2 \: d{t} {}$
+\begin{align*}
+    &=\int_{{1}}^{{2}} {\frac{1}{t^2} - 1 - \frac{2i}{t}} \: d{t} {}\\
+    &=\frac{-1}{t} - t - 2i \ln(t)]_1^2\\
+    &=(-\frac{1}{2} - 2 - 2i\ln(2)) - (-1 -1)\\
+    &=(-\frac{1}{2}-2-i\ln(4) + 2)\\
+    &=-\frac{1}{2}-i\ln4
+\end{align*}
+
+(c). $\int_{{0}}^{{\frac{\pi}{6}}} {e^{i2t}} \: d{t}$
+
+
+\begin{align*}
+    &=\int_{{0}}^{{\frac{\pi}{6}}} {e^{2it}} \: d{t} {}\\
+    &=\frac{e^{2it}}{2i}]_0^{\frac{\pi}{6}}\\
+    &=(e^{i\frac{\pi}{3}} \frac{1}{2i}) - (\frac{1}{2i})\\
+    &=\frac{1}{2i} (e^{i\frac{\pi}{3}} - 1)\\
+    &=\frac{1}{2i}(\cos(\frac{\pi}{3}) + i\sin(\frac{\pi}{3}) - 1)\\
+    &=\frac{1}{2i}(\frac{1}{2} + i\frac{\sqrt{3}}{2} - 1)\\
+    &=\frac{1}{2i}(-\frac{1}{2} + i\frac{\sqrt{3}}{2})\\
+    &=\frac{\sqrt(3)}{4} + \frac{i}{4}
+\end{align*}
+
+(d). $\int_{{0}}^{{\infty}} {e^{-zt}} \: d{t} {}$
+\begin{align*}
+    &=\int_{{0}}^{{\infty}} {e^{-zt}} \: d{t} {}\\
+    &=\frac{e^{-zt}}{-z}]_0^{\infty}\\
+    &=(\frac{-1}{z}) (\frac{1}{e^{z\infty}} - \frac{1}{e^{0}})\\
+    &=(-\frac{1}{z})(-1)=\frac{1}{z}
+\end{align*}
+
+
+\subsection*{Problem 3}
+
+\begin{align*}
+&\int_{{0}}^{{2\pi}} {e^{im\theta}e^{-in\theta}} \: d{\theta} {}\\
+&=\int_{{0}}^{{2\pi}} {e^{\theta(im - in)}} \: d{\theta} {}\\
+&=\frac{e^{i\theta(m - n)}}{i(m - n)}]_0^{2\pi}\\
+&=\frac{1}{i(m-n)} (e^{i2\pi(m-n)} - e^{0})
+\end{align*}
+
+We know that $e^{0 + 2n\pi} = e^{0} = 1$
+
+So if $m \ne n$ we have, 
+$$ = \frac{1}{i(m-n)} (1 - 1) = 0 $$ 
+
+If $m = n$ then we have, 
+$$ \int_{{0}}^{{2\pi}} {e^{i\theta(0)}} \: d{\theta} {} $$ 
+$$ =2\pi $$ 
+
+
+\subsection*{Problem 2}
+We have $C : |z| = 2$ where $Re(z)$ is positive we have, 
+$$ z= z(\theta) = 2e^{i\theta}, \bigg ( -\frac{\pi}{2} \le \theta \le \frac{\pi}{2} \bigg) $$  and 
+$$ z = Z(y) = \sqrt{4 - y^2} + iy, (-2 \le y \le 2) $$ 
+
+We need to show that $Z(y) = z[\phi(y)]$ where, 
+$$ \phi(y) = \arctan \frac{y}{\sqrt{4 - y^2}}, \bigg( \frac{\pi}{2} < \arctan t < \frac{\pi}{2}\bigg)$$ 
+
+
+We are given that $\theta = \phi(y) = \arctan \frac{y}{\sqrt{4 - y^2}}$. We can write this as, 
+$$ \tan \theta  = \frac{y}{\sqrt{4 - y^2}}$$ 
+Using the property $sec^2 \theta - tan^2 \theta = 1$ we can say that, 
+$$ \sec \theta = \frac{2}{\sqrt{4 - y^2}} $$  or that, 
+$$ \cos \theta = \frac{\sqrt{4 - y^2}}{2}\text{ cos is always positive in this region} $$  and similarly, 
+$$ \sin \theta = \frac{y}{2} \text{ here y goes from -2 to 2 }$$ 
+
+So we have, 
+\begin{align*}
+    z &= 2e^{i\theta}\\
+      &= 2(\cos \theta + i \sin \theta)\\
+      &= 2(\frac{\sqrt{4 - y^2}}{2} + i \frac{y}{2})\\
+      &= \sqrt{4 - y^2} + iy, \bigg( -2 \le y \le 2 \bigg)
+\end{align*}
+
+We have, 
+$$ \tan \phi(y) = \frac{y}{\sqrt{4 - y^2}}  $$ 
+
+$$ \frac{d}{dy} \tan \phi(y) = \sec^2(\phi) \frac{d}{dy}\phi = \frac{\sqrt{4-y^2} + \frac{y^2}{\sqrt{4-y^2}}}{4-y^2} $$ 
+$$\phi'(y) = \frac{1}{sec^2\phi} \frac{4}{\sqrt{4 - y^2}} > 0 $$ 
+
+As both the terms are greater than zero.
+
+
+
+\subsection*{Problem 6}
+(a). The arc intersects the real axis when $y(x) = 0$. So when $0 < x \le 1$ we have, 
+$$ y(x) = x^{3}\sin(\pi / x) $$ 
+We need this to be equal to zero.
+
+So either $x^{3} = 0$ or $\sin(\pi /x) = 0$. However $x^{3} = 0 \implies x = 0$ however $x \ne 0$ so  $\sin(\pi /x) = 0$. We know that  $\sin(\theta) = 0$ when $\theta = n\pi, n = 0,1,2...$ 
+So we have $n\pi  = \frac{\pi}{x}$, 
+$$ x = \frac{\pi}{n\pi} = \frac{1}{n}$$ 
+
+When $y(x) = 0$ we knwo that $z = x$ so when $z = \frac{1}{n}$ we have $z = x + 0 = x$ where $n = 1,2,..$
+
+
+(b). For  $C$ to be a smooth arc we need to show that it is continous over the domain $[0,1]$. Or that  $y'(x)$ is defined and exists in this region.
+
+$$ y(x) = x^{3}\sin(\frac{\pi}{x}) ,  0 < x \le 1$$ 
+$$ y'(x) = 3x^2(\sin\frac{\pi}{x})  - x \cos(\frac{\pi}{x})\pi$$ 
+
+So we know that $y'(x)$ exists and is continuous and non-zero when $x \in (0,1)$ and is $0$ when $x = 1$. 
+
+
+Now we need to show continuity of $y$ at $x = 0$. Or that,  
+$$ \lim_{x \to 0} y(x) = y(0) = 0 $$ 
+
+Using the epsion-delta definition we need to show that, $\forall \epsilon, \exists  \delta$ s.t.
+$$ |x^{3}\sin(\frac{\pi}{x}) - 0| < \epsilon \text{ for some } | x - 0| < \delta $$ 
+
+We know that $|x^3 \sin(\pi /x)| \le |x^{3}|$ and we can make $x$ arbitrarily small such that $|x^{3}| < \epsilon$
+
+So if we choose  $\delta = \epsilon^{\frac{1}{3}}$ we have $|x^{3}| < \epsilon, \forall \epsilon$ which means that 
+$$  |x^{3}\sin(\pi / x) | < \epsilon, \forall \epsilon$$ 
+
+This shows that $y$ is cont. at $x=0$.
+
+Now we need to show that  $y'(x)$ exists and is equal to 0. Or that, 
+
+Similarly we can show that $\lim_{x \to 0} y'(x) = 0$  by taking $\delta = (\frac{e}{3})^{\frac{1}{2}}$ as we can bound $|3x^2(\sin \pi /x) - x \cos(\pi / x)\pi| < 3x^2$ because $x\cos(\frac{\pi}{ x}) \pi$ is always positive as $x$ tends to 0 from the positive real side.
+
+
+
+\subsection*{Problem 2}
+We need to find $\int_C f(z) dz$
+
+(a). $f(z) = z - 1$ where  $z = 1 + e^{i\theta}, (\pi \le \theta \le 2\pi)$
+
+So $dz = ie^{i\theta} d\theta$ and $f(z) dz = e^{i\theta} ie^{i\theta}d\theta$ 
+
+We get, 
+$$ \int_{{\pi}}^{{2\pi}} {ie^{2i\theta}} \: d{\theta} {} $$ 
+$$= \frac{1}{2}[e^{2i\theta}]_{\pi}^{2\pi} $$ 
+$$ = \frac{1}{2}0 = 0 $$ 
+
+
+(b). $z = x, (0 \le x \le 2)$. We have $dz = dx$ so,  
+$$ \int_0^2 x - 1 dx $$ 
+$$  = [\frac{x^2}{2} - x]_0^2 =  (0 - 0) = 0$$ 
+
+
+\subsection*{Problem 6}
+So we have $C: $ semicircle $z = e^{i\theta}$ and $f(z)$ is the principal branch $e^{i Log z}$ 
+$dz = ie^{i\theta}d\theta$ so we get, 
+$$ \int_{{0}}^{{\pi}} {ie^{i(Log (e^{i\theta}) + \theta)}} \: d{\theta} {} $$ 
+$$ = \int_{{0}}^{{\pi}} {ie^{i(i\theta + \theta)}} \: d{\theta} {} $$ 
+$$ = \int_{{0}}^{{\pi}} {ie^{\theta(i -1)}} \: d{\theta} {} $$ 
+$$ = \frac{ie^{\theta(i -1)}}{i-1}]_0^\pi$$ 
+$$ =-\frac{1}{2} (i - 1) (e^{\pi i - \pi} - 1) $$ 
+$$  = -\frac{1}{2} (1 - i) (e^{-\pi} + 1) $$ 
+
+\subsection*{Problem 11}
+(a). $z = 2e^{i\theta}$ so $dz = 2ie^{i\theta}d\theta$. Given $f(z) = \bar z$
+
+If  $z = 2e^{i\theta}$ then $\bar z = 2e^{-i\theta}$. So we have, 
+$$ \int_{{C}}^{{}} {\bar z} \: d{z} {} $$ 
+$$ = \int_{{-\frac{\pi}{2}}}^{{\frac{\pi}{2}}} {2e^{-i\theta}2ie^{i\theta}} \: d{\theta} {} $$ 
+$$ = \int_{{-\frac{\pi}{2}}}^{{\frac{\pi}{2}}} {e^{-i\theta}4ie^{i\theta}} \: d{\theta} {} $$ 
+$$ =[ 2i\theta]_{-\frac{\pi}{2}}^{\frac{\pi}{2}} $$ 
+$$ = 4\pi i $$ 
+
+(b). $z = \sqrt{4 - y^2} + iy$ So $\bar z = \sqrt{4 - y^2} - iy$ and 
+$$ dz = (-\frac{y}{\sqrt{4-y^2}} + i) dy $$ 
+
+So we get, 
+$$ \int_{{-2}}^{{2}} {(\sqrt{4 - y^2} - iy)(-\frac{y}{\sqrt{4 - y^2}} +i)} \: d{y} {} $$ 
+$$ \int_{{-2}}^{{2}} {-y + i\sqrt{4- y^2} + \frac{iy^2}{\sqrt{4 - y^2}} + y} \: d{y} {} $$ 
+$$ \int_{{-2}}^{{2}} { i\sqrt{4- y^2} + \frac{iy^2}{\sqrt{4 - y^2}} } \: d{y} {} $$ 
+$$ \int_{{-2}}^{{2}} { \frac{4i}{\sqrt{4 - y^2}} } \: d{y} {} $$ 
+
+Taking $y = 2\sin(\theta)$ and parameterizing it from $-\frac{\pi}{2} \le \theta \le \frac{\pi}{2} $ and taking $dy = 2\cos(\theta)$ we have, 
+$$ \int_{{-\frac{\pi}{2}}}^{{\frac{\pi}{2}}} {\frac{4}{2\cos\theta}} \: d{\theta} {} $$ 
+$$ \int_{{-\frac{\pi}{2}}}^{{\frac{\pi}{2}}} {\frac{4i}{2\cos\theta} 2\cos \theta } \: d{\theta} {} $$ 
+$$ \int_{{-\frac{\pi}{2}}}^{{\frac{\pi}{2}}} {4i} \: d{\theta} {} $$ 
+$$ = 4\pi i $$ 
+
+
+\subsection*{Problem 1}
+(a). We know that, 
+$$ \bigg | \int_C \frac{z + 4}{z^{3} - 1} dz\bigg | \le \int_C \bigg | \frac{z + 4}{z^{3} - 1}\bigg | dz \le \int_C | M | dz$$ 
+Where $M$ bounds our function.
+
+We know that $ |z + 4| \le |z| + |4| = 6$ and  $||z^{3}| - |1|| \le |z^{3} - 1| < |z^{3}| + |1| $. So $7 \le |z^{3} - 1| \le 9$. So we can write, 
+$$ \bigg | \frac{z + 4}{z^{3} - 1} \bigg| \le \frac{6}{7} $$ 
+
+Which means that the integral is bounded by, 
+$$ \int_C |M| = \int_C \bigg|\frac{6}{7}\bigg|  = \frac{6\pi}{7}$$ 
+
+
+\subsection*{Problem 4}
+
+$$ \bigg | \int_C \frac{2z^2 - 1}{z^{4} + 5z^2 + 4} dz\bigg | \le \int_C \bigg | \frac{2z^2 - 1}{z^{4} + 5z^2 + 4}\bigg | dz \le \int_C | M | dz$$ 
+
+Where $M$ is the upper bouned for our function.
+
+First we know that $|2z^2 - 1|\le  |2z^2| + |1| = 2R^2 + 1$ and that 
+$$ ||z^{4} + 5z^2| - |4||  \le z^{4} + 5z^2 + 4$$ 
+$$  |||z^{4}| - |5z^2|| - |4|| \le z^{4} + 5z^2  + 4$$ 
+$$ R^{4} - 5^{R^2} - 4 \le z^{4}+ 5z^2 + 4 $$ 
+$$ (R^2 - 1)(R^2 - 4) \le z^{4}+ 5z^2 + 4 $$ 
+
+So we have $|M| = \frac{2R^2 + 1}{(R^2 - 1)(R^2 - 4)}$ 
+
+And as $\int_C dz = \pi R$ we can upperbound our integerarl by, 
+$$ \frac{\pi R (2R^2 + 1)}{(R^2 - 1)(R^2 - 4)} $$ 
+
+
+$$  $$ 
+
+
+
+
+
+\end{document}
+
+
+

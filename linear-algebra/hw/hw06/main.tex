@@ -1,0 +1,66 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Linear Alebgra HW06}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+
+\section*{3C}
+
+\subsection*{6}
+We know that $T(v_1) = A_{1,1}w_1 + \dots + A_{n,1}w_m$. We need to show there exists a basis of $W$ such that all values except for possibly  $A_{1,1}$ is zero.
+
+Consider the case when $T(v_1) = 0$ then we have $A_{1,1} = \dots = A_{n,1} = 0$ for any arbitrary basis of $W$.
+
+If $T(v_1) \ne 0$ then consider all of $A_{2,1},\dots,A{n,1} = 0$ except for $A_{1,1}$ (the element in the first column and row). In this case consdier, 
+$$ T(v_1) = w_1 $$ where $w_1$ is an arbitrary vector in $W$. Now we can extend $w_1$ to a basis of $W$.
+
+So in both cases we have a basis of $W$, $w_1,\dots,w_n$ such that only possibly the first row first column element is zero.
+
+
+\subsection*{10}
+Let $A = \begin{bmatrix}
+1 & 0\\
+0 & 0 
+\end{bmatrix}$
+and let 
+$B = \begin{bmatrix}
+0 & 1\\
+0 & 0 
+\end{bmatrix}$
+
+
+We get, 
+$$ AB = \begin{bmatrix}
+    0&1\\
+0&0\end{bmatrix}$$
+and 
+$$ BA = \begin{bmatrix}
+    0&0\\
+0&0\end{bmatrix}$$ 
+
+
+So $AB \ne BA$
+\subsection*{8}
+
+\begin{proof}
+    We need to show $(AB)_{j,.} = A_{j,.}B$
+
+    We know that,
+    $$ (AB)_{j,k} = A_{j,.}B_{.,k} $$ 
+
+    So let $j$ be fixed then that means for each value in a given row we multiply $A_{j,.}$ with the curresponding column of $B$. Which means that, 
+    $$ (AB)_{j,k} = A_{j,.}B_{.,k} $$ becuse the curresponding columns of $B$ gives us $B$ itself.
+\end{proof}
+
+
+
+
+
+
+
+
+\end{document}
+
