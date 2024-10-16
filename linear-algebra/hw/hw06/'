@@ -1,0 +1,89 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Linear Alebgra HW06}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+
+\section*{3C}
+
+
+\subsection*{6}
+
+\begin{proof}
+    Consider a case where  range T =  W. In this case let $w_1,\dots,w_m$ be a basis for W which also would be a basis for range  $T$, we can find $v_1,\dots,v_n$ such that, 
+    $$ Tv_1 = w_1,\dots,Tv_m=w_m,\dots,Tv_n = 0 $$ 
+
+    So with respect to the basis $w_1,\dots,w_m$ in the first column we can have all zeroes except for the first row first element.
+
+    Now if dim range T < dim W. We can find a $v_1$ such that $T(v_1) = 0$. Now the matrix for this will have all in the first column as zero (as none of them dependent on $w_1$)
+\end{proof}
+
+
+\subsection*{6}
+We know that $T(v_1) = A_{1,1}w_1 + \dots + A_{n,1}w_m$. We need to show there exists a basis of $W$ such that all values except for possibly  $A_{1,1}$ is zero.
+
+Consider the case when $T(v_1) = 0$ then we have $A_{1,1} = \dots = A_{n,1} = 0$ for any arbitrary basis of $W$.
+
+If $T(v_1) \ne 0$ then consider all of $A_{2,1},\dots,A{n,1} = 0$ except for $A_{1,1}$ (the element in the first column and row). In this case consdier, 
+$$ T(v_1) = w_1 $$ where $w_1$ is an arbitrary vector in $W$. Now we can extend $w_1$ to a basis of $W$.
+
+So in both cases we have a basis of $W$, $w_1,\dots,w_n$ such that only possibly the first row first column element is zero.
+
+
+\subsection*{10}
+Let $A = \begin{bmatrix}
+1 & 0\\
+0 & 0 
+\end{bmatrix}$
+and let 
+$B = \begin{bmatrix}
+0 & 1\\
+0 & 0 
+\end{bmatrix}$
+
+
+We get, 
+$$ AB = \begin{bmatrix}
+    0&1\\
+0&0\end{bmatrix}$$
+and 
+$$ BA = \begin{bmatrix}
+    0&0\\
+0&0\end{bmatrix}$$ 
+
+
+So $AB \ne BA$
+\subsection*{8}
+
+\begin{proof}
+    We need to show $(AB)_{j,.} = A_{j,.}B$
+
+    We have, 
+    \begin{align*}
+        (AB)_{j,.}  &= (\sum_{k=1}^n A_{j,k} B_{k,1}, \dots, \sum_{k=1}^n A_{j,k} B_{k,p}, )\\
+                    &= (A_{j,1},\dots,A_{j,n})B\\
+                    &= A_{j,.}B
+    \end{align*}
+
+\end{proof}
+
+
+\subsection*{13}
+We know that 
+$$ (AA)_{j,k} = \sum_{r = 1}^n A_{j,r} B_{r,k} $$ 
+
+
+
+$$ (A(AA))_{j,k} = \sum_{r = 1}^n A_{j,r} (AA)_{r,k}$$ 
+
+
+
+
+
+
+
+\end{document}
+

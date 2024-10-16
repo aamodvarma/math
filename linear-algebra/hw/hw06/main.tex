@@ -9,6 +9,19 @@
 
 \section*{3C}
 
+
+\subsection*{6}
+
+\begin{proof}
+    Consider a case where  range T =  W. In this case let $w_1,\dots,w_m$ be a basis for W which also would be a basis for range  $T$, we can find $v_1,\dots,v_n$ such that, 
+    $$ Tv_1 = w_1,\dots,Tv_m=w_m,\dots,Tv_n = 0 $$ 
+
+    So with respect to the basis $w_1,\dots,w_m$ in the first column we can have all zeroes except for the first row first element.
+
+    Now if dim range T < dim W. We can find a $v_1$ such that $T(v_1) = 0$. Now the matrix for this will have all in the first column as zero (as none of them dependent on $w_1$)
+\end{proof}
+
+
 \subsection*{6}
 We know that $T(v_1) = A_{1,1}w_1 + \dots + A_{n,1}w_m$. We need to show there exists a basis of $W$ such that all values except for possibly  $A_{1,1}$ is zero.
 
@@ -48,16 +61,166 @@ So $AB \ne BA$
 \begin{proof}
     We need to show $(AB)_{j,.} = A_{j,.}B$
 
-    We know that,
-    $$ (AB)_{j,k} = A_{j,.}B_{.,k} $$ 
+    We have, 
+    \begin{align*}
+        (AB)_{j,.}  &= (\sum_{k=1}^n A_{j,k} B_{k,1}, \dots, \sum_{k=1}^n A_{j,k} B_{k,p}, )\\
+                    &= (A_{j,1},\dots,A_{j,n})B\\
+                    &= A_{j,.}B
+    \end{align*}
 
-    So let $j$ be fixed then that means for each value in a given row we multiply $A_{j,.}$ with the curresponding column of $B$. Which means that, 
-    $$ (AB)_{j,k} = A_{j,.}B_{.,k} $$ becuse the curresponding columns of $B$ gives us $B$ itself.
 \end{proof}
 
 
+\subsection*{13}
+We know that 
+$$ (AA)_{j,k} = \sum_{r = 1}^n A_{j,r} A_{r,k} $$ 
+
+$$ (A(AA))_{j,k} = \sum_{r = 1}^n A_{j,r} (AA)_{r,k}$$ 
+
+$$ (A^{3})_{j,k} = \sum_{p = 1}^n A_{j,r}( \sum_{x = 1}^n A_{r,x} A_{x,k}  )$$ 
+
+$$ (A^{3})_{j,k} = \sum_{p = 1}^n \sum_{x = 1}^n A_{j,r} A_{r,x} A_{x,k}$$ 
 
 
+
+
+
+
+\subsection*{16}
+\begin{proof}
+    
+
+$\implies$ 
+
+Take $A$ with rank $1$ then we can decompose it to matirces $R$ and $C$ s.t, 
+$$ R = (m \times  1), C = (1 \times  n) $$ 
+
+Let $R = (c_1,\dots,c_m)^T$ and $C = (d_1,\dots,d_n)$
+
+So we have $$A_{jk} = (RC)_{jk} = \sum_{n = 1}^1 R_{m,1}C_{1,n}$$
+$$ = c_jd_k $$ 
+
+$\impliedby$
+
+If $A_{j,k} = c_jd_k$ then we can write  $A$ in terms of two matrices $R$  times $C$ such that R = $(c_1,\dots,c_m)^T$ and $C = (d_1,\dots,d_m)$
+
+\end{proof}
+
+
+\subsection*{3}
+\begin{proof}
+    
+We need to show, $a \iff b$
+
+$a \implies b$.
+
+If  $T$ is invertible we know that it is injective and surjective. If $T$ is surjective then we know that null T = 0. So we have, 
+$$ dim range(T) = dim (V) $$ 
+
+To show that $T(v_1),\dots,T(v_n)$ is a basis of V we need to show that it is linearly independent and spans $V$. 
+
+To show linear independence we need to show that $c_1,\dots,c_n = 0$ if,
+$$ c_1(Tv_1) + \dots + c_nT(v_n) = 0 $$ 
+
+This is equal to, 
+$$ T(c_1v_1 + \dots + c_nv_n) = 0 $$
+
+We know that the null T is \{0\} so we have, 
+$$ c_1v_1+ \dots + c_nv_n = 0 $$ 
+
+We know that $v_1,\dots,v_n$ is a basis for $V$. So it is linearly independent which means that, $c_1,\dots,c_n = 0$. So we have $T(v_1),\dots,T(v_n)$ is a linearly independent set.
+
+The lenght of our list is the same as the length of the basis. Which means that we have linearly independent set of vectors are also a basis for $V$.
+
+
+Another way of showing spanning is taking any $v \in V$ we can write it as $a_1v_1,\dots,a_nv_n = v$. We can applying $T$ on both sides and show that $ v$ can be represnted as a linear combination of $T(v_k)$
+
+
+$a \impliedby b$
+
+If $Tv_1,\dots,Tv_n$ is a basis for $V$. 
+
+We need to show that $T$ is injective and surjective. First consider an arbitary $v \in V$ such that $T(v) = 0$. We know that  $v = a_1v_1+\dots+a_nv_n$ where $v_1,\dots,v_n$ is a basis for $V$. So we get, 
+$$ T(a_1v_1+\dots+a_nv_n) = 0 $$ 
+$$ a_1T(v_1) + \dots + a_nT(v_n) = 0 $$ 
+
+We know that $Tv_1,\dots,Tv_n$ is a basis which means that its linearly independent. So w have, $a_1,\dots,a_n = 0$. But if $a_1,\dots,a_n$ = 0 then we have $v = a_1v_1+\dots+a_nv_n = 0$. Which means that for any $T(v) = 0$ means that $v = 0$. This means that it is injective.
+
+We already know that if we have $V \rightarrow V$ such that both the dimensiosn are same then injective  means that its surjective which means that it is invertible.
+
+We also can show that any $w \in V$ can be written as $T(v) = w$ which m eans that it is surjective.
+
+Take a  $w \in V$ so $Tw = T(a_1v_1+ \dots + a_nv_n) = a_1T(v_1) + \dots + a_nT(v_n)$. We know that $T(v_1),\dots,T(v_n)$ is a basis which  means that any vector $v \in V$ can be repreesnted as  alinear combination of  $T(v_1),\dots,T(v_n)$. So we showed that any vector $v \in V$ can be represented by a $w \in V$ such that $T(w) = v$ which means that its surjective.
+
+
+\end{proof}
+ 
+\subsection*{5}
+\begin{proof}
+    $\impliedby$
+We know that $T$ is invertible so its injective and surjective. We know for every  $u \in U$, $T(u) = S(u)$. 
+
+We need to show $S$ is injective. First consider $u_1,u_2$ so we need to showm $S(u_1) = S(u_2) \implies u_1 = u_2$. 
+
+If $Su_1 = Su_2$ then we can say $T(u_1) = T(u_2)$. However we nkow that T is injective so this means that $u_1 = u_2$. Hence we show that $S$ has to be injective.
+
+$\implies$
+
+We have $S$ is injective and maps a subspace of $V$, $U$ onto $V$. We need to show that there exists a linear map $T$ from $V$ to itself such that it is an invertible linear map.
+
+First consider the basis of $U$ as $u_1,\dots,u_k$. We can extend the basis from this to, 
+$$ u_1,\dots, u_k, v_{k+1},\dots,v_n $$ 
+
+
+
+Let us define our lienar map T such that $T(u) = S(u)$ if  $u \in U$ or in other words if $u =a_1u_1+ \dots + a_ku_k$. And define $T(v) = v$ if $v \in V - U$
+
+
+We need to show $T(v'_1) = T(v'_2) \implies v'_1 =v'_2$. Let $v'_1 = a_1u_1+ \dots a_nv_n$ and $v'_2 = b_1u_1+ \dots + b_nv_n$.
+So we have, 
+\begin{align*}
+    T(v'_1) &= T(v'_2)\\
+    T(a_1u_1+ \dots a_nv_n) &= T(b_1u_1+ \dots b_nv_n)\\
+    T(a_1u_{1})+ \dots+ a_nT(v_n) &= T(b_1v_1)+ \dots +b_nT(v_n)\\
+    (a_1- b_1)T(u_{1})+ \dots+ (a_n - b_n)T(v_n) &= 0\\
+\end{align*}
+
+
+TO DO LATER 
+\subsection*{9}
+If $T$ is surjective then there exists a map $S:W \rightarrow V$, TS is the identity map. Or that $T(S(v)) = v$ for  $v \in V$.
+
+Now let  $U = range(S)$ we need to show that  $T_{|U}$ is injective and surjective.
+
+1. Injective.
+
+Consider a $u \in $ null $T|_U$. So $$T_U(u) = 0$$ $$ T_U(S(w)) = w = 0$$
+
+But 
+$$ S(w) = u $$  and $w = 0$ 
+
+which means that $u = 0$.
+
+2. Surjective
+
+For any $w \in W$ we have $v = S(w) \in U$ such that $T(S(w)) = w \in W$ .
+
+So we show that  $\exist v = S(w)$ for any $w \in W$ 
+
+Hence we show that it is isomorphic
+
+\end{proof}
+
+\subsection*{11}
+$\implies$
+
+We have $ST$ is invertible. Lets assume the contrary that either $S$ is not invertible or $T$ is not invertible.
+
+1. S is not invertible. Means $S$ is not surjective. We know that  $ST$ is invertibel which means that $\forall v \in V$ $\exists v'$ s.t. $STv' = v$. Now let  $Tv' = v''$. This means that $\forall v \in V, \exists v'' \in V $  s.t. $S(v'') = v$. But this makes $S$ surjective which contradicts our assumption.
+
+2. T is not invertible means that $T$ is not injective or surjective. We know that $ST$ is injective and surjective. If $T$ is not injective then $\exists v\in V$ s.t. $T(v) = 0$. Now this means  $S(T(v)) = S(0) = 0$ or that  $STv = 0$ for some $v \ne 0$. But this makes ST not injective and hence not invertible which contradicts our assumption.  
+
+So by proof by contradiction our assumption ust be wrong and both S and T are invertible.
 
 
 

@@ -1,0 +1,104 @@
+\section{Multiply Connected Domain}
+
+\begin{corollary}
+   If $C_1, C_2$ are positively oriented simply closed contours where $C_1$ is inteiror to $C_2$. If $f$ is analytic in the closed region containing $C_1,C_2$ and all the points in between then, 
+   $$ \int_(C_1) f(z) \:dz = \int_(C_2) f(z) \:dz $$ 
+\end{corollary}
+
+
+\begin{proof}
+   We construct a new contour between $C_1$ and $C_2$ where, 
+   $$ \int_{C^*} f(z) \:dz = \int_{C_2 - C_1}f(z) \:dz = 0 $$  So, 
+   $$ \int_{C_2} f(z) \:dz - \int_{C_1}f(z) \:dz = 0 $$ 
+\end{proof}
+
+
+
+\begin{eg}
+   $C$ is any positively oriented simple closed contour which is surrounding the origin. 
+\end{eg}
+
+The function $f(z) = \frac{1}{z}$ has a singularity at the origin. So $f$ is analytic upto zero. Because of the principal of deformation of path we can deform any contour surrounding the singularity to a unit circle around with fixed radius preserving the integral. So we have, 
+$$ \int_0^{2\pi} \frac{1}{e^{i\theta}}i e^{i\theta}d\theta $$ 
+
+$$= 2\pi i $$ 
+
+
+\begin{theorem}[Cauchy Integral Formula]
+   If $f$ is analytic everywhere inside and on the simple closed contour $C$ (positively oriented). If $z_0$ is interior to $Z$ then, 
+   $$ f(z_0) = \frac{1}{2\pi i} \int_C \frac{f(z)}{z - z_0}\:dz$$ 
+\end{theorem}
+\begin{remark}
+   If our integral has a singularity we can easily compute it using the "function" outside of it that doesn't have the singularity.
+\end{remark}
+
+\begin{proof}
+   We can rewrite the integral as, 
+   $$\int_C \frac{f(z)}{z - z_0}\:dz = \int_{C_p} \frac{f(z)}{z - z_0}\:dz$$ where $C_p$ is the unit circle constructed around $z_0$ by deforming our contour.
+
+   \begin{align*}
+   &=\int_{C_p} \frac{f(z) - f(z_0)}{z - z_0} + \frac{f(z_0)}{z - z_0}\:dz\\
+   &=\int_{C_p} \frac{f(z) - f(z_0)}{z - z_0} + f(z_0) \int_{C_p}\frac{1}{z - z_0}\:dz\\
+   &=\int_{C_p} \frac{f(z) - f(z_0)}{z - z_0} + f(z_0)2\pi i \: \:dz
+   \end{align*}
+   Because $f$ is analytic as $f$ is cont. around $z_0$ so, $\forall \epsilon, \exists \delta$ s.t.,  
+   $$ |f (z) - f(z_0)| < \epsilon \text{ when } |z - z_0| < \delta $$ 
+
+   So, 
+   $$ \bigg | \int_{C_p} \frac{f(z) - f(z_0)}{z - z_0} \:dz \bigg| < \frac{\epsilon}{\rho} 2 \pi \rho = 2\pi \epsilon$$ 
+
+\end{proof}
+
+
+\begin{theorem}
+   Let $f$ be analytic inside and on a simply closed contour $C$ taken in a positive direction and $z_0$ inside $C$ we have, 
+   $$ f^{n} (z_0) = \frac{n!}{2\pi i}\int_C \frac{f(z)}{z - z_0}^{n+1}\:dz $$ 
+\end{theorem}
+
+\begin{proof}
+We need to show that $f'(z_0) = \frac{1}{2\pi i} \int_C \frac{f(z)}{(z - z_0)^2} \: dz$. Using the cauchy integral formula for each term in the numerator we have, 
+\begin{align*}
+   lim_{\Delta z \rightarrow 0} \frac{f(z + \Delta z) - f(z)}{\Delta z}  &= \frac{1}{\Delta z} \frac{1}{2 \pi i} \int_C \frac{f(s)}{s - (z + \Delta z)} - \frac{f(s)}{s - z}\\
+    &=\frac{1}{\Delta z} \frac{1}{2 \pi i} \int_C f(s) \frac{s - z - (s - (z + \Delta z))}{(s - (z + \Delta z)(s - z)} \: dz\\
+    &=\frac{1}{2\pi i}\int_C \frac{f(s)}{(s - (z + \Delta z))(s - z)} \: dz\\
+    &=\frac{1}{2\pi i} \int_C f(s) \bigg ( \frac{1}{(s-z)^2} + \frac{\Delta z}{(s - z - \Delta z)(s-z)^2} \bigg ) \: dz\\
+\end{align*}
+Now we have, 
+$$ \lim_{\Delta z \to 0} \frac{f(z + \Delta z) - f(z)}{\Delta z} = \frac{1}{2 \pi i}\int_C f(s) \frac{1}{(s-z)^2} \: dz $$ 
+
+
+
+
+   
+\end{proof}
+
+
+\begin{ex}
+   $C: |z| = 1, \theta : 0 \rightarrow 2 \pi$
+   Find,
+   $$ \int_C \frac{\cos (z) }{(z^2 + 9)z}\: dz $$ 
+\end{ex}
+\begin{sol}
+   $=\frac{1}{9}2\pi i$
+\end{sol}
+\begin{ex}
+   $$ \int_C \frac{e^{2z}}{z^{4}} \: dz $$ 
+\end{ex}
+\begin{ex}
+   $$ \int_C \frac{dz}{z^{n + 1}} $$ 
+\end{ex}
+\begin{ex}
+   $$ \frac{z}{2z + 1}\: dz$$
+\end{ex}
+   $= -\pi i$
+\end{solution}
+\begin{ex}
+   $$ \frac{e^{-z}}{(z - 5)(z+ 2)}$$
+$=0$ because the doesn't exist a singularity within the conutour hence the integral is 0 as the functino is analytic within.
+\end{ex}
+
+
+
+
+
+

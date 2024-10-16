@@ -295,6 +295,19 @@ Which means that the integral is bounded by,
 $$ \int_C |M| = \int_C \bigg|\frac{6}{7}\bigg|  = \frac{6\pi}{7}$$ 
 
 
+
+(b). We know that, 
+$$ \bigg | \int \frac{dz}{z^2 - 1} \bigg | \le  \int\bigg | \frac{1}{z^2 - 1} \bigg |dz \le \int_C |M| dz$$ 
+
+Where $M$ bounds our function.
+
+We know that $ ||z^2| - |1||\le z^2 - 1$ so, $4 - 1 \le z^2 - 1$ which means that 
+$$ \frac{1}{z^2 - 1} \le \frac{1}{3} $$ 
+
+Where $|M| = \frac{1}{3}$ so we have, our integral is bounded above by, 
+$$ \int_C \bigg |\frac{1}{3} \bigg | = \frac{\pi}{3} $$
+
+
 \subsection*{Problem 4}
 
 $$ \bigg | \int_C \frac{2z^2 - 1}{z^{4} + 5z^2 + 4} dz\bigg | \le \int_C \bigg | \frac{2z^2 - 1}{z^{4} + 5z^2 + 4}\bigg | dz \le \int_C | M | dz$$ 
@@ -313,11 +326,55 @@ And as $\int_C dz = \pi R$ we can upperbound our integerarl by,
 $$ \frac{\pi R (2R^2 + 1)}{(R^2 - 1)(R^2 - 4)} $$ 
 
 
-$$  $$ 
+\subsection*{Problem 4}
+Our contour is any integral that extends from $z = -3$ to $z = 3$. Which  means that $r = 3$ and $\pi \le \theta \le 2\pi$
+We have 
+\begin{align*}
+    z &= 3e^{i\theta}\\
+    f(z) &= z^{\frac{1}{2}} = \sqrt{3} e^{i\frac{\theta}{2}}\\
+    dz &= 3ie^{i\theta}
+\end{align*}
+
+So, 
+\begin{align*}
+&\int_{\pi}^{2\pi} \frac{3}{2}\sqrt{3}i e^{i\frac{\theta}{2}}e^{i\theta} \: d\theta\\
+&= 2 \sqrt{3} e^{i\frac{3\theta}{2}}]_{\pi}^{2\pi}\\
+&= 2\sqrt{3} ((-1 + 0 -)( 0 - i))\\
+&= 2\sqrt{3}(-1 + i)
+\end{align*}
+
+If we had gone around $C_2-C_1$ our bounds would have been $0$ to $2\pi$ which would result in a value of $-4\sqrt{3}$
 
 
 
+\subsection*{Problem 2}
+(a). All we have to show is that $f(z)$ is analytic throughotut the region between $C_1$ and $C_2$. 
 
+We know that $\frac{1}{3z^2+1}$ is analytic except at $z = i\frac{1}{\sqrt{3}}$. We know that this lies outside the region (inside the square). So now using the priciple of deformation we know that the integral is same for $C$ and $C_2$.
+
+
+(b). We have $\sin(\frac{z}{2}) = 0$ so $\frac{z}{2} = n\pi$ or $z = 2n\pi$. For $n = 0$ it lies outside our region. If $n > 0, z$ lies outside our contour as well. So we are able to deform $C_2$ to $C_1$. 
+
+(c). We have singularity only when  $z = 0$ which is outisde our region. Hence we can deform our regino and preserve the integral.
+
+\subsection*{Problem 5}
+We are given that a function $f$ is entire. We see that the contour $C_3$ and $C_1$ are positive oriented and define a simple closed curve. According to Cauchy-Goursat theorem we know that, 
+$$ \int_{C_2+C_3}f(z) =0 $$  if $f$ is entire.
+
+So, $$\int_{C_2} f(z) dz+ \int_{C_3} f(z) dz= 0$$
+$$\int_{C_2} f(z) dz =-  \int_{C_3} f(z) dz$$
+
+Similarly we see that $C_1$ is negatively oriented while $C_3$ is positive oriented. So the contour $C_3 - C_2$ is a closed contour positive ortiented. Which means that, 
+
+$$ \int_{C_3-C_2}f(z) =0 $$
+$$\int_{C_3} f(z) dz- \int_{C_1} f(z) dz= 0$$
+$$\int_{C_3} f(z) dz = \int_{C_1} f(z) dz$$
+
+
+So adding both sides we get, 
+$$ \int_{C_1} f(z) dz + \int_{C_2} f(z) dz= 0 $$ or, 
+$$ \int_{C_1 + C_2} f(z) dz  = 0 $$
+$$ \int_{C} f(z) dz  = 0 $$
 
 \end{document}
 

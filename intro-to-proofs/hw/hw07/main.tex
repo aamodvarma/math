@@ -1,0 +1,257 @@
+\documentclass[a4paper]{report}
+\usepackage{multirow}
+\input{preamble.tex}
+\title{Intro to Proofs: HW07}
+\author{Aamod Varma}
+\graphicspath{ {./} }
+\begin{document}
+\maketitle
+\date{}
+\subsection*{11.5.3}
+\begin{tabular}{ |c|c|c|c|c| } 
+\hline
+\cdot & [0] & [1] & [2] & [3]\\
+\hline
+\multirow{1}{1em}{[0]} & [0] & [0]& [0]& [0]\\ 
+\hline
+\hline
+\multirow{1}{1em}{[1]} & [0] & [1]& [2]& [3]\\ 
+\hline
+\hline
+\multirow{1}{1em}{[2]} & [0] & [2]& [0]& [2]\\ 
+\hline
+\hline
+\multirow{1}{1em}{[3]} & [0] & [3]& [2]& [1]\\ 
+\hline
+\end{tabular}
+\vspace{5mm}
+
+
+\begin{tabular}{ |c|c|c|c|c| } 
+\hline
++ & [0] & [1] & [2] & [3]\\
+\hline
+\multirow{1}{1em}{[0]} & [0] & [1]& [2]& [3]\\ 
+\hline
+\hline
+\multirow{1}{1em}{[1]} & [1] & [2]& [3]& [0]\\ 
+\hline
+\hline
+\multirow{1}{1em}{[2]} & [2] & [3]& [0]& [1]\\ 
+\hline
+\hline
+\multirow{1}{1em}{[3]} & [3] & [0]& [1]& [2]\\ 
+\hline
+\end{tabular}
+\subsection*{11.5.6}
+For $\Z_6$ this is not true as we can take $[a] = [2] \ne [0]$ and $[b] = [3] \ne [0]$ and we have,  
+$$ [a] \cdot [b] = [2] \cdot [3] = [6] = [0] $$
+
+However for $\Z_7$ we cannot find equivalence classes $[a],[b]$ such that one of them is not $[0]$. Becuase for $\Z_7$ either a is a multiple of 7 or it is not. If,
+
+1. a is a multiple of 7 then  $[a] = [0]$ by definition.
+
+2. a is not a multiple of 7 then $a$ and 7 are coprime which means that  if $[a][b] = [a][c]$ then $[b]=[c]$. Here $[c] = 0$ which means that $[a][b] = [0] = [a][c]$. We have  $a$ is coprime with $n = 7$ which means that $[b] = [c] = [0]$.
+
+Hence either  $[a] = 0$ or $[b] = 0$
+
+
+\subsection*{11.5.7}
+\begin{enumerate}
+\item 
+    $[8] + [8] = [16] = [7]$
+\item $[24] + [11] = [35] = [8]$
+
+\item $[21] \cdot [15] = [315] = [0]$
+
+\item $[8][8] = [64] = [1]$
+
+\end{enumerate}
+
+
+\subsection*{12.1.1}
+Domain is $A =\{0,1,2,3,4\}$\\
+Range is $\{2,3,4\}$\\
+ $f(2) = 4$ and $f(1) = 3$
+
+\subsection*{12.1.4}
+\begin{align*}
+    f_1 = \{(a,0),(b,0),(c,0)\}\\
+    f_2 = \{(a,0),(b,0),(c,1)\}\\
+    f_3 = \{(a,0),(b,1),(c,0)\}\\
+    f_4 = \{(a,0),(b,1),(c,1)\}\\
+    f_5 = \{(a,1),(b,0),(c,0)\}\\
+    f_6 = \{(a,1),(b,0),(c,1)\}\\
+    f_7 = \{(a,1),(b,1),(c,0)\}\\
+    f_8 = \{(a,1),(b,1),(c,1)\}
+\end{align*}
+ 
+\subsection*{12.1.5}
+A relation that is not a functino is, 
+$$ R = \{(a,d),(a,e),(b,d),(c,d),(d,d)\} $$ 
+
+\subsection*{12.1.8}
+First we know that the set is a relation because it is a subset of $\Z \cross \Z$ by definition.
+
+Now we need to show that $\forall x \in \Z$ there exists only one ordered pair of the form  $(x,y) \in f$.
+
+We know all the pairs in our set are such that $x + 3y = 4$. So for any x,  
+$$ 3y = 4 - x $$ 
+$$ y = \frac{4-x}{3} $$
+
+However we see that for $y \in \Z$ we need $x \equiv 4$ (mod 3). However we know that this isn't true  $\forall x \in \Z$. For instance take  $x = 2$ then  there isn't a $y \in Z$ such that that $(x,y) \in f$.
+
+Hence because we can't assign a  $y \in \Z$ for all $x \in \Z$ f is not a funciton.
+
+
+
+\subsection*{12.2.5}
+1. For injectivity we need to shwo that for any $y \in \Z$ if $f(x) =f(x')$ that means that $x = x'$.
+
+Consider  $f(n) = 2n + 1$ and  $f(n') = 2n' + 1$. We have, 
+\begin{align*}
+    f(n) = f(n')\\
+    2n + 1 = 2n' + 1\\
+    2n = 2n'\\
+    n = n'
+\end{align*}
+which means that it is injective.
+
+
+2. For surjective we need to show that for all $y \in \Z$ there exists an $x \in \Z$ such that $f(x) = y$.
+
+Consider an arbitrary  $y \in Z$ we have 
+\begin{align*}
+   y = 2n + 1\\
+   y - 1 = 2n\\
+   n = \frac{y - 1}{2}
+\end{align*}
+
+We see that for  $n \in \Z$ we need $2 | y-1$. However this isn't true  $\forall y \in \Z$. For instance take any $y = 2k$ then there doesn't exists an $n$ such that $f(n) = y$
+
+Hence  $f$ is not surjective.
+
+
+\subsection*{12.2.6}
+We have $f(m,n) = 3n - 4m$. To show injectivity we need to show for any  $f(m,n) = f(m',n')$ we have $n = n', m = m'$.
+
+If, 
+\begin{align*}
+   f(m,n) = f(m',n')\\
+   3n -4m = 3n' - 4m'\\
+   3(n - n') = 4(m - m')
+\end{align*}
+
+However now consider $n' = 1$ and $n = 5$ and $m = 4$ and $n' = 1$ and we have  $12 = 12$. 
+
+So it is not injective.
+
+
+Now we need to check surjectivity.
+
+We need to show that for all  $y \in \Z$, $\exists m,n$ such that $f(m,n) = 3n - 4m = y$.
+
+Consider  $y = 2k$ we have,  
+$$ 3n - 4m = 2k $$ We can choose $n = 2k$ and $m = k$
+
+For $y = 2k + 1$ we have, 
+$$ 3n - 4m = 2k + 1 $$ 
+
+We cannot find $m,n$ for all kwhich means that this isn't surjective.
+
+
+
+
+\subsection*{12.2.10}
+$f: \R - \{1\} \rightarrow \R - \{1\}$ defined by  $f(x) = (\frac{x+1}{x-1})^{3}$ 
+
+1. Injectivity.
+
+We   need to show $f(x) = f(x') \implies x = x'$,  
+\begin{align*}
+(\frac{x + 1}{x - 1})^{3} = (\frac{x' + 1}{x' - 1})^{3}\\
+\end{align*}
+
+Because we know that the terms are real we can say that, 
+\begin{align*}
+    \frac{x + 1}{x - 1} &= \frac{x' + 1}{x' - 1}\\
+    x x' - x + x' -1 &= x x' + x - x' - 1\\
+    2x &= 2x'\\
+    x &= x'
+\end{align*}
+
+So it is injective.
+
+2. Bijective.
+
+We have need to show for all $y$ exists $x$ such taht $f(x) = y$.
+
+We have, 
+\begin{align*}
+    y &= (\frac{x + 1}{x - 1})^{3}\\
+    y^{\frac{1}{3}} &= \frac{x + 1}{x - 1}\\
+    y^{\frac{1}{3}}x - y^{\frac{1}{3}} &= x  +  1\\
+    y^{\frac{1}{3}}x - x&=   y^{\frac{1}{3}} +  1\\
+    x(y^{\frac{1}{3}} - 1)&=   y^{\frac{1}{3}} +  1\\
+    x&=   \frac{y^{\frac{1}{3}} +  1}{(y^{\frac{1}{3}} - 1)}\\
+\end{align*}
+
+So for all $y$ if $y\ne 1$ we have $x = \frac{y^{\frac{1}{3}} + 1}{y^{\frac{1}{3}}-1}$ and we have, 
+\begin{align*}
+    f(x) &= f(  \frac{y^{\frac{1}{3}} + 1}{y^{\frac{1}{3}}-1})\\
+         &= \bigg (\frac{\frac{y^{\frac{1}{3}} + 1 + y^{\frac{1}{3}} - 1}{y^{\frac{1}{3}}}}{\frac{y^{\frac{1}{3}}+ 1 - y^{\frac{1}{3}} + 1}{y^{\frac{1}{3}}}}\bigg )^{3}\\
+         &= \bigg (\frac{y^{\frac{1}{3}} + 1 + y^{\frac{1}{3}} - 1}{y^{\frac{1}{3}}+ 1 - y^{\frac{1}{3}} + 1}\bigg )^{3}\\
+         &= \bigg (\frac{y^{\frac{1}{3}} + 1 + y^{\frac{1}{3}} - 1}{y^{\frac{1}{3}}+ 1 - y^{\frac{1}{3}} + 1}\bigg )^{3}\\
+         &= (\frac{2y^{\frac{1}{3}}}{2})^{3}\\
+         &= (y^{\frac{1}{3}})^{3}\\
+         &= y
+\end{align*}
+
+
+Hence f is surjective.
+
+
+\subsection*{12.2.14}
+We have $\theta(X) = \overline{X}$
+
+1. Injectivity. We need to show $\theta(X) = \theta(X') \implies X = X'$
+
+We have,  
+\begin{align*}
+    \theta(X) &= \theta(X')\\
+    \overline{X} &= \overline{X'}\\
+    X &= X'
+\end{align*}
+
+Hence $\theta$ is injective.
+
+2. Surjectivity.
+
+For all  $Y \in P(X)$ we need to find $X \in P(X)$ such that $\theta(X) = Y $. We have,  
+$$ \overline{X} = Y $$ 
+$$ X = \overline{Y} $$ 
+
+So we ahve $X$ such that $\theta(X) = Y$
+$$ \theta(X) = \theta(\overline{Y}) = \overline{\overline{Y}}  = Y$$ 
+
+Hence it is surjective.
+
+
+\subsection*{12.2.16}
+Total number of functions are: $7^{5}$
+
+Number of injective functions are: $\frac{7!}{(7 - 5)!} = 7 \cdot 6 \cdot 5 \cdot 4 \cdot 3$
+
+Total surjective functions are: 0 
+
+So total bijective functinos are : 0
+
+
+
+
+
+
+ 
+
+
+\end{document}

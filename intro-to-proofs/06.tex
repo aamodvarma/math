@@ -1,0 +1,83 @@
+Consider $\equiv_n$ where $n \in N$ and let $[z]_n = z / \equiv_n$. Where, $$[z]_n = \{[0]_n, \dots,[n-1]_n\}$$
+
+\begin{lemma}
+    Suppose $a,b,a',b' \in z$ satisfying, 
+    $$ a\equiv_n a', b\equiv_n b' $$  then, 
+    $$ a+b \equiv_n a' + b' $$  and 
+    $$ a-b \equiv_n a' - b' $$ and  
+    $$ a'b' \equiv_n ab $$ 
+\end{lemma}
+ 
+
+\begin{definition}
+    For any $\alpha, \beta \in [z]_n$ $\exists a,b \in z$ s.t, $\alpha = [a]_n, \beta = [b]_n$ then, 
+    $$ \alpha + \beta = [a+b]_n, \alpha - \beta = [a - b]_n, \alpha \beta = [ab]_n$$ 
+\end{definition}
+
+\begin{eg}
+    $n = 12$ then 
+
+    1. $[2]_n [3]_n, = [6]_n$
+
+    2. $[5]_n + [8]_n = [1]_n$
+
+    3. $[5]_n - [8]_n = [-3]_n = [9]_n$ 
+
+    4. $[5]_n [8]_n = [40]_n = [4]_n$
+
+    5. $[8]_n [9]_n = [0]_n$
+\end{eg}    
+
+
+\begin{theorem}
+    Suppose $n \in N - \{1\}, a \in N$ 
+
+    (i). $GCD(a,n) = 1$ 
+
+    (ii). $\forall b,c \in Z, [a]_n[b]_n = [a]_n[c]_n \implies [b]_n = [c]_n$
+\end{theorem}
+
+\begin{proof}
+    $\implies$ $GCD(a,n) = 1 \implies \exists, d,q \in \Z$ s.t. 
+    $$ ad + nq = 1 \implies [a]_n [d]_n = [1]_n $$ 
+    $$ [a]_n[b]_n = [a]_n[c]_n \implies [d]_n[a]_n[b]_n = [d]_n[a]_n[c]_n $$ 
+    $$ \implies [1]_n[b]_n = [1]_n[c]_n \implies [b]_n = [c]_n $$ 
+
+    $\impliedby$
+
+
+
+
+
+
+\end{proof}
+
+
+\begin{definition}
+    A relation on a set $A \ne \phi$ is an order if it is reflexive, antisymmetric and transitive.
+\end{definition}
+
+\begin{definition}
+    We say that $a,b \in A$ are comparable if $a \preccurlyeq b$ or $b \preccurlyeq a$
+\end{definition}
+
+\begin{definition}
+    If $\forall a,b \in A$ are comparable then "$\preccurlyeq$" is a total order
+\end{definition}
+
+\begin{eg}
+    
+    $$ (\Z, \le), (\R, \le), (\Q, \le) $$ 
+\end{eg}
+
+\begin{eg}
+    $U \ne \phi, (P(U)), \subseteq)$
+\end{eg}
+
+
+
+
+
+
+
+

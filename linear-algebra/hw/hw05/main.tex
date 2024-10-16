@@ -270,16 +270,151 @@ So now we have a $v_1 + v_2 = v - v_1 + v_1 = v$  such that $v_1 \in range P$ an
 \section*{3C}
 \subsection*{1}
 
+\begin{proof}
+Consider the contrary that there exists a matrix of $T$ such that it has less then dim range T non zero entries.
+
+This means that there always exists a column of the matrix such that the column is filled with zeroes. Consider $r$ to be the columns that have non-zero entries this means that $r < $ dim range T. 
+
+We know by definition of matrices that,  
+$$ T(v_k) = A_{1k}w_1 + \dots + A_{nk}w_n $$  where $w_1,\dots,w_n$ is a basis for range T.
+
+Now this menas that are n - r choices of k s.t $T(v_k) = 0$ 
+
+
+We know by definitnio of a linear map that for a given basis of $V $, 
+$$ T(v_1) = w_1,\dots,T(v_m) = w_m $$ such that $w_1,\dots,w_m$ span $W$.
+
+However in our case we have only  $r$ non-zero $w \in W$. Which means that the dim W is r. However this contradicts the fact that r < dim W. Which means that our assumption must be wrong.
+
+
+
+\end{proof}
+
+
+\subsection*{2}
+
+\begin{proof}
+    $\implies$
+    Consider an arbitrary basis of V $v_1,\dots,v_n$. We are told that dim (range T) = 1. Which means that $T(v_1),\dots,T(v_n)$ spans a 1 D space or in other words,
+
+    \begin{align*}
+        T(v_1) &= c_1w\\
+        \dots\\
+        T(v_n) &= c_nw
+    \end{align*}
+
+    for some $w \in W$
+
+    Now we can adjust our basis for $V$ by multiplying $\frac{1}{c_k}$ to each side to get a new basis, $\frac{v_1}{c_1}, \dots, \frac{v_n}{c_n}$ such that, 
+    $$ T(v'_1) = w $$ 
+    $$ \dots $$ 
+    $$ T(v'_n) = w $$ 
+
+
+    We also know that for a matrix $M(T)$ we have, 
+    \begin{align*}
+        T(v_k) = A_{1,k}w_1+ \dots + A_{n,k}
+    \end{align*}
+
+    So from above we have, 
+        $$T(v_k) = A_{1,k}w_1+ \dots + A_{m,k} = w$$ for any $w \in W$. So we need a basis of $W$ such that $w_1+ \dots + w_m = w$
+
+    Consider an arbitrary basis for $W$, $w_1,\dots,w_m$. Now consider the  following list of vectors, we know , $\exists a_1,\dots,a_n$ s.t $a_k \ne 0$
+    $$ a_1w_1 + \dots + a_nw_n = w $$.
+
+    Now lets adjust this basis such that $w'_1 = a_1w_1,\dots,w'_n = a_nw_n$. It is easy to show that this new list of vectors is a basis.
+
+    So now we have constructed a basis for $W$ such that $w_1+ \dots + w_n = w$. Which means we have defined a basis for $V$ and $W$ such that, 
+    $$ T(v_k) = w_1 + \dots + w_n $$ 
 
 
 
 
+     $\impliedby$
+
+     Conisder there exists a basis of $V$ and W such that, 
+     $$ T(v_k) = 1w_1+ \dots + 1w_n $$  where $k \in {1,\dots,n}$ and $w_1,\dots,w_n$ is a basis for $W$.
+
+     This means that  $T(V_k) = w$ where $w = w_1+ \dots + w_n$.
+
+     We know that $T(v_1),\dots,T(v_n)$ spans the range of $T$ which means that the range of $T$ is spanned by $w \implies$ dim range T = 1
+\end{proof}
+
+\subsection*{3}
+(a). We define $M(S)$ and $M(T)$ as follows, 
+$$ Sv_k = M_{s(1,k)}w_1+ \dots + M_{s(m,k)}w_m $$ 
+$$ Tv_k = M_{t(1,k)}w_1+ \dots + M_{t(m,k)}w_m $$ 
+
+And we define $M(S+T)$, 
+$$ (S+T)v_k = M_{st(1,k)}w_1 + \dots + M_{st(m,k)} w_m $$ 
+
+Further expanding we get, 
+\begin{align*}
+    (S+T)v_k &= Sv_k + Tv_k\\
+             &=  M_{s(1,k)}w_1+ \dots + M_{s(m,k)}w_m + M_{t(1,k)}w_1+ \dots + M_{t(m,k)}w_m \\
+             &= (M_{s(1,k)} + M_{t(1,k)})w_1 + \dots (M_{s(m,k)} + M_{t(m,k)})w_m
+\end{align*}
+
+Comparing the two results we get, 
+$$ M_{st(1,k)}w_1  = (M_{s(1,k)} + M_{t(1,k)})w_1$$ 
+$$ \dots $$ 
+$$ M_{st(m,k)}w_m  = (M_{s(m,k)} + M_{t(m,k)})w_m$$ 
+
+Which means that for any 
+$$ M_{st(r,c)} = M_{s(r,c)}  + M_{t(r,c)} \implies M(S + T) = M(T) + M(S)$$ 
+
+(b). Similary we have, 
+$$ Tv_k = M_{t(1,k)}w_1 +  M_{t(m,k)}w_m  $$  and 
+$$ \lambda Tv_k = M'_{t(1,k)}w_1 +  M'_{t(m,k)}w_m ) $$ 
+
+Now multiplying $\lambda$ we get,
+$$ \lambda Tv_k = \lambda(M_{t(1,k)}w_1 +  M_{t(m,k)}w_m ) $$ 
+$$ \lambda Tv_k = (\lambda M_{t(1,k)})w_1 +  (\lambda M_{t(m,k)})w_m  $$ 
+
+So we see that for all entires of our matrix $M'_{r,c} = \lambda M_{r,c}$ which means that,  
+$$ M(\lambda T) = \lambda M(T) $$ 
 
 
 
+\subsection*{4}
+
+We have matrix $M$ such that, 
+\begin{align*}
+    Tv_1 = M_{1,1}w_1 + 0 M_{2,1}w_2 + 0 M_{3,1}w_3\\
+    Tv_2 = M_{1,2}w_1 + 0 M_{2,2}w_2 + 0 M_{3,2}w_3\\
+    Tv_3 = M_{1,3}w_1 + 0 M_{2,3}w_2 + 0 M_{3,3}w_3\\
+    Tv_4 = M_{1,4}w_1 + 0 M_{2,4}w_2 + 0 M_{3,4}w_3\\
+\end{align*}
+
+Consider the basis of $W$ as $(1,x,x^2)$. So we have $T(v_1) = 1, T(v_2) = x, T(v_3) = x^2, T(v_4) = 0$. Our basis in $V$ is $(x, \frac{1}{2}x^2, \frac{1}{3}x^{3}, 1)$
+
+
+\subsection*{5}
+\begin{proof}
+    First let us take dim V = n, dim W = m, dim range T = k. Let $w_1,\dots,w_k$ be a basis for range T. Now according to the lienar map lemma we can find  $v_1,\dots, v_k$ such that, 
+    $$ T(v_r) = w_r $$ 
+
+    We know dim range T + dim null T = dim V, so dim null T = n - r. and we know that none of our current $v_r \in null T$ as $w_r \ne 0$. Which means that we can exted our linearly independe list,  $v_1,\dots,v_k$ to $v_1,\dots,v_k,v_{k+1},\dots,v_n$ such that  
+    $$ Tv_{k+1} = 0,\dots,Tv_{n} = 0 $$ 
+
+    Similarly let us extend our basis for $W$ from $w_1,\dots,w_r$ to $w_1,\dots,w_r,w_{r+1},\dots,w_m$
+
+    Now let us define our matrix such that, 
+    \begin{align*}
+        Tv_1 &= 1w_1 +\dots+ 0w_r + \dots + 0 w_n\\
+        &\qquad\dots\\
+        Tv_r &= 0w_1 + \dots + 1w_r + \dots + 0 w_n\\
+        Tv_{r+1} &= 0w_1 + \dots + 0w_r + \dots + 0 w_n\\
+        &\qquad\dots\\
+        Tv_m &= 0w_1 + \dots + 0w_r + \dots + 0 w_n\\
+    \end{align*}
+
+    Now we have defined a matrix such that the $A_{k,k}$element is 1 for $k \le $ dim (range T) and all the other elements are 0.
+\end{proof}
 
 
 
+$$  $$ 
 
 
 \end{document}
