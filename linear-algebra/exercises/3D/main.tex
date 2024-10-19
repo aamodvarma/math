@@ -1,0 +1,168 @@
+\documentclass[a4paper]{report}
+\input{../../preamble.tex}
+\title{Linear Alebgra 3D}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+
+\subsection*{Problem 1}
+\begin{proof}
+    We are given that $T^{-1}$ is the inverse of $T$ which menas that $TT^{-1} = I$ and $T^{-1}T = I$. Now we know that if $AB = BA = I$ then $B$ is the inverse of $T$. So similarly we see that $T$is the inverse of $T^{-1}$. Hence $(T^{-1})^{-1} = T$
+\end{proof}
+\subsection*{Problem 2}
+
+\begin{proof}
+   We need to show that $(ST)^{-1} = T^{-1}S^{-1}$. If $ST$ is invertiebl  we can find $M$ such that $STM =I$ and $MST = I$. Let  $M =T^{-1}S^{-1} $
+
+   So we have, 
+   $$ STM = ST(T^{-1}S^{-1}) $$ 
+   $$ = STT^{-1}S^{-1} $$ 
+   $$ = SS^{-1} $$ 
+   $$ = I $$ 
+
+   And, 
+   $$ MST = T^{-1}S^{-1}ST $$ 
+   $$ = T^{-1}T $$ 
+   $$ =I $$ 
+
+   Hence $ST$ is invertible and the inverse is  $T^{-1}S^{-1}$
+
+
+\end{proof}
+
+
+
+\subsection*{Problem 3}
+\begin{proof}
+    (a) $\implies$ (b)
+    We know that $T$ is invertiebl hence it is both injective and surjective. We can say that $Tv_1,\dots,Tv_n$ spans range of $T$. But we nkow that $\range T = V$ as it is injective. We also know that $\dim V = n = \dim \range T$. 
+
+    Hence we have n vectors $Tv_1,\dots,Tv_n$ that span $V$ and because the number of vectors are equal to basis length the vectors themselve form a basis of V.
+
+    (b) $\implies $(c) 
+    (c) is just a specific case of (b)
+
+    (c) $\implies$ (a)
+    For some basis $v_1,\dots,v_n$ we know that $Tv_1,\dots,Tv_n$ is a basis of $V$. So that means that for any $v \in V,$  v is in the span of $Tv_1,\dots,Tv_n$ or that it is in the range of T. This means that $V$ is surjective. As it is a map onto itself and T is surjective this means T is also injective. Hence T is invertiebl.
+\end{proof}
+
+\subsection*{Problem 5}
+\begin{proof}
+    $\impliedby$
+
+    We have $T$ is an invertiebl linear map such that $Tu = Su, \forall u \in U$ and we need to show that $S$ is injective.
+
+    For any $u_1,u_2 \in V$ we need to show that $Su_1 = Su_2 \implies u_1 = u_2$
+
+    We know that $Su_1 = Tu_1$ and $Su_2 = Tu_2$. So we have $Tu_1 = Tu_2$. But we know that $T$ is invertibel hence it is also injective. So we have $u_1 = u_2$. Hence S is injective.
+
+
+    $\implies$ 
+    We know that $S$ is injective from $U$ to $V$, we need to construct a map $T$ such that $Tu = Su$ but T is invertible (both injective and surjective).
+
+    First consider the basis of $U$ as $u_1,\dots,u_n$. We know S is injective hence null S =  \{0\}. So we know that $S $ can be written as, 
+    \begin{align*}
+        Su_1 = v_1,\dots,Su_n = v_n
+    \end{align*}
+    Such that $v_1,\dots,v_n$ span $\range S$ and as  $\dim \range S = \dim U = n$. $v_1,\dots,v_n$ are linearly independent.
+
+    Now let us first extend our basis of U to a basis of $V$ as follows,$ u_1,\dots, u_m$ and extned our basis of $\range S$ to a basis of $V$ as $v_1,\dots,v_m$.
+
+    Let us define a linear map as follows, 
+    \begin{align*}
+        Tu_1 &= Su_1 = v_1\\
+             &\dots\\
+        Tu_n &= Su_n = v_n\\
+        Tu_{k}&= v_k \text{ for k >  n}
+    \end{align*}
+
+    Now based on our definition we have range $T$ is spanned by $v_1,\dots,v_n$ whichi spans $V$. Hence range T = V. Which both means that it is surjective and because null space is $\{0\}$ we also have injectivity. Hence T is invertible.
+
+    Based on our definitino $T(u) = S(u)$ is also true, as for any $u = a_1u_1+ \dots a_nu_n$ we have, $S(u) =a_1Su_1 + \dots + a_nSu_n = a_1Tu_1+ \dots + a_nTu_n = T(a_1u_1+\dots + a_nu_n) = T(u)$
+\end{proof}
+
+
+\subsection*{Problem 9}
+\begin{proof}
+    We know $T$ is surjective we need to show there is a subspace $U$ of $V$ such that $T|_U$ is an isomophism of U onto W. 
+
+    First because $T$ is surjection we have $\range T = W$. Consider $v_1,\dots,v_n$ is a basis on $V$ then we can say $T$ is defined as, 
+    \begin{align*}
+        Tv_1 = w_1,\dots,Tv_n = w_n 
+    \end{align*}
+    
+    Now because $w_1,\dots,w_n$ span $W$ let us reduce it to a basis of $W$, take this as $w_1,\dots,w_k$ without loss of generality.  Now consider the subspace spanned by $v_1,\dots,v_k$. Now we need to show it is an isomophism or that it is injective and surjective.
+
+    Firstly we know it is surjective as it maps to $w_1,\dots,w_k$ which we nkow span $W$. We need to show that it is injective.
+
+    Because U is spanned by $n$ vectors and $W$ is spanned by $n$ vectors we nkow by rank nullity theorem that $\dim \nul T= 0$ hence  our map is injective. 
+
+\end{proof}
+
+\subsection*{Problem 11}
+\begin{proof}
+    $\implies$ We know that $ST$ is invertieble. Assume to the contrary that $S$ or $T$ is not invertiebl.
+
+    (1). We have $S$ is not invertiebl and $ST = S(T(v))$  is invertible this means that $\forall v \in V$ we can find $v' \in V$ such that $S(T(v')) = v$.  So if $T(v') = v''$ then $S(v'') = v$ for any $v$. But this means that $S$ is surjective. However based on our assumption we nkow S is not surjective. So this contradicts our assumption.
+
+    (2). Consider $T$ is not invertible $\implies$ T is not injective. If T is not injective the $\exists v \in V$ such that $Tv = 0$. So we have $STv = S(0) = 0$ which means that $STv = 0$  for some non-zero v which makes ST not injective and not invertiebl. Hence a contradiction.
+
+    $\impliedby$ 
+    We can show $\exists M = T^{-1}S^{-1}$ such that $STM =I, MST = I$
+\end{proof}
+
+\subsection*{Problem 12}
+We have $STU = I$ this means that $ST$ and  $U$ are both invertible which means that $S$ and $T$ are also invertibel. So $\exists S^{-1}$ and $U^{-1}$.
+
+\begin{align*}
+    STU &= I\\
+    TU &= S^{-1}\\
+    U &= T^{-1}S^{-1}\\
+    US &= T^{-1}S^{-1}S\\
+    T^{-1} &= US\\
+\end{align*}
+
+
+\subsection*{Problem 13}
+\begin{proof}
+    Consider the backward shift operator $T((x_1,\dots)) = (x_2,\dots)$. It is not injective and hence not invertible. Let $S$ be $I$ and $U$ be the forward shift operator. We have $STU = I$ but $T$ is not invertible.
+\end{proof}
+\subsection*{Problem 14}
+\begin{proof}
+    RST is a map from V to V hence $RST$ is invertieble. This means that RST is injective. First lets show that  $T$ is invertible. Assume T is not invertiebl means that $T$ is not injective or $\exists v \in V$ such that $Tv = 0$ but this means that $RSTv = 0$ but this is a contradictino as RST is invertieble.  Now we know that $T$ is invertible so range $T$ is V.
+
+    Now assume S is not injective $\exists v \in \range T = V$ such that $S(v) = 0$ but this gives us a contradictino as well as RST  is invertiebl. Hence $S$ is injective.
+
+\end{proof}
+\subsection*{Problem 15}
+\begin{proof}
+    We know that $Tv_1,\dots,Tv_m$ span V. So, 
+    $$ a_1Tv_1 + \dots + a_nTv_m = 0 $$  only if $a_1,\dots,a_n = 0$
+
+    Nonw lets assume the contrary that $v_1,\dots,v_n$ are not inveritble so there exists not all zero $b_1,\dots,b_n$ such that
+    $$ b_1v_1 + \dots + b_nv_m = 0 $$ 
+
+    Let us take $T(v)$ so,  
+    $$ T(b_1v_1+ \dots + b_nv_n) = T(0) = 0 $$ 
+    $$ b_1T(v_1) + \dots + b_nT(v_n) = 0 $$ 
+
+    If we have $b_1,\dots,b_n$ all not zero then that means that $T(v_1) ,\dots,T(v_n)$ is not lin independent hence a contradiction.
+\end{proof}
+\subsection*{Problem 16}
+\begin{proof}
+    
+    We know that $Tx$ in $F^{m,1}$ so $Tx = M(Tx)$,  
+    $$ = M(T)M(x) $$ 
+    $$ Ax $$ 
+\end{proof}
+\subsection*{Problem 20}
+\begin{proof}
+    
+\end{proof}
+\subsection*{Problem 21}
+
+
+
+\end{document}

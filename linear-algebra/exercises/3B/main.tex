@@ -1,0 +1,417 @@
+\documentclass[a4paper]{report}
+\input{../../preamble.tex}
+\title{Linear Alebgra 3B}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+
+\section*{3B}
+\subsection*{Problem 1}
+Let us define a linear  map $T: V^{5} \rightarrow V^{5}$ on any arbitary basis of $V$, $v_1,\dots,v_5$ as follows, 
+$$ T(v_1) = 0 $$ 
+$$ T(v_2) = 0 $$ 
+$$ T(v_3) = 0 $$ 
+$$ T(v_4) = v_4 $$ 
+$$ T(v_5) = v_5 $$ 
+
+So $T$ is a linear map such that $\dim \nul T = 3$ and $\dim \range T = 2$
+
+
+\subsection*{Problem 2}
+\begin{proof}
+    We need to show $(ST)^2 = 0$ or that $STST = 0$.
+
+    Consider $v \in V$ and let  $T(v) = v'$. Now $S(T(v)) = S(v') = v''$ which is in range of $S$ by definition.
+
+    We are told that $\range S \subseteq \nul T$. This means that for any  $v \in \range S$ $T(v) = 0$. So because $v'' \in \range S$ we have $T(v'') = 0$. So we have,  
+    $$ S(T(S(T(v))) = S(T(v'')) $$ 
+    $$ = S(0) = 0 $$ 
+
+    Hence we  show that for any arbitary chocie of $v \in V$ $(ST)^2 = 0$
+\end{proof}
+
+
+\subsection*{Problem 3}
+\begin{proof}
+    (a). If $\dim(\range T) = \dim V$ then $v_1,\dots,v_m$ spans $V$
+
+    (b). If $\nul T = \{0\}$ then  $v_1,\dots,v_m$ is linearly independent.
+\end{proof}
+
+\subsection*{Problem 4}
+\begin{proof}
+    For a subspace we need three condition, existance of $0$ element, closure under addition adn closure under scalar multiplication. We show that the set doesn't satisfy the closure under addition. First consider any basis for $R^{5}$ as $v_1,\dots,v_5$ and a basis for $R^{4}$ as $u_1,\dots,u_4$
+
+    Consider the following construction, $T_1: R^{5}\rightarrow R^{4}$  such that, 
+    \begin{align*}
+       T(v_1) = 0\\
+       T(v_2) = 0\\
+       T(v_3) = 0\\
+       T(v_4) = u_1\\
+       T(v_5) = u_2
+    \end{align*}
+
+    Now consider $T_2: R^{5}\rightarrow R^{4}$ such that, 
+
+    $$ T(v_1) = u_3 $$ 
+    $$ T(v_2) = u_4 $$ 
+    $$ T(v_3) = 0 $$ 
+    $$ T(v_4) = 0 $$ 
+    $$ T(v_5) = 0 $$ 
+
+    Now we show that $T_1 + T_2$ is not in the set. Now $T_3 = T_1 + T_2$ is defined as follows (by definition), 
+    \begin{align*}
+    T_3(v_1) = T_1v_1 + T_2v_1 = u_3 \\
+    T_3(v_2) = T_1v_2 + T_2v_2 = u_4 \\
+    T_3(v_3) = T_1v_3 + T_2v_3 = 0 \\
+    T_3(v_4) = T_1v_4 + T_2v_4 = u_1 \\
+    T_3(v_5) = T_1v_5 + T_2v_5 = u_2 \\
+    \end{align*}
+
+    We know that $u_1,\dots,u_4$ are linaerly independent. Which means that  the dimension of null space is $1$. Hence it is not within the conditions of our set.
+
+    So closure under additino is not satisfied and hence the set iis not a subspace.
+\end{proof}
+
+\subsection*{Problem 5}
+Consider the standard basis of $R^{4}$, $v_1 = (1,0,0,0), v_2 = (0,1,0,0), v_3 = (0,0,1,0), v_4 = (0,0,0,1)$. Now let our linear map be as follows, 
+$$ T(v_1) = v_3 $$ 
+$$ T(v_2) = v_4 $$ 
+$$ T(v_3) = 0 $$ 
+$$ T(v_4) = 0 $$ 
+
+As $v_1$ and $v_2$ are linearly indepenent we see that the range of $T$ is spanned by two vectors $v_3,v_4$. Similary we see that the null space is spanned by $v_3,v_4$ as T maps these vectors to 0. Hence we get $\range T = \nul T$
+
+\subsection*{Problem 6}
+\begin{proof}
+Let us assume $\exists T \in L(R^{5})$ such that $\range T = \nul T$. This implies that $\dim \range T = \dim \nul T$.  We know from the fundamental theorem of linear map that  
+$$ \dim \range T  + \dim \nul T = \dim V $$ 
+
+Let $\dim \range T = \dim \nul T = k$ such that $ k \in N$. So we have,  
+$$ 2k = 5 $$ 
+$$ k = 2.5 $$ 
+
+Howver this means $k \not \in N$ which is a contradiction. This must mean our assumptino is wrong and hence it is not possible to find $T$ such that $\range T = \nul T$
+\end{proof}
+
+
+\subsection*{Problem 9}
+\begin{proof}
+    Consider, 
+    $$ a_1T(v_1) + \dots + a_nT(v_n)= 0 $$ 
+    To show that it is linearly independent we need to shwo that the only possible values for $a_1,\dots,a_n $ is if all are zero.
+
+    Now let us rewrite this as follows, 
+    \begin{align*}
+        T(a_1v_1) + \dots + T(a_nv_n) &= 0\\
+        T(a_1v_1 + \dots + a_nv_n) &= 0\\
+    \end{align*}
+    We know that $T$ is injective which means that null space of $T$ is $\{0\}$. This implies that  $a_1v_1 + \dots + a_nv_n = 0$. However  if this is the case the only choice for $a_1,\dots,a_n $ is if all are zero as we know that  $v_1,\dots,v_n$ is lienarly indepenent.
+
+    Hence we show that the only choice of $a_1,\dots,a_n$ is if all are zero to satify the equation, 
+    $$ a_1T(v_1) + \dots + a_nT(v_n) = 0 $$  which shows that the list $T(v_1), \dots, T(v_n)$ is linearly independent.
+\end{proof}
+
+\subsection*{Problem 10}
+\begin{proof}
+    To show that $Tv_1, \dots, Tv_n$ spans $\range T$ we need to shwo that any $w \in \range T$ can be writen as a linear combinatino of $Tv_1,\dots, Tv_n$.
+
+    If $w \in \range T$ we that $\exists v\in V$ such that $T(v) = w$ by definition. As $v_1,\dots,v_n$ spans $V$ we know that any vector $v \in V$ can be written as a linear combinatiof these vectors so let, 
+    $$ v = a_1v_1 + \dots + a_nv_n $$
+    So we have $T(v) = w = T(a_1v_1 + \dots + a_nv_n)$
+
+    \begin{align*}
+        w = T(a_1v_1) + \dots + (a_nv_n)\\
+        w = a_1T(v_1) + \dots + a_n(v_n)\\
+    \end{align*}
+
+    So we show that for any choice of $w \in \range T$ we can write it as a linear combinatio of vectors in the list $Tv_1,\dots,Tv_n$. Hence this implies that $Tv_1, \dots, Tv_n$ spans $\range T$
+\end{proof}
+
+\subsection*{Problem 11}
+\begin{proof}
+    First let us consider the basis of $\nul T$. Let that be  $u_1,\dots,u_n$. Now let us extend this basis to a basis of $V$. as $u_1,\dots,u_n, v_{n+1},\dots,v_m$. Let us define $U$ as the subspace defined by the basis $v_{n+1},\dots,v_m$.
+
+    First we show that $U \cap \nul T = \{0\}$. So we have $v \in U$ and $v \in \nul T$. If this is the case we can write  $v $ as , 
+    $$ v = a_1u_1 + \dots + a_nu_n $$  and 
+    $$ v = b_1v_1 + \dots + b_mv_m $$ 
+
+    So we have $a_1u_1 + \dots + a_nv_n + c_1v_1 + \dots + c_mv_m = 0$
+
+    As we know that $u_1,\dots,v_m$ is linearly independet the only solutino is all coefficients is zero which implies $v = 0$.
+
+    Now we show that  $\range T = \{Tu : u \in U\}$. Consider any  $v \in V$. Let $v = a_1u_1 + \dots + a_nu_n + b_1v_1 + \dots + b_mv_m$.
+
+    Now we need to show that  for all $v \in V$ such that $T(v) \in \range T$ that $T(v) = T(u)$ for some $u \in U$. We have $T(v)$ whic his, 
+    $$ T(v) =  T(a_1u_1 + \dots + b_mv_m) $$ 
+    $$ = a_1T(u_1) + \dots +a_nT(u_n) + b_1T(v_1) + \dots + b_mT(v_m) $$ 
+    $$ = b_1T(v_1) + \dots + b_mT(v_m) $$ 
+    $$ = T(b_1v_1 + \dots + b_mv_m) $$ 
+    $$ = T(u) $$ where $ u = b_1v_1 + \dots + b_mv_m$ which means that $ u \in U$.
+
+    Hence we showed that  $\range T = \{Tu : u \in U\}$
+\end{proof}
+
+\subsection*{Problem 12}
+\begin{proof}
+    It is enough to show that $\dim \range T = \dim F^{2}$. We have, null space is spanned by 
+    $$ (5,1,0,0), (0,0,7,1) $$ which makes $\dim \nul T = 2$. Using the rank nullity theorem we have $\dim \range T = 4 -2 = 2 $
+
+    So the range of our linear map has the same dimension as the co-domain which means that our fuctino is surjective.
+\end{proof}
+
+\subsection*{Problem 13}
+\begin{proof}
+    
+We have $\nul T = U$ which means that $\dim \nul T = 3$. Using the rank nullity theorem we have $\dim \range T = 5$. We also know that $\dim R^{5} = 5$. So because the range and co-domain have the same dimension this implies that our map is surjective.
+
+\end{proof}
+\subsection*{Problem 14}
+\begin{proof}
+    
+Let us assume the null space is as shown in the question. We can see that this is spanned by the following vectors,  
+$$ (3,1,0,0,0), (0,0,1,1,1) $$ 
+
+This means that $\dim \nul T = 2$. So using the rank-nullity theorem we have  $\dim \range T = 5 - 2 = 3$. But our codomain is  $F^{2}$ so our assumption leads us to believe the range is a subspace of codomain but the range has higher dimension than the codomain. This  obviously cannot be the case. 
+
+Hence it must be true that the null space cannot be as given.
+
+\end{proof}
+\subsection*{Problem 15}
+\begin{proof}
+    
+We have $\dim \nul T = n$ and $\dim \range T = k$. Using the rank-nullity therom we have  $\dim V = k + n$. So we have a dimension for $V$ which means its  finite-dimentional.
+\end{proof}
+
+\subsection*{Problem 16}
+\begin{proof}
+    $\impliedby$
+    We are given an injecive linear map from $V$ to $W$ we need to show that $\dim V \le \dim W$.
+
+    If $T$ is injective then we know that $\dim \nul T = 0$. So using the rank nullity theorem we have, 
+    $$ \dim V = \dim \range T $$
+
+    But we know that $\range T \subseteq W$ which means that  $\dim \range T \le \dim W$. We showed above that $\dim \range T = \dim V$ which means that $\dim V \le \dim W$.
+ 
+    $\implies$
+    We are given that $\dim V \le \dim W$ and we are to show that there exists a linear map that is injective from $V$ to $W$.
+
+    If $\dim v \le \dim W$ consider any basis of $V$ as $v_1,\dots,v_n$ and similary choose linearly independent set of vectors from $W$ as $w_1,\dots,w_n$. Now we can construct a linear map from $V$ to $W$ such that $T(v_k) = w_k$. Because the range is spanned by $n$ linearly independent vectors we have $\dim \range T = n$ we also know that $\dim V = n$. So using the rank nullity theorem we have $\dim \nul T = 0$. 
+
+    Hence we showed that there exists a linear map always if  $\dim V \le \dim W$.
+\end{proof}
+
+\subsection*{Problem 17}
+\begin{proof}
+    $\impliedby$
+
+    We know know that our map $V$ to $W$ is surjective which implies that $\dim \range T = \dim W$. So using the rank nullity theorem we have,  
+    $$ \dim V = \dim W + \nul T $$
+
+    Case 1: $\nul T = 0$. We have $\dim V = \dim W$
+
+    Case 2:  $\nul T \ne 0$. We have $\dim V > \dim W$
+
+    So we have $\dim V \ge \dim W$
+
+     $\implies$
+     We have $\dim V \ge \dim W$, we need to show we can construct a surjective linear map fro  $V $ to $W$. Consider the basis for W as $w_1,\dots,w_n$. Now choose $n$ linearly independednt vectors from $V$,  $v_1,\dots,v_n$. We know this can be done as $V$ has greater than or equal to n linearly indepdnent vectors in its basis.
+
+     Let our map be as follows, 
+     $$ T(v_1) = w_1,\dots, T(v_n) = w_n, T(v_k) =0 $$  for $k > n$.
+
+     So our range is spanned by  the basis for $W$. Which makes it equal to $W$. Hence we have a surjective map.
+
+\end{proof}
+
+\subsection*{Problem 18}
+\begin{proof}
+    $\impliedby$ 
+    We need to show that $ \nul T = U$ implies that $\dim U \ge \dim V  - \dim W$. As $\dum \nul T = \dim U$ we have $\dim \nul T + \dim W \ge \dim V$. But we know that  $\dim \nul T = \dim V - \dim \range T$. So we have to show that  $\dim W \ge \dim \range T$.
+
+    We know this is necessarily true.
+
+    $\implies$
+    We have  $\dim U + \dim W \ge \dim V$ and we have to show that $\exists T$ such that $\nul T = U$. Let $W$ be spanned by $w_1,\dots,w_m$. Now let the $\range T$ be spanned by $w_1,\dots w_k$. We can find $v_1,\dots,v_k$ such that $T(v_k) = w_k$. Now extend lin ind set of vecotrs of $V$ from $v_1,\dots,v_k$ to $v_1,\dots,v_m$ such that we added $m -k$ vectors. Such that we have $\dim V - \dim W $ = n - m. Because we know that $U \ge n - m$. We can choose at least $m - k$ (note that this is larger than $n -m$ as $m > k$) vectors from our added set of vectors such that  
+$$ T(v_{k+1}) = 0 $$ 
+$$ \dots $$ 
+$$ T(v_{n}) = 0 $$ 
+
+Hence given our condition we constructed a linear map from $V$ to $W$ such that $ \nul T = U$
+\end{proof}
+
+\subsection*{Problem 19}
+\begin{proof}
+    $\impliedby$
+    We know because $T$ is injective for any $w \in W, \exists | v \in V$  such that $T(v) = w$. Or we can say that the dim range of $T$ is equal to dim $V$. Which means that they are both spanned by an equal number of vectors.
+
+    Consnider the basis of $T$ as $v_1,\dots,v_n$. We have T defined as,
+    $$ T(v_1) = w_1 $$ 
+    $$ \dots $$ 
+    $$ T(v_n) = w_n $$ 
+
+    Such that $w_1,\dots,w_n$ span $\range T$ and because its dimension is equal to the basis dimenstino $w_1,\dots,w_n$ is a basis for $\range T$.
+
+    Because $w_1,\dots,w_n$ is a basis of $\range T$ let us define a map $S$ from $W$ to $V$ as follows, 
+    $$ S(w_1) = v_1 $$ 
+    $$ \dots $$ 
+    $$ S(w_n) = v_n $$ 
+
+    Now we need to show that $ST$ is the identity operator. 
+
+    Consider any $v \in V$ we can write $v = a_1v_1,\dots,a_nv_n$.
+
+    So, 
+     \begin{align*}
+         Tv &= T(a_1v_1+\dots+a_nv_n)\\
+        &= a_1(Tv_1)+ \dots+ a_n(Tv_n)\\
+        &= a_1w_1+\dots+a_nw_n
+    \end{align*}
+
+    So $ST(v)$ we have, 
+    \begin{align*}
+        STv &= S(a_1w_1+\dots+a_nw_n)\\
+        &= a_1(Sw_1) + \dots + a_n(Sw_n)\\
+        &= a_1v_1,\dots,a_nv_n\\
+        &= v
+    \end{align*}
+
+    So we showed that $\exists S$ such that $STv =  v$
+
+    $\implies$ 
+    We need to show that if there exist a map fro $W$ to $V$, $S$ such that $STv = v$ then $T$ is injective.
+
+    Let us assume for the sake of contardiction that $T$ is not injective. That means $\exists v \ne 0$  such that $T(v) = 0$ (beacuse null T is not equal to just \{0\}). Hence we have, 
+    $$ T(v) = 0 $$
+    So we have, $ST(v) = S(0) = 0$. But we know that $ST$ is identity map on $ V$ which means that $STv = v$ $\forall v$. However we see that $v \ne 0$ which means that our assumptino must be wrong and T is injective.
+
+\end{proof}
+
+
+\subsection*{Problem 20}
+\begin{proof}
+    $\impliedby$ 
+    We need show that $T$ is surjective implies that $\exists S$ such that $TS$ is the identity operator on $W$.
+
+    We know that  $T$ is surjective this means that $\forall w \in W$ $\exists v \in V$ such that $T(v) = w$. Now consider the basis for  $W$ as $w_1,\dots,w_n$. We nkow that $\exists v$ for each one of these vectors, $v_1,\dots,v_n$ such that, 
+    $$ T(v_1) = w_1,\dots,T(v_n) = w_n $$.
+
+    Now let us define $S$ such that, 
+    $$ S(w_1) = v_1,\dots,S(w_n) = v_n $$ 
+
+    Now we need to show that $TS$ is the identity operator on $W$. Consider any $w \in W$ we have, $w = a_1w_1,\dots,a_nw_n$
+
+    So we have, 
+    \begin{align*}
+        S(w) &= S(a_1w_1,\dots,a_nw_n)\\
+             &= a_1S(w_1) + \dots + a_nS(w_n)\\
+             &= a_1v_1+ \dots + a_nv_n
+    \end{align*}
+
+    Now 
+    \begin{align*}
+        TS(w) &= T(a_1v_1+\dots+a_nv_n) \\
+              &= a_1T(v_1) + \dots + a_nT(v_n)\\
+              &= a_1w_1 + \dots + a_nw_n\\
+        &= w
+    \end{align*}
+
+    So we defined $S$ such that $TS$ is the identtiy map on $W$.
+
+
+    $\implies$ 
+    Assume for contradictino that $T$ is not surjective. Now this means that $\exists w \in W$ such that it is not in the range of $T$. So $w \not \in \range T$ or  $\not \exists v \in V $ such that $T(v) = w$. 
+
+    Howevwe we know that  $TS$ is the identity operator on $W$ which means that for any $w \in W$ we have $TSw = w$.
+
+    
+    $$ T(S(w)) = w $$  
+    Now let $S(w) = v' \in V$
+
+    $$ T(v') = w $$ 
+
+    Howver this implies that $w \in \range T$ which contradicts the fact that $ T$ is not surjective. Hence our assumption must be wrong and $T$ is surjective.
+\end{proof}
+
+\subsection*{Problem 22}
+\begin{proof}
+    We know that 
+    \begin{align*}
+        \dim \nul ST &= \dim U  + \range ST\\
+        \dim \nul ST &\le \dim U
+    \end{align*}
+
+    But we know that $\dim U = \dim \nul T + \dim \range T$, so we have,
+     \begin{align*}
+        \dim \nul ST \le \dim \range T + \dim \nul T
+    \end{align*}
+    We also know that $\dim \range T \le \dim V = \dim \nul S + \dim \range S$
+\end{proof}
+
+
+\subsection*{Problem 23}
+\begin{proof}
+    We already know that $\dim \range ST \le \dim \range S$. Because for any  $v$ we have $S(T(v))$ which lies in the range of $S$.
+
+    Now consider when $\dim \range T \le \dim \range S$.  We know that for a $v \in \range T$ ,  $S(v)$ is mapped to a vector in $\range S$. So if $v_1,\dots,v_n$ is the basis for $\range T$ which is smaller than that of $\range S$ then $S$ will only map to at most $n$ linearly independent vectors in $\range S$ which is smaller than $\dim \range S$. Hence we show that if  $\dim \range T \le \dim \range S $ then $\dim \range ST \le n$ which means $\dim \range ST \le \dim \range T$
+\end{proof}
+
+
+\subsection*{Problem 27}
+\begin{proof}
+    We are givne that $P^2 = P$ we can to show that $V = \nul P \oplus \range P$.
+
+    First we shwo that  $\nul P \cap \range P = \{0\}$. Consider  $v \in \nul P \cap \range P$. That means that  $v \in \nul P $ and $v \in \range P$.  If $v \in \nul P$ we nkow that $P(v) = 0$ but we know that  $P(P(v)) = P(v)$. So  $P(0) = P(v)$. But if $v \in \range P$ then $\exists v'$ such that $P(v') = v$ whcih means taht  $P(P(v')) = P(v')$. So,  
+    $$ P(v) = v $$
+
+    But we know that $P(v) = P(0) = 0$ so  $P(v) = v \implies v = 0$
+
+    Now we show that we can write any vector  $v \in V$ as a sum of vectors from null and range of P.
+
+    Consider any $v \in V$. Now let $P(v) = v_1$ which means that $v_1 \in \range P$. So we have, 
+    $$ P(v) = v_1 $$ 
+    $$ P(P(v)) = P(v_1) = P(v) $$ 
+
+    Now take $v - v_1$. We have, 
+    $$ P(v - v_1) = P(v) - P(v_1) $$ 
+    As we got  $P(v) = P(v_1)$ we have $P(v - v_1) = 0$ which means that $v - v_1 \in \nul P$. Hence we found two vectors, $v_1 \in \range P$  and $v - v_1 \in \nul T$ such that $v - v_1 + v_1 = v$ for any $v \in V$
+
+\end{proof}
+
+
+
+\subsection*{Problem 28}
+\begin{proof}
+    
+    We need to show that for any $p' \in P(R)$ we can find $p \in P(R)$ such that $Dp = p'$ given that  $\deg p' = \deg p - 1$.
+
+    Consider any arbitarry polynomial  $p' = a_1 + a_2x + \dots + a_nx^{n}$. We can find $p$ as follows, 
+    $$ p = \int  p' = \int a_1 + \dots + a_nx^{n} = a_1x + \dots + \frac{a_n}{n+1}x^{n+1} + C$$  where $C$ can be any arbitarry constant.
+
+    We see that $Dp$ defined as the differntiation map would map $p$  as follows, 
+    $$ Dp = \frac{dp}{dx} = x_1 + \dots +a_nx^{n} = p'$$  such that $\deg p = n+1 $ and $\deg p' = n$ which satisfies that  $\deg Dp = \deg p - 1$
+    $$  $$ 
+\end{proof}
+
+\subsection*{Problem 29}
+
+
+\begin{proof}
+    First let $\deg p = n$ such that $p = a_1+\dots+a_nx^{n}$ . Now let $q $ be a degree $n + 1$ polynomial such that $q = b_1 + \dots + b_{n+1}x^{n+1} $. So we have, 
+    \begin{align*}
+        q' &= b_2 + \dots + b_{n+1}(n+1)x^{n}\\
+        q'' &= b_3 + \dots + b_{n+1}(n)(n+1)x^{n -1}\\
+        5q'' + 3q' &= 5b_3 + 3b_2 + \dots + (5b_{n+1}n(n+1) +3(nb_n))x^{n-1} + 3b_{n+1}(n+1)x^{n}
+    \end{align*}
+    It is enough to show that $5q'' + 3q'$ can span $P(R)$ for any $n$. For this we need to show that the coefficients must be 0 ie. $b_2=\dots=b_n+1 = 0$
+
+    We see that there is only one term affecting $x^{n}$ so for that to be $0$ there is no other choice but $b_{n+1} = 0$. But if $b_{n+1} = 0$  then for $x^{n-1}$ term we  need $b_n = 0$. So by inductino we can show that any $b$ must be equal to 0. Hence it is linearly indpendent.
+\end{proof}
+
+
+\end{document}
+$ $$ 
+
+            

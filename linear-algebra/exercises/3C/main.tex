@@ -1,0 +1,330 @@
+\documentclass[a4paper]{report}
+\input{../../preamble.tex}
+\title{Linear Alebgra 3B}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+\section*{3C}
+\subsection*{Problem 1}
+\begin{proof}
+    Let us assume the contrary that the matrix of $T$ can be less than $\dim \range T$ non-zero entries. Now consider a basis of $W$ as $w_1,\dots,w_n$ such that $w_1,\dots,w_k$ spans $\range T$. Now because we have only $\dim \range T - 1$ non-zero entries in our matrix we have $r < k$ non-zero entries.
+
+    So we would have a maximum of $r$ columns with non-zero entries in our matrix. By definition now, 
+    \begin{align*}
+        Tv_k = A_{1k}w_1 + \dots + A_{nk}w_n\\
+    \end{align*}
+    We also know that the definition of linear maps maps a vector in the basis of V to a vector in W. So,
+    $$ Tv_1 = w_1 ,\dots,Tv_m = w_m$$ 
+
+    However because we have a maximum of $r$ columns that are non-zero, we can only map  any v to a linear combination of $w_1,\dots,w_r$. But this means that $\dim range = r$ as any $v \in V$ is mapped to $r$ linearly independent vectors. But this contradicts our assumption that $\dim range = k$. Hence our assumption must be wrong.
+\end{proof}
+
+
+
+\subsection*{Problem 2}
+\begin{proof}
+    $\impliedby$ 
+
+    First we know that if $\dim \range T = 1$ then  $\range T$ is spanned by a single arbitrary non-zero vector $w$. We nkow as $T$ is a linear map we can construct a basis $V$, $v_1,\dots,v_n$ as follows,
+
+
+    First choose any $v_1 \in V$ such that $Tv_1 = b_1w$. Now let us extend this basis to $V$ as $v_1,\dots,v_m$. We change this basis to $v_1,v_2+v_1,\dots,v_m+v_1$. It is easy to show that this list is linearly independent and hence is a basis.
+    
+    For any vector in this basis we know that $T(v_k) = b_kw$ such taht $b_k \ne 0$ as $T(v_k) = T(v_{k'}) + T(v) = \lambda + b_1w$ where $\lambda$ may or may not be zero.
+    where any $b \ne 0$ because for any $v$ such that $P(v) = 0$
+
+    Hence we find, 
+    $$ T(v_1) = b_1w,\dots,T(v_n) = b_nw $$
+
+    Now we divide each side by $\frac{1}{b_k}$ to get, 
+    $$ T(\frac{v_1}{b_1})= w,\dots,T(\frac{v_n}{b_n}) = w $$ 
+
+    We can construct a basis of $W$ from $w$ to $w,\dots,w_n$. Hence we have our matrix as,  
+    $$ T(v_1') = 1w + \dots + 0w_n $$ 
+    $$ \dots$$
+    $$ T(v_n') = 1w + \dots + 0w_n $$ 
+
+    Now we know that $M(T)$ can be constructed with all 1s.
+\end{proof}
+
+\subsection*{Problem 3}
+\begin{proof}
+    (a). We know that the matrix of T is defined as, 
+    $$ T(v_k) = A_{1k}w_1 + \dots + A_{nk}w_n $$ 
+    and that of $S$ is defined as, 
+    $$ S(v_k) =B_{1k}w_1 + \dots + B_{nk}w_n $$
+
+    And for $(S+T)$ let it be, 
+    $$ (S+T)v_k = C_{1k}w_1 + \dots + C_{nk}w_n $$ 
+    We know that $(S+T)v = Sv + Tv$. So for the basis of $V$ given we have, 
+    \begin{align*}
+        (S+T)v_k &= Sv_k + Tv_k\\
+                 &= (A_{1k}+B_{1k})w_1 + \dots + (A_{nk} + B_{nk})w_n
+    \end{align*}
+
+    So we have $C_{j,k} = A_{jk} + B_{jk}$. Which essentially means $M(S+T) = M(S) + M(T)$
+
+
+    \vspace{2em}
+    (b). We have $M(T)$ defined as  follows,  
+    \begin{align*}
+     (T) v_k  &= A_{11}w_n + \dots + A_{nk}w_n \\
+     \lambda \times  (T)v_k &=  (\lambda A_{11}) w_1 + \dots + (\lambda A_{nk} w_n)\\
+    \end{align*}
+    Or in other words the matrix $\lambda M(T)$ is  defined as, 
+    \begin{align*}
+     \lambda \times  (T)v_k &=  (\lambda A_{11}) w_1 + \dots + (\lambda A_{nk} w_n)\\
+    \end{align*}
+
+    Now consider the matrix of $\lambda T$ we have, 
+    \begin{align*}
+     (T) v_k  &= A_{11}w_n + \dots + A_{nk}w_n \\
+     (\lambda T)v_k &= (\lambda) \times  Tv_k\\
+                    &= (\lambda A_{11}) w_1 + \dots + (\lambda A_{nk} w_n)\\
+    \end{align*}
+
+    Hence as each element of $\lambda M(T)$ is the same as that of $M(\lambda T)$ we have $M(\lambda T) = \lambda M(T)$
+
+
+\end{proof}
+
+\subsection*{Problem 4}
+\begin{proof}
+    Consider a basis of $P_3$ as $p_1,\dots,p_4$ and a basis of $P_2$ as $1 + x + x^2$. By definitino of linear map we have, 
+
+    \begin{align*}
+        Dp_1 &= 1 \\
+        Dp_2 &= x\\
+        Dp_3 &= x^2\\
+        Dp_4 &= 0 \\
+    \end{align*}
+
+    So we have $p_1 = x, p_2 = x^2, p_3 = x^{3}, p_4 = 1$ as a basis of $P_3$
+
+
+\end{proof}
+\subsection*{Problem 5}
+\begin{proof}
+    Consider a basis of $V$ as $v_1,\dots,v_n$, we know as $T$ is a linear map we find, 
+    $$ Tv_1 = w_1,\dots, Tv_n = w_n $$ 
+
+    Let $\range T = k$ so we know that $w_1,\dots,w_n$ spans $\range T$ or in other words $w_1,\dots,w_n$ can be reduced to a basis of $\range T$ such that without loss of generality let them be ordered as $w_1,\dots,w_k$. 
+
+    So we have, 
+    \begin{align*}
+        Tv_1 &= w_1\\
+        &\dots\\
+        Tv_k &= w_k
+    \end{align*}
+
+    Now we can find $v_{k+1},\dots,v_n \in \nul T$ such that $Tv_{k+1} = 0,\dots,Tv_n = 0$ as null of T is spanned by $n - k$ vectors.
+
+    So let us extend our current list of  $v_1,\dots,v_k$ to $v_{k+1},\dots,v_n$. So our linear map is dfined as, 
+    \begin{align*}
+        Tv_1 &= w_1\\
+        &\dots\\
+        Tv_k &= w_k\\
+        Tv_{k+1} &= 0\\
+        &\dots\\
+        Tv_{n} &= 0\\
+    \end{align*}
+
+    First let us extend our basis of $\range T$  to a basis of $W$ as $w_1,\dots,w_n$. Now let our definitio of $M(T)$ be as follows, 
+    \begin{align*}
+        Tv_1 &= 1w_1 + \dots + 0w_k + \dots + 0w_n\\
+        &\dots\\
+        Tv_k &= 0w_1 + \dots + 1w_k+ \dots + 0w_n\\
+        Tv_{k+1} &= 0w_1 + \dots + 0w_k + \dots 0 w_n\\
+        &\dots\\
+        Tv_{n} &= 0w_1 + \dots + 0w_k + \dots 0w_n\\
+    \end{align*}
+
+    Hence based on how we define $M$ we have 1s at $A_{11},\dots,A_{kk}$ and $0$ 's everywhere else.
+
+    % Where $w_1,\dots,w_k$ is  a basis of $\range T$. Now we know for any $v_x$ such that that $x > k$ that $T(v_x)$ can be written as a linear combination of $w_1,\dots,w_k$.
+
+\end{proof}
+
+
+\subsection*{Problem 6}
+\begin{proof}
+    First consider the case when $W = \range T$ and $\dim W = n$. And say we have basis of $V $ as $v_1,\dots,v_m$. Now consider $Tv_1 = w_1$. Let us extend this set of vectors to $w_1,\dots,w_n$. So we have, 
+    $$ Tv_1 = w_1 $$ 
+    $$ \dots $$ 
+    $$ Tv_m = a_1w_1+\dots+ a_nw_n$$ 
+
+    So we define our matrix as follows, 
+    \begin{align*}
+        Tv_1 &= 1w_1 + \dots + 0w_n \\
+    &\dots \\
+        Tv_m &= A_{1m}w_1+\dots+ A_{nm}w_n\\
+    \end{align*}
+
+    So for our first column we have all zeroes except for  $A_{11}$
+
+    Now consider if $\dim \range T \le \dim \range W$. So $\exists v_k \in V$ such that $T(v_k) = 0 = 0w_1,\dots,0w_n$  for any basis of $W$. So we construct the matrix such that all in first column are zeroes.
+\end{proof}
+\subsection*{Problem 8}
+\begin{proof}
+    We need to show $(AB)_{j,.} = A_{j,.}B$
+
+    First we have, 
+         $$AB_{j,k} &= \sum_{r=1}^{n} A_{j,r}B_{r,k}\$$
+
+         So, 
+         \begin{align*}
+             AB_{j,.}  &= (\sum_{r=1}^{r=n} A_{j,r}B_{r,1},  \dots, \sum_{r=1}^{r=n} A_{j,r}B_{r,n})\\
+                       &= (A_{j,1},\dots,A_{j,n}) B\\
+                       &= A_{j,.}B
+         \end{align*}
+
+\end{proof}
+
+\subsection*{Problem 9}
+\begin{proof}
+    We have, 
+    \begin{align*}
+        (aB)_{1,k} &= \sum_{r=1}^{n} A_{1,n}B_{n,k}\\
+        (aB) &= (\sum_{r=1}^{n} A_{1,n}B_{n,1},\dots,\sum_{r=1}^{n} A_{1,n}B_{n,1})\\
+    \end{align*}
+
+    Now we have, 
+    $$ a_1B_{1,.} + \dots + a_nB_{n,.} = a_1B_{11}+ \dots + a_n B_{n,1} , \dots, a_1B_{n1} + \dots + a_n B_{nn}$$ 
+    $$ = (\sum_{r=1}^{n} a_{n}B_{n,1},\dots,\sum_{r=1}^{n} a_{n}B_{n,1}) $$ 
+
+    Hence we have our equality.
+\end{proof}
+\subsection*{Problem 10}
+\begin{proof}
+    Let $A = (1,0;0,0)$ and $B = (0,1;0,0)$. We have AB = (0,1;0,0) and $BA = (0,0;0,0)$
+\end{proof}
+
+\subsection*{Problem 11}
+\begin{proof}
+    Let $B + C = X$ such that,
+    First be have $(B + C)_{j,k} = B_{j,k} + C_{j,k} = X_{j,k}$
+
+    So we have, 
+    $$ A(B + C) = AX $$ 
+    \begin{align*}
+        (AX)_{j,k} &= \sum_{r=1}^{n} A_{j,r} X_{r,k}\\
+                   &= \sum_{r=1}^{n} A_{j,r}(B_{r,k} + C_{r,k})\\
+                   &= \sum_{r=1}^{n} A_{j,r}(B_{r,k})  + A_{j,r}(C_{r,k})\\
+                   &= \sum_{r=1}^{n} A_{j,r}(B_{r,k})  + \sum_{r=1}^{n} A_{j,r}(C_{r,k})\\
+                   &= AB_{j,k} + AC_{j,k}
+    \end{align*}
+
+    Hence we have $A(B + C) = AB + AC$
+\end{proof}
+
+\subsection*{Problem 12}
+\begin{proof}
+    We know if $T$ and $S$ are linear map from $U,V$ and $V,W$ respectively then $M(ST) = M(S)M(T)$
+
+    Let  $A = M(T), B = M(S), C = M(R)$ for a linear map $T,S,R$ So we have, 
+    \begin{align*}
+        (AB)C &= (M(T)M(S))M(R)\\
+              &= (M(TS))M(R)\\
+              &= M((TS)R)\\
+              &= M(T(SR))\\
+              &= M(T)M(SR)\\
+              &= M(T)(M(S)M(R))\\
+              &= A(BC)
+    \end{align*}
+
+\end{proof}
+
+\subsection*{Problem 13}
+
+\begin{proof}
+    
+We know that 
+$$ (AA)_{j,k} = \sum_{r = 1}^n A_{j,r} A_{r,k} $$ 
+
+$$ (A(AA))_{j,k} = \sum_{r = 1}^n A_{j,r} (AA)_{r,k}$$ 
+
+$$ (A^{3})_{j,k} = \sum_{p = 1}^n A_{j,r}( \sum_{x = 1}^n A_{r,x} A_{x,k}  )$$ 
+
+$$ (A^{3})_{j,k} = \sum_{p = 1}^n \sum_{x = 1}^n A_{j,r} A_{r,x} A_{x,k}$$ 
+
+
+\end{proof}
+\subsection*{Problem 14}
+\begin{proof}
+    To show that the functino is a linear map we need to show additvity and homogenity. Consider $A \in F^{m,n}$  and $B \in F^{m,n}$. 
+
+    1. Additive. 
+
+   We need to show that $(A+B)^{t} = A^{t} + B^{t}$ . First we know that $(A+B)_{j,k} &= A_{j,k} + B_{j,k}$
+
+   \begin{align*}
+       (A+B)^{t}_{j,k} &= (A+B)_{k,j}\\
+                   &= A_{k,j} + B_{k,j}\\
+                   &= A^{t}_{j,k} + B^{t}_{j,k}
+   \end{align*}
+
+   So we have $(A+B)^{t} = A^{t} + B^{t}$
+
+    2. Scalar multiplication.
+
+    We need to show that $(kA)^{t} = k A^{t}$
+
+    We have $(kA)_{j,k} = k(A_{j,k})$ . So $$(kA)^{t}_{j,k} = (kA)_{k,j}$$
+    $$ = k A_{k,j} $$ 
+
+    So we have $(kA)^{t} = k A^{t}$
+
+
+\end{proof}
+
+\subsection*{Problem 15}
+\begin{proof}
+    We have, 
+    $$ AC_{j,k} =  \sum_{r=1}^{n} A_{j,n} C_{n, k}$$
+
+    So $AC^{t}_{j,k} = AC_{k,j} $ which is, 
+    $$ = \sum_{r=1}^{n} A_{k,r} C_{r, j}$$  
+
+    Now $C^{t}_{j,k} = C_{k,j} $ and $A^{t}_{j,k} = A_{k,j}$ . So $$(C^{t}A^{t})_{j,k} = \sum_{r=1}^{n} C_{r,j} A_{k,r}$$
+    
+    $$  = \sum_{r=1}^{n} A_{k,r} C_{r, j} $$ 
+    $$ = (AC)^{t}_{j,k} $$ 
+
+
+    
+
+\end{proof}
+
+\subsection*{Problem 16}
+\begin{proof}
+    $\impliedby$
+    First we know that for any rank $k$ matrix we can write it as a prodcut of $RC$ such that $R = m \times  k$ and $C =k \times  n$ if $A$ is a $m \times n$ matrix. So if $A$ is a rnak 1 matrix we can write it as a $m \times  1$ times $1 \times n $ product of matrices.
+
+    Let $C = (c_1,\dots,c_m)^{T}$ and $R = (d_1,\dots,d_n)$
+
+    So we have $A_{j,k} = C_{j,1}R_{1,k} = c_jd_k$
+
+    $\implies$
+    We have $A_{j,k} = c_jd_k$. Let  $C \in F^{m,1}$ where $C_{j,1} = c_j$. Now we have  $A_{.,k} = d_k C$. So each column of  $A$ is a scalar multiplcatino of $C$. Which means that our matrix $A$ has rank 1.
+\end{proof}
+
+
+
+\subsection*{Problem 17}
+\begin{proof}
+    (a) $\implies$ (b)
+    We need to show that $A_{.,1},\dots,A_{.,n}$ are linearly independent or that, if  
+    $$ \lambda_1A_{.,1}  + \dots + \lambda_n A_{.,n} = 0$$ The only solution is all  $\lambda= 0$
+
+    By definitino of matrix we have,  
+    $$ Tv_k= A_{1,k}u_1 + \dots + A_{n,k}u_n $$ 
+
+    Consider $\lambda_k Tv_k = \lambda_k A_{1,k}u_1 + \dots + \lambda_k A_{n,k}$ 
+
+    Now as $T$ is injective we have $\lambda_k T v_k = 0$. This can only be true if $\lambda_k = 0$. Which means our columns are linearly independent.
+\end{proof} 
+
+
+\end{document}

@@ -1,0 +1,326 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Linear Alebgra HW07}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+\subsection*{16}
+We consider the standard basis for both $F^{n,1}$ and $F^{m,1}$ such that for any $x \in F^{n,1}$ we have  $M(x) = x$ similarly,  $Tx \in F^{m,1}$ so $M(Tx) = Tx$. We can say,  
+\begin{align*}
+    Tx &= M(Tx)\\
+       &= M(T) M(x)\\
+       &= M(T) x
+\end{align*}
+Let $M(T)$ be a matrix $A$ so we get, 
+$$ Tx = Ax,\forall x \in F^{n,1} $$ 
+\subsection*{20}
+Consider the map $T: P(R) \rightarrow P(R)$. Defined by $T(p(x)) = (x^2 + x)p''(x) + 2xp'(x) + p(3)$. Now $T(p(x))$ has the same degree as $p(x)$. And we also see that if $p(x) \ne 0$ then $T(p(x)) \ne 0$ which means that  $T$ is injective which means that it is surjective as dim is same. 
+
+Now this shows that for any $q(x) \in P(R)$ we can find $p(x)$ s.t. $T(p(x)) = q(x)$
+\subsection*{21}
+We can rephrase the questino as, 
+
+(a) $Ax = 0 $
+
+(b) $Ax = c$
+
+Where  $A$ is a matrix and x and c are vectors as follows,  $x= (x_1,\dots,x_n)^T$ and $c = (c_1,\dots,c_n)^T$
+
+
+Now in (a) we can see $Ax$ as a linear map $T$ from  $F^{n,1}$ to itself. So we have $Tx = 0$ mean that $x = 0$. THis means that $T$ is injective. Similarly in (b) we nkow that for any  $c \in F^{n,1}$ $\exists x \in F^{n,1}$ s.t. $Tx = c$ which means that $T$ is surjective. We know that injective and surjective are equivalent as $T$ maps from $F^{n,1}$ to itself.
+
+\section*{5A}
+\subsection*{Problem 1}
+\begin{proof}
+   
+(a). $U \subseteq \nul T$ we need to show $\forall u \in U$ $T(u) \in \nul T$.
+
+Consider any $u \in \nul T$ we know that $T(u) = 0$ by definition. We know that $0 \in \nul T$ becuase $T(0) = 0$ which means that $T(u) \in \nul T$. Hence we show that for any $u \in U$ $T(u) \in U$. Which implies that  $U$ is an invariant under $T$.
+
+\vspace{1em}
+(b). We have $\range T \subseteq U$ this means  that for any $u \in V,$ $T(u) \in \range T \implies T(u) \in U$. So consider any $u \in U$ so we know that $T(u) \in \range T \implies T(u) \in U$. Which shows us that $U$ is invariant under $T$.
+
+
+\end{proof}
+
+\subsection*{Problem 2}
+\begin{proof}
+   
+We need to show that $V_1 + \dots +  V_m$ is invariant under $T$ if $V_1,\dots,V_n$ are invariant under $T$. 
+
+So we need to show that if  $v \in V_1 + \dots + V_m$ then $T(v) \in V_1 + \dots + V_m$. If $v \in V_1 + \dots + V_m$ that means that we can write $v$ as 
+$$ v = v_1 + \dots + v_m, \text{ where } v_1 \in V_1,\dots , v_m \in V_m $$ 
+
+Now $T(v) = T(v_1 + \dots + v_m) = T(v_1) + \dots + T(v_m)$. But we know that $v_1 \in V_1,\dots ,v_m \in V_m$ which means that $T(v_1) \in V_1,\dots,T(v_m) \in V_m$ as we know that $V_1,\dots,V_m$ are invariant subspaces. So now let us write $$T(v_1) = v'_1 ,\dots , T(v_m) = v'_m$$ such that $v'_1 \in V_1,\dots,v'_m \in V_m$
+
+So we have,
+\begin{align*}
+   T(v) &= T(v_1) + \dots + T(v_m) \\
+   &= v'_1 + \dots + v'_m\\
+\end{align*}
+
+So we have writen any $T(v)$ as $v'_1 + \dots + v'_m$ such that  $v'_1 \in V_1,\dots,v'_m \in V_m$ which means that $T(v) \in V_1 + \dots + V_m$.  Hence by definition this makes our subspace $V_1 + \dots + V_m$ invariant under $T$.
+
+\end{proof}
+\subsection*{Problem 3}
+\begin{proof}
+Let $V_1,\dots,V_m$ represent every collection of subspaces that are invariant under $T$. We need to show that $v \in V_1 \cap \dots \cap V_m \implies T(v) \in V_1 \cap \dots \cap V_m$. 
+
+Consider an arbitrary $v \in V_1 \cap\dots \cap V_m$. Now this means that 
+$$ v \in V_1, \dots, v \in V_m $$ 
+
+But because $V_1,\dots,V_m$ are all invariant under $T$ this means that 
+$$ T(v) \in V_1,\dots ,T(v) \in V_m $$
+
+Now by definition this means that $T(v) \in V_1 \cap \dots \cap V_m$. Which makes the subspace $V_1 \cap \dots  \cap V_m$ invariant under $T$.
+\end{proof}
+
+
+\subsection*{Problem 4}
+\begin{proof}
+   Let us assume the contrary that $U \ne \{0\}$ and  $U \ne V$. We know that  $0 < \dim U < \dim V$. Let $\dim U = k$ and $\dim V = n$. So consider a basis for $U$ as, 
+   $$ u_1,\dots,u_k $$ 
+
+   % We can extend this basis to a basis of $V$ as follows,
+   % $$ u_1,\dots,u_k,v_{k+1},\dots,v_n $$ 
+
+   Now let us define an operator on U such that  
+   $$ T(u_1) = v, \dots, T(u_k) = v $$ where $v \in V- U \ne \phi$ (for instance let  $v = v_m$)
+
+   So we constructed a map on  $U$ such that $T(U) = v \not \in U$.
+   
+\end{proof}
+
+
+\subsection*{Problem 5}
+We have the matrix as, $ \begin{bmatrix} 0 & -3 \\ 1 & 0  \end{bmatrix}$. So eigen values are $\pm i \sqrt{3}$. 
+
+However this exist outside  $R$ hence within our vector space we don't have an eigenvalue.
+
+\subsection*{Problem 6}
+We have the matrix as, $ \begin{bmatrix} 0 & 1 \\ 1 & 0  \end{bmatrix}$. So eigen values are $\pm 1$. 
+
+If eigven value is 1 then eigenvector is $(1,1)$ and if its -1 then eignvector is  $(1,-1)$
+
+
+\subsection*{Problem 7}
+We have the matrix as, $ \begin{bmatrix} 0 & 2 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & 5  \end{bmatrix}$. So eigenvalues are $0$ and $5$. Eigenvector for $0$ is $(1,0,0)$ and for  $5$ is $(0,0,1)$
+
+
+\subsection*{Problem 8}
+We have $P^2=P$. So consider an arbitrary $v$ which is an eigenvector of $\lambda$. So we have, 
+$$ Pv = \lambda v $$ 
+
+But we know $P(P(v)) = P(v)$. So  $P(\lambda v) = P(v)$ 
+$$ \lambda P(v) = P(v) $$ 
+
+Now this is ture if either $\lambda = 1$ or $P(v) = 0$. If $P(v) = 0$ that means $v \in \null T$ or that $\lambda = 0$ is an eigvenvalue of $T$.
+
+
+
+
+
+\subsection*{Problem 9}
+We have our basis of $P(R)$ as $1 + x$. Which can be written as  $(1,0),(0,1)x$.
+
+So the matrix of our linear map is  $\begin{bmatrix} 0 & 1 \\ 0 & 0 \end{bmatrix}$. So $\lambda = 0$ which gives us the eigenvector as $(1,0)$
+
+\subsection*{Problem 10}
+ $P_4(R)$ is spanned by $1 + x + x^2 + x^{3} + x^4$. Which can be written as $(1,0,0,0,0),\dots,(0,0,0,0,1)$.
+
+Now to define our linear map we need to see where our standard basis will map to.  We have,
+
+\begin{align*}
+   T(1) &= 0\\
+   T(x) &= x\\
+   T(x^2) &= 2x^2\\
+   T(x^3) &= 3x^{3}\\
+   T(x^{4}) &= 4x^{4}
+\end{align*}
+
+So the matrix of our linear map will be, 
+$$ \begin{bmatrix}0 & 0 &0 &0 &0 \\ 0 & 1 & 0& 0& 0\\ 0& 0 & 2& 0& 0\\ 0& 0& 0& 3& 0\\ 0& 0& 0& 0& 4\end{bmatrix} $$ 
+
+It is clear that our eigenvalues are $0,1,2,3,4$. And its eigenvector are  $(1,0,0,0),\dots,(0,0,0,1)$
+
+
+\subsection*{Problem 12}
+\begin{proof}
+   We know that $V = U \oplus W$. So any  $v \in V$ can be written as 
+   $$ v = u + w, u \in U, w \in W $$
+
+   Consider a basis for $U$ as $u_1,\dots,u_n$ and a basis for $W$ as $w_1,\dots,w_m$.
+
+   So we have all v can be written as $a_1u_1 + \dots + a_nu_n + b_1w_1 + \dots + b_mv_m$. Because $U \cap W = \{0\}$ we know that no $w_k$ \in $U$ or in other words our list of vectors $u_1,\dots,u_n, w_1,\dots,w_m$ is linearly indepndent and is a basis for $V$.
+
+   Now given a basis of  $V$ we can define a linear map $P: V \rightarrow V$ as follows,
+   $$ P(u_1) = u_1,\dots,P(u_n) = u_n $$ 
+   $$ P(w_1) = 0,\dots,P(w_m) = 0 $$ 
+
+   Hence we have defined a linear map as we have assigned vectors in $V$ for our basis of $V$.
+
+   Now for any  $P(u + w)$ let $u = a_1u_1 + \dots + a_nu_n$ and $w = b_1w_1 + \dots + b_mw_m$
+   \begin{align*}
+      P(u + w) &= P(u ) + P(w)\\
+               &= P(a_1u_1 + \dots + a_nu_n ) + P(b_1w_1 + \dots + b_mw_m)\\
+               &= a_1P(u_1)+ \dots + a_nP(u_n) + b_1P(w_1) + \dots + b_mP(w_m)\\
+               &= a_1u_1+ \dots + a_nu_n + 0\\
+               &= u
+   \end{align*}
+
+   Hence we define $P$ such that $P(u + w) = u$
+\end{proof}
+
+\subsection*{Problem 13}
+\begin{proof}
+   (1). We need to show that if $T v = \lambda v$ then $S^{-1}TS v = \lambda v$ givne that $S$ is invertible.
+
+   Consider that $S^{-1}TS v = v'$. Becuase $S$ is invertibel we can apply S on both sides and get, 
+   $$ T(S(v)) = S(v') $$ .
+
+   But we  assume that $T$ has an eigenvalue $\lambda$. Now because  $S$ is invertible in $V$ there exists some $v$ such that $S(v)$ is an eigenvector  of $T$. For that  $v$ we have $T(S(v)) = \lambda S(v)$. So we get, 
+   \begin{align*}
+      T(S(v)) &= S(v') \\
+      \lambda S(v) &= S(v') \\
+      S(v') &= S(\lambda v)\\
+      v' &= \lambda v
+   \end{align*} 
+
+   So for some  $v$ such that $S(v)$ is an eigen vector of $T$ we have $v$ is an eigenvector of $S^{-1}TS$ such that $\lambda$is the eigenvalue associated with the vector.
+
+   Hence we show that both $T$ and $S^{-1}TS$ have the same eigenvalues.
+
+   (b). If $v$ is an eigenvector of $T$ then $v' = S^{-1}v$ is an eigenvector of $S^{-1}TS$.
+\end{proof}
+
+
+
+
+
+\subsection*{Problem 19}
+\begin{proof}
+   
+% It is enough to show that there doesn't exist an invariant subspace under $T$. 
+Assume $\lambda$ is an eigven value, this means that 
+$$ \lambda z_1 = 0, \lambda z_2 = z_2,\dots$$
+
+But if $\lambda z_1 = 0 $ then $z_1 = 0\implies z_2 = 0 \implies z_3 = 0 \dots$ 
+
+Hence the only possiblblity is $(0,\dots)$ however this isn't a valid consideratino for an eigenvector. So  $\not \exists \lambda $ such that it is an eivenvalue. Or in other words for any lambda there doesn't exist a eigenvector.
+
+\end{proof}
+\subsection*{Problem 20}
+\begin{proof}
+   
+(a). Consider an artbiary $\lambda$ we need, 
+$$ \lambda z_1 = z_2, \lambda z_2 = z_3,\dots $$ 
+
+For any arbitrary $z_1$ and $\lambda $ we can define $z_n = \lambda z_{n-1}$. 
+
+(b). For an arbitary $\lambda$ every eigenvector is of form, 
+$$ (z_1,\lambda z_1, \lambda^2 z_1, \lambda^3 z_1,\dots) $$ 
+
+
+
+\end{proof}
+\subsection*{Problem 21}
+\begin{proof}
+   
+(a). $\impliedby$ We have $T$ is invertible and $\lambda$ is an eigenvalue of $T$. So $\exists v$ such that, 
+$$ T(v) = \lambda v $$ 
+Now because $T$ is invertbile  we can apply $T^{-1}$ and we get, 
+
+\begin{align*}
+   T^{-1}Tv &= T^{-1}(\lambda v)\\
+   v&= T^{-1}(\lambda v)\\
+   v &= \lambda T^{-1}(v)\\
+   \frac{v}{\lambda} &=  T^{-1}(v)\\
+\end{align*}
+
+So we've shown that $\frac{1}{\lambda}$ is an eigenvalue of $T^{-1}$
+
+
+$\implies$
+ The argument is exactly the same as (a) because $T^{-1} = T'$ is also an invertbile linear map and just consider $\lambda' = \frac{1}{\lambda}$ as the eigvenvalue of this map.
+
+
+ (b). 
+ Let $v \in V$ such that $T(v) = \lambda v$. Then we have  
+ \begin{align*}
+    T^{-1}T v &= T^{-1} \lambda v\\
+    v &= \lambda T^{-1} v\\
+    \frac{v}{\lambda} &= T^{-1} v\\
+ \end{align*}
+
+ So we've shown that for any arbitary eigenvector $v$ with eigenvalue $\lambda$ $v$ is also an eigenvector of $T^{-1}$ with eigenvalue of $\frac{1}{\lambda}$ 
+
+\end{proof}
+ \subsection*{Problem 21}
+ \begin{proof}
+    
+ Consider two cases either  $w = -u$ or $w \ne -u$.
+
+ If  $w = -u$ then we have $T(u) = -3u$ and  $T(w) = -3w$ which makes -3 a eigenvalue with eigenvector $u$.
+
+ Now if $w \ne -u$ then  we have, 
+ \begin{align*}
+   T(u) = 3w, T(w) = 3u     
+ \end{align*}
+ \begin{align*}
+    T(u) + T(w) = 3(u + w)\\
+    T(u + w) = 3 (u + w)
+ \end{align*}
+ And because $u \ne w$ we know that $u + w \ne 0$ which is required  for an eigenvector. So here we show that $u + w$ is an eigenvector and the associated eigenvalue for this is $3$.
+
+
+ \end{proof}
+ \subsection*{Problem 25}
+ \begin{proof}
+    
+ Let $u$ be an eigenvector such that $T(u) = \lambda_1 u$ and $T(w) = \lambda_2 w$
+
+ We are told that $T(u + w) = \lambda_3(u + w)$. So we have, 
+ $$ T(u) + T(w) = \lambda_3(u + w) $$ 
+ $$ \lambda_1 u + \lambda_2 w = \lambda_3(u + w) $$ 
+ $$ \lambda_1 u  + \lambda_2 w = \lambda_3 u + \lambda_3 w $$ 
+
+ Now if $u,w$ are linearly dependent (one is in the span of the other) then it is trivial to show that $\lambda_1 = \lambda_2$ and that $\lambda 3 = \lambda_1 = \lambda 2$.
+
+ Now if $u,w$ are linearly independent this means that neither are in the span of each other, $\not \exists k $ s.t. $u = kw$.
+
+ Hence the only solution to the equation  $(\lambda_1 - \lambda_3) u + (\lambda_2 - \lambda 3)v = 0$ is if the coefficients are equal to 0. Or 
+ $$ \lambda_1 = \lambda_3 $$ 
+ $$ \lambda_2 = \lambda_3 $$ 
+
+ But this then means that $\lambda_1= \lambda_2$. So we show that in both cases $\lambda_1 = \lambda_2$
+
+ \end{proof}
+
+ \subsection*{Problem 28}
+ \begin{proof}
+    First within the range of T we can construct T such that we have at most $\dim \range T$  eigenvector curresponding to each subspace spanned by the basis of $\range T$. That is, we can consturct $\dim \range T$ invariant subspace from $V$ to itself such that $T(v) \in \range T$. 
+
+    Now consider the case when $\range T$ doesn't span $V$ then $\exists v $ such that $T(v) = 0$. Hence we have another eigven value  $0$ such that $T(v) = 0 v$ and  $v \in \null T$
+
+    So we have shown that we have atmost  $\dim \range T + 1$ eigenvalues.
+ \end{proof}
+
+\subsection*{Problem 30}
+\begin{proof}
+   For $(T - 2I)(T - 3I)(T - 4I) = 0$ to be true we have either $(T-2I) = 0$ or $(T-3I) = 0$  or $(T-4I) = 0$.
+
+   Let us consider each case, 
+   1. $(T - 2I) = 0$ or  
+   \begin{align*}
+      (T - 2I)v &= 0v = 0 \\
+      Tv - 2v &= 0\\
+      Tv &= 2v
+   \end{align*}
+   Which means that $2$ is an eigenvalue or that $\lambda = 2$. We can use similar reasoning for (2) and (3) to conclude that either  $\lambda =2 $ or $3$ or $4$.
+\end{proof}
+ 
+ 
+
+\end{document}

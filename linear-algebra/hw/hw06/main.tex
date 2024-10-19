@@ -223,6 +223,64 @@ We have $ST$ is invertible. Lets assume the contrary that either $S$ is not inve
 So by proof by contradiction our assumption ust be wrong and both S and T are invertible.
 
 
+$\impliedby$
+
+We have S and T are invertible. We need to show that $ST$ is injective and surjective.
+
+1. Injective
+
+\quad We need to show that null ST = \{0\}. Consider $v \in $ null ST  such that $STv = 0$. We know that $S$ is injective hence $Tv = 0$. But  $T$ is injective as well. Hence $v = 0$. So null ST = 0. Hence $ST$ is injective
+
+2. Surjective
+
+\quad We need to shwo that $\forall v\in V$, $\exists v' \in V$s.t. $STv' = v$. We know that $S$ is surjective this means that for any $v \in V$, $\exists v'' $ s.t. $S(v'') = v$. We also know that $T$ is surjective this means that for any  $v'' \in V$ $\exists v' \in V$ s.t. $T(v') = v''$. So we have  $\exists v'$ s.t. $S(T(v')) = v$ or  $ST$ is surjective. 
+
+Hence we show that $ST$ is invertible.
+
+
+\subsection*{12}
+We have $STU = I$ This means that $ST$ and  $U$ are both invertible which means that $S$ and $T$ are also invertibel. So $\exists S^{-1}$ and $U^{-1}$.
+
+\begin{align*}
+    STU &= I\\
+    TU &= S^{-1}\\
+    U &= T^{-1}S^{-1}\\
+    US &= T^{-1}S^{-1}S\\
+    T^{-1} &= US\\
+\end{align*}
+
+\subsection*{15}
+If $Tv_1,\dots,Tv_m$ spans V that menas that m $\ge$ dim V.
+
+1. m = $\dim V$
+
+Assume $v_1,\dots,v_m$ is not a lin ind set of vectors. Then, $\exists a_1,\dots a_m$ some not zero such that, 
+$$ a_1v_1 + \dots + a_mv_m = 0 $$ .
+
+So we get, 
+$$ a_1(Tv_1) + \dots + a_mT(v_m) = 0 $$ where some a not zero.
+
+But this implies that $Tv_1,\dots,Tv_m$ list is not lin independent which is contradictory.
+
+Hence we have $v_1,\dots,v_m$ is a lin independent set of vectors with dimension smae as basis of V which makes $v_1,\dots,v_m$ a basis of V or spanning.
+
+
+
+2. If $m > $ dim V.
+
+Then we can remove vectors from our list to make it spanning and lin independent and spanning, consider the smaller list as follows, 
+$$ Tv_1,\dots,Tv_k $$ 
+Using similar reasoning we know that  
+$$ v_1,\dots,v_k $$  has to be linearly independent as well. However in this case we have lin independent vectors whose number is the same as that of a basis which makes it a basis as well. Hence our list of vectors $v_1,\dots,v_k$ is spanning. So we can continue extending this basis to $v_1,\dots,v_m$ and still have it spanning.
+
+
+
+
+
+
+
+
+
 
 
 \end{document}
