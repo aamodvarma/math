@@ -1,0 +1,166 @@
+\documentclass[a4paper]{report}
+\usepackage{multirow}
+\input{preamble.tex}
+\title{Intro to Proofs: HW10}
+\author{Aamod Varma}
+\graphicspath{ {./} }
+\begin{document}
+\maketitle
+\date{}
+\section*{14.2}
+\subsection*{Problem 5}
+\begin{proof}
+    Consider the following set of irrationals, 
+    $$ \{\sqrt{2}/1, \sqrt{2}/2,\sqrt{2}/3, \dots\} $$ 
+
+    We can show a bijection from $N$ to this set defined by $f(n) = \sqrt{2}/n$. And it is a subset of the irrationals as it contains only irrational  numbers.
+\end{proof}
+\subsection*{Problem 8}
+\begin{proof}
+    1. We know that $Z$ is countably infinite and Q is countably infinite so it follows from the corollary that $Z \times Q$ is countable infinity.
+
+    2. We can constrict a mapping from $Z \times Q$ to $Z \times  Z \times Z$ as follows $f(a, \frac{p}{q}) = (a, p, q)$ which is bijective. And we also know that $Z \times  Z \times Z$ is countably infinite as $Z$ is countably infinite hence $Z \times Q$ is countably infinite.
+\end{proof}
+\subsection*{Problem 13}
+\begin{proof}
+    For any arbitrary set  $X$ let us define a function that maps it to $p_{x_1}p_{x_2}\dots$. Where $x_1,x_2$ are the elements of $X$ and $p_{x_1}$ refers to the $x_1$th prime number.
+
+    This ensures that if $X_1 \ne X_2$ that $f(X_1) \ne f(X_2)$. Hence we have an injective function. So we can list out the elements of $A$ making it countably infinite.
+\end{proof}
+
+
+\section*{14.3}
+\subsection*{Problem 2}
+\begin{proof}
+    We can define a function $f: C \rightarrow R \times R$ as follows $f(a + bi) = (a,b)$. We see that  this is injective because $(a_1,b_2) = (a_2,b_2)$ implies $a_1 = a_2$, $b_1 = b_2$. Which must mean $a_1 + b_1i = a_2 = b_2 i$ (by definition of addition in the complex plane). We show its surjective as for any $(a,b)$ we can find  $a + bi \in C$ such that $f(a + bi) = (a,b)$. 
+
+    So we have $|C| = |R \times  R|$. Because $R $ is uncountable we know that $R \times  R$ is uncountable. Hence $C$ is uncountable
+
+
+\end{proof}
+
+
+\subsection*{Problem 3}
+\begin{proof}
+    Consider $P(R)$. We know $P(R)$ is uncountable as it is a powerset of an infinite set. Howver $|R| < |P(R)|$ hence $|R| \ne |P(R)|$
+\end{proof}
+\subsection*{Problem 7}
+\begin{proof}
+    Let us assume the contrary that $B - A$ is countable. Now we also know that $A $ is countable. We know the union of two countable sets must be countable. Hence $A \cup (B - A)$ is countable. This is, $A \cup (B \cap \overline{A}) = B \cap B = B$. So $B$ must be countable, but we know $B$ is uncountable. Hence a contradiction. So $B - A$ must be uncountable.
+\end{proof}
+\subsection*{Problem 8}
+\begin{proof}
+    % Let us assume that this is true. But we know that the set of finite sequences of integers is countably infinite. This implies that the union of the two sets is countably infinite. Let the union be $P$. We can show that there is a bijection from $P$ to $P(Z)$  defined by $f(P_0) = \{x: x \in P_0\}$which we know is uncountable. Hence a contradiction. So the set must be uncountable
+    We show that the set is uncoutable by showing there cannot be a mapping from the set to  $N$. Consider the following mapping, 
+    \begin{verbatim}
+        1 | a_1 a_2 a_3 ...
+        2 | b_1 b_2 b_3 ...
+        3 | c_1 c_2 c_3 ...
+        4 | d_1 d_2 d_3 ...
+    \end{verbatim}
+
+    Now consider a sequence defined whose  $n$th element is defined as $1$ if $f(n) = 0$ where  $f$ gives the $n$ element of sequence that the natural number $n$ is mapped to.
+
+    Now by construction there is no natural number $n \in N$ such that maps to our sequence. Hence we show there cannot be a surjection which implies that it is uncountable.
+\end{proof}
+\subsection*{Problem 10}
+
+\begin{proof}
+    Assume it is not injective. Then there exists $a_1\ne a_2 \in A$ such that $f(a_1) = f(a_2)$. Now consider the set $A_0 = A - \{a_0\}$.  Now for any $b \in B$ there still is $a \in A$ such that $f(a) = b$ as the element  $a_0$ was mapped to is still mapped to by $a_1$. Hence it is still surjective. But we know that $|A| < |B|$ which makes it not surjective. We get a contradiction hence $f$ must be injective.
+
+    Consider $f$ from $Z$ to $N$ as follows $f(z) = |z|$. This is a surjection as for any  $n \in N$ we have $n \in Z$ as well. But it is easy to see that it is not injective as $z$ and $-z$ map to the same element despite being different. We also know that $|Z| = |N|$
+\end{proof}
+
+
+\section*{14.4}
+\subsection*{Problem 1}
+
+\begin{proof}
+    If $A \subseteq B$ then $|A| \le |B|$. And if  there is an injection from  $B \rightarrow A$ then that implies that $|B| \le |A|$. Both these imply that  $|A| = |B|$
+\end{proof}
+\subsection*{Problem 6}
+\begin{proof}
+We know that $|N \times N| = |N| = \aleph_0$. This means there exists $f$ which is a bijection from $N \times  N$ to $N$. Now let us construct a bijection  $g $ defined on $P(N \times  N)$ to $P(N)$. Defined as follows,  
+$$ g(X) = \{f(x): x \in X\} $$ 
+
+
+Now we show this is a bijective function.
+
+First consider two sets $X_1,X_2$, we need to show that $g(X_1) = g(X_2) \implies X_1 =X_2$.
+
+We have, $$\{f(x_1): x_1 \in X_1\} = \{f(x_2): x_2 \in X_2\}$$
+
+
+First consider $x_1 \in X_1$ this means that $f(x_1) \in g(X_1)$. Now because the sets are equal means $\exists x_2 \in X_2$ such that $f(x_2) = f(x_1)$. However because $f$ is injective we have $x_1 = x_2$ or $x_1 \in X_2$. This means that $X_1 \subseteq X_2$
+
+Now we can similarly show that $X_2 \subseteq X_1$ which implies that $X_1 = X_2$
+
+Now we need to show that $g$ is surjective.
+
+Consider an arbitrary $Y$ in $P(Z)$. We need to show there is an $X \in P(N)$ such that $g(X) = Y$.
+
+We know that because $f$ is surjective, for any $y \in Y, \exists x \in N$  such that $f(x) = y$. Hence we define, 
+$$ X = \{x: f(x) \in Y\} $$ 
+
+Now because of how we define $X$ we have, 
+$$ g(X) = \{f(x): x \in X\} $$  but $x \in X$ such that $f(x) \in Y$. Hence  if $y \in g(X)$ then  $\exists x \in X$ such that $f(x) = y$. But this means that $x \in X$ which implies that $f(x) \in Y$ or $y \in Y$ which shows that  $f(x) \subseteq Y$.
+
+Similarly, if  $y \in Y$ we have $x \in X$ such that $f(x) = y$. But based on how  $g(X)$ is defined we have $f(x)$ if $x \in X$ but $f(x) = y$ so $y \in g(X)$ hence $Y \subseteq g(X)$ or $ g(X) = Y$
+
+This shows surjection. So we have defined a bijective function fro $P(N)$ to  $P(Z)$ showing their cardinality is the same.
+
+\end{proof}
+
+
+
+\subsection*{Problem 22}
+\begin{proof}
+    First we show its defined for addition. So let $[a] = [a']$ and $[b] = [b']$ we want to show that  $[a + b] = [a' + b']$
+
+    By definition we know that $a - a' = k_1n$ and $b - b' = k_2n$. Adding them both we have, 
+    $$ a + b - (a'  + b') = n(k_1 + k_2)$$
+
+    Or $[a + b] = [a' + b']  $
+
+    We show its defined for multiplication. So we need to show that $[ab] = [a'b']$. So we have, 
+    $$ a - a' = k_1n \implies a = k_1n + a'$$ 
+    $$ b - b' = k_2n \implies b = k_2n + b'$$ 
+
+
+    So, 
+    $$ ab = k_1nb' + k_1k_2n^2 + k_2na' + a'b' $$ 
+    $$ ab - a'b' = n(k_1b' + k_1k_2n + k_2a') $$ 
+    So $[ab] = [a'b']$
+\end{proof}
+
+\subsection*{Problem 23}
+\begin{proof}
+    We show that $([a] + [b]) + [c] = [a] + ([b ]+ [c])$
+
+    We have, 
+    $$ ([a] + [b]) + [c] = [a + b] + c  $$ 
+    $$ =([a + b]) + [c] $$ 
+    $$ =([a + (b + c)] $$ 
+    $$ =[a] + [b + c] $$ 
+    $$ =[a] + ([b] + [c]) $$ 
+
+
+    Similarly we have $[ab][c] = [a][bc]$
+\end{proof}
+
+
+\subsection*{Problem 24}
+\begin{proof}
+    Let $a(b+c) \equiv m $ (mod n)
+
+    This means that  $a(b + c) - m = kn$ for some  $k$, So we have,  
+    $$ ab + bc - m = kn $$  for some $k$ which means that,  
+    $$ ab + bc \equiv m \text{ mod n}$$  
+
+    So we have $a(b + c) \eqiiv ab + ac $ (mod n)
+\end{proof}
+
+
+\end{document}
+
+

@@ -1,0 +1,113 @@
+
+\section{Behavior of functions near Isolated Points}
+
+\begin{theorem}
+   If $z_0$ is a removable singular point of $f$, then $f$ is bounded and analytic in some neighborhood $0 < | z - z_0| < \epsilon$ of $z_0$  
+\end{theorem}
+
+
+\begin{theorem}
+   If a function is bounded and analytic  in some deleted neighborhood $0 < |z - z_0| < \epsilon$ of $z_0$. If $f$ is not analytic at $z_0$ then it has a removable singularity there.
+\end{theorem}
+\begin{proof}
+   
+   $$ f(z) = \sum_{n=0}^{\infty} a_n (z - z_0)^{n} + \sum_{n=1}^{\infty} b_n (z -z_0)^{-n} $$ 
+
+   We have, 
+   $$ b_n = \frac{1}{2\pi i}\int_C \frac{f(z)}{(z - z_0)^{n + 1}} dz $$ 
+
+   Let $M$ such that  $|f(z)| < M $, $ 0 < |z - z_0| < \epsilon$.
+
+   So $$|b_n| \le \frac{1}{2\pi} \frac{M}{\rho^{n + 1}} 2 \pi \rho= M \rho^{n}$$
+
+   Now as $\rho \rightarrow 0$  we have $|b_n| \rightarrow 0$
+\end{proof}
+
+
+
+\begin{theorem}
+   If $z_0$ is an essential singularity of $f$ and let $w_0$ be any complex number. Then, for any positive $\epsilon$, the inequality, 
+   $$ |f(z)- w_0| < \epsilon $$  
+   is satisfied at some point $z$ in each deleted neighborhood of $0 < | z- z_0| < \delta$ of $z_0$.
+\end{theorem}
+\begin{proof}
+   We have $z_0$ is an isolated singularity of $f$. There is a neighborhood $0 < | z - z_0| < \delta$ where $f $ is analytic. 
+
+   Assume the theorem is false so, 
+   $$ |f(z) - w_0| \ge \epsilon \text{ when } 0 < | z - z_0| < \delta $$  
+
+   Now define, 
+   $$ g(z) = \frac{1}{f(z) - w_0}\text{, } 0 < |z - z_0| < \delta $$ 
+
+   which is bounded and analytic. Which also means that $z_0$ is a removable singularity of $g$. So Let $g$ be defined at $z_0$ such that it is analytic. We have, 
+   $$ f(z) = \frac{1}{g(z)} + w_0 $$ 
+
+   This means that $f$ becomes analytic at $z_0$ when it is defined as, 
+   $$ f(z_0) =\frac{1}{g(z_0)} + w_0 $$ 
+   But this means that $z_0$ is a removable singularity of $f$ and not an essential one which is a contradiction.
+
+   If $g(z_0) = 0$ then $g$ must have a zero of some finite order $m$ at $z_0$ as $g(z)$ is not identically equal to zero in $| z - z_0| < \delta$. This means that $f$ has a pole of order $m$ at $z_0$ which is not an essential singularity hence a contradiction.
+\end{proof}
+
+
+\begin{theorem}
+   If $z_0$ is a pole of $f$, then, 
+   $$ \lim_{z \to z_0} f(z) = \infty $$ 
+\end{theorem}
+\begin{proof}
+   If $f$ has a pole of order $m$ at $z_0$ then we have, 
+   $$ f(z) = \frac{\phi(z)}{(z - z_0)^{m}} $$ 
+   where $\phi(z)$ is analytic and non-zero at $z_0$.
+
+   So we have, 
+   $$ \lim_{z \to z_0} \frac{1}{f(z)} = \lim_{z \to z_0} (z - z_0)^{m}/\phi(z) = \frac{0}{\phi(z_0)} = 0 $$ 
+
+   which means that $\lim_{z \to z_0} f(z) = \infty$
+\end{proof}
+
+\chapter{Applications of Residues}
+\section{Evaluation of Improper Integrals}
+
+We define the improper integral of $f$ over the semi-infinite interval $0 \le x < \infty$ as, 
+$$ \int_{{0}}^{{\infty}} {f(x)} \: d{x} = \lim_{R \to \infty} \int_{{0}}^{{R}} {f(x)} \: d{x} {} $$ 
+
+and, 
+$$ \int_{{-\infty}}^{{\infty}} {f(x)} \: d{x} = \lim_{R_1 \to \infty} \int_{{-R_1}}^{{0}} {f(x)} \: d{x} + \lim_{R_2 \to \infty} \int_{{0}}^{{R_2}} {f(x)} \: d{x} {}$$  
+
+This integral is also assigned the value Cauchy principal value,  
+$$ \text{P.V.} \int_{{-\infty}}^{{\infty}} {f(x)} \: d{x} = \lim_{R \to \infty} \int_{{-R}}^{{R}} {f(x)} \: d{x} {}$$ 
+
+If integral (2) converges the Cauchy principal value  (3) exists. And that value is the number to which integral (2) converges as, 
+$$ \lim_{R \to \infty} \int_{{-R}}^{{R}} {f(x)} \: d{x} = \lim_{R \to \infty} \bigg [\int_{{-R}}^{{0}} {f(x)} \: d{x} + \int_{{0}}^{{R}} {f(x)} \: d{x} {} \bigg] $$ 
+
+
+If $f(-x) = f(x)$ for all $x$ then $f$ is an even function and the Cauchy principle value exists.
+
+Consider the semicircle region in the complex plane, we have, 
+$$ \int_C f(z) dz = \int_{-R}^{R} f(x)dx + \int_{C_R} f(z) dz $$ 
+
+
+\begin{eg}
+   
+   $$ f(x) = \int_{{0}}^{{\infty}} {\frac{1}{x^{6}+1}} \: d{x} {} $$ 
+
+   First let our function be $f(z) = \frac{1}{z^{6} + 1}$. Let our contour be the positively oriented semi-circle $-\infty$ to $\infty$ such that,  
+   $$ \int_C f(z) = \int_{-\infty}^{\infty} f(x) dx + \int_{C_R}f(z) $$ 
+
+   We have, 
+   $$ \int_C f(z) = 2\pi i \sum Res f(z) $$ 
+
+   Our $f$ has isolated singular points so, the integral over the contour is the integral  over a contour around each of the singular points which are, 
+   $$ z_1 = i, z_2 = \sqrt{3}/2 + \frac{i}{2}, z_3 = -\sqrt{3}/2 + \frac{i}{2}  $$ 
+
+   So integral is, 
+
+$$ 2\pi i\bigg (\frac{1}{6i^{5}} + \frac{1}{6(\sqrt{3}/2 + i /2)^{5}} +\frac{1}{-6(\sqrt{3}/2 + i /2)^{5}}\bigg ) $$ 
+
+Now we have, 
+$$ \bigg | \int_{C_R} f(z) dz\bigg | = \pi R \frac{1}{R^{6} - 1} $$ 
+
+As $R$ goes to infinity then we have the above going to $0$.
+
+\end{eg}
+

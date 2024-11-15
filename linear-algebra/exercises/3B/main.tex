@@ -181,8 +181,14 @@ Hence it must be true that the null space cannot be as given.
 \end{proof}
 \subsection*{Problem 15}
 \begin{proof}
-    
-We have $\dim \nul T = n$ and $\dim \range T = k$. Using the rank-nullity therom we have  $\dim V = k + n$. So we have a dimension for $V$ which means its  finite-dimentional.
+    We know that $\range T$ and $\nul T$ are finite dimentional. Now consider $Tv_1,\dots,Tv_n$ span $\range T$. This means that for any  $v \in V$ we have, 
+    \begin{align*}
+        Tv &= a_1Tv_1 + \dots + a_nTv_n\\
+         Tv &= T(a_1v_1 + \dots + a_nv_n)\\
+         T(v - (a_1v_1 + \dots + a_nv_n)) &= 0\\
+    \end{align*}
+
+    Now this means that $v - (a_1v_1 + \dots + a_nv_n) \in \nul T$. As $\nul T$ is finite dimentional we have any $w \in \nul T = b_1w_1 + \dots + b_mw_m$. So we have $v = a_1v_1 + \dots + a_nv_n + b_1w_1 + \dots + b_mw_m$ for any  $v \in V$.  Hence $V$ is in the span of  afinite number of vectors whihc makes $V$ a finite dimentional vector space.
 \end{proof}
 
 \subsection*{Problem 16}
@@ -234,7 +240,7 @@ We have $\dim \nul T = n$ and $\dim \range T = k$. Using the rank-nullity therom
     We know this is necessarily true.
 
     $\implies$
-    We have  $\dim U + \dim W \ge \dim V$ and we have to show that $\exists T$ such that $\nul T = U$. Let $W$ be spanned by $w_1,\dots,w_m$. Now let the $\range T$ be spanned by $w_1,\dots w_k$. We can find $v_1,\dots,v_k$ such that $T(v_k) = w_k$. Now extend lin ind set of vecotrs of $V$ from $v_1,\dots,v_k$ to $v_1,\dots,v_m$ such that we added $m -k$ vectors. Such that we have $\dim V - \dim W $ = n - m. Because we know that $U \ge n - m$. We can choose at least $m - k$ (note that this is larger than $n -m$ as $m > k$) vectors from our added set of vectors such that  
+    We have  $\dim U + \dim W \ge \dim V$ and we have to show that $\exists T$ such that $\nul T = U$. Let $W$ be spanned by $w_1,\dots,w_m$. Now let the $\range T$ be spanned by $w_1,\dots w_k$. We can find $v_1,\dots,v_k$ such that $T(v_k) = w_k$. Now extend lin ind set of vecotrs of $V$ from $v_1,\dots,v_k$ to $v_1,\dots,v_m$ such that we added $n -k$ vectors. Such that we have $\dim V - \dim W $ = n - m. Because we know that $U \ge n - m$. We can choose at least $m - k$ (note that this is larger than $n -m$ as $m > k$) vectors from our added set of vectors such that  
 $$ T(v_{k+1}) = 0 $$ 
 $$ \dots $$ 
 $$ T(v_{n}) = 0 $$ 
@@ -337,17 +343,25 @@ Hence given our condition we constructed a linear map from $V$ to $W$ such that 
 
 \subsection*{Problem 22}
 \begin{proof}
+    Restrict $T$ to $\nul ST$ and call that $T'$. We have  $\dim \nul T' \le \nul T$. We know that $\dim T' = \nul T' + \range T'$  or that $\dim \nul ST = \nul T' + \range T'$. So we get,  
+    $$ \dim \nul ST \le \nul T + \range T' $$ 
+
+    But we also know that $\range T' \subseteq \nul S$ so  $\dim \range T' \le \dim \nul S$ which gives us $$\dim \nul ST \le \nul T + \dim \nul S$$
+\end{proof}
+\begin{proof}
     We know that 
     \begin{align*}
-        \dim \nul ST &= \dim U  + \range ST\\
-        \dim \nul ST &\le \dim U
+        \dim \nul ST &= \dim U  - \range ST\\
     \end{align*}
 
     But we know that $\dim U = \dim \nul T + \dim \range T$, so we have,
-     \begin{align*}
-        \dim \nul ST \le \dim \range T + \dim \nul T
-    \end{align*}
-    We also know that $\dim \range T \le \dim V = \dim \nul S + \dim \range S$
+    $$ \dim \nul ST &= \dim \nul T + \dim \range T  - \range ST$$
+
+    $\range T$ is the values that are the outputs of $T$. However these are the inputs of $S$. So we know that. So $\range T$ is the inputs of $S$ in $ST$ and $\range ST$ are the outputs of $ST$. So we can say that  $\dim \range T = \dim (\range ST \cap \range S) + \dim \nul S$ which gives us,  
+    $$ \dim \nul ST = \dim \nul T + \dim (\range ST \cap \range S) + \dim \nul S - \dim (\range ST) $$ 
+
+    We know that $\dim (\range ST \cap \range S) \le \dim (\range ST)$ hence we have, 
+    $$ \dim \nul ST \le \dim \nul T + \dim \nul S $$ 
 \end{proof}
 
 

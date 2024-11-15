@@ -1,0 +1,118 @@
+\chapter{Functions}
+
+\begin{theorem}
+   Let $A, B$ be finite non-empty sets. 
+
+   (a). Suppose $\exists f: A \rightarrow B$ is injective then $|A| \le |B|$
+
+   (b). Suppose $\exists f: A \rightarrow B$ is surjective then $|A| \ge |B|$
+
+   (b). Suppose $\exists f: A \rightarrow B$ is bijective then $|A| = |B|$
+\end{theorem}
+
+\begin{proof}
+    (a) by induction in $|A|$.
+
+    (i) When $|A| = 1$,  $|B| \ge 1 = |A|$ 
+
+    (ii) Assume (a) holds for  $|A| = n$ where $n \in N$. Now consider when  $|A| = n + 1$
+
+
+    Let $a_0 \in A$ let $A_1 = A - \{a_0\}$. So $|A_1| = n$ and let $b_0 = f(a_0)$ and $B_1 = B - \{b_0\}$ and $|B_1| = |B| - 1| = |B| - 1$.
+
+    $\forall a \in A, a \ne a_0$ so $f(a) \ne f(a_0) \implies f(a) \in B_1$. So define new function, 
+    $$ f_1:A_1 \rightarrow B_1 \text{ as } f_1(a) = f(a), \forall a \in A_1 $$ 
+
+    Where we just proved $f(a) \in B_1$
+
+    Suppose $a_1,a_2 \in A_1$ such that $f_1(a_1) = f_1(a_2)$ which means $f(a_1) = f(a_2) \implies a_1 = a_2$. So we know htat $f_1$ is injective. So using our induciton assumption we can say that, 
+    $$ |A_1| \le |B_1| $$  But we know that $|A_1| = |A| - 1$ and $|B_1| = |B| - 1$. So we have, 
+    $$ |A| - 1 \le |B| - 1 $$ 
+    $$ |A| \le |B| $$ 
+
+    Hence by induction we show that the statement holds for all sets $A$ where the cardinality of $A$ is a natural number.
+
+    \vspace{1em}
+    (b)
+
+\end{proof}
+
+
+\begin{theorem}
+    Suppose $|A| = |B| \in N$ then
+    (a). $\exists$ bijective $f: A \rightarrow B$ 
+
+    (b) The following are requivalent
+
+
+    (i). f is 1-1
+
+    (ii). f is onto
+
+    (iii). f is bijective.
+\end{theorem}
+\begin{proof} (a) by induction
+
+    (i) $|A| = |B| = 1$ denote $A = \{a\}$ and $B = \{b\}$. We have  $f: A \rightarrow B$ as $f(a)= b$. 
+
+    (ii) Assue $(a)$ holds for $|A| = |B| = n \in N$. Suppose $A,B$ are sets such that $|A| = |B| = n + 1$.
+
+    Let  $a_0 \in A$ and $b_0 \in B$ so $A_1 = A - \{a_0\}$ and $B_1 = B - \{b_0\}$. So, 
+    $$ |A_1| = n, |B_1| = n $$ By induction assumption we know that $\exists g: A_1 \rightarrow B_1 $ that is bijective.
+
+    Now let us define a new function $f : A \rightarrow B$ such that if $\forall a \in A$ if $a = a_0 $ then $f(a) = b_0$ if $a \ne a_0$ then $f(a) = g(a)$.
+
+    Now we need to show that  $f$ is bijective.
+
+    (i) Injectivity, we show that $f(a_1) = f(a_2) \implies a_1 = a_2$.
+    Case 1. If $b \ne b_0$ then $a_1 \ne a_0$ and $a_2 \ne a_0$ so  we have  $g(a_1) = g(a_2)$ but we know that $g$ is injective so $a_1 = a_2$. 
+
+    Case 2. If $b = b_0$ then $a_1 = a_2$ using proof by contradiction.
+
+
+
+    (ii) Surjectivity
+
+    Case 1: $b = b_0$ then we know by construction  $f(a_0) = b_0$ which is in the range of $f.$
+    Case 2: If  $b \ne b_0$ then  $b \in B_1$. We know that $g$is surjective $\implies$ $\exists a \in A_1$such that $g(a) = b$ but $A_1 \subseteq A$ so $\exists a \in A$ such that $f(a) = g(a) = b$. Which makes $f$ surjective.
+
+    So we show that $f$ is bijective.
+
+    Hence by induction we show that if $|A| = |B|$ then there is a bijective map from $A$ to $B$
+
+    \vspace{2em}
+
+    (b). 
+
+    (i) $\implies$ (ii)
+
+    Consider a function $f: A \rightarrow B$ such that $|A| = |B|$. And assume $f$ is 1-1.
+
+    Let $B_1 = f(A) \subseteq B$.
+
+    Define $g: A \rightarrow B_1$ as $g(a) = f(a)$ and $f(A) = B_1$.
+
+    If $g(a_1) = g(a_2)$ where $ \dots$
+
+    (ii) $\implies$ (i)
+
+    Assume for the sake of contradiction that $f$ is not 1-1 this means we can find $a_1,a_2$ such that $f(a_1) = f(a_2)$ and $a_1 \ne a_2$. Now let us remove $a_1$ from $A$ to get $A_1 = A-\{a_1\}$
+
+    Now we have $f_1: A_1 \rightarrow B$ such that $\forall a \in A_1$ $f_1(a) = f(a)$.
+
+    
+    $\forall b \in B$ we have
+
+    Case 1. $b = f(a_1), $ then $b = f(a_2), a_2 \in A_1$ .
+
+    Case 2. $b \ne f(a_1)$. Then $f:A \rightarrow B$ is onto $\exists a \in A,$s..t $f(a) = b \ne f(a_1) \implies a \ne a_1 \implies a \in A_1 \implies b = f_1(a)$ 
+
+    So we showed that for any $b$ there is an $a$ such that $f_1(a) = b$. Meaning $f_1$ is onto.
+
+    However we removed an element $a_1$ from $A$ which menas $|A_1| = |A| - 1$ and becase $|A| = |B|$ we have  $|A_1| < |B|$ and $g$ is onto. But this contradicts the fact that $|B| \ge |A_1|$ for any surjective function.
+
+    Henc ewe get a contrdiction. Therefore $f$ is 1-1.
+
+\end{proof}
+
+

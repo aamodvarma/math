@@ -1,0 +1,283 @@
+\documentclass[a4paper]{report}
+\usepackage{multirow}
+\input{preamble.tex}
+\title{Intro to Proofs: HW09}
+\author{Aamod Varma}
+\graphicspath{ {./} }
+\begin{document}
+\maketitle
+\date{}
+
+\section*{Section 12.5}
+\subsection*{Problem 2}
+We have $f: \R - \{2\} \rightarrow \R - \{5\}$ defined by, 
+$$ f(x) = \frac{5x + 1}{x - 2} $$ 
+
+We know  that it is bijective hence the inverse exists, we have, 
+\begin{align*}
+    y &= \frac{5x + 1}{x - 2}\\
+    yx - 2y &= 5x + 1\\
+           -1 - 2y &= 5x - yx\\
+                -(1 + 2y)&= x(5 - y)\\
+                         x&= -\frac{1 + 2y}{5 - y}
+\end{align*}
+when $y \in \R - \{5\}$
+
+So we have,  
+$$ f^{-1}(y) = -\frac{1 + 2y}{5 - y} $$ 
+
+
+
+\subsection*{Problem 4}
+The function $f: \R \rightarrow (0, \infty)$ is defined as  $f(x) = e^{x^{3} + 1}$ is bijective. 
+
+So we have, 
+\begin{align*}
+    y &= e^{x^{3} + 1}\\
+    \ln(y) &= ln(e^{x^{3} + 1}\\
+    \ln(y) &= x^{3} + 1\\
+    \ln(y) - 1 &= x^{3}\\
+    x &= (\ln(y) - 1)^{\frac{1}{3}}
+\end{align*}
+
+where $y \in (0,\infty)$
+
+So we have,  
+$$ f^{-1}(y) = (\ln y - 1)^{\frac{1}{3}} $$ 
+
+\subsection*{Problem 8}
+Our function takes any $X \in P(\Z)$ and maps it to $\overline X \in P(\Z)$. 
+
+The function is bijective as it is injective and surjective. It is injective because if $\theta(X_1) = \theta(X_2)$. This means that $\overline{X_1} = \overline{X_2} \implies X_1 = X_2$ which means its injective.
+
+Now it is surjective because for any $Y $ in the co domain we can find  $X = \overline{Y}$ in the domain such that $\overline{X} = \overline{\overline{Y}} = Y$. This shows surjectivity.
+
+Hence it is bijective and inverse exists.
+So,  
+
+
+\begin{align*}
+    Y &= \overline X\\
+    \overline{Y} &= \overline{\overline X}\\
+    X&= \overline{Y}
+\end{align*}
+
+So we have a function $\theta^{-1}(Y) = \overline{Y}$ which is the inverse of our function.
+
+\section*{12.6}
+\subsection*{Problem 5}
+\begin{proof}
+    We have a function $f: A \rightarrow B$ and a subset $X \subseteq A$. We need to show that $X \subseteq f^{-1}(f(X))$
+
+    Essentially we show that  $x \in X \implies x \in f^{-1}(f(X))$
+
+    Now if $x \in X$ then $x \in A$ so for any  $x \in A$ we have $f(x) \in f(X) \subseteq B$.  Now  by definition of inverse we have $f^{-1}(f(X)) = \{x \in A: f(x) \in f(X)\}$. So as $f(x) \in f(X)$ we have $x \in f^{-1}{f(X)}$ which gives us $X \subseteq f^{-1}(f(X))$
+
+\end{proof}
+
+\subsection*{Problem 6}
+\begin{proof}
+    Consider the function defined from $A = \{1\}$ to  $B = \{a,b\}$. Let $f(1) = b$.
+
+    Now let  $Y = B $. So we have  $f^{-1}(Y) = \{x \in A: f(x) \in Y\} = \{1\}$. However $f(f^{-1}(Y)) = \{a\} \ne Y$ 
+    
+\end{proof}
+
+\subsection*{Problem 8}
+\begin{proof}
+    Consider the function $f$ defined from $A = \{1,2,3\}$ to $B = \{a,b\}$. Such that, 
+    $$ f(1) = b, f(2) = a, f(3) = b $$ 
+
+    Now let $W = \{1,2\}$ and  $X = \{2,3\}$. First we have  $W \cap X = \{2\}$ and  $f(W \cap X) = \{a\} $
+
+    However consider  $f(W) = \{a,b\}$ and  $f(X) = =\{a,b\}$ which means that  $f(W) \cap f(X) = \{a,b\}$
+
+    We see that this is not equal to the set above.
+\end{proof}
+
+\subsection*{Problem 9}
+\begin{proof}
+    We need to show $f(W\cup X) = f(W) \cup f(X)$. First let  $y \in f(W \cup X)$. This means that $y \in B$ such that $\exists x \in W \cup X$ and $f(x) = y$.  So  we have  $x \in W$ or $x \in X$. If $x \in X$ then by definition we know that $f(x) \in f(X)$ and similarly if $x \in W$ then $f(x) \in f(W)$. So we have either  $y \in f(X)$ or $y \n f(W) \implies y \in f(X) \cup f(W)$. This shows us that $f(W \cup X) \subseteq f(W) \cup f(X)$.
+
+
+    Now consider  $y \in f(W) \cup f(X)$ this means that either $y \in f(W)$ or $y \in f(X)$. If  $y \in f(W)$ then $\exists x \in W \subseteq A$ such that $f(x) = y$. If $x \in W$ then $x \in W \cup X$. So we have $y \in f(W)$ implies $\exists x \in W \cup X$ such that $f(x) = y$ this means that $y \in f(W \cup X)$. Similarly if  $y \in f(X)$ we have $\exists x \in X$ such that $f(x) = y$, but  $x \in X  \implies x \in X \cup W$ so we have $y \in f(X \cup W)$. So we have shown that  $y \in f(W) \cup f(X) \implies y \in f(W\cup X) \implies f(W) \cup f(X) \subseteq f(W\cup X)$
+\end{proof}
+
+\subsection*{Problem 10}
+\begin{proof}
+    We need to show $f^{-1}(Y \cap Z) = f^{-1}(Y) \cap f^{-1}(Z)$
+
+    Consider $x \in f^{-1}(Y \cap Z)$. This means that $\exists y \in Y \cap Z$ such that $f(x) = y$. Now if $y \in Y \cap Z$ means that $y \in Y$ and  $y \in Z$. So we have, 
+
+    (1). $x$ such that $f(x) = y$ where $y \in f^{-1}(Y)$ which implies that $x \in f^{-1}(Y)$.
+
+    (2). $x$ such that $f(x) = y$ where $y \in f^{-1}(Z)$ which implies that $x \in f^{-1}(Z)$.
+
+    Both these imply that $x \in f^{-1}(Y) \cap f^{-1}(Z)$ which imply,
+    $$ f^{-1}(Y \cap Z) \subseteq f^{-1}(Y) \cap f^{-1}(Z) $$
+
+    Now assume $x \in f^{-1}(Y) \cap f^{-1}(Z)$. This means that $x \in f^{-1}(Y)$ and $y \in f^{-1}(Z)$
+
+    (1). $x \in f^{-1}(Y)$ then this means $\exists y \in Y$ such that $f(x) = y$ 
+
+    (2) $x \in f^{-1}(Z)$ means that $\exists y \in Z$ such that $f(x) = y$
+
+    Now as both these are true we have  $y \in Y$ and  $y \in Z$ which imply that $y \in Y \cap Z$. So we have $f(x)$ such that $f(x) = y \in Y \cap Z$ which is equivalent to saying $x \in f^{-1}(Y \cap Z)$ which implies, 
+    $$ f^{-1}(Y) \cap f^{-1}(Z) \subseteq f^{-1}(Y \cap Z) $$ 
+
+    So we show that, 
+    $$ f^{-1}(Y) \cap f^{-1}(Z) = f^{-1}(Y \cap Z) $$ 
+\end{proof}
+
+
+\subsection*{Problem 11}
+\begin{proof}
+    We need to show that $f^{-1}(Y \cup Z) = f^{-1}(Y) \cup f^{-1}(Z)$.
+
+    First take $x \in f^{-1}(Y \cup Z)$. This for some $y \in Y \cup Z$ we have  $f(x) = y$. S o we have two cases  $y \in Y$ or $y \in Z$. 
+
+    (1). If $y \in Y$ then this means that we have $x$ such that $f(x) = y \in Y$. Or $x \in f^{-1}(Y)$>
+
+    (2). If $y \in Z$ then this means that we have $x$ such that $f(x) = y \in Z$. Or $x \in f^{-1}(Z)$>
+
+    So either way we can say that $x \in f^{-1}(Y) \cup f^{-1}(Z)$ which implies that, 
+    $$ f^{-1}(Y \cup Z) \subseteq f^{-1}(Y) \cup f^{-1}(Z) $$ 
+
+    Now consider $x \in f^{-1}(Y) \cup f^{-1}(Z)$. So either, $x \in f^{-1}(Y)$ or $x \in f^{-1}(Z)$. 
+
+    (1). If $x \in f^{-1}(Y)$ then $f(x) = y \in Y$. 
+
+    (2). If $x \in f^{-1}(Z)$  then $f(x) = y \in Z$
+
+    So we have either $f(x) \in Y$ or $f(x) \in Z$ which means that $f(x) \in Y \cup Z$. Now by definition we have $x \in f^{-1}(Y \cup Z)$ this implies that, 
+    $$  f^{-1}(Y) \cup f^{-1}(Z)\subseteq  f^{-1}(Y \cup Z) $$ 
+
+    This implies that, 
+    $$  f^{-1}(Y) \cup f^{-1}(Z) =   f^{-1}(Y \cup Z) $$ 
+
+\end{proof}
+
+\subsection*{Problem 12}
+\begin{proof}
+    (1). We need to show that, 
+    $$f \text{ is injective} \iff X = f^{-1}(f(X)) $$ 
+
+    (a). $\implies$ 
+    
+    First consider $x \in X$. We have $f(X) = Y = \{f(x): x \in X\}$. Now $f^{-1}(Y)$ is defined as $\{x: f(x) \in Y\}$.  But for any $x \in X$ we have $f(x) \in Y$ by definition, hence $x \in X$ implies that $x \in f^{-1}(f(X))$.
+
+    Now consider $a \in f^{-1}f(X)$ so $a$ is in the set $\{x : f(x) \in f(X)\}$. However  $f(X)$ is defined as $\{f(x): x \in X\}$. So  if  $f(a) \in f(X)$ then it means that we have $x \in X$ such that $f(x) = f(a)$. But because  $f$ is injective we have $x = a$ which means that  $a \in X$. Hence we can say that, $X = f^{-1}(f(X))$
+
+    (b). $\impliedby$
+
+    We have  $X = f^{-1}(f(X))$ and we need to show that $f$ is injective.  Assume that $f$ is not injective. That means $\exists x_1 \ne x_2$ such that $f(x_1) = f(x_2)$. Now consider a subset $X$ such that $x_1 \in X$ and $x_2 \not \in X$. Now because $x \in X$ we have $f(x_1) \in f(X)$ but this also means that $f(x_2) \in f(X)$. Now by definition of $f^{-1}$ we have $\{x: f(x) \in f(X)\}$ and as  $f(x_1) = f(x_2) \in f(X)$ we have $x_1,x_2 \in f^{-1}(f(X))$ which means that $x_2 \in X$ but this contradicts the fact that $x_2 \not \in X$ assumption hence our assumption must be wrong and $f$ is injective.
+
+
+
+    (2). Now we show that, 
+    $$ f \text{ is surjective} \iff f(f^{-1}(Y)) = Y $$
+
+    
+    (a). $\implies$
+    
+    Assume $f$ is surjective. Now consider $y \in f(f^{-1}(Y))$. By definition that means $\exists x$ such that $f(x) = y$ and that  $x \in f^{-1}(Y)$. Now by definition of the inverse this set is such that $\{x: f(x) \in Y\}$ so $x \in f^{-1}(Y) \implies f(x) = y \in Y$. So we have $f(f^{-1}(Y)) \subseteq Y$ 
+
+    Now consider $y \in Y$. Because $f$ is surjective we have $\exists x$ such that $f(x) = y$ which means that $x \in f^{-1}(Y)$. Now by definition of $f$ we have the set $\{f(x): x \in f^{-1}(Y)\}$ so $f(x)$ such that $x \in f^{-1}(Y)$. But we have $f(x) = y$ which means that $y \in f(f^{-1}(Y))$. Which gives us, $Y \subseteq f(f^{-1}(Y))$
+
+
+    (b) $\impliedby$ 
+
+    Now assume $f$ is not surjective which means that, $\exists y \in B$ such that there is not $x \in A$ such that $f(x) = y$. Now now consider  $Y = \{y\}$. But because there is no  $x$ we have $f^{-1}(Y) = \{\}$ which means that $f(f^{-1}(Y)) = \{\} \ne Y$. Hence $f$ has to be surjective.
+\end{proof}
+
+
+\section*{14.1}
+\subsection*{Problem 2}
+\begin{proof}
+    Consider the bijection $g$ defined from $\R$ such that  $$g(x) = 2^{x} + \sqrt{2}$$.
+
+    We can show that it is a bijection because its injective and surjective. First because if we have $2^{x_1} + \sqrt{2} = 2^{x_2} + \sqrt{2}$ then, 
+    $$ 2^{x_1} = 2^{x_2} $$ 
+    $$ log_2(2^{x_1}) = log_2(2^{x_2}) $$ 
+    $$ x_1= x_2 $$ 
+
+    Hence it is injective.
+
+    Now for any $y \in (\sqrt 2, \infty)$ we have, 
+    $$ y = 2^{x} + \sqrt{2} $$ 
+    $$ 2^{x} = y - \sqrt{2} > 0 $$ 
+    $$ x = \log_2(y- \sqrt{2}) $$ 
+    which we know is defined because the inside term is always positive.
+\end{proof}
+
+
+
+\subsection*{Problem 13}
+First consider the bijective function  $f : \N \rightarrow \Z$ that maps every number in $N$ to an element in $\Z$ as follows, 
+$$ f(x) = \frac{(-1)^{n}(2n - 1) + 1}{4} $$  We can verify this is a bijective function. 
+
+Now consider a function $g : P(N) \rightarrow P(Z)$ that maps a set from  $P(N)$ to $P(Z)$ defined as,  
+$$ g(X) = \{f(x): x \in X\} $$ 
+
+We know that $f(x) \in Z$ so any set $g(X) \in P(Z)$
+
+Now we show this is a bijective function.
+
+First consider two sets $X_1,X_2$, we need to show that $g(X_1) = g(X_2) \implies X_1 =X_2$.
+
+We have, $$\{f(x_1): x_1 \in X_1\} = \{f(x_2): x_2 \in X_2\}$$
+
+
+First consider $x_1 \in X_1$ this means that $f(x_1) \in g(X_1)$. Now because the sets are equal means $\exists x_2 \in X_2$ such that $f(x_2) = f(x_1)$. However because $f$ is injective we have $x_1 = x_2$ or $x_1 \in X_2$. This means that $X_1 \subseteq X_2$
+
+Now we can similarly show that $X_2 \subseteq X_1$ which implies that $X_1 = X_2$
+
+Now we need to show that $g$ is surjective.
+
+Consider an arbitrary $Y$ in $P(Z)$. We need to show there is an $X \in P(N)$ such that $g(X) = Y$.
+
+We know that because $f$ is surjective, for any $y \in Y, \exists x \in N$  such that $f(x) = y$. Hence we define, 
+$$ X = \{x: f(x) \in Y\} $$ 
+
+Now because of how we define $X$ we have, 
+$$ g(X) = \{f(x): x \in X\} $$  but $x \in X$ such that $f(x) \in Y$. Hence  if $y \in g(X)$ then  $\exists x \in X$ such that $f(x) = y$. But this means that $x \in X$ which implies that $f(x) \in Y$ or $y \in Y$ which shows that  $f(x) \subseteq Y$.
+
+Similarly, if  $y \in Y$ we have $x \in X$ such that $f(x) = y$. But based on how  $g(X)$ is defined we have $f(x)$ if $x \in X$ but $f(x) = y$ so $y \in g(X)$ hence $Y \subseteq g(X)$ or $ g(X) = Y$
+
+This shows surjection. So we have defined a bijective function fro $P(N)$ to  $P(Z)$ showing their cardinality is the same.
+
+
+
+\subsection*{Problem 15}
+Consider the function $f: \N \rightarrow \Z$ defined as, 
+$$ f(n) = \frac{(-1)^{n}(2n - 1) + 1}{4} $$ 
+
+First we show that it is a bijection.
+
+If we have, 
+$$ \frac{(-1)^{n_1}(2n_1 - 1) + 1}{4} = \frac{(-1)^{n_2}(2n_2 - 1) + 1}{4} $$ 
+
+We can write this as, 
+$$ (-1)^{n_1}(2n_1 - 1) = (-1)^{n_2}(2n_2 - 1) $$ 
+
+We have $2n_1 -1 $ is always positive as $n \ge 1$ which means that for the signs to be the same we need  $(-1)^{n_1} = (-1)^{n_2}$ which is only true if we have $n_2 = n_1 + 2k$ for some $k \in \Z$.  So now consider,  
+$$ 2n_1 - 1 = 2n_2 - 1 $$ 
+$$ 2n_1 - 1 = 2n_1 + 4k - 1 $$ 
+$$ 4k = 0, k = 0 $$ 
+
+Hence $n_1 = n_2$
+
+Now to show it surjective for any $z \in Z$. Consider by cases first z is positive, then we have, 
+
+$$ n = 2z $$ 
+
+and if $z$ is negative or zero consider, 
+$$ n =  1 - 2z $$ 
+
+So for any $z \in Z$ we have an $n \in N$ such that $f(n) = z$. 
+
+
+
+
+\end{document}
+

@@ -1,0 +1,60 @@
+\begin{theorem}
+    $|A| = |B| \in N$ iff  $\exists $ a bijection $f : A \rightarrow B$
+\end{theorem}
+
+\begin{definition}
+    Let $A,B$ be non-empty set then we define $B^{A}$ as the set of functions from $A$ to $B$
+\end{definition}
+
+\begin{theorem}
+    Suppose $|A|,|B| \in N$ then $|B^{A}|$ = $|B|^{|A|}$
+\end{theorem}
+
+\begin{theorem}
+    $\Gamma: P(A) \rightarrow \{0,1\}^{A}$ is bijective
+\end{theorem}
+\begin{proof}
+    We show it is surjective and injective.
+
+    (1). Surjective.
+
+    $\forall f \in \{0,1\}^{A}$ that is $f: A \rightarrow \{0,1\}$
+
+Now let  $s = f^{-1}\{1\} = \{x \in A: f(x) = 1\} \subseteq A$ then $\forall x \in A$ $f(x) = 1 $ if $x \in S$ and $f(x) = 0$ if $x \not \in S$. Which implies that  $\Gamma (s) = f$ which means that  $\Gamma$ is surjective.
+
+(2). Injective.
+
+We have $S_1,S_2 \subseteq A$ and $\Gamma(S_1) = \Gamma (S_2)$. $S_1 = \Gamma(S_1)^{-1}(\{1\}) = \Gamma (S_2)^{-1}(\{1\}) = S_2$
+\end{proof}
+\begin{definition}
+
+    Given non-empty sets  $A,B$ a permutation from $A $ to $B$ is a bujection.
+\end{definition}
+
+\begin{theorem}
+    $|\{\text{set of permutations on A}\}| = |A|!$
+\end{theorem}
+\begin{proof}
+    Using induction
+\end{proof}
+
+
+\begin{theorem}
+    $g \circ f: A \rightarrow C$ is a function when $f: A \rightarrow B$ and $g: B\rightarrow C $ are function.
+\end{theorem}
+\begin{proof}
+    1. Existence 
+
+    $\forall x \in A$ since  $f$ is a function x is related to $f(x) \in B$. As $f(x) \in B$ we have  $f(x)$ is related to $g(f(x)) \in C$. Hence for any $x$, $x$ is related to $g(f(x))$ through  $g \circ f$
+    
+    2. Uniqueness
+
+    Assue $x$ is related to $c_1,c_2 \in C$. Then $\exists y_1,y_2 \in B$ such that x is related to $y_1,y_2$ through f. And $y_1,y_2$ related to $c_1,c_2$ respectively through $g$.
+
+    If $f: A\rightarrow B$ is a function $y_1 = y_2 = f(x)$ and $g$ is a function so $c_1 = c_2$.
+
+    So we preoved $\exists|$ element in $C$ which is $g(f(x))$ is related to  $x$ throuhg $g \circ f$
+\end{proof}
+
+
+

@@ -2,7 +2,7 @@
 
 Consider $f(z) = f(x + iy) = u(x,y) + iv(x,y)$. We can write this as, 
 $$ w(t) = u(t) + iv(t) $$ 
-$$ w'(t) = u'(t) + iv'(y)  $$ 
+$$ w'(t) = u'(t) + iv'(t)  $$ 
 
 
 \begin{eg}
@@ -16,7 +16,7 @@ $$ w'(t) = u'(t) + iv'(y)  $$
 \end{eg}
 
 \section{Definite Integrals}
-The integeral of $w(t)$ with respect to  $t$ is, 
+The integral of $w(t)$ with respect to  $t$ is, 
 $$ \int_a^b w(t)dt = \int_a^b u(t) dt + i\int_a^b v(t) dt $$ 
 
 \begin{ex}
@@ -35,8 +35,22 @@ $$ \int_a^b w(t)dt = \int_a^b u(t) dt + i\int_a^b v(t) dt $$
    In this case $t$ is moving from $0$ to $2\pi$. But because we are in the complex plane it represents a loop.
 \end{remark}
 
+
+\begin{remark}
+   Note that the mean value theorem for integrals does not carry over for complex integrals.
+\end{remark}
+The mean value theorem for integrals in the real sense means that $\exists c $ such that, 
+$$ \int_a^b w(t) dt = w(c) (b-a) $$ 
+
+However take $w(t) = e^{it}$ and choose $b = 2\pi$ and $a = 0$. The right hand side will always be non-zero while the left hand size will be 0.
+
+
+
+
+
 \section{Contour}
-\begin{definition}
+In the real case we have functions that are defined on intervals of the real line. However complex inputs lie in the d plane so instead of an interval we define it using curves.
+\begin{definition}[contour]
 We have $z(t) = x(t) = iy(t)$ is a contour if, 
 
 (1) C is simple arc or Jordan arc, it does not cross itself.
@@ -67,20 +81,31 @@ It is positively oriented if the direction is anticlockwise
    Here $C$ is the contour from example (1).
 \end{eg}
 
-We can define the differential arc to be $z'(t) = x'(t) + y'(t)i$ which is continuous on  $a \le t \le b$ then,  $C:z(t) \text{ is a differential arc}$ and 
 
-$$ \int_a^b |z'(t)|dt = \int_a^b \sqrt{|x'(t)|^2 + |y'(t)|^2} \text{ length.}$$  
-$$ L = \int_a^b |z'(t)|dt $$ 
-$$ t = \phi(\tau), dt = \phi'(\tau)d\tau $$ 
-$$ L = \int_a^b |z'(t)|dt = \int_{\alpha}^{\beta} |z'(\phi(\tau))| \phi'(\tau)d\tau$$ 
-$$ T = \frac{z'(t)}{|z'(t)|} \text{ tangent vector}$$ 
+\begin{definition}[differentiable arc]
+If $z'(t) = x'(t) + y'(t)i$ which is continuous on  $a \le t \le b$ then,  $C:z(t) \text{ is a differential arc}$ and 
 
-Contour: piecewise smooth arc.
+\begin{align*}
+   L &= \int_a^b |z'(t)|dt = \int_a^b \sqrt{|x'(t)|^2 + |y'(t)|^2} \text{ length.}\\
+     &= \int_a^b |z'(t)|dt = \int_{\alpha}^{\beta} |z'(\phi(\tau))| \phi'(\tau)d\tau\\
+   T &= \frac{z'(t)}{|z'(t)|} \text{ tangent vector}\\
+\end{align*}
+
+\end{definition}
+\begin{definition}[smooth arc]
+   An arc is smooth if its derivative $z'(t)$ is cont. on the closed interval $a\le t \le b$ and non-zero throughout the open interval $a < t < b$
+\end{definition}
+   
 
 \section{Contour Integral}
 Consider the integer, 
 $$ \int_C f(z) dz \text{ or } \int_{z_1}^{z_2} f(z) dz $$ 
 
-We can parametrize in terms of $t$ as, 
+We can parametric in terms of $t$ as, 
 $$ \int_C f(z)dz = \int_a^b f(z(t))z'(t) dt $$ 
+
+
+
+
+
 

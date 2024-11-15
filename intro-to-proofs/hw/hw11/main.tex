@@ -1,0 +1,328 @@
+\documentclass[a4paper]{report}
+\usepackage{multirow}
+\input{preamble.tex}
+\title{Intro to Proofs: HW10}
+\author{Aamod Varma}
+\graphicspath{ {./} }
+\begin{document}
+\maketitle
+\date{}
+\subsection*{Problem 2}
+\begin{proof}
+    First we see that for (a.) there is no identity element hence it cannot be a group. However for b., c. and d. we have the identity element $e = a$
+    \vspace{1em}
+    Now we see that for (d.) there is no inverse element such that it gives us the identity. The identity is $e = a$ and there is no element $d^{-1}$ such that $d \circ d^{-1} = a$. Hence $(d.)$ is not a group.
+
+    So (b) and (c) form a group because we have an inverse element, identity element and is associated as well.
+\end{proof}
+
+\subsection*{Problem 4}
+All four side of a rhombus are of equal length, so we can both rotate and reflect and keep it symmetrical. A rhombus has the following symmetries, 
+\begin{enumerate}
+    \item Identity (I)
+    \item 180 degree rotation around the center (R)
+    \item Reflection over vertical axis (V)
+    \item Reflecting over horizontal axis. (H)
+\end{enumerate}
+
+So the table would look like,
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+    & \(I\) & \(R\) & \(V\) & \(H\) \\ \hline
+\(I\) & \(I\) & \(R\) & \(V\) & \(H\) \\ \hline
+\(R\) & \(R\) & \(I\) & \(H\) & \(V\) \\ \hline
+\(V\) & \(V\) & \(H\) & \(I\) & \(R\) \\ \hline
+\(H\) & \(H\) & \(V\) & \(R\) & \(I\) \\ \hline
+\end{tabular}
+\end{center}
+
+We first see using the table that we have an identity element, an inverse as well as its associative because its similar to the $\Z_4$ Cayley tables.
+
+We also see that the Cayley table for a rectangle is similar to that of a rhombus and is the same as above.
+
+
+\subsection*{Problem 7}
+\begin{proof}
+    First we show its a group and then that its abelian.
+
+    1. Identity
+
+    We have, 
+    $$a \ast b = a + b + ab$$
+    So let $a + b + ab = a$ then, 
+    \begin{align*}
+        a + b + ab &= a\\
+                b + ab &= 0\\
+                b(1 + a) &= 0
+    \end{align*}
+    So for all $a$ if the rhs has to be zero then  $b = 0$. Hence we have, 
+    $$ a \ast b = a \text{ if } b = 0$$  so, 
+    $$ a \ast 0 = a $$ 
+    which means we have an identity element.
+
+
+    2. Inverse, 
+
+    We need $b$ such that $a \ast b = 0$
+
+    So,  
+    \begin{align*}
+        a \ast b = a + b + ab &= 0\\
+                            b(1 + a)&= -a\\
+                            b &= -\frac{a}{1 + a}
+    \end{align*}
+
+    Hence we found $b$ such that $a \ast b = 0$. Which is the existence of inverse  $a^{-1} = -\frac{a}{1 + a}$ 
+
+    3. Associativity. 
+
+    We need to show that, 
+    $$ (a \ast b) \ast c = a \ast (b \ast c) $$ 
+
+    First the left hand side evaluates to, 
+    $$ (a \ast b) \ast c = (a + b + ab) \ast c = (a + b + ab) + c + c(a + b + ab) $$ 
+    $$ = a + b + c + ab + ac + bc + abc $$ 
+
+    And the right hand side evaluates to,
+    $$ a \ast (b + c + bc) = a + b + c + bc + a(b + c + bc) $$ 
+    $$ = a + b + c + ab + bc + ac + abc  $$ 
+
+    So both sides evaluate to the same thing hence it is associative.
+
+    Now to show its abelian we need to show that, 
+    $$ a \ast b = b \ast a $$ 
+
+    So consider $a \ast b = a + b + ab$ and we have  $ b \ast a = b + a + ba$
+
+    It is easy to see that this is equal because of associativity and commutativity of the reals. Hence our group is an abelian group.
+\end{proof}
+
+\subsection*{Problem 10}
+\begin{proof}
+    Consider $A = \begin{bmatrix} 1 & x & y  \\ 0 & 1 & z \\ 0 & 0 & 1\end{bmatrix}$
+
+    1. Identity
+
+    We need to find $B$ such that $AB = A$. So we have,  
+    $$ \begin{bmatrix} 1 & x & y  \\ 0 & 1 & z \\ 0 & 0 & 1\end{bmatrix} \begin{bmatrix} 1 & x' & y'  \\ 0 & 1 & z' \\ 0 & 0 & 1\end{bmatrix} = \begin{bmatrix} 1 & x & y  \\ 0 & 1 & z \\ 0 & 0 & 1\end{bmatrix} $$           
+
+    So by definition we have, 
+    $$ \begin{bmatrix} 1 & x & y  \\ 0 & 1 & z \\ 0 & 0 & 1\end{bmatrix} = \begin{bmatrix} 1 & x + x' & y + y' + xz'  \\ 0 & 1 & z + z' \\ 0 & 0 & 1\end{bmatrix} $$ 
+
+    Or that $x + x' = x \implies x' = 0$, $z + z' = z \implies z' = 0$ and lastly,   $y + y' + xz' = y$ but we have  $z' = 0$ hence $y + y' = y \implies y' = 0$
+
+    So we have our identity ,  
+    $$I =  \begin{bmatrix} 1 & 0 & 0  \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{bmatrix}  $$ 
+
+
+
+    2. Inverse
+
+    We need to find $B$ such that $AB = I$. So we have, 
+    $$  \begin{bmatrix} 1 & x & y  \\ 0 & 1 & z \\ 0 & 0 & 1\end{bmatrix}  \begin{bmatrix} 1 & x' & y'  \\ 0 & 1 & z' \\ 0 & 0 & 1\end{bmatrix}  =  \begin{bmatrix} 1 & 0 & 0  \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{bmatrix}  $$ 
+
+    By definition we have, 
+    $$  \begin{bmatrix} 1 & x + x' & y + y' + xz'  \\ 0 & 1 & z + z' \\ 0 & 0 & 1\end{bmatrix}   =  \begin{bmatrix} 1 & 0 & 0  \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{bmatrix} $$ 
+
+    This means that $x + x' = 0 \implies x' = -x$,  $z + z' = 0 \implies z = -z'$. And we have,  $y + y' + xz' = 0, y' = -y - xz' = -y + xz$
+
+    So we have,  
+    $$ B = \begin{bmatrix} 1 &- x & - y + xz  \\ 0 & 1 & -z  \\ 0 & 0 & 1\end{bmatrix} $$ 
+
+
+    such that $AB = I$ hence  $B$ is our inverse $A^{-1}$ 
+
+
+    3. Associativity, 
+
+    we need to show that $(AB)C = A(BC)$
+
+    Let  $$B = \begin{bmatrix} 1 & x' & y'  \\ 0 & 1 & z' \\ 0 & 0 & 1\end{bmatrix}$$ and 
+ $$C = \begin{bmatrix} 1 & x'' & y''  \\ 0 & 1 & z'' \\ 0 & 0 & 1\end{bmatrix}$$
+
+ We have, 
+ $$ AB = \begin{bmatrix} 1 & x + x' & y + y' + xz'  \\ 0 & 1 & z + z' \\ 0 & 0 & 1\end{bmatrix} $$ 
+
+So, $$(AB)C = \begin{bmatrix} 1 & x + x' + x'' & (y + y' + xz') + y'' +(x + x')z''  \\ 0 & 1 & z + z' + z'' \\ 0 & 0 & 1\end{bmatrix} $$
+
+$$(AB)C = \begin{bmatrix} 1 & x + x' + x'' & y + y' + y''  + xz'  +xz'' + x'z''  \\ 0 & 1 & z + z' + z'' \\ 0 & 0 & 1\end{bmatrix} $$
+
+Now, 
+$$BC = \begin{bmatrix} 1 &  x' + x'' & y' + y'' + x'z'' \\ 0 & 1 &  z' + z''\\ 0 & 0 & 1\end{bmatrix} $$
+
+
+So we have, 
+$$ A (BC) =  \begin{bmatrix} 1 & x + x' + x'' & y + (y' + y'' + x'z'') + x(z' + z'')  \\ 0 & 1 & z + z' + z'' \\ 0 & 0 & 1\end{bmatrix}  $$ 
+$$ A (BC) =  \begin{bmatrix} 1 & x + x' + x'' & y + y' + y'' + x'z'' + xz' + xz''  \\ 0 & 1 & z + z' + z'' \\ 0 & 0 & 1\end{bmatrix}  $$ 
+
+
+It is easy to see that $(AB)C = A(BC)$
+\end{proof}
+
+
+\subsection*{Problem 14}
+\begin{proof}
+    1. Identity
+
+    We need, $(b,n)$ such that, 
+    $$ (a,m) \circ (b,n) = (a,m) $$ 
+
+    So we have, 
+    \begin{align*}
+        (a,m) \circ (b,n) &= (ab,m + n)\\
+        (a,m) &= (ab, m + n)
+    \end{align*}
+
+    So $ab = a \implies b = 1$ and  $m + n = m \implies n = 0$
+
+    So our identity element is  $(b,n) = (1,0)$
+    
+
+
+    2. Inverse
+
+    We need $(b,n)$ such that, 
+    $$ (a,m) \circ (b,n) = (1,0) $$ 
+
+    So we have, 
+    \begin{align*}
+        (a,m) \circ (b,n) &= (ab, m + n)\\
+         (1,0) &= (ab, m + n)        
+    \end{align*}
+
+    SO $ab = 1 \implies b = 1 /a$ ( if a not equal to 0 which is true as  $a \in R^{*}$) and  $ m + n = 0 \implies n = -m$
+
+    So we have  $(b, n) = (1 /a, -m)$
+
+
+
+
+    3. Associtivity
+
+    We need to show that, 
+    $$ ((a,m) \circ (b, n) ) \circ (c, o) = (a,m) \circ ((b,n) \circ (c,o)) $$ 
+
+    For the left hand side we have, 
+    \begin{align*}
+        ((a,m) \circ (b, n) ) \circ (c, o)  &= (ab, m + n) \circ (c, o)\\
+                                            &= (abc, m + n + o)
+    \end{align*}
+
+    For the right hand side we have, 
+    \begin{align*}
+        (a,m) \circ ((b, n) ) \circ (c, o)  &= (a, m) \circ (bc, n + o)\\
+                                            &= (abc, m + n + o)
+    \end{align*}
+
+    We see that the left side and right side equal to the same thing.
+
+    Hence it is associative
+
+    Therefore $G$ is a group under this operation.
+\end{proof}
+
+\subsection*{Problem 17}
+\begin{proof}
+    1. We have the cyclic group $\Z_8$ which are the integer's modulo  $8$ and on addition. The element are, 
+
+    $$ \{0,1,2,3,4,5,6,7\} $$ 
+
+    2. We have the symmetries of a square. We have two main operations on a square to preserve symmetry (1). Rotate by $90$ degrees (r) and (2). reflection (s) and (3) The identity
+
+    So the elements of this group is, 
+    $$ \{e, r, r^2, r^{3}, s, sr, s r^{2}, s r^{3}\} $$ 
+\end{proof}
+
+
+\subsection*{Problem 25}
+    \begin{proof}
+        We show this by induction. 
+
+        First we check for the case of $n = 1$. We have, 
+        \begin{align*}
+            ab^{1}a^{-1} &= (aba^{-1})^{1}\\
+            aba^{-1} &= aba^{-1}
+        \end{align*}
+
+        Now assume its true for $n = k$ so we have, 
+        $$ ab^{k}a^{-1}= (aba^{-1})^{k} $$ 
+
+        Now we need to show that $n = k + 1$ holds as well or that, 
+        $$ ab^{k + 1} a^{ -1} = (a ba ^{-1}) ^{k + 1} $$ 
+
+
+        Going back to $n = k$ case we have, 
+        \begin{align*}
+            ab^{k}a^{-1} &= (aba^{-1})^{k} \\
+            ab^{k}a^{-1} (aba^{-1}) &= (aba^{-1})^{k} (aba^{-1})\\
+            ab^{k}a^{-1}a b a^{-1} &= (aba^{-1})^{k + 1}\\
+            ab^{k} b a^{-1} &= (aba^{-1})^{k + 1}\\
+            ab^{k + 1}a^{-1} &= (aba^{-1})^{k + 1}\\
+        \end{align*}
+
+        Which is the $n = k + 1$ case. Hence by induction we show that it is true for all $n \in N$. 
+        
+        Now we consider the case when  $n = 0$. Which is, 
+        $$ ab^{n}a^{-1} = (aba^{-1})^{n} $$ 
+        $$ a a^{-1} = 1 $$  and  
+        $$ (aba^{-1})^{0}  = 1 $$ 
+
+        So it is true.
+
+        Lastly we see that case for $n < 0$. This is equivalent to, doing induction for $n \in N$ for, 
+        $$ ab^{-n}a^{-1} = (aba^{-1})^{-n} $$
+                
+        So first we see the base case which is  when $n = 1$ we have, 
+        $$ ab^{-1}a^{-1} = (aba^{-1})^{-1} $$ 
+
+        The right hand side becomes, 
+        $$ ab^{-1}a^{-1} $$ based on how $^{-1}$ is distributed. 
+        Hence it is true for the $n = 1$ case.
+
+
+
+        Now consider the case for $n = k$. We assume that, 
+        $$ ab^{-k}a^{-1} = (aba^{-1})^{- k} $$ 
+
+        We need to show it also holds true for the $n = k + 1$ case that is, 
+        $$ ab^{-(k  + 1)}a^{-1} = (aba^{-1})^{-(k + 1)} $$ 
+
+
+        The $n = k$ case gives us, 
+        $$ ab^{-k}a^{-1} = (aba^{-1})^{- k} $$ 
+
+        Now we multiply $(aba^{-1})^{-1}$ on both sides and we get, 
+        $$ ab^{-k}a^{-1} (aba^{-1})^{-1} = (aba^{-1})^{-k} (aba^{-1})^{-1} $$ 
+        $$ ab^{-k}a^{-1} ab^{-1}a^{-1} = (aba^{-1})^{-(k + 1)} $$                   
+        $$ ab^{-k}b^{-1}a^{-1} = (aba^{-1})^{-(k + 1)} $$                   
+        $$ ab^{-(k + 1)}a^{-1} = (aba^{-1})^{-(k + 1)} $$                   
+    \end{proof}
+
+    Which is the $n = k + 1$ case. 
+
+    Hence we show its true for $n > 0, n = 0$ and $n < 0$
+
+
+
+
+\subsection*{Problem 33}
+\begin{proof}
+    We need to show that, 
+    $$ ab = ba $$  for any elements $a,b$ in our group.
+
+    We have, 
+    \begin{align*}
+        (ab)^2 &= a^2b^2\\
+        ab ab &= a^2 b^2\\
+        a^{-1}abab  &= a^{-1} a^2 b^2\\
+        bab &= ab^2\\
+        bab b^{-1} &= ab^2 b^{-1}\\
+        ba &= ab
+    \end{align*}
+
+    Hence we show its commutative. So its an abelian group.
+\end{proof}
+
+
+\end{document}

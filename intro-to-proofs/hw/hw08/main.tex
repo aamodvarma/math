@@ -1,0 +1,65 @@
+\documentclass[a4paper]{report}
+\usepackage{multirow}
+\input{preamble.tex}
+\title{Intro to Proofs: HW08}
+\author{Aamod Varma}
+\graphicspath{ {./} }
+\begin{document}
+\maketitle
+\date{}
+
+\section*{Section 12.3}
+\subsection*{Problem 2}
+\begin{proof}
+For $a^{k}- a^{l}$ to be divisble by 10 we need the last digit of both $a^{k}$ and $a^{l}$ to be the same.
+
+Consider the function $f(x)$ that takes any $x$ and maps it to the last digit of $a^{x}$. So the domain of this function looks like $A = \{1,2,\dots\}$ and the codomain is $B = \{0,\dots,9\}$. However $|A| > |B|$ which implies that it isn't injective. And there has to exist two values in $A$ such that  it maps to the same value in $B$. If $k$ and $l$ are those two values this means that $a^{k}- a^{l}$ is dividble by 10.
+\end{proof}
+
+
+\subsection*{Problem 5}
+\begin{proof}
+    First we see that if we want the sum or difference to be divisible by 10 we need two numbers where the last digit is either the same or they add up to 10. The possible last digits are, $0,\dots,9$. So let us group these into the following sets, 
+    $$A = \{ \{0\},\{1,9\},\{2,8\},\{3,7\},\{4,6\},\{5\} \}$$ 
+
+    These sets cover all the possible last digits. So let us define a functino to map from our set of 7 integers $X$ to set $A$ based on the last digits. We see that $|X| > |A|$ which means that at least two elements in $X$ map to the same set in $A$. Assume these elements are  $x$ and $y$. For any set these map to either their last digits add up to 10, or their last digits are the same which means their difference is 0 and hence the numbers are divisible by 10.
+\end{proof}
+
+\subsection*{Problem 7}
+\begin{proof}
+    We are given a subset of $X \subseteq \{1,2,3,\dots, 2n\}$ with  $|X| > n$. Conisder the set of odd numbers as $Y = \{1,\dots,2n - 1\}$. We can factorize any numbe as  $2^{a}b$ where $b$ is odd. So because $|X| > |Y|$ that means that a function that maps an integer to the largest odd number that divides it is not injective. Which means there are two numbers such that  have the same $b$ value. 
+
+    Now without loss of generality let $a_1 > a_2$ and $x_1 =2^{a_1}b$ and $x_2$ be $2^{a_2}b$. In this case we have $x_2 | x_1$ and $\frac{x_1}{x_2} = 2^{a_1 - a_2}$
+\end{proof}
+
+
+\subsection*{Problem 3}
+We have $$g \circ f = \{(1,1),(2,1),(3,3)\}$$
+
+And $$f \circ g = \{(1,1),(2,2),(3,2)\}$$
+
+    
+\subsection*{Problem 5}
+We have $f(x) = \sqrt[3]{x + 1}$ and $g(x) = x^{3}$. We have, 
+$$ g \circ f = g(f(x)) = g(\sqrt[3]{x + 1}) = (\sqrt[3]{x + 1})^{3} = x + 1 $$  and 
+$$ f \circ g = f(g(x)) = f(x^{3})= \sqrt[3]{x^{3} + 1} $$ 
+
+
+\subsection*{Problem 8}
+We have 
+\begin{align*}
+    g \circ f = g(f(m,n)) = g(3m - 4n,2m + n) &= (5(3m - 4n) + (2m + n), 3m - 4n)\\
+                                              &= (15m - 20n + 2m + n, 3m - 4n)\\
+                                              &= (17m - 19n, 3m - 4n)
+\end{align*}
+
+And, 
+\begin{align*}
+    f \circ g &= f(g(m,n))\\
+              &= f(5m + n, m)\\
+              &= (3(5m + n) - 4m, 2(5m + n) + m)\\
+              &= (15m + 3n - 4m, 10m + 2n + m)\\
+              &= (11m + 3n, 11m + 2n)
+\end{align*}
+
+\end{document}

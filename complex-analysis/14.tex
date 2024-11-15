@@ -1,0 +1,60 @@
+
+\section{Absolute and Uniform Convergence}
+
+\begin{theorem}
+   If a power series, 
+   $$ \sum_{n=0}^{\infty} a_n (z - z_0)^{n} $$ 
+   converges when $z = z_1$ then it is absolutely convergent at each point $z$ in the open disk $|z - z_0| < R_1$ where $R_1 = |z_1 - z_0|$
+\end{theorem}
+\begin{proof}
+   Consider it converges when $z = z_1$. This means that, 
+   $$ \sum_{n=0}^{\infty} a_n (z_1 - z_0)^{n} $$ converges which implies that each term is bounded by some value $M$.
+
+   So for any $n$, we have 
+   $$ a_n (z_1 - z_0)^{n} \le M $$ 
+
+   Now consider $\rho = \frac{|z - z_0|}{|z_1 - z_0|}$. We know that $\rho \le 1$ because $|z - z_0| \le |z_1 - z_0|$. Hence we have, 
+   \begin{align*}
+   a_n(z_1 - z_0)^{n} \rho^{n} \le M \rho^{n}\\
+   a_n(z - z_0)^{n} \le M \rho^{n}
+   \end{align*}
+
+   So we get that any term of form  $a_n (z - z_0)^{n}$ is bounded by a number as well and as $n$ increase because $\rho$ is smaller than zero the terms go to zero. This means that our series, 
+   $$ \sum_{n=0}^{\infty} a_n (z - z_0)^{n} $$ also converges.
+
+   In other words because $M\rho^{n}$ converges and because each term in our series is smaller than this term our series converges by comparison test.
+\end{proof}
+\begin{remark}
+   The greatest circle is called our circle of convergence and is the largest circle possible. Because if there was a point outside the circle for which the series converges then using the proof above the circle compassing that point would be the circle of convergence.
+\end{remark}
+
+Now consider the following terminology where the series is defined for $|z - z_0| < R$
+\begin{align*}
+   S(z) &= \sum_{n=0}^{\infty} a_n(z - z_0)^{n}\\
+   S_N(z) &= \sum_{n=0}^{N-1} a_n(z - z_0)^{n}\\
+   \rho_N(z) &= S(z) - S_N(z)
+\end{align*}
+
+Since the power series converges for any value of $z$ when $|z - z_0| < R$ we have $\exists N_e$ such that $\forall \epsilon$, 
+$$ |\rho_N(z)| < \epsilon \text{ whenever } N > N_e $$ 
+
+When the choice of $N_e$ is only dependent on $\epsilon$ and independent on $z$ then convergence is said to be uniform in that region.
+
+
+\begin{theorem}
+   If $z_1$ is a point inside $| z - z_0| = R$ of a series, 
+   $$ \sum_{n=0}^{\infty} a_n(z - z_0)^{n} $$ 
+
+   then that series must be uniformly convergent in the closed disk $| z- z_0| \le R_1$ where $R_1 = |z_1 - z_0|$
+\end{theorem}
+
+\begin{proof}
+   So first consider the reminder term of our series with $z$ and $z_1$ as follows, 
+   \begin{align*}
+      \rho_N(z) &= \lim_{n \to \infty} \sum_{n=N}^{m} a_n(z - z_0)^{n}\\
+      \sigma_N(z) &= \lim_{n \to \infty} \sum_{n=N}^{m} a_n(z_1 - z_0)^{n}\\
+   \end{align*}
+
+   Now because $|z - z_0| \le |z_1 - z_0|$ we get, 
+   $$ \rho_N(z) \le \rho_N(z) $$ inside $|z - z_0| \le R_1$
+\end{proof}

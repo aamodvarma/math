@@ -1,0 +1,138 @@
+
+\section{Absolute and Uniform Convergence}
+
+\begin{theorem}
+   If a power series, 
+   $$ \sum_{n=0}^{\infty} a_n (z - z_0)^{n} $$ 
+   converges when $z = z_1$ then it is absolutely convergent at each point $z$ in the open disk $|z - z_0| < R_1$ where $R_1 = |z_1 - z_0|$
+\end{theorem}
+\begin{proof}
+   Consider it converges when $z = z_1$. This means that, 
+   $$ \sum_{n=0}^{\infty} a_n (z_1 - z_0)^{n} $$ converges which implies that each term is bounded by some value $M$.
+
+   So for any $n$, we have 
+   $$ a_n (z_1 - z_0)^{n} \le M $$ 
+
+   Now consider $\rho = \frac{|z - z_0|}{|z_1 - z_0|}$. We know that $\rho \le 1$ because $|z - z_0| \le |z_1 - z_0|$. Hence we have, 
+   \begin{align*}
+   a_n(z_1 - z_0)^{n} \rho^{n} \le M \rho^{n}\\
+   a_n(z - z_0)^{n} \le M \rho^{n}
+   \end{align*}
+
+   So we get that any term of form  $a_n (z - z_0)^{n}$ is bounded by a number as well and as $n$ increase because $\rho$ is smaller than zero the terms go to zero. This means that our series, 
+   $$ \sum_{n=0}^{\infty} a_n (z - z_0)^{n} $$ also converges.
+
+   In other words because $M\rho^{n}$ converges and because each term in our series is smaller than this term our series converges by comparison test.
+\end{proof}
+\begin{remark}
+   The greatest circle is called our circle of convergence and is the largest circle possible. Because if there was a point outside the circle for which the series converges then using the proof above the circle compassing that point would be the circle of convergence.
+\end{remark}
+
+Now consider the following terminology where the series is defined for $|z - z_0| < R$
+\begin{align*}
+   S(z) &= \sum_{n=0}^{\infty} a_n(z - z_0)^{n}\\
+   S_N(z) &= \sum_{n=0}^{N-1} a_n(z - z_0)^{n}\\
+   \rho_N(z) &= S(z) - S_N(z)
+\end{align*}
+
+Since the power series converges for any value of $z$ when $|z - z_0| < R$ we have $\exists N_e$ such that $\forall \epsilon$, 
+$$ |\rho_N(z)| < \epsilon \text{ whenever } N > N_e $$ 
+
+When the choice of $N_e$ is only dependent on $\epsilon$ and independent on $z$ then convergence is said to be uniform in that region.
+
+
+\begin{theorem}
+   If $z_1$ is a point inside $| z - z_0| = R$ of a series, 
+   $$ \sum_{n=0}^{\infty} a_n(z - z_0)^{n} $$ 
+
+   then that series must be uniformly convergent in the closed disk $| z- z_0| \le R_1$ where $R_1 = |z_1 - z_0|$
+\end{theorem}
+
+\begin{proof}
+   So first consider the reminder term of our series with $z$ and $z_1$ as follows, 
+   \begin{align*}
+      \rho_N(z) &= \lim_{n \to \infty} \sum_{n=N}^{m} a_n(z - z_0)^{n}\\
+      \sigma_N(z) &= \lim_{n \to \infty} \sum_{n=N}^{m} a_n(z_1 - z_0)^{n}\\
+   \end{align*}
+
+   Now because $|z - z_0| \le |z_1 - z_0|$ we get, 
+   $$ \rho_N(z) \le \sigma_N(z) $$ inside $|z - z_0| \le R_1$ where $R_1$ is the circle $|z_1 - z_0|$
+
+   Since they are remainders of convergent series we have $\exists N_e$ such that for any $\epsilon$, 
+   $$ \sigma_N < \epsilon \text{ whenever } N > N_e $$ 
+
+   Now putting the two together we have, 
+   $$ \rho_N(z) < \epsilon \text{ whenever } N > N_e$$ 
+
+   Now as $N_e$ is independent of our value of $z$ within our circle we have uniform convergence as the remainder goes to $0$.
+\end{proof}
+
+
+\section{Continuity of Sums of Power Series}
+\begin{theorem}
+   A power series, 
+   $$ \sum_{n=0}^{\infty} a_n (z - z_0)^{n} $$ represents a continuous functions $S(z)$ at each point inside its circle of convergence $|z - z_0| = R$
+
+   In other words we have, 
+   $$ |S(z) - S(z_1)| < \epsilon \text{ whenever } |z  - z_1| < \delta $$ 
+\end{theorem}
+
+\begin{proof}
+   We have, 
+   $$  S(z) =\rho_N(z) + S_N(z) $$ 
+   $$ |S(z) - S(z_1)| = |S_N(z) - S_N(z_1) + \rho_N(z) - \rho_N(z_1)|$$ 
+   $$ |S(z) - S(z_1)| \le |S_N(z) - S_N(z_1)| + |\rho_N(z)| + |\rho_N(z_1)|$$ 
+\end{proof}
+
+We have, 
+$$ |\rho_N(z)| < \frac{\epsilon}{3}\text{ when } N > N_e $$ 
+
+And because $S_N(z)$ is a polynomial and is continuous we have, 
+$$ |S_N(z) - S_N(z_1)| < \frac{\epsilon}{3} \text { when } | |z- z_1 | < \delta$$ 
+
+So putting everything together we have, 
+$$ |S(z_) - S(z_1)| \le \epsiilon \text{ whenever } |z - z_1| < \delta $$ 
+
+
+
+\section{Integration And Differentiation of Power Series}
+\begin{theorem}
+   Let $C$ be any contour interior to the circle for convergence of the power series (1), and let g(z) be any function that is continuous on $C$.  Then the series formed by multiplying each term of the power series by $g(z)$ can be integrated term by term over $C$,  
+   $$ \int_C g(z) S(z) dz = \sum_{n=0}^{\infty} a_n \int_C g(z) (z - z_0)^{n}dz $$ 
+\end{theorem}
+\begin{proof}
+   We have, 
+   $$ g(z)S(z) = \sum_{n=0}^{N-1} a_ng(z)(z - z_0)^{n} + g(z) \rho_N(z) $$ 
+   $$ \int_C g(z) S(z) =   \sum_{n=0}^{N-1} a_n \int_C g(z)(z - z_0)^{n}dz +\int_C g(z) \rho_N(z) dz$$ 
+
+   Now let $M$ be the max of $g(z)$ on $C$ and $L$ be the length of $C$. We know $\exists N_e$ such that, 
+   $$ |\rho_N(z)| < \epsilon \text{ whenever } N > N_e$$ 
+
+   So we have, 
+   $$\bigg|\int_C g(z) \rho_N(z) dz\bigg|  \le M\epsilon L$$ 
+
+   Which means, 
+   $$ \lim_{N \to \infty} \int_C g(z)\rho_N(z) dz = 0 $$ 
+
+   Or, 
+   $$ \int_C g(z) S(z) dz = \lim_{N \to \infty} \sum_{n=0}^{N-1} g(z) (z - z_0)^{n} $$ 
+\end{proof}
+
+
+\begin{theorem}
+   The power series can be differentiated term by term. Or,  
+   $$ S'(z) = \sum_{n=1}^{\infty} na_n (z - z_0)^{n-1} $$ 
+\end{theorem}
+\begin{proof}
+   Let $z$ be a point interior to circle of convergence of series. Let us define the function, 
+   $$ g(s) = \frac{1}{2\pi i} \frac{1}{(s - z)^2} $$ at each point $s$ on $C$.
+
+   We have,  
+   $$ \int_C g(s) S(s) ds = \frac{1}{2\pi i} \int_C \frac{S(s)ds}{(s - z)^2} = S'(z)$$
+   $$ \int_C g(s) S(s) ds = \sum_{n=0}^{\infty} a_n \int_C g(s) (s - z_0)^{n}$$
+   This can be reduced to, 
+   $$ = \frac{1}{2 \pi i} \frac{(s- z_0)^{n}}{(s -z)^2} = \frac{d}{dz} (z - z_0)^{n} $$ 
+
+   So we have, 
+   $$ S'(z) = \frac{d}{dz} a_n (z - z_0)^{n} $$ 
+\end{proof}

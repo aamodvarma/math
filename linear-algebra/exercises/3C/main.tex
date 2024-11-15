@@ -1,6 +1,6 @@
 \documentclass[a4paper]{report}
 \input{../../preamble.tex}
-\title{Linear Alebgra 3B}
+\title{Linear Alebgra 3C}
 \author{Aamod Varma}
 \begin{document}
 \maketitle
@@ -25,29 +25,81 @@
 
 \subsection*{Problem 2}
 \begin{proof}
-    $\impliedby$ 
+    Consider $\range T$ is spanned by $w_1$. Now let us extend this basis to $w_1,\dots,w_n$. Let us rewrite this basis as, 
+    $$ w_1 - w_2,w_2 - w_3,\dots,w_{n-1} - w_n,w_{n} $$ 
 
-    First we know that if $\dim \range T = 1$ then  $\range T$ is spanned by a single arbitrary non-zero vector $w$. We nkow as $T$ is a linear map we can construct a basis $V$, $v_1,\dots,v_n$ as follows,
+    Let us show this is a basis first, 
+    \begin{align*} 
+        a_1(w_1-w_2) + \dots + a_{n-1}(w_{n-1} - w_n) + a_n(w_n) &= 0\\
+        a_1w_1 + (a_2-a_1)w_2 + \dots + (a_n - a_{n-1})w_n&= 0
+    \end{align*}
+    We nkow that $w_1,\dots,w_n$ is lin independent. Hence $a_1 = a_2 - a_1 = \dots = 0$.
+    If $a_1 = 0$ the $a_2 - 0 = 0$and so on which means $a_1 = \dots = a_n = 0$.
+
+    Hence the sum of the vectors in our basis all equal to $w_1$. Let this basis be as follows, 
+    $$ w_1' = w_1 - w_2, \dots,w_n' = w_n $$ 
+
+    Now we knwo that our range is $1$ which means  $\exists v \in V$ such that $Tv_1 = w_1$. Let us extend this basis to $v_1,\dots,v_n$. Now let us modify this basis as follows, 
+    $$ v_1, v_2 + v_1,\dots, v_n + v_1 $$ 
+
+    First we show this is a basis, 
+    \begin{align*}
+        a_1v_1 + a_2(v_2 + v_1) + \dots + a_n(v_n + v_1) &= 0 \\
+        v_1(a_1 + \dots + a_n) + a_2v_2 + \dots + a_nv_n &= 0\\
+    \end{align*}
+    $v_1,\dots,v_n$ is linearly independent hence, $a_2,\dots,a_n = 0$ and $a_1+ \dots + a_n = 0$ so $a_1 + 0 = 0$ and $a_1 = 0$. Hence our new basis is constructed as $v_1' = v_1, v_k' = v_k + v_1$.
+
+    We nkow that  
+    \begin{align*}
+    Tv_1' &= w_1\\
+    Tv_k' &= T(v_k) + T(v_1') \text{ for $1 < k \le n$}
+    \end{align*}
+    Now because $\range T = 1$ either $T(v_k) \in \range T \implies T(v_k) = \lambda_k w_1$ or $T(v_k) = 0 \implies T(v_k')= T(v_1') = w_1$. If $T(v_k) \in \range T$. Let us rewrite $v_k'$ as $v_k' = \frac{v_k+ v}{\lambda_k + 1}$.
 
 
-    First choose any $v_1 \in V$ such that $Tv_1 = b_1w$. Now let us extend this basis to $V$ as $v_1,\dots,v_m$. We change this basis to $v_1,v_2+v_1,\dots,v_m+v_1$. It is easy to show that this list is linearly independent and hence is a basis.
-    
-    For any vector in this basis we know that $T(v_k) = b_kw$ such taht $b_k \ne 0$ as $T(v_k) = T(v_{k'}) + T(v) = \lambda + b_1w$ where $\lambda$ may or may not be zero.
-    where any $b \ne 0$ because for any $v$ such that $P(v) = 0$
+    Essentially we constructed a basis of $V$ such that $v_1',\dots,v_n'$ such that for $Tv_k'$ it is equal to $w_1$ or in other words, 
+    \begin{align*}
+        Tv_1' &= w_1\\
+              &\dots\\
+        Tv_n' &= w_1
+    \end{align*}
 
-    Hence we find, 
-    $$ T(v_1) = b_1w,\dots,T(v_n) = b_nw $$
+    But we rewrite $w_1$ as sum of basis of W so we have, 
+    \begin{align*}
+        Tv_1' &= w_1' + \dots + w_n'\\
+              &\dots\\
+        Tv_n' &= w_1' + \dots + w_n'
+    \end{align*}
 
-    Now we divide each side by $\frac{1}{b_k}$ to get, 
-    $$ T(\frac{v_1}{b_1})= w,\dots,T(\frac{v_n}{b_n}) = w $$ 
+    Now by how matrices are defined we have constructed a basis of V and $W$ such that all entires of our matrix is just 1s.
 
-    We can construct a basis of $W$ from $w$ to $w,\dots,w_n$. Hence we have our matrix as,  
-    $$ T(v_1') = 1w + \dots + 0w_n $$ 
-    $$ \dots$$
-    $$ T(v_n') = 1w + \dots + 0w_n $$ 
 
-    Now we know that $M(T)$ can be constructed with all 1s.
+
 \end{proof}
+% \begin{proof}
+%     $\impliedby$ 
+
+%     First we know that if $\dim \range T = 1$ then  $\range T$ is spanned by a single arbitrary non-zero vector $w$. We nkow as $T$ is a linear map we can construct a basis $V$, $v_1,\dots,v_n$ as follows,
+
+
+%     First choose any $v_1 \in V$ such that $Tv_1 = b_1w$. Now let us extend this basis to $V$ as $v_1,\dots,v_m$. We change this basis to $v_1,v_2+v_1,\dots,v_m+v_1$. It is easy to show that this list is linearly independent and hence is a basis.
+    
+%     For any vector in this basis we know that $T(v_k) = b_kw$ such taht $b_k \ne 0$ as $T(v_k) = T(v_{k'}) + T(v) = \lambda + b_1w$ where $\lambda$ may or may not be zero.
+%     where any $b \ne 0$ because for any $v$ such that $P(v) = 0$
+
+%     Hence we find, 
+%     $$ T(v_1) = b_1w,\dots,T(v_n) = b_nw $$
+
+%     Now we divide each side by $\frac{1}{b_k}$ to get, 
+%     $$ T(\frac{v_1}{b_1})= w,\dots,T(\frac{v_n}{b_n}) = w $$ 
+
+%     We can construct a basis of $W$ from $w$ to $w,\dots,w_n$. Hence we have our matrix as,  
+%     $$ T(v_1') = 1w + \dots + 0w_n $$ 
+%     $$ \dots$$
+%     $$ T(v_n') = 1w + \dots + 0w_n $$ 
+
+%     Now we know that $M(T)$ can be constructed with all 1s.
+% \end{proof}
 
 \subsection*{Problem 3}
 \begin{proof}
@@ -107,64 +159,36 @@
 \end{proof}
 \subsection*{Problem 5}
 \begin{proof}
-    Consider a basis of $V$ as $v_1,\dots,v_n$, we know as $T$ is a linear map we find, 
-    $$ Tv_1 = w_1,\dots, Tv_n = w_n $$ 
+    Let $\dim \range T = r$ and consdier a basis for $\range T$ as $w_1,\dots,w_r$. Let us nwo extedn this basis to $w_1,\dots,w_m$. Now as $w_1,\dots,w_r \in \range T$  we nkow $\exists v_1,\dots,v_r$ such that $Tv_1 = w_1,\dots,Tv_r = w_r$. It is easy to show that $v_1,\dots,v_r$ is linearly independent.
 
-    Let $\range T = k$ so we know that $w_1,\dots,w_n$ spans $\range T$ or in other words $w_1,\dots,w_n$ can be reduced to a basis of $\range T$ such that without loss of generality let them be ordered as $w_1,\dots,w_k$. 
-
-    So we have, 
+    Now extend our $v_1,\dots,v_r$ to a basis of $V$ as $v_1,\dots,v_n$. So we have, 
     \begin{align*}
         Tv_1 &= w_1\\
-        &\dots\\
-        Tv_k &= w_k
+             &\dots\\
+        Tv_r &= w_r\\
+             &\dots \\
+        Tv_n &= 0\\
     \end{align*}
 
-    Now we can find $v_{k+1},\dots,v_n \in \nul T$ such that $Tv_{k+1} = 0,\dots,Tv_n = 0$ as null of T is spanned by $n - k$ vectors.
-
-    So let us extend our current list of  $v_1,\dots,v_k$ to $v_{k+1},\dots,v_n$. So our linear map is dfined as, 
+    Based on how we define our matrix we can write, 
     \begin{align*}
-        Tv_1 &= w_1\\
-        &\dots\\
-        Tv_k &= w_k\\
-        Tv_{k+1} &= 0\\
-        &\dots\\
-        Tv_{n} &= 0\\
+        Tv_1 &= 1w_1 + \dots + 0w_r + \dots + 0w_m\\
+        & \dots\\
+        Tv_r &= 0w_1 + \dots + 1w_r + \dots + 0w_m\\
+        & \dots\\
+        Tv_n &= 0w_1 + \dots + 0w_r + \dots + 0w_m\\
     \end{align*}
 
-    First let us extend our basis of $\range T$  to a basis of $W$ as $w_1,\dots,w_n$. Now let our definitio of $M(T)$ be as follows, 
-    \begin{align*}
-        Tv_1 &= 1w_1 + \dots + 0w_k + \dots + 0w_n\\
-        &\dots\\
-        Tv_k &= 0w_1 + \dots + 1w_k+ \dots + 0w_n\\
-        Tv_{k+1} &= 0w_1 + \dots + 0w_k + \dots 0 w_n\\
-        &\dots\\
-        Tv_{n} &= 0w_1 + \dots + 0w_k + \dots 0w_n\\
-    \end{align*}
-
-    Hence based on how we define $M$ we have 1s at $A_{11},\dots,A_{kk}$ and $0$ 's everywhere else.
-
-    % Where $w_1,\dots,w_k$ is  a basis of $\range T$. Now we know for any $v_x$ such that that $x > k$ that $T(v_x)$ can be written as a linear combination of $w_1,\dots,w_k$.
+    Hence for only row k column k we have all ones and rest are all zeores.
 
 \end{proof}
 
 
 \subsection*{Problem 6}
 \begin{proof}
-    First consider the case when $W = \range T$ and $\dim W = n$. And say we have basis of $V $ as $v_1,\dots,v_m$. Now consider $Tv_1 = w_1$. Let us extend this set of vectors to $w_1,\dots,w_n$. So we have, 
-    $$ Tv_1 = w_1 $$ 
-    $$ \dots $$ 
-    $$ Tv_m = a_1w_1+\dots+ a_nw_n$$ 
+    First consider if $Tv_1 = 0$. In this case we have $Tv_1 = 0w_1 + \dots + 0w_n$ where $w_1,\dots,w_n$ is a basis of $W$. So we have all zeroes in the first column.
 
-    So we define our matrix as follows, 
-    \begin{align*}
-        Tv_1 &= 1w_1 + \dots + 0w_n \\
-    &\dots \\
-        Tv_m &= A_{1m}w_1+\dots+ A_{nm}w_n\\
-    \end{align*}
-
-    So for our first column we have all zeroes except for  $A_{11}$
-
-    Now consider if $\dim \range T \le \dim \range W$. So $\exists v_k \in V$ such that $T(v_k) = 0 = 0w_1,\dots,0w_n$  for any basis of $W$. So we construct the matrix such that all in first column are zeroes.
+    Now consider  if $Tv_1 = w_1 \ne 0$. Let us now extend this basis to $w_1,\dots,w_n$. And we have $Tv_1 = 1w_1 + \dots + 0w_n$. So we have all 0s except for a 1 in the first column first row.
 \end{proof}
 \subsection*{Problem 8}
 \begin{proof}
@@ -177,6 +201,7 @@
          \begin{align*}
              AB_{j,.}  &= (\sum_{r=1}^{r=n} A_{j,r}B_{r,1},  \dots, \sum_{r=1}^{r=n} A_{j,r}B_{r,n})\\
                        &= (A_{j,1},\dots,A_{j,n}) B\\
+                       &= (A_{j,.}B_{.,1}, \dots , A_{j,.}B_{.,n})\\
                        &= A_{j,.}B
          \end{align*}
 

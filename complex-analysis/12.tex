@@ -1,0 +1,128 @@
+\section{Consequences}
+
+\begin{theorem}
+   If $f$ is analytic at a point then the derivative of all orders are analytic in that point.
+\end{theorem}
+\begin{proof}
+   If $f$ is analytic at $z_0$ then $\exists \epsilon $ s.t.,  $ |z - z_0| < \frac{\epsilon}{2} $ we have 
+   $$ f''(z) = \frac{1}{\pi i}\int_C \frac{f(s)}{(s - z)^{3}}dz$$ 
+
+   This is defined for all $z$ in our neighborhood which means that our $f'(z)$ is analytic within the contour where 
+   $$ |z - z_0| < \frac{\epsilon}{2} $$ 
+\end{proof}
+
+\begin{theorem}
+   If $f$ is cont. on domain $D$ and if $\int_C f(z)dz = 0$ for every contour $C \in D$. Then $f$ is analytic throughout $D$.
+\end{theorem}
+
+
+\begin{theorem}
+   Suppose $f$ is analytic inside and on $C$ which is centered at $z_0$ with radius $R$. Then if $M_R \ge |f(z)|$ on $C_R$ then $$f^{(n)}(z_0) \le \frac{n! M_R}{R^{n}}$$
+\end{theorem}
+
+\begin{proof}
+   \begin{align*}
+      |f^{(n)} (z_0) | &= \bigg | \frac{n!}{2\pi i} \int \frac{f(z)}{(z - z_0)^{n+1}} dz \bigg |\\
+ &\le \bigg | \frac{n!}{2\pi i} \int \frac{M_R}{R} dz \bigg |\\
+   \end{align*}
+\end{proof}
+
+\section{Liouvillie's theorem and fundamental theorem of algebra}
+
+\begin{theorem}
+   Let $f$ be entire and bounded in the complex plane then $f(z)$ is constant throughout the plane.
+\end{theorem}
+\begin{proof}
+   \begin{align*}
+      f^{(n)}(z_0) &= \frac{n!}{2\pi i} \int \frac{f(s)}{s - z_0} ds\\
+      |f'(z_0)| &\le \frac{M_R}{R}
+   \end{align*}
+   As $R$ goes to $\infty$ we see that $f'(z_0)$ goes to $0$.
+\end{proof}
+
+\begin{theorem}
+   Any polynomial, $p(z) = a_0 + a_1z + \dots + a_nz^{n}$ has at least one zero.
+\end{theorem}
+\begin{proof}
+   Assume there is no zero, we have 
+   $$ \bigg | \frac{1}{p(z)} \bigg |  < \frac{2}{|a_n|R^{n}}, |z| > R$$ 
+\end{proof}
+
+\section{Maximum modulus Principle}
+
+\begin{lemma}
+   $|f(z)| \le |f(z_0)|$, $|z - z_0| < \epsilon$ f is analytic. Then, 
+   $$ f(z) \equiv f(z_0) $$ 
+\end{lemma}
+
+\begin{theorem}
+   If $f$ is analytic and not constant in $D$ then $f(z)$ has no maximum in $D$
+\end{theorem}
+
+
+
+
+\chapter{Series}
+
+\section{Convergence of Sequences}
+If $\lim_{n \to \infty} z_n = z$ then we know that $\forall \epsilon > 0$, $\exists n_0>0$ s.t. 
+$$ |z_n - z| < \epsilon $$  when $n > n_0$
+
+
+\begin{theorem}
+   $z_n = x_n + iy_n, z = x + iy$ Then  
+   $$ \lim_{n \to \infty} z_n = z $$ $$\iff $$
+   $$ \lim_{n \to \infty} x_n = x  \text{ and } \lim_{n \to \infty} y_n = y$$ 
+\end{theorem}
+
+So $\sum_{n=1}^{\infty} z_{n}$ converges to $S$, 
+$$ S_N = \sum_{n=1}^{N} z_n \rightarrow S \text{ as $N$ \rightarrow $\infty$ } $$ 
+
+
+\begin{theorem}
+   $z_n = x_n + iy_n$, $S = X + iY$ then  
+   $$ \sum_{n=1}^{\infty} z_n = S $$ $$ \iff$$ 
+   $$ \sum_{n=1}^{\infty} x_n = X \text{ and } \sum_{n=1}^{\infty} y_n = Y $$ 
+\end{theorem}
+
+\section{Convergence of Series}
+An infinite series, 
+$$ \sum_{n=1}^{\infty} z_n = z_1 + \dots + z_n + \dots $$ 
+of complex numbers converges to the sum $S$ if the sequence, 
+$$ S_n = \sum_{n=1}^{N} z_n = z_1 + \dots + a_N  \quad (N = 1,2,\dots)$$  of partial sums converges to $S$ ; we write 
+$$ \sum_{n=1}^{\infty} z_n = S $$ 
+
+
+\begin{theorem}
+   If $z_n = x_n + i_n$ and $S = X +iY$ then, 
+   $$ \sum_{n=1}^{\infty} z_n = S $$ 
+   $$ \iff $$ 
+   $$ \sum_{n=1}^{\infty} x_n = X, \sum_{n=1}^{\infty} y_n= Y $$ 
+\end{theorem}
+\begin{remark}
+   We can write, 
+   $$ \sum_{n=1}^{\infty} x_n + iy_n = \sum_{n=1}^{\infty} x_n + i\sum_{n=1}^{\infty} y_n $$   
+\end{remark}
+
+\begin{corollary}
+   If complex number series converges then  $z_n \rightarrow$ 0 when $n \rightarrow \infty$ 
+\end{corollary}
+\begin{proof}
+   To prove this we can write $z_n = x_n + iy_n$ and using property of convergence of series from the reals.
+\end{proof}
+
+\begin{remark}
+   This also means that the terms of convergent series are bounded. So $\exists M$ such that $|z_n| \le M$ for each positive integer $n$.
+\end{remark}
+\begin{corollary}
+   The absolute convergence of a series of complex numbers implies the convergence of series.
+\end{corollary}
+
+\vspace{2em}
+The remainder is $\rho_n = S - S_N = \sum_{n = N+1}^{\infty} z_n$
+
+\begin{remark}
+   A series converges to $S \iff $ the sequence of remainders tends to zero.
+\end{remark}
+
+

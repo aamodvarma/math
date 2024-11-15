@@ -1,0 +1,48 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Linear Algebra Hw8}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+\subsection*{Problem 1}
+\begin{proof}
+   (1). We have $T^2$ has eigenvalue 9. Which means that 
+   $$ T^2 v = 9 v $$ 
+   $$ (T^2 - 9I)v = 0 $$ 
+   $$ (T + 3I)(T - 3I)v = 0 $$ 
+
+   So we have either $Tv = 3Iv = 3v$ which implies that 3 is an eigenvalue or $Tv = -3Iv = -3v$ which implies that $-3$ is an eigenvalue.
+
+   (2). Assume eigenvalue is either 3 or -3. So we have, 
+   \begin{align*}
+      Tv &= 3v\\
+      T(Tv) &= T(3v) = 3T(v)\\
+      T^2 v &=  9v
+   \end{align*}
+   which means that $9$ is an eigenvalue of $T^2$
+
+   Similarly we have if $-3$ is an eigenvalue of $T$, 
+   \begin{align*}
+      Tv &= -3v\\
+      T(Tv) &= T(-3v) = -3T(v)\\
+      T^2 v &=  -3 \cdot -3 v = 9v
+   \end{align*}
+\end{proof}
+
+
+\subsection*{Problem 6}
+\begin{proof}
+   Let $e_1,e_2$ be the standard basis, so we have, $T(e_1) = e_2$ and $T^2e_1 = -e_1$.
+
+   Now we know that, 
+   $$ c_0e_1 + c_1Te_1 = -T^2e_1 $$ 
+
+   $e_0e_1 + c_1e_1 = e_1$ 
+
+   has the unique sol of $c_0 = 1$ and $c_1 = 0$.  So the minimum polynomial would be, 
+   $$ p(t) = 1 + t^2 $$ 
+\end{proof}
+
+\end{document}

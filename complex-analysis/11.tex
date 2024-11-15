@@ -1,7 +1,7 @@
 \section{Multiply Connected Domain}
 
 \begin{corollary}
-   If $C_1, C_2$ are positively oriented simply closed contours where $C_1$ is inteiror to $C_2$. If $f$ is analytic in the closed region containing $C_1,C_2$ and all the points in between then, 
+   If $C_1, C_2$ are positively oriented simply closed contours where $C_1$ is interior to $C_2$. If $f$ is analytic in the closed region containing $C_1,C_2$ and all the points in between then, 
    $$ \int_(C_1) f(z) \:dz = \int_(C_2) f(z) \:dz $$ 
 \end{corollary}
 
@@ -18,7 +18,7 @@
    $C$ is any positively oriented simple closed contour which is surrounding the origin. 
 \end{eg}
 
-The function $f(z) = \frac{1}{z}$ has a singularity at the origin. So $f$ is analytic upto zero. Because of the principal of deformation of path we can deform any contour surrounding the singularity to a unit circle around with fixed radius preserving the integral. So we have, 
+The function $f(z) = \frac{1}{z}$ has a singularity at the origin. So $f$ is analytic unto zero. Because of the principal of deformation of path we can deform any contour surrounding the singularity to a unit circle around with fixed radius preserving the integral. So we have, 
 $$ \int_0^{2\pi} \frac{1}{e^{i\theta}}i e^{i\theta}d\theta $$ 
 
 $$= 2\pi i $$ 
@@ -41,7 +41,7 @@ $$= 2\pi i $$
    &=\int_{C_p} \frac{f(z) - f(z_0)}{z - z_0} + f(z_0) \int_{C_p}\frac{1}{z - z_0}\:dz\\
    &=\int_{C_p} \frac{f(z) - f(z_0)}{z - z_0} + f(z_0)2\pi i \: \:dz
    \end{align*}
-   Because $f$ is analytic as $f$ is cont. around $z_0$ so, $\forall \epsilon, \exists \delta$ s.t.,  
+   Because $f$ is analytic as $f$ is cont. Around $z_0$ so, $\forall \epsilon, \exists \delta$ s.t.,  
    $$ |f (z) - f(z_0)| < \epsilon \text{ when } |z - z_0| < \delta $$ 
 
    So, 
@@ -56,7 +56,7 @@ $$= 2\pi i $$
 \end{theorem}
 
 \begin{proof}
-We need to show that $f'(z_0) = \frac{1}{2\pi i} \int_C \frac{f(z)}{(z - z_0)^2} \: dz$. Using the cauchy integral formula for each term in the numerator we have, 
+We need to show that $f'(z_0) = \frac{1}{2\pi i} \int_C \frac{f(z)}{(z - z_0)^2} \: dz$. Using the Cauchy integral formula for each term in the numerator we have, 
 \begin{align*}
    lim_{\Delta z \rightarrow 0} \frac{f(z + \Delta z) - f(z)}{\Delta z}  &= \frac{1}{\Delta z} \frac{1}{2 \pi i} \int_C \frac{f(s)}{s - (z + \Delta z)} - \frac{f(s)}{s - z}\\
     &=\frac{1}{\Delta z} \frac{1}{2 \pi i} \int_C f(s) \frac{s - z - (s - (z + \Delta z))}{(s - (z + \Delta z)(s - z)} \: dz\\
@@ -66,12 +66,8 @@ We need to show that $f'(z_0) = \frac{1}{2\pi i} \int_C \frac{f(z)}{(z - z_0)^2}
 Now we have, 
 $$ \lim_{\Delta z \to 0} \frac{f(z + \Delta z) - f(z)}{\Delta z} = \frac{1}{2 \pi i}\int_C f(s) \frac{1}{(s-z)^2} \: dz $$ 
 
-
-
-
-   
+$$ f'(z)= \frac{1}{2 \pi i}\int_C f(s) \frac{1}{(s-z)^2} \: dz $$ 
 \end{proof}
-
 
 \begin{ex}
    $C: |z| = 1, \theta : 0 \rightarrow 2 \pi$
@@ -84,9 +80,14 @@ $$ \lim_{\Delta z \to 0} \frac{f(z + \Delta z) - f(z)}{\Delta z} = \frac{1}{2 \p
 \begin{ex}
    $$ \int_C \frac{e^{2z}}{z^{4}} \: dz $$ 
 \end{ex}
+
 \begin{ex}
    $$ \int_C \frac{dz}{z^{n + 1}} $$ 
 \end{ex}
+
+We have, 
+$$ f(z_0)^{(n)}  = \frac{n!}{2n\pi} \int_C \frac{dz}{z^{n+1}} $$ 
+So $\int_C \frac{dz}{z^{n+1}} = 0 $
 \begin{ex}
    $$ \frac{z}{2z + 1}\: dz$$
 \end{ex}
@@ -94,10 +95,8 @@ $$ \lim_{\Delta z \to 0} \frac{f(z + \Delta z) - f(z)}{\Delta z} = \frac{1}{2 \p
 \end{solution}
 \begin{ex}
    $$ \frac{e^{-z}}{(z - 5)(z+ 2)}$$
-$=0$ because the doesn't exist a singularity within the conutour hence the integral is 0 as the functino is analytic within.
+$=0$ because the doesn't exist a singularity within the contour hence the integral is 0 as the function is analytic within.
 \end{ex}
-
-
 
 
 

@@ -1,0 +1,24 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Linear Algebra Hw8}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+\subsection*{Problem 1}
+\begin{proof}
+   False. Consider $T$ that rotates counterlclokwise by 90 degrees. We have $T(x,y) = (-y,x)$. So  $T^2 = -I$. So our matrix is, 
+   $$ -\begin{bmatrix} 1\ 0 \\ 0 \ 1
+
+   \end{bmatrix}$$ 
+
+   But if $T$ is an upper-triangular matrix with respect to some basis then $T$ would have an eigenvalue but we see that $T$ has no eigenvalues because it is the rotation matrix.
+\end{proof}
+
+\subsection*{Problem 9}
+\begin{proof}
+   If $B$ is a n by n matrix and $T$ is our linear map given by $Tx = Bx$. We see that the elements of $T$ with respect to $e_1,\dots,e_n$ of $C^{n}$ is $B$. So we can find a basis  $v_1,\dots,v_n$ of $C^{n}  $ such that the matrix is upper-transigular. So let $A = M(I,(v_1,\dots,v_n),(e_1,\dots,e_n))$ then we see that $A^{-1}BA$ is the upper traingular matrix $M(T,(v_1,\dots,v_n))$
+\end{proof}
+
+\end{document}

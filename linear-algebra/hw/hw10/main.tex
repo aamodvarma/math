@@ -1,0 +1,48 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Linear Algebra HW10}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+\subsection*{Problem 1}
+\begin{proof}
+   (1). We have $T^{4} = I$. The minimal polynomial is, 
+   $$ z^{4} - 1 = 0 $$ whose factors are, 
+   $$ z^{4} - 1 = (z + 1)(z - 1)(z + i)(z - i) $$ 
+
+   So the roots $\lambda_1,\dots,\lambda_4$ are all distinct which means that the operator $T$ is diagonalizable.
+
+   (2). We have $T^{4} = T$ whose characteristic equation is, 
+   $$ z^{4} - z $$ which can be factored as, 
+   $$ z^{4} - z = z ( z^{3} - 1)  = z( (z - 1 )(z^{2} + 1 + z ))$$ 
+
+   And we know that $z^2 + 1 + z$ has zeroes as $\frac{ -1 \pm \sqrt{-3} }{2}$ 
+
+   Which means that we have four distinct $\lambda$ which implies that $T$ is diagonizable. 
+
+
+   (3). Let $T$ be defined as  $T(a,b) = (b,0)$. We see that  $T^2 = T^{4}$. However the matrix for this defined on $e_1,e_2$ is just $(0 1; 0 0)$. The only eigenvalue is  $0$ so we cannot diagonalize it.
+\end{proof}
+
+
+\section*{Chapter 6}
+\subsection*{Problem 3}
+\begin{proof}
+   (a). We have $f$ defined as $f((x_1,x_2),(y_1,y_2)) = |x_1y_1| + |x_2y_2|$
+
+   But we see that $f((-1,0),(1,0)) = 1$ but  $f((1,0),(1,0)) = -1$
+
+   So its not homogeneous hence cannot be an inner product.
+
+   (b). We have  $f((x_1,x_2,x_3),(y_1,y_2,y_2)) = x_1y_1 + x_3y_3$
+
+   But we see that $f((0,1,0),(0,1,0)) = 0$
+
+   So its not definite hence is not an inner product.
+\end{proof}
+
+
+
+\end{document}
