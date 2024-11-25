@@ -1,0 +1,90 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{MATH 4320 HW14-16}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+
+\subsection*{Problem 2}
+Let, 
+$$ f(z) = \frac{z^{-1/ 2}}{z^2 + 1} = \frac{e^{(-1 /2) \log z}}{z^2 + 1} $$ 
+
+Now consider the indented contour and we have, 
+$$ \int_{L_1} f(x) dx +  \int_{L_2} f(x) dx + \int_{C_\rho} f(z) dz + \int_{C_R}f(z) dz = \int_C f(z)dz$$ 
+Rearranging we have, 
+
+$$ \int_{L_1} f(x) dx +  \int_{L_2} f(x) dx =  \int_C f(z)dz- \int_{C_\rho} f(z) dz - \int_{C_R}f(z) dz $$ 
+
+First we calculate $\int_C f(z) dz$. Within our contour the only singularity is when  $z = i$. So the integral is equal to,  
+$$ \int_C f(z) = 2\pi i Res_{z = i} f(z) $$ 
+
+Now $$Res_{z = i} f(z) = \frac{e^{-1/ 2\log(i)}}{2i} = \frac{e^{-1 /2 (i\pi / 2) }}{2i}$$
+$$ = \frac{e^{-i\pi / 4}}{2i}  = (\frac{1}{\sqrt{2}} - \frac{i}{\sqrt{2}})\frac{1}{2i} $$ 
+
+This gives us, 
+$$ \int_C f(z) = 2\pi i \cdot  (\frac{1}{\sqrt{2}} - \frac{i}{\sqrt{2}})\frac{1}{2i} $$ 
+
+$$ =   \frac{\pi}{\sqrt{2}} - \frac{\pi i}{\sqrt{2}} = \frac{\pi}{\sqrt{2}} (1 - i) $$ 
+
+
+Now let us look at, 
+$$ \int_{L_1} f(x) dx + \int_{L_2} f(x) dx $$ 
+
+We can write these integrals using the parameterization $z = re^{i 0}, \rho \le r \le R$ and $z = re^{i \pi}, \rho \le r \le R$ 
+\begin{align*}
+&= \int_{\rho}^{R} \frac{e^{-1 / 2\log(r)}}{r^2 + 1}  + \int_{\rho}^{R} \frac{e^{-1 / 2\log(re^{\pi})}}{r^2 + 1} \\
+&= \int_{\rho}^{R} \frac{e^{-1 / 2\log(r)}}{r^2 + 1}  + \int_{\rho}^{R} \frac{e^{-1 /2 \log(r)} e^{-i\pi/2 }}{{r^2 + 1} }\\
+&= (1 + e^{-i\pi /2})\int_{\rho}^{R} \frac{e^{-1 / 2\log(r)}}{r^2 + 1}  \\
+&= (1 - i)\int_{\rho}^{R} \frac{e^{-1 / 2\log(r)}}{r^2 + 1}  \\
+\end{align*}
+
+So we have, 
+$$ &= (1 - i)\int_{\rho}^{R} \frac{e^{-1 / 2\log(r)}}{r^2 + 1} = \frac{\pi}{\sqrt{2}}(1 - i) - \int_{C_\rho} f(z) dz - \int_{C_R} f(z) dz$$
+
+
+Now we can bound $f(z)$ as follows because we can say $|\sqrt{z} | \ge | \sqrt{\rho}|$ and  $|z^2 + 1| \ge |1 - \rho^2|$ so, 
+$$ f(z) \le \frac{1}{\sqrt{\rho} (1 - \rho^2)} $$ 
+
+Or, 
+$$ \int_{C_\rho} f(z)\le \frac{2\pi \rho}{\sqrt{\rho} (1 - \rho^2)} = \frac{2\pi \sqrt{\rho}}{1 - \rho^2} $$ 
+
+Now as $\rho \rightarrow 0$ we have $1 - \rho^2$ goes to $1$ while the numerator vanishes to zero. Hence we can say that, 
+$$ \lim_{\rho \to 0} \int_{C_\rho} f(z) = 0 $$ 
+
+Similarly we have, 
+$$ \int_{C_R} f(z) \le \frac{2 \pi \sqrt{R}}{R^2 - 1} $$ 
+
+As the power of the denominator in terms of $R$ is higher we have, 
+$$ \lim_{R \to \infty} f(z) dz = 0 $$ 
+
+This gives us, 
+$$ (1 - i)\int_{0}^{\infty} \frac{e^{-1 / 2\log(r)}}{r^2 + 1} = \frac{\pi}{\sqrt{2}}(1 - i) $$
+$$ \int_{0}^{\infty} \frac{e^{-1 / 2\log(r)}}{r^2 + 1} = \frac{\pi}{\sqrt{2}} $$
+
+
+
+\subsection{Problem 1}
+We have, 
+$$ \int_0^{2\pi} \frac{d\theta}{5 + 4 \sin \theta} $$ 
+
+Let $z = e^{i\theta}$ which gives  us, $\frac{dz}{iz} = d\theta$ and $\sin \theta = \frac{z - z^{-1}}{2i}$. So we can write, 
+\begin{align*}
+\int_C \frac{dz}{iz (5 + 4\frac{z - z^{-1}}{2i})}\\
+&= \int_C \frac{dz}{z (5i + 2 (z - z^{-1}))}\\
+&= \int_C \frac{dz}{5zi + 2 z^2 - 2}\\
+&= \int_C \frac{dz}{2(z + \frac{i}{2}) (z + 2i)}\\
+\end{align*}
+
+Taking our unit circle we can see that $z = -\frac{i}{2}$ is inside our contour hence the integral evaluates to, 
+$$ 2\pi i \frac{1}{2 (2i - i / 2)} $$ 
+$$ = \pi i \frac{2}{3i} $$ 
+$$ = \frac{2\pi}{3}$$
+
+
+\subsection*{Problem 3}
+We have, 
+$$ \int_0^{2\pi} \frac{\cos^2 3\theta d\theta}{5 - 4\cos 2\theta} $$ 
+
+
+\end{document}
+

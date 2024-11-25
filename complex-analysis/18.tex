@@ -1,0 +1,58 @@
+\section{Definite Integrals involving Sines and Cosines}
+We can evaluate integrals like, 
+$$ \int_0^{2\pi} F(\sin \theta, \cos \theta) d\theta $$ 
+
+We take, 
+$$ z = e^{i\theta} \qquad (0 \le \theta \le 2\pi) $$ 
+
+to describe the contour. Then we have, 
+$$ \frac{dz}{d\theta} = ie^{i\theta} = iz $$  which gives us, 
+$$ \sin \theta = \frac{e^{i\theta} - e^{-\theta}}{2i} \qquad \text{and} \qquad \cos \theta = \frac{e^{i\theta} + e^{-i\theta}}{2} $$ 
+
+So our substitutions are, 
+$$ \sin \theta = \frac{z - z^{-1}}{2i}, \qquad \cos \theta = \frac{z + z^{-1}}{2}, \qquad d\theta = \frac{dz}{iz} $$ 
+
+Our integral is transformed to, 
+$$ \int_c F\bigg (\frac{z - z^{-1}}{2i} , \frac{z + z^{-1}}{2}\bigg ) \frac{dz}{iz} $$ 
+
+
+\begin{eg}
+   
+   $$ \int_0^{2\pi} \frac{d\theta}{1 + a \sin(\theta)} \text{for} \qquad -1 < a < 1 $$ 
+
+   Using the above substitution we have, 
+   $$ \int_C \frac{2 / a}{z^2 + (2i / a)z - 1} dz$$ 
+\end{eg}
+
+\section{Argument principle}
+\begin{theorem}
+   Let $C$ be a positively oriented simple closed contour, 
+
+   (a). $f(z)$ is meromorphic in the domain interior to $C$ (analytic in $D$ except for its poles)
+
+   (b). $f(z)$ is analytic and non-zero on $C$.
+
+   (c).  $z$ is number of zeroes and $p$ is number of poles in $C$. 
+
+
+   Then, $$\frac{1}{2\pi i} \Delta c \arg f(z) = z - p$$
+\end{theorem}
+\begin{proof}
+   Let $z = z(t), (a \le t \le b)$ so we have, 
+   $$ \int_C \frac{f'(z)}{f(z)}dz = \int_a^{b} \frac{f'[z(t)] z'(t)}{f[z(t)]} $$ 
+
+   If our transformation is $w = f(z)$ we can express it as $w = \rho(t) e^{i\phi(t)}$ 
+
+   So we have, 
+   $$ f'[z(t)]z'(t) = \frac{d}{dt}f[z(t)]= \rho'(t) e^{i\phi(t)} + i \rho(t)e^{i\rho (t)}\rho'(t) $$ 
+
+   We get, 
+$$ \int_C \frac{f'(z)}{f(z)}dz = \int_a^{b} \frac{\rho'(t)}{\rho(t)} dt + i \int_a^{b} \phi'(t)dt = \ln \rho(t) \bigg ]_a^{b} + i\rho(t) \bigg ]_a^{b} $$ 
+
+But we have $$\rho(b) = \rho(a) \qquad and \qquad \phi(b) - \phi(a) = \Delta_C \arg f(z)$$
+
+So we have, 
+$$ \int_c \frac{f'(z)}{f(z)}dz =  i \Delta_C \arg f(z)$$ 
+
+\end{proof}
+
