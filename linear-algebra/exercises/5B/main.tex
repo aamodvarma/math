@@ -1,0 +1,294 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Linear Alebgra 5B}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+\section*{5B}
+\subsection*{Problem 1}
+\begin{proof}
+   $\implies$. We have $9$ is an eigenvalue of $T^2$ which implies that $T^2v = 9v$ for some $v \in V$. So we have  $(T^2 - 9I) = 0$ so $(T + 3I)(T - 3I) = 0$. So we have either  $Tv = -3v$ or $Tv = 3v$ which means either $3$ is an eigenvalue or $-3$ is an eigenvalue.
+
+   $\impliedby$. Now consider $3$ or $-3$ is an eigenvalue so we have, 
+   $$ Tv = 3v \implies T(Tv) = T(3v) = 3T(v) = 9(v) $$  
+
+   which means that $9$ is an eigenvalue of $T$.
+
+   If $-3$ is an eigenvalue we have, 
+   $$ Tv = -3v \implies T(Tv)) = T(-3v) = -3T(v) = 9v $$ 
+   so $9$ is an eigenvalue of $T.$
+\end{proof}
+
+
+\subsection*{Problem 2}
+\begin{proof}
+   We are given that $T$ has no eigenvalue. We need to show that every subspace of V invariant under $T$  is either $\{0\}$  or infinite-dimentional.
+
+   Consider a finite subspace $U \subset V$ that is invariant under T. We know that the minimal polynomial of $V$ is a polynomial multiple of that of $U$. First because $U$ is a complex finite subspace of $V$ we know that it has to have eigenvalues which are zeroes of its minimal polynomial. As it is also the zeroes of the minimal polynomial of $T$ this means that they are the eigenvalues of $T$ but this contradicts our assumption that T has no eigenvalues.
+\end{proof}
+
+
+\subsection*{Problem 3}
+\begin{proof}
+   (a). We have $T(x_1,\dots,x_n) = (x_1 + \dots + x_n_, \dots, x_1 + \dots + x_n)$
+
+   So we have, 
+   $$ x_1 + \dots + x_n = \lambda x_1 $$ 
+   $$ \dots $$ 
+   $$ x_1 + \dots + x_n = \lambda x_n $$ 
+
+   If we add all we get, 
+   $$ n( x_1 + \dots + x_n) = \lambda (x_1 + \dots + x_n) $$ 
+
+   So we have either $x_1 + \dots + x_n = 0$ where $\lambda = 0$or $x_1 = \dots = x_n$ where $\lambda = n$.
+
+   (b).
+
+   If $n = 1$ then the minimal polynomial is $z - 1$ but if its greater than 1 then our minimal polynomial will be $z(z - n) = z^2 - zn$
+\end{proof}
+
+
+\subsection*{4}
+\begin{proof}
+   $\implies$. We have $\alpha = p(\lambda)$ for some eigenvalue $\lambda$ of $T$. By definition we have, 
+   $$ Tv = \lambda v  \text{ for some $v \in V$ }$$  
+
+   Applying $P$ on both sides we have, 
+   \begin{align*}
+      P(Tv) &= P(\lambda v)\\
+      P(T)v &= P(\lambda) v\\
+   \end{align*}
+   If we take $\alpha = p(\lambda)$ we have, 
+   $$ P(T)v = \alpha v $$ for some $v$.
+
+   This makes $\alpha$ an eigenvalue of $P(T)$ 
+
+   $\impliedby$
+
+   First consider  $\alpha$ is an eigenvalue of $p(T)$ we need to show that $\alpha = p(\lambda)$ for some eigenvalue $\lambda$ of T.
+
+   So we have, 
+   $$ p(T) v = \alpha v $$ 
+
+   Consider $q$ such that $q = p - \alpha$. So for some $v$ we have $q(T)v = 0$. So  $q(T)$ is the minimal polynomial (or multiple of it) of $T$. Which means that $\exists \lambda q(\lambda) = 0$ . This means that 
+   $$ q(\lambda) =  p(\lambda) - \alpha = 0  $$ 
+   $$ p(\lambda)  = \alpha$$ 
+\end{proof}
+
+
+\subsection*{Problem 5}
+\begin{proof}
+   Consider the operator $T(x,y) = (-y,x)$. Consider the polynomial  $p = z^2$. So we have $p(T) = T^2 = -I$. So $-1$ is an eigenvalue of $p(T)$. However if $F = R$ then $T$ does not have an eigenvalue hence $\not \exists \lambda$ such that  $\alpha = p(\lambda)$
+\end{proof}
+
+\subsection*{Problem 6}
+
+\begin{proof}
+   We have $T(w,z) = (-z,w)$. Consider $e_1 = (1,0)$ we have, 
+   $$ T(e_1) = (0,1) $$ 
+   $$ T^2(e_1) = T(0,1) =  (-1,0) = -e_1 $$ 
+
+   So we have $T^2 + I = 0$ so the minimal polynomial is $p(z) = z^2 + 1$
+\end{proof}
+
+\subsection*{Problem 7}
+\begin{proof}
+   (b). We need to show that if $S$ or $T$ is invertible then the minimal polynomial of $ST$ is equal to that of $TS$.
+
+   First we assume $S$ is invertible. Let $p$ be the minimal polynomial of $ST$ and $q$ for $TS$. So we have,  
+   $$ p(TS) = S^{-1}p(ST)S  = 0$$  which means that $p$ is also a polynomial multiple of $q$. So, 
+   $$ p = rq $$ for some r.
+
+
+   Now we have, 
+   $$ q(ST) = Sq(TS)S^{-1} = 0 $$ 
+
+   Which means that $q$ is a polynomial multiple of $p$. So we have, 
+   $$ q = kp $$ 
+
+   So we have, 
+   $$ p = rkp \implies rk = 1 $$ 
+   This can only be true if both  r and k are constants. Because the minimal polynomial is a monic polynomial it has to be $r = k = 1$ 
+
+   So we have, 
+   $$ p = q $$ 
+\end{proof}
+
+\subsection*{Problem 8}
+\begin{proof}
+   We have $T \in L(R^2)$ such that it is the counterclockwise rotation by 1 degrees.
+
+   So  if we consider $e_1 = (1,0)$ we have, 
+   \begin{align*}
+      T(e_1) = (\cos 1, \sin 1)\\
+      T^2(e_1) = (\cos 2, \sin 2)
+   \end{align*}
+
+   So we have $1 - 2\cos(1)z + z^2 = 0$ or $1 - 2\cos(\frac{\pi}{180})z + z^2 = 0$
+\end{proof}
+
+\subsection*{Problem 10}
+\begin{proof}
+   We have $V$ is finite and $T \in L(V)$ and $v \in V$. We need to show that, 
+$$ span(v, Tv, \dots, T^{m}v) = span(v, Tv, \dots, T^{\dim V - 1}v) $$  if $m \ge \dim V - 1$
+
+First we show that for any subspace  $U_k = \{v, Tv, \dots, T^{k}v\}$ if  $T^{k + 1} \in U_k$ then for any $m >= k + 1$, $T^{m} \in U_k$. We do induction to show this,  we already assume the base case is true if $m = k + 1$ we have $T^{k+1}v \in U_k$.
+
+Now assume it is true for an arbitrary $n$ so we have, 
+$$ T^{n} \in U_k $$ 
+
+This means that, 
+$$ T^{n}v = a_1v + \dots + a_{k+1}T^{k}v $$ 
+
+Now apply $T$ on both sides we get, 
+$$ T^{n + 1}v = a_1Tv + \dots + a_{k + 1}T^{k + 1}v $$ 
+
+Now because we know that $T^{k + 1} \in U_k$ we know that $T^{n + 1}$ is a linear combination of elements in $U_k$ which must mean that $T^{n + 1}v \in U_k$. Hence by induction it is true for any $n \ge k + 1$.
+
+Now first if $m = \dim V$ then we know that the list, 
+$$ v, Tv, \dots, T^{m}v $$ is linearly dependent which means that $\exists n \in \{0,\dots,m\}$ such that $T^{n + 1} \in span(v,\dots,T^{n})$. Now based on what we proved above this must mean for any $m \ge n + 1$, $T^{m} \in span(v,Tv,\dots,T^{k}) = span(v,Tv,\dots,T^{\dim V - 1})$
+
+\end{proof}
+\subsection*{Problem 13}
+\begin{proof}
+   We have $V$ is finite dimensional and we need to show there is $r \in P(F)$ such that $p(T) = r(T)$ and deg r less that minimal polynomial of $T$.
+
+   Consider any arbitrary $p \in P(F)$. Let $q \in P(F)$ be the unique minimal polynomial of $T$ such that $q(T) = 0$. Now we can divide $p$ by $q$ and uniquely write it as, 
+   $$ p = k q + r $$ 
+   Such that $deg (r) < deg (q)$.
+
+   So  $$p(T) = k(T)q(T) + r(T)$$
+
+   But we know $q(T) = 0$ so we have, 
+   $$ p(T) = r(T) $$  where $deg (r) < deg (q)$
+\end{proof}
+
+\subsection*{Problem 14}
+\begin{proof}
+   We have  the minimal polynomial of $T$ as, 
+   $$ 4 + 5z - 6z^2 - 7z^{3} + 2z^{4} + z^{5} $$ 
+
+   The minimal polynomial of $T^{-1}$ will be, 
+   $$ \frac{1}{4} + \frac{1}{2}z - \frac{7}{4}z^2 - \frac{3}{2}z^{3} + \frac{5}{4} z^{4} + z^{5} $$ 
+\end{proof}
+
+\subsection*{Problem 16}
+\begin{proof}
+   Consider $e_1 = (1,\dots,)$. Our matrix is $n - 1 \times n$ dimension.
+
+   So we have,  
+   \begin{align*}
+      Te_1 &= e_2\\
+      T^2e_1 &= Te_2 = e_3\\
+           \dots\\
+      T^{n - 1}e_1 &= Te_{n - 1} = e_{n}\\
+      T^{n}e_1 &= Te_{n} = (-a_0,  \dots, -a_{n - 1})
+   \end{align*}
+
+   Now we can represent $T^{n}$ as, 
+   $$ T^{n}e_1 = -a_0e_1 + \dots + -a_{n - 1}e_{n - 1} $$ 
+
+   which gives us, 
+   $$ T^{n}e_1 = -a_0e_1 + \dots + -a_{n - 1}T^{n - 1}e_{1} $$ 
+
+   So our minimal polynomial is, 
+   $$p(z) =  a_0 + \dots + a_{n-1}z^{n - 1} + z^{n} $$ 
+
+   Which gives us $p(T) = 0$
+\end{proof}
+
+\subsection*{Problem 17}
+\begin{proof}
+   We need to show that the minimal polynomial of $T - \lambda I$ is, 
+   $$ q(z) = p(z + \lambda) $$ given that $p$ is the minimal polynomial of $T$.
+
+   We have, 
+   $$ q(T - \lambda I) = p(T - \lambda I + \lambda I) = p(T) = 0 $$ 
+
+   So we have $q$ is a polynomial multiple of the minimal polynomial of $T - \lambda I$. This means that $deg (s) \le deg (q)= deg(p)$. Now we need to show that $q$ is the minimal polynomial.
+
+   If $s$ is the minimal polynomial of $T - \lambda I$ consider the polynomial, 
+   $$ r(z) = s(z - \lambda) $$ 
+
+   So we have, 
+   $$ r(T) = s(T - \lambda I) = 0 $$ 
+   This means that $deg(p) \le deg(r) = deg(s)$. SO we have  $deg(q) \le deg(s)$ and $deg(s) \le deg(q) \implies deg(q) = deg(s)$. Or that $s = q$ and $q$ is the minimal polynomial of $T - \lambda I$
+
+
+\end{proof}
+\subsection*{Problem 19}
+\begin{proof}
+   Consider the mapping $\phi \in L(P(F), L(V))$ defined as $\phi(q) = q(T)$. Now we see that the range of $\phi$ is $E$.  We know that $null \phi = \{pq: q \in P(F)\}$ because  $p(T)q(T) = 0 q(T) = 0$ as $p$ is the minimal polynomial of $T$. Now for any $x \in P$ such that degree $x$ is greater than $p$ we can write it as, 
+   $$ x = x' p + r $$  where degree of $r$ is smaller than $p$.
+
+   So we have $x(T) = r(T)$ so we can consider the subspace  $P(F) - null \phi$ which has dimension $p$ as for any $r$, $\deg(r) \le deg (p)$. And we have an isomorphism from $P(F) - null(\phi)$ to $E$. which gives us our result.
+
+\end{proof}
+
+\subsection*{Problem 20}
+\begin{proof}
+   We have $T \in L(F^{4})$ such that $3,5,8$ are its eigenvalues. First because its $F^{4}$ we know the highest degree of the minimal polynomial is $4$. We also know that the eigenvalues are zeroes of our minimal polynomial. So the minimal polynomial is, 
+   $$p(z) =  s(z - 3)(z - 5)(z - 8)$$
+
+   Where $s \in \{1, z - 3, z- 5, z- 8\}$. In either case we have $k(z) =(z - 3)^2(z - 5)^2 (z - 8)^2$ is a polynomial multiple of the minimal polynomial which makes $k(T) = 0$
+\end{proof}
+
+\subsection*{Problem 21}
+\begin{proof}
+   We need to show the minimal polynomial of T has degree at most $1 + \dim range T$. 
+
+   Let  $p$ be minimal polynomial of $V$ and $q$ be of $T_{range T}$. We have,  
+      $$ q(T) Tv = q(T_{rangeT})Tv = 0 $$
+
+      So $q(T)T = 0$ and as $p$ is the minimal polynomial we have, 
+      $$ deg(p) \le deg(xq(x)) = 1 + deg(q) \le 1 + dim(rangeT) $$ 
+\end{proof}
+
+\subsection*{Problem 22}
+\begin{proof}
+   We need to show $T$ is invertible only of $I \in span(T,T^2, \dots, T^{dim V})$. If $T$ is invertible that means that $p$ has a non-zero constant term. Now the minimal polynomial of $T$ can be written as, 
+   $$ c + c_1z + \dots + z^{n} $$ where $n = \dim V$. So we have,  
+   $$ p(T) = cI + c_1T + \dots + T^{n} = 0 $$ 
+   $$ cI = - c_1T + \dots + -T^{n}  \implies I \in span(T,\dots,T^{n})$$ 
+
+
+   Now assume $I \in span(T,T^2,\dots,T^{n})$. So we can write, 
+   $$ I = c_1T + \dots + c_nT^{n} $$  or 
+   $$r(T) =  b_0I + b_1T + \dots  + T^{n} = 0  $$ 
+
+   So $r = b_0 + b_1z + \dots + z^{n}$
+
+   This must be a polynomial multiple of the minimal polynomial.  So, 
+   $$ r(z) = k(z) p(z) $$ 
+
+   We know that $r(0) \ne 0$, so,  
+   $$ r(0) = b_0 = k(0)p(0) \implies p(0) \ne 0 \text{ and } k(0) \ne 0 $$ 
+
+   So $p$ has a non-zero constant term which means that $T$ is invertible.
+\end{proof}
+
+
+\subsection*{Problem 23}
+\begin{proof}
+We need to show that $span(v, Tv, \dots, T^{n -1}v)$ is invariant under $T$. We have $n$ vector $v, \dots, T^{n - 1}v$. Consider they are linearly independent, this means their span is $V$ which makes them invariant under $T$. 
+
+If the list of vectors are not linearly independent that means $\exists k$ such that $T^{k + 1}v  \in span(v,Tv,\dots,T^{k}v)$. If that is the case then we can show by induction that for any $m \ge k + 1, T^{m}v \in span(v,\dots,T^{k}).$ Base case is true as $T^{k + 1} \in span(v,Tv,\dots,T^{k}v)$. Now consider an arbitrary $n > k + 1$ such that,  
+$$ T^{n} = a_1v + \dots + a_nT^{k}v $$ 
+now we have, 
+$$ T^{n + 1} = a_1T(v) + \dots + a_nT^{k + 1}v  \in span(v,Tv,\dots,T^{k})$$  as $T^{k + 1}$ is in the span.
+
+Now using this we can conclude that $span(v,Tv,\dots,T^{n - 1}) = span(v,Tv,\dots,T^{k})$. For any $v \in span(v,Tv,\dots,T^{k})$ we have shown that $Tv$ is also in the span hence making it invariant.
+
+\end{proof}
+
+\subsection*{Problem 24}
+\begin{proof}
+   We are given that $5$ and $6$ are the only eigenvalues of $T$. Which means that they are zeroes of the minimal polynomial  of $T$. Hence, 
+   $$ p = s (z - 5)(z - 6) $$ 
+   Such that $s \in \{1, z - 5, z- 6\}$ 
+   In any case we know that $q(z) = (z - 5)^{\dim V - 1} (T - 6I)^{\dim V - 1}$ is a polynomial multiple of $p$ which means that $q(T) = 0$
+\end{proof}
+
+\end{document}

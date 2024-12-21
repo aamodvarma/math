@@ -86,5 +86,139 @@ We have,
 $$ \int_0^{2\pi} \frac{\cos^2 3\theta d\theta}{5 - 4\cos 2\theta} $$ 
 
 
+We can write $\cos 3\theta = \frac{e^{3i\theta} + e^{-3i\theta}}{2}$. If we take $e^{i\theta} = z$ then we get, 
+\begin{align*}
+    \cos(3\theta) &= \frac{z^{3} + z^{-3}}{2}\\
+    \cos^2(3\theta) &= \frac{(z^{3} + z^{-3})}{2}^2\\
+                    &= \frac{z^{6} + z^{-6} + 1 }{2}\\
+                    &= \frac{1 + \cos(6\theta)}{2}
+\end{align*}
+
+We know that $\cos(6\theta) = Re (e^{6i\theta})$. So we can rewrite our integral as, 
+$$ \frac{1}{2}\int_0^{2\pi} \frac{1}{5 - 4 \cos 2\theta} d\theta + \frac{1}{2}Re \int_0^{2\pi} \frac{e^{6i\theta}}{5 - 4 \cos 2\theta} d\theta $$ 
+
+Taking $e^{i\theta} = z$ we can write the first integral as,
+\begin{align*}
+    \int_{C } \frac{i}{2}      \frac{z}{(z^2 - 2)(2z^2 - 1)} dz\\
+\end{align*}
+Using residue the value of the integral is, 
+$$ 2\pi i Res_{z = \frac{1}{\sqrt{2}}, \frac{-1}{\sqrt{2}}} \frac{iz}{2(z^2 - 2)(2z^2 - 1)} $$ 
+which is, 
+$$ = \frac{\pi}{3}$$
+
+Similarly we have, 
+$$ Re( 2\pi i Res_{z = \frac{1}{\sqrt{2}},-\frac{1}{\sqrt{2}}}  \frac{i}{2} \frac{z^{7}}{(z^2 - 2)(2z^2 - 1)} )$$ 
+
+Which will equal to, 
+$$ \frac{\pi}{24} $$ 
+
+So our integral is, 
+\begin{align*}
+&= \frac{\pi}{3} + \frac{\pi}{24}\\
+&= \frac{9\pi}{24}\\
+&= \frac{3\pi}{8}
+\end{align*}
+
+
+\subsection*{Problem 1}
+(a). We have $f(z) = z^2$ which has two zeroes inside the unit circle and no poles, hence we have, 
+$$ 2\pi (Z - P) = 2\pi (2 - 0) = 4\pi $$ 
+
+(b). We have $f(z) = \frac{1}{z^2}$. Inside the unit circle we have no zeroes but two poles because $z^2$ has two zeroes and its in the denominator. Hence we have, 
+$$ 2\pi (Z - P) = 2\pi (0 - 2) = -4\pi $$ 
+
+(c). We have $f(z) = (2z - 1)^{7} / z^{3}$. The numerator is a polynomial of degree 7 hence it has 7 zeroes. And the denominator is of degree 3 hence it has 3 zeroes corresponding to 3 poles of the function. Hence we have, 
+$$ 2\pi (Z - P) = 2\pi (7 - 3) = 2\pi (4) = 8\pi $$ 
+
+\subsection*{Problem 8}
+We have, 
+$$ 2z^{5} - 6z^2 + z + 1 = 0$$
+
+First within the unit circle if we take $f(z) = -6z^2 + z + 1$ and $g(z) = 2z^{5}$. Then we have, 
+$$ |g(z)| \le |f(z)| $$ as 
+$$ |6z^2| + |z| + |1| \ge |2z^{5}| \text{ for $z < 1$ } $$ 
+
+Now considering $z < 2 $, we take $f(z) = 2z^{5} + 1$ and $g(z) = -6z^2 + z$. So we have on $|z| = 2$
+\begin{align*}
+    -6z^2 + z + 1 &\le |6 \cdor 4 |  + |2| + |1|\\
+              &= 24 + 2 + 1\\
+              &\le 32\\
+              &= 2^{5}\\
+              &= z^{5}\\
+              &\le z^{5}
+\end{align*}
+
+So we $z^{5}$ denominating over the circle, hence the sum will have $5$ zeroes in the circle $z < 2$. So in the annulus we have $5 - 2$ zeroes which is $3$.
+
+
+\subsection*{Problem 3}
+Our transformation should rotate by $\frac{\pi}{2}$ anti-clockwise and shift it to the right by a unit of 1.
+
+Firstly rotating by $\frac{\pi}{2}$ is equivalent to multiplying by $e^{i \frac{\pi}{2}}$. So we have $z e^{i\frac{\pi}{2}} = zi$
+
+And shifting by a unit of one in the positive x axis is adding 1 so we have $f(z) = zi + 1$
+
+
+ \subsection*{Problem 5}
+We have the domain $x > 1$ and $y > 0$. First we know that any line $x = c$ is transformed into the circle, 
+$$ (u - \frac{1}{2c})^2 + v^2 = (\frac{1}{2c})^2 $$ so for any line $x > 1$ we have, 
+$$ (u - \frac{1}{2})^2 + v^2 < \frac{1}{4} $$ 
+
+And because we have $y > 0$ we have $C > 0$ which implies $-C < 0$ or that $v < 0$
+
+ \subsection*{Problem 11}
+ We can look at it as $w = \frac{1}{z} = z^{-1} = e^{-i\theta}$.
+ So as $\theta$ increases we have $arg(w)$ decreasing hence the orientation is opposite or negative.
+
+ \subsection*{Problem 5}
+ First we show the boundary of the strip is mapped in a one to one manner onto the real axis in the w plane.
+
+ We have, 
+ $$ u = \sin(x) \cosh(y) \qquad v = \cos(x)\sinh(y) $$ 
+
+ So we have our first boundary as $x = \frac{-\pi}{2}$ which gives us, 
+ $$ u = -\cosh(y), v = 0$$ restricting $y $ to be non-negative we have a point $(\frac{-\pi}{2},y)$ mapped to $(-\cosh(y), 0)$. This means that as $y$ increase along the boundary we have the image moving towards the left from $D'$ towards $E'$. Now points $(x,0)$ on the horizontal segment will have an image, 
+ $$ u = \sin(x), v = 0 $$ 
+
+ But as $-\frac{\pi}{2} \le x \le 0$ we have $\sin(x)$ goes from $-1$ to $0$. Which would be  $D'$ to $C'$.
+
+ Now each point on the interior of our domain will lie on the vertical lines $x = c_1,y >0$. So we have, 
+ $$ u = \sin(c_1)\cosh(y), v = \cos(c_1)\sinh(y) $$ 
+
+ Now because $y$ is always positive  but $x$ is always negative we have $u$ is negative and $v$ is positive. In other words we have, 
+ $$ \frac{u^2}{\cosh^2(y)}  + \frac{v^2}{\sinh^2(y)} = 0$$ 
+
+ Such that it as $y$ increases it moves to the left of the hyperbola.
+
+
+\subsection*{Problem 4}
+We know that the function $f(z) = \sin(z)$ maps the semi infinite strip onto the first quadrant. This can be seen as we can write, 
+$$ u = \sin(x) \cosh(y), v = \cos(x)\sinh(y) $$
+
+And because $0 \le x \le \frac{\pi}{2}$ and $y \ge 0$. Both  $u$ and $v$ is always greater than zero.
+
+Now this means that any $Z = \sin(z)$ for any $z$ in our domain is such that $arg(Z) \le \frac{\pi}{2}$.
+
+Now considering the function $F_0(z) = z^{1 /2}$ we know that this will map any $z $ to a point where $arg(z) = 2 arg(f(z))$. Hence we know that $arg(F_0(Z)) \le \frac{\pi}{4}$ which is the first octane in the image.
+
+
+\subsection*{Problem 3}
+We know that under the mapping $w = 1 /z$ a domain in the $x,y$ plane in the form, 
+$$ A(x^2 + y^2) + Bx + Cy + D = 0 $$  will be mapped to, 
+$$ D(u^2 + v^2) + Bu - Cv + A = 0 $$ 
+
+So our line $y = x - 1$ is such that $A = 0, B = 1, C = -1, D = -1$ which is mapped to, 
+$$ -1(u^2 + v^2) + u + v = 0 $$ or, 
+$$ u^2 - u + v^2 - v = 0 $$ 
+
+Similarly we have $y = 0$ which is when $A = 0, B = 0, C = 1, D = 0$ which gets mapped to $v = 0$
+
+Now at  $z_0 = 1$ which is at the point $(1,0)$, the angle is $\frac{\pi}{4}$. 
+
+Now in the image we have our first line mapping to  $(u,v) = (1,0)$ in the circle and the second line mapping to $(0,0)$ in the line $v = 0$. The angle between these two points are  $\frac{\pi}{4}$ as well.
+
+Hence the angle is preserved and we verified the conformality of the mapping at $z = 1$.
+
+            
 \end{document}
 

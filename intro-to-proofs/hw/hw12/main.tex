@@ -1,0 +1,100 @@
+\documentclass[a4paper]{report}
+\usepackage{multirow}
+\input{preamble.tex}
+\title{Intro to Proofs: HW10}
+\author{Aamod Varma}
+\graphicspath{ {./} }
+\begin{document}
+\maketitle
+\date{}
+\subsection*{Problem 37}
+\begin{proof}
+    We have $H = \{2^{k}: k \in \Z\}$ we need to show its a subgroup of $Q^{*}$. First we know that $H \subseteq Q^{*}$  because $2^{k} \in Q^{*}, \forll k \in \Z$. Now we need to show that $H$ is a group under multiplication.
+
+    1. Closed under the operation. Consider an arbitrary element $x \in H = 2^{k_1}$ and consider $y \in H = 2^{k_2}$. Now we show that $x \cdot y  \in H$. We have, 
+    $$ x \cdot y = 2^{k_1} \cdot 2^{k_2} = 2^{k_1 + k_2} $$ 
+
+    As $k_1+k_2 \in \Z$ we have $2^{k_1 + k_2} \in H$. Hence H is closed under multiplication.
+
+    2. Identity element. We need to show there exists $e \in H$ such that for any $g \in H$ we have $g \cdot e = g$. Consider  $k = 0$ we have $1 = 2^{0} \in Z$. Now we have for any $g \in H = 2^{k'}$, 
+    $$ g \cdot e = 2^{k'} \cdot 2^{0} = 2^{k'} \cdot 1 = 2^{k'} = g $$ 
+
+    Hence we have defined an identity element $e = 2^{0} = 1$
+
+    3. Inverse element. We need to show that for any $g \in H, \exists g' \in H$ such that $g \cdot g' = e$. Consider  $g \in H, g = 2^{k}$. Now for any $g$ let, 
+    $$ g' = 2^{-k} \in H \text{ as $-k \in \Z$} $$ 
+
+    So we have, 
+    $$ g \cdot g' = 2^{k} \cdot 2^{-k} = 2^{k - k} = 2^{0} = 1 = e $$ 
+
+    Hence we found $g'$ for any $g$ such that $g \cdot g' = e$ which is our inverse.
+
+    4. Associatively. We need to show that, 
+    $$ 2^{k_1}\cdot (2^{k_2} \cdot 2^{k_3}) = (2^{k_1}\cdot 2^{k_2}) \cdot 2^{k_3} $$ 
+
+    We have, 
+    \begin{align*}
+        2^{k_1}\cdot (2^{k_2} \cdot 2^{k_3})&= 2^{k_1} \cdot (2^{k_2 + k_3})\\
+                                            &= 2^{k_1 + (k_2 + k_3)}\\
+                                            &= 2^{(k_1 + k_2) + k_3}\\
+                                            &= 2^{k_1 + k_2} \cdot 2^{k_3}\\
+                                            &= (2^{k_1} \cdot 2^{k_2}) \cdot 2^{k_3}\\
+    \end{align*}
+
+    Hence we show associativity. 
+
+\end{proof}
+
+
+\subsection*{Problem 43}
+
+\begin{proof}
+    It is enough to show that for any $x,y \in SL_2(\Z)$ that $xy^{-1} \in SL_2(\Z)$. So first consider $x,y \in SL_2(\Z)$.
+
+    Let, 
+    $$ x = \begin{bmatrix}  a & b \\ c & d\end{bmatrix} $$ 
+    and
+    $$ y = \begin{bmatrix}  e & f \\ g & h\end{bmatrix} $$ 
+
+    We have, 
+    $$ y^{-1} = \begin{bmatrix}  h & -f \\ -g & e\end{bmatrix} $$ 
+
+    Such that, 
+    $$ xy^{-1} = \begin{bmatrix}  ah - bg & -af + be \\ hc - gd & -fc + de\end{bmatrix} $$ 
+
+    We know each element in $xy^{-1}$ are integers because we're only multiplying and adding integers together. Now we need to show that $det(xy^{-1}) = 1$
+
+    We know, 
+    $$ det(xy^{-1}) = det(x) det(y^{-1}) $$
+
+    But we also known that $det(y^{-1}) = \frac{1}{det(y} = \frac{1}{1} = 1$  and that $det(x) = 1$. So we get, 
+    $$ det(xy^{-1}) = 1 \cdot 1 = 1 $$ 
+
+    So we have $xy^{-1} \in SL_2(\Z)$
+
+
+\end{proof}
+\subsection*{Problem 45}
+\begin{proof}
+    Consider two subgroups $H,F \subseteq G$. We need to show that  $H \cap F$ is a subgroup of G as well. First we have $H \cap F \subseteq G$. Now we need to show its a group.
+
+    It is enough to show that for any $x,y \in H \cap F$ that $xy^{-1} \in H \cap F$. First we know for any $x , y \in H \cap F$ that means that $x,y \in H $ and $x,y \in F$. But we know that  $H$ and $F$ are subgroups. Hence if $x,y \in H$ that means that $xy^{-1} \in H$. Similarly if $x,y \in F$ we have $xy^{-1} \in F$. So now we have, $xy^{-1} \in F$ and $xy^{-1} \in H$. This means that $xy^{-1} \in H \cap F$. So we have shown that $H \cap F$ is a subgroup.
+\end{proof}
+\subsection*{Problem 46}
+
+\begin{proof}
+    Consider the group $Z$ and the subgroup $A = \{2^{k} : k \in \Z\}$ and $B = \{3^{k}: k \in \Z\}$. Both these are groups because they are orbits. Now consider their union $A \cup B$. 
+
+    Take  $x \in A, x = 2$  and $y \in B, y = 3$. We see that  $xy = 2 \cdot 3 = 6 \not \in A \cup B$ because  $ \not \exists k \in Z$ such that $2^{k} = 6$ or $3^{k} = 6$. Hence it is not closed under the operation. Therefore is not a group.
+\end{proof}. 
+\subsection*{Problem 52}
+\begin{proof}
+    Consider $S_3$ which is group of all permutations on three elements.
+    
+    $$ S_3 = \{e, (12), (13), (23), (123),(132)\} $$ 
+    this group is non-abelion because $(12)(23) \ne (23)(12)$. Hoover consider the subgroup,  
+    $$ \{e, (12)\} $$ 
+    Now this group is ableian  because the elements commute. Hence we disprove the claim.
+\end{proof}
+
+\end{document}

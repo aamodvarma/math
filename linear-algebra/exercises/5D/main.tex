@@ -1,0 +1,135 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Linear Algebra 5D}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+\section*{5D}
+\subsection*{Problem 1}
+\begin{proof}
+   (a). We have $T^{4} - I = 0$. Factorizing we get, 
+   $$ (T^2 + I)(T^2 - I) = (T + Ii)(T -Ii)(T + I)(T - I) = 0 $$ 
+   
+   We see that the eigenvalues are distinct which means that it is diagonizable.
+   
+   (b). We have $T^{4} - T = 0$. Let the polynomial be, 
+   $$ z(z^{3} - 1) = z(z - 1)(z^2 + z + 1) = 0 $$ 
+   We see again the roots are distinct which means that $T$ is diagonalizable.
+
+   (c). We have $T = \begin{bmatrix} 0  \ 1 \\ 0 \ 0 \end{bmatrix}$. The only eigenvalue is $0$ but $T^2 = T^{4}$
+\end{proof}
+\subsection*{Problem 2}
+\begin{proof}
+   If $A$ is a diagonal matrix with respect to some basis of $V$ that means that the basis $v_1,\dots,v_n$ are eigenvectors of $T$ with associated eigenvalues. We know that $v_1,\dots,v_n$ are linearly independent and span $V$. Assume that $\lambda_i$ appear $n_i$ times and $n_i \ne \dim(E(\lambda_i, T))$. Now as $n_1+\dots+n_m = n$ given there are  $m$ distinct eigenvalues. That means that there exists some $j$ such that $n_j > E(\lambda_j, T)$. So we have  $n_j$ linearly independent vectors associated with $\lambda_j$ which means that they are all in  $E(\lambda_j, T)$. But this means that  $\dim(E\lambda_j, T) >= n_i$ which is a contradiction.
+\end{proof}
+\subsection*{Problem 3}
+\begin{proof}
+   We need to show that $V = null T \oplus range T$.
+
+   If $T$ is diagonalizble that means that we can write,  
+   $$ V = E(0, T) \oplus E(\lambda_1, T) \dots \oplus E(\lambda_n, T) $$ 
+   Such that any $v \in V = u + v_1 + \dots + v_n$. 
+
+   We know that $E(0,T) = null T$ so we have,  
+   $$ V = null T \oplus E(\lambda_1, T) \dots \oplus E(\lambda_n, T) $$ 
+   Let $U =  E(\lambda_1, T) \dots \oplus E(\lambda_n, T) $. Now we need to show that $\range T = U$.
+
+   Let $Tv \in range T$. So there is $v \in V, v  = u + v_1 + \dots + v_n$ s.t. $Tv \in range T$. So we have  $Tv = T(u) + Tv_1 + \dots + Tv_n = Tv_1 + \dots + Tv_n = \lamda_1v_1 + \dots + \lambda_n v_n \in U$. SO we have $\range T \subseteq U$.
+
+   Now consider $v_1+ \dots + v_n \in U$. We need to show there is some $v \in V$ such that $Tv = v_1 + \dots + v_n$. Consider $v = \lamnda_1^{-1}v_1 + \dots + \lambda_n^{-1}v_n$. We see that $Tv = v_1 + \dots + v_n \in range T$. Hence $U \subseteq range T$.
+
+   This shows that  $\range T = U$
+
+
+\end{proof}
+\subsection*{Problem 4}
+\begin{proof}
+   $a \implies b$ by definition.
+
+   $b \implies c$
+
+   We have $V = null T + range T$. We also know that $dim V = dim null T + dim range T = dim null T + dim range T - dim null T \cap range T \implies dim (null t \cap range T) = 0 \implies null T \cap range T = \{0\}$
+\end{proof}
+\subsection*{Problem 6}
+\begin{proof}
+   We have $E(8,T) = 4$. Assume the contrary that $T - 2I$ and $T - 6I$ are not-invertible. This means that $\dim (E(2,T)) \ge 1$ and $\dim(E(6,T)) \ge 1$. But that means $\dim V = 4 + 1 + 1 = 6 \ne 5$. Which is not true.
+\end{proof}
+\subsection*{Problem 7}
+\begin{proof}
+   If $\lambda$ is an eigenvalue of $T$ that means, 
+   $$  Tv = \lambda v$$ 
+   $$ T^{-1}Tv = \lambda T^{-1}v $$ 
+   $$ T^{-1}v = \frac{1}{\lambda}v $$ 
+
+   which makes $\frac{1}{\lambda}$ an eigenvalue of $T^{-1}$ such that for every  $v \in E(\lambda, T), v \in E(\lambda^{-1}, T^{-1})$
+\end{proof}
+\subsection*{Problem 8}
+\begin{proof}
+   So we have $$\dim V \ge \dim E(0, T) + \dots + \dim E(\lambda_m, T) $$
+
+   But we know that $null T = E(0, T)$ so,
+$$ range T \ge \dim E(\lambda_1,T) \dots + \dim E(\lambda_m, T) $$
+\end{proof}
+\subsection*{Problem 9}
+\begin{proof}
+   We are given that $R$ and $S$ have three eigenvalue. Let it be defined as, 
+   $$ Ru_1 = 2u_1, Ru_2 = 6u_2, Ru_3 = 7u_3 $$  and, 
+   $$ Tv_1 = 2v_1, Tv_2 = 6v_2, Tv_3 = 7v_3 $$ 
+
+   Now we need to define $S$ as follows, 
+   $$ Su_1 = v_1, Su_2 = v_2, Su_3 = v_3 $$
+
+   So we have $S^{-1}TSu_1 = S^{-1}Tv_1 = S^{-1}2v_1 = 2u_1$
+\end{proof}
+\subsection*{Problem 11}
+\begin{proof}
+   Consider T is defined as, 
+   $$ \begin{bmatrix}6 \ 1 \ 0 \\  0 \ 6 \ 0 \\ 0 \ 0 \ 7 \end{bmatrix} $$ 
+\end{proof}
+\subsection*{Problem 14}
+\begin{proof}
+   (a). Consider $T = \begin{bmatrix} 0 \ 1 \\ 0 \ 0 \end{bmatrix}$
+
+   (b). Assume $T$ is diagonalizable, that means that the diagonal entires of matrix of $T$ are $\lambda_1,\dots, \lambda_n$. So $T^{k}$ will be $\lambda_1^{k},\dots,\lambda_n^{k}$. Hence $T^{k}$ is also diagonalizable.
+
+   Now assume $T^{k}$ is diagonalizable. Which means that it has a minimal polynomial $p(z) = (z - \lambda_1) \dots  (z - \lambda_m)$ where $\lambda_1,\dots,\lambda_m$ are the distinct roots. As $T^{k}$ is invertible these roots are non-zero. Now consider the $6$ th root of any $z$. And we construct, 
+   $$ q(z) = (z^{k} - \lambda_1)\dots(z^{k} - \lambda_n) $$ 
+
+   Now for each $(z^{k} - \lambda_1)$ we can write this as a product of $(z - u_1) \dots (z - u_k)$ such that each $u_1,\dots,u_k$ is distinct. 
+
+   Now all this means that the mnimal polynomial of $T$ has distinct factors which makes it diagonlizable.
+
+\end{proof}
+\subsection*{Problem 15}
+\begin{proof}
+   $a \implies b$ 
+
+   If $T$ is diagonalizable then that means that the minimal polynomial of T has distinct roots. So there is no $\lambda $ such that $p$ is a polynomial multiple of $(z - \lambda)^2$
+
+   $b \implies c$
+   Assume they have zeroes in common which means that,  
+   $$ p(z) = (z - \lambda)q(z) $$ and, 
+   $$ p'(z) = (z - \lambda) r(z) $$ 
+
+   Differentiating first one we have, 
+   $$ p'(z) = (z - \lambda)q'(z) + q(z) = (z - \lambda) r(z) $$ 
+   Evaluating at $z = \lambda $ we get, 
+   $$ q(z) = 0 $$  which means that $\lambda $ is a zero of $q$ or, 
+   $$ q(z) = (z - \lambda)s(z) $$ 
+
+   So $p(z) = (z - \lambda)^2 s(z)$ 
+
+   but p has distinct zeroes so contradiction.
+
+   $c \implies d$ 
+   Let us assume that is not the case, so $\exists q$ such that, 
+   $$ p = kq $$  and, 
+   $$ p' = k'q $$ 
+
+   So this means that $p$ and $q$ share the same zeroes and $p'$ and $q$ share the same zeores which means that $p$ and $p'$ share the same zeores which contradicts our previous conclusion.
+   
+   $$  $$ 
+\end{proof}
+\end{document}

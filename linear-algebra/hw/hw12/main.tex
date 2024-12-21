@@ -1,0 +1,33 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Linear Algebra HW12}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+\subsection*{Problem 1}
+\begin{proof}
+   Let $v \in span(v_1,\dots,v_m)^{\perp}$. This means that $v \in span(V_1,\dots,v_m)$ so $<v, v_k> = 0$ for every $k \in \{1,\dots,m\}$.
+
+   If thats the case we have $v \in \{v_1,\dots,v_m\}^{\perp}$ and $(span(v_1,\dots,v_m))^{\perp} \subseteq \{v_1,\dots,v_m\}^{\perp}$. 
+
+   Now let $v \in \{v_1,\dots,v_m\}^{\perp}$ and let $a_1v_1,\dots,a_mv_m \in span(v_1,\dots,v_m)$. We see that, 
+$$ <v, a_1v_1,\dots,a_mv_m> = \overline{a_1}<v,v_1> + \dots + \overline{a_m}<v, v_m> = 0 $$ 
+
+This shows that $v \in span(v_1,\dots,v_m)^{\perp}$. This means that $\{v_1,\dots,v_m}^{\perp}\subseteq span(v_1,\dots,v_m)^{\perp}$.
+
+So both the results shows us that they are equal.
+\end{proof}
+
+
+\subsection*{Chapter 7, Problem 1}
+We have, 
+$$ <(w_1,\dots,w_n), T^{*}(z_1,\dots,z_n)) = <T(w_1,\dots,w_n),(z_1,\dots,z_n)> $$ 
+$$ = <(0,w_1,\dots,w_{n-1}), (z_1,\dots,z_n)> $$ 
+$$ = w_1z_2 + \dots + w_{n-1}z_n $$ 
+$$ = <(w_1,\dots,w_n), (z_2,\dots,z_n,0)> $$ 
+
+Hence we show that $T^{*}(z_1,\dots,z_n) = (z_2,\dots,z_n,0)$
+
+\end{document}

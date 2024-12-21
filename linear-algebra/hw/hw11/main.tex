@@ -1,0 +1,36 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Linear Algebra HW11}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+\subsection*{Problem 7}
+\begin{proof}
+We have $$||au + bv||^2 = a^2||u||^2 + 2ab<u,v> + b^2||v||^2$$ and $$||bu + av||^2 = b^2||u||^2 + 2ab<u,v> + a^2||v||^2$$
+
+So if they are equal then we have, 
+$$ a^2||u||^2 + b^2||v||^2 = b^2||u||^2 +  a^2||v||^2$$ 
+
+Or, 
+$$ (a^2 - b^2) (||u||^2 - ||v||^2)  = 0$$  
+
+For all $a,b \in R$ for this to be true we need, 
+$$ ||u||^2 = ||v||^2 \implies ||u|| = ||v|| $$ 
+\end{proof}
+
+\subsection*{Problem 11}
+\begin{proof}
+   We have $(1,2)  = u + v$ and  $<u,v> = 0$. So,  
+   $$ <(1,2),u> = <u,u> $$ 
+   
+   If $u = (k,3k)$ we have, 
+   $$ k + 6k = k^2 + 9k^2 $$ 
+   $$ 10k^2 - 7k = 0 $$ 
+   $$ k(10k - 7) = 0 $$ 
+
+   So we can take $k = \frac{7}{10}$ which gives us $u = (\frac{7}{10}, \frac{21}{10})$ and $v = (\frac{3}{10}, -\frac{1}{10})$
+\end{proof}
+
+\end{document}

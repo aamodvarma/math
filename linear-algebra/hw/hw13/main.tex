@@ -1,0 +1,50 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Linear Algebra HW13}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+\subsection*{Problem 1}
+\begin{proof}
+   We have a normal operator on a complex inner product space that is self-adjoint. We know that if it is self adjoint then every eigenvalue of real.
+
+   Now assume every eigenvalue is real. We need to show that our operator as we defined it is self-adjoint. Now using complex spectral theorem we know there exists a diagonal matrix wrp to some basis of V as T is normal. But as the eigenvalues are real they exist in the diagonal such that the transpose of the matrix is equal to the matrix which means that it is self-adjoint as the matrix is defined for an orthonormal basis.
+
+\end{proof}
+\subsection*{Problem 2}
+\begin{proof}
+   We have $F = C$ and  $T \in L(V)$ is normal with one eigenvalue. If $T$ is normal that means that it has diagonal matrix wrt some orthonormal basis of V. Because it only has one  eigenvalue, the diagonal is filled with only this value. And this makes it a scalar multiple of the identity I.
+\end{proof}
+
+\subsection*{Problem 6}
+\begin{proof}
+   We have $T^{9} = T^{8}$. Now because it has a diagonal matrix that means that for an orthonormal basis, $e_1,\dots,e_n$  we have, 
+   $$ Te_k =\lamdba_ke_k $$ 
+   so we get, 
+   $$ T^{9}e_k = T^{8}e_k \implies \lambda ^{9}e_k = \lambda ^{8}e_k $$ 
+   $$ \lambda = 0 \text{ or } \lambda = 1 $$ 
+
+   Because eigenvalues are real we know that its adjoint as its normal as well.
+
+   And we have $T^2v = T(T(v)) = T(\lambda v) = \lambda T(v) = \lambda^2 v$
+
+   If $\lambda = 0$ we have $T^2v = 0$ and $Tv = 0$ so  $T^2 = T$
+
+   If $\lambda = 1$ we have $T^2v = v$ and $T = v$ so  $T^2 = T$
+\end{proof}
+
+\subsection*{Problem 8}
+\begin{proof}
+   If $T$ is normal we have, 
+$$ ||Tv|| = ||T^*v|| $$ so, 
+$$ ||(T - \lambda I)v || = ||(T - \lambda I)^*v || = ||(T^* - \overline{\lambda} I)v || $$ 
+
+So if $v$ is an eigvenvector for $T$ then it has to be an eigenvector for $T^*$
+
+Now assume every eigenvector of $T$ is also an eigenvector of $T^*$
+\end{proof}
+         
+                  
+\end{document}

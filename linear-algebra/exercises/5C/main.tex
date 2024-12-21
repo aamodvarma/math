@@ -1,0 +1,127 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Linear Algebra 5C}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+\section*{5C}
+\subsection*{Problem 1}
+\begin{proof}
+   If $F =  C$ then $T$ has an upper triangular matrix regardless.
+
+   If $F = R$ then consider $T(x,y) = (-y,x)$. We have $T^2 + I = 0$. So  the minimal polynomial of T does not have any real eigenvalues. 
+
+   However $T' = T^2 $ has the upper triangular matrix $-I$
+\end{proof}
+
+
+\subsection*{Problem 2}
+\begin{proof}
+   (a). We have $(A + B)_{jk} = A_{jk} + B_{jk}$
+
+   As both $A$ and $B$ are upper triangular matrices we know that $A_{jk} = B_{jk} = 0$ for $j > k$. Hence $(A + B)_{jk} = 0$ for $j > k$. And $(A + B)_{kk} = A_{kk} + B_{kk} = \alpha_k + \beta_k$
+
+   (b). We have, 
+   $$ (AB)_{jk} = \sum_{n=1}^{m} A_{jn}B_{nk} $$ 
+
+   First consider if $j > k$. We have, 
+   $$ \sum_{n=1}^{k} A_{jn}B_{nk} + \sum_{n=k+1}^{m} A_{jn}B_{nk} $$ 
+
+   In the first sum we have $j > k$ and $k > n$ so $j > n$ which means that $A_{jn} = 0$ so the sum goes to zero. In the second sum we have $n > k$ so $B_{nk} = 0$ so that goes to zero. Hence the sum is always 0 for any choice of $j,k$ if $j > k$.
+
+   This shows that $AB$ is an upper triangular matrix.
+
+   Now if $j = k$ we have, 
+   $$ (AB)_{kk} = \sum_{n=1}^{m} A_{kn} B_{nk} = A_{kk} B_{kk}  = \alpha_k \beta_k$$ 
+
+
+\end{proof}
+
+\subsection*{Problem 3}
+\begin{proof}
+   (1).
+  We know if T is an upper triangular matrix then the minimal polynomial of $T$ can be written as $(z - \lambda_1)\dots(z - \lambda_n)$. We also know that if T is invertible then  its minimal polynomial is, 
+  $$ (z - \frac{1}{\lambda_1}) \dots(z - \lambda_n) $$ 
+
+  Because it is of this form we can create an upper triangular matrix with the reciprocals on the diagonal.
+
+  (2). 
+  The existance of an upper triangular matrix for $T$ implies that for the basis $v_1,\dots,v_n$ we can write, 
+  \begin{align*}
+     Tv_1 &= \lambda_1v_1\\
+     Tv_2 &= a_1v_1 + \lambda_2 v_2\\
+          &\dots\\
+     Tv_n &= b_1v_1 + \dots + \lambda_nv_n
+  \end{align*}
+
+  Now let us apply $T^{-1}$ on each side and we get, 
+
+  \begin{align*}
+     v_1 &= \lambda_1 T^{-1}v_1\\
+     v_2 &= a_1T^{-1}v_1 + \lambda_2 T^{-1}v_2\\
+         &\dots\\
+     v_n &= b_1T^{-1}v_1 + \dots +T^{-1} \lambda_nv_n
+  \end{align*}
+
+  Rearranging the term we get,  
+
+  \begin{align*}
+     T^{-1}v_1  &= \frac{v_1}{\lambda_1} \\
+     T^{-1}v_2 &= \frac{v_2}{\lambda_2} - \frac{a_1}{\lambda_2}T^{-1}v_1 \\
+         &\dots\\
+     T^{-1} v_n &=\frac{v_n}{\lambda_n}  - \frac{b_1}{\lambda_n}T^{-1}v_1+ \dots 
+  \end{align*}
+
+  Going from the beginning we have $T^{-1}v_1 \in span(v_1), T^{-1}v_2 \in span(v_1,v_2)$ and going forward  we get $T^{-1}v_k \in span(v_1,\dots,v_{k - 1})$. This makes our matrix upper triangular. 
+
+  We see that for any $k \in \{1,\dots,n\}$ that the term before $v_k$ for $T^{-1}v_k$ is $\frac{1}{\lambda_k}$. Hence our diagonal is $\frac{1}{\lambda_k}$ for the $v_k$.
+
+\end{proof}
+\subsection*{Problem 6}
+\begin{proof}
+   If $F = C$ that means that there exists an upper triangular matrix with respect to some basis of $V$. Let this basis be $v_1,\dots,v_n$ where $n = \dim V$.
+
+   Now this means that for any  $k$,  $span(v_1,\dots,v_k)$ is invariant under $T$ as $T(v_k) \in span(v_1,\dots,v_k), T(v_{k-1}) \in span(v_1,\dots,v_{k-1}),\dots$
+\end{proof}
+\subsection*{Problem 7a}
+\begin{proof}
+   (a). Consider the list $(v,Tv,\dots,T^{\dim V}v)$. As the dimension is $\dim V + 1$ there is some smallest $k$ such that $T^{k + 1} \in span(v,\dots,T^{k})$. Which makes $U = span(v,\dots,T^{k})$ invariant under $T$. Let $p_v$ be the minimal polynomial of $T_{|U}$ so we see that, 
+   $$ p_v(T)v = p_v(T_{|U})v = 0 $$ 
+
+   We know that the degree cannot be smaller than $k$ so it is of least degree.
+\end{proof}
+\subsection*{Problem 8b}
+\begin{proof}
+   We have $T^2v + 2Tv + 2v = 0$
+
+   So the minimal polynomial is either $z^2 + 2z + 2 = 0$ or a polynomial multiple of it whose roots are $-1 + i$ or $-1 -i$.
+
+   Which means that eigenvalues of  $T$ are the same so it must appear on the diagonal of A.
+\end{proof}
+\subsection*{Problem 9}
+\begin{proof}
+   Now let $T$ be the linear map associated with $B$. Because $F = C$ there exists some basis of $V$ in which there is a linear map $C$ which is upper triangular. Let this basis be $v_1,\dots,v_n$. If $B$ is a matrix defined on the basis $u_1,\dots,u_n$. Then we can define $A = M(T, (v_1,\dots,v_n),(u_1,\dots,u_n))$ such that $A^{-1}BA = M(T, (v_1,\dots,v_n), (v_1,\dots,v_n)) = C$.
+\end{proof}
+\subsection*{Problem 10}
+\begin{proof}
+   $a \implies b$
+
+   If the matrix is lower triangular then we can say that, 
+   \begin{align*}
+      Tv_1 &= a_1v_1,\dots, a_nv_n\\
+      \dots\\
+      T(v_n) &= b_nv_n
+   \end{align*}
+
+   So we see that for any $j$ we have  $Tv_j \in span(v_j,\dots,v_n)$ but $span(v_j,\dots,v_n) \subset span(v_k,\dots,v_n)$. So for any  $v \in span(v_k,\dots,v_n)$ we have $Tv \in span(v_1,\dots,v_n)$ which makes the span invariant.
+
+   $b \implies c$
+   If the span is invariant then it follows.
+
+    $c \implies b$ 
+    If $c$ is true that means that we can write $Tv_1,\dots,Tv_k$ in the way we wrote above which means we can make a lower triangular matrix.
+\end{proof}
+
+\end{document}
