@@ -1,0 +1,29 @@
+Exam 
+Chapter 1 to 3 (upto sec 38)
+Chapter 1,
+- Complex numbers - inequalities proofs (triangle, etc)
+- prove, ||z1| - |z2|| < |z1 + z2 | < |z1| + |z2|
+- z \bar z = |z|^2
+
+- Find roots of, 
+	- z^n = 1 + i
+	- angles
+
+- geometric interpretation, 
+	-eg. |z - | < 2 bounded by circle
+- definitions of 
+	- bouned, closed, open, limit point
+
+Chapter 2,
+- mapping from one graph to another
+- limit and derivative (computation, proofs)
+- continuity
+- infinity
+- epsilon delta proofs
+- polar coordinates
+- cauchy-reimann equation stuff
+* definitino of analytic function
+- harmonic functino
+
+Chapter 3,
+- y = e^z, y = log z, y = z^c, y = sin z, y = cos z

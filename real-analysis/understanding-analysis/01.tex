@@ -1,0 +1,46 @@
+\chapter{The Real Numbers}
+\section{\sqrt{2}}
+
+\begin{theorem}
+  \(\sqrt{2}\) is irrational.
+\end{theorem}
+\begin{proof}
+    Assume that $\sqrt{2}$ is rational such that it can be written in the form $\frac{p}{q}$ where both $p$ and $q$ are coprime and $q \ne 0$. So we have, 
+    \begin{align*}
+        \sqrt{2} &= \frac{p}{q}\\
+                2 &=\frac{p^2}{q^2}\\
+                2q^2  &= p^2
+    \end{align*}
+
+    If $2 | p^2 $ then it must mean that $2 | p $ so we can write $p$ like $2a$ where $a$ is some rational. So, 
+    
+    \begin{align*}
+        2q^2 &= (2a)^2 = 4a^2\\
+             q^2&= 2a^2
+    \end{align*}
+
+    Similarly if $2 | q^2$ then $2 | q$ implying that both  $p$ and $q$ have a common factor 2. However, this contradicts our assumption as we assume $p$ and $q$ are co-prime numbers. Hence our assumption that $\sqrt{2}$ is rational must be false. Hence, $\sqrt{2}$ is irrational.
+\end{proof}
+
+
+\begin{definition}[Rational Numbers]
+   $Q = \big \{ \text{all fractions $\frac{p}{q}$ where $p$ and $q$ are integers with $q \ne 0$} \big\}$
+\end{definition}
+
+\begin{definition}[Field]
+    A field is any set where   addition and multiplication are well-defined operations that are commutative, associative and distributive. There must be an additive identity and every element must have an additive inverse. There must be a multiplicative identity and multiplicative inverse for all nonzero elements in the field. 
+\end{definition}
+\begin{eg}
+    Some examples structures that are and are not a field are,
+    \begin{enumerate}
+        \item $\Q$ is a field.
+        \item $\Z$ is not a field.
+        \item $\N$  is not a field.
+        \item $\{0,1,2,3,4\}$ is a field under addition and multiplication modulo  $5$.
+    \end{enumerate}
+\end{eg}
+
+\subsection*{What $\Q$ is lacking}
+$\Q$ is a field is useful to carry out various operations. However, we can't take things like square roots or so, i.e. there are a lot of holes in $\Q$. When we fill these gaps we get  $\R$ (will be done more rigorously later on). Every hole can be defined as a new irrational number.
+
+

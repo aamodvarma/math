@@ -1,0 +1,385 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{MATH3012}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+
+
+\section*{Page 11-13}
+\subsection*{Problem 1}
+(a). The president is one of the 13 candidates. So there are 13 possibilities for the winner
+
+(b). Essentially we need to find out how many possibilities are there to choose 1 from 8 republicans and 1 from 5 democrats. Which would be 8 $\times$ 5 = 40
+
+(c). We have the rule of sum and product respectively
+
+
+\subsection*{Problem 2}
+We have to find the number of possible 2 letters and 4 digits license plates such that the letters have only vowels and digits are only even with repetitions for both.
+
+For our letters for each letter we have 5 * 5 combination as there are five vowels. 
+
+For digits we have 0,2,4,6,8 which are 5 different choices. So with repetition we have 5 * 5 * 5 * 5 options.
+
+Combining both we have $5^{6}$ different possible combinations of license plates.
+
+
+\subsection*{Problem 4}
+(a). So we have a set of 10 people. We need to fill in 4 different unique choices ( no repetitions)
+
+So we have $10 \times 9 \times 8 \times 7 = 5040$
+
+(b). (i) If we have a physician nominated for president that means we only have three choices for president. However the other positions can be anyone so we have,  
+$$ 3 \times 9 \times 8 \times 7 = 1512 $$ 
+
+(ii) We have only one physical on the slate. So say we arbitrarily pick a slate we have three options for that slate. However one we will that slate, instead of 9 options for the next position we only have 7 options because we can't choose a physician. So we have for an arbitrary slate with the physician
+$$ 3 \times 7 \times 6 \times 5 $$ 
+
+However there are 4 slates the physician could be on so our final solution is, 
+$$ 4 \times 3 \times 7 \times 6 \times 5 = 2520 $$ 
+
+(iii) We find total number of ways and minus ways where there is no physicans. Total ways is, 
+$$ 10 \times  9 \times 8 \times 7 $$ 
+
+Ways with no physicans are, 
+$$ 7 \times 6 \times 5 \times 4 $$ 
+
+So our answer is, 
+$$ 4200 $$ 
+
+
+\subsection*{Problem 6}
+(a). We have 8 different positions and 30 people. As each position can only be filled by one person we have $\frac{30!}{22!}$ different choices.
+
+(b). We have two people from these 8 in top three. So first we see the number of ways we can choose two seats from the top three for these two members. This would be 
+$$ {3 \choose 2 } = 3$$ 
+
+Now for each pair of seat we can seat 2 people in 2 ways. So we have a total of $3 \times 2 = 6$ ways that our two people can be put in the three seats. 
+
+Now aside from that we have 6 more seats and 28 more people which gives us $\frac{28!}{22!}$ number of options.
+
+So in total we have $6 \times \frac{28!}{22!}$ number of choices.
+
+\subsection*{Problem 11}
+(a). Firstly Linda can travel through $R_8$ and $R_9$ to directly reach C. So we have 2.
+
+Now if Linda chooses to go through B. Then to reach there she first has 4 choices, $R_1-R_4$ and from B to C she has 3 choices $R_5-R_7$. This gives us $4 \times 3$ different choices. So in total she has $12 + 2 = 14$ different choices.
+
+
+(b). To go from $A$ to $C$ she will have 14 choices. Similarly to go from C to A she will have 14 choices. So for a round trip  she will have $14 \times 14 = 196$ choices.
+
+(c). So from A to C she has 14 choices. But to get back she can't take the same route which gives us only 13 choices. So we have a total of $14 \times 13 = 182$ choices.
+
+\subsection*{Problem 23}
+We can look at this problem by thinking of having a string of length 12. We need to fill this string with four different kind of objects 4,3,2,3 in length respectively. 
+
+So by choosing spots for each of our objects we have, 
+$$ {12 \choose 4} \times {8 \choose 3} \times {5 \choose 2} \times{ 3 \choose 3} = \frac{12!}{2!3!3!4!} $$ 
+
+
+
+\section*{Page 24}
+\subsection*{Problem 2}
+We have 12 choices and we need to choose 5 which gives us the following number of choices, 
+$$ {12 \choose 5} = \frac{12!}{5!7!} = 792 $$ 
+
+\subsection*{Problem 4}
+(a). We can answer this in two ways. Firstly we see that each dot can either be raised or not. So there are two options for each dot. We also have 6 dot, so the total number of possible options are $2^{6} = 64$. If we exclude the case where none of the dots are raised we have $64 - 1  = 63$
+
+However we can also look at the number of unique ways we can raise $1, \dots,6$ dots which gives us, 
+$${6 \choose 1} + {6 \choose 2} + {6 \choose 3} + {6 \choose 4} + {6 \choose 5} + {6 \choose 6} = 63 $$
+
+
+(b). To have exactly three raised dots we need to see how many ways we can choose three from a set of 6 dots which is, 
+$$ {6 \choose 3} = \frac{6!}{3!3!} = 20 $$ 
+
+
+(c). Number of symbols with even number would be ones with $2,4,6$ raised dots (if we exclude no dots). Which is, 
+$${6 \choose 2} + {6 \choose 4} + {6 \choose 6} =  15 + 15 + 1 = 31 $$ 
+
+
+\subsection*{Problem 6}
+\begin{proof}
+    
+We have, 
+\begin{align*}
+    {n \choose 2} + {n-1 \choose 2} &= \frac{n!}{2!(n-2)!} + \frac{(n-1)!}{2!(n-3)!}\\
+                                    &= \frac{n(n-1)(n-2)!}{2!(n-2)!} + \frac{(n-1)(n-2)(n-3)!}{2!(n-3)!}\\
+                                    &= \frac{n(n-1)}{2} + \frac{(n-1)(n-2)}{2}\\
+                                    &= \frac{n^2 - n + n^2 -3n  + 2}{2}\\
+                                    &= \frac{2n^2 - 4n + 2}{2}\\
+                                    &= {n^2 - 2n + 1}\\
+                                    &= (n-1)^2
+\end{align*}
+Hence we show that it is a perfect square as $n-1$ is a positive integer
+
+\end{proof}
+
+
+\subsection*{Problem 8}
+(a). There are four suits with 13 cards each. Assuming we don't care about the ordering of the drawing and only consider the cards chosen for a given suit we have,
+$$ {13 \choose 5} \text { choices }$$ 
+
+However we have 4 suits so our solution is, 
+$$ {4 \choose 1} {13 \choose 5} $$ 
+
+(b). We need 4 aces in our 5 cards and one random card. As there are only 4 aces in the deck we have, 
+$$ {4 \choose 4} \text{ ways of choosing aces} $$ 
+
+Now we have $48$ other non-ace cards which gives us, 
+$$ {48 \choose 1} \text{ ways of choosing that one card} $$ 
+
+Both combine to give us,  
+$$ {4 \choose 4} {48 \choose 1} \text{ different ways}$$
+    
+(c).
+For any given kind there are only $4$ of them one from each suit. So given a kind we have, 
+$$ {4 \choose 4} \text{ ways to choose them}$$  
+
+However as there are 13 kinds, the ways to choose the kinds are, 
+$$ {13 \choose 1} $$ 
+
+And the ways to choose the last card would be, 
+$$ {48 \choose 1} $$ 
+
+Which gives us, 
+$$ {13 \choose 1} {4 \choose 4} {48 \choose 1} $$ 
+
+(d).
+Ways to choose three aces from 4 are, 
+$$ {4 \choose 3} $$ 
+
+Ways to choose 2 jacks from the 4 are, 
+$$ {4 \choose 2} $$ 
+
+Which gives us, 
+$$ {4 \choose 3} {4 \choose 2} $$ 
+
+(e).
+Ways to choose 3 aces are, 
+$$ 4 \choose 3 $$ 
+
+Now after we choose the aces there are only 12 kinds that have pair in each, now within a kind there there are 4 cards each, ways to choose a pair from those 4 cards are, 
+$$ 4 \choose 2 $$ 
+
+Now ways to choose 1 kind from these 12 kinds are, 
+$$ 12 \choose 1 $$ 
+
+This gives us, 
+$$ {12 \choose 1} {4 \choose 2} {4 \choose 3} $$ 
+
+(f).
+Given a kind ways to choose three out of the 4 are, 
+
+$$ 4 \choose 3 $$ 
+
+Ways to choose a kind are, 
+$$ 13 \choose 1 $$ 
+
+Once we have three of a kind we have only 12 kinds with pairs which is, 
+$$ {4 \choose 2}{12 \choose 1} $$ 
+
+So our solution is, 
+$$ {4 \choose 2}{12 \choose 1}{4 \choose 3}{13 \choose 1} $$ 
+(g).
+Ways to choose three of a given kind is, 
+$$ 4 \choose 3 $$ 
+Ways to choose a kind is, 
+$$ 13 \choose 1 $$ 
+
+Now that we have three of a kind we have $48$ cards left (we exclude the one from the same rank), and we need to choose 2 cards from them that are not the same kind,
+
+$$ {48 \choose 1} {44 \choose 1} \times \frac{1}{2} $$ 
+We times by $\frac{1}{2}$ because we do not care about the permutation/ordering.
+
+So we get, 
+$$ {13 \choose 1}{4 \choose 3}{48 \choose 1}{44 \choose 1} \times \frac{1}{2} $$ 
+
+
+(h).
+Ways to choose two kinds are, 
+$$ 13 \choose 2 $$ 
+
+Ways to choose 2 given a kind are, 
+$$ 4 \choose 2 $$ 
+
+We need to do this within the two kinds that we choose.
+
+Now lastly we have $52 - 8 = 44$ cards left of a different rank and ways to choose 1 from them are,  
+$$ 44 \choose 1 $$ 
+
+This gives us, 
+$$ {13 \choose 2}{4 \choose 2}{4 \choose 2}{ 44 \choose 1} $$ 
+
+
+
+
+
+\subsection*{Problem 13}
+Firstly aside from the S's we can arrange the rest of the letters in, 
+$$ \frac{7!}{2!4!} $$ 
+
+From the 7 letters that we arrange we can put the 4 S's in 8 different places, the 6 in between and the two in the edges. So the ways to choose 4 from 8 are, 
+$$ 8 \choose 4 $$ 
+
+So our solution is, 
+$$ {8 \choose 4} \frac{7!}{2!4!} $$ 
+
+
+\section*{Page 34-35}
+\subsection*{Problem 1}
+We need to distribute 10 dimes among five children, 
+
+(i). If we write it in terms of symbols we will have four $|'s$ to represent the division between the 5 children and 10 to represent the 10 dimes so enumerating we get, 
+$$ \frac{14!}{4!10!} = {14 \choose 10} $$ 
+
+(ii) Now we're told that each child gets at least one dime. So the only ways to distribute are to distribute the rest among the five children, there are only 5 left so we get, 
+$$ {5 + 5 - 1 \choose 5}  = {9 \choose 5}$$ 
+
+(iii) We have the oldest child getting at least two dimes so, 
+$x_1 + x_2 + x_3 + x_4 + x_5 = 8, x_i > 0$. As the oldest received 2 already. Solution would be, 
+$$ {5 + 8 - 1 \choose 8} = {12 \choose 8}$$ 
+
+
+\subsection*{Problem 2}
+We can divide the problem into finding ways we can give the youngest only 1 and then only 2 and add it up.
+
+We have 5 children and 15 candy, say the youngest gets only 1 so we need to distribute 14 candy to 4 children which is,
+$$ x_2 + x_3 + x_4 + x_5 = 14, x_i > 0 $$ 
+Solution to this is, 
+$$ {14 + 4 - 1 \choose 14} = {17 \choose 14} $$ 
+
+Now if the youngest gets 2 candy we have, 
+$$ x_2 + x_3 + x_4 + x_5 = 13, x_i > 0 $$ 
+
+Solution to this is, 
+$$ {13 + 4 - 1 \choose 13} = {16 \choose 13} $$ 
+
+So our total solution, 
+$$ {17 \choose 14} + {16 \choose 13} $$ 
+
+
+\subsection*{Problem 4}
+(a). 
+The ways to order 12 different cones such that they are all different is the same as choosing 12 from 31 which is, 
+$$ 31 \choose 12 $$ 
+
+(b). We need to choose 12 from 31 different flavors but we can choose up to 12 for each flavor. We can look at this question as finding the different solutions of the following,
+$$ x_1 + \dots + x_{31} = 12 $$ 
+
+The number of solutions are, 
+$$  {31 + 12 - 1 \choose 31 - 1} = {42 \choose 30 } = {42 \choose 12}$$ 
+
+
+(c). Each may be ordreed no more than 11, which means it would be number of ways it could be ordered if each is upto 12 minus the number of ways if it is exactly 12.
+
+The number of ways it is exactly 12 is $31$ as each flavor can be taken 12 times so we get,  
+$$ {42 \choose 12} - 31 $$ 
+
+
+
+\subsection*{Problem 10}
+We have a dice and we need to find num of ways 100 throws can be done such that each side is 3 side up at least. If at least 3 each side we have $3\times 6 = 18$ fixed which gives us ways to arrange the remaining 82 throws. We solve the equation, 
+$$ x_1 + x_2 + x_3 + x_4 + x_5  + x_6 = 82 $$ 
+
+Solution is, 
+$$ {82 + 6 - 1 \choose 5} = {87 \choose 82} $$ 
+
+
+
+\subsection*{Problem 16}
+We have (1) as, 
+$$ x_1 + \dots + x_{19} = n $$  and (2) as, 
+$$ y_1 + \dots + y_{64} =n $$ 
+
+
+We need the number of positive integer solution so for (1) we have, 
+$$ {n - 19 + 19 - 1 \choose 18} = {n - 1 \choose 18} $$ 
+
+For (2) we have, 
+$$ {n - 64 + 64 - 1 \choose 63} = {n - 1 \choose 63} $$ 
+We are given these two are equal which is true for if $n - 1 = 63 + 18$ or  $n = 82$
+
+
+\section*{Page 40}
+\subsection*{Problem 1}
+We have, 
+\begin{align*}
+    {2n \choose n } - {2n \choose n - 1} &= \frac{2n!}{n!n!} - \frac{2n!}{(n-1)!(n + 1)!}\\
+                                         &= \frac{2n!}{n!n!} - \frac{n 2n!}{n! (n+1) n!}\\
+                                         &= \frac{2n!}{n!n!}(1 - \frac{n}{n + 1})\\
+                                         &= \frac{2n!}{n!n!}(\frac{1}{n + 1}) \\
+                                         &= \frac{1}{n + 1}{2n \choose n}
+\end{align*}
+
+
+\subsection*{Problem 2}
+
+$$ b_7 = \frac{1}{7 + 1} {14 \choose 7} = \frac{1}{8} {14 \choose 7} = 429$$ 
+$$ b_8 = \frac{1}{8 + 1} {16 \choose 8} = = \frac{1}{9} {16 \choose 8} 1430$$ 
+$$ b_9 = \frac{1}{9 + 1} {18 \choose 9} = \frac{1}{10} {18 \choose 9} =4860 $$ 
+$$ b_10 = \frac{1}{10 + 1} {20 \choose 10} = \frac{1}{11} {20 \choose 10} = 16796$$ 
+
+\subsection*{Problem 3}
+(a). From  (0,0) to (3,3) we need to find the ways to arrange three R's and three U's. This gives us, 
+$$ \frac{6!}{3!3!} $$ 
+
+Now we're given the path may touch but never fall below the line $y = x$ for going from. First we know that if it falls below the line it means that for a given moment starting from the left there are more R's than U's recorded. Hence we need to count the number of ways it CAN fall below the line so we can subtract it from the total number of ways it can reach $(3,3)$.
+
+Now if it falls below the line we know that there are more U's recorded. At that moment if we flip the R's to U's and U's to R's we get an extra R in our subsequence. So we have a one-to-one map from the total number of invalid to the number of sub sequences with an extra R. This is equivalent to,  
+$$ {6 \choose 3 + 1} = {6 \choose 4}$$ 
+
+Hence the total number of valid movements are, 
+$$ {6 \choose 3} - {6 \choose 4} = b_3 = 5 $$ 
+
+
+For the case to go to $(4,4)$ we have, 
+$$ b_4 = {8 \choose 4} - {8 \choose 5} = 14 $$ 
+
+
+(b). To generalize the result we have to go from $(0,0)$ to $(n,n)$ using only $R$ and  $U$ the following number of ways where it never falls below the line y = x,  
+$$ b_n = {2n \choose n} - {2n \choose n + 1} = \frac{1}{n + 1} {2n \choose n } $$ 
+
+(c). In both (a) and (b) we know that we are never below the line, hence our last move can never be a U as that implies we would be below the line. So in both cases our last moves are $R$
+
+Similarly the first move has to be a $U$ a $R$ would put it below the line in both cases.
+
+
+\section*{Page 134-136}
+\subsection*{Problem 1}
+They are all equal.
+
+\subsection*{Problem 2}
+(a), (b), (c), (d), (e), (g), (h) are all true
+
+\subsection*{Problem 4}
+(c), (d), (e), (f) are true
+
+\subsection*{Problem 8}
+(a). Number of subsets is $2^{|A|} = 2^{7} = 128$ 
+
+(b). Nonempty subsets of A would be one less so 127
+
+(c). Proper subsets exclude A itself so $127$
+
+(d). Non-empty proper subsets mean we exclude A and the empty so 126
+
+(e). This would be the number of ways we can choose 3 elements out of 7 which is, 
+$$ {7 \choose 3} = 35 $$ 
+
+
+(f). We fix (1,2) so for all the other elements they can either belong or not belong which is 2 choices so we would have $2^{5} = 32$
+
+(g). So we have exactly 5 elements and 1,2 are two of it. So we need ways to choose the remaining 3 elements from our 5 remaining elements which would be, 
+$$ {5 \choose 3} = 10$$ 
+
+(h). We need an even number of elements which would be, 
+$$ {7 \choose 0 } + {7 \choose 2} + {7 \choose 4 } + { 7 \choose 6} = 64 $$ 
+
+(i). Odd number of elements we have, 
+$$ {7 \choose 1 } + {7 \choose 3} + {7 \choose 5 } + { 7 \choose 7} = 64 $$ 
+
+
+
+\end{document}
