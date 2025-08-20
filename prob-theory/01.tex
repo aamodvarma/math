@@ -1,0 +1,138 @@
+\chapter{Introduction}
+
+\begin{eg}
+    What is the probability that two people among $N$ people have the same birthday.
+\end{eg}
+
+\begin{eg}
+    What is the probability that all people have different birthday
+
+    We have, 
+    \begin{align*}
+        q_1 &= 1\\
+        q_2 &= \big ( 1 - \frac{1}{365}\big ) \\
+        q_3 &= q_3 \big ( 1 - \frac{2}{365}\big ) \\
+            \vdots&\\
+        q_n &= \prod_{i = 1}^{n - 1} \big (  1 - \frac{i}{365}\big ) 
+    \end{align*}
+
+    We get $q_n = 0.14$ which gives us  $0.86$ for the previous example. 
+
+\end{eg}
+
+\begin{note}
+
+We assume certain assumptions like the following to make this work,
+\begin{enumerate}
+    \item Uniformity
+    \item Independence 
+\end{enumerate}
+\end{note}
+
+Here we have a probability model and deduced the probability of an event,
+ 
+
+\begin{eg}
+    Say there is a test for a disease, 
+    \begin{enumerate}
+        \item P(positive | sick) = 1 
+        \item P(positive | not sick) = 0.01 
+    \end{enumerate}
+
+    Need to find P(sick | positive) which would be P(positive | sick) P(sick) / P(positive)
+
+
+    We test everybody, we have
+    Assume 100 S and 100 NS,
+
+    100 P from the S, 99 P from the NS
+
+    So we have 199 P of which only 100 S which gives around .5
+
+
+\end{eg}
+
+\section{Probability Theory}
+
+% \begin{definition}[Experiment]
+     
+% \end{definition}
+Experiment whose outcome is not determined. We define the following, 
+
+\begin{enumerate}
+    \item $\Omega$ : Sample space, set of possible outcomes
+        \begin{eg}
+            \begin{enumerate}
+                \item Throw a die,
+
+                    $\Omega= \{1,2,3,4,5,6\}$ $\rightarrow$ finite 
+                \item Flip a coin till heads,
+
+                    $\Omega = \{1, 2,3, \dots\} = \N$ $\rightarrow$ countably infinite
+                \item Time to wait till next bus arrival, 
+
+                    $\Omega = \R^{+}$ $\rightarrow$ uncountabaly infinite 
+            \end{enumerate}
+        \end{eg}
+    \item $F$ : Family of events, $A, B,  \dots$ 
+
+        Something that may or may not happen
+
+        \begin{eg}
+            \begin{enumerate}
+                \item For a die we can ask,
+                    \begin{itemize}
+                        \item Is the outcome even?
+                        \item Is the outcome $\le 3$?
+                    \end{itemize}
+                    Here an event $A \subseteq \Omega$ and $|\Omega| = 6$ so  $|2^{\Omega}| = 64$
+
+                    We have $F = \text{family of events} = 2^{\Omega}$
+
+                \item Here we have, 
+
+                    $\Omega = \N$ so  $F = 2^{\N}$
+
+                \item In this case our sample space is $R^{+} = (0 , \infty)$. But we cannot take $2^{\R}$. So we axiomatically define $F$ as noted below. Under this definition $F$ is the smallest family that contains all open intervals of $R$
+
+
+            \end{enumerate}
+        \end{eg}
+    \item $P$ : How likely an event is 
+\end{enumerate}
+
+
+\begin{definition}[Axiomatic definition of $F$]
+
+        So here we define $F$ to be a family of events of  $\Omega$ if, 
+        \begin{enumerate}
+            \item not empty
+            \item if $A \in F \implies A^{c} \in F$ ($A^{c} = \Omega \setminus A$)
+            \item for any two $A, B \in F$ then  $A \cup B \in F$
+            \item If $A_i$ for  $i = 1,\dots,\infty$ are events, then  $\bigcup_{i = 1}^{\infty} A_i$  is an event
+        \end{enumerate}
+
+
+\end{definition}
+\begin{note}
+    Here, countable closure $\implies$ finite closure (proof just involves adding infinite $\phi$ to our finite sets $A_1, \dots, A_n$)
+\end{note}
+\begin{note}
+    Using this definition we have, 
+    \begin{enumerate}
+        \item $A \in F \implies A^{c} \in F, \implies A \cup A^{c} = \Omega \in F$ and  $\phi = \Omega^{c} \in F$
+
+    So every event space has $\Omega, \phi$
+        \item $(A \cup B)^{c} = A^{c} \cap B^{c} \in F $ so, 
+
+            If $A_i, i = 1,2, \dots$ are events then we have, 
+
+            $(\bigcap_{i = 1}^{\infty} A_i)^{c} \in F = \bigcup_{i = 1}^{\infty}A_i^{c} \in F $
+    \end{enumerate}
+\end{note}
+
+
+
+
+
+

@@ -1,0 +1,104 @@
+\chapter{Introduction}
+\section{Logic and proofs}
+Types of proofs,
+\begin{enumerate}
+    \item Direct proof
+    \item Argument by contradiction
+    \item Induction
+    \item Contrapositive  (we show$\neg B$ \implies $\neg A$)
+\end{enumerate}
+
+\begin{theorem}
+    $a = b \iff \forall \epsilon > 0, |a - b | < \epsilon$ 
+\end{theorem}
+\begin{proof}
+    1. To show, $a = b \implies \forall \epsilon > 0, |a - b | < \epsilon$.
+
+    Suppose $a = b$ so  $|a - b |= 0$. We have  $\forall \epsilon > 0$ so
+    $|a - b | = 0 < \epsilon$
+    
+    2. To show, $\forall \epsilon > 0, |a - b | < \epsilon \implies a = b$
+
+    Now assume this is not true, or that $a \ne b$ so  $a - b \ne 0$ this means that there is a non-zero number  $k$ such that  $|a - b| = \epsilon_0$. Now take $\epsilon = \frac{\epsilon_0}{2}$. This gives us, 
+    $ |a - b | = \epsilon_0 > \epsilon $  which contradicts the statement. Hence our assumption is false and we prove the results.
+\end{proof}
+
+
+
+\begin{eg}[Induction]
+    $x_1 = 1$ and $x_{n + 1} = \frac{1}{2}x_n + 1, \forall n \in \Z$. Show $x_{n + 1} \ge x_n \forall n \in \N$ 
+
+
+    Define $S = \{n \in \N, s.t. x_{n + 1} \ge x_n\}$ clearly, $S \subseteq N$.
+
+
+    $x_1 = 1$ and  $x_2 = \frac{x_1}{2} + 1 = 1.5$. This gives us $x_2 > x_1$ so $1 \in S$
+
+    Suppose $n \in S$  and $x_{n + 1} \ge x_n$. Note that,
+    \begin{align*}
+        x_{n + 2} &= \frac{1}{2}x_{n + 1} + 1\\
+        x_{n + 1} &= \frac{1}{2}x_{n} + 1\\
+    \end{align*}
+
+    Then $x_{n + 2} = \frac{1}{2}x_{n + 1} + 1 \ge \frac{1}{2} x_n + 1 = x_{n + 1}$ or $x_{n + 2} \ge x_{n + 1}$ which means  $n + 1 \in S$. So by induction we have  $S = N$ and  $x_{n + 1} \ge x_n, \forall n \in \N$
+\end{eg}
+
+
+\pagebreak
+\section{Real Numbers}
+Number systems,
+\begin{enumerate}
+    \item Natural numbers $\N$
+
+        $1,2,3, \dots$
+
+        Can't do subtraction
+    \item Integers  $\Z$
+
+         $\dots, -3, -2, -1, 0, 1, 2, 3 \dots$ 
+
+
+         Can't do division
+
+     \item Rationals $\R$
+
+         \{$\frac{p}{q}$ where $p,q \in \Z$ but  $q \ne 0$\}
+
+    Now we have $\N \subseteq \Z \subseteq \R$
+
+    But other numbers are still not captured, 
+
+
+\begin{eg}
+    $\sqrt{2}$ is not defined in  $\R$.
+    However if we  define $x_1 = 2$, $x_{n + 1} = \frac{1}{2}(x_n + \frac{2}{x_n})$. We know $x_{n + 1} \in \R, \forall n \in \N$ (we can then show that $x_n \to \sqrt{2}$).
+\end{eg}
+
+
+\begin{theorem}
+    $\sqrt{2}$ is not rational
+\end{theorem}
+\begin{proof}
+    Argue by contradiction
+\end{proof}
+
+\item Real numbers $\R$
+
+We will define $\R$ as $\Q$ with the gaps filled in.
+\end{enumerate}
+
+
+\begin{definition}[Axiom of completeness]
+    Every non-empty subset of $\R$ that is bounded above has a least upper bound called the supremum.
+\end{definition}
+Let $S \subseteq \R$ and  $S$ is bounded above. If there is  $u \in \R$ such that $s \le u, \forall s \in S$ then  $S$ is bounded above by $u$ (\textit{Similar for bounded below})
+
+\begin{definition}[Least upper bound or supremum]
+    We say $u \in \R$ is the least upper bound for  $S$ if, 
+    
+    \begin{enumerate}
+        \item If $u$ is an upper bound for  $S$
+        \item  $u \le v$ for any other upperbound  $v$ of  $S$.
+    \end{enumerate}
+\end{definition}
+\textit{Similar for greatest lower bound or infimum}

@@ -1,0 +1,106 @@
+\section{Prime Numbers}
+
+\begin{definition}[Prime Numbers]
+    Let $p \in \Z$ with  $p > 1$. Then $p$ is prime if and only if the only positive divisors of  $p$ are  $1 $ and itself. If $n \in \Z$ and  $n > 1$, if  $n$ is not prime then $n$ is composite.
+\end{definition}
+\begin{note}
+    1 is neither prime nor composite.
+\end{note}
+\begin{eg}
+    2, 3, 5, 7, 11, 13, 17, 23, 29, 31, 37, 41, 43, 47
+\end{eg}
+\begin{lemma}
+    Every integer greater than 1 has a prime divisor
+\end{lemma}
+\begin{proof}
+    Assume this is not true and by the well ordering principle  there exists a least number $n$ that does not have a prime divisor. Note $n | n$ so n can't be prime so assume $n$ is composite then that means  $n = ab$ for some  $1 < a,b < n$. However,  $n$ is the least integer that doesn't have a prime divisor. Which means that both  $a,b$ have prime divisors which also means that  $n$ has a prime divisor. This contradicts our assumption and therefore every integer $n > 1$ has a prime divisor.
+\end{proof}
+\begin{note}
+    Well ordering principle sates that every non-empty subset of the positive integers has a least element.
+\end{note}
+
+\begin{theorem}
+    There are infinitely many primes.
+\end{theorem}
+\begin{proof}
+    Assume not true and let $p_1,\dots,p_n$ be the finite primes. Now consider $N = p_1p_1\dots p_n + 1$, this must be composite by assumption.  Now using Lemma 1.5 this means that $N$ has some prime divisor $p_i$. This means that  $p_i | N$. We also know  $p_i | p_1p_2\dots,p_n$. This means $p_i | N - p_1,\dots, p_n$ or $p_i | 1$ which is false. Hence, by contradiction our assumption is wrong and there are infinitely many primes.
+\end{proof}
+\begin{note}
+    Try to modify the proof and construct infinitely many problematic $N$. 
+\end{note}
+\begin{prop}
+    If $n$ is composite,  the $n$ has prime divisor that is less than or equal to $\sqrt{n}$
+\end{prop}
+\begin{proof}
+    Consider  $n = ab$ where  $1 < a,b < n$. now, without loss of generality choose  $b$ such that  $b \ge a$. now we show that $a \le \sqrt{n}$. Suppose to the contrary  $a > \sqrt{n}$. Then we have $n = ab \ge a^2 > n$. Which is not true. Hence we have $a \le \sqrt{n}$. By lemma 1.5, a has a prime divisor $p$. But  $p | a$ and  $a | n$> Since  $ p | a$ we have  $ p \le a \le \sqrt{n}$.
+\end{proof}
+
+\begin{note}
+    This means if all prime divisors  $n$ are greater than  $\sqrt{n}$ then  $n$ is prime.
+\end{note}
+
+\begin{eg}
+    To find primes less than $n$ then we can delete multiples of primes less than  $\sqrt{n}$.
+\end{eg}
+\begin{prop}
+    For any positive integer $n$, there are at least $n$ consecutive composite numbers.
+\end{prop}
+\begin{proof}
+    Consider the following set of numbers,
+    $$ \{(n + 1)! + 2, \dots , (n + 1)! + (n + 1) \} $$ 
+    Note that for any $2 \le m \le n + 1$, clearly  $m | m$ and  $m | (n + 1)!$ so we have by Proposition 1.2, $$ m | (n + 1)! + m$$
+
+     Hence every integer in the set is composite.
+\end{proof}
+
+
+\begin{note}
+    Primes can also be very close, 
+    
+    $$ (2,3), (3, 5), (5, 7) $$ 
+\end{note}
+\begin{conjecture}
+    There are infinitely many pairs of primes that differ by exactly 2.
+\end{conjecture}
+
+\begin{note}
+    Zhang (2013) showed that infintely many pairs whose diff is $\le 70,000,000$. This has been lowered to 246
+\end{note}
+\begin{note}
+    Assuming UBER strong conjectures, we can get down to 6.
+\end{note}
+
+\subsection*{Average Gaps}
+Gauss conjectured that as $x \rightarrow \infty$ the number of primes $\le x$ denoted by $\pi(x)$  goes to  $\frac{x}{\log(x)}$.
+
+Or, the "probability" that $n \le x$ is prime is  $\frac{\pi(x)}{x} \sim \frac{1}{\log(x)}$ 
+
+
+\begin{note}
+    This was proven independently in 1896
+\end{note}
+
+\begin{definition}
+    Let $x \in \R$,  $\pi(x) = |\{p: p \text{ is prime}, p \le x\}|$
+\end{definition}
+
+\begin{theorem}
+$$ \lim_{x \to \infty}  \frac{\pi(x) \log(x)}{x} = 1 $$ 
+\end{theorem}
+
+\begin{conjecture}[Goldbach's Conjecture]
+    Every even integer $\ge 4$ is the sum of two primes.
+\end{conjecture}
+
+\begin{note}
+Ternary Goldbach shows that odd number $\ge 7$ is a sum of 3 primes and is proved.
+\end{note}
+\subsection*{Mersenne and Fermats Primes}
+If $p = 2^{n} - 1$ is prime then its called a Mersenne prime.
+
+If $p = 2^{2^{n}} + 1$ is prime then its called a Fermat prime.
+
+
+Conjectures are there are infinitely many Mersenne primes and but finitely many Fermat primes.
+
+
