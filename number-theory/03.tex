@@ -1,0 +1,145 @@
+\section{Greatest Common Divisors}
+
+Given $a, b \in \Z$, not both zero, consider the following set,  
+$$ S = \{c \in \Z: c | a \text{ and } c | b\} $$ 
+
+So $S$ contains $\pm 1$ so is nonempty and also finite since at least one of  $a$ and $b$ is non-zero
+
+Thus the maximal element  of $S$ exists 
+
+\begin{definition}[GCD]
+    Let $a, b \in \Z$ with $a,b$ not both $0$. Then the \textbf{greatest common divisor} of $a$ and $b$ denoted by $(a,b)$ is the largest integer $d$ such that  $d | a$ and  $d | b$. If $(a,b) = 1$ then  $a$ and  $b$ are \textbf{relatively prime} (or co-prime).
+\end{definition}
+\begin{remark}
+    are, 
+    \begin{enumerate}
+        \item $(0, 0)$ is undefined 
+        \item $(a, b) = (-a, b) = (a, -b) = (-a, -b) = d$
+        \item $(a, 0) = |a|$
+    \end{enumerate}
+\end{remark}
+
+\begin{eg}
+    Compute $(24, 60)$. We have, 
+
+    Divisors of $24$ are  $\pm (1, 2, 3, 4, 6, 8, 12, 24)$
+
+    Divisors of $60$ are  $\pm (1, 2, 3, 4,5,  6,10, 12, 15, 20, 30, 60)$
+
+    So $(24, 60) = 12$
+\end{eg}
+
+\begin{prop}
+   Let $(a,b) = d$  then $(\frac{a}{d}, \frac{b}{d}) = 1$
+\end{prop}
+\begin{proof}
+    Let $d'  = (\frac{a}{d}, \frac{b}{d})$. Then  $d' | \frac{a}{d}$ and $d' | \frac{b}{d}$, so, there is $e, f$ such that,  
+    \begin{align*}
+        d'e = \frac{a}{d} \text{ and } d'f = \frac{b}{d}\\
+        dd'e = a \text{ and } dd'f = b
+    \end{align*}
+
+    Thus $dd' | a$ and  $dd' | b$ so  $dd'$ is a common divisor of  $a,b$. Thus  $d' = 1$ otherwise  $dd' > d$ contradicting that $(a, b) = d$.
+\end{proof}
+
+
+\begin{prop}
+    Let $a,b \in \Z$  both not zero. Let $$T = \{ma + nb : m,n \in \Z, ma + nb > 0\}$$
+
+    Then $\min T$ exists and is equal to $(a,b)$
+\end{prop}
+\begin{proof}
+    Without loss of generality let $a \ne 0$. Note that  $a = a \times 1 + b \times 0$ and $-a = a \times (-1) + b \times  0$  so we have $a \in T$ and hence  $T$ is non-empty. Now by the well ordering principle as $T$ is a non-empty set of non-negative numbers it contains a minimal element call it $d$.
+
+    Then $d = m'a + n'b$ for some  $m',n' \in \Z$. Now we show that  $d | a$ and  $d | b$. By the division algorithm we have,  
+    $$ a = dq + r, \quad \theta \le r < d $$ 
+
+    So we have 
+    \begin{align*}
+        r = a - dq &= a - (m'a + n'b) q\\
+                   &= a(1 - m'q) - n'qb
+    \end{align*}
+
+    So $r$ is an integral linear combination of $a$ and  $b$. But $d$ is the least positive integral linear combination of $a, b$ and $0 \le r <d$ so  $r $ must be  $0$. Thus  $d | a$. The argument for  $d | b$ is similar. Thus $d$ is a common divisor of $a,b$.
+
+    Suppose $c | a$ and $c | b$ then,  
+    $$ c | ma + nb \text{ and in particular } c | d  $$ 
+
+
+    Which means $c$ is a divisor of $d$ and hence  $c \le d$. Thus  $d = (a, b)$
+\end{proof}
+\begin{note}
+    If $(a, b) = d$ then  $d = ma + nb$ for some  $m, n \in \Z$. If  $d = 1$ the converse is true. If, 
+    $$ 1 = ma + nb  \text{ and } d | a, d | b, $$  then, $d | 1$ so $d = 1$
+\end{note}
+
+\begin{remark}
+    Along the way, we showed that any common divisor of $a,b$ divides $(a, b)$.
+\end{remark}
+
+
+\begin{definition}
+    Let $a, \dots, a_n \in \Z$ with at least one nonzero. The greatest common divisor of $a_1, \dots, a_n$ denoted $(a_1, \dots, a_n)$, is the largest integer $d$ such that $d | a_1, \dots, d | a_n$. If $(a_1, \dots, a_n) = 1 $ the integers $a_1, \dots, a_n$ are relatively prime and if $(a_i, a_j) = 1$ for  $i \ne j$  then they are pairwise relatively prime. 
+\end{definition}
+
+\begin{note}
+    Pairwise implies relatively prime but the converse is not true.
+\end{note}
+
+
+\subsection*{Euclidean Algorithm} 
+\begin{lemma}
+   If $a, b \in \Z, a \ge b > 0$ and $a = bq + r$ with  $q,r \in \Z$. Then  $(a, b) = (b, r)$.
+\end{lemma}
+\begin{proof}
+    It suffices to show that the two sets of common divisors of $a,b$ and  $b,r$ are the same.
+
+    Denote by $S_1$ and $S_2$ the two sets, respectively. Let $c \in S_1$ which means that $c | a$ and $c | b$. But we have  $r = a - bq$ which means that  $c | r$ and hence  $c \in S_2$ which means that $S_1 \subseteq S_2$.
+
+    Now let $c \in S_2$ so $c | r$ and  $c | b$. As  $a = bq + r$ we have  $c | a$ so $c \in S_1$ and hence $S_1 \subseteq S_2$ and $S_1 = S_2$. Thus $\max S_1 =\max S_2 \implies (a, b) = (r, b)$.
+\end{proof}
+
+\begin{eg}
+    Calculate $(803, 154)$. 
+
+    We have,  $ 803 = 154 * 5 +  33 $ so, 
+
+    \begin{align*}
+        (803, 154) = (33, 154)\\
+        (154, 33) = (33, 22)\\
+        (33, 22) = (22, 11)\\
+        (22, 11) = (11, 0)
+    \end{align*}
+\end{eg}
+\begin{theorem}
+   Let $a, b \in \Z, a \ge b > 0$. By the division algorithm, there exists $q_1, r_1 \in \Z$  such that, 
+   $$ a  = q_1b + r_1, \quad  0\le r_1 < b $$ 
+   Then again by the division algorithm there is $q_2, r_2 \in \Z$  such that, 
+   $$ b = q_2r_1 + r_2, \quad 0 \le r_2 \le r_1$$ 
+
+   And again, $$r_1 = q_3r_2 + r_3, 0 \le r_3 < r_2$$ and so on.
+
+   Then $r_n = 0$ for some  $n \ge 1$ and $(a, b) = b$ if  $n = 1$and  $r_{n - 1}$ if  $n > 1$
+\end{theorem}
+
+
+\begin{proof} 
+    Note $r_1, > r_2 > \dots$ if $r_n \ne 0$ for all  $n \ge 1$, then this is a strictly decreasing infinite sequence of positive integers which is not possible. Thus  $r_n  = 0$ for some $n$. If $n > 1, $ repeatedly apply Lemma 1.12 to get, 
+    $$ (a, b) = (r_1, b) = (r_1, r_2) = \dots = (r_{n - 1}, 0)  = r_{n - 1}$$ 
+\end{proof}
+
+\begin{eg}
+    By reversing this process we can write $(a, b)$ as an integral linear combination of  $a, b$. We had, $(803, 154) = 11$. By reversing we have, 
+    \begin{align*}
+        11 &= 33 - 1 \times  22 = 33 - \times (154 - 33 \times 4)\\
+           &= 33 \times  5 - 154 = 5 \times  (803 - 154 \times  5) - 154\\
+           &= 5 \times  803 - 154 \times  26
+    \end{align*}
+\end{eg}
+\begin{note}
+    This is \textbf{not} unique
+\end{note}
+
+
+
+

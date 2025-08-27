@@ -1,0 +1,19 @@
+\section{The fundamental Theorem of Arithmetic}
+\begin{lemma}[Euclid]
+Let $a, b  \in \Z$  and let  $p$ be a prime number. If $ p | ab$ then show that  $p | a$ or  $p | b$.
+\end{lemma}
+\begin{proof}
+    If $p | a$ then we're done, so assume that  $ p \not | a$. So that means that  $(p, a) = 1$ which means there is some $m,n \in \Z$ such that,
+    $$ am + pn = 1 $$ 
+
+    Now $p | ab$ so exists  $c \in \Z$ such that  $pc = ab$, so we have, 
+     \begin{align*}
+         am + pn &= 1\\
+         amb + pnb &= b\\
+         pmc + pnb &= b\\
+         p(mc + nb) &= b\\
+         p(k) &= b\\
+    \end{align*}
+    Where $k = mc + nb$. So we showed that  $pk = b$ which implies that  $ p | b$. So we got either  $p | a$ or  $p | b$.
+\end{proof}
+

@@ -1,0 +1,121 @@
+\begin{eg}
+    $S = \{1, \frac{1}{2}, \frac{1}{3}, \dots\}$ where $S \subseteq R$ and  $S \ne \phi$. Here $S$ is bounded above by  $1.1,1.2, 2,3,4,\dots$
+
+    By AoC, $\sup S$ exists (in this case is 1). Similarly $S$ is bounded below as well and can also be shown that $\inf S = 0$
+\end{eg}
+
+\begin{note}
+    Here, $1 \in S$ but  $0 \not \in S$. So  $\sup $ or  $\inf$ may or may not be in the set.
+\end{note}
+
+\begin{definition}
+    $S \subseteq \R$ then we say a real numbers  $m \in S$ is a maximum if $\forall s \in S$ we have  $$s \le m$$
+\end{definition}
+\textit{Similar for minimum}
+\begin{note}
+    Following are true,
+
+    \begin{enumerate}
+        \item $m \in S$
+        \item $m$ might not exist, consider, 
+            $$ S = [0, 1) $$ 
+This does not have a maximum element but $\sup S = 1$
+
+It does have a minimum element which is also equal to the infinium, $\inf S = 0$ 
+    \end{enumerate}
+\end{note}
+
+
+\begin{note}
+    Following are true of AoC,
+
+    \begin{enumerate}
+        \item AoC doesn't hold for $\Q$
+        \item AoC will be basic to take limits.
+    \end{enumerate}
+\end{note}
+\begin{eg}
+    Consider $ \phi \ne A \subseteq R$, and is bounded above. Let  $c \in \R$. Define  
+    $$ A + c = \{a + c, a \in A\} $$ 
+
+    We show that $\sup(A)  + c= \sup(A + c) $
+\end{eg}
+\begin{proof}
+    Denote $s = \sup A$, so we have  $s \ge a, \forall a \in A$.  
+
+    1. To show $s + c$ is an upperbound. Above definition gives us,  $s + c \ge a + c, \forall a \in A$. By definition we have  $s + c$ is an upperbound of  $A + c$. 
+
+    2. To show $s + c$ is the smallest upperbound of  $A + c$. Let $b$ be an arbitrary upper bound of $A + c$. So  $ a + c \le b, \forall a \in A$. Therefore $a \le b - c, \forall a \in A$ where  $b - c$ is an upperbound of  $A$. But $s$ is the least upper bound which means that $s \le b - c$ or that  $s + c \le b$. So we showed that  $b$ must be greater than or equal to $s + c$. Hence, $s + c$ is the least upper bound.
+    So  $s + c = \sup(A + c)$
+\end{proof}
+
+\begin{lemma}
+    Assume $s \in \R$ is an upperbound for a set  $A \subseteq R$ and  $A \ne \phi$. Then $s = \sup(A)$ if and only if  $\forall \epsilon, \exists a \in A, s.t \: a > s -\epsilon$
+\end{lemma}
+\begin{proof}
+    $(1) \implies (2)$
+
+    Assume  $s = \sup(A)$, given  $\epsilon > 0$ we have  $s - \epsilon < a$. So  $s - \epsilon$ cannot be an upper bound of  $A$. This means that $\exists a \in A$ such that  $a > s - \epsilon$.
+
+     $(2) \implies (1)$
+
+     We have $s$ such that $ s - \epsilon < a$ for some  $a \in A$ and $\forall \epsilon$. We need to show that $s$ is the least upperbound. Let $b$ be an arbitrary upperbound. Suppose $b < s$ so we have $\epsilon = s - b > 0$ and  $b = s - \epsilon$ however we have some $a \in A$ such that $a > s - \epsilon = b$ so  $a > b$ which makes $b$ not an upperbound and hence breaks our assumption. So $s \le b$
+\end{proof}
+
+
+\section{Consequences of Completeness}
+\begin{theorem}[Nested Interval property]
+    For any $n \in \N$, assume that we are given interval  $I_n = [a_n, b_n] = \{x \in \R | a_n \le x \le b_n\}$  where $a_n \le b_n$
+
+    Assume that  $I_n \supseteq I_{n + 1}, \forall n \in \N$ such that,
+    $$ \dots I_3 \subseteq I_2 \subseteq I_1  $$ 
+
+    Then, 
+    $$ \bigcap_{n = 1}^{\infty} I_n \ne \phi $$ 
+\end{theorem}
+\begin{note}
+    This means that for any $I_n, I_{n'}$ we have either  $I_n \subseteq I_{n'}$ or $I_{n'} \subseteq I_{n}$
+\end{note}
+\begin{proof}
+    Take $A = \{a_n, n \in N\}$  we have  $A \ne \phi$ and  $A \subseteq \R$. A is bounded above as we have  $a_1 \le a_2 \dots a_n \le \dots$ and $b_1 \ge b_2 \dots \ b_n \ge \dots$
+
+    So for every $n$, $a_n \le b_n \le b_1$. So $b_1$ is an upperbound for $A$. By AoC we have  $\sup(A) = x \in \R$ exist.
+
+    Now we show that $x \in I_n, \forall n$.
+
+    Note that  $\forall n, b_n $ is an upper bound for  $A$.
+
+     $\forall m \in \N, a_m \in A$ and if,
+
+     $m \ge n$ then  $a_m \le b_m \le b_n$  
+
+     $m < n$ then  $a_m \le a_n < b_n$
+
+
+     As $\sup A = x$ then we have  $x \le b_n$ and as  $x$ is an upperbound of $A$ we have, $a_n \le x$ for all  $n \in N$. So  $x \in I_n$ hence proving the above statement. 
+\end{proof}
+
+\section{Density of $\Q$ in $\R$}
+
+\begin{theorem}[Archimedean properties]
+    The following are true,
+    \begin{enumerate}
+        \item Given any $x \in \R$, there exists  $n \in \N$ such that  $n > x$
+        \item Given any $y \in \R, y > 0$,  $\exists n \in \N$ s..t  $y > \frac{1}{n}$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    (2) folows by (1) by setting $x = \frac{1}{y}$.
+
+
+    For (1) lets assume that there is no $n$ for some $x \in \R$ that satisfies the condition. So  $\exists x_0 \in \R$ such that $\forall n \in \N$,  $n \le x_0$. So $N$ is bounded above by $x_0$. So by $AoC$ let  $\alpha = \sup N$. Now,  $\alpha - 1$ is not an upperbound for  $\N$. So  $\exists n_0 \in \N$ such that $ n > \alpha - 1$. So  $\alpha < n_0 + 1 \in \N$. This is a contradiction, so $(1)$ holds.
+\end{proof}
+
+
+\begin{theorem}
+    $\forall a, b \in R$ (a < b),  $\exists r \in \Q$ such that  $a < r < b$.
+\end{theorem}
+
+
+
+

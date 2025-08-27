@@ -1,0 +1,131 @@
+\section{Probability}
+\begin{definition}[Axiomatic definition of Probability]
+A probability is a function  $\mathbb{P}: F \rightarrow [0, 1]$ with the following probabilities, We want the following properties, 
+    \begin{enumerate}
+        \item $\mathbb{P}(A) \ge 0$
+        \item  $\mathbb{P}(\Omega) = 1$ and  $\mathbb{P}(\phi) = 0$
+        
+
+        \item If $A$ \& $B$ are events, they are mutually exclusive if  $A \cup B = \phi$ so it should have, 
+        $$ \P(A \cup B) = \P(A)  + \P(B) $$ 
+        If $A_i$ for  $i = 1,2,3,\dots$ are events with  $A_i \cap A_j$ where  $i \ne j$ then,  
+            $$ \P(\bigcup_{i = 1}^{\infty} A_i)  = \sum_{i=1}^{\infty} \P(A_i)$$
+
+    \end{enumerate}
+\end{definition}
+
+
+\begin{eg}
+    (a). For the die, we have $\P(\{i\})$ for  $i \in \{1,\dots, 6\}$. So if $\Omega$ is finite, then the probability is completely defined by $\P(\omega)$ for  $\omega \in \Omega$, here $\{\omega\}$ is called in atomic event. If $A$ is an event then we have, 
+    $$ \P(A) = \sum_{\omega\in A} \P(w)$$ 
+
+
+    In particular, $\P$ is called uniform if, 
+    $$ \P(\omega) = \frac{1}{|\Omega|} $$ 
+
+    (b). Coin flip. 
+
+    We have our sample space as $\N$. First, let's say that $\P(H) = p$ and  $\P(T) = q = 1- p$. Let $x$ be the number of flips to get first head and $x \in \N$.
+
+     \begin{align*}
+         P(1) &= p \\
+         P(2) &= (1 - p) p \\
+              &\dots\\
+         P(n) &= (1 - p)^{n - 1} p \\
+     \end{align*}
+
+     We have,
+     \begin{align*}
+         \sum_{n=1}^{\infty} (1 - p)^{n - 1} p &= p \sum_{m=0}^{\infty} (1 - p)^{m}\\
+                                               &= p \frac{1}{1 - (1 - p)} = \frac{p}{p}\\
+                                               &= 1
+     \end{align*}
+     \begin{note}
+         This is true, $\sum_{n=0}^{\infty} x^{n} = \frac{1}{1 - x}$ if $|x| < 1$
+     \end{note}
+
+
+     So we have $\P(A) = \sum_{n \in A} \P(n)$
+
+
+     (c). Consider $[A, B] \subset R$, if we take,  $(x, y) \subset [A, B]$ so we have,  
+     $$ \P([x, y]) = k(y - x) $$ 
+     and 
+     $$ \P([A, B])  = 1$$ 
+
+     this means that $k = \frac{1}{B - A}$  so, 
+     $$ \P([x, y])= \frac{y - x}{B - A} $$ 
+
+
+
+
+\end{eg}
+\begin{definition}[Probability Space]
+     The probability space is defined by $(\Omega, \mathbb{F}, \P)$ where  $\Omega$ is a sample space,  $\mathbb{F}$ is a family of events and  $\P$ is a probability on  $\mathbb{F}$
+ \end{definition}
+
+ Some consequence are,
+
+ 1. $\Omega = A \cup A^{c}$  and $A \cap A^{c} = \phi$. So, 
+ $$ \P(\Omega) = 1 = \P(A)   + \P(A^{c}) $$  which gives us, 
+ $$ \P(A^{c}) = 1 - \P(A) $$ 
+
+
+ 2. As $\phi = \Omega^{c} \implies $ if $\P(\Omega) = 1 \implies \P(\phi) = 0$
+
+
+ 3. Given  $A, B$ as events,  
+ $$ \P(A \cup B) = \P(A) + \P(B) - \P(A \cap B) $$ 
+
+ \begin{proof}
+     We know that $A = A \setminus B \cup (A \cap B)$ and  $B = B \setminus A \cup (A \cap B)$
+
+     
+     \begin{align*}
+         \P(A) &= \P(A \setminus B) + \P(A \cap B)\\
+         \P(B) &= \P(B \setminus A) + \P(A \cap B)\\
+     \end{align*}
+
+     We can write,
+     $$ A\cup B = (A \setminus B) \cup (B \setminus A) \cup ( A \cap B)  $$ 
+
+     This gives us, 
+     $$ \P(A \cup B)= \P(A \setminus B) + \P(B \setminus A) + \P(A \cap B) $$ 
+
+     So get, 
+     $$ \P(A) + \P(B) = \P(A \cup B) + \P(A \cap B) $$ 
+ \end{proof}
+
+
+
+
+\section{Conditional Probability}
+Given $A, B$ what is the probability of $B$ if I know that  $A$ happened?
+\begin{theorem}
+    Given $B$ with $\P(B) > 0$ let $\mathbb{Q}(A) = \P(A | B)$. $\mathbb{Q}$ is a probability.
+\end{theorem}
+\begin{proof}
+
+    1. $\Q(A) = \frac{\P(A \cap B)}{\P(B)} \ge 0$ so $\Q(A) \ge 0$
+
+    2. $\Q(\omega) = \frac{\P(\Omega \cap B)}{\P(B)} = \frac{\P(B)}{\P(B)} = 1$ 
+
+    3.
+    \begin{align*}
+        \Q(\bigcup_{i = 1}^{\infty} A_i) &= \frac{\P((\bigcup_{i = 1}^{\infty} A_i) \cap B)}{\P(B)}\\
+                             &= \frac{\P((\bigcup_{i = 1}^{\infty} A_i \cap B) )}{\P(B)}\\
+                             &= \frac{\sum_{i=1}^{\infty} \P(A_i \cap B)}{\P(B)}
+    \end{align*}
+
+
+
+    
+\end{proof}
+
+$\P(A | B) = \P(A)$ then  $A$ is independent from  $B$, this implies that, $\P(A \cap B) = \P(A) \P(B)  \implies \P(B | A) = \P(B)$
+\begin{definition}
+    $A$ and $B$ are independent if $\P(A \cap B) = \P(A) \P(B)$
+\end{definition}
+
+
+

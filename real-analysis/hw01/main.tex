@@ -1,0 +1,95 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Real Analysis: HW1}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+    
+
+
+
+\section*{Exercise 1.2.2}
+
+We need to show that there is no rational number $r$ satisfying $2^{r} = 3$. Let's assume on the contrary that there exists a rational number $r = \frac{p}{q}$ where $p,q \in \Z$ are coprime and $q > 0$. So we have,  
+ 
+\begin{align*}
+    2^{p /q} = 3\\
+    2^{p} = 3^{q}
+\end{align*}
+
+Here the right hand side is $3^{q}$ and $q > 0$ so it's a positive integer. This also means that the left hand side must be positive which implies that $p \ge 0$. Now we see that  $2^{p}$ has only $2$ as a prime factor and $3^{q}$ has only $3$ as its prime factor. So the only solution to this equation is if bothsides are equal to 1 which is when $p,q = 0$. But this contradicts our assumption that $q > 0$. Hence our assumption must be wrong and there is no  rational number $r$ that satisfies the equation.
+\section*{Exercise 1.3.3}
+(a). We have, $A$ is nonempty and bounded below and $B = \{b \in \R: b \text{ is a lower bound for } A\}$. We need to show that  $\sup B = \inf A$.
+
+As $A$ is bounded below there exists a infimum say $\inf A = x$. Now as $x$ is the greatest lowerbound we have  $x \ge b, \forall b \in B$. This means that $x$ is an upper bound for $B$. We need to now show that $ x$ is the smallest upperbound for $B$. Consider for instance there exists an upperbound $y$ such that $ b \le y < x$.  As $y < x$ this means that  $y \le a, \forall a \in A$, this means that  $y \in B$ as y is a lowerbound for  $A$. So we have $y \ge x$ as  $x \in B$ and $x \ge y$ as  $y \in B$ which means that  $x = y$, a contradiction as we assumes $y < x $. Implies that there is no  $y < x$ which means that  $x$ is the smallest upperbound of  $B$.
+
+\section*{Exercise 1.3.8}
+
+(a) We have $\{m/n: m,n \in \N \text{ with } m < n\}$. Here suprema is $1$ and  infima is 0.
+
+(b) $\{(-1)^{m} /n : m, n \in \N\}$. Here suprema is 1 and infima is -1.
+
+(c) $\{n / (3n + 1): n \in \Z)$. Here when $n = 1$  and $-1$ we have minimum and maximum value which is  $\frac{-1}{2}$  and $\frac{1}{2}$ which are the infima and suprema respectively.
+
+(d) $\{m / (m + n): m,n \in \Z\}$. Here suprema and infima don't exist as we can make it arbitrarily large and small.
+
+\section*{Exercise 1.4.1}
+(a) Given $a, b \in \Q$. We need to show that  $ab $ and  $a + b$ in  $\Q$ as well. 
+
+If  $a, b \in \Q$ then we  have  $a = \frac{p_1}{q_1}, p_1,q_1 \in \Z, q_1 > 0$ and $b = \frac{p_2}{q_2}, p_2,q_2 \in  \Z, q_2 > 0$. So we have,
+
+
+\begin{align*}f
+    ab &= \frac{p_1}{q_1} \cdot \frac{p_2}{q_2}\\
+    &= \frac{p_1p_2}{q_1q_2}
+\end{align*}
+
+Now as $p_1,p_2 \in \Z $ it must mean that $p_1p_2 \in \Z$. And as $q_1,q_2 \in \Z$ and $> 0$ we have $q_1q_2 > 0$. Hence we showed that $ab = \frac{p_3}{q_3}$ where $p_3 = p_1p_2$  and $q_3 = q_1q_2$ such that $p_3,q_3 \in \Z$ and $q_3 > 0$.
+
+Now for $a + b$ we have, 
+\begin{align*}
+    a + b &= \frac{p_1}{q_1}  + \frac{p_2}{q_2}\\
+          &= \frac{p_1q_2 + p_2q_1}{q_1q_2}
+\end{align*}
+
+Similar to above we have $p_3 = p_1q_2 + p_2q_1$ and  we know that a linear combination of integers is also an integer so $p_3 \in \Z$. WE also have $q_3 = q_1q_2$ and as both $q_1,q_2 > 0$ we have $q_3 = q_1q_2 > 0$ . So we are able to write $a + b = \frac{p_3}{q_3}$ where $p_3,q_3 \in \Z$ and $q_3 > 0$.
+
+
+(b) We have $a \in Q$ and  $t \in I$ we need to show that $a + t \in I$ and $at \in I$ given $a \ne 0$.
+
+Consider to the contrary that $a + t \not \in I$. This means that $a + t$ is of form $\frac{p}{q}$ where $p,q \in \Z$ and $ q > 0$. So we have, 
+\begin{align*}
+    a + t &= \frac{p}{q} \\
+    t &= \frac{p}{q}  + (-a)
+\end{align*}
+
+As per (a) we know that the sum of two rationals is also rational. This implies that $\frac{p}{q} + (-a)$ is rational which implies that $t$ is rational. But this is a contradiction as we know that $t \in I$. Hence our assumption must be wrong and  $a + t \in I$.
+
+Now consider that $at \not \in I \implies at \in \Q$. So we have  $at = \frac{p}{q}$ for $p,q \in \Z$ and $q > 0$. So,
+\begin{align*}
+    at &= \frac{p}{q}\\
+    t &= \frac{p}{q} \cdot \frac{1}{a} \text{ which is defined as $a \ne 0$}
+\end{align*}
+
+We know from above that product of two rationals is also rational which means that $\frac{p}{q} \cdot \frac{1}{a}$ is rational or that $t$ is rational. A contradiction as we know that  $t  \in I$ so our assumption must be wrong and $at \in I$.
+
+
+(c) No, $I$ is not closed under addition and multiplication. For instance, consider the following example  where $a = \sqrt{2} + 1$ and  $b = 1 - \sqrt{2}$. We have  $a + b = 2$. Here $a,b \in I$ but  $a + b = 2 \in \Q$ which shows that it is not closed under addition. Now consider  $ab = (1 + \sqrt{2})(1 - \sqrt{2}) = 1^2 - \sqrt{2}^2 = -1 \in \Q$. So here we have $a,b \in I$ but  $ab \in \Q$ which shows that irrationals are not closed under multiplication either.
+
+
+
+\section*{Exercise 1.4.4}
+
+We have $a < b $ where  $a,b \in \R$ and  $T = Q \cap [a,b] = \{x: x \in \Q \text{ and } x \in [a, b]\}$. We need to show that $\sup T = b$. We have to show two things that $b $ is an upper bound and  $b$ is the smallest upper bound. Now we know that  $\forall x \in [a, b]$ that  $x \le b$ by definition of the closed interval. And as all $x \in T$ we have  $x \in [a,b]$ this means that  $\forall x \in T$ we have $x \le b$. This makes  $b$ an upper bound for $T$.
+
+
+\vspace{1em} 
+
+We now have two cases, either $b \in \Q$ or  $b \not \in \Q$. If  $b \in \Q$ then we have  $ b \ge x, \forall x \in T$ and  $b \in T$ which makes  $b$ the supremum as if any other strictly smaller upper bound than $b$ exists then it's not a lower bound anymore as $b \in T$ would be greater than it. 
+
+
+Now consider the case where $b \not \in \Q$. Let us assume to the contrary that  $ b$ is not the smallest upperbound and  there exists some $q < b$ such that $q \ge x,  \forall x \in T$. However, as $q, b \in \R$ we know that there must exist some $a \in \Q$ such that  $q < a < b$ because of the density of the rationals in reals.  Now as $a < b, \in [a,b]$ and  $a \in \Q$ so we have  $a \in T$. So we showed that there is some  $a \in T$ such that  $q < a$ thus making  $q$ not an upperbound anymore. So our assumption that $q < b$ where $ q \ge x, \forall x \in T$ exists is wrong which must mean that $b$ is the smallest upper bound. Hence, $b$ is the suprema of $T$.
+
+
+\end{document}

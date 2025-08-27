@@ -35,6 +35,19 @@
 \let\iff\Leftrightarrow
 \let\epsilon\varepsilon
 
+\usepackage[most]{tcolorbox}
+
+% Define a scratchwork environment
+\newtcolorbox{swork}[1][5cm]{%
+  enhanced,
+  breakable,
+  colback=white,
+  colframe=black,
+  width=\linewidth,
+  height=#1,
+  valign=top,
+}
+
 % horizontal rule
 \newcommand\hr{
     \noindent\rule[0.5ex]{\linewidth}{0.5pt}
@@ -60,11 +73,13 @@
 \declaretheoremstyle[headfont=\bfseries\sffamily, bodyfont=\normalfont, numbered=no, mdframed={ nobreak, rightline=false, topline=false, bottomline=false } ]{thmexplanationbox}
 
 
-\declaretheorem[numberwithin=chapter, style=thmgreenbox, name=Definition]{definition}
-\declaretheorem[sibling=definition, style=thmredbox, name=Corollary]{corollary}
-\declaretheorem[sibling=definition, style=thmredbox, name=Proposition]{prop}
-\declaretheorem[sibling=definition, style=thmredbox, name=Theorem]{theorem}
-\declaretheorem[sibling=definition, style=thmredbox, name=Lemma]{lemma}
+% \declaretheorem[numberwithin=chapter, style=thmgreenbox, name=Definition]{definition}
+\declaretheorem[numbered=no, style=thmgreenbox, name=Definition]{definition}
+\declaretheorem[numbered=no, style=thmgreenbox, name=Conjecture]{conjecture}
+\declaretheorem[numberwithin=chapter, style=thmgreenbox, name=Theorem]{theorem}
+\declaretheorem[sibling=theorem, style=thmredbox, name=Corollary]{corollary}
+\declaretheorem[sibling=theorem, style=thmredbox, name=Proposition]{prop}
+\declaretheorem[sibling=theorem, style=thmredbox, name=Lemma]{lemma}
 
 
 

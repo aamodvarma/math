@@ -1,0 +1,151 @@
+\begin{proof}
+    It suffices to find $m,n \in Z$ such that, 
+    \begin{align*}
+    a < \frac{m}{n} < b
+    \end{align*}
+
+
+    Step 1: find $n$.
+
+    Note that   $ b - a > 0$  and  $b -a \in R$. By (2) we have  $n$ s.t.  $b - a > \frac{1}{n}$. Now fix such an $n$. 
+
+    Step 2. find  $m$ for the fixed $n$.
+
+    % We take  $m$ to be the smallest integer $m > na$
+
+    Without loss of generality take  $na > 0$ and by (1), $m_0 \in \N$ s.t. $M_0 > na$. Then consider a finite set $\{0, 1, \dots, M_0\}$. Now take  $k$ in this set and compare with $na$. Take  $m$ to be the smallest one such that $m > na$.
+
+    So we have  $ m > na \ge m - 1$
+
+    Step 3: Check if  $m, n$ work, 
+
+    We have, 
+    \begin{align*}
+        m > na \ge m  -1 \\
+        \frac{m}{n} > a \text{ and } \frac{m}{n} \le a + \frac{1}{n}\\
+    \end{align*}
+
+
+    But we have $b - a > \frac{1}{n}$ so $b > a + \frac{1}{n}$ which gives us, 
+    $$ a < \frac{m}{n} \le a + \frac{1}{n} < b $$ 
+
+
+\end{proof}
+
+
+\begin{theorem}
+    $\exists s \in R$ such that $s^2  = 2$
+\end{theorem}
+\begin{proof}
+    Let $A = \{x > 0, x \in \R, s.t. x^2 < 2\}$. Clearly $A \subseteq \R$ and is nonempty. We have $A$ is bounded above as $2$ is an upper bound.
+ 
+    By AoC $\sup A \in \R$  exists and set  $s = \sup A$. Claim  $s^2 = 2$.  
+
+    Now we will prove this by contradiction by showing it cannot be the case that $s^2 < 2 $ or $s^2 > 2$. 
+
+    Now assume that $s^2 < 2$ and let $0 < \delta = 2 - s^2$. We will show that there is some $\epsilon > 0$ such that  $(s + \epsilon)^2 < 2$ (i.e. $s$ cannot be a supremum)
+    \begin{swork}[10cm]
+        Scratchwork
+
+        We want to find $\epsilon$ to satisfy the  $(s + \epsilon)^2 < 2$, for this we work backwards.
+
+        \begin{align*}
+            (s + \epsilon)^2 &< 2\\
+            s^2 + \epsilon^2 + 2s\epsilon &< 2
+        \end{align*}
+
+        We have $s < s^2 < 2$ (as $s$ is definitely greater than $1$). So $2s < 4$ to get,  
+        \begin{align*}
+            s^2 + \epsilon^2 + 2s\epsilon <  s^2 + \epsilon^2 + 4\epsilon  &< 2\\
+        \end{align*}
+
+        Now let's assume that $\epsilon < 1$ as if  $\epislon \ge 1$ works then trivially  $\epsilon < 1$ works as well. So we have  $\epsilon^2 < \epsilon$ so, 
+        \begin{align*}
+            s^2 + 5\epsilon &< 2    \\
+                            5\epsilon &< 2 - s^2\\
+                            \epsilon &< \frac{\delta}{5}
+        \end{align*}
+
+        Now we can take $\epsilon = \min \{\frac{\delta}{10}, 1\}$.
+    \end{swork}
+
+
+    If we take $\epsilon = \min \{ 1, \frac{\delta}{10}\}$  then we have, 
+    \begin{align*}
+        (s + \epsilon)^2 &= s^2 + \epsilon^2 + 2s\epsilon\\
+        (s + \epsilon)^2  &\le s^2 +   \epsilon^2 + 2s\epsilon  \le s^2 + \delta < 2
+    \end{align*}
+
+
+\end{proof}
+
+\begin{ex}
+   Show $s^2 > 2$  is impossible. We similarly show that we can find an $\epsilon$ such that  $(s - \epsilon)^2 > 2$
+\end{ex}
+
+
+
+
+\section{Cardinality} 
+
+\begin{definition}
+    % [Countability]
+    We say that two  sets  $A$ and $B$ have the same cardinality if there is a bijective function  $f: A \to B$  . We write $A \sim B$
+\end{definition}
+\begin{remark}
+    Types,
+    \begin{enumerate}
+        \item  We say $A$ is finite if $A \sim \{1, 2, \dots, n\} $ for some $n \in N$
+        \item We say $A$ is countable  (countably infinite) then $A \sim N$
+        \item An infinite set that is not countable is called unountable.
+    \end{enumerate}
+\end{remark}
+
+\begin{eg}
+$E = \{2, 4, \dots\}$, we show $E \sim N$.
+
+Take  $f : N  \to E$ defined as  $f(n) =2n $.
+\end{eg}
+\begin{eg}
+ $N \sim Z$
+
+    Take $f: N \rightarrow Z$ s.t.  $f(n) = \frac{n - 1}{2} $ if $n$ is odd else $-\frac{n}{2}$.
+\end{eg}
+\begin{eg}
+    $(-1, 1) \sim \R$  
+
+    Take $f(x) = \frac{x}{x^2 - 1}$
+\end{eg}
+
+\begin{theorem}
+    Following are true,
+    \begin{enumerate}
+        \item $\Q$ is countable
+        \item $\R$ is uncountable
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    For $\Q$ define  $A_1 = \{0\}$ and $$A_n = \{\pm \frac{p}{q}: p + q = n, p, q \in \N \text{ and } p,q \text{ coprime}\}$$
+
+
+    Note that $A_n$ is finite and $\forall x \in \Q$ we can find a unique  $n \in \N$ s.t. $x \in A_n$
+
+    Now map elements of $A_0, A_1, \dots$ iterative with $1, 2, 3, \dots$. So by construction, any element from $A_n$ will be listed. So there is a bijection between $\Q$ and  $\N$ since  $\Q = \bigcup_{n - 1}^{\infty} A_n$ and $A_n$'s are disjoint, so  $\Q \sim \N$
+
+
+    Now we show the reals are not countable. Assume that $\R$ is countable and suppose there is a bijective funciton $f: \N \to \R$. Let  $x_1 = f(1), x_2= f(2), \dots$
+
+    Then $\R = \{x_1, x_2, \dots,\} $. Let $I$ be a closed interval  $I_1 \subseteq \R$ s.t. $x_1 \not \in I_1$ and similarly find $I_2 \subseteq I_1$ such that $x_2 \not \in I_2$. Similarly define for all $n$ such that  $I_{n + 1} \subseteq I_n$ closed interval such that  $x_n \not \in I_{n + 1}$. 
+
+    Since $\forall n_0 \in N$ we have $x_{n_0} \not \in I_{n_0}$ so $xn_0 \not \in \bigcap_{n = 1}^{\infty} I_n$. But $R = \{x_1,x_2,  \dots\}$ so we have $\bigcap_{n = 1}^{\infty} I_n = \phi$. However, this is a contradiction with the nested interval property.
+\end{proof}
+
+
+\begin{theorem}
+    Following are true,
+    \begin{enumerate}
+        \item $A \subseteq B$ if $B$ is countable them $A$ is either countable or finite. 
+        \item If $A_n$ is countable $\forall n \in \N$ then $\bigcup_{n = 1}^{\infty} A_n$ is countable.
+    \end{enumerate}
+\end{theorem}

@@ -1,8 +1,6 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
-\usepackage[a4paper, margin=3cm]{geometry}
-
 
 \usepackage{url}
 
@@ -26,9 +24,8 @@
 
 \newcommand\N{\ensuremath{\mathbb{N}}}
 \newcommand\R{\ensuremath{\mathbb{R}}}
+\newcommand\F{\ensuremath{\mathscr{F}}}
 \newcommand\Z{\ensuremath{\mathbb{Z}}}
-\renewcommand{\P}{\mathbb{P}}
-\renewcommand{\Q}{\mathbb{Q}}
 \renewcommand\O{\ensuremath{\emptyset}}
 \newcommand\Q{\ensuremath{\mathbb{Q}}}
 \newcommand\C{\ensuremath{\mathbb{C}}}
@@ -73,17 +70,8 @@
 \declaretheorem[numbered=no, style=thmexplanationbox, name=Proof]{explanation}
 \declaretheorem[numbered=no, style=thmproofbox, name=Proof]{replacementproof}
 \declaretheorem[style=thmbluebox,  numbered=no, name=Exercise]{ex}
-% \declaretheorem[style=thmbluebox,  numbered=no, name=Example, postheadspace=\newline]{eg}
-
-\declaretheorem[
-  style=thmbluebox,
-  numbered=no,
-  name=Example,
-  headpunct={},                % no punctuation after "Example"
-  headformat=\NAME\NOTE\newline % force line break after head
-]{eg}
+\declaretheorem[style=thmbluebox,  numbered=no, name=Example]{eg}
 \declaretheorem[style=thmblueline, numbered=no, name=Remark]{remark}
-\declaretheorem[style=thmblueline, numbered=no, name=Solution]{solution}
 \declaretheorem[style=thmblueline, numbered=no, name=Note]{note}
 
 \renewenvironment{proof}[1][\proofname]{\begin{replacementproof}}{\end{replacementproof}}
@@ -148,15 +136,14 @@
 \pdfminorversion=7
 \usepackage{pdfpages}
 \usepackage{transparent}
-\newcommand{\incfig}[2][1]{%
-    \def\svgwidth{#1\columnwidth}
-    \import{./figures/}{#2.pdf_tex}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
 }
-
 
 % %http://tex.stackexchange.com/questions/76273/multiple-pdfs-with-page-group-included-in-a-single-page-warning
 \pdfsuppresswarningpagegroup=1
 
+\author{Aamod Varma}
 \setlength{\parindent}{0pt}
 
-\author{Aamod Varma}

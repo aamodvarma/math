@@ -1,0 +1,133 @@
+\begin{note}
+    This implies that $\P(A | B) = \P(A)$
+\end{note}
+
+
+\begin{eg}
+    $A$ and $B$ are independent iff $A$ and $B^{c}$ are independent.
+
+
+    We can write $A = (A \cap B) \cup (A \cap B^{c})$. So we have, 
+    \begin{align*}
+        P(A) &= \P(A \cap B) + \P(A \cap B^{c})
+    \end{align*}
+    Now we can write, 
+    \begin{align*}
+    \P(A \cap B^{c}) &= \P(A) - \P(A) \P(B)\\
+                     &= \P(A) (1 - \P(B))\\
+                     &= \P(A) \P(B^{c})
+    \end{align*}
+
+\end{eg}
+
+
+
+
+Consider if we have three events $A, B, C$. Then if we have, 
+\begin{align*}
+\P(A \cap C) &=  \P(A)\P(C)\\
+\P(A \cap B) &= \P(A)\P(B)\\
+\P(B \cap C) &=  \P(B)\P(C)\\
+\end{align*}
+
+This is called mutually independent (not a good definition for independence)
+
+
+\begin{eg}
+    Let four possible outcomes be $\{1,2,3,4\}$. Now if we have $A = \{1,2\}, B = \{1,3\}, C = \{2,3\}$. This gives us,  
+    \begin{align*}
+        \P(A \cap B) &= \frac{1}{4} \\
+        \P(A) = \P(B) &= \frac{1}{2}
+    \end{align*}
+
+    Now $\P(A \cap B \cap C) = \P(\phi) = 0 \ne \P(A) \P(B \cap C)$
+
+
+    So if we want that $\P(A | B \cap C) = \P(A)$ then  $\P(A \cap B \cap C) = \P(A)\P(B \cap C) = \P(A) \P(B)     sw ___, 0($a1)		! store value of c at the address in $a1\P(C)$
+
+
+
+
+\end{eg}
+
+\begin{ex}
+    $A, B, C$ are independent then  $\P(A | B \cup C) = \P(A) $.
+    We can write $B \cup C = (B \cap C^{c}) \cup (B \cap C) \cup (B^{c} \cap C)$
+\end{ex}
+
+\begin{prop}
+    In general, $A_i, i \in I$ of events.  $A_i$ are independent if  $\forall J \subset I$ then, 
+    $$ \P( \bigcap_{j \in J} A_j) = \prod_{j \in J} \P(A_j) $$ 
+\end{prop}
+
+\begin{note}
+    This implies that if $J_1, J_2 \subset I$ with $J_1 \cap J_2 = \phi$. Then  any combination of  $A_i, i \in J_1$ is independent to any combination of $A_i, i \in J_2$
+\end{note}
+
+
+
+
+\vspace{1em}
+\hline
+\vspace{1em}
+
+
+\begin{definition}[Parition]
+Assume a family of events $A_i$. We call it a partition if $\bigcup_i A_i = \Omega$ and  $A_i \cap A_j = \phi, \forall i \ne j$.
+\end{definition}
+
+\begin{theorem}
+    If $B$ is an event and $A_i$ is a partition, then 
+    $$ \P(B) = \sum_i \P(B | A_i) \P(A_i) $$ 
+\end{theorem}
+\begin{proof}
+
+    We write,
+    \begin{align*}
+    B &= \bigcup_i( B \cap  A_i)\\
+    \P(B) &= \sum_i \P( B \cap  A_i)\\
+         &= \sum_i \P( B |  A_i) \P(A_i)\\
+    \end{align*}
+\end{proof}
+
+\begin{eg}
+    Consider two production lines,
+    \begin{enumerate}
+        \item 1000 items, 0.01 defective
+        \item 500 items, 0.02 defective
+    \end{enumerate}
+
+    If all items are collected and pick one at random, what is the probability that that it is defective. 
+
+    If $D$ is the event that the item is defective so we need to find  $P(D)$ if we have  $I$ and $II$ as both the production lines then we have,  
+    $$ \P(D) = \P(D | I) \P(I) + \P(D | II) \P(II)  = 0.01 \times \frac{2}{3} + 0.02 \times  \frac{1}{3} = \frac{0.04}{3}$$ 
+
+
+
+    We can also ask if an item is picked and it's defective, what is the probability that it is from line I. So we need to find $\P(I | D)$.
+
+     
+    \begin{align*}
+        \P(I | D) = \frac{\P(I \cap D)}{\P(D)} &= \frac{\P(D | I) \P(I)}{\P(D)}\\
+                                               &= \frac{\P(D | I) \P(I)}{\P(D | I) \P(I) + \P(D | II) \P(II)}\\
+                                               &= \frac{0.01 \times  \frac{2}{3}}{\frac{0.04}{3}}\\
+                                               &= \frac{1}{2}
+    \end{align*}
+\end{eg}
+
+
+\begin{theorem}[Bayes Thoerem]
+    If $A_i$   is a partition and $B$ is an event. Then, 
+    $$ \P(A_i | B) = \frac{\P(B | A_i) \P(A_i)}{\sum_j \P(B | A_j) \P(A_j)} $$ 
+\end{theorem}
+\begin{proof}
+    \begin{align*}
+        \P(A_i | B) &= \frac{\P(B | A_i) \P(A_i)}{\P(B)}\\
+    \end{align*}
+
+    And we have from the partition theorem that  $\P(B) = \sum_j \P(B | A_j) \P(A_j)$. Plugging this back in gives us the theorem.
+\end{proof}
+
+
+
+Given $P_1, P_2$ positive at the first and second test. Then what is $\P(P_1 \cap P_2 | NS)$

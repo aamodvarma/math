@@ -1,0 +1,54 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Probability Theory: HW1}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+
+\section*{Exercise 1.10}
+Given $A, B \in \F$ and we need to show that  $A \triangle B \in \F$. Now  if  $x \in A \triangle B$ then we know that  $x \in (A \cup B) \setminus (A \cap B)$. By definition we have  $A \cup B \in \F$ (closure under countable union) and we also have  $A^{c}, B^{c} \in \F \text{(closure under complement)} \implies (A^{c} \cup B^{c}) \in \F \implies (A \cap B)^{c} \implies A \cap B \in \F  $. So now let $C = A \cup B$ and  $D = A \cap B$. It is enough to show that if $C,D \in \F$ then  $C \setminus D \in \F$. We have  $C \setminus D = C \cap D^{c}$. We know $D^{c} \in \F$ and $\F$ is closed under intersection as shown above which means that  $C \cap D^{c} \in F \implies C \setminus D \in \F \implies (A \cup B) \setminus (A \cap B) \in \F \implies A \triangle B \in \F $
+
+\section*{Exercise 1.17}
+
+First given that $\F$ is the powerset of  $\Omega$. 
+
+1. We have $\Q(A) = \sum_{i: \omega_i \in A} p_i$ for  $A \in \F$ and we know that  $p_i \ge 0$ for any  $i$ so sum of non-negative numbers are also non-negative which means that  $\Q(A) \ge 0$ for $A \in \F$
+
+2. We have $\Q(\Omega) = \sum_{i: \omega_i \in \Omega} p_i = p_1 + \dots + p_n = 1$. Similarly we have $\Q(\phi) = \sum_{i: \omega_i \in \phi} p_i = 0$.
+
+3. We need to show that given disjoint events  $A_1, A_2, \dots \in \F$ we have, $\Q\big ( \bigcup_{i = 1}^{\infty} A_i \big) = \sum_{i = 1}^{\infty} \Q(A_i)$.
+
+% Now let's assume we have $k$ disjoint subsets of $\Omega$ we have,
+\begin{align*}
+    \Q\big ( \bigcup_{i = 1}^{\infty} A_i \big)  &= \Q(A_1 \cup A_2 \dots ) \\ &= \sum_{i: \omega_i \in (A_1 \cup A_2 \dots)} p_i \\
+                                            &\text{Now since $A_1,\dots$ are pairwise disjoint we can write,}\\
+                                            &=  \sum_{i: \omega_i \in (A_1)} p_i   + \sum_{i: \omega_i \in (A_2)} p_i  + \dots\\
+                                            &= \Q(A_1) + \Q(A_2)  + \dots \\
+                                            &= \sum_{i = 1}^{\infty} \Q(A_i)
+\end{align*}
+\section*{Exercise 1.21}
+We need to find, 
+\begin{align*}
+    &P(A \cap B \cap C^{c})  +  P(A \cap B^{c} \cap C) +  P(A^{c} \cap B \cap C) \\&=P((A \cap B)\setminus  C)  + P((A \cap C)\setminus  B)  + P((C \cap B)\setminus  A) \\
+    &= P(A \cap C) - P(A \cap B \cap  C)  + P(A \cap B) - P(A \cap B \cap  C)  + P(B \cap C) - P(A \cap B \cap  C) \\
+    &= .3 - .1 + .4 - .1 + .2 - .1 = .6
+\end{align*}
+\section*{Exercise 1.27}
+First the ways to distribute $4$ aces among 4 players would be $4!$. Now with the remaining  $48$ cards, the ways to split it among 4 people random is, ${48 \choose 12}{36 \choose 12}{24 \choose 12}{12 \choose 12}$. Similalry the total ways to split $52$ cards among  $4$ people w $13$ each would be ${52 \choose 13}{39 \choose 13}{26 \choose 13}{13 \choose 13}$. So the probability would be, 
+\begin{align*}
+\frac{{48 \choose 12}{36 \choose 12}{24 \choose 12}4!}{{52 \choose 13}{39 \choose 13}{26 \choose 13}} = 0.1055
+\end{align*}
+
+
+\section*{Exercise 1.30}
+\section*{Exercise 1.44}
+\section*{Exercise 1.52}
+
+\section*{Problem 9}
+\section*{Problem 14}
+\section*{Problem 17}
+
+
+\end{document}
