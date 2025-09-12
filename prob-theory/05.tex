@@ -1,0 +1,74 @@
+\chapter{Random Vairables}
+
+\section{Introduction}
+
+\begin{definition}
+    If we have $(\Omega, \F, \P)$ then  $X: \Omega \to \R$ is a discrete random variable if,
+
+    \begin{enumerate}
+        \item $X(\Omega)$ is finite or countable.
+        \item  $\forall a \in \R$ ($\forall a \in X(\Omega)$)
+            $$  \{\omega: X(\omega) = a\} \in \F $$ 
+    \end{enumerate}
+\end{definition}
+\begin{remark}
+	Here $\Omega$ can be uncountable but the point is that the mapping in $\R, X(\Omega)$ has to be countable.
+\end{remark}
+\begin{remark}
+	The point of the second condition is that for any value in $R$, there is some event in $\F$ which maps to that value. So this point guarantees measurability. 
+\end{remark}
+
+\begin{eg}
+    Consider $Y = $ number of $H$ in $T$ tosses of a coin, possible values are clearly  $\{0, 1, \dots, N\}$. We have, 
+    \begin{align*}
+        \P(Y = 0) &= (1 - p)^{N} \\
+        \P(Y = 1) &= N p(1 - p)^{N - 1} \\
+        \P(Y = 2) &= {N \choose 2} p^2(1 - p)^{N - 2} \\
+        \P(Y = y) &= {N \choose y} p^y(1 - p)^{N - y}
+    \end{align*}
+\end{eg}
+
+\begin{remark}
+    Here $p_Y(y) = \P(Y = y)$ is called the probability mass function of  $Y$.
+\end{remark}
+
+\begin{definition}
+    If $X$ is a discrete random variable then if,
+    $$ p(x)= \P(X = x) $$ 
+
+    Then $p(x)$ is called the probability mass function (pmf)
+\end{definition}
+\begin{remark}
+    A random variable that takes only 2 values (conventionally represented with 0, 1) is called a Bernoulli random variable. The pmf of a Bernoulli  r.v. is completely given by $p(1) = \P(X = 1)$ and $p(0) = 1 - p(1)$
+\end{remark}
+\begin{remark}
+    If a random variable that takes values $0, \dots, N$ with  p.m.f, 
+    $$ p(x) = {N \choose x} p^{x}(1 - p)^{N - x} $$ 
+
+    is called a \emph{\textbf{binomial r.v}}. This is a 2 parameter pmf (p, N).
+    \vspace{1em}
+
+    Binomial can be thought of as a sum of $N$ independent Bernoulli r.v. with parameter $p$. In addition, it can be thought of as the number of successes in $N$ independent Bernoulli trials with success probability $p$.
+    
+\end{remark}
+
+\section{Examples}
+
+\begin{eg}
+    I have a bowl with $N$ blue balls and $M$ red balls. If we extract $n$ balls without reinsertion. Then, what is the probability of $x$ blue.
+
+    Here the total possible outcomes is ${M + N \choose n}$. We want to select  $x$ blue balls and $n - x$ red balls. So possibility for blue  is   ${N \choose x}$ and for red is  ${M \choose n - x}$. So, 
+    $$ p(x) = \frac{{N \choose x}{M \choose n - x}}{{M + N \choose n}} $$ 
+
+
+    This is called a \textbf{hypergeometric r.v.}  which is a 3 parameter pmf.
+\end{eg}
+\begin{note}
+    If $x \ll N$ then  ${N \choose x} \sim N^{x}$
+\end{note}
+\begin{remark}
+    If $n$ and  $x$ are fixed and take $N, M \to \infty$ then the hypergeometric pmf converges to a binomial.
+\end{remark}
+
+
+

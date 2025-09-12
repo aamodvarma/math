@@ -1,6 +1,6 @@
 \documentclass[a4paper]{report}
 \input{preamble.tex}
-\title{Probability Theory: HW1}
+\title{Probability Theory: Hw1}
 \author{Aamod Varma}
 \begin{document}
 \maketitle
@@ -12,7 +12,7 @@ Given $A, B \in \F$ and we need to show that  $A \triangle B \in \F$. Now  if  $
 
 \section*{Exercise 1.17}
 
-First given that $\F$ is the powerset of  $\Omega$. 
+First given that $\F$ is the power set of  $\Omega$. 
 
 1. We have $\Q(A) = \sum_{i: \omega_i \in A} p_i$ for  $A \in \F$ and we know that  $p_i \ge 0$ for any  $i$ so sum of non-negative numbers are also non-negative which means that  $\Q(A) \ge 0$ for $A \in \F$
 
@@ -36,19 +36,276 @@ We need to find,
     &= .3 - .1 + .4 - .1 + .2 - .1 = .6
 \end{align*}
 \section*{Exercise 1.27}
-First the ways to distribute $4$ aces among 4 players would be $4!$. Now with the remaining  $48$ cards, the ways to split it among 4 people random is, ${48 \choose 12}{36 \choose 12}{24 \choose 12}{12 \choose 12}$. Similalry the total ways to split $52$ cards among  $4$ people w $13$ each would be ${52 \choose 13}{39 \choose 13}{26 \choose 13}{13 \choose 13}$. So the probability would be, 
+First the ways to distribute $4$ aces among 4 players would be $4!$. Now with the remaining  $48$ cards, the ways to split it among 4 people random is, ${48 \choose 12}{36 \choose 12}{24 \choose 12}{12 \choose 12}$. Similarly the total ways to split $52$ cards among  $4$ people w $13$ each would be ${52 \choose 13}{39 \choose 13}{26 \choose 13}{13 \choose 13}$. So the probability would be, 
 \begin{align*}
 \frac{{48 \choose 12}{36 \choose 12}{24 \choose 12}4!}{{52 \choose 13}{39 \choose 13}{26 \choose 13}} = 0.1055
 \end{align*}
 
 
 \section*{Exercise 1.30}
-\section*{Exercise 1.44}
-\section*{Exercise 1.52}
 
+(a). Getting  at least one six with 4 throws of a die.
+
+Number of total outcomes are $6^{4}$. The total outcomes with no six are $5^{4}$ so the total outcomes with at least one six is $6^{4} - 5^{4}$. The probability of this would be, 
+$$ \frac{6^{4} - 5^{4}}{6^{4}} $$ 
+
+
+(b). Total outcomes with 24 throws of two dice. One throw of two dice has $6^2 = 36$ possibilities so 24 throws would have $36^{24}$ possibilities. Throws with no double six would  have in each throw only $35$ possibilities which would make a total of $35^{24}$ possibilities. So probability of no double six would be, 
+$$ \frac{36^{24} - 35^{24}}{36^{24}} $$ 
+
+
+Comparing the two values we see that probability of (a) is higher than (b).
+\section*{Exercise 1.44}
+
+We need to show that $A, B$ are independent if and only if $A$ and  $B^{c}$ are independent.
+
+(i). If $A$ and $B$ are independent then we have $\P(A \cap B) = \P(A) \P(B)$. We can write $A$ is the union of two disjoint events $A = (A \cap B) \cup (A \cap B^{c})$. As they are disjoint we have, 
+
+\begin{align*}
+    \P(A) &= \P((A \cap B) \cup (A \cap B^{c}))\\
+          &=  \P((A \cap B)) + \P(A \cap B^{c}))\\
+          &=  \P(A)\P(B) + \P(A \cap B^{c}))\\
+    \P(A \cap B^{c}) &= \P(A) -  \P(A)\P(B) \\
+    \P(A \cap B^{c}) &= \P(A)(1 - \P(B)) \\
+    \P(A \cap B^{c}) &= \P(A)\P(B^{c}) \\
+\end{align*}
+
+Which means that $A$ and $B^{c}$ are independent as well. 
+
+
+(ii). We use a similar argument as above and write $A = (A \cap B) \cup (A \cap B^{c})$ and we know that $\P(A \cap B^{c}) = \P(A) \P(B^{c})$ so we have, 
+
+\begin{align*}
+    \P(A) &= \P((A \cap B) \cup (A \cap B^{c}))\\
+          &=  \P((A \cap B)) + \P(A \cap B^{c}))\\
+          &=  \P(A)\P(B^{c}) + \P(A \cap B))\\
+    \P(A \cap B) &= \P(A) -  \P(A)\P(B^{c}) \\
+    \P(A \cap B) &= \P(A)(1 - \P(B^{c})) \\
+    \P(A \cap B) &= \P(A)\P(B) \\
+\end{align*}
+Which shows that $A$ and $B$ are independent as well.
+
+\section*{Exercise 1.52}
+We have two urns, 
+\begin{enumerate}
+    \item 3 white; 4 black
+    \item 2 white; 6 black
+\end{enumerate}
+
+(a). Let $W$ be the event that a random ball from placed into II from I is white and $B$ be that it's black. And let $A$ be the event that the ball picked from Urn II is black. So we need to find $\P(A | W)P(W) + \P(A | B)P(B) = \frac{3}{7}\frac{6}{9} + \frac{4}{7} \frac{7}{9} = \frac{46}{63}$
+
+\vspace{1em}
+(b). If $I$ and  $II$ are events of picking  Urn I and Urn II respectively and B is the event of picking a black ball. We need to find $\P(I | B)$. We have, 
+
+\begin{align*}
+    \P(I | B) &= \frac{\P(B | I) \P(I)}{\P(B)}\\
+              &=  \frac{\P(B | I) \P(I)}{\P(B | I) \P(I) + \P(B | II) \P(II)}\\
+            &= \frac{\frac{4}{7}}{\frac{4}{7} + \frac{6}{8}}\\
+            &= \frac{16}{37}
+\end{align*}
 \section*{Problem 9}
+Two people toss a coin $n$ times each. First we compute the total possible outcomes. Each coin has two options heads or tails, combined there are $2n$ coins. This gives us $2^{2n}$ possible outcomes.
+
+\vspace{1em}
+Now we need to count how many outcomes where  there are an equal number of heads. We see that given a person, there are $n \choose k$ ways that person can get $k$  heads. So for each person there are $n \choose k$ ways to get k heads. So between  them given a fixed $k$ there are ${n \choose k}^2$ ways they both have $k$ heads. Now because $k$ is not fixed and can go from $1$ to $n$ we have, 
+$$ {n \choose 1}^2 + \dots + {n \choose n}^2  = \sum_{k=1}^{n} {n \choose k} = {2n \choose n}$$ 
+
+So we have our answer is, 
+$$ {2n \choose n} \frac{1}{2^{2n}} $$ 
+
+
 \section*{Problem 14}
+(a). We'll show using induction that, 
+$$ \P \bigg (  \bigcup_{i = 1}^{n} A_i \bigg )  = \sum_{i} A_i  -\sum_{i < j} \P(A_i \cap A_j) + \dots (-1)^{n + 1} \P\bigg (\bigcap_i A_i \bigg )$$ 
+
+
+\begin{proof}
+    
+First we verify for our base case. Consider two sets $A_1$ and $A_2$. We can write $A_1 = A_1 \setminus A_2 \cup (A_1 \cap A_2)$ and $A_2 = A_2 \setminus A_1 \cup (A_1 \cap A_2)$ and $A_1 \cup A_2 = A_1 \setminus A_2 \cup A_2 \setminus A_1 \cup A_1 \cap A_2$. So we have, 
+\begin{align*}
+    \P(A_1) &= \P(A_1 \setminus A_2) + \P(A_1 \cap A_2) \qquad \text{As they are disjoint}\\
+    \P(A_2) &= \P(A_2 \setminus A_1) + \P(A_1 \cap A_2) \\
+    \P(A_2 \cap A_1) &= \P(A_2 \setminus A_1) + \P(A_2 \setminus A_1) + \P(A_1 \cap A_2) 
+\end{align*}
+
+
+We can rewrite the first two equations to get, 
+\begin{align*}
+ \P(A_1 \setminus A_2)&=  \P(A_1) - \P(A_1 \cap A_2)\\
+ \P(A_2 \setminus A_1)&=  \P(A_2) - \P(A_1 \cap A_2)\\
+\end{align*}
+
+Plugging this back in to the third equation we get, 
+\begin{align*}
+    \P(A_2 \cap A_1) &= \P(A_1) - \P(A_1 \cap A_2) + \P(A_2 \setminus A_1) +   \P(A_2) - \P(A_1 \cap A_2)+ \P(A_1 \cap A_2) \\
+                     &= \P(A_1) + \P(A_2) - \P(A_1 \cap A_2)
+\end{align*}
+
+Hence we show the base case is true.
+
+Now let us assume it's true for some arbitrary $n$ so we have,  
+$$ \P \bigg (  \bigcup_{i = 1}^{n} A_i \bigg )  = \sum_{i} A_i  -\sum_{i < j} \P(A_i \cap A_j) + \dots (-1)^{n + 1} \P\bigg (\bigcap_i A_i \bigg )$$ 
+
+We will now show that it will also hold true for $n + 1$, we have, 
+
+\begin{align*}
+    \P \bigg (  \bigcup_{i = 1}^{n} A_i \bigg )  &=     \P \bigg (  \bigcup_{i = 1}^{n} A_i  \cup A_{n + 1}\bigg ) \\
+                                                 &=    \P \bigg (  A_0  \cup A_{n + 1}\bigg ) \text{ taking $A_0 =  \bigcup_{i = 1}^{n} A_i$}\\
+\end{align*}
+
+Now using basecase we have, 
+
+\begin{align*}
+    \P \bigg (  A_0  \cup A_{n + 1}\bigg ) &=  \P(A_0) + \P(A_{n + 1}) - \P(A_0 \cap A_{n + 1})\\
+                                           &=  \P(A_0) + \P(A_{n + 1}) - \P(A_0 \cap A_{n + 1})\\
+                                           &=  \sum_{i}^{n} A_i  -\sum_{i < j \le n} \P(A_i \cap A_j) + \dots (-1)^{n + 1} \P\bigg (\bigcap_{i \le n} A_i \bigg ) + \P(A_{n + 1}) - \P(A_0 \cap A_{n + 1})\\
+                                           &=  \sum_{i}^{n + 1} A_i  -\sum_{i < j \le n} \P(A_i \cap A_j) + \dots (-1)^{n + 1} \P\bigg (\bigcap_{i \le n} A_i \bigg ) - \P(A_0 \cap A_{n + 1})\\
+\end{align*}
+
+
+Now expanding the last term we have,  
+\begin{align*}
+    \P(A_0 \cap A_{n + 1}) &= \P((A_1 \cup \dots \cup A_n) \cap A_{n + 1})\\
+                           &= \P((A_1 \cap A_{n + 1}) \cup \dots \cup (A_n \cap A_{n + 1}))\\
+\end{align*}
+
+
+If we take $A_m \cap A_{n + 1}$ as $B_m$ for  $m \le n$ then we have, $\P(B_1 \cup \dots \cup B_n)$ which using our induction assumption is equivalent to, 
+$$ \sum_{i}^{n} B_i  -\sum_{i < j \le n} \P(B_i \cap B_j) + \dots (-1)^{n + 1} \P\bigg (\bigcap_{i \le n} B_i \bigg )$$
+
+We expand this further to get, 
+    \begin{align*}
+        \sum_{i}^{n} \P( A_i \cap A_{n + 1})  -\sum_{i < j \le n} \P((A_i \cap A_{n + 1}) \cap (A_j \cap A_{n + 1})) + \dots (-1)^{n + 1} \P\bigg (\bigcap_{i \le n} (A_i \cap A_{n + 1}) \bigg )\\
+    \end{align*}
+
+    For some arbitrary set indexes $a, \dots, b$ we have $(A_{a} \cap A_{n + 1}) \cap \dots \cap (A_b \cap A_{n + 1}) = A_a \cap \dots \cap A_b \cap A_{n + 1}$ so we have, 
+    \begin{align*}
+        \sum_{i}^{n} \P( A_i \cap A_{n + 1})  -\sum_{i < j \le n} \P(A_i \cap A_j \cap A_{n + 1}) + \sum_{i < j < k \le n} \P(A_i \cap A_j \cap A_k \cap A_{n + 1})+ \dots (-1)^{n + 1} \P\bigg (\bigcap_{i \le n} (A_i \cap A_{n + 1}) \bigg )\\
+    \end{align*}
+
+
+Now putting back $\P(A_0 \cap A_{n + 1})$ which expands to the above in our original equation we get,  
+\begin{align*}
+    \sum_{i}^{n + 1} A_i  -&\sum_{i < j \le n} \P(A_i \cap A_j) + \dots (-1)^{n + 1} \P\bigg (\bigcap_{i \le n} A_i \bigg ) \\
+    -&\sum_{i}^{n} \P( A_i \cap A_{n + 1})  +\sum_{i < j \le n} \P(A_i \cap A_j \cap A_{n + 1}) - \sum_{i < j < k \le n} \P(A_i \cap A_j \cap A_k \cap A_{n + 1})- \\ & \dots (-1)^{n + 1} \P\bigg (\bigcap_{i \le n} (A_i \cap A_{n + 1}) \bigg )\\
+\end{align*}
+
+This gives us,
+\begin{align*}
+     \P \bigg (  A_0  \cup A_{n + 1}\bigg )  &=  \sum_{i}^{n + 1} A_i  -\sum_{i < j \le n + 1} \P(A_i \cap A_j) + \dots (-1)^{n + 2} \P\bigg (\bigcap_{i \le n + 1} A_i \bigg )\\
+     \P \bigg (  \bigcup_{i = 1}^{n + 1} A_i \bigg )  &= \sum_{i}^{n + 1} A_i  -\sum_{i < j \le n + 1} \P(A_i \cap A_j) + \dots (-1)^{n + 2} \P\bigg (\bigcap_{i \le n + 1} A_i \bigg )
+\end{align*}
+
+Which is the case for $n + 1$. Hence, we complete our induction step and show that it must be true for some arbitrary  $n$.
+
+\end{proof}
+
+
+(b). We need to find the probability that at least one key was hung on its own hook. Let $ A_k$ be the event that the $k$'th key is hung on its own hook. Then  $A_1 \cup \dots \cup A_n$ is the event that at least one key is hung on its own hook. So we need $\P(\bigcup_i^{n} A_i)$ which is equal to $1 - \P((\bigcup_i^{n} A_i)^{c}) = 1 - \P(\bigcap_i^{n} A_i^{c})$. We also know the probability that a key is hung on its own hook is $\frac{1}{n}$ which gives us $\P(A_i^{c}) =  \frac{n - 1}{n}$. So now we have, 
+\begin{align*}
+    \P(\bigcup_i^{n} A_i) &= 1 - \P((\bigcup_i^{n} A_i)^{c})\\
+                          &=1 - \P(\bigcap_i^{n} A_i^{c})\\
+                          &= 1 - \P(A_1^{c})\dots \P(A_n^{c}) \text{ as even the complement are independent}\\
+                          &= 1 - \frac{(n - 1)^{n}}{n^{n}} = 1 - \bigg (1 - \frac{1}{n} \bigg)^{n}
+\end{align*}
+
+
+We are given that $\lim_{N \to \infty} (1 + \frac{x}{N})^{N} = e^{x}$. We see that this is same as our second term but with $x = -1$ so we have, 
+\begin{align*}
+    \lim_{n \to \infty} \P(\bigcup_i^{n} A_i) &= 1 -  \lim_{n \to \infty} \bigg (1 - \frac{1}{n} \bigg)^{n}\\
+                                              &= 1 - e^{-1} = 0.632120559
+\end{align*}
+
+Now we know that only one key can be hung on each hook. We need to find probability that no key was hung on its own hook. Let  $A_i$ be the event that the $i$'th key was not hung on its own hook. 
+
+And we need to find $\P(\bigcap_i^{n}A_i)$. If there are $n$ keys then the total permutations is $n!$. Now the total permutations where  the  $ith$ key does not go in the $i'th$ hook would be,  
+\begin{align*}
+\sum_{k=0}^{n} (-1)^{k} {n \choose k}(n - k)! = \sum_{k=0}^{n} (-1)^{k} \frac{n!}{k!} = n! \sum_{k=0}^{n} (-1)^{k}\frac{1}{k!}
+\end{align*}
+
+
+So the probability of none going in their own hooks is, 
+\begin{align*}
+    \frac{1}{n!}  n! \sum_{k=0}^{n} (-1)^{k}\frac{1}{k!} &=  \sum_{k=0}^{n} (-1)^{k}\frac{1}{k!} \\
+\end{align*}
+
+
+Now we find the limit as $n$ goes to $\infty$. We have,
+\begin{align*}
+    \lim_{n \to \infty}  \sum_{k=0}^{n} \frac{-1^{k}}{k!} 
+\end{align*}
+
+ We are given that $e^{x} = \sum_{r=0}^{\infty}\frac{x^{r}}{r!}$  which is similar to our term above but with $x = -1$
+ $$  $$ 
+\begin{align*}
+    \lim_{n \to \infty}  \sum_{k=0}^{n} \frac{-1^{k}}{k!} = e^{-1} = \frac{1}{e} = 0.367879441
+\end{align*}
 \section*{Problem 17}
 
+A coin is tossed repeatedly and probability of heads is $p$ and tail is $1 - p$. $E$ is the event that $r$ successive heads occurs before the first $s$ successive tails. We need to show that, 
+$$ \P(E | A = H) = p^{r - 1} + (1 - p^{r - 1}) \P(E | A= T)$$  
+
+
+To get this we'll first condition the probability of $E$ given $A = H$ on the next  $r - 1$ tosses being heads. So let $B$ be the event that the next $r - 1$ tosses are heads so we have, 
+\begin{align*}
+    \P(E | A = H)  &=     \P(E | A = H, B) \P(B | A = H) +     \P(E | A = H, B^{c})\P(B^{c} | A = H)\\
+\end{align*}
+
+We have $\P(E | A= H, B) = 1$ as if  $B$ happens after $A = H$ then we have $r$ successive tosses of $H$. And we also have  $\P(B | A=H) = p^{r - 1}$ as $B$ is the event that we have $r - 1$ successive $H$ and is independent of the first toss. Similarly we have $\P(E | A = H, B^{c}) = \P(E | A = T)$ because $b^{c}$ means that we don't have $r - 1$ successive heads which means we got a tails in the middle and as our events are independent this is equivalent to assuming that the first toss is tails and moving forward. Similarly we have $\P(B^{c} | A = H) = 1 - p^{r - 1}$. Putting this all together we get, 
+\begin{align*}
+    \P(E | A = H)  &=   p^{r - 1} + (1 - p^{r - 1})\P(E | A = T)
+\end{align*}
+
+
+We following a similar argument as above and condition  based on the probability of getting $s - 1$ successive tails (event $C$) and have, 
+\begin{align*}
+    \P(E | A = T)  &=     \P(E | A = T, C) \P(C | A = T) +     \P(E | A = T, C^{c})\P(C^{c} | A = T)\\
+\end{align*}
+
+Same as above we get $\P(E | A = T, C) = 0$ as  that means we got  $s$ successive tails which means $E$ cannot happen. And $\P(E | A = T, C^{c})$ means that  $s$ successive tails did not happen meaning we got a heads which is equivalent to $\P(E | A = H)$. We also have $\P(C^{c} | A  = T) = 1 - (1 - p)^{s - 1}$. So we get,
+
+
+\begin{align*}
+    \P(E | A = T)  &=    \P(E | A =H)(1 - (1 - p)^{s - 1})\\
+\end{align*}
+
+
+Using the above two equations we have,
+
+$$    \P(E | A = T)  &=    \P(E | A =H)(1 - (1 - p)^{s - 1})$$
+$$\P(E | A = H)  &=   p^{r - 1} + (1 - p^{r - 1})\P(E | A = T)$$
+
+Putting the first in the second we get, 
+\begin{align*}
+P(E | A = H)  &=   p^{r - 1} + (1 - p^{r - 1})\P(E | A =H)(1 - (1 - p)^{s - 1})\\
+              &= p^{r - 1} + (1 - (1 - p)^{s - 1} -p^{r - 1} + p^{r - 1}(1 - p)^{s - 1})\P(E | A = H)\\
+\end{align*}
+
+So, 
+\begin{align*}
+ P(E | A = H)((1 - p)^{s - 1} +p^{r - 1} - p^{r - 1}(1 - p)^{s - 1}) &= p^{r - 1}\\
+ \P(E | A = H)  &= \frac{p^{r - 1}}{(1 - p)^{s - 1} +p^{r - 1} - p^{r - 1}(1 - p)^{s - 1}}\\
+ \P(E | A = H)  &= \frac{p^{r - 1}}{(1 - p)^{s - 1} +p^{r - 1} (1 - (1 - p)^{s - 1})}\\
+\end{align*}
+
+Similarly we have,
+\begin{align*}
+\P(E | A = T)  &=    \P(E | A =H)(1 - (1 - p)^{s - 1})\\
+               &= \frac{p^{r - 1}}{(1 - p)^{s - 1} +p^{r - 1} (1 - (1 - p)^{s - 1})}(1 - (1 - p)^{s - 1})
+\end{align*}
+
+
+Now using the law of total probability we have, 
+\begin{align*}
+    \P(E) &= \P(E | A = H) \P(A = H) + \P(E | A = T)\P(A = T)\\
+          &= \P(E | A = H) p + \P(E | A = T)(1 - p)\\
+          &= \frac{p^{r}}{(1 - p)^{s - 1} +p^{r - 1} (1 - (1 - p)^{s - 1})} + \frac{((1 - p) - (1 - p)^{s})(p^{r - 1})}{(1 - p)^{s - 1} +p^{r - 1} (1 - (1 - p)^{s - 1})}\\
+          &= \frac{p^{r}}{(1 - p)^{s - 1} +p^{r - 1} (1 - (1 - p)^{s - 1})} + \frac{p^{r - 1} - p^{r} - p^{r - 1}(1 - p)^{s}}{(1 - p)^{s - 1} +p^{r - 1} (1 - (1 - p)^{s - 1})}\\
+          &= \frac{p^{r - 1}(1 - (1 - p)^{s})}{(1 - p)^{s - 1} +p^{r - 1} (1 - (1 - p)^{s - 1})} 
+\end{align*}
 
 \end{document}
+
+
+
+

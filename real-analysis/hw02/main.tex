@@ -1,0 +1,169 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Real Analysis: HW2}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+    
+
+
+\section*{Exercise 1.5.3}
+(a). First, we prove the statement for two countable sets, $A_1$ and $A_2$. We need to show that $A_1 \cup A_2$ is countable as well. Now consider $B_2 = A_2 \setminus A_1 = \{x \in A_2 : x \not \in A_1\}$. We have $A_1 \cup A_2 = A_1 \cup B_2$ however we see that $A_1$ and $B_2$ are disjoint sets that share no elements.
+
+\vspace{1em}
+
+Without loss of generality we have three cases. 1. Both sets are finite, 2. Both sets are countable infinite and 3. $B_2$ is finite. 
+
+Case 1: If both sets are finite, their union is finite and hence is countable.
+
+Case 2: Let $A_1 = \{a_1, \dots, a_k, \dots\} $ and $B_2 = \{b_1, \dots, b_k, \dots\}$. Now consider the following mapping $f$ from $N$,
+
+\begin{align*}
+    f(2k - 1) &= b_k\\
+    f(2k) &= a_k\\
+\end{align*}            
+
+This mapping is a surjection onto the union of the sets from the  naturals and hence implies that the union is countable.
+
+
+
+Case 3: If $B_2$ is finite, then let $\{b_1, \dots, b_n\} $ be the elements of it. Now consider the mapping  $f$ from $N$ as follows, 
+\begin{align*}
+    f(k) &= \begin{cases} b_k, k \le n \\ a_{k - n}, k > n \end{cases}
+\end{align*}            
+
+In this case we well we have a surjection to all the elements of the union of the two sets which implies that the union is countable.
+
+
+
+\vspace{1em}
+
+Now more generally for a finite number of countable sets $A_1, \dots, A_m$ we can use induction to show that their union is countable. Consider the base case which is for $A_1, A_2$ for which we have shown that their union is countable above. Now consider true for an arbitrary $n$ which means that  $A_1 \cup \dots \cup, A_n$ is a countable set. We need to show that it is true for $A_{n + 1}$.             Take $A_1 \cup \dots \cup, A_n = X$. We have $X$ is countable by the induction hypothesis and we also know that $A_{n + 1}$ is countable by assumption. Now we use the proof from above to see that $X \cup A_{n + 1}$ is countable as they both are individually countable. So we have $X \cup A_{n + 1}$ is countable or that  $A_1 \cup \dots \cup A_n \cup A_{n + 1}$ is countable hence completing the induction step. So we show that the finite union of $n$ countable sets are countable.
+
+\vspace{1em}
+
+
+(b) We cannot show part (ii) of theorem 1.5.8 as induction only shows that for a finite $n$ the statement hold. Hence we cannot show that it is true for a countably infinitely number of sets.
+
+
+(c) If we arrange our countable infinite set of countable sets in a grid like pattern such that we have, 
+\begin{align*}
+    &a_1 \: a_2 \: a_3 \dots\\
+    &b_1 \: b_2 \: b_3 \dots\\
+    &c_1 \: c_2 \: c_3 \dots\\
+\end{align*}
+
+And if we consider the arrangement of $N$ as follows,
+\begin{align*}
+    &1 \: 3 \: 6\:\\
+    &2 \: 5 \: 8\:\\
+    &4 \: 7 \: 9\:\\
+\end{align*}
+
+As $N$ is countably infinite the grid is countable infinite across both the row and column similar to the above grid we constructed of elements in our countable sets. Hence, for each element in our countable set we can map it uniquely to an element in $N$ that corresponds to the same location in the grid. This gives us a subjective mapping from  $N$ to the union implying that the union is countable.
+\section*{Exercise 1.5.5}
+
+(a). For any set $A$ we can define a mapping $f: A \to A$ defined as  $f(x) = x$.  Here, $f$ is injective as, if $f(x_1) = f(x_2) $ then we have $x_1 = x_2$ and surjective as for any  $y \in A$ we have $y$ in the domain such that $f(y) = y$. This gives us a bijection and hence we have $A \sim A$.
+\vspace{1em}
+
+
+(b). If $A \sim B$ then that means that we a bijective mapping  $f: A \to B$. As $f$ is a bisection we know that it has an inverse say $g: B \to A$  defined as $g = f^{-1}$ which is also a bijection. Hence, we found a bijection $g$ from $B \to A$ which means that  $B \sim A$.
+
+\vspace{1em}
+
+
+(c). If $A \sim B$ then $\exists f : A \to B$ such that $f$ is a bijective mapping. Similarly if $B \sim C$ then there is some  $g : B \to C$ such that  $g$ is bijective. Now, we know that if both $f$ and $g$ are bijective then $g \circ f$ is also bijective from  $A \to C$. Hence we found a mapping  $h = g \circ f$  defined from  $A \to C$ that is bijective which implies that  $A \sim C$. This means that  $\sim$ is transitive.
+\section*{Exercise 1.6.1}
+First we show that $(0, 1)$ is uncountable implies that  $\R$ is uncountable. Assume to the contrary that $\R$ is not uncountable which implies that $\R$ is countable. Hence, there is a bijection from $\N \to \R$ defined  by $f$. Now consider the function  $g: \R \to (0, 1)$ defined as  $g = \frac{1}{1 + e^{-x}}$. It is easy to show that $g$ is a bijection from $\R$ to $(0, 1)$ and hence this means that  $R \sim (0, 1)$. However, we showed that  $N \sim R$ by assumption.  As shown in 1.5.5 (c), $\sim$ is transitive which means that  $N \sim (0, 1)$ which by definition means that  $(0, 1)$ is countable. A contradiction. So our assumption that $\R$ is countable must be wrong which implies that $\R$ must be uncountable.
+
+\vspace{1em}
+
+Now we show that $\R$ is uncountable implies that $(0, 1)$ is uncountable. Assume that $(0, 1)$ is countable which means that $N \sim (0, 1)$. Now, consider the bijection  $f: (0, 1) \to \R$ defined as $f(x) = \ln(\frac{x}{1 - x})$. Here, $f$ is a bijection ($f$ is also just the inverse of the function $g$ defined above and hence is a bijection using 1.5.5 (b)). So we have $(0, 1) \sim \R$. Now using transitivity again we have  $\N \sim (0, 1)$ and  $(0, 1) \sim \R$ so  $\N \sim \R$ which means that $R$ is countable. A  contradiction. So our assumption must be wrong and we have $(0, 1)$ is uncountable. 
+\section*{Exercise 2.2.2}
+
+(a). We have  to show $\lim \frac{2n + 1}{5n + 4} = \frac{2}{5}$. 
+
+\vspace{1em}
+
+For $\forall \epsilon > 0$ consider $N > \frac{3}{\epsilon}$ so we have, 
+\begin{align*}
+    \bigg | \frac{2n + 1}{5n + 4} - \frac{2}{5} \bigg | &= \bigg | \frac{10n + 5 - 10n - 8 }{25n + 20}\bigg |\\
+&= \bigg | \frac{ -3 }{25n + 20}\bigg |\\
+&= \frac{ 3 }{25n + 20} < \frac{3}{n} \\
+\end{align*}
+
+
+Now for $n > N$ we have $n > \frac{3}{\epsilon}$  or $\frac{3}{n}< \epsilon$ 
+
+Hence, we have, 
+\begin{align*}
+    \bigg | \frac{2n + 1}{5n + 4} - \frac{2}{5} \bigg | < \frac{3}{n} < \epsilon
+\end{align*}
+
+for all $\epsilon > 0$ if $n > N$. Which by definition means that, $\lim \frac{2n + 1}{5n + 4} = \frac{2}{5}$
+
+
+\vspace{1em}
+
+(b). We have  to show $\lim \frac{2n^2}{n^{3} + 3} = 0$. 
+
+\vspace{1em}
+
+For $\forall \epsilon > 0$ consider $N > \frac{2}{\epsilon}$ so we have, 
+\begin{align*}
+    \bigg | \frac{2n^2}{n^{3} + 3} \bigg | &< \bigg | \frac{2n^2}{n^{3}} \bigg |\\
+                                           &=  \frac{2}{n}
+\end{align*}
+
+Now for $n > N$ we have $n > \frac{2}{\epsilon}$  or $\frac{2}{n}< \epsilon$ 
+
+Hence, we have, 
+\begin{align*}
+    \bigg | \frac{2n^2}{n^{3} + 3} \bigg | &< \frac{2}{n} < \epsilon
+\end{align*}
+
+for all $\epsilon > 0$ if $n > N$. Which by definition means that, $\lim \frac{2n^2}{n^{3} + 3} = 0$
+
+\vspace{1em}
+(c). We have  to show $\lim \frac{\sin(n^2)}{\sqrt[3]{n}} = 0$. 
+
+\vspace{1em}
+
+For $\forall \epsilon > 0$ consider $N > \frac{1}{\epsilon^3}$ so we have, 
+\begin{align*}
+    \bigg | \frac{\sin n^2}{\sqrt[3]{n}} \bigg | &< \bigg | \frac{1}{\sqrt[3]{n}} \bigg | \text{ As $\sin$ is bounded above by $1$}\\
+\end{align*}
+
+Now for $n > N$ we have $n > \frac{1}{\epsilon^{3}}$  or $\frac{1}{n}< \epsilon^{3}$  or that $\frac{1}{\sqrt[3]{n}} < \epsilon$ so, 
+
+\begin{align*}
+    \bigg | \frac{\sin n^2}{\sqrt[3]{n}} \bigg | &< \frac{1}{\sqrt[3]{n}} < \epsilon
+\end{align*}
+
+for all $\epsilon > 0$ if $n > N$. Which by definition means that, $\lim \frac{\sin n^2}{\sqrt[3]{n}} = 0$
+
+
+\section*{Exercise 2.2.6}
+
+We are given that $(a_n) \to a $ and  $(a_n) \to b$ and we need to show that $a = b$. Using the definition of limits we have if  $(a_n) \to a$ then for any arbitrary $\epsilon$ exists $N_0$ such that if $n > N_0$ then we have,  
+$$ |a_n - a| < \frac{\epsilon}{2} $$ 
+
+Similarly for $(a_n) \to b$ we have  for an arbitrary  $ \epsilon$ exists $N_1$ such that if $n > N_1$ then, 
+$$ |a_n - b | < \frac{\epsilon}{2} $$.
+
+Now consider  $N = \max(N_0, N_1)$. So for $n > N$ we have both, 
+$$ |a_n - a| < \frac{\epsilon}{2} \qquad |a_n - b | < \frac{\epsilon}{2} $$.
+
+Now consider $|a - b|$ we have, 
+ \begin{align*}
+     |a - b |  &= |a - a_n + a_n - b|\\
+               &= |(a_n - b) - (a_n - a)|\\
+               &< |a_n - b| + |a_n - a| \text{using triangle inequality}\\
+               &< \frac{\epsilon}{2} + \frac{\epsilon}{2} \text{ using bounds from above}\\
+               &< \epsilon
+\end{align*}
+
+So we have $|a - b| < \epsilon, \forall \epsilon > 0$ which implies that $a = b$
+
+\end{document}

@@ -1,18 +1,16 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{textcomp}
-\usepackage[a4paper, margin=3cm]{geometry}
-
 
 \usepackage{url}
 
-\usepackage{hyperref}
-\hypersetup{
-    colorlinks,
-    linkcolor={black},
-    citecolor={black},
-    urlcolor={blue!80!black}
-}
+% \usepackage{hyperref}
+% \hypersetup{
+%     colorlinks,
+%     linkcolor={black},
+%     citecolor={black},
+%     urlcolor={blue!80!black}
+% }
 
 \usepackage{graphicx}
 \usepackage{float}
@@ -27,30 +25,13 @@
 \newcommand\N{\ensuremath{\mathbb{N}}}
 \newcommand\R{\ensuremath{\mathbb{R}}}
 \newcommand\Z{\ensuremath{\mathbb{Z}}}
-\renewcommand{\P}{\mathbb{P}}
-\renewcommand{\E}{\mathbb{E}}
-\renewcommand{\Q}{\mathbb{Q}}
 \renewcommand\O{\ensuremath{\emptyset}}
 \newcommand\Q{\ensuremath{\mathbb{Q}}}
 \newcommand\C{\ensuremath{\mathbb{C}}}
-\newcommand\F{\ensuremath{\mathscr{F}}}
 \let\implies\Rightarrow
 \let\impliedby\Leftarrow
 \let\iff\Leftrightarrow
 \let\epsilon\varepsilon
-
-\usepackage[most]{tcolorbox}
-
-% Define a scratchwork environment
-\newtcolorbox{swork}[1][5cm]{%
-  enhanced,
-  breakable,
-  colback=white,
-  colframe=black,
-  width=\linewidth,
-  height=#1,
-  valign=top,
-}
 
 % horizontal rule
 \newcommand\hr{
@@ -77,13 +58,11 @@
 \declaretheoremstyle[headfont=\bfseries\sffamily, bodyfont=\normalfont, numbered=no, mdframed={ nobreak, rightline=false, topline=false, bottomline=false } ]{thmexplanationbox}
 
 
-% \declaretheorem[numberwithin=chapter, style=thmgreenbox, name=Definition]{definition}
-\declaretheorem[numbered=no, style=thmgreenbox, name=Definition]{definition}
-\declaretheorem[numbered=no, style=thmgreenbox, name=Conjecture]{conjecture}
-\declaretheorem[numberwithin=chapter, style=thmgreenbox, name=Theorem]{theorem}
-\declaretheorem[sibling=theorem, style=thmredbox, name=Corollary]{corollary}
-\declaretheorem[sibling=theorem, style=thmredbox, name=Proposition]{prop}
-\declaretheorem[sibling=theorem, style=thmredbox, name=Lemma]{lemma}
+\declaretheorem[numberwithin=chapter, style=thmgreenbox, name=Definition]{definition}
+\declaretheorem[sibling=definition, style=thmredbox, name=Corollary]{corollary}
+\declaretheorem[sibling=definition, style=thmredbox, name=Proposition]{prop}
+\declaretheorem[sibling=definition, style=thmredbox, name=Theorem]{theorem}
+\declaretheorem[sibling=definition, style=thmredbox, name=Lemma]{lemma}
 
 
 
@@ -92,7 +71,6 @@
 \declaretheorem[style=thmbluebox,  numbered=no, name=Exercise]{ex}
 \declaretheorem[style=thmbluebox,  numbered=no, name=Example]{eg}
 \declaretheorem[style=thmblueline, numbered=no, name=Remark]{remark}
-\declaretheorem[style=thmblueline, numbered=no, name=Solution]{solution}
 \declaretheorem[style=thmblueline, numbered=no, name=Note]{note}
 
 \renewenvironment{proof}[1][\proofname]{\begin{replacementproof}}{\end{replacementproof}}
@@ -157,15 +135,14 @@
 \pdfminorversion=7
 \usepackage{pdfpages}
 \usepackage{transparent}
-\newcommand{\incfig}[2][1]{%
-    \def\svgwidth{#1\columnwidth}
-    \import{./figures/}{#2.pdf_tex}
+\newcommand{\incfig}[1]{%
+    \def\svgwidth{\columnwidth}
+    \import{./figures/}{#1.pdf_tex}
 }
-
 
 % %http://tex.stackexchange.com/questions/76273/multiple-pdfs-with-page-group-included-in-a-single-page-warning
 \pdfsuppresswarningpagegroup=1
 
+\author{Aamod Varma}
 \setlength{\parindent}{0pt}
 
-\author{Aamod Varma}

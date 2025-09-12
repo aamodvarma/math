@@ -1,0 +1,180 @@
+\begin{eg}
+    To find $\lim_{n \to \infty} \frac{1 + \sqrt{n}}{\sqrt{n}}$
+
+    \vspace{1em}
+
+    We see that $\frac{1 + \sqrt{n}}{\sqrt{n}} = \frac{1}{\sqrt{n}} + 1$ so the limit goes to $1$ as $n \to \infty$.
+
+
+    \begin{swork}[6cm]
+        We need $\forall \epsilon > 0$ exists $N$ s.t $n > N$ we have,  
+        $$ \bigg | \frac{1 + \sqrt{n}}{\sqrt{n}} - 1 \bigg | < \epsilon$$
+        $$ \bigg | \frac{1}{\sqrt{n}} \bigg | < \epsilon$$
+        $$  \frac{1}{\epsilon}  < \sqrt{n}$$
+        $$  \frac{1}{\epsilon^2}  < n$$
+    \end{swork}
+
+
+    If we take $N > \frac{1}{\epsilon^2}$ then $\forall n > N$,  
+
+    $$ \bigg | \frac{1 + \sqrt{n}}{\sqrt{n}} - 1 \bigg | = \frac{1}{\sqrt{n}} < \frac{1}{\sqrt{N}} < \epsilon$$
+
+    So the limit is $1$.
+\end{eg}
+
+\begin{eg}
+    
+    $$ \lim_{n \to \infty} \frac{2n + 1}{5n + 1} = \frac{2}{5} $$ 
+
+
+\end{eg}
+\begin{proof}
+    For $\forall \epsilon > 0$,
+    \begin{swork}[8cm]
+        \textbf{Scratchwork.} 
+
+        \vspace{1em}
+
+        $\forall \epsilon > 0$ we want $N$ s.t., 
+        \begin{align*}
+        \bigg | \frac{2n + 1}{5n + 1}  - \frac{2}{5} \bigg | < \epsilon\\
+        \bigg | \frac{10n + 5 - (10n + 2)}{5(5n + 1)} \bigg | < \epsilon\\
+         \frac{3}{5} \frac{1}{5n + 1} < \epsilon\\
+        \end{align*}
+        clearly suffices to require $\frac{1}{5n} < \epsilon$ since, 
+        $$ \frac{3}{5} \frac{1}{5n +1} < \frac{1}{5n + 1} < \frac{1}{5n} $$ 
+
+        So we have $\frac{1}{5n} < \epsilon$ which means $n > \frac{1}{5 \epsilon}$
+    \end{swork}
+
+
+    \vspace{1em}
+
+    Take $N > \frac{1}{5 \epsilon}$ then $\forall n > N$ we have,  
+        \begin{align*}
+        \bigg | \frac{2n + 1}{5n + 1}  - \frac{2}{5} \bigg | = \frac{10n + 5 - (10n + 2)}{5(5n + 1)} &< \frac{1}{5n + 1} \\
+        &< \frac{1}{5n}\\
+        &< \frac{1}{5N} \\
+        &< \epsilon
+        \end{align*}
+
+        So, 
+        $$ \lim_{n \to \infty} \frac{2n + 1}{5n + 1} = \frac{2}{5}   $$ 
+\end{proof}
+
+
+\begin{definition}
+    A sequence is said to be bounded if $\exists M$ s.t. $|a_n |\le M, \forall n \in \N$. Can also be written as,  
+$$ \sup|a_n| \le M $$ 
+\end{definition}
+
+\begin{theorem}
+    Every convergent sequence is bounded.
+\end{theorem}
+\begin{proof}
+    Let $(a_n)$ be a convergent sequence then, 
+    $$ \lim_{n \to \infty} a_n  = a $$ 
+
+    Take $\epsilon = 1$ we can find a $N$ such that $\forall n > N$ we have,  
+    $$ |a_n - a| < 1 $$ 
+    Now for $n > N$ we have  $|a_n| = |a_n - a + a | \le |a_n -a | + |a| < |a| + 1$
+
+    \vspace{1em}
+
+    Set $M = \max \{|a_1|, \dots, |a_N|, |a|+ 1\} $ . Then $\forall n \in \N$,  $|a_n|\le M$ and hence the sequence is bounded by  $M$
+
+\end{proof}
+
+\begin{theorem}
+    
+    If $  \lim_{n \to \infty} a_n = a, \lim_{n \to \infty} b_n  = b$  then, 
+
+    \begin{enumerate}
+        \item $\lim_{n \to \infty} ca_n = ca, \forall c \in \R$
+        \item $\lim_{n \to \infty} (a_n + b_n) = \lim_{n \to \infty} a_n + \lim_{n \to \infty} b_n = a + b$
+        \item $\lim_{n \to \infty} (a_n b_n) = (\lim_{n \to \infty} a_n)(\lim_{n \to \infty} b_n) = ab$
+        \item If $b \ne 0$ then, $\lim_{n \to \infty}\frac{a_n}{b_n} = \frac{\lim_{n \to \infty} a_n}{\lim_{n \to \infty} b_n} = \frac{a}{b}$ 
+        \item $a_n \ge 0$ then  $a \ge 0$
+        \item  $a_n \ge c$ then  $a \ge c$
+        \item  $a_n \le b_n$ then  $b \ge a$
+    \end{enumerate}
+\end{theorem}
+\begin{remark}
+    If $a_n > c, \forall n \in \N$ we know  $a \ge c$
+\end{remark}
+\begin{eg}
+    If $c = 0, a_n = \frac{1}{n}$ although $a_n > c$ we can't say that  $a > c$ as  $a = 0 \ge c = 0$
+\end{eg}
+
+\begin{proof} 
+    (1) Two cases, $c = 0$ or  $c \ne 0$. If  $c = 0$ then its trivial. Now if  $c \ne 0$. Since $\lim_{n \to \infty} a_n = a$ we have $\forall \epsilon > 0$ exists $N_c$ such that $\forall n > N$, 
+    \begin{align*}
+        |a_n - a| &< \frac{\epsilon}{|c|}\\
+        |c||a_n - a| &< \epsilon\\
+        |ca_n - ca| &< \epsilon
+    \end{align*}
+
+    So $\lim_{n \to \infty} c a_n = ca$
+
+
+
+    (2) We have $\lim_{n \to \infty} a_n = a$ and $\lim_{n \to \infty} b_n = b $ so there is some $N_1, N_2$ s.t.  $\forall \epsilon > 0$ if $n > \max\{N_1, N_2\}$ then, 
+
+    \begin{align*}
+        |a_n - a| &< \frac{\epsilon}{2}\\
+        |b_n - b |&< \frac{\epsilon}{2}
+    \end{align*}
+
+
+    Now we have $|(a_n + b_n) - (a + b)| = |(a_n - a) + (b_n - b)| \le |a_n - a| + |b_n - b| \le \epsilon  $
+
+
+    So by definition we now have, 
+    $$ \lim_{n \to \infty} (a_n + b_n) = a + b $$ 
+
+
+    % (3) We have $\lim_{n \to \infty} a_n = a$ and $\lim_{n \to \infty} b_n = b $ so there is some $N_1, N_2$ s.t.  $\forall \epsilon > 0$ if $n > \max\{N_1, N_2\}$ then, 
+    % \begin{align*}
+    %     |a_n - a| &< \frac{\epsilon}{2}\\
+    %     |b_n - b |&< \frac{\epsilon}{2}
+    % \end{align*}
+
+    (5) If $a_n \ge 0$ then  $a \ge 0$.
+
+    Assume to the contrary that $a < 0$, now take  $\epsilon = \frac{|a|}{2}$ so according to our definition we have some $N$ such that if $ n > N$ then, 
+    $$ |a_n - a| < \epsilon = \frac{|a|}{2} =-\frac{a}{2} $$ 
+
+
+    Now we have $ - \epsilon< a_n - a < \epsilon$ or that $a_n< \epsilon + a = a - \frac{a}{2} = \frac{a}{2} < 0$ as $a < 0$. But this is a contradiction as  $a_n \ge 0$. Hence, we have $a \ge 0$
+
+
+    \vspace{1em}
+
+    (6). $a_n \ge c$ then  $a \ge c$. Set  $x_n = a_n - c$ claim  $\lim_{n \to \infty} x_n = a - c$ which is true from (2). 
+
+    Then by (5) we have $x_n \ge 0$ so  $\lim_{n \to \infty} x_n = a- c > 0$ so $a > c$.
+
+    \vspace{1em}
+
+    (7) Let $x_m = b_n - a_m$ then  $\lim_{n \to \infty} x_n = b - a$ by (1), (2). Now we use (5)  as $x_n \ge 0$ so  $\lim_{n \to \infty} x_n = b - a \ge 0$ so $b \ge 0$.
+\end{proof}
+
+\begin{eg}
+    $x_n \le y_n \le z_n$. Suppose  $\lim_{n \to \infty} x_n = l$ and $\lim_{n \to \infty} z_n = l$ then, $ \lim_{n \to \infty} y_n = l $
+\end{eg}
+% \begin{proof}
+%     As $y_n \le z_n$ we have  $\lim_{n \to \infty} y_n \le \lim_{n \to \infty} z_n = l$. Now as $y_n \ge x_n$ we have $\lim_{n \to \infty} y_n \ge l$. So we have $ l \le \lim_{n \to \infty} y_n \le l $ which has to mean that $\lim_{n \to \infty} y_n = l$.
+% \end{proof} 
+\begin{proof}
+    We need to first show that $y_n$ is convergent. We have $x_n \le y_n \le z_n$  so, $x_n - l \le y_n -l \le z_n - l$. If  $y_n - l \ge 0$. then  $|y_n - l| \ge |z_n - l|$ else  $|y_n - l| \le |x_n - l|$. So in either case we have  $|y_n - l| \le \max \{|z_n - l|, |x_n - l |\} $ 
+    \vspace{1em}
+
+    Since, $\lim_{n \to \infty} x_n = l$ and $\lim_{n \to \infty} z_n = l$. Then for $\forall \epsilon$ we can find $N_1, N_2$ such that $\forall n > N_1, |x_n - l| < \epsilon$ and $\forall n > N_2$, $|z_n - l| < \epsilon$. 
+
+    \vspace{1em}
+
+    Now take $N = \max \{N_1, N_2\} $ then $\forall n > N$ we have $|y_n - l| \le \max \{|x_n - l|, |z_n - l|\} < \epsilon$. Which means that $\lim_{n \to \infty} y_n = y$ and $y$ is convergent to $l$.
+
+    \vspace{1em}
+    % As $y_n \le z_n$ we have  $\lim_{n \to \infty} y_n \le \lim_{n \to \infty} z_n = l$. Now as $y_n \ge x_n$ we have $\lim_{n \to \infty} y_n \ge l$. So we have $ l \le \lim_{n \to \infty} y_n \le l $ which has to mean that $\lim_{n \to \infty} y_n = l$.
+\end{proof}

@@ -1,0 +1,445 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath,amstext,amssymb,amsthm}   
+\usepackage{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\begin{center}
+ {\Large Homework 2, Math 4150 }
+ \\
+\end{center}
+
+\begin{questions}
+\question  Exercise Set 1.5, \#61.
+Find the greatest common divisor and the least common multiple of each pair of integers below.
+\begin{parts}
+\part $2^2 \cdot 3^3 \cdot 5 \cdot 7$, \quad $2^2 \cdot 3^2 \cdot 5 \cdot 7^2$
+
+We have,
+
+$a = 2^2 \cdot 3^3 \cdot 5 \cdot 7$
+
+$b = 2^2 \cdot 3^2 \cdot 5 \cdot 7^2$
+
+
+So LCM is $2^{2} \cdot 3^{3} \cdot 5 \cdot 7^2 = 4 \cdot 27 \cdot 5 \cdot 49 = 26460$
+
+And GCD is $2^2 \cdot 3^2 \cdot 5 \cdot 7 = 1260$
+
+
+\part $2^2 \cdot 5^2 \cdot 7^3 \cdot 11^2$, \quad $3 \cdot 5 \cdot 11 \cdot 13 \cdot 17$
+
+
+We have,
+
+$a = 2^2 \cdot 3^{0} \cdot 5^2 \cdot 7^3 \cdot 11^2 \cdot 13^{0} \cdot 17^{0}$
+
+$b = 2^{0} \cdot 3 \cdot 5 \cdot 7^{0} \cdot 11 \cdot 13 \cdot 17$
+
+
+So LCM is $2^2 \cdot 3 \cdot 5^2 \cdot 7^3 \cdot 11^2 \cdot 13 \cdot 17 = 2751648900$
+
+And GCD is $ 5 \cdot 11 = 55$
+
+\part $2^2 \cdot 5^7 \cdot 11^{13}$, \quad $3^2 \cdot 7^5 \cdot 13^{11}$
+
+We have,
+
+$a = 2^2 \cdot 5^7 \cdot 11^{13}$
+
+$b =3^2 \cdot 7^5 \cdot 13^{11}$
+
+
+So LCM is $2^2 \cdot 3^2 \cdot 5^{7}\cdot 7^{5} \cdot 11^{13}\cdot 13^{11} =2.9245868e+36 $
+
+And GCD is $1$
+
+
+\part $3 \cdot 17 \cdot 19^2 \cdot 23$, \quad $5 \cdot 7^2 \cdot 11 \cdot 19 \cdot 29$
+
+We have,
+
+$a = 3 \cdot 17 \cdot 19^2 \cdot 23$
+
+$b =5 \cdot 7^2 \cdot 11 \cdot 19 \cdot 29$
+
+
+So LCM is $3 \cdot 5 \cdot 7^2 \cdot 11 \cdot 17 \cdot 19^2 \cdot 23 \cdot 29 = 33094969215$
+
+And GCD is $19$
+\end{parts}
+
+
+\newpage 
+\question  Exercise Set 1.5, \#70.  
+Prove or disprove the following statements.
+\begin{parts}
+\part If $a,b \in \mathbb{Z}$, $a,b>0$, and $a^2 \mid b^3$, then $a \mid b$.
+
+Consider if $a = 8$ and  $b = 12$. We have  $ 8 \nmid 12$ however  $a^2 = 64$ and $b^{3} = 1728$ and we see that $64 | 1728$ as  $64 \cdot 27 = 1728$. This disproves the above statement.
+
+
+\part If $a,b \in \mathbb{Z}$, $a,b>0$, and $a^2 \mid b^2$, then $a \mid b$.
+
+Let $a = p_1^{a_1}\dots p_n^{a_n}$ and $b = p_1^{b_1} \dots p_n^{b_n}$ here $a_1,\dots,a_n, b_1, \dots, b_n$ are greater than equal to zero which means that the primes not dividing one of the numbers get exponent zero. Now assume that $a \nmid b$ this means that there is some  $p_i$ such that  $a_i > b_i$. Now, if we square both the numbers we have the exponent as  $2a_i$  and $2b_i$ respectively  and we have $2a_i > 2b_i$ which means that  $a^2 \nmid b^2$ which is a contradiction. This means our assumption that $a \nmid b$ is wrong which means that  $a \mid b$
+
+
+\part If $a \in \mathbb{Z}$, $a>0$, $p$ is a prime number, and $p^4 \mid a^3$, then $p^2 \mid a$.   
+
+First we write $a = q_1^{a_1}\dots q_n^{a_n} p^{k}$ where $q_1,\dots,q_n, p$ are prime numbers and $a_1, \dots, a_n > 0$ while $k \ge 0$. This means that  $p$ need not be a divisor of $a$. We know that $p^{4} | a^{3}$ which means that, 
+$$ p^{4} \mid  q_1^{3a_1}\dots q_n^{3a_n} p^{3k} $$ 
+
+Now this must mean that $3k \ge 4$ as otherwise  $p^{4}$ is not in the prime factorization of  $a$ which means $p^{4}$ does not divide $a$ which we know is not the case. So we have $3k \ge 4$ which means that  $k \ge \frac{4}{3}$. However, we know that $a \in \mathbb{Z}$ which must mean that  $k \ge 0, k \in \mathbb{Z}$. So if $k \ge \frac{4}{3}$ then we have $k \ge 2$. So we have,  
+$$ a = q_1^{a_1}\dots q_n^{a_n} p^{k} \quad \text{ where $k \ge 2$} $$ 
+
+Now if $k \ge 2 $ then it means that $p^2$ is in the prime factorization of $a$ which means that, 
+$$ p^2 | q_1^{a_1}\dots q_n^{a_n} p^k \implies p^{2} | a $$  which completes our proof.
+
+\end{parts}
+
+\newpage
+\question Exercise Set 1.5, \#78  
+Let $n \in \mathbb{Z}$ with $n>1$. The $n$th \emph{harmonic number} $H_n$
+is defined by $H_n:=1+\tfrac{1}{2}+\tfrac{1}{3}+\cdots+\tfrac{1}{n}$.
+Prove that $H_n \not \in \mathbb{Z}$.
+
+
+\textbf{Solution.} 
+
+Let $l = LCM(1, \dots, n)$, so we have  $H_n = \frac{1}{l} (l + \frac{l}{2} + \dots + \frac{l}{n})$. We need to show that $l \nmid l + \frac{l}{2} + \dots + \frac{l}{n}$. Now, we know that for some largest $1 \le k \le n$ we have $2^{k} \mid  l$ so we know that $l$ is even. But now consider $l + \frac{l}{2} + \dots + \frac{l}{n}$. For any $1 \le m \le n$ we know that if $m = 2^{r}d$ where $d$ is odd then  if  $r < k, m$ has to be even. So the only case where $\frac{l}{m}$ is odd is when in $m = 2^{r}d$ we have $r = k$. However, the only possible value for this is when $m = 2^{r}$ where $d = 1$ as else if $d > 1$ then $2^{r + 1} \le n$  which means that $r$ is not the greatest power of $2$ such that $2^{r} \le n$. So, there is only one integer smaller than $n$ that is divisible by $2^{r}$ which means that $\frac{l}{2^{r}}$ is not divisible by 2, or is odd. As for any other $\frac{l}{m}$ we have $2 \mid \frac{l}{m}$ this means that $l + \frac{l}{2} + \dots + \frac{l}{n}$ is an odd number as we only have one odd number in that list. But, we know that $l$ is even and we can't have an even number dividing an odd numbers which means that $H_n \not \in \mathbb{Z}$.
+
+
+
+\newpage 
+\question  Exercise Set 1.5, \#87.
+\begin{parts}
+\part  Let $a,b \in \mathbb{Z}$. Prove that if $a$ and $b$ are expressible in the form $6n+1$, where $n$ is an integer, then $ab$ is also expressible in that form.
+
+\textbf{Solution.} 
+
+We have $a = 6n + 1$ and $b = 6m + 1$ which means that  $ab = (6n + 1)(6m + 1) = 36mn + 6n + 6m + 1 = 6(6mn + m + n) + 1 = 6k + 1$ where  $k = 6mn + m + n$
+
+\part  Prove that there are infinitely many prime numbers of the form $6n+5$, where $n$ is an integer. (Hint: Parallel the proof of Proposition 1.22 that uses proof by contradiction).
+
+
+Assume to the contrary that there are not infinitely many primes of the form $6n + 5$ so let $p_0 = 5, p_1, \dots, p_r$ be the finitely many primes of that form. Now consider the number $N = 6p_1\dots p_r + 5$. Now $N$ has either primes of the form $6k + 1$ or $6k + 5$. We know at least one of the primes must be of the form  $6k + 5$ as otherwise $N$ will be of the form $6k + 1$ itself based on (a). Therefore let $p_i$ be the prime of the form $6k + 5$. So we have either $5 | N$ or  $p_i | N$ for some $0 \le i \le r$.
+\vspace{1em}
+
+Case 1. If  $5 | N$ then  $5 | 6p_1\dots p_n + 5$ so $5 | 6p_1 \dots p_n$. But this is not possible as $p_1, \dots, p_n$ are primes  with $5$ being not one of them.
+
+\vspace{1em}
+Case 2. If $p_i | N$ then we have  $p_i | N - 6p_1\dots p_n$ as $p_i | 6p_1 \dots p_n$ so $p_i | 5$ which is not possible as  $p_i$ is a prime greater than  $5$.
+
+\vspace{1em}
+Hence both cases lead to a contradiction. This implies our assumption is wrong and there are infinitely many primes such that  $p = 6n + 5$.
+\end{parts}
+
+\newpage 
+\question  Exercise Set 2.1, \#12  \\ 
+Let $a,b,c,d \in \mathbb{Z}$ such that $a \equiv b \pmod{m}$ and $c \equiv d \pmod{m}$. Prove or disprove the following statements.
+\begin{parts}
+\part $(a-c) \equiv (b-d) \pmod{m}$.
+
+\textbf{Solution.}
+
+We have $a \equiv b \pmod m$ which means $a - b = k_1m$ and   $c \equiv d \pmod m$ which means $c - d \equiv k_2m$. Now subtracting second from the first we have, 
+\begin{align*}
+    a - c - b + d &= (k_1 - k_2)m\\
+    a - c - (b - d) &= (k_3)m
+\end{align*}
+
+Or that $a - c \equiv b - d \pmod m$
+
+\part If $c \mid a$ and $d \mid b$, then $\tfrac{a}{c} \equiv \tfrac{b}{d} \pmod{m}$.
+
+\textbf{Solution.} 
+
+Let $a = 33$ and $b = 12$ so we have $33 - 12 = 21$ so  $a  \equiv b \pmod 3$ now take  $c = 3$ and $d = 3$ so we have $c - d = 0$ so  $c \equiv d \pmod 3$. We also have  $c \mid a$ as  $3 \mid 33 $ as well as $d \mid b$ or  $3 \mid 12$. However we see that  $\frac{a}{c} = 11$ and $\frac{b}{d} = 4$ but $11 - 4 = 7$ and  $3 \nmid 7$ which means that  $\frac{a}{c} \not \equiv \frac{b}{d} \pmod m$
+\end{parts}
+
+
+\newpage 
+\question Exercise Set 2.1 \#13
+\begin{parts}
+\part Let $a$ be an even integer. Prove that $a^2 \equiv 0 \pmod{4}$.
+
+\textbf{Solution.} 
+
+If $a$ is an even integer than $a = 2m$ for some $m \in \mathbb{Z}$. So we have  $a^2 = (2m)^2 = 4m^2$. So $4 \mid 4m^2$ or $4m^2 - 0 = 4k$ or $4m^2 \equiv 0 \pmod 4$ 
+
+\part Let $a$ be an odd integer. Prove that $a^2 \equiv 1 \pmod{8}$. Deduce that $a^2 \equiv 1 \pmod{4}$.
+
+\textbf{Solution.} 
+
+If $a$  then $a$ can be written as $a = 2m + 1$ for some $m \in \mathbb{Z}$. Now  $a^2 = (2m + 1)^2 = 4m^2 + 4m + 1 = 4m(m + 1) + 1$. If $m$ is odd then $m + 1$ is even, else $m$ is even. In both cases either $m$ or $m + 1$ is even so take it as $2k$ for some $k \in \mathbb{Z}$. So we have $a^2 = 8k (m + 1) + 1$ or $a^2 = 8km + 1$. In both cases we can write $a^2 = 8z + 1$ for some $z$. This gives us  $8z + 1 \equiv 1 \pmod 8$ as  $8 \mid 8z$ which means that  $a^2 \equiv 1 \pmod 8$.
+
+\vspace{1em}
+
+Now if $a^2 \equiv 1 \pmod 8$ we have $8 \mid a^2 - 1$. But this implies that $4 \mid a^2 - 1$ as $4 $ is a factor for  $8$. Hence we get  $a^2 \equiv 1 \pmod 4$.
+
+\item Prove or disprove the converse of the statement in part (c) above.
+
+    \textbf{Solution.} 
+
+    We are given that $a^2 \equiv 1 \pmod 8$ which means that for some  $k \in \mathbb{Z}$ we have  $a^2 - 1 = 8k$. This means that $a^2 - 1$ is even or that $a^2 $ is odd. If $a $ is even then $a^2$ is odd therefore $a$ has to be odd for its square to be odd. Hence $a$ is odd and we conclude our proof.
+\end{parts}
+
+\newpage 
+\question  Exercise Set 2.2, \#29 (b),(d),(f).
+Find the inverse modulo $m$ of each integer $n$ below.
+\begin{parts}
+\part $n=8$, $m=35$.
+
+\textbf{Solution.} 
+
+We need to find the inverse modulo $m$ of $8$, or  $x$ such that $8x \equiv 1 \pmod {35}$. We have,  
+\begin{align*}
+    35 &= 8 \cdot 4 + 3\\
+    8 &= 3 \cdot 2 + 2\\
+    3 &= 2 \cdot 1 + 1  
+\end{align*}
+
+This gives us $2 = 3 - 1$  so  $8 = 3 \times 2 + 3 - 1 = 3 \times  3 - 1$ so $35 = 8 \times  4 + \frac{8 + 1}{3}$ or that, 
+$$ 35 \times  3 + 8 \times  (-13) = 1 $$ 
+
+
+So we have $x = -13$ such that  $8x = 8 \times  -13 \equiv 1 \pmod 35$
+
+
+\part $n=51$, $m=99$.
+
+
+We see that $gcd(51, 99) > 1$. Hence  $55$ does not have an inverse modulo $99$.
+
+
+\part $n=1333$, $m=1517$.
+
+We have,
+\begin{align*}
+    1517 &= 1333 \times  1 + 184\\
+    1333 &= 184 \times 7  + 45\\
+    184 &= 45 \times  4 + 4\\
+    45 &= 4 \times  11 + 1
+\end{align*}
+
+So we have $4 = \frac{45  - 1}{11}$ So $184 \times  11 = 45 \times  45 - 1$, $1333 \times  45 = 184 \times (326)+ 1$. And, $1 = 1333 \times  371 + 1517 \times -326$.
+
+\vspace{1em}
+
+So we have $x = 371 $ such that $1333x = 1333 \times 371 \equiv 1 \pmod {1517}$.
+\end{parts}
+
+\newpage 
+\question  Exercise Set 2.3, \#33(a),(e), 34 (b) 
+Find the least non-negative solution of each system of congruences below.
+\begin{parts}
+\part 
+\begin{align*}
+x & \equiv 3 \pmod{4} \\
+x & \equiv 2 \pmod{5}
+\end{align*}
+
+
+\textbf{Solution.} 
+
+Let $M = 4 \cdot 5 = 20$ so we have $M_1 = 5$ and $M_2 = 4$. Now we solve, 
+\begin{align*}
+    5 x_1 \equiv 1 \pmod 4\\
+    4 x_2 \equiv 1 \pmod 5\\
+\end{align*}
+
+We have $5 - 4 = 1$. So inverse of  $5$ mod  4 is $1$ and inverse of $4$ mod  $5$ is $-1$. So we have  $x_1 = 1$ and $x_2 = -1$ by inspection. Now to construct our solution we have, 
+$$ x = b_1M_1x_1  + b_2M_2x_2 = 3 \cdot 5 \cdot 1 + 2 \cdot 4 \cdot -1 = 15 - 8 = 7$$ 
+
+
+\part 
+\begin{align*}
+x & \equiv 1 \pmod{2} \\
+x & \equiv 2 \pmod{3} \\
+x & \equiv 4 \pmod{5} \\
+x & \equiv 6 \pmod{7} 
+\end{align*}
+
+\textbf{Solution.} 
+
+Let $M = 2 \cdot 3 \cdot 5 \cdot 7 = 210$ so we have $M_1 = 105, M_2 = 70, M_3 = 42, M_4 = 30$. Now we solve, 
+\begin{align*}
+    105 x_1 \equiv 1 \pmod 2\\
+    70 x_2 \equiv 1 \pmod 3\\
+    42 x_3 \equiv 1 \pmod 5\\
+    30 x_4 \equiv 1 \pmod 7\\
+\end{align*}
+
+We have the following, 
+\begin{align*}
+    105 - 2 \cdot 52 &= 1\\
+    70 - 3 \cdot 23 &= 1\\
+    5 \cdot 17 - 42 \cdot 2 &= 1\\
+      7 \cdot 13 - 3 \cdot 30 &= 1\\
+\end{align*}
+
+So we have $x_1 = 1, x_2 = 1, x_3 = -2, x_4 = -3$ which gives us,
+
+\begin{align*}
+    x &= b_1M_1x_1  + b_2M_2x_2 + b_3M_3x_3 + b_4M_4x_4 \\
+     &= 1 \cdot 105 + 2 \cdot 70 + 4 \cdot 42 \cdot -2 + 6 \cdot 30 \cdot -3\\
+&= 105 + 140  -336 -540 \\
+&= -631\\
+\end{align*}
+
+Now, $-631 \equiv -1 \pmod 210$. So the least non-negative number is  $209$
+
+\part 
+\begin{align*}
+3x & \equiv 2 \pmod{4} \\
+4x & \equiv 1 \pmod{5} \\
+6x & \equiv 3 \pmod{9} \\
+\end{align*}
+\textbf{Solution.} 
+
+First we can rewrite $6x \equiv 3 \pmod 9 $ to  $2x \equiv 1 \pmod 3$ and we have, $4 - 3 = 1, 5 - 4 = 1$ and $3 - 2 = 1$. This gives us the following, 
+
+\begin{align*}
+    x &\equiv -2 \equiv 2 \pmod 4 \\
+    x &\equiv -1\equiv 4 \pmod 5 \\
+    x &\equiv -1  \equiv 2\pmod 3 \\
+\end{align*}
+
+
+Now we have $M = 4 \cdot 5 \cdot 3 = 60$ or  $M_1 = 15, M_2 = 12, M_3 = 20$. We need to solve, 
+\begin{align*}
+    15x_1 &\equiv 1 \pmod 4 \\
+    12x_2 &\equiv 1 \pmod 5 \\
+    20x_3 &\equiv 1 \pmod 3 \\
+\end{align*}
+
+We have $4 \cdot 4 - 15 = 1$,  $5 \cdot 5 - 2 \cdot 12 = 1$ and  $7 \cdot 3 - 20 = 1$. Which gives us,  
+$$ x_1 = -1, x_2 =  -2, x_3 = -1 $$ so, 
+\begin{align*}
+    x &= b_1M_1x_1 + b_2M_2x_2  + b_3M_3x_3\\
+      &= 2 \cdot 15 \cdot -1 + 4 \cdot 12 \cdot -2 + 2 \cdot 20 \cdot -1 = -30 - 96 - 40 = -166
+\end{align*}
+
+
+180 - 
+Now as  $-166 \equiv 14 \pmod{60}$ our smallest positive integer  is $14$
+
+
+
+
+
+\end{parts}
+
+\newpage 
+\question  Exercise Set 2.3 \#35.
+There are $n$ eggs in a basket. If eggs are removed from the basket $2,3,4,5$ and $6$ at a time,
+there remain $1,2,3,4$ and $5$ eggs in the basket, respectively. If eggs are removed from the basket
+$7$ at a time, no eggs remain in the basket.  What is the smallest value of $n$ for which this scenario could 
+occur (Show all of your work)?
+
+\textbf{Solution.}  We have the following equivalencies, 
+\begin{align*}
+    n &\equiv 1 \pmod 2\\
+    n &\equiv 2 \pmod 3\\
+    n &\equiv 3 \pmod 4\\
+    n &\equiv 4 \pmod 5\\
+    n &\equiv 5 \pmod 6\\
+    n &\equiv 0 \pmod 7
+\end{align*}
+
+First we see that $n \equiv 3 \pmod 4$ means that  $n - 3 = 4k$ for some  $k \in \mathbb{Z}$ which means that  $n - 1 = 4k + 2 = 2(2k + 1) = 2k'$ or that  $n \equiv 1 \pmod 2$.  Hence,  $n \equiv 3 \pmod 4$ implies the other condition so we can ignore the second. Using similar reasoning $n \equiv 5 \pmod 6$ implies  $n \equiv 2 \pmod 3$ and hence we don't need to latter condition. So our system of congruence becomes as follows, 
+
+\begin{align*}
+    n &\equiv 3 \pmod 4\\
+    n &\equiv 4 \pmod 5\\
+    n &\equiv 5 \pmod 6\\
+    n &\equiv 0 \pmod 7
+\end{align*}
+
+
+Now we see that $4$ and $6$ are not coprime. Both of them give us, $n - 3 =4k_1$ and $n - 5 = 6k_2$. Putting value of n from first to the second gives us, 
+\begin{align*}
+    4k_1 + 3 - 5 &= 6k_2\\
+    4k_1 -2 &= 6k_2\\
+    2k_1 -1 &= 3k_2\\
+    2k_1 & \equiv 1 \pmod 3\\
+    k_1 & \equiv 2 \pmod 3 \text{ as $2$ is the inverse of $2$ mod $3$}
+    k_1 = 3x + 2
+\end{align*}
+
+Now putting this back to the first gives us, 
+
+\begin{align*}
+    n  &= 4k_1 + 3\\
+    n &= 4(3x + 2) + 3\\
+    n &= 12x + 11
+    n \equiv 11 \pmod {12}
+\end{align*}
+
+
+So our new system of congruence are,
+
+\begin{align*}
+    n &\equiv 4 \pmod 5\\
+    n &\equiv 0 \pmod 7\\
+    n & \equiv 11 \pmod {12}
+\end{align*}
+
+So we have $M = 5 \cdot 7 \cdot 12 = 420$ and  $M_1 = 84, M_2 = 60, M_3 = 35$ and we solve the following, 
+\begin{align*}
+    84 x_1 &\equiv 1 \pmod 5\\
+    60 x_2 &\equiv 1 \pmod 7\\
+    35 x_3 &\equiv 1 \pmod {12}
+\end{align*}
+We have $5 \cdot 17 - 84 = 1, 60 \cdot 2 - 7 \cdot 17 = 1$ and  $12 \cdot 3 - 35 = 1$ which gives us $x_1 = -1, x_2 = 2, x_3 = -1$. So our solution is, 
+\begin{align*}
+    x &= b_1M_1x_1 + b_2M_2x_2 + b_3M_3x_3 \\
+        &= 4 \cdot 84 \cdot -1 + 0 + 11 \cdot 35 \cdot -1 \\
+        &=  -336 + -385 = -721
+\end{align*}
+
+And we have $-721 \equiv 119 \pmod {420}$
+
+
+            
+
+\newpage 
+\question  Exercise Set 2.3, \#40.
+Prove that the system of linear congruences in one variable given by 
+\begin{align*}
+x & \equiv b_1 \pmod{m_1} \\
+x & \equiv b_2 \pmod{m_2} \\
+& \vdots \\
+x & \equiv b_n \pmod{m_n}
+\end{align*}
+is solvable if and only if $(m_i,m_j) \mid b_i-b_j$ for all pairs $i,j$ with $i \neq j$. In this case, prove that each solution is unique modulo $[m_1,m_2,\ldots,m_n]$.
+
+\newpage 
+\question  Excercise Set 2.4, \#43.
+\begin{parts}
+\item Prove that if $p$ is an odd prime number, then $2(p-3)! \equiv -1 \pmod{p}$.
+\item Find the least non-negative residue of $2(100!) \pmod{103}$.
+\end{parts}
+
+\newpage 
+\question  Excercise Set 2.4, \#48.
+Let $p$ be an odd prime number. Prove that 
+\begin{equation*}
+1^2 3^2 5^2 \cdots (p-4)^2 (p-2)^2 \equiv (-1)^{(p+1)/2} \pmod{p}.
+\end{equation*}
+
+
+ 
+
+ 
+
+\end{questions}
+
+\end{document} 
+
+
+ 
+%%%% don't delete the last line!
+\end{document}

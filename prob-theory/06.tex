@@ -1,0 +1,166 @@
+\begin{eg}
+    Geometric r.v.. Take $\Omega = \{\underline \omega = (\omega_1, \dots, \omega_n, \dots)\} $ where $\omega_i \in \{0, 1\} $ 
+
+    \vspace{1em}
+
+    $X(\underline \omega) =$ the position of the first  $1$ in $\underline \omega$
+
+    \vspace{1em}
+
+    $\{\underline \omega \mid X(\underline \omega) = n\} = A_n $
+
+    But $A_n$ is the set of all $\underline \omega $ such that  $\omega_1 = \omega_2 = \dots =  \omega_{n - 1} = 0$
+
+
+    Here $X(\Omega) = \N$ which means its countable and $X^{-1}(n) \in \F$ so it means it's a random variable.
+
+    \vspace{1em}
+
+    $p(n) = \P(X = x) = p(1 -  p)^{n - 1}$
+
+
+    If $X$ has the p.m.f  $p(x)$ above then it's called a \textbf{Geometric r.v.} with parameter $p$.
+
+\end{eg}
+\begin{remark}
+	Geometric can be thought of as the number of trials until the first success in a sequence of independent Bernoulli trials each with success probability $p$.
+\end{remark}
+\begin{remark}
+    Here $A_n$ is a cylinder set as we're fixing the value of $\omega$ on a finite number of points (in this case from $1, \dots, n - 1$)
+\end{remark}
+\begin{remark}
+    Sometimes $q$ is taken as $1 - p$ so this is also correct, $p(x) = pq^{x - 1}$ 
+\end{remark}
+
+
+\begin{eg}
+    % \textbf{ Poisson r.v.}
+    Suppose you have a binomial with large  $N$ but  $pN = \lambda$ is finite. So, 
+    $$ p(x) = {N \choose x}p^{x} (1 - p)^{N - x} $$ 
+
+    From here we have $p= \frac{\lambda}{n}$ so we have, 
+
+
+    $$ p(x) = \frac{N!}{x! (N - x)!} \bigg (\frac{\lambda}{N} \bigg )^{x}\bigg (1 - \frac{\lambda}{N}\bigg )^{N -x }$$ 
+
+    But we have $\frac{N!}{(N - x)!} $ is around $N^{x}$ for $x \ll N$. We also have  $\lim_{N \to \infty} (1 - \frac{\lambda}{N})^{N}= e^{-\lambda}$ so is $\lim_{N \to \infty} (1 - \frac{\lambda}{N})^{N - x} = e^{-\lambda}$. This gives us, 
+    $$ p(x) = \frac{N^{x}}{x!} \bigg (\frac{\lambda}{N} \bigg )^{x} e^{-\lambda} = e^{-\lambda} \frac{\lambda ^{x}}{x!}$$ 
+
+    This is called a \textbf{Poisson distribution} 
+\end{eg}
+
+\begin{note}
+    Poisson is from $0 \to \infty$
+\end{note}
+\vspace{1em}
+\hline 
+\vspace{1em}
+
+If $p(x)$ is the p.m.f of a random variable, then, we need $p(x) \ge 0, \forall x$ and  $\sum_{x} p(x) = 1$
+
+
+\begin{eg}
+    For binomial we have, 
+    $$ p(x) = {N \choose x} p^{x} (1 - p)^{N - x} $$ 
+
+    Now, 
+    \begin{align*}
+        \sum_{x = 0}^{N} p(x) &= \sum_{x = 0}^{N} {N \choose x} p^{x} (1 - p)^{N - x} \\
+                              &= (p + (1 - p))^{N} \\
+                              &= 1^{N} = 1
+    \end{align*}
+\end{eg}
+
+\begin{eg}
+    For Poisson we have, 
+    \begin{align*}
+        \sum_{x = 0}^{\infty} p(x) &= \sum_{x=0}^{\infty} \frac{\lambda^{x}}{x!} e^{-\lambda}\\
+                                   &= e^{\lambda}e^{-\lambda} = 1
+    \end{align*}
+\end{eg}
+
+
+\section{Mean of a random variable}
+
+Also called average, expectation etc. Here $\E(x)$ is the expectation of  $X$.
+
+\begin{eg}
+    With probability $p$ say you get $1$ and with $(1 - p)$ you get $0$. Here the average after $N$ flips is, 
+    $$ 1 \cdot \frac{\#1}{N} + 0 \cdot \frac{\#0}{N} = 1 \cdot p(1) + 0 p(0) = p  $$ 
+\end{eg}
+
+\begin{definition}
+    If $X$ is a discrete random variable with p.m.f $p(x)$ then,  
+    $$ \E(X) = \sum_{x} x \cdot p(x) $$ 
+\end{definition}
+\begin{note}
+    Here $x$ is all possible values of $X$.
+\end{note}
+
+\begin{eg}
+    For Bernoulli r.v., 
+    $$ \E(X) = p $$ 
+\end{eg}
+\begin{eg}
+    For Binomial $N, p$ we have,  
+    $$ \E(X) = \sum_{x = 0}^{N} x {N \choose x} p^{x} (1 - p)^{N - x}$$ 
+
+    First we have $x {N \choose x} = \frac{ N!}{(x - 1)! (N - x!)} = \frac{(N - 1)! (N)}{(x - 1)! (N - x)!} = N {N - 1 \choose x - 1}$. So, 
+
+    
+    \begin{align*}
+        N \sum_{x = 1}^{N} {N - 1 \choose x - 1} p^{x} (1 - p)^{N - x} &=    Np \sum_{x = 1}^{N} {N - 1 \choose x - 1} p^{x - 1} (1 - p)^{N - x} \\
+    \end{align*}
+    Taking $y = x - 1$ we have, 
+    $$ Np \sum_{y = 0}^{N - 1} {N - 1 \choose y} p^{y} (1 - p)^{N - 1 - y} = Np $$ 
+\end{eg}
+\begin{remark}
+    Intuitively if $Y_1, \dots, Y_n$ are independent Bernoulli r.v. with parameter $p$. Then $\sum_{i = 1}^{N} Y_i = X$ binomial and $\E(\sum_{i = 1}^{N} Y_i) = \sum_{i = 1}^{N} \E(Y_i) = Np$
+\end{remark}
+
+
+\begin{eg}
+    For Geometric r.v. we have,
+
+    
+    $$ p(x) = p(1 - p)^{x - 1} $$ 
+
+    So, 
+    \begin{align*}
+        \sum_{x = 0}^{\infty} x p(x) = p \sum_{x = 0}^{\infty} x (1 - p)^{x - 1}
+    \end{align*}
+
+    We see that $x(1 - p)^{x - 1} =  \frac{-d}{dp} (1 - p)^{x}$ so, 
+    \begin{align*}
+        \sum_{x = 1}^{\infty} x(1 - p)^{x - 1} &= -\sum_{x = 1} \frac{d}{dp}(1 - p)^{x}\\
+                                               &=  -\frac{d}{dp} \sum_{x = 1}^{\infty} (1 - p)^{x}\\
+                                               &=  -(1 - p)\frac{d}{dp} \sum_{x = 0}^{\infty} (1 - p)^{x}\\
+                                               &= -\frac{d}{dp} (\frac{1}{p} - 1)\\
+                                               &=   -1 \times  -\frac{1}{p^2}  = \frac{1}{p^2}
+    \end{align*}
+
+
+    So we have, 
+    $$ \E(X) = p \sum_{n = 1}^{\infty} x(1 - p)^{x - 1} = p \frac{1}{p^2} = \frac{1}{p} $$ 
+\end{eg}
+
+\begin{eg}
+    For Poisson we have, 
+    \begin{align*}
+        \E(X) &= \sum_{x = 0}^{\infty} \frac{\lambda^{x}}{x!} e^{-\lambda} x \\
+              &= \sum_{x = 1} \lambda^{x} \frac{1}{(x - 1)!} e^{-\lambda} = \lambda \sum_{x = 1}^{\infty} \lambda^{x - 1} \frac{1}{(x - 1)!} e^{-\lambda}\\
+              &= \lambda
+    \end{align*}
+\end{eg}
+
+\begin{eg}
+    For Hypergeometric we have, 
+
+
+    $$ p(x) = \frac{{N \choose x} {M \choose n - x}}{{M + N \choose n}}$$
+
+    In this example we have $N$ red balls and $M$ blue balls and $X$ is the r.v. of number of reds by taking $x$ balls. Intuitively we get $\E(X) = n p$ where  $p = \frac{N}{N + M}$
+\end{eg}
+\begin{remark}
+     The point here is that extracting the red ball at the third extraction and the first extraction will be the same (at the beginning that is, even though given information about the first 2 extractions the third will have different probability). But in the beginning we don't have any more information and there is no reason to think that the first or second extraction is better than the later ones.
+\end{remark}

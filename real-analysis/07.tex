@@ -1,0 +1,63 @@
+\section{Cauchy Criterion}
+\begin{definition}[Cauchy Criterion]
+	A sequence $(a_n)$ is Cauchy if $\forall \epsilon > 0, \exists N$ s.t. $|a_n - a_m| < \epsilon, \forall n, m > N$.
+\end{definition}
+
+\begin{theorem}
+    A sequence $(a_n)$ is convergent if and only if it is Cauchy.
+\end{theorem}
+\begin{proof}
+	($\Rightarrow$) Let $(a_n)$ be a convergent sequence that converges to $a$. Then $\forall \epsilon > 0, \exists N$ s.t. $|a_n - a| < \frac{\epsilon}{2}, \forall n > N$. Now for $n, m > N$ we have,
+	\begin{align*}
+		|a_n - a_m| &= |(a_n - a) - (a_m - a)|\\
+			    &\le |a_n - a| + |a_m - a| \le \frac{\epsilon}{2} + \frac{\epsilon}{2} 
+	\end{align*}
+	Which completes our proof.
+\end{proof}
+
+\begin{lemma}
+Every Cauchy sequence is bounded
+\end{lemma} 
+\begin{proof}
+	Take $\epsilon = 1$, then we have $N$ such that $|x_m - x_n| < 1$ for all $m, n > N$ so we can write, 
+	\[ 
+		|x_m - x_{N + 1}| < 1, \quad \forall m > N
+	.\]
+	So $|x_m| = |x_m - x_{N + 1} + X_{N + 1}| < 1 + |X_{N + 1}|$. Now just pick $\max\{|x_1|, \dots, |x_{N - 1}|, |x_N| + 1\}$.
+\end{proof}
+
+Now we can prove the other direction of the theorem.
+
+\begin{proof}
+	($\Leftarrow$) Let $(a_n)$ be a Cauchy sequence. By the lemma above, we know that $(a_n)$ is bounded. So by the Bolzano-Weierstrass theorem, tells us that it contains a convergent subsequence. So consider a subsequence $\{x_n_k\} $ s.t. $\lim_{k \to \infty} x_n_k = x$.
+
+	\vspace{1em}
+	
+	Now, $\forall \epsilon > 0,$ we can find $N_1$ such that $\forall k > N_1$, $|x_n_k - x| < \frac{\epsilon}{2}$. And we have $N_2$ s.t. $\forall m,n > N_2$ we have $|x_n - x_m| < \frac{\epsilon}{2}$. Now take $N = \max \{N_1, N_2\}$. We have, 
+	$$ |x_n - x| = |x_n - x_n_k + x_n_k - x| \le |x_n - x_n_k| + |x_n_k - x| $$ 
+
+	If we take $k > N$, note that  $n_k \ge k > N$, so  $|x_n_k - x| < \frac{\epsilon}{2}$ and $|x_n - x_n_k| < \frac{\epsilon}{2}$. It follows that $|x_n - x| \le \epsilon$
+
+	\vspace{1em}
+
+	So $$\lim_{n \to \infty} x_n = x$$
+
+\end{proof}
+
+\vspace{1em}
+
+\hline
+\vspace{1em}
+
+
+\begin{eg}
+	$M.C.T. \implies N.I.P$
+
+	Consider your nested intervals and have  $I_n = [a_n, b_n]$ then  $\{a_n\} $ is an increasing sequence and it is bounded above $(b_1)$ is an upper bound. So using M.C.T it converges to some $x$.
+\end{eg}
+
+\begin{eg}
+	NIP $\implies$ AoC
+
+
+\end{eg}

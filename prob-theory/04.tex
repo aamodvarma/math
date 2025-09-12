@@ -1,0 +1,100 @@
+\section{Examples}
+\begin{eg}
+    Coin flip arrival of the first H
+
+
+    Let $A$ be the event that $n > 10$ and  $B$ be the event that $n > 13$ and $C$ is the even that $n > 13$.
+
+
+    We show that $\P(B | A) = \P(C)$
+
+
+    We compute $\P(A)$ first.  So, 
+    \begin{align*}
+        \P(A) = \sum_{n = 11}^{\infty} \P(\{n\}) = \sum_{n = 11}^{\infty} p(1 - p)^{n - 1} &= (1 - p)^{10} \sum_{n = 11}^{\infty} p (1 - p)^{n - 11} \\
+        &= (1 - p)^{10}
+    \end{align*}
+
+    This is the probability that the first 10 flips are tails.  Similarly $\P(B) = (1 - p)^{13}$ and $\P(C) = (1 -p)^{3}$
+
+    So $\P(B | A) = \frac{\P(A \cap B)}{\P(A)}$
+
+    We have $B \subseteq A$ so it's the same as  $\P(B)$ so we have,  
+    $$ \P(B | A) =\frac{ \P(B)}{\P(A)} = \frac{(1 - p)^{13}}{(1 - p)^{3}} = (1 - p)^{10} = \P(C) $$ 
+\end{eg}
+
+
+\begin{eg}
+    Given a box with 9 balls and 3 are blue and 6 are red.
+
+    % Assume you take a random ball without reinsertion, find the probab
+
+    Let $R_1$ be the first draw being red so we have $\P(R_1) = 2 /3$. If we don't reinsert the ball we have $\P(R_2 | R_1) = 5 /8$ and $\P(R_2 | B_1) = 6 / 8$.
+
+
+    \vspace{em}
+
+    Suppose if you pick a blue ball you win 10 and a red will give you 0.
+
+    $$\P(R_2) = \frac{2}{3} \frac{5}{8} + \frac{6}{8}  \frac{1}{3} = \frac{5}{12} + \frac{3}{12} = \frac{8}{12} = \frac{2}{3}$$
+\end{eg} 
+\begin{remark}
+    The point here is before starting drawing, the probability of the first, second, etc draw of reds or blues are the same. The probability will change given information on what the previous draw is but in the beginning it shouldn't make a difference.
+\end{remark}
+
+
+\begin{eg}
+Consider $N$ flips of a fair coin. Sample space would be $\{H, T\}^{N}$. Here $H_i = \{\text{i'th flip is $H$}\} $.  We have $|\Omega| = 2^{N}$. Some $\omega \in \Omega$ is a sequence  $\omega = \{w_1, \dots, w_N\}$. We can show that $H_i$ is independent from $H_j$ if  $i \ne j$. We have,  
+$$ \P(H_i) = \frac{2^{n - 1}}{2^{n}} = \frac{1}{2} $$ 
+
+Similarly $$\P(H_j) = \frac{1}{2}$$
+
+And $\P(H_i \cap H_j) = \frac{1}{4}$ 
+
+So we see that their independent. So the collection $H_i, i = 1,2,\dots,N$ is an independent collection of events.
+\end{eg}
+
+\begin{remark}
+    More general we have,  given two subsets  $I_1$ and $I_2 \subset \{1, \dots, N\} $ such that $I_1 \cap I_2  = \phi$ then for events $A$ and $B$ are some specific outcomes for $ i \in I_1$ and $i \in I_2$ respectively. Then both the events  $A,B$ are independent.
+
+    Here $A, B$ are called cylinder sets.
+\end{remark}
+
+\begin{eg}
+    If you flip the coin infinitely many times we have, $\Omegat = \{0, 1\}^{N}$ which is uncountable. So we consider $I \subset N$ and take  $\sigma_i \in \{0, 1\} , i \in I$.  So our cylinder set would be,  
+    $$ \{\omega: \omega_i = \sigma_i\}  $$  so here $\omega = \{\omega_1, \omega_2, \dots, \omega_n, \dots\} $
+
+\end{eg}
+
+
+
+\begin{eg}
+
+    What is the probability of the outcome of getting only zeroes - would be zero. But this isn't an event in our family of events. But we can consider an event $A_n  =\{\text{The outcome of the first $n$ flips is 0}\} $. For a fair coin this is $2^{-n}$. We can say that, 
+    $$ A = \bigcap_{n = 1}^{\infty} A_n \quad \text{ as we have $A_{n + 1} \subset A_n$ }$$  
+\end{eg}
+
+\begin{theorem}
+If $A_n$ is a decreasing collection s.t. $A_{n + 1} \subset A_n$ and we have  $A = \bigcap_{n = 1}^{\infty}$ then we have, 
+    $$ \P(A) = \lim_{n \to \infty} \P(A) $$ 
+\end{theorem}
+
+
+\begin{theorem}
+    If $A_n$ is increasing so $A_n \subset A_{n + 1}$ and  $A = \bigcup_{n = 1}^{\infty} A_n$ then we have, 
+    $$ \P(A) = \lim_{n \to \infty} \P(A_n) $$ 
+
+\end{theorem}
+\begin{proof}
+    We have, 
+    \begin{align*}
+    A_1 \cup A_2 &= A_1 \cup (A_2 \setminus A_1)\\
+    A_1 \cup A_2 \cup A_3 &= A \cup (A_2 \setminu A_1) \cup (A_3 \setminu A_2)\\
+    \bigcup_{i = 1}^{N} A_i  &= A_1  \bigcup_{i = 2}^{N} B_i \qquad B_i = A_i \setminu A_{i - 1}\\
+    \P(\bigcup_{i = 1}^{\infty} A_i)  &= \P(A_1) +\sum_{i=2}^{\infty}  \P(B_i)\\
+  &= \P(A_1) +\sum_{i=2}^{\infty}  (\P(A_i) - \P(A_{i - 1}))\\
+  &= \P(A_1) + \lim_{n \to \infty} \sum_{i=2}^{n}  (\P(A_i) - \P(A_{i - 1}))\\
+  &= \P(A_i) = \lim_{n \to \infty} (\P(A_n) - \P(A_1))
+    \end{align*}
+
+\end{proof}

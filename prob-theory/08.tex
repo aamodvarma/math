@@ -1,0 +1,143 @@
+\section{Variance}
+\begin{definition}
+If $X$ is a discrete r.v. then, variance of $X$ is defined as
+\[Var(X) = E[(X - E[X])^2] \]
+\end{definition}
+
+\begin{remark}
+	But we can also write it as, 
+	\begin{align*}
+		Var(X) &= E[(X - E[X])^2] \\
+		       &= E[X^2] - E[X]^2
+	\end{align*}
+\end{remark}
+
+\begin{eg}
+	If we have a \textbf{bernoulli r.v}. we have, 
+	\begin{align*}
+		E(X) &= p  \\
+		Var(X) &= p(1 - p)  
+	\end{align*}
+
+	We have $V(X) $ is maximal if $p = \frac{1}{2}$ and zero if $p = 0$ or  $p = 1$
+\end{eg}
+
+\begin{eg}
+	For \textbf{Binomial r.v.}, we have,
+	\begin{align*}
+		E(X) &= np  \\
+		Var(X) &= np(1 - p)
+	\end{align*}
+
+
+	We have, 
+	\begin{align*}
+		E(X(X - 1)) &= \sum_{n=0}^{\infty} x(x - 1) \binom{n}{x} p^x (1 - p)^{n - x} \\
+		            &= n(n - 1)p^2 \\
+	\end{align*}
+
+	Now we have $Var(X) = E(X(X - 1)) + E(X) - E(X)^2$ which is, 
+	$$ = np(1 - p) $$ 
+
+
+\end{eg}
+\begin{eg}
+	Consider \textbf{Hypergeometric r.v.}, with parameters $N, M, n$. We have,
+	\begin{align*}
+		p(x) = \frac{\binom{N}{x} \binom{M }{n - x}}{\binom{M + N}{n}} \\
+	\end{align*}
+	We know that, 
+	$$ E(X) = np $$  and that
+
+	
+	$$ V(X) = np(1 - p)\frac{N + M - n}{N + M - 1} $$ 
+\end{eg}
+
+\begin{eg}
+	For \textbf{Poisson r.v.}, we have, 
+	
+	$$ p(x) = \lambda^{x} \frac{1}{x!} e^{-\lambda} $$ 
+
+	and we can do,
+	\begin{align*}
+		E(X(X - 1)) &= \sum_{x=0}^{\infty} x(x - 1) \lambda^{x} \frac{1}{x!} e^{-\lambda} \\
+		            &= \lambda^2
+	\end{align*}
+	Now we have $Var(X) = E(X(X - 1)) + E(X) - E(X)^2$ which is,
+	\begin{align*}
+		Var(X) &= \lambda^2 + \lambda - \lambda^2 \\
+		       &= \lambda
+	\end{align*}
+\end{eg}
+\begin{remark}
+	Poisson variance is also similar to binomial variance, where $n \to \infty$.
+\end{remark}
+
+
+Consider, 
+\begin{eg}
+	
+	$$ p(x) = \frac{C}{x^2} \quad \text{ for $ x \ge$ N} $$ 
+
+	We know that $\sum_{x=1}^{\infty} \frac{1}{x^2}$ converges to some $k$. So we have,
+	$$ C = \frac{1}{k} $$
+
+	But we have the $E(X)$ doesn't exist as, 
+	 \begin{align*}
+		 E(X) &= \sum_{x=N}^{\infty} x \frac{C}{x^2} \\
+		      &= C \sum_{x=N}^{\infty} \frac{1}{x} \\
+	\end{align*}
+
+	But the sum is not divergent so we can say that $E(X) = +\infty$
+	
+	 \vspace{1em}
+	
+	 Here for $X$ the expected value is dominated by large values of $X$ which are rare but have a large contribution to the expected value.
+\end{eg}
+
+\section{Conditional Expectation}
+\begin{definition}
+	We know that if $A$ is an event with $\P(A) > 0$ then  $\Q(B) = \P(B \mid A)$ is a probability. So if $X$ is a random variable then,
+	\begin{align*}
+		E_Q(X) &= \sum_{x} \P(X = x \mid A)\\
+		       &= E(X \mid A)
+	\end{align*}
+	which is called te conditional expectation of $X$ given $A$.
+\end{definition}
+
+\begin{theorem}
+	Let $A_i$ be a partition of $\Omega$ such that $\P(A_i) > 0$ for all $i$. Then,
+	$$ E(X) = \sum_{i} \E(X \mid A_i) \P(A_i) $$
+\end{theorem}
+\begin{proof}
+	\begin{align*}
+		 E(X) &= \sum_{i} x \P(X = x)\\
+		      &= \sum_{i} x \sum_{j} \P(X = x \mid A_j) \P(A_j) \\
+		      &= \sum_{j} \P(A_j) \sum_{x} x \P(X = x \mid A_j) \\
+		      &= \sum_{j} \E(X \mid A_j) \P(A_j)
+	\end{align*}
+\end{proof}
+
+\begin{eg}
+	Consider if $10$ percent of the population is sick and  $90$ percent is not. Now  take $n$ individual and $X$ is the r.v denoting the number of sick people. As $N$ is large, we can approximate $X$ by a binomial r.v. with parameters $n, p = 0.1$. Now we do a test and consider, 
+	$$ \P(P \mid Not sick) = 0.1, \P(NP \mid Sick) = 0 $$ 
+
+	Take the $n$ extracted people and test them. Let $Y$ be the number of positive tests. Here $Y$ is also binomial. Now we have $\P(P) = \P(P \mid S) \P(S) + \P(P \mid NS) \P(NS) = 0.1 \times 0.9 + 1 \times 0.1 = 0.19$. Now we have,
+	$$ E(Y) = n \times 0.19 $$
+\end{eg}
+
+\begin{eg}
+	Flip a coin and look at the initial string of heads. Let $X$ be the length of this string. We have arrival of first head as $\frac{1}{p} - 1$. Now we have, for tails at first flip $\frac{1}{q} - 1$ so we have, 
+	$$ E(X) = \frac{1}{p} + \frac{1}{q} - 2 $$ 
+
+
+	\vspace{1em}
+	
+	Another way to do this is,
+	\begin{align*}
+		E(X) &= E(X \mid H) \P(H) + E(X \mid T) \P(T) \\
+		     &= p^{x - 1}qp + q^{x - 1}pq
+	\end{align*}
+	which gives us the same answer.
+
+\end{eg}

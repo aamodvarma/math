@@ -1,0 +1,156 @@
+\section{The Monotone Convergence Theorem}
+\begin{definition}
+    A seq $\{a_n\} $ is increasing if $a_n \le a_{n + 1}, \forall n \in \N$ and is decreasing if $a_n \ge a_{n + 1}, \forall n \in \N$. A sequence is \emph{monotone} if it is either increase or decreasing. 
+\end{definition}
+
+\begin{theorem}[M.C.T]
+    If a sequence is \emph{monotone and bounded}, then it converges. 
+\end{theorem}
+\begin{proof}
+    Let $(a_n)$ be increasing (same proof for decreasing) and let $A = \{a_n, n \in \N\} $. Clearly $A \ne \phi$ and $A$ is bounded. So, using axiom of completeness we have $s = \sup A$ exists. Now, we claim that,  
+    $$ \lim_{n \to \infty} a_n = s $$
+
+    For $\forall \epsilon > 0, $ we can find $N $ such that,  
+    $$ s - \epsilon < a_N \le s $$  as $s - \epsilon$ will not be an upper bound anymore. Now $\forall n \ge N$ since  $\{a_n\} $ is increaseing i.e. $s - \epsilon < a_N \le a_n \le s < s + \epsilon$. So, 
+    $$ |a_n - s| < \epsilon $$ 
+
+    Therefore $\lim_{n \to \infty} a_n = s$
+\end{proof}
+
+
+\section{Subsequences and Bolzano-Weierstrass Theorem}
+\begin{definition}[Subsequences]
+    Let $\{a_n\} $ be a sequence. Let $$n_1 < n_2 < n_3 < \dots < n_k < n_{k + 1} < \dots$$ be an increasing seq of natural numbers. Then, 
+    $$ \{a_{nk}\} = \{a_{n1}, a_{n2}, \dots\}   $$  is called a subsequence of $\{a_n\} $ 
+\end{definition}
+
+\begin{eg}
+    $(a_n) = (1, \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \dots)$ so here, 
+
+    \begin{enumerate}
+        \item $(\frac{1}{2}, \frac{1}{4}, \frac{1}{6}, \dots)$ is a subsequence.
+        \item $(\frac{1}{10}, \frac{1}{100}, \frac{1}{100}, \dots)$ is a subsequence.
+        \item $(\frac{1}{10}, \frac{1}{5}, \frac{1}{100}, \dots)$ is NOT a subsequence.
+        \item $(\frac{1}{3}, \frac{1}{3}, \frac{1}{5}, \frac{1}{5}, \dots)$ is NOT a subsequence.
+    \end{enumerate}
+\end{eg}
+
+
+\begin{theorem}
+    Subsequence of a convergent seq converges to the same limit of the original seq.
+\end{theorem}
+\begin{proof}
+    Suppose $\{a_n\} $ converges to $a$ so we have,  
+    $$ \lim_{n \to \infty} a_n = a $$ 
+
+    Now let $\{a_{nk}\} $ be a subsequence of $(a_n)$. Now, $\forall \epsilon > 0$ we have $N$ such that for $n > N$, 
+    \begin{align*}
+        |a_n - a| < \epsilon
+    \end{align*}
+
+    Now we see that $n_k \ge k$ so for any $k > N$ we have  $n_k \ge k > N$ so ,  
+    $$ |a_{nk} - a| < \epsilon $$ 
+
+    Therefore $\lim_{k \to \infty} a_{nk} = a$
+\end{proof}
+\begin{eg}
+    Let $0 < b < 1$ and consider  $\{b^{n}\}$  so we have, 
+    $$ 1 > b > b^{2} > b^3 > \dots $$ 
+
+    Note that $0 \le b^{n} \le 1$. So $\{b^{n}\}$ is decreasing and bounded which means it converges.
+
+    \vspace{1em}
+    
+    Now consider the subsequence $\{b^{2n}\}$  we know this converges to the same limit as the original sequence. Now we write $b^{2n} = b^{n} \cdot b^{n}$ so, 
+    $$ \lim_{n \to \infty} b^{2n} = \lim_{n \to \infty} b^{n} b^{n}= \lim_{n \to \infty} b^{n} \lim_{n \to \infty} b^{n}$$
+
+    So we have $l = l^2$ or $l = 0, 1$. But we can't have $l = 1$ as  $l$ is an upperbound and $1 > b > b^2 > \dots$. So we have $l = 0$.
+\end{eg}
+
+
+\begin{remark}
+    This theorem also means that if any two subsequences converge to different values then it means that the main sequence diverges. We can show this by contradiction as if main were to converge the all subsequence converges to the same limit and hence they can't be different.
+\end{remark}
+
+\begin{eg}
+    Take $\{a_n\} $ where $a_n = (-1)^{N}$. We have $a_{2n} = 1 = (-1)^{2n} = 1$ and $a_{2n + 1} = -1$. So,  
+    \begin{align*}
+        \{a_{2n}\} &= \lim_{n \to \infty} a_{2n} = 1\\
+        \{a_{2n + 1}\} &= \lim_{n \to \infty} a_{2n + 1} = -1
+    \end{align*}
+
+    We have two subsequence that converge to diff limits and hence  means that $\{a_n\} $ is not convergent.
+\end{eg}
+
+
+\begin{eg}
+    Take $\{a_n\} $ where $a_n = \begin{cases} 1 \quad \text{$n$ is prime} \\ 0 \quad \text{otherwise}\end{cases}$. Here, $\{a_n\} $ diverges as the two subsequences converge to different values.
+\end{eg}
+
+\begin{eg}
+Take $(1, -\frac{1}{2}, \frac{1}{3}, -\frac{1}{4}, \frac{1}{5}, \frac{1}{5}, -\frac{1}{5}, -\frac{1}{5}, \frac{1}{5}, \frac{1}{5}, -\frac{1}{5}, -\frac{1}{5}, \frac{1}{5}, \frac{1}{5}, \frac{1}{5}, -\frac{1}{5}, -\frac{1}{5}, -\frac{1}{5}, -\frac{1}{5}, \dots)$. So here, 
+\begin{align*}
+    \bigg (\frac{1}{5}, \frac{1}{5}, \frac{1}{5}, \dots \bigg) &\to \frac{1}{5}\\
+    \bigg (\frac{-1}{5}, \frac{-1}{5}, \frac{-1}{5}, \dots \bigg) &\to \frac{-1}{5}\\
+\end{align*}
+
+and hence $\{a_n\}$ doesn't converge.
+\end{eg}
+
+
+\begin{theorem}[Bolzano-Weierstrass]
+   Every bounded sequence contains a convergent subsequence.
+\end{theorem}
+\begin{proof}
+    Let $\{a_n\} $ be a bounded sequence. So $|a_n| \le M, \forall n \in \N$. Now, set  $I_0 = [-M, M]$ where $|I_0| = 2M$. Then bisect  $I_0$ into $[-M, 0], [0, M]$. At least one of them contains infinitely many elements of  $(a_n)$. Out of the two half intervals let $I_1$ be the one for which this is the case. Now $a_{n_1} $ be some term in the sequence $(a_n)$ satisfying  $a_n \in I_1$.
+
+
+
+    \vspace{1em}
+    
+    Now bisect $I_1$ into two same-size subintervals and similar to above choose the half with infinitely many elements and denote $I_2$ and pick an $a_{n_2} \in I_2$  and $n_2 > n_1$. We repeat this process, i.e. suppose we find $I_k$ and  $a_{nk}$ we bisect  $I_k$ to two halfs and choose the one containing infinitely many elements and denote  $I_{k + 1}$ and choose  $a_{n_{k+1}} \in I_{k + 1}$. 
+
+    \vspace{1em}
+    
+    We found $\{a_n_k\} $ a subsequence of $\{a_n\} $ and $a_n_k \in I_k$ such that,  
+    $$ I_1 \supseteq I_2 \supseteq I_3 \dots $$ 
+    As $I_k$ is a closed interval, by N.I.P, $\bigcap_{j = 0}^{\infty} I_j \ne \phi$. Now let $x$ be in this intersection. Then we claim the following,  $\{x\} = \bigcap_{j = 1}^{\infty} = I_j $ and $\lim_{k \to \infty} a_n_k = x$
+
+    \vspace{1em}
+    Note that $\bigcap_{j = 1}^{\infty} I_j \subseteq I_k, \forall k$ so $|\bigcap_{j = 1}^{\infty} I_j| \le |I_k$ and, 
+    \begin{align*}
+        |I_k| = \frac{1}{2} |I_{k - 1}| + \dots &= (\frac{1}{2})^{k - 1} |I_1|\\
+                                                &= (\frac{1}{2})^{k} |I_0|\\
+                                                &= (\frac{1}{2})^{k} (2M)
+    \end{align*}
+
+    as $k \to \infty, |I_k| =0$ so we have,  
+$$ | \bigcap_{j = 1}^{\infty} I_j| = 0$$ 
+
+
+\vspace{1em}
+
+\begin{swork}
+    $\forall \epsilon > 0$ we want $N$ for all $ k > N$ that, 
+    \begin{align*}
+    |a_{nk} - x| < \epsilon
+    \end{align*}
+
+We see for any $k$ we have  $a_{nk} \in I_k$ and  $x \in I_k$. So,  $$|a_{nk} - x| \le |I_k| = \frac{M}{2^{k - 1}}$$  
+
+So we just need to choose $k$ such that $\frac{M}{2^{k - 1}} < \epsilon$ so we take $k > \log_2(\frac{M}{\epsilon}) + 1$. So now we can choose $N$ such that $N \in \N$ and  $\frac{M}{2^{N - 1}} < \epsilon$
+\end{swork}
+
+
+Now $\forall \epsilon > 0$ take $N $ such that  $N \in \N$ and,  
+$$ N > \log_2 (\frac{M}{\epsilon}) + 1 $$  or 
+
+Now for any $k > N$ since  $a_{nk} \in I_k, x \in I_k$ we have,  
+\begin{align*}
+    |a_n_k - x| &\le |I_k|\\
+                &= \frac{M}{2^{k - 1}} < \frac{M}{2^{N - 1}} < \epsilon
+\end{align*}
+
+So we have $\lim_{k \to \infty} a_n_k = x$
+
+\end{proof}

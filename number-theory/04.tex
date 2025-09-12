@@ -17,3 +17,122 @@ Let $a, b  \in \Z$  and let  $p$ be a prime number. If $ p | ab$ then show that 
     Where $k = mc + nb$. So we showed that  $pk = b$ which implies that  $ p | b$. So we got either  $p | a$ or  $p | b$.
 \end{proof}
 
+\begin{remark}
+    This fail if $p$ is composite. Take $ p = 6, a= 2, b = 3$. We have $p | ab$ but not  $p | a$ or  $p | b$. 
+\end{remark}
+
+\begin{corollary}
+    Let $a_1,\dots,a_n$ be integers and $p$ a prime. If $p | a_1 \dots a_n$ then $p | a_i$ for some  $ 1 \le i \le n$.
+\end{corollary}
+\begin{proof}
+    Induction on $n$. For $n = 1$ it's trivial. For $n = 2$, is just Lemma 1.14. Now assume that it is true for some $n \ge 2$. To show that it holds for  $n + 1$.
+
+    \vspace{1em}
+
+    Assume $p | a_1\dots a_n \implies p | a_i$  for some $i \le i \le n$. Suppose $p | a_1\dots a_{n + 1}$. Then  $p | (a_1 \dots a_n) a_{n + 1}$. So we have either $p | (a_1\dots a_{n + 1})$ or $p | a_{n + 1}$ by Lemma 1.14.  If  $p | (a_1\dots a_n$ then we know $p | i$ for some  $1 \le i \le n$ else we have  $p | a_{n + 1}$. So we have  $p | a_i$ for some  $1 \le 1 \le n + 1$.
+\end{proof}
+
+\begin{theorem}[Fundamental theorem of arithmetic ]
+    Every integer greater than $1$  may be expressed  in the form $m = p_1^{a_1} \dots p_n^{a_n}$ where $p_1,\dots,p_n$ are distinct primes and $a_1,\dots,a_n \in \Z^{+}$. This form is called the \emph{\textbf{prime factorization of m}}. This factorization is unique up to permutations of the factors $p_i^{a_i}$.
+\end{theorem}
+\begin{proof}
+    (i) Existence
+
+    Assume $m > 1$ does not have a prime factorization. Without loss of generality assume  $m$ is the smallest such integer by the well ordering integer. In particular, $m$ is not prime, which means that $m = ab$ for some $1 < a, b < m$. As $a,b \le m$ this means that $a, b$ have prime factorization. The product of which will give us the prime factorization for $m$. Contradiction, hence every integer $ > 1$ has a prime factorization. 
+
+    \vspace{1em}
+    (ii) Uniqueness
+
+    Assume $m = p_1^{a_1} \dots p_n^{a_n} = q_1^{b_1} \dots q_r^{b_r}$. Without loss of generality assume that $p_1 < p_2 \dots < p_n$ and $q_1 < q_2 \dots < q_r$. To show these are the same we need to show that,
+
+    \vspace{1em}
+    \begin{cases}
+    $n = r$\\
+    $p_i = q_i$ for each $i$\\
+    $a_i = b_i$ for each $i$
+    \end{cases}
+    \vspace{1em}
+
+
+    Let $p_i | m$ then  $p_i | q_i^{a_i}\dots q_r^{a_r}$, then $p_i | q_j$ for some $1 \le j \le r$ then $p_i = q_i$. Similarly, given  $q_i $ we have  $q_i = p_j$ for some. Thus the primes in both the factorization are the same. Thus $n = r$ and  by our ordering $p_i = q_i$ for each $1 \le i  \le n$ so we have, 
+    $$ m = p_1^{a_1} \dots p_n^{a_n} = p_1^{b_1} \dots p_n^{b_n} $$ 
+
+Suppose to the contrary that $a_i \ne b_i$ for some $i$. Without loss of generality  let $a_i < b_i$ . Then $p_i^{b_i} | m$. So, 
+$$ p_i^{b_i}| p_i^{a_1} \dots p_{i - 1}^{a_{i - 1}} p_i^{a_i}p_{i + 1}^{a_{i + 1}}\dots p_n^{a_n} $$ 
+
+Thus, 
+$$ p_i^{b_i - a_i}| p_i^{a_1} \dots p_{i - 1}^{a_{i - 1}} p_{i + 1}^{a_{i + 1}}\dots p_n^{a_n} $$
+
+Since $a_i < b_i$ , $b_i - a_i$. So $p_i | p_i^{a_1} \dots p_{i - 1}^{a_{i - 1}} p_{i + 1}^{a_{i + 1}}\dots p_n^{a_n}$. Thus $p_i | p_j$  for some $i \ne j$ and then  $p_i = p_j$ as they are all distinct prime numbers. This is a contradiction and hence  $a_i = b_i$ for each $i$.
+
+
+
+
+\end{proof}
+\begin{remark}
+    This is one of many reasons why $1$ is not prime. If 1 was a prime then we can write  $m = \text{(product)} 1^{b}$ where $b$ is not unique.
+\end{remark}
+
+\begin{definition}[LCM]
+    Let $a, b \in \Z^{+}$. The \emph{least common multiple of a and b} denoted $[a,b]$ is the least positive integer  $m$ such that $a | m$ and  $b | m$.
+\end{definition}
+
+\begin{remark}
+    By the well ordering principle $[a,b]$ always exists as it forms a non-empty set ($ab$ is in the set).
+\end{remark}
+
+\begin{eg}
+    We have, 
+    \begin{align*}
+        6 &\rightarrow 6,12,18,24,30,36,42,48, \dots \\
+        7 &\rightarrow 7, 14, 21, 28, 35, 42, 49, \dots
+    \end{align*}
+    So $[6,7] = 42$
+\end{eg}
+
+\begin{remark}
+    The FTA can be used to compute both the GCD and LCMs.
+\end{remark}
+
+\begin{prop}
+    Let $a,b \in \Z^{+}$. Write $a = p_1^{a_1}\dots p_n^{a_n}$ and $b = p_1^{b_1} \dots p_n^{b_n}$ where $p_i$ are distinct and  $a_i, b_i \ge 0$. Then 
+    $$(a, b) = p_1^{\min{a_1, b_1}} \dots p_n^{\min{a_n, b_n}}$$.  
+    $$[a, b] = p_1^{\max{a_1, b_1}} \dots p_n^{\max{a_n, b_n}}$$
+\end{prop}
+
+\begin{proof}
+    Use $(a, b) = p_1^{c_1} \dots p_n^{c_n}$ and $[a,b] = p_1^{a_1} \dots p_n^{d_n}$ and use properties of GCD and LCM.
+\end{proof}
+
+\begin{eg}
+    Compute $(75, 2205)$ and $[75, 2205]$. So we have, 
+     \begin{align*}
+         756 &= 2^{2}3^{3}5^{0}7^{1}\\
+         2205 &= 2^{0}3^{2}5^{1}7^{2}
+    \end{align*}
+
+    So GCD is  $2^{0}3^{2}5^{0}7^{1} = 63$ and LCM is  $2^{2}3^{3}5^{1}7^{2} = 26460$
+\end{eg}
+
+\begin{lemma}
+    Given $x, y \in \R$, we have $\min(x, y) + \max(x, y) = x + y$
+\end{lemma}
+\begin{proof}
+    If $x = y$  it is obvious.
+
+    If  $x < y$ then we have  $\min(x,y) = x$ and $\max(x, y) = y$ so they sum up to $x + y$, similar for $x > y$.
+\end{proof}
+
+\begin{theorem}
+    Let $a, b \in Z$  with $a, b > 1$. Then $(a,b)[a,b] = ab$. 
+\end{theorem}
+\begin{proof}
+    Write $a = p_1^{a_1} \dots p_n^{a_n}, b = p_1^{b_1} \dots p_n^{b_n}$  with $a_i,b_i \ge 0$ with  $p_i$ distinct. Then, 
+     \begin{align*}
+         (a, b)[a,b] &= p_1^{\min(a_1,b_1)} \dots p_n^{\min(a_n, b_n)} p_1^{\max(a_1,b_1)} \dots p_n^{\max(a_n, b_n)} \\
+                    &= p_1^{\min(a_1,b_1) + \max(a_1, b_1)} \dots p_n^{\min(a_n, b_n) + \max(a_n, b_n)} \\
+                    &= p_1^{a_1 + b_1} \dots p_n^{a_n + b_n} \\
+                    &= ab
+    \end{align*}
+\end{proof}
+

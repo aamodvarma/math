@@ -1,0 +1,164 @@
+\section{Cantor's Theorem}
+
+
+\subsection*{Cantor's diagonal argument}
+\begin{theorem}
+    The open interval $(0, 1)$ is uncountable. 
+\end{theorem}
+\begin{proof}
+    Argue by contradiction that $f: \N \to (0, 1)$ is a bijection. So  $\forall m \in \Z$ we have,  
+    $$ f(m) = 0.a_{m1}a_{m2}\dots a_{mn} \dots$$
+
+    $\forall m,  \in \N$ where  $a_{mn}$ is the nth digit of $f(m)$, and  $a_{mm} \in \{0, 1, \dots, 9\}$
+
+
+    So we have, 
+\begin{align*}
+&    1 \quad f(1) \quad a_{11} \quad a_{12} \quad a_{13} \quad \dots\\
+&    2 \quad f(2) \quad a_{21} \quad  a_{22}\quad a_{23} \quad \dots\\
+&    3 \quad f(3) \quad a_{31}  \quad a_{32} \quad a_{33} \quad \dots\\
+&    4 \quad f(4) \quad a_{41}  \quad a_{42}  \quad a_{43} \quad \dots\\
+&    \vdots\\
+\end{align*}            
+Set $r = 0.b_1b_2\dots b_n \dots $ where, 
+$$ b_n = \begin{cases} 2\quad a_{nn} \ne 2  \\ 3 \quad a_{nn} = 2\end{cases} $$ 
+
+We show that $r \ne f(m), \forall m \in \N$. Consider  $f(1)$ we have, either,  $a_{11} = 2$ or $a_{11} \ne 2$. In the first case we have $r_{11} = 3$ second case we have $r_{11} = 2$. So in both cases the first digit is different. Now for an arbitrary $f(m)$ we have the m'th digit is different which means that for any  $f(m)$ it cannot be true that  $f(m) = r$ as the  $m'th$ digit is different.
+
+
+\vspace{1em}
+
+Clearly $r \in (0, 1)$ so there must be some $m$ such that $f(m) = r$. Hence, a contradiction. So our assumption that $(0, 1)$ is countable is wrong which must mean that  $(0, 1)$ is not countable.
+
+
+\end{proof}
+
+\begin{remark}
+    We already showed that $(-1,1) \sim \R$, so it is enough to show from here that  $(0, 1) \sim (-1, 1)$
+\end{remark}
+
+
+\begin{definition}
+    Consider $A$ is a set. The power set of $A$, $P(A)$ is the collection of all subsets of  $A$.
+\end{definition}
+
+\begin{theorem}[Cantor's Theorem]
+    Given any non-empty set $A$, there does not exist a function $f$ s.t.,  
+    $$ f: A \to P(A) $$  is onto.
+\end{theorem}
+
+\begin{proof}
+If $A$ is finite and has $n$ elements, then $P(A)$ has  $2^{n}$ elements. Easy to see you cannot have an onto mapping.
+
+If $A$ is infinite, let's assume that  there is $f:A \to P(A)$ such that $f$ is onto.
+As $f$ is onto, $\forall B \subseteq A, B \in P(A)$ we can find  a s.t.$f(a) = B$.
+
+\vspace{1em}
+
+Define $B = \{a \in \A: s.t. \: a \not \in f(a) \} \subseteq A$. So $B \in P(A)$. Since $f$ is onto we can find $a'$ such that $f(a') = B$. So we have either,
+
+\begin{enumerate}
+    \item $a' \in B$ : Then $a' \not \in f(a')$ by definition. But  $f(a') = B$ so  $a \in f(a')$. A contradiction.
+    \item $a' \not \in B$ : If $a' \not \in B$ then by definition of  $B$  we have $a'  \in f(a')$ but $f(a') = B$ which means that  $a' \in B$. A contradiction.
+\end{enumerate}
+
+In both cases we have a contradiction, which means our assumption must be wrong and there must not exist an $f: A \to P(A)$ that is onto.
+
+\end{proof}
+
+
+\begin{remark}
+    There is no onto map then the is no bijection, so $A \not \sim P(A)$ for any  $A$.
+\end{remark}
+
+
+\chapter{Sequences and Series}
+\section{Sequences}
+\begin{definition}[Sequences]
+    A sequence is a function whose domain is $\N$ or $\{0\} \cup \N$.
+\end{definition}
+\begin{remark}
+    Common notations are $\{a_n\}_{n = 1}^{\infty}, (a_n), \{a_n\}$
+\end{remark}
+\begin{eg}
+ $\{\frac{n + 1}{n}\}^{\infty}_{n - 1}$
+\end{eg}
+
+
+\begin{definition}
+A sequence $(a_n )$ converges to $a \in R$ if $\forall \epsilon > 0$,  $\exists N \in \N$ such that  $\forall n > N$,  $|a_n - a| < \epsilon$. We write, 
+$$ \lim_{n \to \infty} a_n = a $$ 
+\end{definition}
+\begin{remark}
+    The choice of $N$ depends on $\epsilon$
+\end{remark}
+\begin{eg}
+    $\{\frac{1}{n} \}_{n = 1}^{ \infty}$  then $\lim_{n \to \infty} \frac{1}{n} = 0$.
+
+Let $a_n = \frac{1}{n}$ and $a = 0$ we need  $\forall \epsilon > 0, \exists N, s.t. \forall n > N, \: |\frac{1}{n} - 0| = |\frac{1}{n}| < \epsilon$. So we need $n > \frac{1}{\epsilon}$. So for any $\epsilon > 0$ choose  $N \in \N$ s.t.  $\: N > \frac{1}{\epsilon}$. Then $\forall n > N$ we have  $|a_n  - a| = |\frac{1}{n}| = \frac{1}{n} < \frac{1}{N} < \epsilon$. So by definition we have, 
+$$ \lim_{n \to \infty} \frac{1}{n} = 0 $$ 
+\end{eg}
+
+
+\begin{notation}[Epsilon neighborhood of $a$]
+    $V_{\epsilon}(a) = \{x \in \R, |x - a| < \epsilon \}$ 
+\end{notation}
+
+\begin{definition}[Topological definition of convergence]
+    We say that $a$ is the limit of a sequence $\{a_n\}$ if  $\forall \epsilon > 0$,  $V_\epsilon(a)$ contains all but finitely many element of  $\{a_n\}$
+\end{definition}
+\begin{remark}
+    This means that the epsilon neighborhood of the limit doesn't contain only finite element of the sequence. In this case those finite elements are the elements before $N$. 
+\end{remark}
+
+\begin{definition}
+    A sequence $\{a_n\}$ that does not converge is said to be divergent.
+\end{definition}
+
+\begin{theorem}
+    The limit of a sequence when it exists, must be unique.
+\end{theorem}
+\begin{proof}
+    Assume it is not unique and that $\lim_{n \to \infty} a_n = b_1$ and $\lim_{n \to \infty} a_n = b_2$ and that $b_1 \ne b_2$. Now we have, 
+
+
+    Take $N = \max(N_1, N_2)$. So $\forall n > N$,
+    $$ |a_n - b_1| < \epsilon \text{ and } |a_n - b_2| < \epsilon $$ 
+
+    If we have $\epsilon = \frac{|b_1  - b_2|}{3}$. We have, 
+    $$ |b_1 - b_2| = |b_1 - a_n + a_n - b_2| \le |b_1 - a_n| + |a_n - b_2| < 2\epslon = 2\frac{|b_1 - b_2|}{3}  $$ 
+
+    Which is a contradiction. So $b_1 = b_2$
+\end{proof}
+
+
+\vspace{1em}
+\begin{remark}
+To analyze the limit of a sequence,
+\begin{enumerate}
+    \item Identify the limit (sometimes given)
+    \item $\forall \epsilon > 0$  
+    \item Find $N$ which always depends on $\epsilon$ (in scratch paper) 
+    \item Set $N$ from  (3)
+    \item Show $N$ works
+\end{enumerate}
+\end{remark}
+
+
+\begin{eg}
+    Show $\lim_{n \to \infty} \frac{n + 1}{n} = 1$
+\end{eg}
+\begin{proof}
+     \begin{align*}
+         |\frac{n + 1}{n} - 1 | &< \epsilon \\
+         |\frac{ 1}{n} | &< \epsilon \\
+         N > \frac{1}{\epsilon} \text{ will work}
+     \end{align*}
+
+     $\forall \epsilon > 0$  take $N \in \N$ such that $ N > \frac{1}{\epsilon}$. So $\forall n > N$ we have, 
+      \begin{align*}
+         |\frac{n + 1}{n} - 1| = |\frac{1}{n}| = \frac{1}{n} < \frac{1}{N} < \epsilon
+     \end{align*}
+
+     Which means that $1$ is the limit.
+\end{proof}

@@ -1,0 +1,142 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Probability Theory: Hw1}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+\section*{Problem 2.10}
+We need to show that the indicator function $1_E$ is a discrete random variable. First we need to show that $1_E(\Omega)$ is countable. 
+
+\vspace{1em}
+
+We have, 
+$$ 1_E(\omega) = \begin{cases} 1 \quad \text{if } \omega \in E \\ 0 \quad \text{if } \omega \not \in E \end{cases} $$ 
+
+So for any $\omega \in \Omega$ we have either  $1_E(\omega) = 1$ or $1_E(\omega) = 0$ hence we have  $X(\Omega) = \{0, 1\}$  which is countable. 
+
+\vspace{1em}
+
+Now we need to show that $\forall a \in \R$ we have, $\{ \omega: X(\omega) = a\}  \in \F$. We see for $a = 1$  we have $\{\omega : X(\omega) = 1\} = E$ and we assume that $E \in \F$. Similarly we have  for $a = 0$ that $\{\omega : X(\omega) = 0\} = \{\omega: \omega \not \in E\} = E^{c}$. Using the properties of $\F$ we know that  $E^{c} \in \F$. Lastly if $a \ne 1, 0$ we have $\{\omega: X(\omega) \ne 1,0\} = \phi $ and we know that $\phi \in E$.
+
+\vspace{1em}
+
+Hence, we show that by definition the indicator function is a discrete random variable.
+
+
+
+
+
+\section*{Problem 2.11}
+\begin{enumerate}
+	\item $U(\omega) = \omega$
+	
+	First we check if $U(\Omega)$ is countable. As  $U(\omega) = \omega$ we have, 
+	$$ U(\Omega) = U(\{1, \dots, 6\} )  = \{U(\omega): \omega \in \Omega\} =  \{1, 2, 3, 4, 5, 6\} $$ 
+	which is countable. Now we check if for any $a \in \R$ it's preimage is in the family of events.
+
+	 \vspace{1em}
+	
+	 Take $a = 1$ we have  $\{\omega: X(\omega) = 1\} = \{1\} \subset \Omega $. However, we see that $\{1\} \not \in \F$ which means that it fails the condition and hence $U$ is not a discrete random variable.
+
+	\item $V(\omega) = \begin{cases}1 \quad \text{if $\omega$ is even}\\0 \quad \text{if $\omega$ is odd}  \end{cases}$
+
+	We see that $V$ maps all $\omega \in \Omega$ to either  $0, 1$. Hence, we have,  
+	$$ V(\Omega) = V(\{1, \dots, 6\} ) = \{V(\omega) : \omega \in \Omega\}  $$ 
+
+	Now, as $\omega \in \Omega$ can either be even or odd we have,  $\{V(\omega) : \omega \in \Omega\} = \{0, 1\}$ which is countable.
+
+	\vspace{1em}
+	
+	Now, consider any $a \in \R$ we need to see if it's preimage  is in the family of events. For $a = 1$ we have  $\{\omega \in \Omega: X(\omega) = 1\} = \{\omega: \omega \text{ is even} \} = \{2,4,6\}$ and we see that $\{2,4,6\} \in \F $. Similarly for $a = 0$ we have  $\{\omega \in \Omega: X(\omega) = 0\} = \{\omega: \omega \text{ is odd} \} = \{1,3,5\}$ and we see that $\{1,3,5\} \in \F$. And lastly for $a \ne 1,0$ we have $\{\omega: X(\omega) \ne 1, 0\} = \phi \in \F$. Hence, $V$ satisfies both conditions making it a discrete random variable.
+	
+	\item $U(\omega) = \omega^2$
+		First we check if $W(\Omega)$ is countable. We have,  
+		$$ W(\Omega) = \{W(\omega): \omega \in \Omega\} = \{1^2, 2^2, \dots, 6^2\} = \{1, 4, 9, 16, 25, 36\}    $$ 
+
+		which is obviously countable.
+
+		\vspace{1em}
+		
+		Now, consider any $a \in \R$ and we check the preimage of  $a$. Take $a = 1$ we have  $\{\omega: X(\omega) = 1\} = \{1\} $. But we see that $\{1\} \not \in \F $. Hence $W$ is not a discrete random variable.
+
+	
+\end{enumerate}
+\section*{Problem 2.24}
+
+We have $X$ a discrete random variable having geometric distribution. Which means that, 
+$$ \P(X = k) = p(1 - p)^{k - 1} $$ 
+
+We need to find $\P(X > k)$ or  $\P(X = k + 1) + \P(X = k + 2) + \dots$ which is  $\sum_{n=1}^{\infty} \P(X = k + n)$ as $X $ is geometric we have, 
+\begin{align*}
+	\sum_{n=1}^{\infty} \P(X = k + n) &= 	\sum_{n=1}^{\infty} p (1 - p)^{k + n - 1}\\
+					  &= p \sum_{n=1}^{\infty} (1- p)^{k + n - 1}\\
+					  &= p ((1 - p)^{k} + (1 - p)^{k + 1}  + \dots)\\
+\end{align*}
+
+Now using sum of geometric series we have, 
+\begin{align*}
+	\P(X > k)&= p ((1 - p)^{k} + (1 - p)^{k + 1}  + \dots)\\
+		 &= p\frac{(1 - p)^{k}}{p} \\
+		 &= (1 - p)^{k}
+\end{align*}
+
+\section*{Problem 4} 
+We need value of $c$ and  $\alpha$ such that,  
+$$ p(k) = \begin{cases} ck^{\alpha} \quad \text{ for $k = 1,2, \dots$} \\ 0 \quad \text{ otherwise} \end{cases} $$ 
+
+is a mass function.
+
+\vspace{1em}
+
+A mass function is defined as $p(x) = \P(X = x)$ if  $X$ is a discrete random variable. So we have  $\P(X = k) = ck^{\alpha}$ if $k = 1,2,3,\dots$ else  $\P(X = k) = 0$. So we need  $\sum_{k=1}^{\infty} \P(X = n) = ck^{\alpha} = 1$. So we have, 
+\begin{align*}
+	\sum_{k=1}^{\infty} ck^{\alpha}  = 1\\
+	c \sum_{k=1}^{\infty} k^{\alpha} = 1\\
+\end{align*}
+
+Now the summation only converges if $\alpha < -1$. Assume it converges to  $m$ then we can define  $c = \frac{1}{m}$. 
+
+
+\section*{Problem 5}
+
+We need to show that $\P(X > m + n \mid X > m) = \P(X > n)$. In geometric distribution we know that  $\P(X = k) = p(1 - p)^{k - 1}$ so we have $\P(X > n) = (1 - p)^{n}$. Similarly we get, 
+\begin{align*}
+	\P(X > m + n \mid X > m) = \frac{\P((X > m) \cap (X > m + n))}{\P(X > m)}
+\end{align*}
+
+Now if $X > m$ and  $X > m + n$ as the first is included in the second it is equivalent to  $X > m + n$ so we have,  
+\begin{align*}
+	\P(X > m + n \mid X > m) &= \frac{\P((X > m) \cap (X > m + n))}{\P(X > m)}\\
+				 &=  \frac{\P(X > m + n)}{\P(X > m)}\\
+				 &= \frac{(1 - p)^{m + n}}{(1 - p)^{m}}\\
+				 &= (1 - p)^{m + n - m} = (1 - p)^{n}
+				 &= \P(X > n)
+\end{align*}
+
+
+For the lack of geometric property we need $\P(X > m + n) = \P(X > n) \P(X > m)$
+
+\section*{Problem 7}
+We have $c$ types of coupons with each coupon equally likely as the others. We need to find probability of first $n$ coupons do not form a complete set.
+
+\vspace{1em}
+
+Let us begin by defining a discrete random variable $X : \Omega \to \R$ defined as the number of coupons collected before getting a complete set. So we have $\P(X = n)$ is the probability that we get a complete set within the first $n$ coupons. So we need to find  $\P(X > n)$ as that  is the probability that we get  a complete set only if we take more than $n$ coupons. So we have, 
+ \begin{align*}
+	 \P(X < c) &= 0\\
+	 \P(X = c) &= c!\\
+	 \P(X = c + 1) &= {c + 1 \choose c} c! c\\
+	 \P(X = n) &= {n \choose c} c! c^{n - c}
+\end{align*}
+
+So our solution is, 
+\begin{align*}
+	\P(X > n) &= \sum_{k = 1}^{\infty}{n + k \choose c} c! c^{n + k - c}\\
+	\P(X > n) &= c! c^{n - c}\sum_{k = 1}^{\infty}{n + k \choose c} c^{k}\\
+\end{align*}
+
+
+
+\end{document}

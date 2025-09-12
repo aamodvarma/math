@@ -1,0 +1,151 @@
+\setcounter{theorem}{20}
+\begin{theorem}
+    Let $a, b \in \Z$ with  $a, b > 0$ and $(a,b) = 1$, then the \textbf{\emph{arithmetic progression}},
+    $$a, a + b, a + 2b, a + 3b, \dots$$ 
+    contains infinitely many prime numbers 
+\end{theorem}
+\begin{remark}
+    Setting $a = b = 1$ recovers the fact the there are infinitely many primes.
+\end{remark}
+\begin{remark}
+    We can use the fundamental theorem of arithmetic to prove special cases. i.e. when $a = 3, b = 4$ so $p = 4n + 3$
+\end{remark}
+
+\begin{prop}
+    There are infinitely many primes of the form $4n + 3, n > 0$.
+\end{prop}
+\begin{lemma}
+    Let $a, b \in \Z$, if  $a, b$ are expressive in the form  $4n + 1$, so is $ab$.
+\end{lemma}
+
+\begin{proof}
+    We have $a = 4n + 1$ and $b = 4m + 1$ so we have $ab = (4n + 1)(4m + 1) = 16nm + 4n + 4m + 1 = 4(4nm + n + m) + 1 = 4k + 1$ where $k = 4nm + n + m$. So we have  $ab = 4k + 1$ which concludes our proof.
+\end{proof}
+
+
+\begin{proof}
+(Proposition 1.22)
+
+
+Assume to the contrary that there are only finite primes of the form $4n + 3$ labeled as,  
+$$ p_0 = 3, p_1 = 7, p_2, p_3, \dots, p_r $$ 
+
+Consider the integer $N = 4p_1 \dots p_r + 3$. The prime factorization of $N$ must contain a prime of the desired form, otherwise $N$ would be a product of prime of $p = 4n + 1$ and would then itself have the same form. Thus $3 | N$ or $p_i | N$ for some $i \le i \le r$
+
+Case 1. $3 | N$. Then $3 | N - 3$ so  $3 | p_1\dots p_r$, contradiction.
+
+Case 2. $p_i | N$ for some  $1 \le i \le r$ then $p_i | N - 4p_1\dots p_r$ so $p_i | 3$, contradiction.
+
+Therefore there are $\infty$ many primes such that $p = 4n + 3$
+\end{proof}
+
+
+
+
+
+\chapter{Congruences}
+
+\section{Congruences}
+
+\begin{definition}
+    Let $a, b m \in \Z$   with $m > 0$. Then  \emph{$a$ is said to be congruent to $b$ mod $m$} written $a \equiv b \pmod m$, if $m \mid a - b$. 
+\end{definition}
+
+\begin{note}
+ The integer $m$ is called the modulus.
+\end{note}
+
+\begin{eg}
+    $25 \equiv 1 \pmod 4$, $25 \equiv 4 \pmod 7$
+\end{eg}
+
+\begin{prop}
+    Congruence modulo $m$ is an equivalence relation on $\Z$.
+\end{prop}
+
+\begin{proof}
+    Reflexive. Since $m | 0$ so  $m | a - a$ so  $a \equiv a \pmod m$.
+
+
+    \vspace{1em}
+    Symmetric. Consider  $a  \equiv b \pmod m$ so  $m | a- b$ or  for some  $k \in \Z$  $km = a -b$ which means  $(-k)m = b - a$ which means  $m | b - a$ or  $b \equiv a \pmod m$
+    \vspace{1em}
+
+    Transitive. If $a \equiv b \pmod m$ and  $ b \equiv c \pmod m$. We have from both,  
+    $$ a - b= k_1m \quad \text{ for some $k_1$} $$ 
+    $$ b - c= k_2m \quad \text{ for some $k_2$} $$ 
+
+    Adding both we have  $a - c = (k_1 + k_2) m$ or $m | a - c$ which means $a \equiv c \pmod m$
+\end{proof}
+
+
+\begin{consequence}
+    $\Z$ is partitioned into equivalence classes modulo $m$.
+\end{consequence}
+\begin{remark}
+    Given $a \in \Z$, let  $[a]$ denote the equivlance class of $a$ modulo $m$
+\end{remark}
+
+\begin{eg}
+    The equivalence classes under congruence mod  $4$ are,  
+    \begin{align*}
+    [0] &=  \{n: n \equiv 0 \pmod 4, n \in \Z\} = \{\dots, -4, 0, 4, \dots\}\\
+    [1] &=  \{n: n \equiv 1 \pmod 4, n \in \Z\} = \{\dots, -3, 1, 5, \dots\}\\
+    [2] &=  \{n: n \equiv 2 \pmod 4, n \in \Z\} = \{\dots, -2, 2, 6, \dots\}\\
+    [3] &=  \{n: n \equiv 3 \pmod 4, n \in \Z\} = \{\dots, -1, 3, 7, \dots\}
+    \end{align*}
+\end{eg}
+
+\begin{definition}[Residue]
+    A set of $m$ integers such that every integer is congruent modulo  $m$ to exactly one integer of the set is called a \emph{complete residue system}.
+\end{definition}
+\begin{eg}
+    $\{0, 1, 2, 3\}$ is a complete residue system modulo 4. So is $\{4, 5, -6, -1\}$
+\end{eg}
+\begin{prop}
+    The set $\{0, 1, \dots, m - 1\} $  is a complete residue system mod $m$.
+\end{prop}
+\begin{proof}
+    Existence. Let $a \in \Z$, then by the division algorithm there is some $q, r \in \Z$ such that  $0 \le r < m$ such that  $a = qm + r$ or  $a - r = qm$ implies that  $a \equiv r \pmod m$
+
+    \vspace{1em}
+
+    Uniqueness. Assume  $a \equiv r_1 \pmod m$ and $a \equiv r_2 \pmod m$ where $r_1,r_2 \in \{0, 1, \dots, m - 1\} $. Then we have $r_1 \equiv r_2 \pmod m$ by transitivity or that $r_1 - r_2 = km$ but $-(m - 1) \le r_1 - r_2 \le m - 1$ so $r_1 - r_2 = 0$ or $r_1 = r_2$.
+\end{proof}
+
+\begin{definition}
+    The set $\{0, 1, \dots, m - 1\} $ is called the set of \emph{least non-negative residues modulo $m$}.
+\end{definition}
+
+\begin{prop}
+   Let $a, b, c, d, m \in \Z$ with $m > 0$ such that  $a \equiv b \pmod m$ and  $c \equiv d \pmod m$. Then, 
+   \begin{enumerate}
+       \item $a + c \equiv b + d \pmod m$ 
+       \item $ac \equiv bd \pmod m$
+   \end{enumerate}
+\end{prop}
+
+\begin{proof}
+    (a) Since $a \equiv b \pmod m$ and  $c \equiv d \pmod m$ so we have,  
+    \begin{align*}
+        a - b &= k_1m \quad k_1 \in \Z\\
+        c - d &= k_2m \quad k_2 \in \Z
+    \end{align*}
+    Adding two together we have, 
+    $$ (a + c) - (b + d) \equiv (k_1 + k_2)m $$  or that, 
+    $$ a + c \equiv b + d \pmod m $$ 
+
+
+    (b) If $ m \mid a - b$ then  $ m \mid c(a - b)$ similarly  $ m \mid d - c$  means  $m \mid a(d - c)$. This $ m \mid c(a - b) + a(c - d)$ or  $m \mid ac - bd $ or that $ac \equiv bd \pmod m$
+
+\end{proof}
+
+\vspace{1em}
+\hline
+\vspace{1em}
+
+Consider $\{0^2, 1^2, 2^2, 3^2\} = \{0, 1, 0, 1, \} = \{0, 1\} $
+\begin{note}
+    Exceptional Characters, Seigel zeros
+\end{note}
+

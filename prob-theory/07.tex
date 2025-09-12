@@ -1,0 +1,164 @@
+
+\section{Review}
+
+\begin{enumerate}
+	\item A discrete r.v. $X: \Omega \to \R$  where $X(\Omega)$ is finite or  countable and we have $X^{-1}(x) \in \F$.
+
+	\item The probability mass function (pmf) is defined as, 
+$$ p_X(x) = \P(X = x) $$ 
+\end{enumerate}
+
+\begin{eg}
+	We defined the following random variables, 
+	\begin{enumerate}
+		\item Bernoulli r.v. $X \sim \Bern(p)$, $p_X(1) = p$, $p_X(0) = 1-p$.
+		\item Binomial r.v. $X \sim \Bin(n,p)$, $p_X(k) = \binom{n}{k} p^k (1-p)^{n-k}$, $k = 0,1,\ldots,n$
+		\item Hypergeometric r.v. $X \sim \Hyp(N,K,n)$, $p_X(k) = \frac{\binom{K}{k} \binom{N-K}{n-k}}{\binom{N}{n}}$, $k = 0,1,\ldots,\min\{n,K\}$.
+		\item Geometric r.v. $X \sim \Geom(p)$, $p_X(k) = (1-p)^{k-1} p$, $k = 1,2,\ldots$
+		\item Poisson r.v. $X \sim \Pois(\lambda)$, $p_X(k) = e^{-\lambda} \frac{\lambda^k}{k!}$, $k = 0,1,2,\ldots$
+	\end{enumerate}
+\end{eg}
+
+We also have $\E(X) = \sum_x x p_X(x)$ and got, 
+
+\begin{eg}
+	For Bernoulli, $\E(x) = p$,\\
+	For Binomial, $\E(X) = np$,\\
+	For Hypergeometric, $\E(X) = \frac{N}{N + M} n$\\
+	For Geometric, $\E(X) = \frac{1}{p}$,\\
+	For Poisson, $\E(X) = \lambda$.
+\end{eg}
+
+\vspace{1em}
+
+\hline
+
+\vspace{1em}
+
+
+Consider  a r.v. $Y$ such that  $Im Y = \{a, b\}$ and, 
+\begin{align*}
+	\P(X = b) = p
+\end{align*}
+
+And have, 
+$$ X = \frac{Y - a}{b - a} $$ 
+Then $X$ takes two values $0$ and $1$ with probabilities $1-p$ and $p$. So,  
+$$ \P(X = 1) = \P(Y = b) = p $$ 
+
+So $X$ is a bernoulli r.v. with parameter $p$ and, 
+$$ X = \frac{Y - a}{b - a} \implies Y = a + (b - a)X $$ 
+
+So any function that takes two values can be written as a linear functions of a Bernoulli r.v. And, 
+
+\begin{align*}
+	\E(Y) &= (1 - p)a + pb \\
+	      &= a + (b - a)p 
+\end{align*}
+
+We can also say that, 
+\begin{align*}
+	\E(Y) &= \E(a + (b - a)X) \\
+	      &= a + (b - a)\E(X) \\
+	      &= a + (b - a)p 
+\end{align*}
+
+
+\begin{theorem}
+	So if $X$ is a r.v. and $a, b \in \R$ then,  
+	$$ \E(a + bX) = a + bE(X) $$ 
+\end{theorem}
+\begin{proof}
+	We have $Y = a + bX$. The possible values of  $Y$ are  $\{y: y = a + bx, x \text{ is a possible value for $x$}\} $
+
+	Here, 
+	$$ p_y(y) = p_x(x) \text{ where $y = a +  bx$} $$ 
+
+	So, 
+	\begin{align*}
+		\E(Y) &= \sum_y y p_Y(y)\\
+ 		&= \sum_x (a + bx) p_X(x)\\
+ 		&= a \sum_x  p_X(x) + b \sum_x  x p_X(x)\\
+ 		&= a  + b E(X)
+	\end{align*}
+
+
+\end{proof}
+\begin{eg}
+If $X$ is a r.v. then $Y = X^2$. We have, 
+$$ \P(Y = y) = \P(X = \pm \sqrt{y}) $$  so, 
+$$ p_Y(y) = p_X(\sqrt{y}) +  p_X(-\sqrt{y})  $$ 
+
+Then we have,
+\begin{align*}
+	E(Y) &= \sum_y y p_Y(y)\\
+	     &= \sum_y y (p_X(\sqrt{y}) +  p_X(-\sqrt{y})) \\
+	     &= \sum_x x^2 p_X(x) \\
+	     &= E(X^2)
+\end{align*}
+
+Thus we have $\E(X^2) = \sum_x x^2 p_X(x)$
+\end{eg}
+
+\begin{theorem}
+	Let $X$ be a r.v. and  $f: \R \to \R$. Then, 
+	$$ Y = f(x) \text{ is a r.v.} $$  
+	$$\P(Y= y) = \sum_{x : f(x) = y} \P(X = x)$$
+
+	Moreover, 
+	$$ \E(f(x)  ) = \E(Y) =\sum_x f(x) p_X(x) $$
+\end{theorem}
+
+\begin{remark}
+	If $A_x = \{\omega | X(\omega) = x\} $ we have $A_x \in \F$ then,  
+	$$ \{\omega | Y(\omega) = y\}  = \bigcup_{x : f(x) = y} A_x $$ 
+\end{remark}
+
+
+\begin{eg}
+	Take $\E(X^n) = m_n(X)$ is the $n'th$ moment of  $X$.
+
+	\vspace{1em}
+	
+
+	We would also like to know what the width of the distribution is. A naive approach is $\E(X - \E(X)) = 0$ which is useless. But we can define, 
+	 
+	$$ V(X) = \E((X - \E(X))^2) $$ 
+	which is the average squared distance from the average.
+
+	And we call, 
+	$$ \sigma_X^2 = V(X) \text{ where $\sigma$ is the standard deviation}$$ 
+\end{eg}
+
+\begin{eg}
+	Consider for bernoulli,
+	$$ \E(X^2)  = 1 p + 0 (1 - p) = p$$ 
+	But, 
+	\begin{align*}
+		\E((X - \E(X))^2) = \E((X - p)^2) &= (1 - p)^2 p + (0 - p)^2 (1 - p) \\
+		                               &= p(1 - p)
+	\end{align*}
+\end{eg}
+
+\begin{remark}
+	Take $\E(X) = m$ then we can simplify $V(X)$ as follows,
+	\begin{align*}
+		\label{eq:simplify-variance}
+		V(X) &= \E((X - m)^2) \\
+		     &= \E(X^2 - 2mX + m^2) \\
+		     &= \E(X^2) - 2m\E(X) + m^2 \\
+		     &= \E(X^2) - 2m^2 + m^2 \\
+		     &= \E(X^2) - m^2 \\
+		     &= \E(X^2) - (\E(X))^2		
+	\end{align*}
+
+	So using this formula for bernoulli, we have,
+	$$ V(X) = \E(X^2) - (\E(X))^2 = p - p^2 = p(1 - p) $$
+\end{remark}
+
+\begin{theorem}
+	If $X$ is a random variable then $\E(X^2)\ge \E(X)^2$.
+\end{theorem}
+\begin{proof}
+	We have $V(X) = \E(X^2) - (\E(X))^2 \ge 0$. Thus, $\E(X^2) \ge (\E(X))^2$.
+\end{proof}
