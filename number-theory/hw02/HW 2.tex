@@ -179,11 +179,18 @@ If $a$  then $a$ can be written as $a = 2m + 1$ for some $m \in \mathbb{Z}$. Now
 
 Now if $a^2 \equiv 1 \pmod 8$ we have $8 \mid a^2 - 1$. But this implies that $4 \mid a^2 - 1$ as $4 $ is a factor for  $8$. Hence we get  $a^2 \equiv 1 \pmod 4$.
 
-\item Prove or disprove the converse of the statement in part (c) above.
+\part Prove that if $n$	 is a positive integer such that $n \equiv 3 \pmod 4 $, then $n$ can't be written as the sum of two square integers.
+
+\textbf{Solution.}
+We can write any arbitrary integer as $a = 2k$ or $a = 2k + 1$. Now if we square both of them we get $a^2 = 4k^2$ and $a^2 = 4k^2 + 1 + 4k = 4k' + 1$. In both cases we have the square is congruent to either $0$ or $1$ modulo $4$. But this means that the sum of two squares can only be congruent to either $0 + 0, 0 + 1, 1 + 1$  modulo $4$ which means that we can't find a sum of two squares $n$ to be congruent to $3$  modulo $4$.
+
+
+\part Prove or disprove the converse of the statement in part (c) above.
 
     \textbf{Solution.} 
 
-    We are given that $a^2 \equiv 1 \pmod 8$ which means that for some  $k \in \mathbb{Z}$ we have  $a^2 - 1 = 8k$. This means that $a^2 - 1$ is even or that $a^2 $ is odd. If $a $ is even then $a^2$ is odd therefore $a$ has to be odd for its square to be odd. Hence $a$ is odd and we conclude our proof.
+    The converse of the statement is that if $n$ can't be written as the sum of two square integers then $n \equiv 3 \pmod 4$. Consider $n = 12$. We cannot write $n$ as the sum of two squares as $12$ can only be made using (1 + 11, 2 + 10, 3 + 9, 4 + 8, 5 + 7, 6 + 6) which do not consist a sum of squares. However, at the same time $12$ is divisible by 4 which means it does not leave remainder $3$ modulo $4$.
+
 \end{parts}
 
 \newpage 
@@ -416,11 +423,77 @@ x & \equiv b_n \pmod{m_n}
 \end{align*}
 is solvable if and only if $(m_i,m_j) \mid b_i-b_j$ for all pairs $i,j$ with $i \neq j$. In this case, prove that each solution is unique modulo $[m_1,m_2,\ldots,m_n]$.
 
+
+\textbf{Solution.}
+
+($\Rightarrow$)
+First we show that if it's solvable then we have $(m_i, m_j) \mid b_i - b_j$ for all pairs $i, j$ with $i \ne j$. For $i, j$ we know that,
+\begin{align*}
+x \equiv b_{i} \pmod {m_{i}}\\
+x \equiv b_{j} \pmod {m_{j}}
+\end{align*}
+
+which can be written as $m_{i} \mid x - b_{i} $ and $m_{j} \mid x - b_{j}$. Now if $m_{i} \mid x - b_{i}$ that means that any of it's divisors also divide $x - b_{i}$ and as $d = (m_i, m_j)$ is a divisor of both $m_i, m_j$ we have $d \mid x - b_{1}$ and $d \mid x - b_{j}$. But if $d$ divides both then d also divides the difference of them which means that, $d \mid (x - b_{i}) - (x - b_j)$ or that $d \mid b_i - b_j$ which is our desired result.
+
+
+($\Leftarrow$)
+Now we know that $(m_i, m_j) \mid b_i - b_j$  for any $i\ne j$ and we need to show there exists a solution $x$ satisfying the above system of linear congruence. Consider $i, j$ and we have the following $d = (m_i, m_j) \mid b_i - b_j$ so $\exists k$ such that $dk = b_i - b_j$. We also know that $d = am_i + bm_j$ for some $a, b \in \mathbb{Z}$ which means that $dk = kam_i +  kbm_j$.  
+
+\vspace{1em}
+
+
+Now take $x = b_i  - kam_i$. So we have $x - b_i = - kam_i = (-ka) m_i$  which means that $m_i \mid x - b_i$. Similarly we have $x - b_j = b_i - b_j - kam_i = dk - kam_i = kam_i + kbm_j - kam_i = kbm_j$ which means $m_j \mid x - b_j$. So we found a solution $x$ satisfying the two congruency between $i, j$. Now as we can find a solution for any $i, j$ this means that the linear system is solvable.
+% Now we can use induction to extend this to all $1, \dots, n$. We showed the base case above for $i, j$ the first two of our list of $m$. Now consider it to be true for an arbitrary list of $m_1, \dots, m_i$ now we need to show that we can construct a solution for $m_{i + 1}$ satisfying the congruence $x \equiv b_{i + 1} \pmod m_{i + 1}$.
+
+
+\vspace{1em}
+
+
+\vspace{1em}
+
+To show uniqueness consider we have two solutions $x, y$ that satisfying the linear congruence. So we have $x \equiv b_i \pmod m_i$ and $y  \equiv b_i \pmod m_i$. But this means that $x - y \equiv 0 \pmod m_i$ or that $x \equiv y \pmod m_i$ which means that $x$ and $y$ are equivalent modulo $m_i$ for any $i$ or in other words is unique modulo $m_i$.
+
+
+
+
+
+
+
+
 \newpage 
 \question  Excercise Set 2.4, \#43.
 \begin{parts}
 \item Prove that if $p$ is an odd prime number, then $2(p-3)! \equiv -1 \pmod{p}$.
+
+	\textbf{Solution.}
+
+	We know from Wilson's theorem that, $$
+	(p - 1)! \equiv -1 \pmod p
+	$$
+
+	And we know that $(p - 1) \equiv -1 \pmod p$ and $(p - 2) \equiv -2 \pmod p$ which gives us,
+	\begin{align*}
+		(p - 1) ! &\equiv (p - 1)(p - 2)(p - 3)!  \equiv -1 \pmod p\\
+	\end{align*}
+
+	So we have, 
+	\begin{align*}
+		(-1)(-2) (p - 3)! &\equiv -1 \pmod p\\
+		2 (p - 3)! & \equiv -1 \pmod p
+	\end{align*}
+
+	Which gives us the desired result.
+
 \item Find the least non-negative residue of $2(100!) \pmod{103}$.
+
+	\textbf{Solution.}
+
+	We know that $2(p - 3)! \equiv -1 \pmod p$ which means that $2 (103 - 3) \equiv -1 \pmod {103}$ and $2(100)! \equiv -1 \pmod {103}$.
+
+	\vspace{1em}
+	
+	So $-1$ is a residue of $2(100!)$ mod 103. But we want a non-negative residue which in this case would be $102$ as we have $-1 \equiv 102 \pmod {103}$. So our residue is $102$.
+
 \end{parts}
 
 \newpage 
@@ -430,16 +503,46 @@ Let $p$ be an odd prime number. Prove that
 1^2 3^2 5^2 \cdots (p-4)^2 (p-2)^2 \equiv (-1)^{(p+1)/2} \pmod{p}.
 \end{equation*}
 
+\textbf{Solution.}
+
+We know from Wilson's theorem that, 
+$$
+(p - 1)! \equiv -1 \pmod p
+$$
+
+
+And we can write $(p - 1)! = 1 \cdot 2 \cdot 3 \dots (p - 3) \cdot (p - 2) \cdot (p - 1)$. Now note that we have the following,
+\begin{align*}
+	2 & \equiv -(p - 2) \pmod p\\
+	4 & \equiv -(p - 4) \pmod p\\
+	  & \vdots\\
+	(p - 3) & \equiv -3 \pmod p\\
+	(p - 1) & \equiv -1 \pmod p\\
+\end{align*}
+
+In addition we have $2 + (n - 1)2 = p - 1$  and $n = (p - 1) / 2$ or in other words $|\{2, \dots, p - 1\}| = (p - 1) /2$. So we can write the following,
+
+
+\begin{align*}
+	(p - 1)! &\equiv -1 \pmod p\\
+	(p - 1)! &\equiv 1 \cdot 2 \cdot 3 \dots (p - 2) \cdot (p - 1) \equiv -1 \pmod p\\
+	1 \cdot -(p - 2)\cdot 3 \dots (p - 2) \cdot -1 &\equiv -1 \pmod p\\
+	1^2 \cdot  3^2 \cdot 5^2 \dots (p - 4)^2 (p - 2)^2 (-1)^{(p - 1) / 2} &\equiv -1 \pmod p
+\end{align*}	
+
+However we also know that the inverse of $-1$ mod $p$ is itself i.e. $-1 \cdot -1 \equiv 1 \pmod p$. So the inverse of $-1^{(p - 1) / 2}$ is itself. So we get,
+
+\begin{align*}
+	1^23^25^2 \dots (p - 4)^2 (p - 2)^2 &\equiv -1 -1^{(p - 1)  /2} \pmod p\\
+	1^23^25^2 \dots (p - 4)^2 (p - 2)^2 &\equiv -1^{(p + 1)  /2} \pmod p\\
+\end{align*}
+
+Which is what we want.
+
 
  
 
  
 
 \end{questions}
-
-\end{document} 
-
-
- 
-%%%% don't delete the last line!
 \end{document}

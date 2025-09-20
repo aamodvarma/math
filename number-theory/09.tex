@@ -1,0 +1,170 @@
+\vspace{1em}
+
+\hline
+\vspace{1em}
+\begin{definition}
+$\sum_{d \mid n} f(d)$ denotes a sum over the positive divisors of $n$.
+\end{definition}
+
+\begin{eg}
+	$\sum_{d \mid 12} f(d) = f(1) + f(2) + f(3) + f(4) +  f(6) + f(12)$
+\end{eg}
+
+\begin{theorem}
+	Let $f$ be an arithmetic function over the integer, and for $n \in \Z, n > 0$, let, 
+	$$
+		F(n) = \sum_{d \mid n} f(d)
+	$$
+
+	If $f$ is multiplicative so is $F$.
+\end{theorem}
+\begin{proof}
+	Let $(m,n) = 1$. We need to show that $F(mn) = F(m)F(n)$. We have, $$
+		F(mn) = \sum_{d \mid n} f(d)
+	$$
+
+	We know that every divisor $d$ of $mn$	 can be written uniquely as $d = d_{1} d_{2}$ where $d_{1} \mid m$ and $d_{2} \mid n$. And any product $d_{1}d_{2}$ is a divisor of $mn$.
+
+	\vspace{1em}
+	
+	To see this, write $m = p_{1}^{a_{1}} \dots p_r^{a_r}, n= q_{1}^{b_{1}} \dots q_s^{b_s}$ where all $p_{1},\dots, p_r, q_{1}, \dots, q_r$ are distinct. Then if $d \mid mn$ then, 
+	$$ d = p_{1}^{e_{1}} \dots p_r^{e_r} q_{1}^{f_{1}} \dots q_s^{f_s} \quad 0 \le e_i \le a_i, 0 \le f_i \le b_i $$
+	
+
+	So choose $d_{1} =p_{1}^{e_{1}} \dots p_r^{e_r} $ and $d_{2} = q_{1}^{f_{1}} \dots q_s^{f_s}$. (This is unique as we can't have $p$ for $d_{2}$ as that would make it NOT a divisor of $n$).
+
+	\vspace{1em}
+	
+	Now we have,
+	\begin{align*}
+		F(mn) = \sum_{d \mid mn} f(d) &= \sum_{d_{1} \mid m} \sum_{d_{2} \mid n} f(d_{1}d_{2})\\
+					      &=  \sum_{d_{1} \mid m} \sum_{d_{2} \mid n} f(d_{1}) f(d_{2})\\
+					      &=  \sum_{d_{1} \mid m} f(d_{1}) \sum_{d_{2} \mid n} f(d_{2})\\
+					      &= F(m)F(n)
+	\end{align*}
+\end{proof}
+
+\begin{eg}
+	Let $m = 4, n = 3$. So,
+	\begin{align*}
+		F(3 \cdot 4) &= \sum_{d \mid 12} f(d)\\
+			     &=  f(1) + f(2) + f(3) + f(4) +  f(6) + f(12)\\
+			     &= f(1 \cdot 1) + f(1 \cdot 2) + f(1 \cdot 3) + f(1\cdot 4) +  f(2 \cdot 3) + f(3 \cdot 4)\\ 
+			     &= f(1) f(1) + f(1) f( 2) + f(1) f(3) + f(1) f(4) +  f(2) f(3) + f(3) f(4)\\ 
+			     &= (f(1) + f(3)) (f(1) + f(2) + f(4))\\
+			     &= F(3) F(4)
+	\end{align*}
+\end{eg}
+
+
+\section{Euler $\phi$ function}
+$\phi(n)$ is the number of integers smaller than $n$ that is coprime to $n$.
+\begin{theorem}
+	$\phi$ is multiplicative
+\end{theorem}
+
+\begin{proof}
+	Let $m, n \in \Z, m, n > 0$ and $(m,n) = 1$. We need to show that,
+	$$
+		\phi(mn) = \phi(m)\phi(n)
+	$$
+
+	Consider the array of integers $\le mn$ write,
+	\begin{align*}
+		\begin{pmatrix}
+			1 & m + 1 & 2m + 1 & \dots & (n - m)m + 1\\
+			2 & m + 2 & 2m + 2  &\dots & (n - 1)m + 2\\
+			\vdots & \vdots & \vdots & \vdots & \vdots \\
+			i & m + i & 2m + i & \dots & (n - 1) m + i\\
+			\vdots & \vdots &\vdots &\vdots & \vdots \\
+			m & 2m + i & 3m + i & \dots & nm
+		\end{pmatrix}
+	\end{align*}
+
+	Consider the $ith$ row. If $(i, m) > 1$, then no element on the $i'th$ row is relatively prime to $m$. Then we may restrict our attention to those $i$ that satisfy $(i, m) = 1$. There are by definition $\phi(m)$ such values.
+
+	\vspace{1em}
+	
+	The entries in the $i'th$ row are $i, m + i, 2m + i, \dots (n - 1)m + 1$
+	\vspace{1em}
+	
+
+	Now this is a complete residue system modulo $n$. We see this as follows. Suppose it is not true so $km + i \equiv jm + i \pmod n$ for some $0 \le k,j \le n - 1$. So we have $km \equiv jm \pmod n$ and we get $k \equiv j \pmod n$ as inverse of $m$ mod $n$ exists as they are coprime. So that must mean that $k = j$. So for any non equal $k, j$ it doesn't hold. Hence we have a full residue system.
+	\vspace{1em}
+	
+
+	Thus there are $\phi(n)$ elements in the $i'th$ row that are coprime to $n$. And as we have $(i, m) = 1$. So we have $\phi(mn) = \phi(m) \phi(n)$
+\end{proof}
+
+\begin{theorem}
+	Let $p$ be prime and $a \in \Z , a> 0$. Then,
+	\begin{align*}
+		 \phi(p^{a}) = p^{a} - p^{a - 1}
+	\end{align*}
+\end{theorem}				
+\begin{proof}
+	The total number of integers not exceeding $p^{ a}$ is $p^{a}$. The only integers not relatively prime to $p^{a}$ are multiples of $p$ smaller than $p^{a}$. So,
+	$$
+		p, 2p, 3p, \dots, p^{a - 1}p \quad \text{ as $kp \le p^{a - 1}$ }
+	$$
+
+	
+	So there are $p^{a - 1}$ integers not exceeding $p^{a}$ that are not relative prime to $p^{a}$. Thus 
+
+	$$\phi(p^{a}) = p^{a} - p^{a - 1}$$
+\end{proof}				
+
+\begin{theorem}
+	Let $n \in \Z, n > 0$. Then, 
+	\begin{align*}
+		\phi(n) = n \prod_{p \mid n} \left (  1 - \frac{1}{p} \right )
+	\end{align*}
+
+\end{theorem}
+\begin{proof}
+	Write $n = p_{1}^{a_{1}} \dots p_r^{a_r}$. Then, 
+	\begin{align*}
+		\phi(n) &= \phi(p_{1}^{a_{1}} \dots p_r^{a_r})\\
+			&= \phi(p_{1}^{a_{1}}) \dots  \phi(p_r^{a_r}))\\
+			&= (p_1^{a_1} - p_{1}^{a_{1} - 1}) \dots (p_r^{a_r} - p_r^{a_r - 1})\\
+			&= (p_{1}^{a_{1}} \ots p_r^{a_r}) \left ( 1 - \frac{1}{p_{1}} \right ) \dots \left ( 1 - \frac{1}{p^{r}} \right )\\
+			&= n \prod_{p \mid n} \left ( 1 - \frac{1}{p} \right )
+	\end{align*}
+\end{proof}
+
+\begin{remark}
+	This says that $\phi(n)$ is $n$ times the probability (in a loose way) that an integer is not disable by any of the primes dividing $n$.
+\end{remark}
+
+\begin{eg}
+	Calculate $\phi(504)$. We have, $$
+		504 = 2^{3} \cdot 3^2 \cdot 7
+	$$
+	So,
+	\begin{align*}
+		\phi(504) &= 504 \cdot (1 - \frac{1}{2}) (1 - \frac{1}{3}) (1 - \frac{1}{7})\\
+			  &= 144
+	\end{align*} 
+\end{eg}
+
+\begin{theorem}
+	Let $n \in \Z, n > 0$ then, $$
+	\sum_{d \mid n} \phi(d) = n
+	$$
+\end{theorem}
+\begin{proof}
+	Let $d $be a divisor of $n$. Let, 
+	\begin{align*}
+		s_d = \{1 \le m \le n : (m,n) = d\}
+	\end{align*}
+
+	Note that $(m,n) = d$ if and only if $\left ( m / d, n / d \right ) = 1$. Thus $| s_d| = \phi( n / d)$ as if $(m,n) = d$ then $(m / d, n / d) = 1$ and $m  / d$ satisfying this is $\phi(n  / d)$.
+
+	\vspace{1em}
+	
+	Note also that every integer less than equal to $n$ belongs to exactly one set $s_d$. Thus, $$
+	n = \sum_{d \mid n} | s_d | = \sum_{d \mid n} \phi(n / d) = \sum_{d \mid n} \phi(d)
+	$$
+
+	As $\{d : d \mid n\} = \{n / d : d \mid n\}$
+\end{proof}

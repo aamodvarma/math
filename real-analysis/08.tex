@@ -1,0 +1,202 @@
+\section{Series}
+
+\begin{definition}
+	Let $\{b_n\}$ be a sequence. An infinite series is formally given by,
+	$$
+	\sum_{n =1}^{\infty}b_n = b_{1} + b_{2} + \dots
+	$$
+\end{definition}
+\begin{definition}
+	The partial sum $\{s_m\}$ is defined as,
+	$$
+	s_m = \sum_{n = 1}^{m} b_n
+	$$
+\end{definition}
+
+\begin{remark}
+	We say $\sum_{n = 1}^{\infty} b_n$ converges to $b$ if, $$
+	\lim_{m \to \infty} s_m = B
+	$$
+\end{remark}
+\begin{eg}
+	We have, $$
+	\sum_{n = 1}^{\infty} \frac{1}{n^2} 
+	$$
+
+	so, $$
+	s_m = \sum_{n = 1}^{m} \frac{1}{n^2} = 1 + \frac{1}{2^2} + \dots + \frac{1}{m^2}
+	$$
+
+	We see that $s_{m + 1} > s_m > 0$.  We can do,
+	\begin{align*}
+		s_m &= \sum_{n = 1}^{m} \frac{1}{n^2} = 1 + \frac{1}{2^2} + \dots + \frac{1}{m^2}\\
+		    &< 1 + \frac{1}{2} + \frac{1}{3 \cdot 2} + \frac{1}{3 \cdot 4} \dots \frac{1}{m(m - 1)}\\
+		    &=  1 + \left (1 - \frac{1}{2} \right ) + \left ( \frac{1}{2} - \frac{1}{3} \right ) + \left ( \frac{1}{3} - \frac{1}{4} \right ) + \dots + \left ( \frac{1}{m - 1} - \frac{1}{m} \right )\\
+		    &= 2  - \frac{1}{m} < 2
+	\end{align*}
+
+	So we have $s_{m + 1} > s_m$  and $0 < s_m < 2 $ for any $m$. So we have a bounded increasing sequence and by $M.C.T$ we have $\lim_{m \to \infty} s_m = s \in \R$ exists and,
+	$$
+	\sum_{n = 1}^{\infty} \frac{1}{n^2} = s
+	$$
+\end{eg}										
+
+\begin{eg}
+	We have $\sum_{n = 1}^{\infty} \frac{1}{n}$ (Harmonic series). We have,
+	\begin{align*}
+		s_m &= \sum_{n = 1}^{m}  \frac{1}{n} = 1 + \frac{1}{2} + \frac{1}{3} + \dots + \frac{1}{m}\\
+		s_2 &= 1 + \frac{1}{2}\\
+		s_4 &= 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} > 1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{4} = 2\\
+	\end{align*}
+
+	So we get,
+	\begin{align*}
+		s_{2^{k}} &= 1 + \frac{1}{2} + \frac{1}{3} + \frac{1}{4} + \frac{1}{5} + \frac{1}{6} + \frac{1}{7} + \frac{1}{8} + \dots +\left ( \frac{1}{2^{k - 1} + 1} + \dots + \frac{1}{2^{k}} \right )\\
+			  &> 1 + \frac{1}{2} + \left (\frac{1}{4}\codt 2 \right) + \left ( \frac{1}{8} \cdot 4 \right ) + \left ( 2^{k - 1} \cdot \frac{1}{2^{k}} \right )\\
+			  &= 1 + \frac{1}{2} + \frac{1}{2} + \dots = 1 + \frac{k}{2}
+	\end{align*}
+
+	So $s_{2^{k}} > 1 + \frac{k}{2}$ so $\{s_m\}$ diverges as $1 + \frac{k}{2}$ diverges.
+\end{eg}
+
+\begin{prop}
+	$\sum_{n = 1}^{\infty} \frac{1}{n^{p}}$ converges if and only if $p > 1$
+\end{prop}
+
+\subsection{Properties of Infinite series}
+\begin{theorem}
+	Assume $\sum_{n = 1}^{\infty} a_n = A$ and $\sum_{n = 1}^{\infty} b_n = B$. Then, 
+	\begin{enumerate}
+		\item $\sum_{n = 1}^{\infty} ca_n = cA, \forall c \in \R$
+		\item $\sum_{n = 1}^{\infty} (a_n + b_n) = A + B$
+	\end{enumerate}
+\end{theorem}
+\begin{proof}
+	Set $s_m = \sum_{n = 1}^{m} a_n, k_m = \sum_{n = 1}^{m} b_n$. Let $$t_m = \sum_{n = 1}^{m} ca_n  = c \sum_{n = 1}^{m} a_n = cs_m$$. Now as $\lim_{n \to \infty} s_m = A$ we have $\lim_{m \to \infty} cs_m = cA$ so $\lim_{m \to \infty} t_m = \lim_{m \to \infty} c s_m = c \lim_{m \to \infty} s_m = cA$
+
+	\vspace{1em}
+	
+	For 2, define $U_m = \sum_{n = 1}^{m} (a_n + b_n) = \sum_{n = 1}^{m} a_m + \sum_{n = 1}^{m} b_m$. Now we have, $\lim_{m \to \infty}  = \lim_{m \to \infty} (s_m + k_m) = \lim_{m \to \infty} s_m + \lim_{m \to \infty} k_m = A + B$
+\end{proof}
+
+\begin{theorem}[Cauchy criterion for series]
+	$\sum_{n = 1}^{\infty} a_n$	 converge if and only if given $\epsilon > 0, \exists N, s.t. \forall n > m > N$ we have,
+	$$
+	\left | a_{m + 1} + \dots + a_n  \right | < \epsilon
+	$$
+\end{theorem}		
+\begin{proof}
+	Define $s_n = \sum_{k = 1}^{n} a_k$ and $s_m = \sum_{k = 1}^{m} a_k$. So for $n > m$ we have,$$
+	s_n - s_m = a_{m + 1} + \dots+ a_n
+	$$
+
+	By the cauchy criterion applied to $\{s_n\}$, we know $\{s_n\}$ converges if and only if $\forall \epsilon > 0, \exists N s.t. m, n > N$ and $\left | s_m - s_n \right | < \epsilon$. This is equivalent to, 
+
+	$$
+	\left | a_{m + 1} + \dots + a_n  \right | < \epsilon
+	$$
+\end{proof}			
+
+
+
+\begin{corollary}
+	If $\sum_{n = 1}^{\infty} a_n$ converges then $\lim_{n \to \infty} a_n = 0$. 
+\end{corollary}
+\begin{proof}
+	Take $m = n - 1$ from the previous statement so we have $\forall \epsilon > 0$ exists $N$ such that, n > m > N$ s.t., 
+	$$
+	\left | s_n - s_m \right | = |a_n | < \epsilon
+	$$
+	so $\lim_{n \to \infty} a_n = 0$
+\end{proof}
+
+\begin{corollary}
+	If $\lim_{n \to \infty} a_n \ne 0$ then $\sum_{n = 1}^{\infty} a_n$ diverges.
+\end{corollary}
+\begin{remark}
+$\lim_{n \to \infty} a_n = 0$	 does not imply that $\sum_{n = 1}^{\infty} a_n$ converges - for instance $\frac{1}{n}$.
+\end{remark}
+
+\subsection{Comparison Test}
+\begin{theorem}
+	If $(a_k)$ and $(b_k)$ are sequence s.t. $0 \le a_k \le b_k, \forall n \in \N$. Then,
+	\begin{enumerate}
+		\item $\sum_{n = 1}^{\infty} b_n$ converge means that $\sum_{n = 1}^{\infty} a_n$ converges.
+		\item $\sum_{n = 1}^{\infty} a_n$ diverges means that $\sum_{n = 1}^{\infty} b_n$ diverges.
+	\end{enumerate}
+\end{theorem}	
+\begin{proof}(1)
+Let $k_n = \sum_{n = 1}^{m} b_n $ and $t_n = \sum_{n = 1}^{m} a_n$.  We know that $t_m \le k_n$ for all $m$. So, 
+$$
+\lim_{n \to \infty} k_m \text{ exists}
+$$
+
+So $k_n$ is bounded and we have $t_m$ is increasing so $MCT$ says that $\{t_m\}$ converges so $\sum_{n = 1}^{\infty} a_n$ converges.
+
+\vspace{1em}
+
+We also see that for any $m, n$ we have $a_{m + 1} + \dots + a_n < b_{m + 1}+ \dots + b_n$ so we can say,
+$$
+\left | a_{m + 1} + \dots + a_{n} \right | \le \left | b_{m + 1} + \dots + b_n \right |
+$$
+we apply cauchy criterion twice  to show $a_n$ converges.
+\end{proof}
+
+\subsection{Absolute convergence}
+\begin{theorem}[Absolute convergence test]
+	If $\sum_{n = 1}^{\infty} |a_n|$ converges then,
+	$$
+	\sum_{n = 1}^{\infty} a_n \text{ converges}
+	$$ 
+\end{theorem}
+\begin{proof}
+	We have $\forall m < n$	 that,
+	$$
+	\left | a_{m + 1} + \dots + a_n \right | \le 	\left | a_{m + 1} \right | + \dots + \left |a_n \right |
+	$$
+
+	Now use Cauchy criterion again.
+\end{proof}	
+
+
+
+\begin{theorem}[Cauchy condensation test]
+	Suppose $\{b_n\}$ is a decreasing sequence and $b_n \ge 0$ then,
+	$$
+	\sum_{n = 1}^{\infty} b_n \text{ converges if and only if }
+	$$
+	$$
+	 \sum_{n = 0}^{\infty} 2^{n}b_{2^{n}} = b_{1} + 2b_{2} + 4b_{4} + \dots \text{ converges}
+	$$
+\end{theorem}
+
+\setcounter{prop}{14}
+\begin{prop}
+	$\sum_{n = 1}^{\infty} \frac{1}{n^{p}}$ converges if and only if $p > 1$
+\end{prop}
+\begin{proof}
+	We can take $b_n = \frac{1}{n^{p}}$ and use the above theorem to get,
+	\begin{align*}
+		b_{2^{n}} &= 2^{ - np} \\
+		2^{n}	b_{2^{n}} &= 2^{-n(p - 1)}
+	\end{align*}
+
+	To check $\sum_{n = 0}^{\infty} 2^{n} b_{2^{n}} = \sum_{n = 0}^{\infty} 2^{-n(p - 1)}$. We denote $J = 2^{(1 - p)} = 2^{-( p - 1)}$. So,
+	$$
+	\sum_{n = 0}^{\infty} 2^{-n(p - 1)} = \sum_{n = 0}^{\infty} J^{n}
+	$$
+
+	If $p = 1$ then $J = 1$ clearly $\sum_{n = 0}^{\infty} J^{n}$ diverges.
+	\vspace{1em}
+	
+	Now if $p \ne 1 $ then $J \ne 1$. To check $\sum_{n = 0}^{\infty} J^{n}$ we look at $\sum_{n = 0}^{m} J^{n}$. Notice that, $$
+	\sum_{n = 0}^{n} J^{n} = \frac{J^{m + 1} - 1}{J - 1}
+	$$
+
+	and as $m \to \infty$ we have, $$
+	\sum_{n = 0}^{\infty} J^{n} \text{ converge if and only if $|J| < 1$}
+	$$
+
+	As $J = 2^{(1 - p)}$ we have $ J < 1 \iff P > 1$ and hence satisfies the above convergence.
+\end{proof}
+

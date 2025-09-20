@@ -39,23 +39,35 @@
     Then $p(x)$ is called the probability mass function (pmf)
 \end{definition}
 \begin{remark}
-    A random variable that takes only 2 values (conventionally represented with 0, 1) is called a Bernoulli random variable. The pmf of a Bernoulli  r.v. is completely given by $p(1) = \P(X = 1)$ and $p(0) = 1 - p(1)$
+	We also have, 
+	\begin{align*}
+		\sum_{x \in X(\Omega)} p(x) &= \sum_{x \in X(\Omega)} \P(X = x) \\
+					    &=  \P \bigg (\bigcup_{x \in X(\Omega)} \{\omega \in \Omega: X(\omega) = x\} \bigg) \\
+					    &= \P(\Omega) = 1
+	\end{align*}
 \end{remark}
-\begin{remark}
+\section{Examples}
+
+\begin{eg}
+	A random variable that takes only 2 values (conventionally represented with 0, 1) is called a \textbf{Bernoulli r.v}. The pmf of a Bernoulli  r.v. is completely given by $p(1) = \P(X = 1)$ and $p(0) = 1 - p(1)$
+\end{eg}
+\begin{eg}
     If a random variable that takes values $0, \dots, N$ with  p.m.f, 
     $$ p(x) = {N \choose x} p^{x}(1 - p)^{N - x} $$ 
 
     is called a \emph{\textbf{binomial r.v}}. This is a 2 parameter pmf (p, N).
     \vspace{1em}
 
-    Binomial can be thought of as a sum of $N$ independent Bernoulli r.v. with parameter $p$. In addition, it can be thought of as the number of successes in $N$ independent Bernoulli trials with success probability $p$.
-    
-\end{remark}
 
-\section{Examples}
+\end{eg}
+\begin{remark}
+    \textbf{\emph{Binomial can be thought of as a sum of $N$ independent Bernoulli r.v. with parameter $p$}}. In addition, it can be thought of as the number of successes in $N$ independent Bernoulli trials with success probability $p$.
+\end{remark}
 
 \begin{eg}
     I have a bowl with $N$ blue balls and $M$ red balls. If we extract $n$ balls without reinsertion. Then, what is the probability of $x$ blue.
+    \vspace{1em}
+    
 
     Here the total possible outcomes is ${M + N \choose n}$. We want to select  $x$ blue balls and $n - x$ red balls. So possibility for blue  is   ${N \choose x}$ and for red is  ${M \choose n - x}$. So, 
     $$ p(x) = \frac{{N \choose x}{M \choose n - x}}{{M + N \choose n}} $$ 

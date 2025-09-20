@@ -1,0 +1,176 @@
+\begin{proof}
+Consider the $p - 1$ integers as follows, 
+$$
+	a,2a, 3a, \dots, a(p -1)
+$$
+We know that $p \nmid a$ and $p \nmid 1, \dots, p - 1$ so we have $p \nmid ai$ for $1 \le i \le p - 1$. Note also that for no two of the above numbers are congruent mod $p$. (Suppose they are congruent i.e. $ai \equiv aj \pmod p$, then as $p$ is a prime then we can use the inverse to get $i \equiv j \pmod p$. But that means that $i = j$ which is not true by construction).
+
+\vspace{1em}
+
+Thus we have $a, 2a, \dots, (p - 1)a$ is a complete non-zero residue system of $p$. Thus, 
+\begin{align*}
+	a(2a)(3a) \dots (p - 1)a \equiv 1 \cdot 2 \cdot 3 \dots \cdot (p - 1) \pmod p\\
+	a^{p - 1} (p - 1)! \equiv (p - 1)! \pmod p\\
+	a^{p - 1} \equiv 1 \pmod p\\
+\end{align*}
+
+as $(p - 1)!$ has an inverse mod $p$.
+
+\end{proof}
+\begin{remark}
+	The underlying motivation is that for a prime number, given a set of residues if we scale it by any other residue it gives us a permutation of the residues.	
+\end{remark}
+
+
+	
+\subsection{Consequences of FLT}
+
+\begin{corollary}
+	Let $p$ be a prime and $a \in \Z, p \nmid a$ . Then $a^{p - 2}$ is the inverse of $a$ modulo $p$.
+\end{corollary}
+\begin{proof}
+	We have,
+	\begin{align*}
+		a \cdot a^{p - 2} = a^{p - 1} \equiv 1 \pmod p
+	\end{align*}
+
+	So $a^{p - 2} = \overline{a}$
+\end{proof}
+
+\begin{corollary}
+	Let $p$ be prime and $a \in \Z$. Then $a^{p} \equiv a \pmod p$. 
+\end{corollary}	
+\begin{proof}
+	If $p \mid a$ then both sides are congruent to 0 mod p and hence it's true. If $p \nmid a$ then we have,
+	\begin{align*}
+		a^{p  - 1} \equiv 1 \pmod p\\
+		a \cdot a^{p  - 1} \equiv a \pmod p\\
+ 		a^{p} \equiv a \pmod p
+	\end{align*}
+\end{proof}
+
+\begin{corollary}
+	Let $p$ be a prime. Then $2^{p} \equiv 2 \pmod p$.
+\end{corollary}	
+
+\begin{definition}[Pseudoprimes]
+	If $n \in \Z$ and $n$ is composite with $n > 1$ and $2^{n} \equiv 2 \pmod n$ then $n$ is called a \emph{pseudoprime}. 
+\end{definition}
+
+\begin{eg}
+	For $n = 341$ observe that $n = 11 \cdot 31$. To prove that $2^{341} \equiv 2 \pmod {341}$, it suffices to show that $2^{341} \equiv 2 \pmod {11}$ and $2^{341} \equiv 2 \pmod 31$. Note that,
+	\begin{align*}
+		2^{341} &\equiv (2^{10})^{34} \cdot 2 \pmod {11}\\
+			&\equiv 1^{34} \cdot 2 \pmod {11}\\
+			&\equiv 2 \pmod {11}
+	\end{align*}
+
+	Similarly,
+	\begin{align*}
+		2^{341} &\equiv (2^{30})^{11} \cdot 2^{11} \pmod {31}\\
+			&\equiv 1^{11} \cdot (2^{5})^2 \cdot 2 \pmod {31}\\
+			&\equiv 2 \pmod {31}
+	\end{align*}
+
+\end{eg}
+
+
+\section{Euler's Theorem}
+\begin{definition}
+	Let $n \in \Z, n > 0$. Eulers phi-function denoted by $\phi(n)$ is the number of positive integers that are less than or equal to $n$ that are relatively prime.
+	$$
+	\phi(n) = \left | \{m \in \Z: 1 \le m \le n, (m,n ) = 1\} \right |
+	$$
+\end{definition}	
+
+\begin{eg}
+	$\phi(4)  = 2, \phi(14) = 6, \phi(p) = p - 1$
+\end{eg}
+
+\begin{theorem}[Euler's Theorem]
+	Let $a, m \in \Z$ with $m > 0$. If $(a, m) = 1$. Then we have,
+	\begin{align*}
+		a^{\phi(m)} \equiv 1 \pmod m
+	\end{align*}
+\end{theorem}
+\begin{proof}
+	Let $r_{1}, r_{2}, \dots, r_{\phi(m)}$ be distinct positive integers not exceeding $m$ such that $(r_i, m) = 1$. Consider the integers, 
+	$$
+	ar_{1}, ar_{2}, \dots, a_{\phi(m)} 
+	$$
+
+	Note that $(ar_{i}, m) = 1$ and for $i \ne j$ we have $ar_i \not \equiv ar_j \pmod m$ cause if it weren't true, we can multiply a inverse on both sides to get $r_i \equiv r_j \pmod m$. But $r_i \ne r_j$ so we cannot have this to be true.
+
+	\vspace{1em}
+	
+	So we have,
+	\begin{align*}
+		ar_{1} ar_{2} \dots a_{r_\phi(m)}  &\equiv  r_{1}r_{2}\dots r_{\phi(m)} \pmod m\\
+		a^{\phi(m)}(r_{1} \dots r_{\phi(m)}) &\equiv  r_{1}r_{2}\dots r_{\phi(m)} \pmod m\\
+	\end{align*}
+
+	And $r_{1} \dots r_{\phi(m)}$ is coprime to $m$  as each individual elements are coprime to it so we have an inverse to get,
+	$$
+	a^{ \phi(m)} \equiv 1 \pmod m
+	$$
+\end{proof}
+
+\begin{definition}
+	Let $m$ be a positive integer. A set of $\phi(m)$ integers such that each integer is relatively prime to $m$	and no two elements are congruent mod $m$ is called a \emph{reduced residue system modulo $m$}.
+\end{definition}
+\begin{eg}
+	$\{1, 5, 7, 11\}$ is a reduced residue system modulo 12. So is $5 \cdot \{1, 5, 7, 11} = \{5, 25, 35 , 55\}$
+
+	\vspace{1em}
+	
+	$\{1, \dots, p - 1\}$ is a reduced residue set modulo $p$ for any prime $p$.
+\end{eg}
+
+\setcounter{corollary}{18} 
+\begin{corollary}
+	Let $a, m \in \Z, m > 0, (a, m) = 1$. Then, 
+	\begin{align*}
+		\overline{a} = a^{\phi(m) - 1}
+	\end{align*}
+\end{corollary}
+
+\chapter{Arithmetic functions and multiplicativity}
+\begin{definition}
+An arithmetic function is a function whose domains is the set of positive integers.
+\end{definition}
+\begin{eg} of arithmetic functions are,
+
+	\begin{enumerate}
+		\item Euler's $\phi$ function (multiplicative)
+		\item $v(n)$, the number of positive divisors (multiplicative)
+		\item $\sigma(n)$, the sum of divisor (multiplicative)
+		\item $\omega(n)$, the number of distinct prime factors
+		\item $p(n)$, the number of partitions of $n$
+		\item $\Omega(n)$, number of total prime factors.
+	\end{enumerate}
+\end{eg}
+
+\begin{definition}
+	An arithmetic function $f$ is \emph{multiplicative} if $f(mn) = f(m)f(n)$ whenever $(m, n) = 1$. $f$ is \emph{completely multiplicative} if $f(mn) = f(m)f(n)$ for all integers $m, n$.
+\end{definition}
+
+\begin{note}
+	Note that if $n > 1, n = p_{1}^{a_{1}} \dots p_r^{a_r}$. Then if $f$ is multiplicative we have,
+	$$
+	f(n) = f(p_{1}^{a_{1}} \dots p_r^{a_r}) = f(p_{1}^{a_{1}}) \dots f(p_r^{a_r})
+	$$
+	so multiplicative functions are determined by their behavior on primes powers. If $f$ is completely multiplicative we have,
+	$$
+	f(n)  = f(p_{1})^{a_{1}} \dots f(p_r)^{a_r}
+	$$
+
+	so completely multiplicative functions are determined by their behavior on primes.
+
+\end{note}
+
+\begin{eg}
+	For instance $f(n) = 1$ or $f(n) = 0$ are completely multiplicative functions.
+\end{eg}
+\begin{remark}
+If $f$ is multiplicative and not identically $0$ then $f(1) = 1$. Choose $n$ such that $f(n)  \ne 0$ then $f(n) = f(n \cdot 1) = f(n) \cdot f(1)$ so $f(1) = 1$.
+\end{remark}

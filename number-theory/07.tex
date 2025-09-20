@@ -35,10 +35,12 @@
 	Let \( m_1, m_2, \dots, m_n \) be pairwise relatively prime and let \( b_1, \dots, b_n \in \Z \).  Then this system,
 
 	\begin{align*}
-		x \equiv b1 &\pmod (m_1)\\
+		x \equiv b1 &\pmod {m_1}\\
 			    &\vdots\\
-		x \equiv bn &\pmod (m_n)\\
+		x \equiv bn &\pmod {m_n}\\
 	\end{align*}
+
+	has a unique solution.
 \end{theorem}
 \begin{proof}
 	Let \( M = m_1, \dots, m_n \) and \( M_i = M/m_i\). Then \( M_i, m_i = 1 \). There are solutions to each system \( M_ix_i \equiv 1 \pmod m \) denoted \( x_i = \overline M_i \). Now consider \( x = b_1M_1\overline M_1 +  b_2M_2\overline M_2 + \dots +  b_nM_n\overline M_n \).
@@ -91,6 +93,7 @@
 	Now suppose \( a \equiv  \pm 1 \pmod p \). Squaring both sides we get \( a^2 \equiv 1 \pmod p \) so \( a = \overline a \).
 \end{proof}
 
+\section{Wilson's Theorem}
 \begin{theorem}[Wilson's Theorem]
 	Let \( p \) be a prime. Then \( (p - 1)! \equiv -1 \pmod p \)
 \end{theorem}
@@ -119,10 +122,8 @@
 		5, 13, 563
 	.\] 
 \end{definition}
+\section{Fermat's Little Theorem}
 
 \begin{theorem}[Fermat's Little Theorem]
 	Let \( p \) be a prime and let \( a \in \Z \) then if \( p \nmid a \) then \[ a^{p - 1} \equiv 1 \pmod p \]
 \end{theorem}
-\begin{proof}
-	
-\end{proof}

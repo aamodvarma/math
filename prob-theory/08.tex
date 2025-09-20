@@ -141,3 +141,10 @@ Consider,
 	which gives us the same answer.
 
 \end{eg}
+\begin{remark}
+	The logic in the first method is that arrival of first head means that the rest before it is tails i.e. a continuous run of tails. So as $1 / p$ includes the heads we do $\frac{1}{p} - 1$ which represent the average length of a run of tails. We get $1 / p $ as that is the mean of the geometric random variable.
+
+	\vspace{1em}
+	
+	Another way of doing this is to define $X$ as the number of continuous run of heads. So $\P(X = x) = p^{x}q$ and finding the expected value of this gives us the desired answer.
+\end{remark}

@@ -1,0 +1,189 @@
+\vspace{1em}
+
+We know that $V(X) = \E((X - E(X)^2) $. So we look at $V(X + Y)$ and get,
+
+\begin{theorem}
+	If $X $ and $ Y$ are independent then we have,
+	$$
+		V(X + Y) = V(X) + V(Y)
+	$$
+\end{theorem}
+\begin{proof}
+	\begin{align*}
+	V(X + Y) &= \E(((X + Y) - E(X + y))^2) \\
+		 &= \E((X + Y - \mu_x - \mu_y)^2))\\
+		 &= \E((X - \mu_x)^2 + (Y - \mu_y)^2 + 2(X - \mu_x)(Y - \mu_x))\\
+		 &= \E((X - \mu_x)^2) + \E((Y - \mu_y)^2) + \E(2(X - \mu_x)(Y - \mu_x)))\\
+		 &= Var(X) + \Var(Y) + 2 Cov(X, Y)
+	\end{align*}
+
+	So we have $V(X + Y) = V(X) + V(Y)$ if we have $Cov(X,Y) = 0$. But if $X,Y$ are independent then we have $Cov(X,Y) = 0$
+\end{proof}
+\begin{remark}
+	Note that $V(X + Y) = V(X) + V(Y)$ does \textbf{NOT} mean that $X,Y$ are independent.
+\end{remark}
+\begin{remark}
+	Let $X_{1}, \dots, X_n$ be independent Bernoulli r.v. of parameter $p$. Consider $n$ independent coin flips so, 
+	$$
+	Y = \sum_{i = 1}^{n} X_i
+	$$
+
+	$Y$ is binomial $n, p$. So we have, $$
+		\E(Y) = \sum_i \E(X_i) = np
+	$$
+
+	Now for variance of $Y$   we have,
+	$$
+		V(Y) = \sum_i V(X_i) = np( 1- p)
+	$$
+
+	as each $X_i$  is independent from each other and variance of $X_i$ is $(1 - p)$
+\end{remark}
+
+
+
+\vspace{1em}
+
+Given $V(aX)$ we have $V(aX) = \E(a^2 X^2) - \E(a X)^2 = a^2 V(X)$. This also gives us standard deviation $\sigma_{aX} = |a| \sigma_X$.
+
+\vspace{1em}
+
+
+We also have $V(X + a) = V(X)$ as, 
+\begin{align*}
+	\E(X + a ) &= \E(X) + a\\
+	(X + a) - \E(X + a) = X - \E(X)
+\end{align*}
+
+\begin{remark}
+	If variance gives an idea of spread of the distribution then adding a constant value to a r.v. $X$ should not change the spread. 
+\end{remark}
+\begin{remark}
+	 We can also see it by looking at $a$ a constant as independent from $X$ and then use linearity of variance when independence is true to separate it out.
+\end{remark}
+
+\vspace{1em}
+
+\section{Sum of random variables}
+Take $X, Y$ with $p(x, y)$. Now consider, $$
+	Z = X + Y
+$$
+
+We have, 
+\begin{align*}
+	\P(Z = z) &= \sum_x \P(X = x \text{ \& } Y = z - x) \\
+		  &= \sum_x p(x, z - x)
+\end{align*}
+
+If $X$ and $Y$ are independent then, 
+$$
+	\P(Z = z) = \sum_x p_X(x) p_Y(z - x)
+$$
+
+This is called the convolution.
+
+
+\begin{eg}
+	If $X$ and $Y$ are Poisson, then with $\mu, \nu$ we have, 
+	$$
+		p_X(x) = \frac{\mu^{x}}{x!} e^{- \mu} \quad  p_Y(y) = \frac{\nu^{y}}{y!} e^{-nu}
+	$$
+
+	Now consider $Z = X + Y$ then, 
+	\begin{align*}
+		\P(Z= z) &= \sum_{x = 0}^{z} p_X(x) p_Y(z - x)\\
+			 &= \sum_{x= 0}^{z} \frac{\mu^{x}\nu^{z - x}}{x! (z - x)!} e^{-(\mu + \nu)}\\
+			 &= \sum_{x= 0}^{z} \frac{z!}{z!}\frac{\mu^{x}\nu^{z - x}}{x! (z - x)!} e^{-(\mu + \nu)}\\
+			 &=\frac{1}{z!} \sum_{x= 0}^{z} {z \choose x} \mu^{x}\nu^{z - x} e^{-(\mu + \nu)}\\
+			 &= \frac{1}{z!} (\mu + \nu)^{z} e^{-(\mu + \nu)}
+	\end{align*}
+\end{eg}
+\begin{ex}
+	If $X$ is binomial $n, p$ and $Y$ is binomial $m, p$ then $X + Y$ is binomial $n + m, p$ 
+\end{ex}
+\begin{remark}
+	If $X$ is binomial $n, p_{1}$ and $Y$ is binomial $n, p_{2}$ where $p_{1} \ne p_{2}$. Then $X + Y$ is not binomial. But we have,
+
+	$$
+		\E(X + Y) = np_{1} + mp_{2}
+	$$
+
+	and, $$
+	V(X + Y) = np_{1}(1 -p_{1}) + mp_{2}(1 - p_{2})
+	$$
+\end{remark}
+
+\section{Indicator Function}
+\begin{definition}
+	Indicator function is a r.v $1_A(\omega)$ such that, $$
+		1_A(\omega) = \begin{cases} 1 \quad \text{ $\omega \in A$ } \\
+ 			0 \quad \text{ $\omega  \not \in A$ }
+		\end{cases}
+	$$ 
+\end{definition}
+
+We have the follwoing,
+\begin{align*}
+	1_A^{c} (\omega) &= 1 - 1_A(\omega)\\
+	1_{A \cup B}(\omega) &= 1_{A}(\omega) 1_B(\omega)\\
+	1_{A \cap B}(\omega) &= 	1_{(A^{c} \cap B^{c})^{c}}(\omega) = 1 -(1 - 1_A(\omega))(1 - 1_B(\omega))\\
+			     &= 1_A(\omega) + 1_B(\omega) - 1_A(\omega) 1_B(\omega)
+\end{align*}
+
+Now we have,
+$$
+\E(1_{A \cup B}) = \E(1_A) + \E(1_B) - \E(1_A 1_B)
+$$
+this tells us that, $$
+	\P(A \cup B) = \P(A) + \P(B) - \P(A \cap B)
+$$
+
+In general, $$
+1_{\bigcup_i A_i}(\omega) = 1 - \prod_i (1 - 1_A_i(\omega))
+$$
+
+We can write this as, 
+$$
+\sum_{I \in \{1, \dots, n\}} (-1)^{|I| + 1}  \P \left ( \bigcap_{i \in I} A_i \right )
+$$
+	
+
+
+\begin{eg}
+	Consider a gas station on a highway and $N_{1}$ a poisson r.v  $\lambda_{1}$ representing a car that stops and needs service on top of gas. Let $N_{2}$ be poisson $\lambda_{2}$, for a car that stops and do not need service.
+
+	So we have, 
+	$$
+	N_{1} + N_{2} = \text{ Poisson  with  $\lambda_{1}+ \lambda_{2}$}
+	$$
+
+	We can describe it as follows as well,
+	\vspace{1em}
+	
+
+	$N$ is a Poisson with prob $\lambda$ for every car that arrives with probability $p$ of requiring service and $1 - p$ of not requiring service.
+
+	\vspace{1em}
+	
+	Now let $N_{1}$ is the number of car that requires service. We have $N_{1}$is a Poisson r.v with parameter $p \lambda$. We can compute this by taking $\P(N_{1} = n) = \sum_{m \ge n} \P(N_{1} = n \mid N = m) \P(N \mid m)$ 
+
+	The first term is binomial with $m, p$ and second term is a poisson. So this will give us,
+	\begin{align*}
+		\sum_{n \ge m} {m \choose n} p^{n} (1 - p)^{m - n} \frac{\lambda^{m}}{m!} e^{ - \lambda}= 
+		\frac{(\lambda p)^{n}}{n!} e^{- \lambda p}
+	\end{align*}
+
+	But an easier way to do this is by assuming that $N$ is actually a binomial with large $n$ and $p = \frac{\lambda}{n}$. But if we have a binomial then at each time step a car arrives with probability $\frac{\lambda}{n}$ and probability is $p$ that car needs service so we have $\frac{p\lambda}{n}$ as probability of car arriving and needing service at each time step.
+
+	\vspace{1em}
+	
+	So consider a binomial with $n$ flips and $\frac{p \lambda}{n}$ which is a Poisson with parameter $p \lambda$
+
+	\vspace{1em}
+	
+	So if $N_{2}$ is the number of cars that do not need service it is a Poisson with $(1 - p) \lambda$
+\end{eg}
+
+\begin{remark}
+	Point here is that sum of two independent Poisson is Poisson.
+\end{remark}

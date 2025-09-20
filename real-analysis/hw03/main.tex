@@ -1,0 +1,214 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Real Analysis: HW3}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+    
+
+
+
+\section*{Exercise 2.3.4}
+We are given that $(a_n) \to 0$
+
+(a) We have $\lim \left ( \frac{1 + 2a_n}{1 + 3a_n - 4a_n^2} \right )$
+
+\vspace{1em}
+
+Using the Algebraic Limit Theorem  we know that as $\lim a_n = 0$ then using 2.3.3 (i) we have $\lim 2a_n = 2 \cdot 0 = 0$ and if we consider the sequence that just returns the constant value $1$, using 2.3.3 (ii) we have $\lim (1 + 2a_n) = 1 + 0 = 1$. Similarly we have $\lim 3a_n = 3 \cdot 0 = 3$ and using 2.3.3 (iii) we have $\lim a_n^2 = 0^2 = 0 $ and $\lim 4a_n^2 = 0$. So we have $\lim (1 + 3a_n - 4a_n^2) = 1$. Now as both the limits $\lim (1 + 2a_n)$ and $\lim (1 + 3a_n - 4a_n^2)$ is defined, using 2.3.3 (iv) we have,
+\begin{align*}
+	\lim \left ( \frac{1 + 2a_n}{1 + 3a_n - 4a_n^2} \right ) = \frac{1}{1} = 1
+\end{align*}
+
+\vspace{1em}
+
+(b) We have $\lim \left ( \frac{(a_n + 2)^2 - 4}{a_n} \right )$
+
+We can expand the top as $a_n^2 + 4 -4 + 4a_n = a_n( a_n + 4))$. So the $a_n$ cancels out and we have $\lim a_n + 4$ which is 4.
+
+
+
+(c) We have $\lim \left ( \frac{\frac{2}{a_n} + 3}{\frac{1}{a_n} + 5} \right ) $
+
+
+\vspace{1em}
+
+We can write this as $\lim \left ( \frac{2 + 3a_n}{1 + 5a_n}\right)$. And looking at numerator we have $\lim 3a_n = 3 \cdot 0 = 0$ which means $\lim 2 + 3a_n = 2 + 0 = 2$. Similarly, $\lim 5a_n = 5 \cdot 0 = 0$ and $\lim 1 + 5a_n = 1 + 0 = 1$. Which gives us $\lim \left ( \frac{\frac{2}{a_n} + 3}{\frac{1}{a_n} + 5} \right )  = 2$
+
+
+
+
+\section*{Exercise 2.3.5}
+
+We are given that $(x_n)$ and $(y_n)$ are convergent and $(z_n)$ is defined as,
+\begin{align*}
+	x_{1},y_{1},x_{2},y_{2}, \dots, x_n,y_n,\dots
+\end{align*}
+
+We can write this as follows, for a given $n$ we have $$z_n = \begin{cases} x_{\frac{n + 1}{2}} \quad \text{if $n$ is odd} \\ y_{\frac{n}{2}} \qquad \text{if $n$ is even}\end{cases}$$
+
+We need to show that $(z_n)$ converges if and only if $(x_n)$ and $(y_n)$ are both convergent with the same limit.
+
+\vspace{1em} 
+
+($\implies$) First assume that $(z_n)$ converges to $z$. This means that $\forall \epsilon > 0$ we can find some $N$ such that $\forall n > N$ we have, 
+\begin{align*}
+	\left | z_n - z  \right |< \epsilon
+\end{align*}
+
+Now for $n > N$ consider we have the following,
+\begin{align*}
+	\left |   x_{\frac{n + 1}{2}} - z\right | < \epsilon \qquad \text{if $n$ is odd}\\
+	\left |   y_{\frac{n}{2}} - z\right | < \epsilon \qquad  \text{if $n$ is even}
+\end{align*}
+
+Or in other words if we take $N' = \frac{N + 1}{2}$ we have $\forall \epsilon$ if  $n > N_{1}$ that,
+\begin{align*}
+	\left |x_n  - z  \right | < \epsilon\\
+	\left |y_n  - z  \right | < \epsilon\\
+\end{align*}	
+
+This means that both $x_n$ and $y_n$ converge to $z$ by definition.
+
+\vspace{1em}
+
+
+($\impliedby$) Now let us assume that $(x_n)$ and $(y_n)$ both converge to the same limit $z$. So we have $\forall \epsilon > 0$ there is some $N_{1}$ such that for $n > N_{1}$
+\begin{align*}
+	\left | x_n - z \right | < \epsilon
+\end{align*}
+
+Similarly we have, $\forall \epsilon > 0$ exists $N_{2}$ such that for $n > N_{2}$ we have,
+\begin{align*}
+	\left | y_n - z \right | < \epsilon
+\end{align*}
+
+Now consider $N = \max(N_{1}, N_{2})$ so we have $\forall \epsilon > 0$ if $n > N$ then,
+\begin{align*}
+	\left | x_n - z \right | < \epsilon \\
+	\left | y_n - z \right | < \epsilon
+\end{align*}
+
+As we have $$z_n = \begin{cases} x_{\frac{n + 1}{2}} \quad \text{if $n$ is odd} \\ y_{\frac{n}{2}} \qquad \text{if $n$ is even}\end{cases}$$
+
+So $z_{2n + 1} = x_n$ if $n$ is odd and $z_{2n} = y_n$ if $n$ is even. This means that if we take $N' = 2N + 1$ then we have for $n > 2N + 1$ that $z_n$  is the $x$ or $y$ that lies after the $N$ as we defined above. Or in other words we get if $n$ is even then $z_n = y_{\frac{n}{2}}$, but as $n > 2N + 1$ we have $\frac{n}{2} > N$ which means that,
+\begin{align*}
+	 \left | z_n - z \right | = \left | y_{n / 2} - z  \right | < \epsilon
+\end{align*}
+
+And similar if $n$ is odd then $z_n = x_{\frac{n + 1}{2}} $ and we have $n > 2N + 1$ so $\frac{n + 1}{2} > N + 1$ which means that,
+\begin{align*}
+	 \left | z_n - z \right | = \left | x_{n + 1 / 2} - z  \right | < \epsilon
+\end{align*}
+
+So we have for any $n > N' = 2N + 1$ that,
+\begin{align*}
+	\left | z_n - z \right | < \epsilon
+\end{align*}
+
+which means that $(z_n)$ converges to limit $z$.
+
+
+
+
+	
+
+
+
+\section*{Exercise 2.4.2}
+
+(a) We have the sequence defined by $y_{n + 1} = 3 - y_n$ where $y_1 = 1$. We can write $y_{n + 2} = 3 - y_{n + 1} = 3 - (3 - y_n) = y_n$. So if  $y_{1} = 1, y_{2} = 2$ then we have $(y_{2n + 1}) = 1$ and $(y_{2n}) = 2$ for any $n \in \Z$. But this means that we found two subsequence that converge to different values which means that our original sequence doesn't converge.
+
+\vspace{1em}
+
+In other words the argument is incorrect in assuming that $(y_n)$ and $(y_{n + 1})$ have the same limit which we showed is not true above.
+
+\vspace{1em}
+
+(b)
+Now we have $y_1 = 1$ and $y_{n + 1} = 3 - \frac{1}{y_n}$. In this case the method above can be used as the values $y_n, y_{n + 1}$ don't oscillate like above.
+
+
+\section*{Exercise 2.5.6}
+
+We need to show that $b^{\frac{1}{n}}$ exists for all $b \ge 0$ and find the value of the limit. If $b > 1$ then
+\begin{align*}
+	b^{1} > \sqrt[2]{b}> \sqrt[3]{b} > \dots > \sqrt[n]{b} >  \dots
+\end{align*}
+
+else we have,
+
+\begin{align*}
+	b^{1} < \sqrt[2]{b}< \sqrt[3]{b} < \dots < \sqrt[n]{b} <  \dots
+\end{align*}
+
+So in both cases we see that it is monotone. Now we see that  if $b > 1$ then $b^{\frac{1}{n}} > 1$ and hence $1$ is a lower bound for it. Similarly we see that if $ 0 < b < 1$ then $b^{\frac{1}{n}} < 1$ which means 1 is an upperbound for it. In both cases we see that the sequence is bounded. Using the monotone convergence theorem this means that it has a limit.
+
+
+\vspace{1em}
+Now consider the subsequence defined as below,
+\begin{align*}
+	 b^{\frac{1}{2}}, b^{\frac{1}{4}}, b^{\frac{1}{6}}, \dots, b^{\frac{1}{2i}}, \dots
+\end{align*}
+
+
+We see that this is equivalent to $( \sqrt{b^{1 / n}})$ as we have the i'th element of our subsequence defined as $\sqrt{b^{1 / i}} = b^{1 / 2i}$. Now, as we know that the sequence is convergent we know that the subsequence converges to the same limit. So we have the following,
+
+\begin{align*}
+	(b^{1 / n}) \to L \quad \text{ and } \quad (\sqrt{b^{ 1 /n}}) \to L
+\end{align*}
+
+But we know that if $(x_n) \to x$ then $(\sqrt{x_n}) \to \sqrt{x}$ which means that $\sqrt{L} = L$ or that $L = L^2$ and $L(L - 1) = 0$. So we have either $L = 0$ or $L = 1$. If $b > 1$ we know that $b^{\frac{1}{n}} > 1$ as if that weren't the case we would have $b^{(1 / n){n}}  = b < 1$ which is false. So we have $L = 1$. Now for $b < 1$ we know that $b^{1 / n} > 0$ which means the only options is for $L = 1$. 
+
+\vspace{1em}
+
+If $b = 1$ then it trivially converges to $1$. And if $b = 0$ then the sequence has value $0$ everywhere and hence converges to $0$.
+
+\section*{Exercise 2.5.8}
+
+(a) Zero peak terms: $x_i = i$
+\begin{align*}
+	0, 1, 2, 3, \dots
+\end{align*}
+
+Here as it's increase there is no $x_i$ such that the terms after it are smaller than equal to it.
+
+\vspace{1em}
+One peak term:
+\begin{align*}
+	1, 5, 2, 2, 2, \dots
+\end{align*}
+
+Here, $5$ is the only peak term.
+
+\vspace{1em}
+
+Two peak terms:
+
+\begin{align*}
+	1, 5, 2, 3, 2, 2, 2,  \dots
+\end{align*}
+
+Here $5$ and $3$ are peak terms. 
+
+\vspace{1em}
+
+Infinitely many peak terms: $x_i = (-1)^{i}$
+\begin{align*}
+	-1, 1, -1, 1, -1, 1, \dots
+\end{align*}
+Here every  $1$ is a peak terms as for any value after it (either $-1$, $1$) we have $1 \ge 1$ and $1 \ge -1$ and we see here that this sequence is not monotone as it's oscillating.
+
+\vspace{1em}
+
+(b) Given a sequence we have two cases, either it has infinitely many peak terms or it doesn't. 
+\vspace{1em}
+
+Case 1: If it has infinitely many peak terms say specifically $p_{1}, p_{2}, \dots, p_n, \dots$. Then $(p_{1}, p_{2} \dots)$ would be a monotonically decreasing subsequence of our original sequence as for any $p_i$ we have $p_i \ge p_j$ if $j > i$. So this means we have a monotone subequence that is bounded which implies that it is convergent.
+
+\vspace{1em}
+
+Case 2: If it does not have infinitely many peak terms  then it means it's finitely many peak terms. So there is some $N$ for which if $n > N$ there are no peak terms. If there are no peak terms then there is no $p_i$ such that $p_i \ge p_j$ for all  $j > i$.  So we can find a $j$ such that $p_j > p_i$ and $j > i$. So consider this subsequence such that every later term is strictly greater than the previous terms. So we have a sequence that is monotonically increasing and bounded which means it is convergent.
+
+\end{document}

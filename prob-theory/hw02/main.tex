@@ -1,6 +1,6 @@
 \documentclass[a4paper]{report}
 \input{preamble.tex}
-\title{Probability Theory: Hw1}
+\title{Probability Theory: HW2}
 \author{Aamod Varma}
 \begin{document}
 \maketitle
@@ -18,15 +18,11 @@ So for any $\omega \in \Omega$ we have either  $1_E(\omega) = 1$ or $1_E(\omega)
 
 \vspace{1em}
 
-Now we need to show that $\forall a \in \R$ we have, $\{ \omega: X(\omega) = a\}  \in \F$. We see for $a = 1$  we have $\{\omega : X(\omega) = 1\} = E$ and we assume that $E \in \F$. Similarly we have  for $a = 0$ that $\{\omega : X(\omega) = 0\} = \{\omega: \omega \not \in E\} = E^{c}$. Using the properties of $\F$ we know that  $E^{c} \in \F$. Lastly if $a \ne 1, 0$ we have $\{\omega: X(\omega) \ne 1,0\} = \phi $ and we know that $\phi \in E$.
+Now we need to show that $\forall a \in \R$ we have, $\{ \omega: X(\omega) = a\}  \in \F$. We see for $a = 1$  we have $\{\omega : X(\omega) = 1\} = E$ and we assume that $E \in \F$. Similarly we have  for $a = 0$ that $\{\omega : X(\omega) = 0\} = \{\omega: \omega \not \in E\} = E^{c}$. Using the properties of $\F$ we know that  $E^{c} \in \F$. Lastly if $a \ne 1, 0$ we have $\{\omega: X(\omega) \ne 1,0\} = \phi $ and we know that $\phi \in \F$.
 
 \vspace{1em}
 
-Hence, we show that by definition the indicator function is a discrete random variable.
-
-
-
-
+Hence, we show that the indicator function is a discrete random variable.
 
 \section*{Problem 2.11}
 \begin{enumerate}
@@ -34,9 +30,9 @@ Hence, we show that by definition the indicator function is a discrete random va
 	
 	First we check if $U(\Omega)$ is countable. As  $U(\omega) = \omega$ we have, 
 	$$ U(\Omega) = U(\{1, \dots, 6\} )  = \{U(\omega): \omega \in \Omega\} =  \{1, 2, 3, 4, 5, 6\} $$ 
-	which is countable. Now we check if for any $a \in \R$ it's preimage is in the family of events.
+	which is a countable subset of $\R$. Now we check if for any $a \in \R$ it's preimage is in the family of events.
 
-	 \vspace{1em}
+	\vspace{1em}
 	
 	 Take $a = 1$ we have  $\{\omega: X(\omega) = 1\} = \{1\} \subset \Omega $. However, we see that $\{1\} \not \in \F$ which means that it fails the condition and hence $U$ is not a discrete random variable.
 
@@ -45,7 +41,7 @@ Hence, we show that by definition the indicator function is a discrete random va
 	We see that $V$ maps all $\omega \in \Omega$ to either  $0, 1$. Hence, we have,  
 	$$ V(\Omega) = V(\{1, \dots, 6\} ) = \{V(\omega) : \omega \in \Omega\}  $$ 
 
-	Now, as $\omega \in \Omega$ can either be even or odd we have,  $\{V(\omega) : \omega \in \Omega\} = \{0, 1\}$ which is countable.
+	Now, as $\omega \in \Omega$ can either be even or odd we have,  $\{V(\omega) : \omega \in \Omega\} = \{0, 1\}$ which is a countable subset of $\R$.
 
 	\vspace{1em}
 	
@@ -55,7 +51,7 @@ Hence, we show that by definition the indicator function is a discrete random va
 		First we check if $W(\Omega)$ is countable. We have,  
 		$$ W(\Omega) = \{W(\omega): \omega \in \Omega\} = \{1^2, 2^2, \dots, 6^2\} = \{1, 4, 9, 16, 25, 36\}    $$ 
 
-		which is obviously countable.
+		which is a countable subset of $\R$.
 
 		\vspace{1em}
 		
@@ -111,32 +107,77 @@ Now if $X > m$ and  $X > m + n$ as the first is included in the second it is equ
 	\P(X > m + n \mid X > m) &= \frac{\P((X > m) \cap (X > m + n))}{\P(X > m)}\\
 				 &=  \frac{\P(X > m + n)}{\P(X > m)}\\
 				 &= \frac{(1 - p)^{m + n}}{(1 - p)^{m}}\\
-				 &= (1 - p)^{m + n - m} = (1 - p)^{n}
+				 &= (1 - p)^{m + n - m} = (1 - p)^{n}\\
 				 &= \P(X > n)
 \end{align*}
 
+For the lack of memory property we need $\P(X > m + n) = \P(X > n) \P(X > m)$.
 
-For the lack of geometric property we need $\P(X > m + n) = \P(X > n) \P(X > m)$
+\vspace{1em}
+
+It is enough to show that if  $\P(X > m + n) = \P(X > n) \P(X > m)$ is true then the distribution is geometric. Let us define a function $f:\R \to [0,1]$ as $f(k) = \P(X > k)$ so we have $f(m + n)= f(m)f(n)$.
+
+\vspace{1em}
+
+Now take $m = 0$ for some $n$ we have $f(0 + n) = f(0) f(n)$ which means that $f(0) = 1$ or $f(n) = 0$ for all $n$. If $f(n) = 1$ for all $n$ then it's trivially memory less and hence geometric. If $f(0) = 1$ then consider $f(1) = f(1 + 0) = f(1) f(0)$ so $f(1) = p$ for some $p \in [0, 1]$ now by induction we can show that for any $k$ we have $f(k) = f(k - 1 + 1) = f(k - 1) f(1) = p^{k}$. So we have showed that we need $f(k) = \P(X > k) = p^{k}$. But this means that $\P(X = k) = \P(X > k - 1) - \P(X > k ) = p^{k - 1} - p = p^{k - 1}( 1- p)$ which is the distribution for the geometric r.v.
+
 
 \section*{Problem 7}
+
+\textit{Coupon-collecting problem. There are c different types of coupon, and each coupon obtained
+is equally likely to be any one of the c types. Find the probability that the first n coupons
+which you collect do not form a complete set, and deduce an expression for the mean number
+of coupons you will need to collect before you have a complete set.}
+
+% \vspace{1em}
+
+
 We have $c$ types of coupons with each coupon equally likely as the others. We need to find probability of first $n$ coupons do not form a complete set.
 
 \vspace{1em}
 
-Let us begin by defining a discrete random variable $X : \Omega \to \R$ defined as the number of coupons collected before getting a complete set. So we have $\P(X = n)$ is the probability that we get a complete set within the first $n$ coupons. So we need to find  $\P(X > n)$ as that  is the probability that we get  a complete set only if we take more than $n$ coupons. So we have, 
+Let us begin by defining a discrete random variable $X : \Omega \to \R$ defined as the number of coupons collected before getting a complete set. So we have $\P(X = n)$ is the probability that we get the competition of $c$ coupons in the $n'th$ draw. So we need to find  $\P(X > n)$ as that  is the probability that we get  a complete set only if we take more than $n$ coupons. So we have, 
  \begin{align*}
-	 \P(X < c) &= 0\\
-	 \P(X = c) &= c!\\
-	 \P(X = c + 1) &= {c + 1 \choose c} c! c\\
-	 \P(X = n) &= {n \choose c} c! c^{n - c}
+	 \P(X < c) &= 0
 \end{align*}
 
-So our solution is, 
+For $X = k \ge c$ we need the first $k - 1$ coupons to NOT have the $c$ coupons. We have $c$ choices for the $k'th$ draw to be any coupon, so now we count the ways the remaining $c - 1$ cards are distributed such that all of them are assigned a spot among the $k - 1$ spots at least once. This is equivalent to the surjections from $k - 1$ onto $c - 1$. Now surjections from $m$ to $n$ is,
+
 \begin{align*}
-	\P(X > n) &= \sum_{k = 1}^{\infty}{n + k \choose c} c! c^{n + k - c}\\
-	\P(X > n) &= c! c^{n - c}\sum_{k = 1}^{\infty}{n + k \choose c} c^{k}\\
+	\sum_{k = 0}^{n}  (-1)^{k} {n \choose k} (n - k)^{m}
 \end{align*}
 
+So we have surjections from $k - 1$ to $c - 1$	 as, 
+\begin{align*}
+	\sum_{n = 0}^{c - 1}  (-1)^{n} {c - 1 \choose n} (c - 1 - n)^{k - 1}
+\end{align*}
+
+
+So we have, 
+\begin{align*}
+	\P(X = k) = \frac{c}{c^{k}}	\sum_{n = 0}^{c - 1}  (-1)^{n} {c - 1 \choose n} (c - 1 - n)^{k - 1} \quad \text{if $k \ge c$}
+\end{align*}	
+
+
+Now we need $\P(X > n) $ as that is the probability that we have all $c$ coupons being collected after only collecting greater than $k$ coupons being collected. For this we can sum of the probability from $k + 1$ to $\infty$ to get,
+
+\begin{align*}
+	\P(X > n) =  \sum_{k = n + 1}^{\infty} \P(X = k) = \sum_{k = n + 1}^{\infty} \frac{c}{c^{k}}	\sum_{m = 0}^{c - 1}  (-1)^{m} {c - 1 \choose m} (c - 1 - m)^{k - 1}
+\end{align*}
+
+
+
+\vspace{1em}
+
+
+Now for mean number of coupons we need $\mathbb{E}[X]$. First write $X = A_{1} + \dots + A_n$ where $A_i$ defines the number of draws it takes to get the $i'th $ coupon given we got $i - 1$ coupons. So here $X$ is the sum of draws it takes to get each of the coupons. Now we find $E[A_i]$, first we know that the probabiltiy of getting an $i'th $ new coupon given $i - 1$ coupons is $\frac{c - i + 1}{c}$ so this gives us $E(A_i) = \frac{c}{c - i + 1}$ or that, 
+\begin{align*}
+	E(X) &= E(A_{1} + \dots + A_n)\\
+	     &= \frac{c}{c} + \frac{c}{c -1} + \frac{c}{c - 2} + \dots\\
+	     &= c \sum_i^{c} \frac{1}{i}\\
+\end{align*}
 
 
 \end{document}
+
+
