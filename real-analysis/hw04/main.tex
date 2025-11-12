@@ -1,0 +1,249 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\title{Real Analysis: HW4}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+\section*{Exercise 2.6.3}
+
+
+(a) If $(x_n)$ is a  Cauchy sequence, then $\forall \epsilon, \exists N_{1}$ such that for $m,  n > N$ we have,
+
+$$
+	|x_m - x_n| < \frac{\epsilon}{2}
+$$
+
+Similarly for some $N_{2}$ we have for $m, n > N_{2}$ that, 
+
+$$
+|y_m - y_n| < \frac{\epsilon}{2}
+$$		
+
+Now take $N = \max \{N_{1}, N_{2}\}$ we have,
+\begin{align*}
+	|x_m - x_n| < \frac{\epsilon}{2} \quad \text{ and } \quad |y_m - y_n| < \frac{\epsilon}{2}
+\end{align*}
+
+Now we get,
+\begin{align*}
+	| (x_m + y_m) - (x_n + y_n)| &= | (x_m - x_n) + (y_m-  y_n)|\\
+				     &< | x_m - x_n |+| y_m-  y_n|\\
+				     &< \frac{\epsilon}{2} + \frac{\epsilon}{2}\\
+				     &= \epsilon
+\end{align*}
+
+So we get, 
+
+$$
+	| (x_m + y_m) - (x_n + y_n)| < \epsilon
+$$
+
+For any $m, n > N$ which means that,
+
+$$
+(x_n + y_n)
+$$ is a Cauchy sequence.
+
+
+\vspace{1em}
+
+(b) For the product we have,
+
+\begin{align*}
+|x_m y_m - x_ny_n|  &= |x_my_m - x_my_n + x_my_n - x_ny_n| \\
+ 			&= |x_m(y_m - y_n) + y_n(x_m - x_n)| \\
+ 			&< |x_m||y_m - y_n| + |y_n||x_m - x_n| \\
+\end{align*}
+
+Now we know that $(x_n)$ and $(y_n)$ are Cauchy sequences and that Cauchy sequence are bounded hence we have for any $x_m$ that $x_n < M_{1}$ for some $M_{1}$ and similarly $y_n < M_{2}$ for some $M_{2}$. So we have
+
+
+\begin{align*}
+|x_m y_m - x_ny_n| &< |x_m||y_m - y_n| + |y_n||x_m - x_n| \\
+		   &< M_{2}|y_m - y_n| + M_{1}|x_m - x_n| \\
+\end{align*}
+
+Now since both $(x_m)$ and $(y_m)$ are Cauchy sequences we have $\forall \epsilon > 0, \exists N_{1}$  such that if $m, n > N$ we have,
+
+$$
+	|x_m - x_n| < \frac{\epsilon}{2M_{1}}
+$$
+and exists $N_{2}$ such that,
+
+$$
+	|y_m - y_n| < \frac{\epsilon}{2M_{2}}
+$$
+
+taking $N = \max \{N_{1}, N_{2}\}$ we again get both to be true. Now, choosing the same $N$ we have for any $m, n > n$ that,
+
+
+\begin{align*}
+|x_m y_m - x_ny_n| &< M_{2}|y_m - y_n| + M_{1}|x_m - x_n| \\
+		   &< M_{2} \frac{\epsilon}{2 M_{2}} + 	M_{1} \frac{\epsilon}{2 M_{1}}\\
+		   &< \frac{\epsilon}{2} +  \frac{\epsilon}{2} = \epsilon
+\end{align*}
+
+Hence we show that $\forall \epsilon > 0$ we have a $N$ such that for $m, n  > N$ that, 
+\begin{align*}
+|x_m y_m - x_ny_n| &< \epsilon
+\end{align*}
+
+which means that $(x_ny_n)$ is a Cauchy sequence.
+
+\section*{Exercise 2.4.7}
+(a) We are given that $(a_n)$ is a bounded sequence. So there exists a bound say $M$. Now we have $y_n = \sup\{a_k: k \ge n\}$. So we have $y_n$ is the supremum of a subset of our sequence and hence as $y_n$ for every $n$ is a supremum we have $|y_n| < M$ as the supremum is the smallest upperbound. Now we show that $y_n$ has to be either a monotonically increasing or decreasing sequence.
+
+\vspace{1em}
+
+
+Given $n$ we have the $\{a_k: k \ge n\} = \{a_n, a_{n + 1}, \dots\}$ and $\{a_k : k \ge n + 1\} = \{a_{n + 1}, \dots\}$. So we have the second set is a subset of the first set. Which means $y_n \ge y_{n + 1}$ as the supremum of the first set is at the very least greater than equal to that of the second set as it contains all the elements of the second set. So we show that $y_n$ is a monotonically decreasing sequence.
+
+\vspace{1em}
+
+Now using the monotone convergence theorem we have $y_n$ is a decreasing sequence and bounded and hence is convergent.
+
+\vspace{1em}
+
+(b) Have $y_n = \inf \{a_k : k \ge n\}$ and we define $\lim \inf a_n = \lim y_n$. Here, lim inf always exists beacuse limit of $y_n$ exists. We know it exists because first we have $a_n$ is bounded and second we can also verify that $y_n \le y_{n + 1}$ as the infimum of a subset cannot be greater than a set containing it. Hence $y_n$ is nondecreasing and bounded and hence has a limit.
+
+\vspace{1em}
+
+(c) We know from a and b that $\lim \sup a_n = \lim y_n$ where $y_n = \sup \{a_k: k \ge n\}$and similarly that $\lim \inf a_n = \lim x_n$ where $x_n = \inf \{a_k: k \ge n\}$. Now considering the set $\{a_k: k \ge n\}$ we know that $y_n$ is an upper bound of the set and $x_n$ is a lower bound of the set and hence $x_n \le y_n$. Now from the limit order theorems we know that if for two sequence that $a_n \le b_n$ then we have $a < b$ if they converge to $a$ and $b$ respectively.  So this means that we have $\lim x_n \le \lim y_n$ or that $\lim \inf a_n \le \lim \sup a_n $
+
+\vspace{1em}
+
+(d) If $\lim a_n$ exists then $a_n$ converges to a value say $a$. So $\forall \epsilon > 0$ we have $N$ such that if $n \ge N + 1$ then, 
+$$
+    |a_n - a| < \epsilon
+$$
+
+Now for any $n \ge N$ consider the set $\{a_n, a_{n + 1}, \dots\}$ here let $y_n$ be the supremum of this set and $x_n$ be the infium of this set. We know that for any $\epsilon$ that $a - \epsilon < x_n \le y_n < a + \epsilon$. And this is equivalent to saying that $ |x_n - a| < \epsilon$ and $|y_n - a| < \epsilon$ which means that all three converge to the same value.
+
+
+% Firstly we have $y_n \le a_n$ so $y_n - a \le a_n - a$ or $|y_n - a| \le |a_n - a| < \epsilon$ for $n \ge N$ as $a_n$ converges to $a$. So $|y_n - a| < \epsilon$ which means that the infimum converges to $a$. Now as $x_n$ is an upperbound for any $\epsilon$ we have some $a_n$  the set above such that $x_n - \epsilon < a_n$ or that $x_n - a_n < \epsilon$. Now consider,
+
+% \begin{align*}
+%     |x_n - a| &= |x_n - a_n + a_n - a|\\
+%               &\le |x_n - a_n| + |a_n - a|\\
+%               &= \frac{\epsilon}{2} + \frac{\epsilon}{2}
+% \end{align*}
+
+% as $a_n$ converges to $a$ so we can find $N$ such that $|a_n - a| < \frac{\epsilon}{2}$ for any $\epsilon$ if $n \ge N$ and similarly we know for any \frac{\epsilon}{2} we have $|x_n - a_n| < \epsilon$. So we have $|x_n - a| < \epsilon$ which means that $x_n$ converges to $a$.
+
+
+\section{Exercise 2.4.8}
+(a). We have $\sum_{n = 1}^{\infty} \frac{1}{2^{n}}$
+
+So we have the partial sums as,
+\begin{align*}
+	s_k &= \sum_{n = 1}^{k} \frac{1}{2^{n}}\\
+	    &= \frac{1}{2} + \frac{1}{2^2} + \frac{1}{2^{3}} + \dots + \frac{1}{2^{k}}\\
+	    &= \left (\frac{1}{2}\right )^{1}  + \left (\frac{1}{2}\right )^{2} + \left (\frac{1}{2}\right )^{3}+ \dots + \left (\frac{1}{2}\right )^{k}
+\end{align*}
+
+So we have the sum of a geometric series $ar^{k}$ where $a = 1$ and we know that for a finite k that the sum is $a \frac{1 - r^{k}}{1 - r} $ so we have,
+
+$$
+s_k = \frac{1}{2} \frac{1 - \frac{1}{2^{k}}}{\frac{1}{2}} = 1 - \frac{1}{2^{k}}
+$$
+
+Now as $k \to \infty$ we have $\frac{1}{2^{k}}$ goes to zero so we have $s_k$ goes to $1$.
+
+\vspace{1em}
+
+
+
+(b). We have $\sum_{n = 1}^{\infty} \frac{1}{n(n + 1)}$  and define $s_k$ as follows,
+
+\begin{align*}
+	s_k &= \sum_{n = 1}^{k} \frac{1}{n(n + 1)}\\
+	    &= \frac{1}{1(2)} + \frac{1}{2(3)} + \frac{1}{3 \cdot {4}} + \dots + \frac{1}{k (k + 1)}\\
+	    &= \frac{2 - 1}{1 \cdot 2} + \frac{3 - 2}{2 \cdot 3} + \dots \frac{(k + 1) - k}{k(k + 1)}\\
+	    &= 1 - \frac{1}{2} + \frac{1}{2} - \frac{1}{3} + \frac{1}{3} + \dots + -\frac{1}{k + 1}\\
+	    &= 1 - \frac{1}{k + 1}
+\end{align*}
+
+Now as $k$ goes to $\infty$ we have $\frac{1}{k + 1}$ goes to $0$ which means that  our partial sums $s_k$ goes to $1$.
+
+
+\vspace{1em}
+
+(c). We have $\sum_{n = 1}^{\infty} \log( \frac{n + 1}{n})$ so $s_k = \sum_{n = 1}^{k} \log((n + 1) / n)$ and,
+\begin{align*}
+	s_k &= \sum_{n = 1}^{k} \log((n + 1) / n)\\
+	    &= \log({2}/{1}) + \log({3}/{2}) + \log({4}/{3}) + \dots + \log((k + 1) / k)\\
+	    &= \log(2) - \log(1) + \log(3) - \log(2) + \log(4) - \log(3) + \dots + \log(k + 1) - \log(k)\\
+	    &= -\log(1) + \log(k + 1) = \log(k + 1)\\
+\end{align*}
+
+Here $\log(k + 1)$ is unbounded and increases and hence we have $s_k$ is not convergent.
+
+\section*{Exercise 2.7.2}
+
+(a). We have $\frac{1}{2^{n} + n}$. We know that $\frac{1}{2^{n}}$ is convergent (we have $\frac{1}{2^{n}}$ is convergent because it's a geometric series and is shown in the problem above)  and for $n \ge 1$ we also have $ 0 \le \frac{1}{2^{n} + n} \le \frac{1}{2^{n}}$. Hence, by comparison test we have that this is convergent.
+
+\vspace{1em}
+
+(b). We have $0 \le \frac{|\sin(n)|}{n^2} \le \frac{1}{n^2} $ as $\sin$ is bounded above by $1$. So by comparison test we have convergence for the sequence $|\frac{\sin(n)}{n^2}|$. But we know if it's absolutely convergent then it also must be convergent normally and hence we have $\sum \frac{\sin(n)}{n^2}$ is convergent. 
+
+\vspace{1em}
+
+(c). In the sequence $1 - \frac{3}{4} + \frac{4}{6} - \frac{5}{8} + \dots$ we have $|a_n| = \frac{n - 1}{2n}$. And we see that as $\frac{n - 1}{2n}$. Now for any $\epsilon > 0$ if, $N > \frac{1}{2 \epsilon}$ we have for any $n \ge N$ that $|\frac{n - 1}{2n} - \frac{1}{2} | =  |\frac{1}{2n} < \epsilon$ and hence $\frac{n - 1}{2n} $ goes to $\frac{1}{2}$ as $n \to \infty$. But for a convergent series we need $a_n$ to go to zero. Hence, this series diverges.
+
+
+\vspace{1em}
+
+(d). We have $1 + \frac{1}{2} - \frac{1}{3} + \frac{1}{4} + \frac{1}{5} - \frac{1}{6} + \frac{1}{7} + \frac{1}{8} - \frac{1}{9} + \dots$. Now we group the terms in a series of three as follows, 
+
+\begin{align*}
+    \left (1 + \frac{1}{2} - \frac{1}{3} \right) +  \left(\frac{1}{4} + \frac{1}{5} - \frac{1}{6} \right) + \left ( \frac{1}{7} + \frac{1}{8} - \frac{1}{9}\right) + \dots 
+\end{align*}
+
+If each group is given an index $1, 2, \dots$ then we see that each group is greater than the first term in the group. That is $\frac{1}{n} + \frac{1}{n + 1} - \frac{1}{n + 2} > \frac{1}{n}$ as $\frac{1}{n + 1} > \frac{1}{n + 2}$ and hence their difference is positive. So let each group be $b_n$. Then we have $b_n > \frac{1}{3n - 2}$.  So consider the series defined by the sequence, 
+
+$$
+    \{c_n\} = \frac{1}{3n - 2}
+$$
+
+We know the harmonic series $\frac{1}{n}$ diverges. For large $n$ we have $\frac{1}{3n - 2}$ behaves like $\frac{1}{3n}$ and as series of $\frac{1}{n}$diverges this also means that series of $\frac{1}{3n}$ diverges. But now as $b_n \ge c_n$  and all are positive this means that $b_n$ diverges as well.
+
+\vspace{1em}
+
+
+(e). We have, 
+$$
+    1 - \frac{1}{2^2} + \frac{1}{3} - \frac{1}{4^2} + \frac{1}{5} + \dots
+$$ 
+
+We see that alternating terms starting from index 1 are the odd harmonic terms and starting from index 2 are the even terms of the convergent $p$ series with $p = 2$.
+\vspace{1em}
+
+Now consider the partial sum of the odd harmonic series, we know that the odd harmonic series is divergent as $\frac{1}{2n - 1} > \frac{1}{2n}$ and as the series with $\frac{1}{n}$ diverges that means that the series with $\frac{1}{2n}$ diverges and hence the odd terms diverge as well. Now this means that the partial sum of the odd terms are unbounded. However, we also know that the partial sums of the even terms of the p series are bounded (as they are convergent the partials sums are bounded). So we have,
+
+
+$$
+    s_n = h_n  - p_n
+$$
+
+where $h_n = \sum_{n = 1}^{n / 2} \frac{1}{2n - 1}$ and $p_n = \sum_{n = 1}^{n /2} \frac{1}{n^2}$. So we have $h_n$ is unbounded and $p_n$ is bounded which means that $s_n$ is unbounded. And hence the sequence $h_n$ does not converge which means the series does not converge.
+
+\section*{Exercise 2.7.4}
+
+(a)  We want $\sum x_n$ and $\sum y_n$  that diverges but $\sum x_n y_n$  converges.
+Consider $x_n = \frac{1}{n}$ the harmonic series and $y_n= (-1)^{n}$ so we have $x_ny_n = \sum (-1)^{n} \frac{1}{n}$ which using the alternating sires test we know is convergent.
+
+\vspace{1em}
+
+(b) We need a convergent series $\sum x_n$ and bounded series $y_n$ such that $\sum x_n y_n$ diverges. Consider $x_n = (-1)^{n} \frac{1}{n}$ the alternating series which we know converges. Now take $y_n = (-1)^{n}$. So we have $\sum x_n y_n = \sum \frac{1}{n}$ which is the harmonic series and we know it diverges.
+
+\vspace{1em}
+
+(c)  We need two sequence $(x_n)$ and $(y_n)$ such that $\sum x_n$ and $\sum x_n + y_n$ converges but $\sum y_n$ diverges. This is impossible as if $\sum x_n$ and $\sum x_n + y_n$  converges using the algebraic theorems for series we know that $\sum - x_n$ converges which means that $\sum x_n + y_n - x_n  = y_n$ also converges.
+
+\vspace{1em}
+
+(d) Consider the series where the odd terms are $0$ and the even terms are $\frac{1}{n}$ so we still have $0 \le x_n \le \frac{1}{n}$ but our terms are $\frac{1}{2} + \frac{1}{4} + \frac{1}{6} + \dots$ but as $\frac{1}{n}$ is diverges this means that $\frac{1}{2n}$ also diverges and hence $\sum (-1)^{n} x_n = \frac{1}{2} + \frac{1}{4} + \dots$ diverges.
+\end{document}
+

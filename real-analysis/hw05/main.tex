@@ -1,0 +1,165 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\title{Real Analysis: HW5}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+\section*{Exercise 2.7.9}
+(a) We have $\lim \left | \frac{a_{n + 1}}{a_n} \right | = r < 1$ and that $r < r' < 1$. Using the limit definition we have, $\forall \epsilon > 0$,  $\exists N $ such that for $n > N$ we have,
+\begin{align*}
+    \left | \left |\frac{a_{n + 1}}{a_n} \right |- r \right| < \epsilon
+\end{align*}
+
+So we have, 
+$$
+\left | \frac{a_{n + 1}}{a_n}\right |  < r + \epsilon 
+$$
+For any choice of $\epsilon$. Now as $r' > r$ we have $r' - r > 0$ and let $r' - r = \epsilon$. So we can find an $N$ such that if $n > N$ then,
+\begin{align*}
+    \left | \frac{a_{n + 1}}{a_n}\right |  &< r + \epsilon \\
+    \left | \frac{a_{n + 1}}{a_n}\right |  &\le r' \\
+    \left | {a_{n + 1}} \right |  &\le   \left |{a_n}\right|  r' \\
+\end{align*}
+
+
+\vspace{1em}
+
+
+(b) We know that $|a_N|$ is constant and as $r' < 1$ we can do the following for a given $N$ and taking $n > m > N$
+
+\begin{align*}
+    |s_n - s_m| &= (r' + \dots + (r')^{n}) - (r' + \dots + (r')^{m})\\
+                &= (r')^{m + 1} + \dots + (r')^{n}\\
+                &= (r')^{m + 1}(1 +  \dots + (r')^{n - m - 1})\\
+                &= (r')^{m + 1} \frac{1 - (r')^{n - m}}{1 - r'}\\
+\end{align*}
+
+
+Now we have $\frac{1 - (r')^{n - m}}{1 - (r')} \le \frac{1}{1 - (r')}$ which is a constant say $M$. So we have, 
+\begin{align*}
+    |s_n - s_m| &\le (r')^{m + 1} M
+\end{align*}
+
+Now we know that $(r')^{m}$ converges to zero as $r' < 1$, i.e if we have $N > \ln(\epsilon) / \ln(r')$ then we get $(r')^{n} < \epsilon$ for any $\epsilon$. So choose $\epsilon$ as $\epsilon / M$ so we get,
+\begin{align*}
+    |s_n - s_m| \le (r')^{m + 1} M \le \epsilon \frac{M}{M} = \epsilon
+\end{align*}
+
+Hence by cauchy convergence test we get $\sum (r')^{n}$ converges. Now as $|a_N|$ is a constant value multiplying that with the series also results in a convergent series (can easily show this by choosing our epsilon as  $\epsilon / (M |a_N|)$).
+
+\vspace{1em}
+
+(c). We know from above that we have some $N$ such that for $n \ge N$ we have $|a_{n + 1}| \le |a_n|r'$. Now this further implies that $ |a_{n + 1}| \le |a_n|r' \le |a_{n - 1}|(r')^{2} \le \dots |a_N| (r')^{n - N - 1} $ So for some $n$ consider $N$ to $n$.
+
+\begin{align*}
+    |a_N| + |a_{N + 1}| + \dots + |a_n| &\le |a_N| + |a_N| (r') + |a_N| (r')^2 + \dots + |a_N|r^{n - N}\\
+    |a_N| + |a_{N + 1}| + \dots + |a_n| &\le |a_N| ( (r') + (r')^2 + \dots + (r')^{n - N})\\
+    \sum_{k = N}^{n} |a_k| &\le |a_N| \sum_{k = 1}^{n - N} (r')^{k}
+\end{align*}
+
+
+Now we know that as $n \to \infty$ as $N$ is constant  we have $\sum (r')^{k}$ converges as $|r'| < 1$. Now as $|a_N|$ is a constant by comparison  test we have the partial sums on the left side smaller than the right side so the the series $\sum_{k = N} |a_k|$ converges to some value. Now as $\sum_{k = 1}^{N} |a_k|$ is a constant value we have $\sum |a_k|$ converges absolutely. Now we know the absolute convergence implies that the series is convergent without the absolute value so we have $\sum a_n$ converges.
+
+\section*{Exercise 2.7.12}
+We have, 
+\begin{align*}
+    \sum_{j = m}^{n} x_jy_j &= x_my_m + \dots + x_n y_n\\
+                            &= (s_m - s_{m - 1}) y_m +  (s_{m + 1} - s_{m}) y_{m + 1} +\dots + (s_n - s_{n - 1})y_n\\
+                            &= (s_my_m - s_{m - 1}y_m) +  (s_{m + 1}y_{m + 1} - s_{m}y_{m + 1}) +\dots + (s_n y_n - s_{n - 1} y_n)\\
+\end{align*}
+
+Now we see above that for ever pair of subtractions we have $s_m$ can be taken common so we have,
+
+\begin{align*}
+    \sum_{j = m}^{n} x_jy_j &= (s_my_m - s_{m - 1}y_m) +  (s_{m + 1}y_{m + 1} - s_{m}y_{m + 1}) +\dots + (s_n y_n - s_{n - 1} y_n)\\
+                            &= - s_{m - 1}y_m + s_m(y_m - y_{m + 1}) + \dots + s_n(y_n - y_{n + 1}) + s_n(y_{n + 1})\\
+                            &=  s_n y_{n + 1} -  s_{m - 1}y_m  + \sum_{j = m}^{n} s_j(y_j - y_{ j + 1})
+\end{align*}
+
+Which is our desired result.
+
+\section*{Exercise 2.7.13}
+(a). From above we have,
+\begin{align*}
+    \sum_{j = m}^{n}x_jy_j &=  s_n y_{n + 1} -  s_{m - 1}y_m  + \sum_{j = m}^{n} s_j(y_j - y_{ j + 1})
+\end{align*}
+
+So, 
+\begin{align*}
+    \sum_{j = 1}^{n}x_jy_j &=  s_n y_{n + 1}  + \sum_{j = 1}^{n} s_j(y_j - y_{ j + 1})
+\end{align*}
+
+(b). We know that $y_1 \ge y_{2} \ge \dots \ge 0$ so $y_n$ is a monotonically non-increasing sequence. So we have $0 < y_k -  y_{k + 1} < y_k$. Now as $\sum x_k$ converges that also means that $y_1 \sum  x_k$ converges that means the sequence of partials sums of $x_n$ that is $s_n$ is bounded above say by $M$. So we have,
+\begin{align*}
+    \sum |s_m(y_m - y_{m + 1})| &\le \sum |s_m||y_m - y_{m + 1}|\\
+                                &\le \sum M(y_m - y_{m + 1}) \quad \text{ as $y_m - y_{m + 1} > 0$ }\\
+                                &= M\sum y_m - y_{m + 1}\\
+\end{align*}
+
+
+Now $y_m - y_{m + 1}$ is a telescoping series which means that $\sum y_m - y_{m + 1}$ is convergent. Hence we have $\sum s_m (y_m - y_{m + 1})$ is absolutely convergent which means that the series, $\sum_{k = 1}^{\infty}  s_k (y_k -y_{k + 1})$ itself is convergent.
+
+\vspace{1em}
+
+Now we know that $\sum_{k = 1}^{\infty} x_ky_k = \lim_{n \to \infty}  (s_n y_{n + 1} + \sum_{k = 1}^{n}  s_k (y_k -y_{k + 1}))$. And we showed that the second term converges. It is enough to show that the left term is bounded. i.e. $\lim_{n \to \infty}  s_n y_{n + 1}$ is bounded. First we know that $y_{n + 1}$ goes to some constant as $n \to \infty$ and it's monotonically non-increaseing and bounded below and that $\lim_{n \to \infty} s_n$  is $\sum_{k = 1}^{\infty} x_k$ which means that $\lim_{n \to \infty}  s_n y_{n + 1}$ converges to some constant which is the product of both their limits (using algebraic limit theorem). So we have $\sum_{k = 1}^{\infty} x_ky_k$ converges.
+
+\section*{Exercise 2.7.14}
+(a) Abels test assumes  that the series $\sum x_k$ converges and that $(y_k)$ is non-increaseing and bounded below by 0. On the other hand Dirichle'ts Test doesn't assume that the series $\sum x_k$ converges but assumes that it is bounded. On the other hand it assumes that the sequence $(y_n)$ is non-increasing and converges to zero.
+
+\vspace{1em}
+
+We see that despite the change in hypothesis we can still rewrite the partial sum of $\sum_{j = 1}^{n} x_j y_j$ in the same manner. And as in this case we have $y_n$ converges to zero the first term goes to zero. And for the second term (the series) we can still use the fact that $s_j$ is bounded above and $y_j - y_{j +1}$ is a telescoping series. So we use the same strategy to show that the series converges.
+
+(b). The alternating series test tells that if the absolute value of the sequence is non-increasing and bounded below by zero and that it's alternating then the series converges. Given a series  $\sum (-1)^{n} y_n$ we can look at this as the sequence $\sum (-1)^{n}$ which is bounded but not convergent and the positive values $(y_n)$ as the sequence that is non-increasing and bounded below by zero. We have by Dirichlet's Test that $ \sum x_n y_n$ is convergent but $x_ny_n = (-1)^{n} y_n$ so by the test we have $\sum (-1)^{n} y_n$ is convergent based on the Dirichlet's test and hence show that the alternating series test is a special case of the Dirichlet's Test.
+
+\section*{Exercise 3.2.2}
+We have, 
+$$
+A = \left \{ (-1)^{n} + \frac{2}{n} :  n = 1,2,3 \dots \right \}
+$$
+
+
+$$
+    B = \{x \in \Q: 0 < x < 1\}
+$$
+
+(a). For set $B$ the limit points are $[0, 1]$ as for any value in this we can find a deleted neighborhood still in $B$ (this is because the rationals are dense in $R$ so for any $\epsilon$ if can find some $q \in \Q$ such that  $b - \epsilon < q <  b + \epsilon$) and hence the deleted neighborhood is in $Q$). For $A$ we see that if we consider the alternating elements i.e. the positive ones together and negative ones together, the limit of that sequence is $1$ and $-1$ respectively. For instance consider the positive sub sequence, we have $1 + \frac{2}{2n}$ which is $1 + \frac{1}{n}$ and $\frac{1}{n}$ goes to zero as $n \to \infty$ as we can take $N > \frac{1}{\epsilon}$ and the sequence converges to $1$. The proof for $-1$ is similar. So we have $1$ and $-1$ are the limit points of $A$.
+
+
+\vspace{1em}
+
+(b). $B$ is not an open set because of the density of irrationals, if we consider any point in $B$ and any $\epsilon$ we can find an irrational number $i$ such that $b - \epsilon < i < b + \epsilon $ i.e. inside the $\epsilon$ neighborhood and as $B$ consists of only rational numbers we have the $\epsilon$ neighborhood is not a subset of $B$ an hence $b$ is not open.
+\vspace{1em}
+Similarly we have $B$ is not closed as it does not contain all it's limit points. For instance we can consider a sub sequence in $B$ whose limit point is an irrational number and hence is not in $B$.
+
+
+
+\vspace{1em}
+
+Now for $A$ we see similar to above that for any $\epsilon$ neighborhood of any value we can find an irrational number in it which is not in $A$ and hence $A$ is not open.  We see that althouhg $1 \in A$ we do not have $-1 \in A$ and hence this means that $A$ does not contain all its limit points and is not closed.
+
+
+\vspace{1em}
+
+(c). $B$ does not contain any isolated points as all the points in $B$ are limit points or in other words every $\epsilon$ neighborhood of all points in $B$ intersect with $B$ is some place other than the point itself (because of the density of the rationals in $R$).
+
+\vspace{1em}
+
+We see that $A$ contains isolated points as points other than the limit points are isolated points.
+
+
+(d). Closure of $A$ would be $A \cup \{-1\}$ and for $B$ it would be $B \cup \{0, 1\} = [0, 1]$
+
+
+
+
+
+
+
+
+
+
+\end{document}
+

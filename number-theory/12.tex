@@ -1,0 +1,179 @@
+\begin{theorem}(Mobius Inversion)
+    Let $f$ and $g$ be arithmetic functions. Then, 
+    $$
+    f(n) = \sum_{d \mid n} g(d)
+    $$
+
+    if and only if $g(n) = \sum_{d \mid n} \mu(d) f(n / d) =  \sum_{d \mid n} \mu(n / d) f(d)$
+\end{theorem}
+
+\begin{proof}
+    ($\implies$) Assume $f(n) = \sum_{d \mid n} g(d)$. Then, 
+    $$
+    \sum_{d \mid n} \mu(d) f(n /d) =     \sum_{d \mid n} \mu(d) \sum_{a \mid n / d} f(a) 
+    $$
+
+
+    Note that $a \mid n / d$ if and only if $d \mid n / a$. So we have, 
+    \begin{align*}
+        \sum_{a \mid n} g(a) \sum_{d \mid n / a} \mu(d) = \sum_{a \mid n} g(a) \begin{cases}
+            1 \quad \text{ if $n = a$ }\\
+            0 \quad \text{ otherwise }
+        \end{cases} = g(n)
+    \end{align*}
+
+
+    \vspace{1em}
+    
+    ($\impliedby$) Assume that $g(n) = \sum_{d \mid n} \mu(d) f(n / d)$. 
+    \begin{align*}
+        \sum_{d \mid n} g(d) &= \sum_{d \mid n}^{} \sum_{a \mid d}^{} \mu(a) f(d / a)  \\
+                             &= \sum_{a \mid n}^{} f(a) \sum_{d \mid n}^{} \mu(d / a)  \\
+                             &= \sum_{a \mid n}^{} f(a) \sum_{b \mid n / a}^{} \mu(b)  \\
+                             &= f(n)
+    \end{align*}
+
+\end{proof}
+
+\begin{eg}
+    By this theorem we have, 
+    $$
+        \sum_{d \mid n}^{}  \phi(d) = n
+    $$
+
+    So by Mobius inversion, 
+    \begin{align*}
+        \phi(n) &= \sum_{d \mid n}^{} \mu(d) n / d\\
+                &= n \sum_{d \mid n}^{} \frac{\mu(d)}{d} \\
+                &= n \prod_{p^{a} \mid n} \sum_{d \mid p^{a}}^{}  \frac{\mu(d)}{d}\\
+                &= n \prod_{p \mid n} \left ( 1- \frac{1}{p} \right )
+    \end{align*}
+\end{eg}
+
+\begin{eg}
+    We have, $\tau(n) = \sum_{d \mid n}^{} 1$ which is, 
+    \begin{align*}
+        1 = \sum_{d \mid n}^{}  \tau(d) \mu(n / d) = \sum_{d \mid n} \tau(n / d) \mu(d)
+    \end{align*}
+\end{eg}
+
+\begin{eg}
+    We have $\sigma(n) = \sum_{d \mid n}^{}, n = \sum_{d \mid n}^{} \mu(d) \sigma(n  /d) d$
+\end{eg}
+
+
+\chapter{Quadratic Residues}
+\section{Quadratic Residues}
+
+So far we have, 
+$$
+    ax \equiv  b \pmod m
+$$
+
+Now we're interested in quadratic congruences. Which is, 
+$$
+    ax^2 + bx \equiv  c \pmod m
+$$
+
+Restrict to the case where $p$ is an odd prime and,
+$$
+    x^2 \equiv a \pmod p
+$$
+
+\begin{definition}
+    Let $a, m \in \Z, m > 0$ and $(a, m) = 1$. Then $a$ is a \emph{quadratic residue} modulo $m$ if the congruence,
+    $$
+        x^2 \equiv a \pmod m
+    $$
+    has a solution. If there is no solution, then $a$ is a \emph{quadratic non-residue}.
+\end{definition}
+\begin{eg}
+    Quadratic residues mod $11$,
+    \begin{align*}
+        1^2 \equiv 1 \pmod {11}\\
+        2^2 \equiv 4 \pmod {11}\\
+        3^2 \equiv 9 \pmod {11}\\
+        4^2 \equiv 5 \pmod {11}\\
+        5^2 \equiv 3 \pmod {11}\\
+        6^2 \equiv 3 \pmod {11}\\
+        7^2 \equiv 5 \pmod {11}\\
+        8^2 \equiv 5 \pmod {11}\\
+        9^2 \equiv 4 \pmod {11}\\
+        10^2 \equiv 1 \pmod {11}\\
+    \end{align*}
+
+    The quadratic residues are $\{1, 3, 4, 5, 9\}$  and non-residues are $\{2, 6, 7, 8, 10\}$
+\end{eg}
+
+\begin{prop}
+    Let $p$ be an odd prime and $a \in \Z, p \nmid a$. Then, 
+    $$
+        x^2 \equiv a \pmod p
+    $$
+    has either $0$ or $2$ incongruent solutions.
+\end{prop}
+\begin{proof}
+    Assume $x^2 \equiv a \pmod p$ has a solution $x = x_{0}$ then $-x_{0}$ is also clearly a solution. And we have $x_{0} \equiv -x_{0} \pmod p$. Suppose for contradiction $x_{0} \equiv -x_{0} \pmod p$, then $2x_{0} \equiv 0 \pmod p$ so $p \mid 2$ or $p \mid x_{0}$ but as $p$ is odd we have $p \mid x_{0}$ which makes it not coprime so $x_{0} \equiv 0 \pmod p$ a contradiction.
+    \vspace{1em}
+    
+    Thus $x^2 \equiv a \pmod p$ has at least two incongruent solutions modulo $p$ if it has a single solution.
+
+    \vspace{1em}
+    
+    Now to show it has at most two solutions. Suppose $x_{0}, x_{1}$ are two solutoins, then, 
+    \begin{align*}
+        x_{0}^2 \equiv x_{1}^2 \equiv a \pmod p
+    \end{align*} 
+
+    Then $x_{0}^2 - x_{1}^2 \equiv 0 \pmod p$ which means that $p \ mid x_{0}^2 - x_{1}^2 = (x_{0} + x_{1})(x_{0} - x_{1})$ which means  $p \mid x_{0} + x_{1}$ or $p \mid x_{0} - x_{1}$  which means either $x_{0} \equiv x_{1} \pmod p$ or $x_{0} \equiv -x_{1} \pmod p$. Which means we have at most two solutions.
+\end{proof}
+
+\begin{corollary}
+    Let $p$ be an odd prime and $a \in \Z, p \mid a$. If $x^2 \equiv a\pmod p$ is solvable with $x = x_{0}, $ then the two solutions are $x_{0}$ and $p - x_{0}$.
+\end{corollary}
+
+\begin{prop}
+   Let $p$ be an odd prime. There are exactly $\frac{p - 1}{2}$ quadratic residues and $\frac{ p - 1}{2}$ quadratic non-residues modulo $p$.
+\end{prop} 
+
+\begin{proof}
+    Consider, 
+    \begin{align*}
+        &x:1, 2, 3 \dots, p - 1\\
+        &a: 1, 2, 3, \dots, p - 1
+    \end{align*}
+
+    For each $1 \le x \le p - 1,$ if $x^2 \equiv a \pmod p$ then $-x^2 \equiv a \pmod p$ and these are the only two such residues. That is, for each pair $(1, p - 1), (2, p - 2), \dots, (i, p - i)$, $1 \le i \le \frac{p - 1}{2}$, we get a unique quadratic residue, namely $i^2$. Since there are $\frac{p - 1}{2}$ pairs of residues mod $p$ farmed in this way, there are exactly $\frac{p - 1}{2}$ quadratic residues modulo $p$. These can be represented by $$1^2, 2^2, \dots, \left( \frac{p - 1}{2} \right )^2$$
+\end{proof}
+
+\section{The Legendre Symbol}
+Let $p$ be an odd prime $a \in \Z, p \nmid a$. The Legendre symbol, denoted $\frac{a}{p}$, is, 
+\begin{align*}
+    \left ( \frac{a}{p} \right ) = \begin{cases}
+        1 \text{ if $a$ is a quadratic residue modulo p }\\
+        -1 \text{ if $a$ is a quadratic non-residue modulo p }
+    \end{cases}
+\end{align*}
+
+\begin{eg}
+    $1, 3, 4, 5, 9$ are quadratic residues modulo $11$. So, 
+    $$
+        \left ( \frac{1}{11} \right ) = \left ( \frac{3}{11} \right ) = \dots = \left ( \frac{9}{11} \right ) = 1
+    $$
+    $$
+    \left ( \frac{2}{11} \right ) = \left ( \frac{6}{11} \right ) = \dots    = \left ( \frac{10}{11} \right ) = -1
+    $$
+\end{eg}
+
+\begin{eg}
+    Evaluate $\left ( \frac{3}{7} \right )$. We need to check if there is a solution $x^2 \equiv 3 \pmod 7$. We have, 
+    \begin{align*}
+        1^2 \equiv 1 \pmod 7\\
+        2^2 \equiv 4 \pmod 7\\
+        3^2 \equiv 2 \pmod 7\\
+    \end{align*}
+
+    So we see that $3$ is not a quadratic residue modulo $7$ and hence $\left ( \frac{3}{7} \right ) = -1$
+\end{eg}
+
+

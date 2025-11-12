@@ -1,0 +1,331 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath,amstext,amssymb,amsthm}   
+\usepackage{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+
+
+
+\begin{document}
+
+
+
+ \begin{center}
+ {\Large Homework 4, Math 4150 }
+ \\ 
+ \end{center}
+
+
+\begin{questions}
+ \question Exercise Set 3.3, \#40 (with some additional parts).
+\begin{parts}
+\item Let $a \in \mathbb{Z}$ with $a>0$. Use induction to prove that 
+\begin{equation*}
+\sum_{m=1}^{a} m=\frac{a(a+1)}{2},
+\end{equation*}
+and that 
+\begin{equation*}
+\sum_{m=1}^{a} m^3=\Big(\frac{a(a+1)}{2} \Big)^2.
+\end{equation*}
+
+\textbf{Solution. } First we show, $\sum_{m=1}^{a} m=\frac{a(a+1)}{2}$. Take $a = 1$ we have $\sum_{m = 1}^{1} = 1$ and $\frac{a(a + 1)}{2} = \frac{1(1 + 1)}{2} = \frac{2}{2} = 1$. Hence base case is true. Now, assume true for some arbitrary $n$, so we have, 
+$$
+\sum_{m = 1}^{n} m= \frac{n(n + 1)}{2}
+$$
+
+Now we need to show the case for $n + 1$ is true. First add $n + 1$ to both sides above. We get,
+\begin{align*}
+    \left (\sum_{m = 1}^{n}m \right) +(n + 1)  &= \frac{n(n + 1)}{2} + (n + 1)\\
+    \left (\sum_{m = 1}^{n + 1}m \right) &= (n + 1) (\frac{n}{2} + 1)\\
+                                         &= \frac{(n + 1)(n + 2)}{2}
+\end{align*}
+
+which is the case for $n + 1$. Hence by induction we have $\sum_{m = 1}^{a} = \frac{a(a + 1)}{2}$.
+
+
+\vspace{1em}
+
+Now we need to show that $\sum_{m = 1}^{a} m^{3} = \left ( \frac{a(a + 1)}{2} \right )^2$. First we verify base case where $a = 1$ so we have $\sum^{1}_{m = 1} m^{3} = 1^{3} = 1$ and we have $\left ( 1(1 + 1) \frac{1}{2} \right )^2 = 1^2 = 1$. So base case is true. Now assume true for case $a = n$. So we have,
+\begin{align*}
+    \sum_{m = 1}^{n} m^{3} = \left ( \frac{n(n + 1)}{2} \right )^2
+\end{align*}
+
+Now we need to show case $a = n + 1$ is true. We add $(n + 1)^{3}$ to both sides to get,
+\begin{align*}
+    \left (\sum_{m = 1}^{n} m^{3} \right) (n + 1)^3 &= \left ( \frac{n(n + 1)}{2} \right )^2 + (n + 1)^{3}\\
+    \sum_{m =1 }^{n + 1} m^{3} &= \left ( \frac{n(n + 1)}{2} \right )^2 + (n + 1)^{3}\\
+                               &= (n + 1)^{2} \left ( \left ( \frac{n}{2} \right )^2 + (n + 1) \right )\\
+                               &= (n + 1)^{2} \left ( \frac{n^2 + 4n + 4}{2^2} \right )\\
+                               &= (n + 1)^{2} \left ( \frac{(n + 2)^2}{2^2} \right )\\
+                               &= \left ( \frac{(n + 1)(n + 2)}{2} \right )^2
+\end{align*}
+
+Which is the case for $n + 1$. Hence by induction we have $\sum_{m = 1}^{a} m^{3} = \left ( \frac{a(a + 1)}{2} \right )^2$
+
+
+
+
+\part Let $n \in \mathbb{Z}$ with $n>0$. Use the previous part to prove that 
+\begin{equation*}
+\Big( \sum_{d \mid n, d>0} v(d)  \Big)^2=\sum_{d \mid n, d>0} (v(d))^3.
+\end{equation*}
+[Hint: It suffices to prove the equation in (b) for powers of prime numbers (justify this)]
+
+\textbf{Solution.} As $v$ is multiplicative it is enough to show the above for prime powers. So consider $n = p^{a}$ we have,
+\begin{align*}
+    \left ( \sum_{d \mid p^{a}} v(d) \right )^2  &= ( v(p^{a}) + v(p^{a - 1}) + \dots p + 1)^{2}\\
+                                                 &= ((a + 1) + a + (a - 1) + \dots + 2 + 1)^2\\
+                                                 &= \left (\frac{(a + 1)(a + 2)}{2}\right )^2\\
+                                                 &= \sum_{m = 1}^{a + 1} m^{3}\\
+                                                 &= 1^{3} + (2)^{3} + \dots + (a + 1)^{3}\\
+                                                 &= v(1)^{3} + v(p)^{3} + \dots + v(p^{a - 1})^{3}+ v(p)^{3}\\
+                                                 &= \sum_{d \mid p^{a}, d > 0} (v(d))^{3}
+\end{align*}
+
+
+\vspace{1em}
+
+Now we justify why the multiplicativity of $v$ justifies showing only for prime powers. 
+
+We have $n = p_{1}^{a_{1}} \dots p_n^{a_n}$. Now if $d \mid n$ then $d = p_{1}^{b_{1}} \dots p_n^{b_n}$ where $1 \le b_k  \le a_k$ so $v(d) = v(p_{1}^{b_{1}}) \dots v(p_n^{b_n})$. Now,
+\begin{align*}
+    \left ( \sum_{d \mid n, d > 0} v(d) \right )^2 &=     \left ( \sum_{d \mid p_{1}^{a_{1}} \dots p_k^{a_k}, d > 0} v(d) \right )^2\\
+                                                   &= \left (  \sum_{d \mid p_{1}^{a_{1}}} v(d) \dots \sum_{d \mid p_k^{a_k}} v(d)   \right)^2\\
+                                                   &= \left (  \sum_{d \mid p_{1}^{a_{1}}} v(d) \right)^2 \dots \left (\sum_{d \mid p_k^{a_k}} v(d)   \right)^2\\
+                                                   &= \sum_{d \mid p_{1}^{a_{1}}} (v(d))^{3} \dots \sum_{d \mid p_k^{a_k}} (v(d))^{3}\\
+                                                   &= \sum_{d \mid n} (v(d))^{3} 
+\end{align*}
+
+true as $v(d)$ is multiplicative implies that $v(d)^{3}$ is also multiplicative.
+
+\end{parts}
+
+
+\newpage 
+Blank page:
+
+\newpage 
+\question Exercise Set 3.4, \#48. 
+Let $n \in \mathbb{Z}$ with $n>0$. Prove that 
+\begin{equation*}
+\frac{\sigma(n!)}{n!} \geq \sum_{i=1}^n \frac{1}{i}.
+\end{equation*}
+\textbf{Solution.}
+
+We know that $\sigma$ is the sum of divisors. So $\sigma(n!) = \sigma(1 \cdot 2 \cdot \dots \cdot (n - 1) \cdot (n))$. Now note that out of all the divisors of $n!$ we have $n!, n! / 2, \dots n! / n$ are all unique divisors of $n!$. So so $\sigma(n!)$ is the sum of all divisors, it is at least as big as $n! + n! / 2\dots  + n! /n$. Hence weget,
+\begin{align*}
+    \sigma(n!) &\ge n! + \frac{n!}{2} + \dots + \frac{n!}{n}\\
+    \frac{\sigma(n!)}{n!} &\ge 1 +  \frac{1}{2} + \dots + \frac{1}{n}\\
+                          &= \sum_{i = 1}^{n} \frac{1}{i}
+\end{align*}
+
+
+\newpage 
+\question Exercise Set 3.5, \# 58.
+\newline
+\textbf{Definiton}: Let $k,n \in \mathbb{Z}$ with $k,n>1$. Then $n$ is said to be 
+$k$-perfect if $\sigma(n)=kn$ (Note: A $2$-perfect number is perfect in the usual sense).
+\begin{parts}
+\item Prove that $120$ is $3$-perfect.
+
+    \textbf{Solution.} We have $120 = 2^{3} 3^{1} 5^{1}$ so we have $\sigma(120) = \frac{2^{4} -  1}{1} \frac{3^{2} - 1}{2} \frac{5^2 - 1}{4} = 15 \cdot 4 \cdot 6 = 360 = 3 \cdot 120$ and hence we show it is 3-perfect.
+
+\item Find all $3$-perfect numbers of the form $2^k 3 p$ where $p$ is an odd prime number.
+
+    \textbf{Solution.} For $2^{k}3p$ to be a 3-perfect  number we have,
+    
+    $$
+        \sigma(2^{k}3p) &= \left ( \frac{2^{k + 1} - 1}{1} \right ) \left ( \frac{3^2 - 1}{ 2 } \right ) \left ( \frac{p^2 - 1}{p - 1} \right ) = 2^{k}3^2 p\\
+    $$
+
+    And we have,
+    \begin{align*}
+        \left ( \frac{2^{k + 1} - 1}{1} \right ) \left ( \frac{3^2 - 1}{ 2 } \right ) \left ( \frac{p^2 - 1}{p - 1} \right ) &= 2^{k}3^2 p\\
+        (2^{k + 1} - 1) (4) (p + 1) &= 2^{k} 9 p\\
+        (2 - \frac{1}{2^{k}}) (4p + 4) &= 9 p\\
+        8(p + 1) - \frac{4(p + 1)}{2^{k}} &= 9p\\
+        (8 - p)2^{k} &= 4(p + 1)
+    \end{align*}
+
+    We see that $4(p + 1)$ is positive so $8 - p > 0$ so $p < 8$. The only odd primes smaller than 8 are $3, 5, 7$. For each of those numbers we have $5 2^{k} = 4(4)$ clearly does not have a solution for $k$. For $5$ we have $3 \cdot 2^{k} = 4(6)$. Here $k =3$ and for $7$ we have $2^{k} = 4(8)$ so $k = 5$. So we have two numbers, $2^{3} 3 \cdot 5 = 120$ and $2^{5} 3 \cdot 7 = 672$
+
+
+\item Let $n \in \mathbb{Z}$ with $n>1$ and let $p$ be a prime number not dividing $n$. Prove that if $n$
+is $p$-perfect, then $pn$ is $(p+1)$-perfect.
+
+
+\textbf{Solution.}
+
+We have $n$ is $p$ perfect. Let $n = p_{1}^{a_{1}} \dots p_n^{a_n}$ so we have $\sigma(n) = \sigma(p_{1}^{a_{1}}) \dots \sigma(p_n^{a_n}) = \frac{p_{1}^{a_{1} + 1}- 1}{p_{1} - 1} \dots \frac{p_n^{a_n + 1} - 1}{p_n - 1}$. As $n$ is p perfect we have, $\sigma(n) = p n$. Now consider $pn$. As $p \nmid n$ we have $pn = p_{1}^{a_{1}} \dots p_n^{a_n} p$. So we can write, 
+\begin{align*}
+    \sigma(pn) &= \sigma(p_{1}^{a_{1}}) \dots \sigma(p_n^{a_n}) \sigma(p)\\
+               &= \frac{p_{1}^{a_{1} + 1}- 1}{p_{1} - 1} \dots \frac{p_n^{a_n + 1} - 1}{p_n - 1} \frac{p^{2} - 1}{p - 1}\\
+               &= \frac{p_{1}^{a_{1} + 1}- 1}{p_{1} - 1} \dots \frac{p_n^{a_n + 1} - 1}{p_n - 1} (p + 1)\\
+               &= \sigma(n) (p + 1)\\
+               &= pn (p + 1)
+\end{align*}
+
+as $\sigma(n) = pn$. But this means that we have $\sigma(pn) = (p + 1) (pn)$ which by definition means that $pn$ is $p + 1$-perfect .
+\end{parts}
+
+\newpage 
+Blank page:
+
+\newpage 
+\question Exercise Set 3.6, \#65.
+\newline
+\textbf{Definiton}: Let $n \in \mathbb{Z}$ with $n>0$. Von Mangoldt's function, denoted $\Lambda(n)$,
+is given by
+\begin{equation*}
+\Lambda(n):=\begin{cases}
+\ln p & \text{if} \quad n=p^{a} \text{ for some }  p \text{ prime} \text{ and } a \in \mathbb{Z} \\
+0 & \text{otherwise}
+\end{cases}.
+\end{equation*}
+Prove that 
+\begin{equation*}
+\Lambda(n)=-\sum_{d \mid n,d>0} \mu(d) \ln d.
+\end{equation*}
+
+\textbf{Solution.}
+
+% Let $n = p_{1}^{a_{1}} \dots p_n^{a_n}$
+First trivially if $n = 1$ we have $\Lambda(n) = \ln(1) = 0$ and as the only divisor of 1 is itself we have $- \mu(1) \ln(1) = 0$ and hence we have $\Lambda(n)=-\sum_{d \mid n,d>0} \mu(d) \ln d$. 
+
+\vspace{1em}
+
+Now consider if $n = p_{1} \dots p_k$ if $p_{1}, \dots, p_k$ are distinct. Then we have $\Lambda(n) = 0$ if $k > 1$ else $\Lambda(n) = \ln(p_1)$. We have the divisors of $n$ are $p_{1} \dots p_i$ for $1 \le i \le k$. For any arbitrary divisors we have $\mu(d) = \mu(p_{1} \dots  p_i) = (-1)^{i}$ and $\ln(d) = \ln(p_{1} \dots p_i) = \ln(p_{1}) +\dots+\ln(p_{i})$. First, if $k= 1$ we get the only divisor is $p_{1}$ so $-\sum_{d \mid n, d> 0} \mu(d) \ln(d) = - \mu(p_{1}) \ln(p_{1}) = - (-1)^{1} \ln(p_{1}) = \ln(p_{1}) = \Lambda(n)$. For $k > 1$ we get, 
+\begin{align*}
+    -\sum_{d\mid n, d > 0} \mu(d) \ln d &= -\left(\sum_i \ln(p_{i})  - \sum_{1 \le i < j \le k} \ln(p_i p_j)  + \dots (-1)^{k + 1} \ln(p_{1} \dots p_k )\right) \\
+                                        &= -\left(\sum_i \ln(p_{i})  - \sum_{1 \le i < j \le k}( \ln(p_i) + \ln(p_j)) + \dots (-1)^{k} (\ln(p_{1}) + \dots +  \ln(p_k)) \right)\\
+                                        &= 0
+\end{align*}
+
+
+Lastly if $p^{2} \mid n$ for some $p$ then we have either $n = p^{a}$ for $a \ge 2 $ in which case we have $-\sum \mu(d) \ln(d) = -( \mu(1) \ln(1) + \mu(p) \ln(p) + \dots \mu(p^{a}) \ln(p^{a}))$. But we know that $\mu(p^{a})$ for $a > 2$ is zero so we get $= -(-\ln(p) + 0 \dots 0) = \ln(p)$ which is our desired solution. Now if $n =  p_{1}^{a_{1}} \dots p_n^{a_n}$ for all $a_{1} \dots a_n \ge 2$ which is the case where we have some $p_k^2 \mid n$. Here note that across all the divisors of $n$ the ones with power greater than 1 for any of the primes will go to zero in the sum as we have $\mu(d)$ for that divisor as zero. So the only divisors that remain are $p_{1} \dots p_i$ for $1 \le i \le k$. Now note that in this case the above expansion will apply and we  get the sum as going to zero.
+
+\newpage 
+\question Exercise Set 3.6, \#69.
+This exercise presents an interpretation of the M\"{o}bius Inversion Formula from the point of view of convolutions.
+\newline
+\textbf{Definition}:  Let $n \in \mathbb{Z}$ with $n>0$, and let $f$ and $g$ be arithmetic functions. The convolution of 
+$f$ and $g$, denoted $f \star g$, is given by 
+\begin{equation*}
+(f \star g)(n):=\sum_{d \mid n, d>0} f(d) g \Big( \frac{n}{d} \Big).
+\end{equation*}
+\begin{parts}
+\item \textbf{Commutativity}:  Let $f$ and $g$ be arithmetic functions. Prove that $f \star g=g \star f$.
+
+    \textbf{Solution.} We have,
+    \begin{align*}
+        (f \star g)(n) &= \sum_{d \mid n, d>0} f(d) g \Big( \frac{n}{d} \Big)\\
+                        &= \sum_{d \mid n, d>0} f\left(\frac{n}{d} \right) g (d)\\
+                        &= \sum_{d \mid n, d>0}  g (d) f\left(\frac{n}{d} \right) \\
+                        &= (g \star f)(n)
+    \end{align*}    
+
+    Hence, it is commutative.
+\item \textbf{Associativity}:  Let $f$, $g$, and $h$ be arithmetic functions. Prove that $(f \star g) \star h= f \star (g \star h)$.
+
+    \textbf{Solution.} We have,
+    \begin{align*}
+        ((f \star g) \star h)(n) &= \sum_{d \mid n, d > 0} (f \star g)(d) h \left ( \frac{n}{d} \right )\\
+                                 &= \sum_{d \mid n, d > 0} \left ( \sum_{e \mid d, e > 0} f(e) g \left ( \frac{d}{e} \right ) \right ) h \left ( \frac{n}{d} \right )\\
+                                 &= \sum_{d \mid n, d > 0} h \left ( \frac{n}{d} \right )  \left ( \sum_{e \mid d, e > 0} f(e) g \left ( \frac{d}{e} \right ) \right ) \\
+                                 &= \sum_{d \mid n, d > 0} h \left ( \frac{n}{d} \right )  \left ( \sum_{e \mid d, e > 0} f \left ( \frac{d}{e} \right ) g (e) \right ) \\
+                                 &= \sum_{d \mid n, d > 0} f \left ( \frac{n}{d} \right )  \left ( \sum_{e \mid d, e > 0} h \left ( \frac{d}{e} \right ) g (e) \right ) \\
+                                 &= \sum_{d \mid n, d > 0} f \left (d \right )   (h \star g)\left ( \frac{n}{d} \right ) \\
+                                 &= f \star ( g\star h)
+    \end{align*}
+
+\item \textbf{Identity}: For $n \in \mathbb{Z}$ with $n>0$, let 
+\begin{equation*}
+\delta(n)=\begin{cases}
+1 & \text{if} \quad n=1 \\
+0 & \text{otherwise}
+\end{cases}.
+\end{equation*}
+
+Let $f$ be an arithmetic function. Prove that $f \star \delta=\delta \star f=f$.
+
+\textbf{Solution.} We have,
+\begin{align*}
+    f \star \delta &= \sum_{d \mid n,  d > 0} f(d) \delta \left ( \frac{n}{d} \right )\\
+                    &= \sum_{d \mid n,  d > 0} f \left ( \frac{n}{d} \right ) \delta  (d)\\
+\end{align*}        
+
+Note that for all divisors except 1 we have $\delta(d) = 0$, so in our summation all the terms except for when $d = 1$ will go to zero so we get,
+
+\begin{align*}
+    (f \star \delta)(n) &=  f(1) \delta(n) + \dots + f(n) \delta(1)\\
+                   &= 0 + \dots + f(n) \delta(1)\\
+                   &= f(n) \cdot 1\\
+                   &= f(n)
+\end{align*}
+
+So we have $f \star \delta = f$. Now as we showed commutativity in (a) we have $f \star \delta = \delta \star f$and hence we have $f \star \delta = \delta \star f = f$
+
+\item \textbf{Inverses}: For $n \in \mathbb{Z}$ with $n>0$, let $\mathbf{1}(n)=1$. In other words, $\mathbf{1}$ is the arithmetic function mapping every positive integer to 1. Prove that $\mu \star \mathbf{1}=\mathbf{1} \star \mu=\delta$.
+
+    \textbf{Solution.}
+
+    We have, 
+    \begin{align*}
+        \mu \star 1 &= \sum_{d \mid n, d > 0} \mu(d) 1 \left ( \frac{n}{d}\right )\\
+                    &= \sum_{d \mid n, d > 0} \mu(d) \\
+    \end{align*}
+
+    Now the right term, by Proposition 3.14 is,
+    \begin{align*}
+        \sum_{d \mid n, d > 0} \mu(d) = \begin{cases}
+            1, \quad \text{ if $n = 1$ } \\ 0, \quad \text{ otherwise }
+        \end{cases} = \delta(n)
+    \end{align*}
+
+    Hence, we have $\mu \star 1 = \delta $ and because of commutativity we also have $\mu \star 1 = 1 \star \mu = \delta$
+
+
+\item \textbf{M\"{o}bius Inversion Formula}: Prove the M\"{o}bius Inversion Formula using convolutions.
+\newline 
+[Hint: Theorem 3.5 can be restated as $f=g \star \mathbf{1}$ if and only if $g=\mu \star f=f \star \mu$.]
+\end{parts}
+\textbf{Solution.}
+
+($\Rightarrow$) We have $f(n) = \sum_{d \mid n, d > 0} g(d)$ which is equivalent to $f = g \star 1$. Now using the above properties we have,
+\begin{align*}
+    f &= g \star 1\\
+    f \star \mu &= (g \star 1) \star \mu\\
+    f \star \mu &= g \star (1 \star \mu) &\text{ using associativity }\\
+    f \star \mu &= g \star \delta &\text{ using (d) }\\
+    f \star \mu &= g   &\text{ using (c) }\\
+\end{align*}
+
+As we have commutativity, we now have $g = f \star \mu = \mu \star f$
+
+($\Leftarrow$)
+
+Now assume we have $g = f \star \mu = \mu \star f$ then we can write,
+\begin{align*}
+    g &= f \star \mu \\
+    g \star 1 &= (f \star \mu) \star 1\\
+    g \star 1 &= f \star (\mu \star 1)\\
+    g \star 1 &= f \star (\delta)\\
+    g \star 1 &= f
+\end{align*}
+
+So we get $f &= g \star 1$ which is our solution.
+
+\newpage 
+Blank page:
+
+
+\end{questions}
+
+\end{document} 
+
+
+ 
+%%%% don't delete the last line!
+\end{document}

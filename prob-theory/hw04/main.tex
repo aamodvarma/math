@@ -1,0 +1,266 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Probability Theory: HW4}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+
+
+
+
+
+\subsection*{5.18}
+We have $F(y) = \alpha F_{1}(y) + (1 - \alpha) F_{2}(y) $ and $F(x) = \alpha F_{1}(x) + (1 - \alpha) F_{2}(x)$ and if $y > x$ we get $F(y) - F(x) =\alpha F_{1}(y) + (1 - \alpha) F_{2}(y)  -   \alpha F_{1}(x) + (1 - \alpha) F_{2}(x) = \alpha(F_{1}(y) - F_{1}(x)) + (1 - \alpha)(F_{2}(y) - F_{2}(x))$  
+
+\vspace{1em}
+
+Now as $F_{1}$ and $F_{2}$ are distribution functions they both are monotonic non decreasing and hence $F_{2}(y) - F_{2}(x) > 0$ and $F_{1}(y) - F_{1}(x)> 0$. This gives us, 
+\begin{align*}
+    F(y) - F(x)  &=  \alpha(F_{1}(y) - F_{1}(x)) + (1 - \alpha)(F_{2}(y) - F_{2}(x))\\
+                 &> 0
+\end{align*}
+
+which means $F$ is monotonic non decreasing 
+
+\vspace{1em}
+
+Now we need to show that as $x \to \infty$ and $x \to -\infty$ we have $F(x) = 1$ and $0$ respectively. We have,
+\begin{align*}
+    \lim_{x \to \infty} F_{1}(x) = 1,   \lim_{x \to \infty} F_{2}(x) = 1
+\end{align*}
+
+So, $\lim_{x \to \infty} \alpha F_{1}(x) + (1 - \alpha) F_{2}(x) = \alpha + (1 - \alpha) = 1$ and similarly as,
+
+\begin{align*}
+    \lim_{x \to -\infty} F_{1}(x) = 0,   \lim_{x \to -\infty} F_{2}(x) = 0
+\end{align*} we have,
+$\lim_{x \to -\infty} \alpha F_{1}(x) + (1 - \alpha) F_{2}(x) = \alpha 0 + (1 - \alpha)0 = 0$
+
+\vspace{1em}
+Now as both $F_{1}$ and $F_{2}$ are continuous from the right as $F$ is a linear combination  of those functions we have that $F$ is continuous from the right as well.
+
+\vspace{1em}
+
+Lastly we have for any $ a < b$ that $P(X \le b) = F(b) = \alpha F_{1}(b)  + (1 - \alpha) F_{2}(b)$ and similarly $P(x \le a) =  F(a) = \alpha F_{1}(a)  + (1 - \alpha) F_{2}(a)$. If  $F_{1}(k) = P_{1}(X \le k)$  and $F_{2}(k) = P_{2}(X \le k)$ we get,
+\begin{align*}
+    F(b) - F(a) &= \alpha (F_{1}(b) - F_{1}(a)) +  (1 - \alpha) (F_{2}(b) - F_{2}(a))\\
+                &=  \alpha (P_{1}(a < X \le b)) +  (1 - \alpha) (P_{2}(a < X \le b))\\
+                &= P(a < X \le b) 
+\end{align*}
+
+\subsection*{5.30}
+We know that $\P(X \le x) = F(x) = \int_{-\infty}^{x} f(x)$. So to get the distribution function we have,
+\begin{align*}
+    F(x) &= \int_{-\infty}^{x} f(x)\\
+         &=  \int_{-\infty}^{x} 2x\\
+\end{align*}
+
+Now for $x < 0$ we have $F(x) = 0$ as $f(x)$ is $0$. For $x > 1$ we have the following,
+
+
+\begin{align*}
+    F(x) &= \int_{-\infty}^{x} f(x) = \int_{-\infty}^{0} f(x) + \int_{0}^{1} f(x) + \int_{1}^{x} f(x)\\
+         &= 0 + [x^2]_0^{1} + 0\\
+         &= 1
+\end{align*}
+
+
+and for $0 < x < 1$ we get,
+\begin{align*}
+    F(x) = [x^2]_0^{x} = x^2
+\end{align*}
+
+So our distribution function is,
+\begin{align*}
+    F(x) =  \begin{cases}
+        0 &\text{ if $x \le 0$ }\\
+        x^2 &\text{ if $0 < x < 1$ }\\
+        1 &\text{ if $x \ge 1$ }
+    \end{cases}
+\end{align*}
+
+
+\subsection*{5.32}
+
+We need to show that $F$ continuous. First trivially we for $-\infty < x \le 0$ that $\frac{1}{2(1 + x^2)}$ is continuous as it's a rational function with a positive denominator. Similarly we have for $0 < x < \infty$ that $\frac{1 + 2x^2}{2(1 + x^2)}$ is continuous. So we only need to show that at the point of discontinuity that, $\lim_{x \to 0^{-}} F(x) = \lim_{x \to 0^{+}} F(x) = F(0)$. We have $F(0) = \frac{1}{2}$ by definition. And we have,
+\begin{align*}
+    \lim_{x \to 0^{-}}  F(x) = \lim_{x \to 0^{-}} \frac{1}{2(1 + x^2)} = \frac{1}{2}\\
+    \lim_{x \to 0^{+}}  F(x) = \lim_{x \to 0^{+}} \frac{1 + 2x^2}{2(1 + x^2)} = \frac{1}{2}
+\end{align*}        
+
+As both the limits are equal we have that $F(x)$ is continuous through the real line.
+
+\vspace{1em}
+
+Now we find it's density function. We have for $ -\infty < x \le 0$ that $F(x) = \frac{1}{2(1 + x^2)}$ so we get,
+\begin{align*}
+    f(x) &= \frac{d}{dx} F(x) = \frac{d}{dx} \left (\frac{1}{2(1 + x^2)} \right)  \\
+         &= -\frac{x}{(1 + x^2)^2}
+\end{align*}
+
+And for $0 < x < \infty$ we get,
+
+\begin{align*}
+    f(x) &= \frac{d}{dx} F(x) = \frac{d}{dx} \left \frac{1 + 2x^2}{2(1 + x^2)}  \\
+         &= \frac{x }{(1 + x^2)^2}
+\end{align*}
+
+So we get, 
+\begin{align*}
+    f(x) = \begin{cases}
+        \frac{-x}{(1 + x^2)^2} &\text{ for $-\infty < x \le 0$ }\\
+        \frac{x}{(1 + x^2)^2} &\text{ for $0 < x < \infty$ }
+    \end{cases}
+\end{align*}
+
+
+
+\subsection*{5.54}
+(a). We have $A = g(X) = 2X + 5$ so $g^{-1}(A) = \frac{A - 5}{2}$ and,
+\begin{align*}
+    f_A(a) &= f_X(g^{-1}(a)) \frac{d}{da} [g^{-1}(a)]\\
+           &= \lambda e^{-\lambda (a - 5)  /2} \frac{1}{2}\\
+           &= \frac{\lambda}{2} e^{\frac{-\lambda}{2} (a - 5)}
+\end{align*}
+
+So,
+
+\begin{align*}
+    f_A(a) = \begin{cases}
+        \frac{\lambda}{2} e^{\frac{-\lambda}{2} (a - 5)}  & a \ge 1\\
+        0 & a < 5
+    \end{cases}
+\end{align*}
+
+(b). We have $B = g(X) = e^{X}$ so $g^{-1}(B) = \log B$. So we get,
+
+
+\begin{align*}
+    f_B(b) &= f_X(g^{-1}(b)) \frac{d}{db} [g^{-1}(b)]\\
+           &= \lambda e^{-\lambda \log b} \frac{1}{b} \\
+           &= \lambda e^{ \log b^{-\lambda}} \frac{1}{b} \\
+           &= \lambda  b^{-(\lambda + 1)}
+\end{align*}
+
+So,
+\begin{align*}
+    f_B(b) = \begin{cases}
+        \lambda  b^{-(\lambda + 1)} & b \ge 1\\
+        0 & b < 1
+    \end{cases}
+\end{align*}
+
+
+
+(c). We have $C = g(X) = (1 + X)^{-1}$ so $\frac{1}{1 + X} = C$ and $X = \frac{1}{C} - 1$. This give us,
+
+\begin{align*}
+    f_C(c) &= f_X(g^{-1}(c)) \frac{d}{dc} [g^{-1}(c)]\\
+           &= \lambda e^{-\lambda \left ( \frac{1}{c} - 1 \right )}  \left | -\frac{1}{c^2} \right |\\
+           &= \frac{\lambda}{c^2} e^{-\lambda \left ( \frac{1}{c} - 1 \right )} 
+\end{align*}
+
+which is,
+\begin{align*}
+    f_C(c) = \begin{cases}
+        \frac{\lambda}{c^2} e^{-\lambda \left ( \frac{1}{c} - 1 \right )}  & 0 < c \le 1\\
+        0 & \text{ otherwise }
+    \end{cases}
+\end{align*}
+
+(d). $Y = g(X) =  (1 + X)^{-2}$ so $g^{-1}(Y) = Y^{-1 /2} - 1$. And we have $\frac{d}{dy} g^{-1}(Y) = -\frac{1}{2} y^{-3 / 2}$
+\begin{align*}
+    f_Y(y) &= \lambda e^{-\lambda (y^{-1 /2} - 1)}  \frac{1}{2} y^{-3 / 2}\\
+\end{align*}
+
+So,
+\begin{align*}
+    f_Y(y) = \begin{cases}
+        \lambda e^{-\lambda (y^{-1 /2} - 1)}  \frac{1}{2} y^{-3 / 2} & 0 < y \le 1\\
+        0 & \text{ otherwise }
+    \end{cases}
+\end{align*}
+
+
+
+
+
+\subsection*{6.14}
+We have $\P(a < X \le b, c < Y \le d)$. We can write the interval $(a, b] \times (c, d]$ as  $(-\infty, b] \times [-\infty, d] - (-\infty, a] \times (-\infty, d] -  (-\infty, b] \times (-\infty, c] + (-\infty, a] \times (-\infty, c] $. This gives us,
+
+We have $P(-\infty < X \le b, -\infty < Y \le d) = P(-\infty < X \le b, -\infty < Y \le d) - P(-\infty < X \le b, -\infty < Y \le c) - P(-\infty < X \le a, -\infty < Y \le d) + P(-\infty < X \le a, -\infty < Y \le c) = F(b,d)  - F(a,d) - F(b,c) + F(a,c)$, 
+
+
+
+\subsection*{6.26}
+We have, 
+\[
+    f(x,y) = \begin{cases}
+        e^{-x-y} & x,y > 0\\
+        0 & \text{ otherwise }
+    \end{cases}
+\]
+
+So for $\P(X + Y \le 1)$ we have $0 < y \le 1$ then we need $x + y \le 1$ or $0 < x \le 1 - y$ which gives us,
+\begin{align*}
+    \P(X + Y \le 1) &= \int_{0}^{1}  \int_{0}^{1 - y}  e^{-x -y} dx dy\\
+                    &= \int_{0}^{1}\frac{1}{e^{y}}  \int_{0}^{1 - y}  e^{-x}  dx dy\\
+                    &= \int_{0}^{1}\frac{1}{e^{y}}  \int_{0}^{y - 1}  -e^{t}  dt dy\\
+                    &= \int_{0}^{1}\frac{1}{e^{y}}  \cdot -[e^{t}]_0^{y - 1}   dy\\
+                    &= \int_{0}^{1}\frac{1}{e^{y}} \cdot  (1 - e^{y - 1})  dy\\
+                    &= \int_{0}^{-1}  -(e^{t} - e^{-1})  dt\\
+                    &=  [-e^{t} + e^{-1}t]_0^{-1}\\
+                    &=  [-\frac{1}{e} - e^{-1}] - [-1]\\
+                    &= 1 - \frac{2}{e}
+\end{align*}
+
+For $\P(X > Y)$ we have for any $0 < x$ that $y$ goes from $0 < y < x$ so we get,
+\begin{align*}
+    \P(X > Y) &= \int_{0}^{\infty}  \int_{0}^{x} e^{-x - y}  dy dx\\
+              &=  \int_{0}^{\infty} \frac{1}{e^{x}} \int_{0}^{x} e^{-y}  dy dx\\
+              &=  \int_{0}^{\infty} \frac{1}{e^{x}} \int_{0}^{-x}- e^{t}  dt dx\\
+              &=  \int_{0}^{\infty} \frac{1}{e^{x}}[ - e^{t} ]_0^{-x}  dx\\
+              &=  \int_{0}^{\infty} \frac{1}{e^{x}}(1 - e^{-x}) dx\\
+              &=  \int_{0}^{\infty} \frac{1}{e^{x}}(1 - e^{-x}) dx\\
+              &= \int_{0}^{\infty}  e^{-x} dx - \int_{0}^{\infty}  e^{-2x} dx\\
+              &= 1 - \frac{1}{2} = \frac{1}{2}
+\end{align*}
+
+
+
+\subsection*{Problem 7}
+We have,
+\begin{align*}
+ \int_0^{\infty} [1 - F_X(x)] dx &=  \int_0^{\infty} [1 - P(X \le x)] dx\\
+         &=  \int_0^{\infty} P(X > x) dx\\
+         &=  \int_0^{\infty} \int_x^{\infty} f_X(t) dt dx\\
+         &=  \int_0^{\infty} \int_0^{t} f_X(t) dx dt\\
+         &=  \int_0^{\infty}  [x f_X(t)]_0^{t}  dt\\
+         &=  \int_0^{\infty}  t f_X(t)  dt\\
+         &=  \int_0^{\infty}  x f_X(x)  dx\\
+         &= E(X)
+\end{align*}
+\subsection*{Problem 11}
+Let $X$ be the r.v that determines that angle. We have $x$ goes from $[0, 2\pi]$ and the field of view is $\pi$. As he chooses it uniformly we have,
+\begin{align*}
+    f_X(x) = \begin{cases}
+        \frac{1}{\pi} & x \in [0, \pi]\\
+        0 & \text{ otherwise }
+    \end{cases}
+\end{align*}
+
+
+Now we know that given $X = x$ we have the horizontal distance from the center is $\left |\frac{1}{\tan x}\right|$. So if $Y$ is the r.v for the horizontal distance then we get $Y = \left | \frac{1}{\tan X} \right |$ so $|\tan X| = \frac{1}{Y}$ and $X = tan^{-1} [\frac{1}{Y}]$ for $x \in (0, \pi / 2)$ and $\pi - tan^{-1} [\frac{1}{Y]}$ for $x \in (\pi / 2, \pi)$. Now consider 
+\begin{align*}
+    f_Y (y) &= f_X(g^{-1}(y) \frac{d}{dy} g^{-1}(y)\\
+            &= \frac{1}{\pi} \frac{1}{1 + (\frac{1}{y})^2}  \frac{1}{y^2}\\
+            &=  \frac{1}{\pi} \frac{1}{1 + y^2}
+\end{align*}
+
+Which gives us $F_Y(y) = \int_{0}^{y} f_y(y) =\frac{1}{\pi} \int_{0}^{y} \frac{1}{1 + y^2}dy = \frac{1}{\pi }[tan^{-1}(y)]_{0}^{y} =\frac{1}{\pi} tan^{-1}(y)$
+
+
+\end{document}
+

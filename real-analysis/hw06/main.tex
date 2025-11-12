@@ -1,0 +1,88 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\title{Real Analysis: HW5}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+\subsection*{Exercise 3.2.6}
+
+(a). False. Consider $R \setminus \sqrt{2}$. This set contains all the rational numbers as $R$ contains all the rationals. Now we need to show the set is open, for any $a \in R$ consider $\epsilon = \left | \frac{a - \sqrt{2}}{2} \right|$ now for this $\epsilon$ we have $V_{\epsilon}(a) =  \{x \in \R: |x - a| < \epsilon\} \subseteq R \setminus \sqrt{2}$.
+
+\vspace{1em}
+
+(b). False. As $\phi$ is considered a closed set we can choose $I_{1} = \{1\}$ and $I_{> 1} = \phi$ such that $I_{1} \supseteq I_{2} \supseteq I_{3} \dots$ however we have $\bigcap I_k = \phi$. Even with a non-empty requirement we can consider $I_k = [n, \infty)$ and we have $\bigcap I_k = \phi$.
+
+\vspace{1em}
+
+(c). True. Consider any arbitrary non-empty open set $S$. As $S$ is non-empty there exists some $s \in S$. Now as $S$ is open we have for some $\epsilon$ that $V_{\epsilon} = \{x \in \R: |x - a| < \epsilon\} \subset S$. Now because of the density of $R$ there exists some $r$ such that $x - \epsilon < x < r < x + \epsilon$ which means that $|r - x| < \epsilon$ or that $r \in V_{\epsilon}(a) \subseteq S$ or that $r \in S$. 
+
+\vspace{1em}
+
+(d). False. First consider $\{\frac{1}{n^2}:n \in \N\} \cup \{0\}$. This set is an infinite bounded closed set as it contains it's limit points $0$. Now shift each element by $\sqrt{2}$. This gives us $\{\frac{1}{n^2} + \sqrt{2} : n \in \N\} \cup \{\sqrt{2}\}$. Note that each element is irrational as $0, \frac{1}{n^2}$ are rational numbers. So we found a closed infinite bounded set that does not contain any rational numbers.
+
+
+\vspace{1em}
+
+(e). True. The cantor set can be defined as follows,
+\begin{align*}
+    C &= [0, 1] \setminus \left [ \left ( \frac{1}{3}, \frac{2}{3} \right )\cup \left ( \frac{1}{9}, \frac{2}{9} \right ) \cup \dots \right ]\\
+      &= [0, 1] \cap \left [ \left ( \frac{1}{3}, \frac{2}{3} \right )\cup \left ( \frac{1}{9}, \frac{2}{9} \right ) \cup \dots \right ]^{c}\\
+      &= [0, 1] \cap \left [ \left ( \frac{1}{3}, \frac{2}{3} \right )^{c}\cap \left ( \frac{1}{9}, \frac{2}{9} \right )^{c} \cap \dots \right ]\\
+\end{align*}
+
+
+Now we know that $[0, 1]$ is closed. And similarly as any open interval is open i.e. $(\frac{1}{3}, \frac{2}{3})$ is open that means that their complement is closed (Theorem 3.2.13). So what we have is a arbitrary intersection of closed sets, which by theorem 3.2.14 is  closed as well. Hence, the cantor set is closed.
+
+
+\subsection*{Exercise 3.3.5}
+(a). True. A compact set is closed and bounded. And we know the arbitrary intersection of closed sets are closed. Now we need to show an arbitrary intersection of bounded sets are bounded. Consider an arbitrary compact set in our list  $S$. If $S$ is burdened then there is some $M$ for which we have $|a| \le M$ for all $a \in A$. Now by definition of intersection we have if $s \in S \cap S_{1} \cap \dots $ then we have $s \in S, s \in S_{1}, \dots$. But if $s \in S$ then $|s| \le M$ and hence for all $s \in S \cap S_{1} \dots$ we have $|s| \le M$. So the existence of some bound implies the arbitrary intersection is bounded as well. And hence compact.
+
+\vspace{1em}
+
+(b). False. Consider $I_{k} = [k, k + 1]$. We have each $I_k$ is compact as it is closed (a closed interval) and bounded (k + 2 is an upperbound) So we have $\bigcup_{k = 1}^{\infty} I_k = [1, \infty]$ which is not bounded hence not compact.
+
+\vspace{1em}
+
+(c). False. Consider $K = [0, 2]$ and $A = (0, 2)$. Here $K$ is compact as it's closed and bounded. However, $K \cap A = (0, 2)$ which is an open set and hence not compact.
+
+\vspace{1em}
+
+(d). False. Consider $F_{k} = [k, \infty)$ so we have $F_{k} \supseteq F_{k + 1}$ as desired. However, we see that $\bigcap_{n = 1}^{\infty} F_n$ is empty as it cannot contain $\infty$
+
+\subsection*{Exercise 3.3.7}
+(a). The Cantor set is defined as follows,
+
+\begin{align*}
+    C &= [0, 1] \setminus \left [ \left ( \frac{1}{3}, \frac{2}{3} \right )\cup \left ( \frac{1}{9}, \frac{2}{9} \right ) \cup \dots \right ]
+\end{align*}
+
+First we need to show there are some $x_{1}, y_{1} \in C_{1}$ such that $x_{1}  + y_{1} = s$. If $s \le \frac{2}{3}$ then choose $x_{1} = \frac{s}{2}$ and $y_{1} = \frac{s}{2}$. So we have $x_{1},y_{1} \le \frac{1}{3} \in [0, \frac{1}{3}] \subseteq C_{1}$ such that $x_{1} + y_{1} = s$. Now if $s \ge \frac{4}{3}$ then similarly take $x_{1},y_{1} = \frac{s}{2}$ and as both will be greater than $\frac{2}{3}$ we have $x_{1},y_{1} \in [\frac{2}{3}, 1]$ and hence in $C_{1}$. If $\frac{2}{3} \le s \le \frac{4}{3}$ then if $s \ge 1$ choose $x_{1} = s$ and $y_{1} = 0$ and if $s > 1$ then choose $x_{1} = s - 1$ and $y_{1} = 1$ in both cases the values are in $C_{1}$.
+
+\vspace{1em}
+
+Now to show this is true for an arbitrary $C_n$. We will show this by induction. Base case is above. Now assume true for $C_n$. So we have $x_n + y_n = s$ such that $x_n,y_n \in C_n$. Now if we scale of $C_{n + 1}$ by 3 then we get two copies of $C_n$ in it where the second copy is an offset of 2 from the first. So we have $3C_{n + 1} = C_n \cup (C_n + 2)$. Now consider $3s$, we have three choices, so either $3s \in [0, 2]$, $3s \in (2, 4]$ or $3s \in (4, 6]$. For each case respectively take $a + b$ (where $a,b$ is the offset length i.e. either in the first $C_n$ so offset 0 or in the second $C_n$ so offset 2) such that $a + b = 0, 2, 4$. So now note that $3s - (a + b)$ is between $0$ and $2$ and hence by inductive hypothesis there is $x_n + y_n = 3s - (a + b)$. Now this gives us $x_n + y_n  + a + b = 3s$ and $(x_n + a) / 3 + (y_n + b) / 3 = s$. Here, we have both $(x_n + a)$ and $(y_n + b)$ are in either of the $C_n$ and hence also a part of $3C_{n + 2}$ so taking $\frac{1}{3}$ of both will have them in $C_{n + 1}$ and hence we found $x_{n + 1}$ and $y_{n + 1}$ such that $x_{n + 1} + y_{n + 1} = s$ completing the induction hypothesis.
+
+
+(b). As $C$ is compact that means that every sequence in $C$ has a sub sequence that converges. So there is some subsequence of $(x_k)$ that converges to some value say $x$. Now note that for each value $x_k$ there is an equivalent value $y_k$ such that $x_k + y_k = s$ so we have $\lim y_k + \lim x_k = s$ and $y = s - \lim x_k = s - x$. Hence, we show that we can find $x,y \in C$  such that $x + y = C$.
+
+
+\subsection*{Exercise 3.3.8}
+(a). We show that $d \in \{|x - y|: x \in K, y \in L\}$. It is enough to show that $\{|x - y|: x \in K, y \in L\}$ is closed and bounded which implies that the infimum is the minimum and is in the set. So first we have $|x - y | \le |x| + |y|$. But $x \in K, y \in L$ and $K, L$ are bounded which means that $|x| + |y|$ is bounded for any $x, y$. So $|x - y|$ is bounded and we have $\{|x - y|: x \in K, y \in L\}$ is bounded. Now we need to show it's closed. Or that $\lim | x - y|$ is in the set. First we have $\lim (x - y) = \lim(x) - \lim(y)$. But $x \in K, y \in L$ and $K, L$ are closed so they contain their limit points. So let $\lim x = x', \lim y = y'$. This gives us $\lim (x - y) = x' - y'$ for $x' \in K, y' \in L$. Now, as $\lim (x - y)$ exists this means that $\lim |x - y| = | \lim(x - y)|$. So we have $\lim |x - y| = |x' - y'|$. But $x' \in K, y' \in L$ so we have $|x' - y'| \in \{|x - y|: x \in K, y \in L\}$ which means that $\lim |x  - y|$ for any $x, y$ is in the set hence making it closed. So the infimum must be in the set as well  and hence for some $x_{0}, y_{0}$ we have $d = |x_{0} - y_{0}|$. Now as $K, L$ are disjoint this means that they don't share any elements. So we have $d = |x_{0} - y_{0}|$ such that $x_{0} \ne y_{0}$ which implies that $d \ne 0$ or that $d > 0$.
+
+\vspace{1em}
+
+(b). If $K, L$ are only closed and not bounded then it is possible to have $d = 0$. Consider $K = \{n: n \in \R\}$ and $L = \{n + \frac{1}{n}: n \in \R\}$. In this case as $n$ goes to $\infty$ the distance between the points gets arbitrarily small i.e. $\lim \frac{1}{n} = 0$. However, for no $x \in K$, $y \in L$ do we have $x - y = 0$ and hence we can get $d = 0$.
+
+
+\subsection*{Exercise 3.4.1}
+First we can say that $P \cap K$ is compact. As both sets are closed we have their intersection is closed as well. And as $K$ is bounded we have $P \cap K \subseteq K$ so $P \cap K$ is bounded and hence $P \cap K$ is compact.
+
+\vspace{1em}
+
+Now for perfect set we need $P \cap K$ to have no isolated points. Consider  $P = [1,2]$ and $K = [2,3]$. We have $P \cap K = \{2\}$ but it contains only $2$ which is an isolated point.
+
+
+
+\end{document}

@@ -1,0 +1,265 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Probability Theory: HW5}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+
+
+
+
+
+\subsection*{Exercise 6.36}
+We have, 
+\[
+    f(x,y,z) = \begin{cases}
+        8xyz & \text{ if 0 < x,y,z < 1}, \\
+        0 & \text{ otherwise }
+    \end{cases}
+\]
+
+To find if $X,Y,Z$ are independent, we can find their marginal. So we have, 
+\begin{align*}
+    f_X(x) &= \int_{0}^{1} \int_{0}^{1}  8xyz \ dy \ dz\\
+           &=  \int_{0}^{1}  [8xz \frac{y^2}{2}]_0^{1} \ dz\\
+           &=  \int_{0}^{1}  4xz  \ dz\\
+           &=   \int_{0}^{1}  4x \frac{z^2}{2}]_0^{1}  \ dz\\
+           &=   \int_{0}^{1}  4x \frac{1}{2} \ dz\\
+           &= 2x
+\end{align*}
+
+Similarly we get $f_Y(x) = 2y$ and $f_Z(z) = 2z$. Now note that we have $f(x,y,z) = f_X(x) f_Y(y) f_Z(z)$ which means that the r.v are independent.
+
+\vspace{1em}
+
+Now to find $\P(X > Y)$. Here $Z$ can take on any value so we have, 
+\begin{align*}
+P(X > Y) &= \int_{0}^{1} \int_{0}^{1} \int_{y}^{1}  8xyz \ dx \ dy \ dz\\
+         &=  \int_{0}^{1} \int_{0}^{1} 4yz [x^2]_y^{1} \ dy \ dz\\
+         &=  \int_{0}^{1} \int_{0}^{1} 4yz [1 - y^2] \ dy \ dz\\
+         &=  \int_{0}^{1} \int_{0}^{1} 4yz - 4y^3z \ dy \ dz\\
+         &=  \int_{0}^{1} [2y^2z - y^4z]_0^{1} \ dz\\
+         &=  \int_{0}^{1} [2z - z] \ dz\\
+         &=  \int_{0}^{1} [z] \ dz\\
+         &=  \frac{z^2}{2}]_0^{1}\\
+         &=  \frac{1}{2}
+\end{align*}
+
+Now note that $\P(X > Y)$ and $\P(Y > Z)$ will be the same value as $X,Y,Z$ all have the same distribution and pdf so it is also equal to $\frac{1}{2}$.
+
+\subsection*{Exercise 6.45}
+We have, $X,Y$ and the joint density, 
+\[
+    f(x,y) = \begin{cases}
+        \frac{1}{2}(x + y)e^{-x - y} & \text{ if x, y >0 }\\
+        0 & \text{ otherwise }
+    \end{cases}
+\]
+
+Now to find the density function of $X + Y$. We can use the convolution formula to achieve this. So the pdf of $X + Y$ evaluated at $z$ would be when $y = z - x$ and we integrate $x$ from $0$ to $z$ as both $x,y > 0$ so $z - x > 0, x < z$. This gives us,
+\begin{align*}
+    f_{X + Y}(z) &= \int_{0}^{z} \frac{1}{2}(x + z - x) e^{-x - z + x} \ dx\\
+                 &= \int_{0}^{z} \frac{1}{2}(z) e^{-z} \ dx\\
+                 &=  \frac{1}{2}(z) e^{-z} [x]_0^{z}\\
+                 &= \frac{1}{2}z^2  e^{-z} \quad \text{ for $z > 0$ }
+\end{align*}
+
+
+\subsection*{Exercise 6.55}
+We have, 
+\[
+    f(x,y) = \begin{cases}
+        \frac{1}{4}e^{-\frac{1}{2}(x + y)} & \text{ if x,y > 0 }\\
+        0 & \text{ otherwise }
+    \end{cases}
+\]
+
+First we need to joint density of $U = \frac{1}{2}(X - Y)$ and $V = Y$. We rewrite this as functions of $U$ and $V$ to get, $Y = V\text{ and } X = 2U + V$. Now the jacobinan of this is $2 \cdot 1 = 2$. So the joint of $U,V$ is, 
+\begin{align*}
+    f_{U,V}(u,v) &= 2  f(2u + v, v)  \\
+                 &= 2 \frac{1}{4} e^{-\frac{1}{2}(2u + v + v)}\\
+                 &=  \frac{1}{2} e^{-u - v} \text{ for $u, v \in A$ }\\
+\end{align*}
+
+Now to find the density of $U$. We have, 
+\begin{align*}
+    f_U(u) &= \int_{-\infty}^{\infty}  \frac{1}{2} e^{-u - v}  \ dv\\
+\end{align*}
+
+Now if $u \ge 0$ the lower limit is $0$ and if $u < 0$, note that $X \ge 0$ which means $2u + v \ge {0}$ or that $v \ge -2u$ so lower limit is $-2u$. For both we have,
+
+\begin{align*}
+    f_U(u) &= \int_{0}^{\infty}  \frac{1}{2} e^{-u - v}  \ dv\\
+           &=  \int_{0}^{\infty}  \frac{1}{2} e^{-u} e^{- v}  \ dv\\
+           &=    \frac{1}{2} e^{-u} [-e^{- v}]_0^{\infty} \\
+           &= \frac{1}{2}e^{-u}
+\end{align*}
+
+Now for $u < 0$ we have, 
+\begin{align*}
+    f_U(u) &= \int_{-2u}^{\infty}  \frac{1}{2} e^{-u - v}  \ dv\\
+           &=  \int_{-2u}^{\infty}  \frac{1}{2} e^{-u} e^{- v}  \ dv\\
+           &=    \frac{1}{2} e^{-u} [-e^{- v}]_{-2u}^{\infty} \\
+           &= \frac{1}{2}e^{-u} e^{2u}\\
+           &=  \frac{1}{2}e^{u}\\
+           &=   \frac{1}{2}e^{-|u|}\\
+\end{align*}
+
+So we have, 
+\[
+    f_U(u) = \frac{1}{2} e^{-|u|} \quad \text{ for $u \in \R$ }
+\]
+
+
+\subsection*{Exercise 6.61}
+
+We have $X,Y$ are independent r.v that are exponential with parameter $\lambda$. Now let $U= X$ and $V = X + Y$. Rewriting this we have $X = V - U$ and $Y = U$ the Jacobian of which is $1$. So we have, 
+\begin{align*}
+    f_{U,  V} &= f(v - u, u)\\
+              &= f(v - u)f( u)\\
+              &= \lambda^2 e^{-\lambda( v - u + u)}\\
+              &=  \lambda^2 e^{-\lambda v}\\
+\end{align*}
+
+Now to find the conditional given $X + Y = a$ or $V = a$ we integrate over $U$ first to get the marginal of $V$. Note that $U = Y$ so $u \ge 0$. Now as $X = a - Y$ the maximum value $Y$ can take is $a$ as $X$ is also non-negative. So our lower bound is $0$ and upper is $a$ so we have,
+\begin{align*}
+    f_{V}(v) &= \int_{0}^{v}  \lambda^2 e^{-\lambda v} \ du\\
+             &= \lambda^2 e^{-\lambda v} [u]_0^{v}\\
+             &=  \lambda^2 e^{-\lambda v} v
+\end{align*}
+
+So this gives us $f_{U \mid V}(u \mid v) = f_{X \mid X + Y} = \frac{f(u,v)}{f_V(v)} = \frac{1}{v}$. So here we have $v = a$ which gives us $f_{U \mid V}(u \mid a) = \frac{1}{a}$ which is uniform in the interval $(0, a)$.  Hence knowing $X + Y$ gives us no useful information about the distribution of $X$ in the interval $(0, a)$.
+
+\subsection*{Exercise 6.70}
+We have $X,Y$ are uniformly distributed on the uni disk so, 
+\[
+    f_{X,Y}(x,y) = \begin{cases}
+        \pi^{-1} & \text{ if } x^2 + y^2 \le 1,\\
+        0 & \text{ otherwise }
+    \end{cases}
+\]
+
+To find $E \sqrt{X^2 + Y^2}$ we have, 
+\begin{align*}
+    E \sqrt{X^2 + Y^2} &= \int \int_{}^{} \sqrt{x^2 + y^2} \pi^{-1} \ dx \ dy\\
+\end{align*}
+
+Now changing to polar coordinates we have, 
+
+\begin{align*}
+    E \sqrt{X^2 + Y^2} &= \int_{0}^{2\pi} \int_{0}^{1} \sqrt{r^2} r \pi^{-1} \ dr \ d\theta\\
+                       &=  \int_{0}^{2\pi} \int_{0}^{1} r^2 \pi^{-1} \ dr \ d\theta\\
+                       &=  \int_{0}^{2\pi}  [r^3]_0^{1} \frac{1}{3} \pi^{-1} \ d\theta\\
+                       &=  \int_{0}^{2\pi} \frac{1}{3} \pi^{-1} \ d\theta\\
+                       &=  \frac{1}{3} \pi^{-1} 2\pi\\
+                       &= \frac{2}{3}
+\end{align*}
+
+
+
+For $ E [X^2 + Y^2]$ we have
+\begin{align*}
+    E [X^2 + Y^2] &= \int_{0}^{2\pi} \int_{0}^{1} r^2 r \pi^{-1} \ dr \ d\theta\\
+                       &=  \int_{0}^{2\pi} \int_{0}^{1} r^3 \pi^{-1} \ dr \ d\theta\\
+                       &=  \int_{0}^{2\pi}  [r^4]_0^{1} \frac{1}{4} \pi^{-1} \ d\theta\\
+                       &=  \int_{0}^{2\pi} \frac{1}{4} \pi^{-1} \ d\theta\\
+                       &=  \frac{1}{4} \pi^{-1} 2\pi\\
+                       &= \frac{2}{4} = \frac{1}{2}
+\end{align*}
+
+
+\subsection*{Exercise 7.10}
+We have $X$ is uniformly distributed on $(a,b)$ and we need to find $E(X^{k})$. If $x$ is uniformly distributed then the density function is, 
+\[
+    f(x) = \begin{cases}
+        \frac{1}{b - a} &\text{ if } x \in [a,b]\\
+        0 & \text{ otherwise }
+    \end{cases}
+\]
+
+So we have, 
+\begin{align*}
+    E(X^{k}) &= \int_{a}^{b} \frac{x^{k}}{b - a} dx\\
+             &=  \frac{1}{b - a}\bigg [\frac{x^{k + 1}}{k + 1}\bigg]_a^{b}\\
+             &= \frac{1}{b - a} \left ( \frac{b^{k + 1}  - a^{k + 1}}{k + 1} \right )\\
+             &= \frac{b^{k + 1} - a^{k + 1}}{(b - a)(k + 1)}
+\end{align*}
+\subsection*{Exercise 7.36}
+We have $X_{1}, X_{2}, \dots$ is a sequence of uncorrelated random variables with variance $\sigma^2$ and $S_n = X_{1} + \dots + X_n$. We have assuming $m < n$ that,
+\begin{align*}
+    Var(S_n + S_m) &= Var(S_m) + Var(S_n) + 2 Cov(s_m, s_n)\\
+    2 Cov(S_m, S_n) &=  Var(S_n + S_m) - (Var(S_m) + Var(S_n))\\
+                    &= Var (X_{1} + \dots X_n + X_{1} + \dots + X_m) \\&- (Var(X_{1} + \dots X_m) + Var(X_1 + \dots + X_n))\\
+                    &= Var(2X_{1} + \dots + 2X_m + X_{m + 1} + \dots + X_n)\\
+                    &- (2Var(X_{1}) + \dots + 2Var(X_m) + Var({X_{m + 1}}) + \dots + Var(X_n))\\
+                    &= 4(Var(X_{1}) + \dots + Var(X_m)) + Var(X_{m + 1}) + \dots + Var(X_m)\\
+                    &- 2(Var(X_{1}) + \dots + Var(X_m)) - (Var(X_{m + 1}) + \dots + Var(X_n))\\
+                    &= 2(Var(X_{1}) + \dots + Var(X_m))\\
+                    &= 2(Var(X_{1} + \dots + X_m))\\
+                    &= 2 Var(S_m)
+\end{align*} 
+
+So we get, 
+\begin{align*}
+    2Cov(S_m, S_n) &= 2Var(S_m)\\
+    Cov(S_m, S_n) &= Var(S_m)\\
+\end{align*}
+
+And we get, 
+\begin{align*}
+    Var(S_m) &= Var(X_{1}) + \dots + Var(X_m)\\
+             &= m \sigma^2 \quad  \text{  if } m < n
+\end{align*}
+
+
+
+
+\subsection*{Problem 6}
+We have $X_{1},X_{2}, \dots, X_n$ are independent r.v each with distribution function  $F$ and density $f$. $U = \min \{X_{1}, \dots, X_n\}$ and $V = \max \{X_{1}, \dots, X_n\}$. The joint cdf of $U, V$ can be seen as, 
+\begin{align*}
+    F_{U,V}(u,v) = \P(U \le u, V \le v)
+\end{align*}
+
+Now note that for $V \le v$ we need each $X_n \le v$ as $V$ is the max so there cannot be a $X_n$ with value greater than $v$. Now if we have each $X_n \le v$. For $U$ note that if we need $U > u$ then we need all $X_n > u$ so for $U \le u$ we have for all $X_n$ that $u \le X_n \le v$. So now our solution would be the probability that all $V  \le v$ minus that when $U \ge u$ and $V \le v$ this is, 
+\begin{align*}
+    F_{U,V}(u,v) = (F(v))^{n} - (F(v) - F(u))^{n}
+\end{align*}
+
+So, 
+\begin{align*}
+    \frac{\partial }{\partial u} \frac{\partial }{\partial v} F_{U,V}(u,v) &=     \frac{\partial }{\partial u} \frac{\partial }{\partial v} (F(v))^{n} - (F(v) - F(u))^{n}\\
+                                                                           &=      \frac{\partial }{\partial u} [n(F(v))^{n -1 } f(v) - n(F(v) - F(u))^{n - 1} f(v)]\\
+                                                                           &=  n f(v)    \frac{\partial }{\partial u} [(F(v))^{n -1 } - (F(v) - F(u))^{n - 1}]\\
+                                                                           &= n f(v)  [-(n - 1) (F(v) - F(u))^{n - 2} (-f(u))]\\
+                                                                           &= n  (n - 1) f(u) f(v) (F(v) - F(u))^{n - 2}
+\end{align*}
+\subsection*{Problem 20}
+We have $X $ and $Y$ are r.v with vector $(X,Y)$ uniformly distributed in $R = \{(x,y) : 0 < y < x < 1\}$. We need to find joint probability of $(X,Y)$ first.
+
+\vspace{1em}
+
+Note that the area of the regions in $\int_{0}^{1}  \int_{y}^{1}  \ dx \ dy = \int_{0}^{1} (1 - y) dy = \frac{1}{2}$. So the joint probability of $X,Y$ is $\frac{1}{\frac{1}{2}} = 2$ for $0 < y < x < 1$. Now to find $\P(X + Y < 1)$. Note that as $x + y < 1$ we have $x < 1 - y$ but we also have $ x > y$ so we get $y < x < 1 - y$. Now for bounds on $y$ note that $y$ goes from $0$ to $1$. But $y$ can't be greater than $\frac{1}{2}$ as that would be we have $x > 1 / 2$ and $x + y > 1 / 2$ So we have, 
+\begin{align*}
+    \P(X + Y < 1) &= \int_{0}^{\frac{1}{2}} \int_{y}^{1 - y}  2 \ dx \ dy\\
+                  &=  \int_{0}^{\frac{1}{2}} 2 [1- y - y]  \ dy\\
+                  &=  \int_{0}^{\frac{1}{2}} 2 [1 - 2y]  \ dy\\
+                  &=  \int_{0}^{\frac{1}{2}} 2 - 4y \ dy\\
+                  &=  [2y - 2y^2]_0^{\frac{1}{2}}\\
+                  &= 1 - \frac{1}{2} = \frac{1}{2}
+\end{align*}
+
+\vspace{1em}
+
+Now to find $f_X(x)$ and $EX$. We have the joint as $2$ and to get $f_X$ we need to integrate over $y$. As $y$ goes from $0$ to $x$ we have, 
+\begin{align*}
+    f_X(x) &= \int_{0}^{x}  2 \ dy\\
+           &= 2[y]_0^{x}\\
+           &= 2x
+\end{align*}
+
+So the expectation of $X$ is $\int_{0}^{1} x \cdot 2x \ dx= \frac{2x^{3}}{3}]_0^{1} = \frac{2}{3}$. Now we have $f_{Y \mid X}(y \mid x) = \frac{f(x,y)}{f_X(x)} = \frac{2}{2x} = \frac{1}{x}$. So $E(Y \mid X = x) = \int_{0}^{x} y \frac{1}{x} dy = \frac{y^2}{2x}]_0^{x} = \frac{x^2}{2x} = \frac{x}{2}$ for $0 < x < 1$
+
+\end{document}
+

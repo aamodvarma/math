@@ -1,0 +1,184 @@
+\section{Index Arithmetic and Power Residues}
+Recall if $r$ is a primitive root mod $m$, then the set, 
+\[
+    \{r, r^2, r^{3}, \dots, r^{\phi(m)}\}
+\]
+is a reduced residue system.
+
+\begin{definition}
+    Let $r$ be a primitive root modulo $m$. If $(a, m) = 1$, then the \emph{index  of $a$ relative to $r$}, denoted $ind_r a$, is the least positive integer $n$ for which, 
+    \[
+        r^{n} \equiv a \pmod m
+    \]
+\end{definition}
+
+\begin{note}
+    The $ind_r a$ always exists and satisfies $1 \le ind_r a \le \phi(m)$.
+\end{note}
+\begin{eg}
+    $3$ is a primitive root modulo $7$. So we have, 
+    \[
+        3^{1} \equiv 3, \dots, 3^{6} \equiv 1 \pmod 7
+    \]
+    So we have $ind_3 3 = 1, ind_3 2  = 2, \dots, ind_3 1 = 6$
+\end{eg}
+
+If $a, b$ are co prime to $m$ and $a \equiv b \pmod m$ then, 
+\[
+ ind_r a = ind_r b   
+\]
+
+Indices enjoy properties of logarithms,
+
+\begin{prop}
+    Let $r$ be a primitive root modulo $m$ and $a, b \in \Z$ s.t $(a, b) = 1$. We have the following,
+    \begin{enumerate}
+        \item $ind_r 1 \equiv 0 \pmod {\phi(m)}$
+        \item $ind_r r \equiv 1 \pmod {\phi(m)}$
+        \item $ind_r (ab) \equiv ind_r a + ind_r b \pmod {\phi(m)}$
+        \item $ind_r(a^{n}) \equiv n \ ind_r a \pmod {\phi(m)}$
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}
+    $(a)$ and $(b)$ are clear. For $(c)$, by definition we have, 
+    \[
+        r^{ind_r a} \equiv a \pmod m \text{ and } r^{ind_r b} \equiv b \pmod m
+    \]
+
+    So we have, 
+    \begin{align*}
+        r^{ind_r a + ind_r b} \equiv ab \equiv r^{ind_r (ab)} \pmod m
+    \end{align*}
+
+    Now using Prop 5.2 we have $ind_r a + ind_r b \equiv ind_r (ab) \pmod {\phi(m)}$
+
+    \vspace{1em}
+    
+    For $(d)$ we have by definition, 
+    \begin{align*}
+        r^{ind_r (a^{n})} \equiv a^{n} \pmod m \text{ and } r^{n ind_r a} \equiv r^{ind_r a}^{n} \equiv a^{n} \pmod m
+    \end{align*}
+
+    So again by Prop 5.2 we have, 
+    \[
+        n\ ind_r a \equiv ind_r (a^{n}) \pmod {\phi(m)}
+    \] 
+\end{proof}
+
+\begin{eg}
+    Working mod 7 with primitive root $3$.
+    \vspace{1em}
+    
+    We have $ind_3 2 = 2,ind_3 3 = 1$ so $ind_3 6 \equiv ind_3 (2 \cdot 3) = ind_3 (2) + ind_3 (3) = 3 \pmod 6$
+
+    \vspace{1em}
+    
+\end{eg}
+
+Suppose $r$ is a primitive root modulo $m$ and $(a, m) = (b, m)  = 1$ and consider for $n > 0$, 
+\[
+    ax^{n} \equiv b \pmod m
+\]
+
+The congruence above is equivalent to, 
+\[
+    ind_r (ax^{n}) \equiv ind_r b \pmod {\phi(m)}
+\]
+So can write this as, 
+\begin{align*}
+    ind_r(a) + n \ ind_r(x) &\equiv ind_r (b) \pmod {\phi(m)}\\
+    n \ ind_r (x) &\equiv ind_r (b) - ind_r(a) \pmod  {\phi(m)}\\
+\end{align*}
+
+\begin{eg}
+    Find solutions to, 
+    \[
+        6 x^{4} \equiv 3 \pmod 7
+    \]
+
+    As $3$ is a primitive root we have,
+    \begin{align*}
+        4 \ ind_3(x) &\equiv ind_3 (3) - ind_3 (6) \pmod 6 \\
+        4 \ ind_3 (x) & \equiv 4 \pmod 6
+    \end{align*}
+
+    We can rewrite this as, 
+    \[
+        2y \equiv 2 \pmod 3
+    \]
+
+    and we get $y \equiv 1 \pmod 3$ which is $y \equiv 1, 4 \pmod 6$, thus $x \equiv 3$ and $x \equiv 3^{4} \equiv 4 \pmod 7$ would be solutions.
+\end{eg}   
+
+\begin{definition}
+    Let $a, m, n \in \Z$ with $m, n > 0$ and $(a, m) = 1$. Then $a$ is an $n'th$ power residue modulo $m$ if the congruence $x^{n} \equiv a \pmod m$ has a solution $x$.
+\end{definition}
+
+\begin{eg}
+    $6$ is a third power residue modulo $7$. $3$ is a $4'th$ power residue modulo $13$.
+\end{eg} 
+
+\begin{theorem}
+    Let $a ,m , n  \in \Z$, $m , n > 0$ and $(a, m) = 1$. If $m$ has a primitive root, then $a$ is an $n'th$ power residue modulo $m$ if and only if, 
+    
+    \[
+        a^{\phi(m) / d} \equiv 1 \pmod m
+    \]
+
+    where $d = (n, \phi(m))$. Furthermore, in this case, the congruence $x^{n} \equiv a \pmod m$ has exactly $d$  solutions modulo $m$.
+\end{theorem}
+
+\begin{proof}
+    Let $r$ be a primitive root modulo $m$. Then then congruence $x^{n} \equiv a \pmod m$ is equivalent, 
+    \[
+        n \ ind_r x \equiv ind_r a \pmod {\phi(m)}
+    \]
+
+    this is solvable if and only if $ d = (n, \phi(m))$ divides $ind_r a$ which if true will give us $d$ incongruent solutions.
+
+    \vspace{1em}
+    
+
+    The condition that $d \mid ind_r a$ is equivalent to, 
+    \[
+        \frac{\phi(m)}{d} ind_r a \equiv 0 \pmod {\phi(m)}
+    \]
+
+    which is the same as, 
+    \[
+        a^{\phi(m) / d} \equiv 1 \pmod m
+    \]
+\end{proof}
+
+\begin{corollary}
+    Let $p$ be an odd prime and $a \in \Z$ with $p \nmid a$. Then $a$ is a quadratic residue if and only if, 
+    \[
+        a^{\frac{p - 1}{2}} \equiv 1 \pmod p
+    \]
+
+    Moreover, there are exactly $2$ incongruent solutions in this case.
+\end{corollary}
+
+\begin{eg}
+    Let $a = 6, m = 7, n = 3$. A primitive root exist, namely $r = 3$. The congruence, 
+    \[
+        x^{3} \equiv 6 \pmod (7)
+    \]
+
+    has $d = (3, 6) = 3$ solutions.
+\end{eg}
+
+\begin{eg}
+    Find all 15'th power residues modulo $9$. Since it has a primitive root by PRT, the congruence $x^{15} \equiv a \pmod 9$ is equivalent to, 
+    \[
+        a^{\phi(9) / d} \equiv 1 \pmod 9
+    \]
+    So we have $d = (15, 6) = 3$. Thus we must have, 
+    \[
+        a^{6 / 3} \equiv a^2 \equiv 1 \pmod 9
+    \]
+
+    Then $a \equiv \pm 1 \pmod 9$.
+\end{eg}
+

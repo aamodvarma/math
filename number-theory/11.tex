@@ -1,0 +1,211 @@
+\begin{definition}
+    Let $n \in \Z$, the nuimber of positive divisors, denoted $\tau(n)$, is defined by $\tau(n) = \#\{d \in \Z: d > \theta, d \mid n\}$
+\end{definition}
+\begin{theorem}
+    $\tau(n)$ is multiplicative
+\end{theorem}
+\begin{proof}
+    Observe that, 
+    $$
+    \tau(n) = \sum_{d \mid n} 1 
+    $$
+    the function $f(n) = 1$  for all $n$ is a multiplicative function so $\tau(n)$ is multiplicative by theorem 3.1
+\end{proof}
+\begin{note}
+    Since $\tau(n)$ is multiplicative it's determined by it's behavior on prime powers.
+\end{note}
+\begin{theorem}
+    Let $p$ be prime and let $a \in \Z$, then $\tau(p^{a})= a + 1$ 
+\end{theorem}
+\begin{proof}
+   As $p$ is a prime, the only divisors of $p^{a}$ is $1, p, p^2, p^{3},  \dots, p^{a}$ which add up to $a + 1$ divisors.
+\end{proof}
+\begin{theorem}
+    Let $n = p_{1}^{a_{1}} \dots p_r^{a_r}$ with $p_{1}, \dots, p_{2}$ are distinct primes and $a_{1}, \dots, a_r$ positive integers.  Then, 
+    $$
+    \tau(n) = \prod_{i = 1}^{r} (a_i + 1)
+    $$
+\end{theorem}
+\begin{proof}
+   We have $\tau(n) = \tau(p_{1}^{a_{1}} \dots p_r^{a_r})$  and as $\tau$ is multiplicative we have, 
+   \begin{align*}
+       \tau(n) &= \tau(p_{1}^{a_{1}} \dots p_r^{a_r})\\
+               &= \tau(p_{1}^{a_{1}}) \dots \tau(p_r^{a_r})\\
+               &= (a_{1} + 1)(a_{2} + 1) \dots (a_r + 1)
+   \end{align*}
+\end{proof}
+\begin{note}
+    Look at Dirchlet's divisor problem
+\end{note}
+
+
+\begin{eg}
+    Consider $504 = 2^{3} 3^2 7$. So $\tau(504) = (3 + 1)(2 + 1)(1 + 1) = 4 \cdot 3 \cdot 2 = 24$
+\end{eg}
+
+
+\section{Sum of divisors}
+\begin{definition}
+   Let $n \in \Z, n > 0$. The sum of divisors function, denoted $\sigma(n)$ is the function defined by, 
+   $$
+    \sigma(n) = \sum_{d \mid n} d
+   $$
+\end{definition}
+\begin{theorem}
+    $\sigma(n)$ is a multiplicative function.
+\end{theorem}
+\begin{proof}
+    Note that $f(d) = d$ is a multiplicative function (why?). So $\sum_{d \mid n}d$ is a multiplicative function.
+\end{proof}
+
+\begin{theorem}
+    Let $p$ be a prime and $a> 0$ then, 
+    $$
+        \sigma(p^{a}) = \frac{p^{a + 1} - 1}{p  - 1}
+    $$
+\end{theorem}
+\begin{proof}
+   We have the positive divisors of $p^{a}$ as $1, p, p^2, p^{3}, \dots, p^{a}$. So we get,
+   \begin{align*}
+       \sigma(p^{a}) &= 1 + p + p^2 + \dots + p^{a}\\
+       p \sigma(p^{a}) &= p + p^2 + \dots + p^{a + 1}\\
+       \sigma(p^{a})(p - 1) &=  p^{a + 1} - 1\\
+       \sigma(p^{a}) &=   \frac{p^{a + 1} - 1}{p  - 1}
+   \end{align*}
+\end{proof}
+\begin{theorem}
+   Let $n = p_{1}^{a_{1}} \dots p_r^{a_r}$  then, 
+   $$
+   \sigma(n) = \prod_{i = 1}^{r} \frac{p_{i}^{a_i + 1} - 1}{p_i - 1}
+   $$
+\end{theorem}
+
+\begin{eg}
+    Consider $504 = 2^{3} 3^2 7$. So, 
+    $$
+        \sigma(504) = \frac{2^{4}- 1}{ 2- 1} \cdot   \frac{3^{3} - 1}{3 - 1} \cdot \frac{7^2 - 1}{7 - 1}
+    $$ 
+
+\end{eg}
+
+\section{Perfect Numbers}
+\begin{definition}
+    Let $n \in \Z, n > 0$ then $n$ is a perfect number if $\sigma(n) = 2n$
+\end{definition}
+\begin{note}
+    This is equivalent to saying $\sigma(n) - n = n$. Or that the sum of proper divisors (divisors except itself) is $n$.
+\end{note}
+\begin{eg}
+    6 is a perfect number as $1 + 2 + 3 = 6$. 28 is  a perfect number $1 + 2 + 4 + 7 + 14 = 28$
+\end{eg}
+
+\begin{theorem}
+    Let $n \in \Z, n > 0$. Then $n$ is an even perfect number if and only if, 
+    $$
+        n = 2^{p - 1} (2^{p} - 1)
+    $$
+    for some $p$ and $2^{p} - 1$ should be prime.
+\end{theorem}
+\begin{note}
+    This theorem gives a characterization of even perfect numbers and a bisection between even perfect numbers and mersenne primes.
+\end{note}
+\begin{proof}
+    ($\implies$) Assume that $n$ is an even perfect number. So we can write $n = 2^{a}b$ where $a, b\in \Z, a> 1, b$ is an odd number.
+
+    \vspace{1em}
+    
+    We have, 
+    \begin{align*}
+        \sigma(2^{a}b) &= \sigma(2^{a})\sigma(b)\\
+                       &= \frac{2^{a + 1} - 1}{ 2 - 1} \sigma(b)\\
+                       &= (2^{a + 1} - 1) \sigma(b)
+    \end{align*}
+
+    Also, since $n$ is perfect, we have, 
+    $$
+        \sigma(2^{a} b) = 2 \cdot 2^{a}b = 2^{a + 1}b
+    $$
+
+    Thus, 
+    \begin{align*}
+        (2^{a + 1} - 1) \sigma(b) &= 2^{a + 1} b\\
+    \end{align*}
+
+    Note that $2^{a + 1} \mid (2^{a + 1} - 1) \sigma(b)$. As $(2^{a + 1} , 2^{a + 1} - 1) = 1$ we have $2^{a + 1} \mid \sigma(b)$. So we can write $\sigma(b) = 2^{a + 1} c$ for some $c \in \Z, c> 0$. Substituting this we get,
+
+    \begin{align*}
+        (2^{a + 1} - 1) (2^{a + 1}c) &= 2^{a + 1} b\\
+        (2^{a + 1} - 1) c&= b
+    \end{align*}
+    We now show that $c = 1$. Suppose $c > 1$ then $b$ has at least 3 distinct divisors namely $1, b, c$. Then $\sigma(b) \ge 1+ c + b$ however we also have $\sigma(b) = 2^{ a + 1}c = (2^{a + 1} - 1 + 1)c = (2^{a + 1} - 1)c + c = b + c$. A contradiction. Thus we have $c = 1$ and, 
+    
+    $$
+        b = 2^{a + 1} - 1
+    $$ and $\sigma(b) = b + 1$ thus $b$ is prime. So we have $2^{a + 1} - 1$ is prime. This implies that the exponent (a + 1) is also prime. And hence $b$ is a mersenne prime and $n = 2^{a} (2^{a + 1} - 1)$.
+
+    \vspace{1em}
+    
+    $(\impliedby)$ Assume that $n = 2^{p - 1} (2^{p} - 1)$ with both $p$ and $2^{p} - 1$ both prime. Now, 
+    \begin{align*}
+        \sigma(2^{p - 1} (2^{p} - 1)) &= \sigma(2^{p - 1}) \sigma(2^{p} - 1)\\
+                                      &= \frac{2^{p} - 1}{2 - 1} (2^{p} - 1 + 1)\\
+                                      &= (2^{p} - 1)(2^{p}) = 2 \cdot 2^{p - 1}(2^{p} - 1)
+    \end{align*} 
+\end{proof}
+
+\section{The M\"{o}bius function}
+\begin{definition}
+    Let $n \in \Z, n > 0$ the Mobius function denoted $\uu(n)$ is defined as, 
+    $$
+       \mu(n) = \begin{cases}
+           1 \quad \text{ if $n = 1$ }\\
+           0 \quad \text{ if $p^2 \mid n$ for some $p$ }\\
+           (-1)^{r} \quad \text{ if $n = p_{1} \dots p_r$  where $p_i$ is distinct.}
+
+       \end{cases} 
+    $$
+\end{definition} 
+\begin{eg}
+    Since $504 = 2^3 3^2 7$ and we have $\mu(504) = 0$
+\end{eg}
+
+\begin{theorem}
+    $\mu(n)$ is multiplicative.
+\end{theorem}
+\begin{proof}
+    Let $m, n$ by relatively prime positive integers. We need to show that $\mu(mn) = \mu(m)\mu(n)$. If $m$ or $n$ is 1 then it's clear. So assume that neither one is equal to $1$. Note that $m$ or $n$ is divisible by a prime square if and only if $mn$ is divisible by a prime square (as $(m,n) = 1$). In this case both $\mu(m)\mu(n)$ and $\mu(mn)$ are $0$. Suppose now that $m, n$ are products of distinct primes. So, 
+    $$
+        m = p_{1}, \dots, p_r, \quad n = q_{1}, \dots, q_s
+    $$
+    Since $(m, n) = 1$ the entire set is distinct. Thus, 
+    $$
+        \mu(mn) = \mu(p_{1} \dots p_r q_{1} \dots q_r) = (-1)^{r + s} = -1^{r} -1^{s} = \mu(m) \mu(n).
+    $$
+
+ 
+\end{proof}
+
+\begin{prop}
+    Let $n \in \Z, n > 0$. Then, 
+    $$
+       \sum_{d \mid n} \mu(d) = \begin{cases}
+            1 \quad \text{ if $n = 1$ }, \\
+            0 \quad \text{ if $n > 1$ }
+        \end{cases}
+    $$
+\end{prop}
+
+\begin{proof}
+    Since $\mu$ is multiplicative so is $F(n) = \sum_{d \mid n}{ \mu(d)} $ by theorem 3.1. Thus we can calculate $F(n)$ by calculating $f(p^{a})$ for prime powers.
+    \vspace{1em}
+    
+    \begin{align*}
+        F(p^{a}) &= \sum_{d \mid p^{a}} \mu(d)\\
+                 &= \mu(1) + \dots + \mu(p^{a})\\
+                 &=  \mu(1) + \mu(p)\\
+                 &= \mu(1) + (-1) = 0
+    \end{align*} 
+
+    Also $F(1) = 1$.
+\end{proof}
+

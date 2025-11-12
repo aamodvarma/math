@@ -166,5 +166,10 @@ $\phi(n)$ is the number of integers smaller than $n$ that is coprime to $n$.
 	n = \sum_{d \mid n} | s_d | = \sum_{d \mid n} \phi(n / d) = \sum_{d \mid n} \phi(d)
 	$$
 
-	As $\{d : d \mid n\} = \{n / d : d \mid n\}$
 \end{proof}
+\begin{note}
+	Every number smaller than $N$ has some GCD with $n$ and this gcd is unique, hence that number falls into one of the $s_d$. We can rewrite $s_d = \{1 \le \frac{m}{d} \le \frac{n}{d} : (\frac{m}{d},\frac{n}{d} = 1)\}$. The count of all elements in $s_d$ must now equal to the count of all the numbers smaller than $\frac{n}{d}$ which are coprime to it.
+\end{note}
+\begin{note}
+	Here we have $\sum_{d \mid n}\phi(\frac{n}{d}) =  \sum_{d \mid n}\phi(d)$ as for every $d$ we also have $n /d$ a divisor of $n$. So the set of all divisors of $n, \{d : d \mid n\}$ is the same as this set,  $\{n / d : d \mid n\}$ which is also the set of all divisors.
+\end{note}

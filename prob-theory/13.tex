@@ -1,0 +1,421 @@
+\chapter{Multivariate distributions and independence}
+
+\section{Random vectors and independence}
+
+\begin{definition}
+    The joint distribution function of two random variables $X, Y$ is,
+    
+    \[
+        F_{X,Y}(x, y) = \P(X \le x, Y \le y)
+    \]
+\end{definition}
+\begin{remark}
+    We have similar properties to ordinary distributions like, 
+    \[
+        \lim_{x,y \to -\infty} F(x, y) = 0
+    \] 
+    \[
+        \lim_{x,y \to \infty} F(x, y) =1
+    \] 
+
+    \[
+        F(x_{1}, y_{1}) \le F(x_{2}, y_{2}) \quad \text{ if } x_{1} \le x_{2}, y_{1} \le y_{2}
+    \] 
+
+    Given the joint distribution of two r.v we can find that of a single variable as follows,
+    
+    \[
+        F_X(x) = \P(X \le x) = \P(X \le x, Y \le \infty) = F_X(x, \infty)
+    \]
+
+    More precisely we have,
+    
+    \[
+        F_X(x) = \lim_{y \to \infty} F(x, y) \qquad          F_Y(y) = \lim_{x \to \infty} F(x, y)
+    \]
+    These are called the marginal distribution functions of $X$ and $Y$.
+\end{remark}
+
+\begin{definition}
+    We call $X, Y$ independent if $$F(X, Y) = F(X) F(Y)$$ or $$\P(X \le x, Y \le y) = \P(X \le x) \P(Y \le y)$$
+\end{definition}
+
+
+\section{Joint density functions}
+For single variables we have $X$ is cont if the distribution function can be written as,
+
+\[
+    F_X(x) = \P(X \le x) = \int_{-\infty}^{x}  f(x) dx \quad \text{ for } x \in \R
+\]
+
+\begin{definition}
+    $X,Y$ are called jointly continuous r.v if the distribution function can be expressed as,
+    
+    \[
+        F_{X,Y}(x,y) = \P(X \le x, Y \le y) = \int_{-\infty}^{x} \int_{-\infty}^{y}  f_{X,Y}(u, v) du dv
+    \]
+\end{definition}
+
+We can similar find $f$ from $F$ by finding the second order partial derivative of $F$ as follows,
+
+\[
+    f_{X,Y}(x,y) =\begin{cases}
+        \frac{\partial^2}{\partial x \partial y} F_{X,Y}(x,y) & \text{ if it exists }\\
+        0 & \text{ otherwise }
+    \end{cases}
+\]
+
+We have similar properties to single variable such as,
+
+\[
+    f_{X,Y}(x,y) \ge 0
+\]
+and,
+
+\[
+    \int_{-\infty}^{\infty} \int_{-\infty}^{\infty}  f_{X,Y}(u,v) du \: dv = 1
+\]
+
+In general if a function $f$ satisfies the above it is a joint density function of some pair of r.v $X,Y$.
+
+\vspace{1em}
+
+We see that $f$ in this case is also not directly analogous to the joint probability mass function in the discrete case. As we can $f(x,y) \ge 1$ in some cases. But a more analogous equivalent is to consider a small $\delta x, \delta y$ rectangle as follows,
+\[
+\P(x \le X \le x + \delta x, y \le Y \le y + \delta y) \approx f_{X,Y}(x, y)\: \delta x \: \delta y
+\]
+
+\section{Marginal density functions and Independence}
+We can find the marginal density function of a r.v as follows,
+
+
+
+\begin{align*}
+    f_X(x) &= \frac{d}{dx} \P(X \le x, Y \le \infty)\\
+           &= \frac{d}{dx} \int_{-\infty}^{x}  \int_{-\infty}^{\infty} f_{X,Y}(u,v) du \: dv\\
+           &= \int_{-\infty}^{\infty}  f_{X,Y}(x,v) dv
+\end{align*}
+
+If $X,Y$ are independent then we also have,
+\begin{align*}
+    F(x,y) &= F(x)F(y)\\
+    f(x,y) &=  f(x)f(y)
+\end{align*}
+
+\begin{theorem}
+    Two jointly continuous variables are independent if and only if their joint density function can be written as,
+    
+    \[
+        f_{X,Y}(x,y) = g(x)h(y) \quad \text{ for } x,y \in \R
+    \]
+    i.e. as a product of a function of the first variable and another of the second variable.
+\end{theorem}
+
+\begin{eg}
+    Say we have, 
+    \[
+        f(x, y) = \begin{cases}
+            e^{-x-y} & \text{ if } x, y > 0\\
+            0 & \text{ otherwise }
+        \end{cases}
+    \]
+
+    Then we have the marginals as, 
+    \[
+        f_X(x) = \int_{-\infty}^{\infty}  f(x, y) dy = \int_{-\infty}^{\infty} e^{-x - y} dy = e^{-x}  \text{ if x $>$ 0, 0 otherwise }
+    \]
+
+    Symmetrically we have $f_Y(y) = e^{-y}$ if $y > 0$ and we can also conclude that $X$ and $Y$ are independent
+\end{eg}
+
+
+\begin{ex}
+    We have, 
+    \[
+        f(x, y) = \begin{cases}
+            cx & \text{ if } 0 < y < x < 1\\
+            0 & \text{ otherwise }
+        \end{cases}
+    \]
+    We know the density function double integrates to 1 so we have, 
+    \begin{align*}
+        1 &= \int_{0}^{1}  \int_{y}^{1} cx \: dx \: dy \\
+          &= \int_{0}^{1} [\frac{cx^2}{2}]_y^{1} \: dy\\ 
+          &= \int_{0}^{1} \frac{c}{2} - \frac{cy^2}{2} \:dy\\
+          &=  [\frac{cy}{2} - \frac{cy^3}{6}]_0^{1}\\
+          &= \frac{c}{2} - \frac{c}{6} = \frac{c}{3}
+    \end{align*}
+
+    So $c = 3$
+
+    Now to find the marginals we need to integrate over each of the variables so we have, 
+    \begin{align*}
+        f_X(x) &= \int_{-\infty}^{\infty} f(x,y) \: dy\\
+               &= \int_{0}^{x} 3x \: dy\\
+               &= 3x^2
+    \end{align*}
+
+    Marginal over  $y$ is, 
+    \begin{align*}
+        f_Y(y) &= \int_{-\infty}^{\infty} f(x,y) \: dx\\
+               &= \int_{y}^{1} 3x \: dx\\
+               &= [\frac{3x^2}{2}]_y^{1} = \frac{3}{2} - \frac{3y^2}{2}
+    \end{align*}
+
+    Clearly we do not have $f(x,y) = f(x)f(y)$ so hence they are dependent.
+\end{ex}
+
+\begin{ex}
+    Need to find if var are independent and $\P(X > Y) $ and $\P(Y > Z)$ for,
+    \[
+        f(x,y,z) = \begin{cases}
+            8xyz & \text{ if } 0 < x,y,z < 1\\
+            0 & \text{ otherwise }
+        \end{cases}
+    \]
+\end{ex}
+\begin{solution}
+    We have, 
+    \begin{align*}
+        f_X(x) &= \int_{0}^{1} \int_{0}^{1} f(x,y,z) \: dy \: dz\\
+               &= \int_{0}^{1} \int_{0}^{1}  8xyz \: dy \: dz\\
+               &= 4x \frac{z^2}{2}\\
+               &= 2x
+    \end{align*}
+
+    Because of symmetric we have marginal over y and z are $2y$ and $2z$ respectively. Now we also have $f(x,y,z) = f(x)f(y)f(z)$ hence we have independence for all $x,y,z$.
+
+    \vspace{1em}
+    
+    To find $\P(X > Y)$ we have, 
+    \begin{align*}
+        \P(X > Y) &= \int_{0}^{1}  \int_{y}^{1} \int_{0}^{1} 8xyz \: dz\: dx\: dy\\
+                  &=  \int_{0}^{1}  \int_{y}^{1} 4xy  dx\: dy\\
+                  &=  \int_{0}^{1} 4y \int_{y}^{1} x  dx\: dy\\
+                  &=   \int_{0}^{1} 4y \frac{x^2}{2}]_y^{1} \: dy\\
+                  &=   \int_{0}^{1} 4y \left ( \frac{1}{2} - \frac{y^2}{2}\right ) \: dy\\
+                  &=   \int_{0}^{1}  2y - 2y^{3} \: dy\\
+                  &= [y^2 - \frac{y^{4}}{2}]_0^{1}\\
+                  &= \frac{1}{2}
+    \end{align*}
+\end{solution}
+
+\section{Sums of continuous random variables}
+If $X,Y$ have joint density function $f_{X,Y}$ then, 
+\[
+    \P(Z \le z) = \P(X + Y \le z) = \int_{}^{} \int_{A}^{} f_{X,Y}(x,y) \ dx \ dy
+\]
+
+Here $A = \{(x,y) \in \R^2: x + y \le z \}$. So this is equivalent to,
+\begin{align*}
+    \P(Z \le z) &= \int_{-\infty}^{\infty} \int_{-\infty}^{z - y}  f(x,y) \ dx \ dy\\
+                &= \int_{-\infty}^{\infty} \int_{-\infty}^{z} f(x, y - x) \ dy \ dx
+\end{align*}
+
+Differentiating with respect to $z$ we have t he density function of Z which is, 
+\[
+    f_Z(z) = \int_{-\infty}^{\infty}  f(x, z - x) \ dx
+\]
+\begin{theorem}
+    If $X,Y$ are independent and continuous, then $Z = X + Y$ is, 
+    \[
+        f_Z(z) = \int_{-\infty}^{\infty}  f_X(x) f_Y(z - x) \ dx 
+    \]
+\end{theorem}
+
+\section{Conditional density functions}
+Say $X,Y$ are jointly continuous r.v. Then we have, 
+\[
+    f_Y(y) = \int_{-\infty}^{\infty}  f(x,y) \ dx
+\]
+
+Now when considering conditional density, for instance $\P(Y \le y \mid X = x)$ the issue that arises is that we have $\P(X = x) = 0$ unlike int the discrete case. So we have to consider the even $x \le X \le x + \delta x$. So we have, 
+\begin{align*}
+    \P(Y \le y \mid  x \le X \le x + \delta x) &= \frac{\P(Y \le y,  x \le X \le x + \delta x)}{\P(x \le X \le x + \delta x)}
+\end{align*}
+
+Now for the numerator we have, 
+\begin{align*}
+    \P(Y \le y , x \le X \le x + \delta x) &= \int_{-\infty}^{y}  \int_{x}^{x + \delta x} f(x,y) \ dx \ dy\\
+                                           &= \int_{-\infty}^{y}  f_{X,Y}(x, y) \delta x \ dy
+\end{align*}
+
+And similar, 
+\begin{align*}
+    \P(Y \le \infty, x \le X \le x + \delta x) &= \int_{-\infty}^{\infty}  \int_{x}^{ x + \delta x}  f(x,y) \ dx \dy\\
+                                 &= \int_{x}^{x +\delta x}  f_X(x) \ dx\\
+                                 &=  f_X(x) \delta x
+\end{align*}
+
+So we have, 
+\begin{align*}
+    \P(Y \le y , x \le X \le x + \delta x) &= \frac{\int_{-\infty}^{y} f_{X,Y} \ dy \ \delta x }{f_X(x) \delta x}\\
+                                           &= \int_{-\infty}^{y} \frac{f_{X,Y}(x, v)}{f_X(x)} \ dv\\
+                                           &= G(y)
+\end{align*}
+
+So we have $G$ a distribution function with density function $g(y) = \frac{f_{X,Y}(x,y)}{f_X(x)}$.
+
+\begin{theorem}
+    Conditional density of $Y$ given $X = x$ is denoted $f_{Y \mid X} ( . \mid x)$ defined by, 
+    \[
+        f_{Y \mid X} (y \mid x) = \frac{f_{X,Y}(x,y)}{f_X(x)}
+    \]
+\end{theorem}
+
+
+\section{Expectations of continuous r.v}
+\begin{theorem}
+    We have, 
+    \[
+        \E(g(X,Y)) = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty}  g(x,y) f_{X,Y} (x,y) \ dx \ dy
+    \]
+\end{theorem}
+
+Other properties such as the following hold, 
+\begin{enumerate}
+    \item $\E(aX + bY) = a\E(X) + b\E(Y)$
+    \item $\E(XY) = \E(X) \E(Y)$ if $X,Y$ are independent (note that the converse is false, it is only true if $\E(g(X)h(Y)) = \E(g(X)) \E(h(Y))$ is true for all functions $g,h: \R \to \R$)
+\end{enumerate}
+
+\begin{definition}[Conditional expectation]
+    The conditional expectation of $Y$ given $X = x$, written by $\E(Y \mid X = x)$ is the mean of the conditional density function, 
+    \[
+        \E(Y \mid X = x) = \int_{-\infty}^{\infty} y f_{Y \mid X} (y \mid x) \ dy = \int_{-\infty}^{\infty} y \frac{f_{X,Y}(x,y)}{f_X(x)} \ dy
+    \]
+\end{definition}
+
+We have another useful theorem from this which is, 
+\begin{theroem}
+    If $X,Y$ are jointly cont r.v then we have, 
+    \[
+        \E(Y) = \int_{-\infty}^{\infty}  \E(Y \mid X = x) f_X(x) \ dx
+    \]
+\end{theroem}
+\begin{remark}
+    One way to look at this is to calculate expected value of $Y$, we may first fix a value for $x$ then then compute the expected value and then average over all $x$ later.
+\end{remark}
+
+
+
+
+
+
+
+\section{Normal distribution}
+\subsection*{Univariate Normal}
+The normal r.v is called $\phi(z) = \P(Z = z)$ where $z \approx N(0, 1)$ where, 
+\[
+    f(z) = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2} x^2}
+\]
+\[
+    \phi(z) = \int_{-\infty}^{z}  e^{-\frac{1}{2}x^2} \frac{1}{\sqrt{2\pi}} dx
+\]
+
+
+So $z \in N(0, 1)$ and $\P(a \le Z \le b) = \phi(b) - \phi(a)$
+
+
+\vspace{1em}
+
+If we have $X \in N(\mu, \sigma^2)$ then that means the density is,
+
+\[
+    f_X(x) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{-\frac{(x - \mu)^2}{2 \sigma^2}}
+\]
+
+If $X$ is normal then $aX + b$ is normal. So we have $E(X) = \mu$ and $Var(X) = \sigma^2$
+
+\vspace{1em}
+
+If you take $z = \frac{x - \mu}{\sigma}$ then we have $E(z) = 0$ and $Var(z) = 1$. So $z = N(0, 1)$. 
+
+\vspace{1em}
+
+When we take $\P(X \le a)$ we can write it as, 
+\begin{align*}
+    \P(X \le a) &= \P\left (\frac{x - \mu}{\sigma} \le \frac{a - \mu}{\sigma^ \right )\\
+                &= \phi(\frac{a - \mu}{\sigma})
+\end{align*}
+
+
+Let $X $ from $N(1, 2)$ then find $x'$ such that we have, 
+\[
+    \P(X \ge x') = 0.02
+\]
+
+we can write this as, 
+\[
+    \P(X \le x') = 0.98
+\]
+
+Now, 
+\begin{align*}
+    \P(\frac{x - 1}{\sqrt{2}} \le \frac{x' - 1}{\sqrt{2}}) &= 0.98\\
+    \P(Z\le z') &= 0.98
+\end{align*}
+
+So $\frac{x' - 1}{\sqrt{2}} = z'$ which gives us $x' = 1 + z' \sqrt{2}$
+
+\subsection{Bivariate Normal}
+We have, 
+\[
+    f(x,y) = \frac{1}{2\pi \sqrt{1 - \rho^2}}exp \left (- \frac{1}{2(1 - \rho^2)} (x^2 - 2\rho x y + y^2) \right )
+\]
+
+
+
+Take $x = \begin{bmatrix}
+    x \\ y
+\end{bmatrix}$. We can take $A$ as $A = \begin{bmatrix}
+1 & \rho  \\ \rho & 1 
+\end{bmatrix}$
+
+Then you can write, 
+\[
+    f(x, y) = \frac{1}{2\pi \sqrt{\det A}} e^{-\frac{x^{T} A x}{2 \det A}}
+\]
+
+\begin{note}
+    This is the exponential of a quadratic form
+\end{note}
+
+Now this can be generalized for any $A$ if $A$ is positive definite so we need $x^{T} A x > 0, \forall x \ne 0$ which is the same as saying all eigenvalues of $A$ are positive.
+
+\vspace{1em}
+
+Now if $A$ is symmetric then $A = U^{T} D U$ where $D$ is a diagonal matrix. So we have, 
+\[
+    X^{T} A X = (UX)^{T} D (UX)
+\]
+
+If we write $UX = Y$ then we have, 
+\[
+    Y^{T} D Y = \sum_i \lambda_i y_i^2
+\]
+
+\begin{remark}
+Here as $U$ is unitary the Jacobian is $1$ and the change of variables is simplified.
+\end{remark}
+
+\vspace{1em}
+
+\begin{eg}
+If $X$ is a r.v  with distribution function $F(x)$?
+
+\vspace{1em}
+
+Let $U$ be a uniform in $[0, 1]$. Claim that $F^{-1}(U)$ has d.f $F$ as $\P(F^{-1}(U) \le x) = \P(U \le F(x)) - F(x)$
+\end{eg}
+\begin{eg}
+    If $U$ is uniform in [0, 1] then $-\log (1 - U)$ is exponential with parameter $1$.
+\end{eg}
+
+\begin{eg}
+    If $U$ is uniform $[0, 1]$ then, 
+    \[
+        \phi^{-1}(U) \text{ is } N(0, 1)
+    \]
+\end{eg}
+
+

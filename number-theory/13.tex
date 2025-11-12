@@ -1,0 +1,309 @@
+
+\begin{ex}
+    Find all the quadratic residues modulo 23. We need, 
+    
+    $$
+        x^2 \equiv a \pmod 23
+    $$
+
+    1, 4, 9, 16, 2, 13, 3, 18, 12, 8, 6
+\end{ex}
+
+
+
+\begin{theorem}[Euler's Criterion]
+    Let $p$ be an odd prime and let $a \in \Z$ with $p \nmid a$. Then, 
+    \begin{align*}
+        \left ( \frac{a}{p} \right ) \equiv a^{\frac{p - 1}{2}} \pmod p
+    \end{align*}
+\end{theorem}
+\begin{proof}
+    Suppose that $\left ( \frac{a}{p} \right ) = 1$. Then we have, 
+    $$
+        x^2 \equiv a \pmod p
+    $$
+    has a solution for some $x = x_{0}$. So we have, 
+    \begin{align*}
+        a^{\frac{p - 1}{2}} \equiv (x_{0}^2)^{\frac{p - 1}{2}} \equiv x_{0}^{p - 1} \equiv 1 \equiv \left ( \frac{a}{p} \right ) \pmod p
+    \end{align*}
+
+    Now let $\left ( \frac{a}{p} \right ) = -1$ so $a$ is not a quadratic residues mod $p$. Since $p \nmid a$ for each $1 \le i \le p - 1$ the congruence $ij \equiv a \pmod p$ has a solution $j$ with $1 \le j \le p - 1$. We have $ \ne j$ as otherwise $a$ is a quadratic residues. 
+    \vspace{1em}
+    
+    Thus we can pair the residues $1, 2, \dots, p - 1$ into $\frac{p - 1}{2}$ pairs $(i, j)$ such that ,
+    \begin{align*}
+        ij \equiv a \pmod p
+    \end{align*}
+
+    So this gives us, 
+    $$
+        1 2 \dots (p - 1) \equiv (p - 1)! \equiv a^{\frac{p - 1}{2}} \equiv -1 \pmod p
+    $$
+
+    by Wilson's theorem.
+\end{proof}
+
+
+
+\begin{eg}
+    Calculate $\left ( \frac{3}{7} \right )$. We have, 
+    $$
+        \left ( \frac{3}{7} \right ) \equiv 3^{3} \equiv 27 \equiv -1 \pmod 7
+    $$
+\end{eg}
+\begin{prop}
+    Let $p$ be an odd prime with $a, b \in \Z$ such that $p \nmid a$ and $p \nmid b$. Then, 
+    \begin{enumerate}
+        \item $\left ( \frac{a^2}{p} \right ) = 1$
+        \item If $b \equiv a \pmod p$ then $\left ( \frac{a}{p} \right ) = \left ( \frac{b}{p} \right )$
+        \item $\left ( \frac{ab}{p} \right ) = \left ( \frac{a}{p} \right ) \left ( \frac{b}{p} \right )$
+    \end{enumerate}
+\end{prop}
+
+\begin{proof}
+    1. We have $a^2 \equiv x^2 \pmod p$ has a solution $x = a$.
+    \vspace{1em}
+    
+    2. The congruence $x^2 \equiv a \pmod p$ is solvable if and only if $x^2 \equiv b \equiv a \pmod p$ is solvable.
+
+    \vspace{1em}
+    
+    3. By Euler's criterion we have,
+    \begin{align*}
+        \left ( \frac{ab}{p} \right ) \equiv (ab)^{\frac{p - 1}{2}} \equiv a^{\frac{p - 1}{2}} b^{\frac{p - 1}{2}} \equiv \left ( \frac{a}{p} \right ) \left ( \frac{b}{p} \right ) \pmod p
+    \end{align*}
+
+    Since the only values are $\pm 1$ the congruence implies equality.
+\end{proof}
+
+
+
+\subsection{Further Properties}
+
+If $a = \pm 2^{a_{0}} p_{1}^{a_{1}} \dots p_r^{a_r}$, then
+\begin{align*}
+    \left ( \frac{a}{p} \right ) = \left ( \frac{\pm 1}{p} \right )\left ( \frac{2}{p} \right )^{a_{0}} \left ( \frac{p_{1}}{p} \right )^{a_{1}} \dots \left ( \frac{p_r}{p} \right )^{a_r}
+\end{align*}
+
+To evaluate $\left ( \frac{a}{p} \right )$ we only need to understand $\pm 1, 2, p_{1}, \dots, p_r$ over $p$.
+
+\begin{theorem}
+        Let $p$ be an odd prime. Then $\left ( \frac{-1}{p} \right )\equiv (-1)^{\frac{p - 1}{2}} = \begin{cases}
+            1 \quad \text{ if $p = 1 \pmod 4$ }\\
+            -1 \quad \text{ if $p \equiv 3 \pmod 4$ }
+        \end{cases}$
+\end{theorem}
+\begin{proof}
+    The first equivalence follows from Euler's Criterion. For the second we compute. If $ \equiv 1 \pmod 4$ then $p = 1 + 4k$ for some $k \in \Z$ so, 
+    \begin{align*}
+        \left ( \frac{-1}{p} \right ) \equiv (-1)^{4k} \equiv (-1)^{2k} \equiv 1 \pmod p
+    \end{align*}
+
+    Similarly if $p = 3 + 4k$ then, 
+
+    \begin{align*}
+        \left ( \frac{-1}{p} \right ) \equiv (-1)^{2k + 1} \equiv (-1)^{2k + 1} \equiv -1 \pmod p
+    \end{align*}
+\end{proof}
+
+\begin{lemma}[Gauss' Lemma]
+    Let $p$ be an odd prime and let $a \in \Z, p \nmid a$. Let $n$ be the number of least positive residues of the integers in, 
+    
+    $$
+        a, 2a, 3a, \dots, \frac{(p - 1)}{2} a
+    $$
+    that are greater than $\frac{p}{2}$. Then we have, 
+    $$
+        \left ( \frac{a}{p} \right ) = (-1)^{n}
+    $$
+\end{lemma}
+\begin{proof}
+    Let $r_{1}, \dots, r_n$ be the least positive residues among $a, 2a, \dots, \frac{p - 1}{2}a$ greater than $\frac{p}{2}$ and let $s_1, \dots, s_m$ be the ones less than $\frac{p}{2}$. Note, none of the $r_i, s_j$ are $0$ mod $p$. Consider the $\frac{p - 1}{2}$ integers given by the following list, 
+    $$
+        p - r_{1}, p - r_{2}, \dots, p - r_n, s_{1}, \dots, s_m
+    $$
+    This is the set of residues $1, 2, \dots, \frac{p  -1}{2}$ in some order. All elements satisfy $\ge 1$ and are less than equal to $\frac{p - 1}{2}$ since they are all less than $\frac{p}{2}$. Thus it suffices to show that there are no duplicates. If $p - r_i \equiv p - r_j \pmod p$ then $r_i \equiv r_j \pmod p$ so $r_i = r_j$ but that means that $ak_i \equiv ak_j \pmod p$ but as $(a, p) = 1$ we have $k_i = k_j$ but they are distinct.
+    \vspace{1em}
+    
+    By a similar argument there is not repetition among the $s_j$. The only other possibility is to have $p - r_i \equiv s_j \pmod  p$. This is, 
+    $$
+        -k_i a \equiv k_j a \pmod p
+    $$
+    for some $1 \le k_i, k_j \le \frac{p - 1}{2}$. So we have $-k_i \equiv k_j \pmod p$. But we have $p - k_i \ge p / 2 > \frac{p - 1}{2} > k_j$  so the congruence is impossible. So the list is just, 
+    $$
+        1, 2, \dots, \frac{p - 1}{2}
+    $$
+    Thus multiplying them we have,
+    \begin{align*}
+        1 \cdot 2 \dots \frac{p - 1}{2} \equiv \frac{(p - 1)}{2}! \pmod p\\
+        (-1)^{n} r_{1} \dots r_n s_1 \dots s_m \equiv \frac{p - 1}{2}! \pmod p\\
+        (-1)^{n} (a)(2a) \dots (\frac{p - 1}{2}a)\equiv \frac{p - 1}{2}! \pmod p\\
+        (-1)^{n} a^{\frac{p - 1}{2}} \frac{(p - 1)!}{2} \equiv \frac{(p - 1)!}{2} \pmod p\\
+        (-1)^{n} a^{\frac{p - 1}{2}} \equiv 1 \pmod p\\
+        a^{\frac{p - 1}{2}} \equiv (-1)^{n}  \pmod p\\
+\left ( \frac{a}{p} \right ) \equiv (-1)^{n}  \pmod p\\
+    \end{align*}
+    and $\left ( \frac{a}{p} \right ) = (-1)^{n}$
+\end{proof}
+
+
+\begin{ex}
+    Calculate, $\left ( -\frac{1}{13} \right ), \left ( \frac{2}{17} \right ), \left ( -\frac{14}{1} \right ), \left ( \frac{18}{23} \right )$
+\end{ex}
+
+
+\begin{theorem}
+    Let $p$ be an odd prime. Then,
+    \[
+        \left ( \frac{2}{p} \right ) = (-1)^{\frac{p^2 - 1}{8}} = \begin{cases}
+            1 \quad \text{ if $p \equiv 1,7 \pmod 8$ }\\
+            -1 \quad \text{ if $p \equiv 3,5 \pmod 8$ }\\
+        \end{cases}
+    \]
+\end{theorem}
+\begin{proof}
+    By Gauss' Lemma, we have $\left ( \frac{2}{p} \right ) = (-1)^{n}$ where $n$ is the nmber of least positive residues of, 
+    \[
+        2, 2 \cdot 2, 3 \cdot 2, \dots, \frac{p - 1}{2} \cdot 2
+    \]
+
+    Let $k \in \Z$ with $1 \le k \le \frac{p - 1}{2}$. Note, $2k < \frac{p}{2}$ if and only if $k < \frac{p}{4}$, so there are $\lfloor \frac{p}{4} \rfloor$ values of $k$ for which $2k < \frac{p}{2}$. Thus, there are $\frac{p - 1}{2} - \lfloor \frac{p}{4} \rfloor$ values of $k$ for which $2k > \frac{p}{2}$. Thus we have $n = \frac{p - 1}{2} - \lfloor \frac{p}{4}\rfloor$. To show that $\frac{p^2 - 1}{8}$ and $\frac{p - 1}{2} - \lfloor \frac{p}{4} \rfloor$ always have the same parity. Consider the four cases, $p \equiv 1, 3, 5, 7 \pmod 8$.
+
+
+    \vspace{1em}
+    
+    1. For $p \equiv 1 \pmod 8$. We have $p = 8m + 1$ for some $m \in \Z$. So we have $\frac{p - 1}{2} = \frac{8m}{2} = 4m$ and $\frac{p}{4} = 2m + \frac{1}{4}$ whose floor is $2m$. So we have $4m - 2m = 2m$ which is even. Now $\frac{p^2 - 1}{8}$ is even as well.
+
+    \vspace{1em}
+    2.
+
+    3. 
+
+    4.
+
+    Finally, the last equality follows by a similar case analysis.
+
+\end{proof}
+\begin{eg}
+    For $\left ( \frac{2}{23} \right )$ is $(-1)^{\frac{23^2 - 1}{8}} = 1$
+\end{eg}
+
+\section{Quadratic Reciprocity}
+% \setcounter[theorem][1]
+\begin{theorem}[Law of Quadratic Reciprocity]
+    Let $p,q $ be odd distinct primes. Then,
+    
+    \[
+        \left ( \frac{p}{q} \right ) \left ( \frac{q}{p} \right ) = (-1)^{\frac{p - 1}{2} \cdot \frac{q - 1}{2}} = \begin{cases}
+            1 \quad \text{ if either $p,q \equiv 1 \pmod 4$ } \\ -1 \quad \text{ $p \equiv q \equiv 3 \pmod 4$ }
+        \end{cases}
+    \]
+\end{theorem}
+\begin{remark}
+    Q.R siplifies the calculation of $\left ( \frac{p}{q} \right )$
+\end{remark}
+
+\begin{remark}
+    Which primes are quadratic residues mod 17, i.e eval $p$ such that $\left ( \frac{p}{17} \right ) = 1$ (note that this has a finite solution for $p$). Now consider for which primes $p$ is $17$ a quadratic residue for. (Here we have infinite possibilities for $p$).
+\end{remark}
+
+\begin{eg}
+    Compute $\left ( \frac{7}{53} \right )$. We have $53 \equiv 1 \pmod 4$ so we get $\left ( \frac{7}{53} \right ) \left ( \frac{53}{7} \right ) = 1$. So both have to be equal which we get as,
+    
+    \[
+        \left ( \frac{7}{53} \right ) = \left ( \frac{53}{7} \right ) = \left ( \frac{4}{7} \right ) = 1
+    \]
+\end{eg}
+
+\begin{eg}
+    Compute $\left ( \frac{-158}{101} \right ) =  \left (\frac{-1}{101} \right)   \left (\frac{158}{101} \right) = 1 \cdot \left ( \frac{158}{101} \right ) = \left ( \frac{57}{101} \right ) = \left ( \frac{3}{101} \right )\left ( \frac{19}{101} \right )$.
+
+    \vspace{1em}
+    
+    We have $101 \equiv 1 \pmod 4$ so we have, the above is equal to,
+    \begin{align*}
+        \left ( \frac{-158}{101} \right ) &= \left ( \frac{101}{3} \right ) \left ( \frac{101}{19} \right )\\
+                                          &= \left ( \frac{2}{3} \right ) \left ( \frac{6}{19} \right )\\
+                                          &= (-1) (-1) (- \left ( \frac{19}{3} \right ))\\
+                                          &= -1
+    \end{align*}
+\end{eg}
+
+\begin{lemma}
+    Let $p$ be an odd prime. Let $a \in \Z, p \nmid a$ and $a$ is odd. Let, 
+    \[
+        N = \sum_{j = 1}^{\frac{p - 1}{2}} \lfloor \frac{ja}{p} \rfloor
+    \]
+
+    Then $\left ( \frac{a}{p} \right ) = (-1)^{N}$
+\end{lemma}
+\begin{eg}
+    Consider $\left ( \frac{7}{11} \right )$. Here we have,
+    
+    \[
+        N = \sum_{j = 1}^{5} \left \lfloor \frac{7j}{11} \right \rfloor = 0 + 1 + 1 +2 + 3 = 7
+    \]
+
+    And we have $(-1)^{7} = -1$
+\end{eg}
+\begin{proof}
+    Let $r_{1}, r_{2}, \dots, r_n$  be the least non-negative residues of $a, 2a, \dots, \frac{p - 1}{2} a$ that are $> \frac{p}{2}$. Likewise, let $s_{1}, \dots, s_m$ be the remaining residues that are $< \frac{p}{2}$.  Note $r_{1}, \dots, r_n, s_{1}, \dots, s_m$ are all distinct mod $p$ as they come from $a, 2a, \dots, \frac{p - 1}{2}$. This means the fractions $\frac{r_{i}}{p}, \frac{s_j}{p}$ are also all distinct. Then,
+    
+    \begin{align*}
+        ja &= p - \frac{ja}{p}\\
+           &= p \left (\left \lfloor \frac{ja}{p}\right  \rfloor + \frac{remainder}{p} \right ) \\
+           &= p \left \lfloor \frac{ja}{p} \right \rfloor + remainder
+    \end{align*}
+
+    here the remainders are exaclty $r_{1}, \dots, r_n, s_{1}, \dots, s_m$. So we have,
+    \begin{align*}
+        \sum_{j = 1}^{\frac{p - 1}{2}} ja &= \sum_{j = 1}^{\frac{p - 1}{2}} p \left \lfloor \frac{ja}{p} \right \rfloor + \sum r_i +  \sum s_j
+    \end{align*}
+
+    Note also that, 
+    \begin{align*}
+        \sum_{j = 1}^{\frac{p - 1}{2}} j &= \sum_{j = 1}^{\frac{p - 1}{2}} (p - r_i) + \sum s_j\\
+                                         &= p_n - \sum r_i + \sum s_j
+    \end{align*}
+
+    Note, subtracting this from above we have,
+    \begin{align*}
+        \sum_j ja - \sum_j j &=  \sum_{j = 1}^{\frac{p - 1}{2}} p \left \lfloor \frac{ja}{p} \right \rfloor + \sum r_i +  \sum s_j - ( p_n - \sum r_i + \sum s_j)\\
+                             &=  \sum_{j = 1}^{\frac{p - 1}{2}} p \left \lfloor \frac{ja}{p} \right \rfloor  - p_n + 2 \sum r_i
+    \end{align*}
+
+    Now since $a$ is odd we have,
+    \begin{align*}
+        \sum_{j = 1}^{\frac{p - 1}{2}} p \left \lfloor \frac{ja}{p} \right \rfloor - pn &\equiv 0 \pmod 2\\
+        \sum_{j = 1}^{\frac{p - 1}{2}} p \left \lfloor \frac{ja}{p} \right \rfloor  &\equiv pn \pmod 2\\
+        \sum_{j = 1}^{\frac{p - 1}{2}} \left \lfloor \frac{ja}{p} \right \rfloor  &\equiv n \pmod 2
+    \end{align*}
+
+    So $N \equiv n pmod n$ and hence we  have $(-1)^{N} = (-1)^{n}$ so by gausses we have, 
+    \[
+        \left ( \frac{a}{p} \right ) = (-1)^{n} = (-1)^{N}
+    \]
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,87 @@
+\chapter{Topology of \R}
+
+
+\begin{definition}
+	
+We have $a \in \R$ and $\epsilon > 0$ then the $\epsilon$ neighborhood of $a$ is defined as, 
+	$$
+	V_{\epsilon}(a) = \{x \in \R \mid (x -a ) < \epsilon\}
+	$$
+\end{definition}
+
+\begin{definition}
+	A set $O \subseteq R$ is open if $\forall a \in O, \exists \epsilon > 0$ s.t. $V_\epsilon(a) \subseteq O$
+\end{definition}
+
+\begin{eg} Some examples are,
+	\begin{enumerate}
+		\item $\R$ is open
+		\item $(c, d) = \{x \in \R< c < x < d\}$
+
+			We can choose $e = \frac{1}{2} \min \{a - c, d - a\}$ then we easily have $V_ \epsilon(a) \subseteq (c, d) $
+	\end{enumerate}
+\end{eg}
+
+\begin{theorem}
+	(i). Union of arbitrary collection of open sets is open
+
+	(ii). Intersection of a finite collection of open sets is open.
+\end{theorem}
+\begin{proof}
+    (i). Let $\{O_k: k \in N\}$ be a collection of arbitrary open sets where $O = \bigcup_k O_k$. Now consider some $o \in O$. As $O$ is the union by definition it means there is some $k$ for which $o \in O_k$. Now by assumption $O_k$ is open so we have $V_{\epsilon}(o) \subset O_k \subset O$. So We have $V_{\epsilon}(o) \subset O$ for any $o \in O$ which makes $O$ open.
+
+    \vspace{1em}
+    
+    (ii). Let $O_{1}, \dots, O_n$ be finite open sets. Take $o \in O_{1} \cap \dots \cap O_n$ by definition we have $o \in O_{1} \dots o \in O_n$ each being open which means we have $V_{\epsilon_{1}}(o) \subset O_{1}, \dots, V_{\epsilon_{n}}(o) \subset O_n$. Now choose $\min \{\epsilon_{1}, \dots, \epsilon_n\}$ say $\epsilon_k$ to get $V_{k}(o)$ which is necessarily contained in all  the other neighborhoods and hence $V_{\epsilon_k}(o) \subset O_{1}, \dots, O_n$ or $V_{\epsilon_k}(o) \in O_{1} \cap \dots \cap O_n$.
+\end{proof}
+
+
+
+\begin{definition}[Limit Point]
+	$x$ is a limit point of $A$ if $\forall \epsilon > 0$ we have,
+	$$
+\{V_{\epsilon}(x) \cap\ A} \} \setminus \{x\} \ne \phi
+	$$
+\end{definition}
+\begin{note}
+	So the deleted neighborhood of $x$ has to be a subset of $A$. 
+\end{note}
+\begin{note}
+	This doesn't say whether $x $ is in $A$ or not.
+\end{note}
+
+\begin{theorem}
+	A point $x$ is a limit point of $A$ if and only if $x = \lim a_n$ for some sequence $(a_n)$ contained in $A$ such that $a_n \ne x$ for all $n \in \N$
+\end{theorem}
+\begin{proof}
+    ($\implies$) Assume $x$ is a limit point. By definition the deleted neighborhood for any $\epsilon$ is in $A$. Now choose a sequence of $\epsilon$ such that we have $\epsilon = \frac{1}{n}$. And as we have  $(V_{\epsilon} \cap A)\setminun \{x\} \subset A$ we can choose some $a_n$ from this. Hence we now have a sequence $(a_n)$. Now we see that for an arbitrary $\epsilon$ we can choose $N$ such that $N > \frac{1}{\epsilon}$ which will make it so that we have for any $a_n$, $|x - a_n| < \epsilon$ which means $x$ is the limit of the sequence.
+
+    \vspace{1em}
+    
+    ($\impliedby$) We have $(a_n)$ a sequence which converges to $x$ and we need to show that $x$ is a limit point of $A$. By definition of convergence for any $\epsilon$ we can find an $N$ such that for $n > N$ the $\epsilon-$neighborhood of $x$ contains some $a_n$.  This gives us $a_N \in V_{\epsilon}(x)$ and we have $a_n \ne x $ and $a_n \in A$ so the intersection of the neighborhood with $A$ aside from $x$ is non-empty making it a limit point.
+\end{proof}
+
+\begin{definition}
+	A point $a \in A$ is an isolated point if it is not a limit point.
+\end{definition}
+\begin{note}
+	Isolated point is necessarily in $A$ but limit point need not be (ends of an open interval)
+\end{note}
+\begin{eg}
+	For $[1,2] \cup \{5\}$ we have $5$ as an isolated point and every other as a limit point.
+\end{eg}
+
+\begin{definition}
+	A set $F \subseteq R$ is closed if it contains its limit points.
+\end{definition}
+
+\begin{theorem}
+	A set $F \subseteq \R$ is closed if and only if every Cauchy sequence contained in $F$ has a limit that is also an element of $F$.
+\end{theorem}
+\begin{proof}
+    ($\implies$) Assume $F$ is closed, so it contains it's limit points. Now consider a Cauchy sequence of $F$, $(a_n)$. As it's Cauchy it converges say $\lim a_n = x$. Now $x$ is the limit of a sequence contained in $F$ making it a limit point. $F$ is closed and contains it's limit points so $x \in F$.
+
+    \vspace{1em}
+    
+    ($\impliedby$) Consider any Cauchy sequence $(a_n)$ in $F$ such that the limit is in $F$. Now assume $F$ is not closed so it doesn't contain it's limit points which means there is some sequence $(a_n)$ contained in $F$ for which we have $\lim a_n = x \not \in F$. But $(a_n)$ converges  so it's a Cauchy sequence and by assumption it's limit must be in $F$ so $x \in F$. A contradiction.
+\end{proof}

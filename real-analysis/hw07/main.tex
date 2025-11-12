@@ -1,0 +1,215 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\title{Real Analysis: HW8}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+
+\subsection*{Exercise 3.4.7}
+(a). Consider $x, y \in \Q$. Now  because of the density of the irrationals we know there exists some $i$ such that $x < i < y$ and $i \in I$. Now consider the sets $A = \Q \cap (-\infty, i)$   and $B = \Q \cap (i, \infty)$. First we easily see that $\Q = A \cup B$. Now, note that any limit point of $A$ will lie in $(-\infty, i]$ and that of $B$ will lie in $[i, \infty)$ because of the order limit theorems. However both these sets are disjoint from $(i, \infty)$ and $(-\infty, i)$ respectively which gives us $\overline A \cap B$ and $A \cap \overline B$ as empty which makes $A, B$ be separated. Hence, we have $\Q$ is totally disconnected.
+
+\vspace{1em}
+
+(b). Yes the set of irrationals is totally disconnected as well by using the same reasoning as above. For any pair of irrational numbers $x,y$ we can find a rational number $q$, in between and we can construct $A = I \cap (-\infty, q),B = (q, \infty)$ such that they are separated and their union is $I$.
+
+
+\subsection*{Exercise 4.2.5}
+(a). We need $\lim_{x \to 2} (3x + 4) = 10$. 
+\vspace{1em}
+
+For any $\epsilon > 0$ consider $\delta < \frac{\epsilon}{3}$, then we have for $|x- 2| < \delta$ that,
+\begin{align*}
+    \left | 3x + 4 - 10 \right  | &=     \left | 3x - 6\right |\\
+                                    &=     3\left | x - 2\right |\\
+                                    &<     3 \delta\\
+                                    &<     3 \frac{\epsilon}{3}\\
+                                    &<    \epsilon
+\end{align*}
+
+Hence, for any $\epsilon$ we found a $\delta$ such that for $|x - 2| < \delta$ we have $|(3x + 4) - 10| < \epsilon$ which implies that the limit as $x$ goes to $2$ of $3x + 4$ is $10$.
+
+\vspace{1em}
+
+(b). We need $\lim_{x \to 0} x^{3} = 0$. For any $\epsilon$ consider $\delta = \epsilon^{1 /3}$ such that we have for $x < \delta < \epsilon^{1 / 3}$,
+\begin{align*}
+    \left | x^{3} - 0 \right | &= \left | x^{3} \right |\\
+\end{align*}    
+
+Now as $|x| < \epsilon^{\frac{1}{3}}$ we have $|x^{3}| < |\epsilon^{3}|$ which give such,
+\begin{align*}
+    \left | x^{3} - 0 \right | < \epsilon^{\frac{1}{3} 3} = \epsilon
+\end{align*}            
+
+
+(c). We need $\lim_{x \to 2} (x^2 + x - 1) = 5$. For any $\epsilon > 0$ consider $\delta = \min(1, \frac{\epsilon}{6})$. Now we have,
+\begin{align*}
+    \left | x^2 + x - 1 - 5 \right | &= \left | x^2 + x - 6 \right |\\
+                                     &= \left | (x - 2)(x + 3) \right |\\
+\end{align*}
+
+Now as $|x - 2| < \delta$ we have $|x - 2| < \min(1, \epsilon / 6)$. As we're taking $|x - 2| < 1$ we have $|x + 3| \le |x - 2+ 5| \le |x - 2| + 5 < 6$ which gives us,
+\begin{align*}
+    |(x - 2)(x + 3)| &< 6 |x - 2|
+\end{align*}
+
+Now  we also have $|x - 2| < \frac{\epsilon}{6}$ which means, $6 |x - 2| < \epsilon$. Hence we get,
+\begin{align*}
+    |(x^2 + x - 1) - 5| = |(x - 2)(x + 3)| < 6 |x - 2| < \epsilon
+\end{align*}
+
+\vspace{1em}
+
+(d). We have $\lim_{x \to 3} \frac{1}{x} = \frac{1}{3}$. Consider $\delta = \min(1, 6\epsilon)$. So we have for $x < \delta$ that,
+\begin{align*}
+    \left | \frac{1}{x} - \frac{1}{3} \right |  &= \left | \frac{x - 3}{3x} \right |\\
+\end{align*}
+
+But as we have $|x - 3| < 1$ we get $-1 < x - 3 < 1$ or $2 < x < 4$ which means that $\frac{1}{12} < \frac{1}{3x} < \frac{1}{6}$. So we have,
+\begin{align*}
+    \left | \frac{1}{x} - \frac{1}{3} \right | < \frac{1}{6} | x- 3|
+\end{align*}
+
+But as $|x - 3| < \epsilon$ we have,
+
+\begin{align*}
+    \left | \frac{1}{x} - \frac{1}{3} \right | &< \frac{1}{6} | x- 3|\\
+                                               &< \frac{1}{6} 6 \epsilon \\
+                                               &= \epsilon
+\end{align*}
+
+\subsection*{Exercise 4.2.10}
+(a). For right hand limit we have, 
+\vspace{1em}
+
+Let $f: A \to R$, and let $c$ be a limit point of the domain $A$.  We say $\lim_{x \to a^{+}} f(x) = L$ provided that, for all $\epsilon > 0$, there is $\delta > 0$ such that whenever $0 < x - c  < \delta$ (and $x \in A$) we have $|f(x) - L| < \epsilon$.
+
+
+\vspace{1em}
+
+For left hand limit we have,
+
+Let $f: A \to R$, and let $c$ be a limit point of the domain $A$.  We say $\lim_{x \to a^{-}} f(x) = L$ provided that, for all $\epsilon > 0$, there is $\delta > 0$ such that whenever $0 < c - x < \delta$ (and $x \in A$) we have $|f(x) - L| < \epsilon$.
+
+
+
+(b). Assume that we have $\lim_{x \to c}  f(x) = L$. By definition this means that for any $\epsilon$ we have some $\depta$ such that if $0 < |x - c| < \delta$ then we get $|f(x) - L| < \epsilon$. Now if we have $0 < |x - c| < \delta$ then this implies that we have both $0 < x - c < \delta$ if $x > c$ and $0 < c - x < \delta$ if $x < c$. Now by definition defined in (a) we have $\lim_{x \to c^{+}} f(x) = L$ and $\lim_{x \to c^{-}}f(x) = L $.
+
+\vspace{1em}
+
+Now assume we have $\lim_{x \to c^{+}} f(x) = L$ and $\lim_{x \to c^{-}}f(x) = L $. So we get $ 0 < x - c < \delta_{1}$ and $0 < c - x < \delta_{2}$. Now we can just choose the smaller of the two deltas which will give us $0 < |x - c |  < \delta$ for which we get $|f(x) - L| < \epsilon$ for any $\epsilon$. Which is just the definition for $\lim_{x \to c} f(x) = L$.
+
+
+
+\subsection*{Exercise 4.2.11}
+
+We have $\lim_{x \to c} f(x) = \lim_{x \to c} h(x) = L$. So for any $\epsilon$ we have, $0 < | x - c| < \delta_{1}$ we have $|f(x) - L| < \epsilon / 3$ and for $0 < | x - c| < \delta_{2}$ we have $|h(x) - L| < \epsilon / 3$. So take $\delta = \min(\delta_{1}, \delta_{2})$. This gives us for $0 < |x - c| < \delta $ that, $|h(x) - L| < \epsilon / 3$ and $|f(x) - L| < \epsilon / 3$.
+
+\vspace{1em}
+Now also note that $f(x) \le g(x) \le h(x)$ which means $g(x) - f(x) \le h(x) - f(x)$ this gives us that  $|g(x) - f(x)|  \le |h(x) - L + L - f(x)| \le |h(x) - L| + |f(x) - L|$. Now if $0 < | x- c | < \delta$ we get $|g(x) - f(x)| < 2 \epsilon / 3$.  Now consider the following when $0 < | x - c| < \delta$,
+\begin{align*}
+    |g(x) - L| &=     |g(x) - f(x) + f(x) - L|\\
+               &< |g(x) - f(x)| + |f(x) - L|\\
+               &< 2 \epsilon / 3 + \epsilon / 3 = \epsilon
+\end{align*}
+
+Hence we got for any $\epsilon$ a $\delta$ such that whenever $0 < |x - c| < \delta$ we have, $|g(x) - L| < \epsilon$ which means that $\lim_{x \to c} g(x) = L$
+
+
+
+\subsection*{Exercise 4.3.11}
+
+(a). We show that $f$ is continuous by showing that for any $k$ we have for any $\epsilon$ a $\delta$ such that for $|x - k| < \delta$ we get $|f(x) - f(k)| < \epsilon$.
+\vspace{1em}
+
+Take $\delta = \epsilon$, so we have $|x - k| < \epsilon $. Now by definition of $f$ we have some $c \in (0,  1)$ such that, 
+\begin{align*}
+    |f(x) - f(k)| \le c|x - k|
+\end{align*}
+
+now as $c < 1$ this means that $c|x - k| < |x - k|$ so,
+\begin{align*}
+    |f(x) - f(k)| &\le c|x - k|\\
+                  &\le |x - k|\\
+                  &< \epsilon
+\end{align*}        
+
+So for any $\epsilon$ we got a $\delta$ such that when $|x - k| < \delta$ we have $|f(x) - f(k)| < \epsilon$ which by definition means that $f$ is continuous.
+
+
+\vspace{1em}
+
+(b). We have the sequence $(y_{1}, f(y_{1}), f(f(y_{1})), \dots)$. We need to show that $(y_n)$ is a Cauchy sequence. So we need for any $\epsilon$ some $N$ that if $m,n > N$ then we get $|y_m - y_n| < \epsilon$. First notice that we have for some arbitrary $n$ that,
+\begin{align*}
+    |y_{n+2} - y_{n + 1}| &= |f(f(y_n)) - f(y_n)|\\
+                          &< c | f(y_n) - y_n|\\
+                          &= c |y_{n + 1} - y_n|
+\end{align*}
+
+Similarly note that we can do a similar bounding to get $|y_{n + 1}- y_n| < c| y_n - y_{n - 1}| $. Recursively doing this we get,
+
+\[
+|y_{n + 2} - y_{n + 1}| < c^{n} |y_{2} - y_{1}|
+\]
+
+Take $|y_2 - y_1| = M$, now as $c < 1$ we can choose $n$ to be arbitrary large to get $c^{n}M < \epsilon$ we see this as follows. $c^{n} < \epsilon / M$ so $n \log (c) < \log( \epsilon / M)$. As $c < 1$ we have $\log(c) < 0$ so $n |\log c| > \log (\epsilon / M)$ and we have $n > \log(\epsilon / M) / |\log c|$. So for any $\epsilon$ take $N = \log(\epsilon / M) / |\log c| + 2$ which gives us for any $n > N$ that, $|y_{n + 1} - y_n| < \epsilon$. 
+\vspace{1em}
+
+Now we for any $\epsilon$ we can find a $N$ such that $|y_{n + 1} - y_n$ $m > n > N$ consider $|y_m - y_n|$ note that we can write this as,
+\begin{align*}
+    |y_m - y_n| &= |y_n - y_{n + 1} + y_{n + 1} - y_{n + 2} + \dots - y_{m - 1} + y_m|\\
+                &\le |y_n - y_{n + 1}| + \dots + |y_m  - y_{m - 1}|\\
+                &\le \epsilon + c \epsilon + c^2 \epsilon + \dots + c^{m - n } \epsilon \\
+                &\le \epsilon(1 + c +  c^2 + \dots + c^{m - n})\\
+                &\le \epsilon \left(\frac{1 - c^{m - n + 1}}{1 - c} \right)\\
+                &\le \epsilon \left ( \frac{1}{1 - c} \right )
+\end{align*}
+
+But now as $c$ is a constant we have $\frac{1}{1 - c}$ is a constant say $M'$.  So we have,
+\begin{align*}
+    |y_m - y_n| \le \epsilon M'
+\end{align*}
+
+As we already established for any $\epsilon > 0$ if $m,n > N$ we have $|y_m - y_n| < \epsilon$ we can choose it to be $\epsilon M'$ to get $|y_m - y_n | < \frac{\epsilon}{M'} M'  = \epsilon$ hence completing the proof.
+
+
+\vspace{1em}
+
+(c). Now we show that $y$ is a fixed point. From above we have the sequence is a convergent sequence whose limit is say $y$. Now consider  the following,
+\begin{align*}
+    \left | f\left (y  \right ) - y \right | &= \left | f\left (y  \right ) - y_{n}+  y_{n} - y \right |\\
+                                             &\le  \left | f\left (y  \right ) - y_{n}  \right | +  \left | y_{n} - y \right |\\
+                                             &=  \left | f\left (y  \right ) - f(y_{n -1})  \right | +  \left |y -  y_{n}  \right |\\
+\end{align*}
+
+Now note that we have $ \left | f\left (y  \right ) - f(y_{n -1})  \right | \le c |y - y_{n - 1}| < |y - y_{n - 1}|$. Now for any $\epsilon$ we can have for $n > N + 1$,  $\left | y_n - y \right | < \frac{\epsilon}{2}$. This gives us both, $|y - y_{n - 1}| < \epsilon / 2$ and $| y - y_{n} | < \epsilon /2$ which means we have,
+
+\begin{align*}
+    \left | f\left (y  \right ) - y \right | &=  \left | f\left (y  \right ) - f(y_{n -1})  \right | +  \left |y -  y_{n}  \right |\\
+                                             &< |y - y_{n - 1}| + |y - y_{n}|\\
+                                             &\le \frac{\epsilon}{2} + \frac{\epsilon}{2}\\
+                                             &= \epsilon
+\end{align*}
+So we have $    \left | f\left (y  \right ) - y \right |  < \epsilon$ for any $\epsilon$ which is equivalent to saying $f(y) = y$.
+
+\vspace{1em}
+
+Now assume that it is not unique, i.e. there exists another $y_{k}$ such that we have $f(y_{k}) = y_{k}$. However, this gives us $y_{k + 1} = y_k$ which means that $f(y_{k + 1}) = f(y_k) = y_k$. Or in other words for any $k' > k$ we have $f(y_k') = y_k$ i.e. we have a constant sequence of $y_k$ for $k' > k$. But this means that $y_k$ is the limit of the sequence as for any $k' > k$ we also have $|y_{k'} - y_k| < \epsilon$ trivially as they  are equal. So we have both $y$ and $y_k$ is the limit of the sequence. However, we know that a sequence with a limit has a unique limit. This means that we have $y = y_k$ and hence the there is only a unique point $y$ for which we have $f(y) = y$.
+
+
+\vspace{1em}
+
+(d). Now for any arbitrary $x$ we have,
+\begin{align*}
+    | x_n - f(y)| &\le c |x_{n - 1} - y| =c |x_{n - 1} - f\left (y  \right )|\\
+                  &\le c^2 |x_{n - 2} - f\left (y  \right )|\\
+                  &\le \dots\\
+                  & \le c^{n} |x - f\left (y  \right )| = c^{n} |x - y|
+\end{align*}
+
+But $x, y$ are constant so we have $|x_n - f(y)| = \left | x_n - y \right | \le c^{n} M$. And we can choose $N$ to be arbitrarily large such that we have for some $\epsilon$ if $n > N$ then $c^{n}M < \epsilon$ hence we have $|x_n - y| < \epsilon$ for $n > N$ as well which means the limit of the sequence $(x, f(x), f(f(x)), \dots)$ is $y$ defined in $(b)$.
+
+
+
+\end{document}

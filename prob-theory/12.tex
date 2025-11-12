@@ -1,0 +1,342 @@
+\chapter{Distribution and density functions}
+
+\section{Distribution functions}
+Similar to discrete r.v we can define continuous r.v as $X$ on $(\sigma, F, \P)$ is a mapping $\sigma \to \R$ such that $\forall x \in \R$ we have,
+
+\[
+   \{\omega \in \Omega : X\left (\omega \right ) \le x\} \in F 
+\]
+
+\begin{definition}
+    The distribution function $F_X$ of a r.v is $F_X : \R \to [0, 1]$ defined as,
+    
+    \[
+        F_X\left (x \right ) = \P\left (X \le x \right )
+    \]
+\end{definition}
+\begin{remark}
+    Here $F$ is called the cumulative distribution function (CDF).
+\end{remark}
+
+Properties of distribution functions,
+\begin{enumerate}
+    \item For any $x \le y$ we have $F_X(x) \le F_X(y)$. So $F$ has to be monotonic non-decreasing.
+    \item We have $\lim_{x \to \infty}  F_X(x) = 1$ and $\lim_{x \to -\infty} F_X(x) = 0$.
+    \item $F$ has to be right-continuous which means we have $F(X + \epsilon) \to F(X)$ for any $\epsilon \to 0$ from the right side. So $\epsilon > 0$.
+    \item We have $P(a < X \le b) = P(X \le b) - P(X \le a) = F(b) - F(a)$
+    \end{itemize}
+\end{enumerate}
+
+\begin{ex}[5.11]
+Let X be a random variable taking integer values such that P(X = k) = pk for k =
+. . . , −1, 0, 1, . . . . Show that the distribution function of X satisfies
+FX(b) −FX(a) = pa+1 + pa+2 + · · · + pb
+for all integers a, b with a < b. 
+
+\end{ex}    
+\begin{solution}
+    As $X$ is a discrete r.v taking on integers we have $P(x - 1 < X \le x) = P(x) = F(x) - F(x - 1)$. Now we can write
+    \begin{align*}
+        F(b) - F(a) &= F(b) - F(b - 1) + F(b + 1) + \dots - F(a) \\
+                    &=  (F(b) - F(b - 1)) + (F(b + 1) + F\left (b - 2 \right )) + \dots - F(a) \\
+                    &= p_{a + 1} + p_{a + 2} + \dots + p_b
+    \end{align*}
+\end{solution}
+
+
+\section{Examples of Distribution functions}
+\begin{eg}[Uniform Distribution]
+    We have, 
+    \[
+        F(x) = \begin{cases}
+            0 & \text{ if } x < a,\\
+            \frac{x -a}{b - a} on the  & \text{ if } a \le x \le a,\\
+            1 & \text{ if } x > b,
+        \end{cases}
+    \]
+
+    A r.v with this distribution function is said to have the uniform distribution on the interval $(a, b)$
+\end{eg}
+
+\begin{eg}[Exponential Distribution]
+    For $\lambda > 0$, $F$ is given by,
+    
+    \[
+        F(x) = \begin{cases}
+            0 & \text{ if } x \le 0\\
+            1 -e^{ -\lambda x} & \text{ if } x > 0\\
+        \end{cases}
+    \]
+\end{eg}
+
+\begin{ex}[5.18]
+    
+We have $F(y) = \alpha F_{1}(y) + (1 - \alpha) F_{2}(y) $ and $F(x) = \alpha F_{1}(x) + (1 - \alpha) F_{2}(x)$ and if $y > x$ we get $F(y) - F(x) =\alpha F_{1}(y) + (1 - \alpha) F_{2}(y)  -   \alpha F_{1}(x) + (1 - \alpha) F_{2}(x) = \alpha(F_{1}(y) - F_{1}(x)) + (1 - \alpha)(F_{2}(y) - F_{2}(x))$  
+
+\vspace{1em}
+
+Now as $F_{1}$ and $F_{2}$ are distribution functions they both are monotonic non decreasing and hence $F_{2}(y) - F_{2}(x) > 0$ and $F_{1}(y) - F_{1}(x)> 0$. This gives us, 
+\begin{align*}
+    F(y) - F(x)  &=  \alpha(F_{1}(y) - F_{1}(x)) + (1 - \alpha)(F_{2}(y) - F_{2}(x))\\
+                 &> 0
+\end{align*}
+
+which means $F$ is monotonic non decreasing 
+
+\vspace{1em}
+
+Now we need to show that as $x \to \infty$ and $x \to -\infty$ we have $F(x) = 1$ and $0$ respectively. We have,
+\begin{align*}
+    \lim_{x \to \infty} F_{1}(x) = 1,   \lim_{x \to \infty} F_{2}(x) = 1
+\end{align*}
+
+So, $\lim_{x \to \infty} \alpha F_{1}(x) + (1 - \alpha) F_{2}(x) = \alpha + (1 - \alpha) = 1$ and similarly as,
+
+\begin{align*}
+    \lim_{x \to -\infty} F_{1}(x) = 0,   \lim_{x \to -\infty} F_{2}(x) = 0
+\end{align*} we have,
+$\lim_{x \to -\infty} \alpha F_{1}(x) + (1 - \alpha) F_{2}(x) = \alpha 0 + (1 - \alpha)0 = 0$
+
+\vspace{1em}
+Now as both $F_{1}$ and $F_{2}$ are continuous from the right as $F$ is a linear combination  of those functions we have that $F$ is continuous from the right as well.
+
+\vspace{1em}
+
+Lastly we have for any $ a < b$ that $P(X \le b) = F(b) = \alpha F_{1}(b)  + (1 - \alpha) F_{2}(b)$ and similarly $P(x \le a) =  F(a) = \alpha F_{1}(a)  + (1 - \alpha) F_{2}(a)$. If  $F_{1}(k) = P_{1}(X \le k)$  and $F_{2}(k) = P_{2}(X \le k)$ we get,
+\begin{align*}
+    F(b) - F(a) &= \alpha (F_{1}(b) - F_{1}(a)) +  (1 - \alpha) (F_{2}(b) - F_{2}(a))\\
+                &=  \alpha (P_{1}(a < X \le b)) +  (1 - \alpha) (P_{2}(a < X \le b))\\
+                &= P(a < X \le b) 
+\end{align*}
+\end{ex}
+
+
+\begin{ex}[5.19]
+    We have $F(x) = c \int_{-\infty}^{x}  e^{-|u|} du$ for $x \in \R$. We need to answer for what value of $c$ is $F$ a distribution function.
+
+    \vspace{1em}
+    
+    We need some $c$ such that $\lim_{x \to \infty} F(x) = 1$ so we need,
+    \begin{align*}
+        1 &= c \int_{-\infty}^{\infty}  e^{-|u|} du \\
+          &=  2c \int_{0}^{\infty}  e^{-u} du \\
+          &= 2c [-e^{-u}]_0^{\infty}\\
+          &= 2c
+    \end{align*}
+
+    So $c = 1 / 2$
+    
+\end{ex}
+
+\section{Continuous random variables}
+
+Discrete r.v only take on countable many values and their distribution functions look like step functions. The r.v for which the distribution functions are smooth are called continuous r.v
+
+
+\begin{definition}
+    A r.v is continuous if its distribution function $F_X$ can be written as,
+    
+    \[
+        F_X(x) = \P(X \le x) = \int_{-\infty}^{x}  f(x) dx \quad \text{ for } x \in \R
+    \]
+\end{definition}
+\begin{remark}
+    Here $f(x)$ is called the probability density function (PDF).
+\end{remark}
+
+\begin{eg}
+    Consider $\P(X = 1) = p$ and $\P(X = 0) = 1 - p$  where $X$ is arrival in a second. Now if we want to consider arrival in a smaller intervals say $N$ we have, $\frac{p}{N}$ as probability of arrival in $\frac{1}{N}$ time and $1 - \frac{p}{N}$ the probability of not arriving.
+
+    \vspace{1em}
+    
+    Taking $N \to \infty$ we have,
+    \begin{align*}
+        \P(X > t) = \lim_{n \to \infty} (1 - \frac{p}{n} )^{nt} = e^{-pt}
+    \end{align*}
+
+    So we have, 
+    \begin{align*}
+        F(t) &= \P(X \le x) = 1 - e^{ - pt}\\
+        f(t) &= pe^{-pt}
+    \end{align*}
+
+    Which is written as $\lambda e^{-\lambda t}$ and,
+    \begin{align*}
+        f(x) &= \begin{cases}
+            0 &\text{ $x < 0$ }\\
+            \lambda e^{-\lambda}x &\text{  $x \ge 0 $}
+        \end{cases}\\
+            F(x) &= \begin{cases}
+                0 &\text{ $x < 0$ }\\
+                1 - e^{-\lambda x} &\text{ $x \ge 0$ }
+            \end{cases}
+    \end{align*}
+\end{eg}
+
+If $X$ is a cont r.v then we can find the density function generally by,
+
+\[
+    f_X(x) = \begin{cases}
+        \frac{d}{dx} F_x(x) & \text{ if the derivative exists at } x\\
+        0 & \text{ otherwise }
+    \end{cases}
+\]
+
+A density function is in some way the analogous of the probability mass function in the discrete case. For instance we have,
+\begin{align*}
+    f_X(x) \ge 0 \text{ for } x \in \R \quad &p_Y(x) \ge 0\\
+    \int_{-\infty}^{\infty}  f_X(x) dx = 1 \quad & \sum_{x} p_Y(x) = 1
+\end{align*} 
+
+However, $f$ unlike $p$ doesn't actually give us the probability. For instance we can have $f_X(x)$ be greater than $1$. However a more analogous version to $p$ would be if we consider a small $\delta$ and take $P(x < X \le x + \delta) = F(x + \delta) - F(x) = \int_{x}^{x + \delta} f_X(u) du = f_X(x) \delta x$.
+
+
+\begin{theorem}
+    If $X$ is cont w PDF $f_X$ then, 
+    \[
+        \P(X = x) = 0  
+    \]
+    \[
+        \P(a \le X \le b) = \int_{a}^{b}  f_X(u) du
+    \]
+\end{theorem}
+
+A r.v can also be neither discrete nor continuous.
+
+\section{Common Density Functions}
+
+In general if $f$ satisfies,
+
+\[
+    f(x) \ge 0 \quad \text{ for } x \in \R
+\]
+and
+
+\[
+    \int_{-\infty}^{\infty}  f(x) dx = 1
+\]
+then $f$ is a density function of some $r.v$ w CDF,
+
+\[
+    F(x) = \int_{-\infty}^{x}  f(u) du
+\]
+\begin{eg}[Uniform distribution]
+    The density function is,
+    
+    \[
+        f(x) = \begin{cases}
+            \frac{1}{b - 1} & \text{ if } a < x < b\\
+            0 & \text{ otherwise }
+        \end{cases}
+    \]
+\end{eg}
+
+\begin{eg}[Exponential distribution]
+    With parameter $\lambda > 0$ we have,
+    
+    \[
+        f(x) = \begin{cases}
+            \lambda e^{-\lambda x} & \text{ if } x > 0\\
+            0 & \text{ if } x \le 0\\
+        \end{cases}
+    \]
+    
+\end{eg}        
+
+\begin{eg} Normal Standard
+
+    We have $f(x) =\frac{1}{\sqrt{2 \pi}} e^{-x^2 /2}$ which gives us,
+    
+    \begin{align*}
+        \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} e^{- x^2 /2} &= 1\\
+         \int_{-\infty}^{\infty} e^{- x^2 /2} &= \sqrt{2 \pi}\\
+    \end{align*}
+
+    So we have $f(x)$ integrates to $1$ and is positive and is a p.d.f
+
+    \vspace{1em}
+    
+    The distribution function is $\Phi(x) = \frac{1}{\sqrt{2 \pi}}\int_{-\infty}^{x} e^{- y^2 / 2} dy$.
+
+    \vspace{1em}
+    
+    This is called the probability integral.
+
+    \vspace{1em}
+    
+    The general normal is of the form,
+    \begin{align*}
+        f(x) = \frac{1}{\sqrt{2 \pi } \sigma} e^{- (x - \mu)^2  / 2 \sigma^2}
+    \end{align*}
+\end{eg}
+
+\section{Functions of random variables}
+Let $X$ be a r.v and $Y = g(X)$ be a function of $X$. If $g$ is well-behaved then $Y$ is also a r.v. 
+
+\begin{theorem}
+    If $X$ is a cont r.v w PDF $f_x$ and $g$ is a increasing and differentiable function, then $Y = g(X)$ has density function,
+    \begin{align*}
+        f_Y(y) = f_X(g^{-1}(y)) \frac{d}{dy} [g^{-1}(y)] \text{ for } y \in \R
+    \end{align*}
+\end{theorem}
+\begin{proof}
+    \begin{align*}
+        \P(Y \le y) &= \P(g(x) \le y)\\
+                    &= \P(X \le g^{-1}(y))\\
+                    &= F_X(g^{-1}(y))
+    \end{align*}
+
+    Now we know the density function is the derivative of the CDF so we have, 
+    \begin{align*}
+        f_Y &= \frac{d}{dy} F_Y(y)\\
+            &= \frac{d}{dy} F_X(g^{-1}(y))\\
+            &= f_X(g^{-1}(y)) \frac{d}{dy} g^{-1}(y)
+    \end{align*}
+\end{proof}
+
+\section{Expectations of continuous random variable}
+\begin{eg}
+    Expected of uniform in $[A,B]$ is,
+    \begin{align*}
+        \int_{-\infty}^{\infty} x f(x) dx &= \int_{A}^{B} \frac{x}{B - A} dx\\
+                                          &= \frac{1}{B - A} \frac{x^2}{2} \bigg |_A^{B} = \frac{A + B}{2}
+    \end{align*}
+\end{eg}
+
+\begin{eg}
+    Expected of exponential with pdf $\lambda e^{ -\lambda x}$
+
+    \begin{align*}
+        E(X) &= \int_0^{\infty} \lambda x e^{ -\lambda x} dx\\
+    \end{align*}
+
+    
+    $$
+        \lambda e^{ -\lambda x} = -\frac{d}{dx} e^{-\lambda x}
+    $$
+
+    so,
+
+    \begin{align*}
+        E(X) &= -x e^{-\lambda x} \big |_0^{\infty} +  \int_0^{\infty} e^{-\lambda x} dx\\
+             &= \int_0^{\infty} e^{-\lambda x}dx\\
+             &= -e^{-\lambda x} \frac{1}{\lambda} \bigg |_0^{\infty}\\
+             &= \frac{1}{\lambda}
+    \end{align*}
+    \vspace{1em}
+    so if $X$ is exponential $\lambda$ we have $E(X) = \frac{1}{\lambda}$
+
+    \vspace{1em}
+    
+    If we write $f(x) = \frac{1}{\mu} e^{-\frac{x}{\mu}}$ then $E(X) = \mu$
+\end{eg}
+
+\begin{eg}
+    For gaussian we have, 
+    
+    $$
+    E(X) = \frac{1}{\sqrt{2 \pi}} \int_{-\infty}^{\infty} x e^{ -x^2 / 2} dx = 0
+    $$
+    as it is an odd function.
+\end{eg}
+

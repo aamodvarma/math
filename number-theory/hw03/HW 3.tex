@@ -1,0 +1,410 @@
+\documentclass[12pt]{exam}
+\usepackage{amsmath,amstext,amssymb,amsthm}   
+\usepackage{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ 
+
+
+
+\begin{document}
+
+ 
+
+ \begin{center}
+ {\Large Homework 3, Math 4150 }
+ \\
+ \end{center}
+
+
+\begin{questions}
+\question  Exercise Set 2.5, \#58.
+Let $a$ and $b$ be integers not divisible by the prime number $p$.
+\begin{parts}
+\part If $a^p \equiv b^p \pmod{p}$, prove that $a \equiv b \pmod{p}$.
+
+\textbf{Solution.}
+
+
+First as $a$ and $b$ are not divisible by $p$ we know that, 
+\begin{align*}
+    a^{p - 1} \equiv 1 \pmod p  \\
+    b^{p - 1} \equiv 1 \pmod p 
+\end{align*}
+
+Now multiplying both sides by $a$ and $b$ respective we have,
+
+\begin{align*}
+    a^{p } \equiv a \pmod p  \\
+    b^{p } \equiv b \pmod p 
+\end{align*}
+
+So replacing this in the original congruence we have,
+
+\begin{align*}
+    a \equiv a^{p} \equiv b^{p} \equiv b \pmod p\\
+    a \equiv b \pmod p
+\end{align*}
+
+
+
+
+\part If $a^p \equiv b^p \pmod{p}$, prove that $a^p \equiv b^p \pmod{p^2}$.
+
+
+\textbf{Solution.}
+
+
+Consider $a^{p} - b^{p}$ we can write this as $a^{p} - b^{p} = (a - b)S$ where $S$ is the sum. So we have, 
+\begin{align*}
+    a^{p} - b^{p} \equiv (a - b)S  \equiv a - b\pmod p
+\end{align*}
+
+from above. Now rearranging we have, 
+
+$$
+(S - 1) (a - b) \equiv 0 \pmod p
+$$
+
+Now note that $S = a^{p - 1} + a^{p - 2} b \dots + a b^{p - 2} + b^{p - 1} \equiv a^{p - 1} + \dots + a^{p - 1} \equiv p \cdot a^{p - 1} \equiv 0 \pmod p $
+
+
+So we have $p \mid S$. Now if $p \mid S$  and $p \mid a -b$ then we have $p^2 \mid S (a - b) = a^{p} - b^{p}$. Now, $p^2 \mid a^{p} - b^{p} $ which means that $a^{p} \equiv b^{p} \pmod p^2$.
+
+
+
+\end{parts}
+
+\newpage 
+\question  Exercise Set 2.5, \#62.  
+The following exercise proves that there are infinitely many odd pseudoprime numbers.
+\begin{parts}
+\part Let $a$ and $b$ be positive integers such that $a \mid b$. Prove that $2^a-1 \mid 2^{b}-1$.
+
+\textbf{Solution.}
+
+If $a \mid b$ then we have $b = ak$. So we need to show $2^{a} - 1 \mid 2^{ka} - 1$. However we have $(2^{a})^{k} - 1^{k} = (2^{a} - 1)(2^{a(k - 1) + \dots})$. So we show that $2^{ka} - 1$ has $2^{a} - 1$ as a factor which means that $2^{a} - 1 \mid 2^{b} - 1$ if $a \mid b$.
+
+\part Suppose that $n$ is composite. Prove that $n$ is an odd pseudoprime number if and only if $2^{n-1} \equiv 1 \pmod{n}$.
+
+\textbf{Solution.}
+
+($\Rightarrow$) We are told that $n$ is an odd pseudoprime which means that $2^{n} \equiv 2 \pmod n$ or $2 2^{n - 1} \equiv 2 \pmod p$. However as $n$ is odd we know that $2 \nmid n$ or that $2$ is co-prime to $n$ which means that $2$ has an inverse mod $n$. Now if we multiply both sides by the inverse of 2 we get $2^{n - 1} \equiv 1 \pmod n$.
+
+\vspace{1em}
+
+($\Leftarrow$) We are given that $2^{n - 1} \equiv 1 \pmod n$. We know that $n$ is composite hence it's not prime. So $n$ is either even or odd. We see that $n$ can't be even as we have $n \mid 2^{n-1} - 1$ and if n is even we have $2 \mid 2^{n - 1} - 1$ and as $2^{n - 1}$   is a power of 2 that means that $2 \mid 1$ which is false. Hence, $n$ is odd. Now we multiply both sides by 2 and we have $2^{n} \equiv 2 \pmod n$ which by definition means that $n$ is a pseudo prime and we showed that it's also prime.
+
+
+\part Prove that if $n$ is an odd pseudoprime number, then $m=2^n-1$ is an odd pseudoprime number.
+
+\noindent \textbf{Solution.}
+
+If $n$ is an odd pseudoprime number then we know that $2^{n - 1} \equiv 1 \pmod n$ from (b). But this means that $n \mid 2^{n - 1} - 1$. However, if $n \mid 2^{n - 1} - 1$ then $n \mid 2(2^{n - 1} - 1)$. Now using $a$ we get, 
+\begin{align*}
+    2^{n} - 1 \mid 2^{2^{n} - 2} - 1\\
+\end{align*}
+
+Now take $k = 2^{n} - 1$ so we have, 
+$$
+    k \mid 2^{k - 1} - 1
+$$
+
+or that 
+$$
+    2^{k - 1} \equiv 1 \pmod k
+$$
+
+Which by (b) we have $k$ or that $2^{n} - 1$ is an odd pseudoprime.
+
+
+[\textbf{Hint}: Use parts (a) and (b)].
+\part Prove that there are infinitely many odd pseudoprime numbers.
+
+Assume there are only finitely many odd pseudoprime numbers, so there exists some maximum odd pseudoprime say $n$. But from (c) we know that if $n$ is an odd pseuodprime then $2^{n} - 1$ is also an odd pseuodprime. But we have $2^{n} - 1 > n$ for $n > 1$ and hence we found an odd pseudoprime $2^{n } -1 $greater than our maxium $n$. So our assumption must be wrong  that there are only finitely many pseuodprimes and thus there are infinitely many odd pseudoprimes.
+
+\end{parts}
+
+\newpage
+\question Exercise Set 2.6 , \#68(a),(d)  
+Using Euler's Theorem, find the least nonnegative residue modulo $m$ of each integer $n$ below.
+\begin{parts}
+\part $n=29^{198}, m=20$
+
+\textbf{Solution.}
+
+
+We need $x \equiv 29^{198} \pmod {20}$. First we have $29 \equiv 9 \pmod {20}$ so $x \equiv 9^{198} \pmod {20}$. We have $20$ is composite and $20 = 2^{2} 5$ so $\phi(20) = 20 (1 - \frac{1}{2})(1 - \frac{1}{5}) = 8$. And we have $198 = 8 \cdot 24 + 6$, so, $9^{198} = 9^{8 \cdot 24} 2^{6}$. But $9^{8} \equiv 1 \pmod {20}$ from Euler's theorem (as $9$ is coprime to $20$), so we have, 
+$$
+x \equiv 9^{6} \pmod {20}
+$$
+
+Now $9^{8} \equiv 1 \pmod {20}$ so multiply both sides by $9^2$ we get, 
+\begin{align*}
+9^2 x \equiv 9^{8} \equiv 1 \pmod {20}\\
+81 x\equiv 1 \pmod {20}\\
+1 x \equiv 1 \pmod {20}\\
+\end{align*}
+
+So $x \equiv 1 \pmod {20}$
+
+\part $n=99^{999999}, m=26$
+
+\textbf{Solution.}
+
+
+First we have $99 \equiv 21 \pmod {26}$ so we need $ x \equiv 21^{999999} \pmod {26}$. Now, $26 = 2 \cdot 13$ so $\phi(26) = 26 (1 - \frac{1}{2}) (1 - \frac{1}{13}) = 12$. So we have $21^{12} \equiv 1 \pmod {26}$. We have $999999  = 83333 * 12 + 3$ so,
+
+\begin{align*}
+    x \equiv 21^{999999} \equiv 21^{83333 \cdot 12} 21^{3} \pmod {26}\\
+    x \equiv 1 \cdot 21^{3} \pmod {26}
+\end{align*}
+
+But $21 \equiv -5 \pmod 26$ so, 
+\begin{align*}
+    x \equiv 21^{3}\equiv (-5)^{3} \pmod {26}\\
+    x \equiv -125  \equiv 5 \pmod {26}
+\end{align*}
+
+So we have $x \equiv 5 \pmod {26}$
+\end{parts}
+
+
+\newpage 
+\question  Exercise Set 2.6, \#75.
+Let $m$ be a positive integer with $m \neq 2$. If $\{r_1,r_2,\ldots,r_{\phi(m)}\}$ is a reduced residue system modulo $m$,
+prove that 
+\begin{equation*}
+r_1+r_2+\cdots+r_{\phi(m)} \equiv 0 \pmod{m}.
+\end{equation*}
+
+\textbf{Solution.}
+
+
+For each $r_i$ in the list we know that $(r_i, m) = 1$. Now consider it's negative modulo $m$ that is $m - r_i$ we know that similarly we have $(m - r_i, m) = 1 $ as if they did share a common factor then $r_i$ must also share the same factor. Hence $m - r_i$ is also in the same list. As this is true for each $r_i$ and the fact that each of the negative is unique, every element has a negative modulo $m$ in the same list. Hence we have, 
+$$
+r_{1} + r_{2} + \dots + r_{\phi(m)} \equiv  r_{1} + r_{2} + \dots + (m - r_{2}) + (m - r_{1})  \equiv \frac{1}{2} \phi(m)  m  \equiv 0 \pmod m
+$$
+
+
+\newpage 
+\question  Exercise Set 3.1, \#7 \\
+\textbf{Definition}: Let $n \in \mathbb{Z}$ with $n>0$. The Liouville $\lambda$-function, denoted $\lambda(n)$, is 
+defined by
+\begin{equation*}
+\lambda(n):=\begin{cases} 
+1 & \text{if } n=1 \\
+(-1)^k & \text{if } n=p_1 p_2 \cdots p_k \quad \text{where} \quad p_1,\ldots,p_k  \\
+& \text{are not necessarily distinct prime numbers}.
+\end{cases}
+\end{equation*}
+\begin{parts}
+\part Prove that $\lambda$ is a completely multiplicative arithmetic function.
+
+\textbf{Solution.}
+
+We need to show that for $m,n \in \mathbb{Z}$ we have $\lambda(mn) = \lambda(m)\lambda(n)$. First, trivially if $m = 1, n = 1$ then $mn = 1$ and we have $f(mn) = f(1) = 1 = 1 \cdot 1 = f(1)f(1) = f(m)f(n)$. So consider the case where $m, n \ne 1$ so let $m = q_{1}q_{2} \dots q_k$ where they are not necessarily distinct primes and $n = p_{1}p_{2} \dots p_r$ where neither are distinct primes. So we have, 
+
+\begin{align*}
+    \lambda(mn) = \lambda(p_{1}p_{2} \dots p_r q_{1} q_{2} \dots q_k) 
+\end{align*}
+
+In this case the set $p_{1} p_{2} \dots p_r q_{1} q_{2} \dots q_k$ are primes not necessarily distinct either. So we have  $\lambda(mn) = (-1)^{r + k} = (-1)^{r} (-1)^{k} = \lambda(m)\lambda(n)$.
+
+
+\part Let $F(n):= \sum_{d \mid n, d>0} \lambda(d)$. Prove that 
+
+\begin{equation*}
+F(n)=\begin{cases}
+1 & \text{if } n \text{ is a perfect square}  \\
+0 & \text{otherwise}.
+\end{cases}
+\end{equation*} 
+
+\textbf{Solution.}
+If $\lambda$ is a multiplicative function that means that $F(n)$ is also a multiplicative function. Hence, it is enough to check how $F$ functions on prime powers. Consider a prime power $p^{k}$ we have $F(p^{k}) = \sum_{d \mid n} \lambda(d) =\lambda(1) + \lambda(p) + \lambda(p^2) + \dots + \lambda(p^{k}) =1 +  (-1) + (-1)^2 + (-1)^{3} + \dots + (-1)^{k} = 1 + (-1 + 1 - 1 + \dots + (-1)^{k})$.
+
+
+\vspace{1em}
+
+Now if $n$ is a perfect square then we can write $n = p_{1}^{a_{1}} \dots p_k^{a_k}$ where $a_{1}, \dots, a_k$ are even numbers so we have, 
+\begin{align*}
+    F(n) &= F(p_{1}^{a_{1}} \dots p_k^{a_k})\\
+         &= F(p_{1}^{a_{1}}) \dots F(p_k^{a_k})\\
+\end{align*}
+
+Now as $a_{1}, \dots, a_k$ are even numbers we have $\lambda(p_i^{a_i}) =1 +  (-1 + 1 + \dots -1 + 1) = 1 + 0$ (for every $-1$ we will have $1$ and this is guaranteed as $a_i$ is even). Hence we have
+
+\begin{align*}
+    F(n) &= 1 \cdot \dots \cdot 1 = 1
+\end{align*}
+
+Now if they are not perfect squares there is some $p_i$ such that it's power is not even i.e. we have $p^{a_i}$ and $a_i$ is odd. So for this prime we have, 
+$$
+F(p^{a_i}) = \lambda(1) + \dots + \lambda(p^{a_i}) =1 + (-1 + 1 + \dots (-1)^{a_i}) = 1 + (- 1 + 1 \dots  -1) = 0
+$$
+
+Hence $F(n) = 0$ as we have at least one zero in the product.
+
+
+
+\end{parts}
+
+\newpage
+
+\question  Exercise Set 3.2, \#12. 
+Let $n \in \mathbb{Z}$ with $n>1$. If $n$ has prime factorisation $p_1^{a_1} p_2^{a_2} \cdots p_m^{a_m}$,
+prove that  
+\begin{equation*}
+\phi(n)=p_1^{a_1-1} p_2^{a_2-1} \cdots p_m^{a_m-1} \prod_{i=1}^m (p_i-1).
+\end{equation*}
+
+\textbf{Solution.}
+
+We know that $\phi(n)$ is multiplicative so this means that $\phi(p_{1}^{a_{1}} \dots p_m^{a_m}) = \phi(p_{1}^{a_{1}}) \dots \phi(p_m^{a_m})$ as distinct prime powers are pairwise coprime. Now we know that $\phi(p_{i}^{a_{i}}) = p_i^{a_i} - p_i^{a_i - 1}$ as there are $p_i^{a_i - 1}$ numbers smaller than $p_i^{a_i}$ that divide $p_i^{a_i}$ as $p_i$ is a prime number. So we have, 
+\begin{align*}
+    \phi(n) &= \phi(p_{1}^{a_{1}})\dots \phi(p_m^{a_m})\\
+            &= (p_{1}^{a_{1}} - p_{1}^{a_{1} - 1}) \dots (p_{m}^{a_{m}} - p_{m}^{a_{m} - 1})\\
+            &= p_{1}^{a_{1} - 1} (p_{1} - 1) \dots p_{m}^{a_{m} - 1} (p_{m} - 1)\\
+            &= p_{1}^{a_{1} - 1} \dots p_m^{a_m - 1} (p_{1} - 1) \dots (p_m - 1)\\
+            &= p_{1}^{a_{1} - 1} \dots p_m^{a_m - 1} \prod_{i = 1}^{m} (p_i - 1)
+\end{align*}
+
+
+\newpage
+\question Exercise Set 3.2, \#15.
+Let $k \in \mathbb{Z}$ with $k>0$. Prove that the equation $\phi(n)=k$ has at most finitely many solutions.
+[Hint: Use Question 6]
+
+\textbf{Solution.}
+
+We know from question 6 that for a given $n$ we have $$\phi(n)=p_1^{a_1-1} p_2^{a_2-1} \cdots p_m^{a_m-1} \prod_{i=1}^m (p_i-1)$$. So for a fixed $k$ the solution $n$ would be of the form $n = p_{1}^{a_{1}} \dots p_m^{a_m}$ such that, 
+$$
+   p_1^{a_1-1} p_2^{a_2-1} \cdots p_m^{a_m-1} \prod_{i=1}^m (p_i-1) = k
+$$
+
+
+Now for each prime in the above we have $(p_i - 1) \mid k$ which means that $p_i$ is at most $k + 1$ as if it was bigger than that then $p_i - 1$ would be larger than $k$ and hence won't be able to divide $k$. So any prime in the list is $p_i \le k + 1$. Note that there are only a finite number of primes smaller equal $k + 1$.  Now consider $p_i^{a_{i} - 1}$ we know that this divides $k$. Similar to the above argument $a_i$ is also bounded as for some $p_i^{a_i - 1}$ increases as $a_i$ increases and at some point it is greater than $k$ and hence can't divide $k$. So this means that each $a_i$ is bounded above as well. So we've shown that there are only a finite number of $p_i$ and $a_i$ which means that there is only a finite number of $n$ such that $\phi(n) = k$
+
+
+
+
+
+
+\newpage 
+\question  Exercise Set 3.2, \#16.
+Let $n$ be a positive integer.
+\begin{parts}
+\item Prove that $\sqrt{n}/2 \leq \phi(n) \leq n$.
+
+
+    \textbf{Solution.}
+
+    First we show the upperbound. We know $\phi(n)$ counts the number of numbers coprime to $n$ smaller than $n$ so by definition as we're counting numbers smaller than $n$ there is only a maximum of $n$ choices. More formally we have $\phi(n) = n (1 - \frac{1}{p_{1}}) \dots (1 - \frac{1}{p_{2}})$. And we have $(1 - \frac{1}{p_{i}}) < 1$ which means that $\prod_i (1 - \frac{1}{p_{i}}) < 1$ so $n \prod_i (1 - \frac{1}{p_i}) = \phi(n) < n$.
+
+    \vspace{1em}
+    
+    For the lower bound we can make the following simplifications,
+    \begin{align*}
+        \frac{\sqrt{n}}{2} &\le \phi(n)\\
+        \frac{\sqrt{n}}{2} &\le n \prod_i \left ( 1 - \frac{1}{p_i} \right ) \\
+        \frac{1}{2} &\le \sqrt{n} \prod_i \left ( 1 - \frac{1}{p_i} \right ) \\
+    \end{align*} 
+
+    Now we know that $n = p_{1}^{a_{1}} \dots  p_n^{a_n}$. So $n \ge p_{1} \dots p_n$ and $\sqrt{n} \ge \sqrt{p_{1} \dots p_n}$. So it is enough to show that, 
+    $$
+        \frac{1}{2} \le \sqrt{p_{1} \dots p_n} \prod_i \left ( 1 - \frac{1}{p_i} \right )
+    $$
+
+
+    Now for $p = 2$ and for one prime we have $\sqrt{2} / 2 = 1 / \sqrt{2} \ge 1 /2$. For every subsequence prime addition we have $\sqrt{p} (p - 1) / p = (p - 1) / \sqrt{p}$. But for $p > 2$ $p - 1 \ge \sqrt{p}$ which means that the entire multiplication by $\sqrt{p} \left ( 1 - \frac{1}{p} \right )$ is greater than 1 and hence will not decrease the product in the RHS. Hence the minimum value of the RHS is when we have only $p = 2$ where we get $\frac{1}{\sqrt{2}}$ and hence, 
+    \begin{align*}
+        \frac{1}{2} \le \sqrt{p_{1} \dots p_n} \prod_i \left ( 1 - \frac{1}{p_i} \right ) 
+    \end{align*}
+
+    and this is equivalent to stating that $\phi(n) \ge \sqrt{n} / 2$
+
+
+
+\item If $n$ is composite, prove that $\phi(n) \leq n-\sqrt{n}$. 
+\end{parts}
+[Hint: Use Question 1 for part (a) and Theorem 3.4 for part (b)]
+
+\textbf{Solution.}
+
+We can make the following simplifications,
+\begin{align*}
+    \phi(n) &\le n - \sqrt{n}\\
+    n \prod_i \left(1 - \frac{1}{p_i}\right) &\le n \left(1 - \sqrt{n}  / n\right)\\
+    n \prod_i \left(1 - \frac{1}{p_i}\right) &\le n \left(1 -   \frac{1}{ \sqrt{n}}\right)\\
+     \prod_i \left(1 - \frac{1}{p_i}\right) &\le  \left(1 -   \frac{1}{ \sqrt{n}}\right)\\
+\end{align*}
+
+So it is enough to show that $\prod_i \left ( 1 - \frac{1}{p_i} \right ) \le \left ( 1 - \frac{1}{\sqrt{n}} \right )$. Now as $n = p_{1}^{a_{1}} \dots p_n^{a_n}$ we have $ n \ge p_{1} \dots p_n = \prod p_i = x$. So we have $\sqrt{n} \ge \sqrt{x}$ or that $\frac{1}{\sqrt{x}} \ge \frac{1}{\sqrt{n}}$ or $1 - \frac{1}{\sqrt{x}} \le 1 - \frac{1}{\sqrt{n}}$. So it is enough to show that, 
+$$
+\prod_i \left ( 1 - \frac{1}{p_i} \right ) \le \left ( 1 - \frac{1}{\sqrt{p_{1} \dots p_n}} \right )
+$$
+
+We can show this by induction, consider for base case $p_{1}, p_{2}$ we have, 
+\begin{align*}
+    \left ( 1 - \frac{1}{p_{1}} \right ) \left ( 1 - \frac{1}{p_{2}} \right ) &= 1 - \frac{1}{p_{2}} - \frac{1}{p_{1}} + \frac{1}{p_{1}p_{2}}\\
+                                                                              &= 1 - \frac{(p_{1} + p_{2}) - 1}{p_{1}p_{2}}
+\end{align*}
+
+So we need to show, 
+\begin{align*}
+    \frac{p_{1} + p_{2} - 1}{p_{1}p_{2}} &\ge \frac{1}{\sqrt{p_{1}p_{2}}}\\
+    p_{1} + p_{2} - 1 &\ge \sqrt{p_{1}p_{2}}\\
+    p_{1}^2 + p_{2}^2 + 1 - 2p_{1} - 2p_{2} + p_{1}p_{2} &\ge p_{1}p_{2}\\
+    p_{1}^2 + p_{2}^2 + 1 - 2p_{1} - 2p_{2} &\ge 0\\
+\end{align*}
+
+Here for $p > 2$ we always have $p^2 \ge 2p$ so the above is true and hence the base case is true.
+
+\vspace{1em}
+
+Now assume true for primes $p_{1}, \dots, p_k$ so we have, 
+$$
+    \prod_i^{k} \left ( 1 - \frac{1}{p_i} \right ) \le 1 - \frac{1}{\sqrt{p_{1} \dots p_k}}
+$$
+
+Now consider $p$ the $k + 1'th$ prime. So we have, 
+\begin{align*}
+    \prod_i^{k + 1} \left ( 1 - \frac{1}{p_i} \right ) &\le \left (1 - \frac{1}{\sqrt{p_{1} \dots p_k}}  \right) \left ( 1 - \frac{1}{p} \right )
+\end{align*}
+
+Now using the base case we have, 
+\begin{align*}
+    \left (1 - \frac{1}{\sqrt{p_{1} \dots p_k}}  \right) \left ( 1 - \frac{1}{p} \right ) \le \left ( 1 - \frac{1}{\sqrt{p\sqrt{p_{1} \dots p_k}}} \right )
+\end{align*}
+
+
+But we know that $p_{1} \dots p_k \ge \sqrt{p_{1} \dots p_k}$ so, 
+\begin{align*}
+    p_{1} \dots p_k &\ge \sqrt{p_{1} \dots p_k}\\
+    p p_{1} \dots p_k &\ge p \sqrt{p_{1} \dots p_k}\\
+    1 / \sqrt{p p_{1} \dots p_k} &\le 1 / \sqrt{p \sqrt{p_{1} \dots p_k}}\\
+    1 - 1 / \sqrt{p p_{1} \dots p_k} &\ge 1 - 1 / \sqrt{p \sqrt{p_{1} \dots p_k}}\\
+\end{align*}
+
+So we get, 
+$$
+    \left (1 - \frac{1}{\sqrt{p_{1} \dots p_k}}  \right) \left ( 1 - \frac{1}{p} \right ) \le \left ( 1 - \frac{1}{\sqrt{p\sqrt{p_{1} \dots p_k}}} \right ) \le 1 - \frac{1}{p p_{1} \dots p_k}
+$$
+
+or that, 
+$$
+\prod_i^{k + 1} \left ( 1 - \frac{1}{p_i} \right ) \le 1 - \frac{1}{\sqrt{p_{1} \dots p_{k + 1}}}
+$$
+
+which completes the induction step. Hence proving the statement.
+
+\end{questions}
+
+\end{document} 
+
+
+ 
+%%%% don't delete the last line!
+\end{document}

@@ -1,0 +1,148 @@
+\begin{prop}
+    Let $a, m \in \Z, m > 0, (a, m) = 1$. If $i$ is a positive integer, then, 
+    \[
+        ord_m(a^{i}) = \frac{ord_m a}{(ord_m a, i)}
+    \]
+\end{prop}
+
+\begin{proof}
+    Let $d = (ord_m a, i)$ so we have some $b, c \in \Z$ such that $ord_m a = db, i = dc$ and $(b, c) = 1$. Note, 
+    \begin{align*}
+        (a^{i})^{b} &\equiv (a^{dc})^{\frac{ord_m a}{d}} \equiv a^{c \ ord_m a}\\
+                    &\equiv 1^{c} \pmod m
+    \end{align*}
+
+    By Proposition 5.1, $ord_m (a^{i}) \mid b$. Now, 
+    \begin{align*}
+        a^{i(ord_m a^{i})} &\equiv a^{i ord_m (a^{i})} \equiv 1 \pmod m
+    \end{align*}
+
+    By Proposition 5.1 we know that $ord_m a \mid i \ord_m (a^{i})$. Thus, 
+    \[
+        db \mid dcd ord_m (a^{i})\text{, so } b \mid c ord_m (a^{i})
+    \]
+    But $(b, c) = 1$ we have $b \mid ord_m a^{i}$ but we also have $ord_m a^{i} \mid b$ so we have $ord_m a^{i} = b$ which means that, 
+    \[
+        ord_m (a^{i}) = b = \frac{ord_m a}{d} = \frac{ord_m a}{(ord_m a, i)}
+    \]
+\end{proof}
+
+\begin{corollary}
+    Let $a, m \in \Z, m > 0, (a, m) = 1$. If $i$ is a positive integer then, 
+    \[
+        ord_m (a^{i}) = ord_m (a)
+    \] 
+
+    if and only if $(ord_m a, i) = 1$
+\end{corollary}
+
+\begin{corollary}
+    If a primitive root modulo $m$ exists, then there are exactly $\phi(\phi(m))$ incongruent primitive roots modulo $m$.
+\end{corollary} 
+\begin{proof}
+    Let $r$ be a primitive root. Then $ord_m r = \phi(m)$. By prop 5.3, then set, 
+    \[
+        r^{1}, r^2, \dots, r^{\phi(m)}
+    \]
+    is a reduced residue system modulo $m$.
+    \vspace{1em}
+    If $1 \le i \le \phi(m)$, then, $ord_m (r^{i}) = ord_m r = \phi(m)$ if and only if $(i, \phi(m)) = 1$. That is, there are $\phi(\phi(m)) $ such $i$, and each gives a distinct primitive root.
+\end{proof}
+
+\begin{eg}
+    We showed that $3$ is a primitive root modulo 7. There are exactly $\phi(\phi(7)) = \phi(6) = 2$ primitive roots. In particular the other one must have, 
+    \[
+        ord (3^{i}) = 6 \iff (i, 6) = 1
+    \]
+    Thus $i = 1,5$ so we have $3^{1} \equiv 3 \pmod 7, 3^{5} \equiv 5 \pmod 7$. So our primitive roots are $3, 5$.
+\end{eg}
+\begin{eg}
+    2 is a primitive root modulo $13$. Thus there are $\phi(\phi(13)) = \phi(12) = 4$.
+\end{eg}
+\begin{note}
+    We have $\phi(\phi(8)) = 2$ but this does not mean that $8$ has 2 primitive roots as $8$ doesn't have 1 to begin with.
+\end{note}
+
+
+\section{Primitive roots for Primes numbers}
+The following theorem of Lagrange is analogous to the fundamental theorem of algebra.
+\begin{theorem}[Lagrange]
+    Let $p$ be a prime and let, 
+    \[
+        f(x) = a_n x^{n} + a_{n - 1}x^{n - 1} + \dots + a_{1} x + a_0
+    \] 
+
+    be a polynomial with degree $n$ and integer coefficients given by $a_{0}, a_{1}, \dots, a_n$ such that $p \mid a_n$. Then the congruence $$f(x) \equiv 0 \pmod p$$ has at most $n$ solutions.
+\end{theorem}
+\begin{proof}
+    Proceed by induction on $n$. For $n = 1$. Then $f(x) = a_{1}x + a_{0}$ where $p \nmid a_{1}$. So then, 
+    \[
+        a_{1} x + a_{0} \equiv 0 \pmod p \iff a_{1} x \equiv -a_{0} \pmod p
+    \]
+
+    Since $p \nmid a_{1}$ it's inverse exists and there is exactly one solution,
+    \[
+        x \equiv - a_{0} \overline{a_{1}} \pmod p
+    \]
+
+    Suppose $n = k \ge 1$ and the theorem holds for this case. Now Suppose $n = k + 1$, then, 
+    \[
+        f(x) = a_{k + 1} x^{k + 1} + \dots + a_{0}
+    \]
+    where $p \nmid a_{k + 1}$. Now if $f(x) \equiv 0 \pmod p$ has no solutions, then we're done. Suppose that $y$ is a solution. By polynomial long division, there exists a polynomial $q(x)$ with integer coefficients such that, 
+    \[
+        f(x) = (x - x_{0}) q(x) + r
+    \]
+
+    For some integer $r$ where $q(x)$ has degree $k$. Note, 
+    \[
+        0 = f(x_{0})  \equiv (x_{0} - x_{0}) q(x_{0}) \equiv r \pmod p
+    \]
+
+    So $r \equiv 0 \pmod p$ and, 
+    \[
+        f(x) \equiv (x - x_{0}) q(x) \pmod p
+    \]
+
+    Now if $0 \equiv f(x_{1}) \equiv (x_{1} - x_{0}) q(x_{1}) \pmod p$. So we have either $p \mid (x_{1} - x_{0})$ or $p \mid q(x_{1})$. So if $x_{1} \not \equiv x_{0} \pmod p$ then $q(x_{1}) \equiv 0 \pmod p$ and $q(x_{1})$ has at most $k$ roots. Thus $f(x)$ has at most $k + 1$ roots.
+\end{proof}
+\begin{prop}
+    Let $p$ be a prime and let $d \in \Z$ that is positive and $d \mid p - 1$. Then the congruence, 
+    \[
+        x^{d} - 1 \equiv 0 \pmod p
+    \]
+    has exactly $d$ in congruent solutions modulo $p$.
+\end{prop}
+\begin{remark}
+    This is a generalization of the case where $d = 2$ where $x^2 \equiv 1 \pmod p$ has exactly two solutions $1$ and $-1$, for odd primes $p$.
+\end{remark}
+\begin{proof}
+
+    Since $d \mid p - 1$, there exists $e \in \Z$ such that $p - 1 = de$. Note that if $p \nmid x$, then $0 \equiv x^{p} - 1 = x^{de} - 1 = (x^{d} - 1)(x^{e - 1} + x^{d(e - 2)} + \dots + x^{d} + 1) \pmod p$. 
+
+    \vspace{1em}
+
+    Thus either $x^{d} - 1 \equiv 0 \pmod p$ or $(x^{d(e - 1)} + \dots 1) \equiv 0 \pmod p$. By theorem 5.7, (2) has at most $d(e - 1) = (p - 1) - d$   solutions and (1) has at most $d$ solutions. But $x^{p - 1}- 1 \equiv 0 \pmod p$ has exactly $p - 1$ solutions. So $x^{d} - 1 \equiv  0 \pmod p$ has at least $d$ solutions. Therefore it has exactly $d$ solutions.
+\end{proof}
+\begin{eg}
+    To show that $3$ is a primitive root modulo $43$ and use this to calculate all elements of order $14$.
+
+    \vspace{1em}
+    
+    To show that $3$ is a primitive root, need to check $3^{i}$ for $i \mid \phi(43) = 42$. So $i = 1,2,3,6,7,14,21,42$. So have, 
+    \begin{align*}
+        3^{1} \equiv 3, 3^{2} \equiv 9, 3^{3} \equiv 27, 3^{6} \equiv -2, 3^{7} \equiv -6, \dots, 3^{42} \equiv 1 
+    \end{align*}
+
+    So $3$ is a primitive root as it's 1 only for $42$.
+
+    \vspace{1em}
+    
+    Now we want $i$  such that, 
+    \[
+        14 = ord_{43}(3^{i}) = \frac{ord_{43} 3}{ord_{43} 3, i} = \frac{42}{(42, 1)}
+    \]
+    So, $(42, i) = 3$. The values of $i$ are $3,9,15,27,33,39$. The elements with order 14 are represented by $3^{3}, 3^{9}, \dots, 3^{39}$.
+\end{eg}
+
+

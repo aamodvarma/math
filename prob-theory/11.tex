@@ -1,0 +1,181 @@
+\chapter{Generating Functions}
+Given a sequence $a_{0}, a_{1}, \dots, a_n$, an infinite sequence of numbers.
+
+A generating function is of the form,
+$$
+    f(s) = \sum_{n = 0}^{\infty} a_n s^{n}
+$$
+or, 
+$$
+    f(s) = \sum_{n = 0}^{\infty} \frac{a_n}{n!} s^{n}
+$$
+
+\begin{eg}
+If we take $a_n = 2^{n}$ then we have, 
+$$
+    f(s) = \sum_{n = 0}^{\infty} 2^{n}s^{n} = \frac{1}{1 - 2s} \quad \text{ when $|s| < \frac{1}{2}$ }
+$$
+\end{eg}
+
+\begin{eg}
+    We have $a_n = n!$ then, 
+    $$
+        \sum_{n} a_ns^{n} \quad \text{ does not exist for any $s = 0$ }
+    $$
+\end{eg}
+
+
+\begin{theorem}
+    If $f(s)$ and $g(s)$ are generating function for a sequence $a_n $ and $b_n$, 
+    $$
+        f(s) = \sum_{n}^{} a_ns^{n} \qquad g(s) = \sum_{n}^{} b_ns^{n}
+    $$
+
+    Then, 
+    \begin{enumerate}
+        \item If $a_n = b_n, \forall n \implies f(s) = g(s)$
+        \item If $\exists s_0, f(s) = g(s) \text{ for } s \le s_0 \implies a_n = b_n \forall n$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    We have $a_{0} = f(0) = g(0) = b_0$. Now, 
+    \begin{align*}
+    f'(s) = \sum_{n = 0}^{\infty} n a_n s^{a - 1} = \sum_{n = 0}^{\infty} (n + 1) a_{n + 1} s^{n}\\
+       g'(s) = \sum_{n = 0}^{\infty} n b_n s^{a - 1} =  \sum_{n = 0}^{\infty} (n + 1) b_{n + 1} s^{n}\\
+    \end{align*}
+
+    So we have $g'(0) = b_{1}, f'(0) = a_{1}$. So if $f(s) = g(s), |s| < 0$ then  we have, $f'(0) = g'(0)$ then we have $a_{1}= b_{1}$
+
+    \vspace{1em}
+    
+
+    So we have $f^{(n)}(0) = n! a_n$ and $g^{(n)} (0) = n! b_n$ so if $f(s)= g(s), |s| < 0$ then we have $f^{(n)} = g^{(n)}(0)$ and hence $a_n = b_n, \forall n$.
+\end{proof}
+
+\section{Random variables with values in $\N$}
+Let $X$ be a r.v such that $Im(X) = \N$. Now we have, 
+
+\begin{align*}
+    G_X(s) &= \sum_{x = 0}^{\infty}  \P(X = x) s^{n}\\
+           &= \sum_{x = 0}^{\infty}  p_X ( x) s^{n}
+\end{align*}
+
+for $0 < p_X(x) < 1$
+
+\vspace{1em}
+
+So, 
+\begin{align*}
+\left | \sum_{x = 0}^{\infty} p_X(s) s^{x} \right | \le \sum_{x = 0}^{\infty}  |s|^{x} < \infty \quad  \text{
+    if $s < 1$
+}
+\end{align*}
+
+In particular if modulus of $X$ is bounded then $Im(X) \subset \{0, \dots, N\}$  then $G_X(s)$ is a polynomial and exists for every $s$.
+
+
+\begin{eg}
+    Bernoulli
+
+    \vspace{1em}
+    
+    We have $0$ w $1 - p$ and 1 w $p$. So, 
+    $$
+        G_X(s) = (1 - p)s^{0} + ps^{1} + sp = (1 - p) = (s - 1)p + 1
+    $$
+\end{eg}
+
+\begin{eg}
+    Binomial
+    \vspace{1em}
+    
+    We have $\P(X = x) = {N \choose x} p^{x} (1- p)^{N - x}$. So our generating function is, 
+    \begin{align*}
+        G_X(s) &= \sum_{x = 0}^{\infty} {N \choose x} p^{x} (1 - p)^{N - x}s^{x}\\
+               &= \sum_{x = 0}^{\infty} {N \choose x} {ps}^{x} (1 - p)^{N - x}\\
+               &= ((1- p) + sp)^{n}
+    \end{align*}
+\end{eg}
+
+\begin{eg}
+    Poisson 
+
+    \vspace{1em}
+    
+    We have, 
+    \begin{align*}
+        G_X(s)) &= \sum_{x}^{\infty}  \frac{\lambda^{x}}{x!} e^{ -\lambda}s^{x}\\
+                &= e^{-\lambda} \sum_{x}^{\infty}  \frac{(\lambda s)^{s}}{x!} \\
+                &= e^{-\lambda}e^{ \lambda s} = e^{-\lambda (1 - s)}
+    \end{align*}
+\end{eg}
+
+\subsection*{Applications}
+We have $$G_X(s) = \sum_{x = 0}^{\infty}  s^{x} \P(X  = s) = \E(s^{x})$$ 
+So, 
+\begin{align*}
+    G_X(1) &= \E(1) = 1\\
+    \frac{d}{ds} G_s(s) &= \E(x s^{x - 1})\\
+    G'_X(1) &= \E(X)\\
+    G''_X(s) &= \E(X(X - 1) s^{X - 2})\\
+    G''_X(1) &= \E(X(X - 1))\\
+    G^{(n)}(1) &= \E(X(X - 1) \dots (X - n + 1))
+\end{align*}
+
+And we have, 
+$$
+    \E(X^2) = \E(X(X- 1)) + E(X) = G''_X(1) + G'_X(1)$$
+
+So  this gives us, 
+$$
+    V(X) = G''_X(1) + G'_X(1) - (G'_X(1))^2
+$$
+
+
+
+\begin{eg}
+    Geometric r.v.
+
+    \vspace{1em}
+    We have $p_X(x) = p(1 - p)^{x - 1}$ so, 
+    \begin{align*}
+        G_X(s) &= p \sum_{x = 1}^{\infty}  (1 - p)^{x - 1} s^{x}\\
+               &= ps \sum_{x = 1}^{\infty}  (s(1 - p))^{x - 1}\\
+               &= ps \left (\frac{1}{1 - s(1 - p)}  \right) = \frac{ps}{1 - sq}
+    \end{align*}
+
+    And we see that $G_X(1) = \frac{p}{1 - q} = 1$ and, 
+    \begin{align*}
+        G_X'(s) &= \frac{p}{1 -sq} +  \frac{psq}{(1 - sq)^2}\\
+        G_X'(1) &= \frac{p}{1- q} + \frac{pq}{p^2} = 1 + \frac{q}{p} = \frac{1}{p}
+    \end{align*}
+\end{eg}
+
+So $G^{n} (0) = n! \P(X = n)$ and $G_X^{n}(1) = \E(X (X - 1) \dots (X - n + 1))$.
+
+\section{Sum of random variables}
+Let $X$ and $Y$ be independent r.v with values in $n$ then we have, 
+$$
+G_{X + Y} (s) = \E(s^{X + Y}) = \E(s^{X}s^{Y}) = \E(s^{X}) \E(s^{Y})
+$$
+as functions of $X$ and $Y$ are independent if $X$ and $Y$ are independent.
+
+\vspace{1em}
+
+So we have, 
+\begin{align*}
+    G_{X + Y}(s) &= G_X(s) G_Y(s)
+\end{align*}
+
+\begin{eg}
+    $X$ and $Y$ are Poisson with $\lambda, \mu$. Let $Z = X + Y$. We see,
+    \begin{align*}
+        G_X(s) &= e^{-\lambda(1 - s)}\\
+        G_Y(s) &= e^{-\mu(1 - s)}\\
+        G_{X + Y}(s) &= e^{-(\lambda+\mu)(1 - s)}
+    \end{align*}
+
+    and hence $X + Y$ is a Poisson r.v with parameter $\lambda + \mu$
+\end{eg}
+

@@ -1,0 +1,105 @@
+\begin{theorem}
+    Let $p$ be a prime and $d \in \Z, d > 0, d \mid p - 1$. Then there are exactly $\phi(d)$ incongruent integers having order $d$ modulo $p$.
+\end{theorem}
+
+\begin{proof}
+    Given $d \mid p - 1$, let $f(d)$ be the number of  integers among $1, 2, \dots, p - 1$ that have order $d$ modulo $p$. We wish to show that $f(d) = \phi(d)$
+
+    \vspace{1em}
+    
+    We'll first who that if $f(d) \ne 0$, then $f(d) = \phi(d)$. Then we'll show that $f(d) \ne 0$ for all $d \mid p - 1$.
+
+    \vspace{1em}
+    
+    Suppose that $f(d) > 0$. There exists $a$ with order $d$. Note, the integers $a^{1}, a^2, \dots, a^{d}$ are incongruent modulo $p$ as if they were congruent i.e $a^{i} \equiv a^{j} \pmod p$ for some $i > j$ then $a^{i - j} \equiv 1 \pmod p$, but $i - j < d$, contradicting $\ord_p a = d$. Note that $(a^{k})^{d} \equiv (a^{d})^{k} \equiv 1 \pmod p$ so each is a solution of $x^{d} - 1 \equiv 0 \pmod p$. Since this congruence has exactly $d$ solutions, these are given by $a^{1}, a^2, \dots, a^{d}$. Any integer has order $d$ modulo $p$ must be congruent to one of these. Point is any element of order $d$ must be a power of $a$.
+
+    \vspace{1em}
+    
+    Recall Prop 5.4, $ord_p (a^{i}) = \frac{ord_p a}{(ord_p a, i)}$. Thus $ord_p (a^{i}) = d$ if and only if $\frac{ord_p (a)}{(ord_p (a) , i)} = d$ but we know $ord_p a = d$ so this means that $(ord_p a, i) = 1$ or $(d, i) = 1$ thus there are exactly $\phi(d)$ values of $i$ which satisfy this. Hence we have $f(d) = \phi(d)$
+
+
+    \vspace{1em}
+    
+    We show that now $f(d)$ cannot be $0$. Note that any integer $b$ with $1 \le b \le p - 1$ must have an order that divides $p - 1$. Thus any such $b$ is counted by exactly $f(d)$. Thus, 
+    \[
+        \sum_{d \mid p - 1}^{}  f(d) = p - 1 = \sum_{d \mid p - 1}^{}  \phi(d) \quad \text{ from prev proposition }
+    \]
+
+    Rearranging $\sum_{d \mid p - 1}^{} (\phi(d) - f(d))  = 0$. If $f(d) \ne 0$. Now if $f(d) \ne 0$ then we have $f(d) = \phi(d)$. In this case we have $\phi(d) - f(d) = 0$. Thus, 
+    \begin{align*}
+        0 = \sum_{d \mid p - 1}^{} \phi(d)
+    \end{align*}
+
+    for some $d$. But $\phi(d)$ is non-negative and hence there are no $d$ such that $f(d) = 0$ and therefore $f(d) = \phi(d)$ for all $d \mid p - 1$.
+\end{proof}
+
+\begin{corollary}
+    Let $p$ be a prime. Then there are exactly $\phi(p - 1)$ primitive roots modulo $p$ .
+\end{corollary}
+\begin{note}
+    The theorem gives no way to construct these primitive roots.
+
+\end{note}
+\begin{eg}
+    Let $p = 7$. Theorem 5.9 implies that there exists residues of orders $1, 2, 3, 6$ since $\phi(7)$ is 6.
+\end{eg}
+\begin{ex}
+    Construct table w order and residues for $p = 13$. We have $\phi(13) = 12$ and orders dividing  $12$ are $1, 2, 3, 4, 6, 12$. 
+\end{ex}
+
+\begin{eg}
+    Find all incongruent integers having order $6, 7$ modulo $19$. Note there are $0$ with order $7$ as $7 \nmid 19 - 1= 18$. To find elements of order $6$ we need a primitive root.
+
+    \vspace{1em}
+    
+    To show that $2$ is a primitive root. By prop 5.1, we need to check that $2^{1} = 2, 2^{2} = 4, 2^{3} = 8, 2^{6} = 7, 2^{9} = 18, 2^{18} = 1$. So $2$ is a primitive root. Thus $2$ is a primitive root. 
+
+    \vspace{1em}
+    
+    Now to find the integers w order $6$ we calculate $6 = ord_{19} (2^{a}) = \frac{ord_{19} 2}{(ord_{19} 2, a)} = \frac{18}{(18, a)}$. Thus $(18, a) = \frac{18}{6} = 3$. Thus $a = 3, 15$ and $2^{3} = 8$ and $2^{15} = 2^{7}^2 \cdot 2= 3$. Thus $3, 8$ have order $6$ modulo $19$.
+
+    \vspace{1em}
+    
+\end{eg}
+
+The frequency with which $2$ appears as a primitive root motivates the following conjecture. 
+\vspace{1em}
+
+\textbf{Conjecture}: There are infinitely many primes $p$ for which $2$ is a primitive root modulo $p$.
+
+\vspace{1em}
+
+\textbf{Conjecture}: If $r$ is any non-square integer other than $-1$, the there are infinitely many primes $p$ for which $r$ is a primitive root.
+
+\vspace{1em}
+
+\textbf{Heath-Brown} proved in 1986 that there are at most two  integers $r$ for which the conjecture is false.
+
+\section{Primitive Root Theorem}
+The following two propositions, limit the cases we consider.
+
+\begin{prop}
+    There are no primitive roots modulo $2^{n}$ where $n \ge 3 \in \Z$.
+\end{prop}
+\begin{proof}
+    Note that any primitive root modulo $2^{n}$ must be odd and have $\phi(2^{n}) = 2^{n} - 2^{n - 1} = 2^{n - 1}$. Let $a$ be an odd integer. To prove that there are no primitive roots, it suffices to show that $a^{2^{n - 2}} \equiv 1 \pmod 2^{n}$.
+
+    \vspace{1em}
+    
+    Do induction on $n$. Base case $n = 3$. Note for $a = 1,3,5,7$ numbers coprime to $8$ squared are equal to $1$. This gives the base case.
+    \vspace{1em}
+    
+    Now suppose that $a^{2^{n - 2}} \equiv 1 \pmod {2^{n}}$ for some $n \ge 3$. We'll show the same congruence with $n + 1$ in place of $n$. Now by assumption we have, 
+    \[
+        a^{2^{n - 2}}  = b \cdot 2^{n} + 1
+    \]
+
+    Note that squaring yields $a^{2^{n - 1}} = b^2 2^{2n} + 1 + b 2^{n + 1}$
+    \begin{align*}
+        a^2^{n - 1} &=  b^2 2^{2n} + 1 + b 2^{n + 1}\\
+                    &= 2^{n + 1} (b^2 2^{n - 1} + b) + 1\\
+                    &= 2^{n + 1} k + 1
+    \end{align*}
+
+    So we have $a^{2^{n - 1}} \equiv 1 \pmod 2^{n + 1}$
+\end{proof}

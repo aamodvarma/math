@@ -1,0 +1,122 @@
+
+\begin{proof}
+    of Theorem 4.9
+
+    Without loss of generality, assume $p > q$. Consider the picture, the number of lattice points in the rectangle OABC. This is clearly $\frac{p -1}{2} \cdot \frac{q - 1}{2}$.
+
+    \vspace{1em}
+    
+    1. The line ON has slope $\frac{q}{p}$. In particular, ON contains no lattice points. 
+    
+    \vspace{1em}
+    
+    2. The y-coordinate of M is $\frac{p - 1}{2} \cdot \frac{q}{p} = \frac{q}{2} - \frac{q}{2p}$. This lies between the consecutive integers are $\frac{q - 1}{2}$ and $\frac{q + 1}{2}$.  We have,
+    \begin{align*}
+        \frac{q - 1}{2} = \frac{q}{2} - \frac{1}{2} < \frac{q}{2} - \frac{q}{2p} < \frac{q}{2} < \frac{q + 1}{2}
+    \end{align*}
+
+    The number of lattice points in the rectangle OABC, not on the axis and below ON is,
+    \begin{align*}
+        N_{1} = \sum_{j = 1}^{\frac{p - 1}{2}} \left \lfloor \frac{jq}{p}\right \rfloor 
+    \end{align*}
+
+    Likewise, the number of lattice points above ON is,
+
+    \begin{align*}
+        N_{2} = \sum_{j = 1}^{\frac{q - 1}{2}} \left \lfloor \frac{jp}{q}\right \rfloor 
+    \end{align*}
+
+    Thus, the total number of lattice points in question is $N_{1} + N_{2} = \frac{p - 1}{2} \cdot \frac{q - 1}{2}$.
+
+    \vspace{1em}
+    
+    From Lemma 4.10 we have $\left ( \frac{p}{q} \right ) \left ( \frac{q}{p} \right ) = (-1)^{N_{2}} (-1)^{N_{1}} = (-1)^{\frac{p - 1}{2} \cdot \frac{q - 1}{2}}$
+\end{proof}
+
+\subsection*{Characterizing Particular Primes}
+Note, we have characterized the primes for which $-1$ and $2$ are quadratic residues.
+
+\vspace{1em}
+
+\begin{eg}
+For primes is $3$ a quadratic residues. So for what $p$ is $\left ( \frac{3}{p} \right ) = 1$.
+
+\vspace{1em}
+
+1. $\left ( \frac{3}{p} \right ) = \begin{cases}
+    \left ( \frac{p}{3} \right )  &\text{ if $p \equiv 1 \pmod 4$ } \\
+    - \left ( \frac{p}{3} \right )  &\text{ if $p \equiv 3 \pmod 4$ } \\
+\end{cases}$
+
+\vspace{1em}
+
+
+2. Tabulate quadratic residues  and quadratic non-residues mod $3$. We have $1^2 = 1, 2^2 = 1 \pmod 3$. So only quadratic resiude is $1$. 
+
+\vspace{1em}
+
+
+3. Analyze cases,
+
+Suppose $p \equiv 1 \pmod 4$. Then, $\left ( \frac{p}{3} \right ) = 1$ if $p \equiv 1 \pmod 3$
+
+\vspace{1em}
+
+Suppose $ p \equiv 3\pmod 4$. Then, $\left ( \frac{p}{3} \right ) = -1$ if $p \equiv 2 \pmod 3$.
+
+\vspace{1em}
+
+4. Chinese remainder theorem,
+
+In case 1 we have $p \equiv 1 \pmod 4, p \equiv 1 \pmod 3$ and case 2 we have $p \equiv 3 \pmod 4, p \equiv 2 \pmod 3$. For case 1 we get $p \equiv 1 \pmod {12}$ and for case 2 we have $p = 3 \cdot 3 \cdot \overline{3} + 2 \cdot 4 \cdot \overline{4} = -1$.
+\vspace{1em}
+
+5. We have $\left ( \frac{3}{p} \right ) = 1$ if and only if $p \equiv \pm 1 \pmod {12}$ 
+\end{eg}
+
+\begin{eg}
+    Characterize the primes $p$ for which both 2 and 3 are quadratic residues. So we want $p$ such that, 
+    \[
+        \left ( \frac{2}{p} \right ) = \left ( \frac{3}{p} \right ) = 1
+    \]
+
+    We have $\left ( \frac{2}{p} \right ) \equiv 1 $ if $p \equiv \pm 1  \pmod 8$ and $\left ( \frac{3}{p} \right ) \equiv 1$ iff $p \equiv \pm 1 \pmod {12} $. This is equivalent to $p \equiv \pm 1 \pmod {24}$
+\end{eg}
+
+
+\begin{eg}
+    Characterize the primes $p$ for which $13$ is a quadratic residue. So we want $p$ such that, 
+    \[
+        \left ( \frac{13}{p} \right ) = 1
+    \]
+
+    We have $\left ( \frac{13}{p} \right ) = \left ( \frac{p}{13} \right )$. Now we need to find squares modulo $13$ which is $1^2  = 1, 2^2 = 4, 3^2 = 9, 4^2 = 3, 5^2 = 12, 6^2 = 10$. 13 is a quadratic residue mod $p$ if and only if $p \equiv 1, 3, 4, 9, 10, 12 \pmod {13}$
+\end{eg}
+
+% \begin{eg}
+%     For $11$,
+
+%     $\left ( \frac{11}{p} \right ) = \begin{cases}
+%         \left ( \frac{p}{11} \right ) &\text{ p \equiv 1 \pmod 4 } \\
+%         \left ( -\frac{p}{11} \right ) &\text{ p \equiv 3 \pmod 4 } \\
+%     \end{cases}$
+
+%     Step 2: Quadratic residue are $1, 3, 4, 5, 9$ and quadratic non-residues are $2, 6, 7, 8, 10$.
+
+%     \vspace{1em}
+    
+%     Step 3: If $p \equiv 1 \pmod 4$ then $\left ( \frac{p}{11} \right ) = 1$ if $ p \equiv 1, 3, 4, 5, 9 \pmod {11}$ and if $p \equiv 3 \pmod 4$ then $\left ( \frac{p}{11} \right ) = -1$ if $p \equiv 2, 6, 7, 8, 10 \pmod {11}$
+
+%     \vspace{1em}
+    
+%     Step 4: 
+
+%     We need to solve the 10 pairs of Chinese remainder theorem problems.
+
+%     \vspace{1em}
+    
+%     So $11 $ is a quadratic resiude mod p if and only if, 
+%     \[
+%         p \equiv \pm 1, \pm 5, \pm 7, \pm 9, \pm 19 \pmod 44
+%     \]
+% \end{eg}

@@ -1,0 +1,116 @@
+\subsection*{Closure}
+\begin{definition}
+   Given $A \subseteq R$,  if $L$ is the set of all limit points of $A$. Then the closure is defined to be $\overline A = A \cup L$
+\end{definition}
+\begin{theorem}
+    For $A \subseteq R$, $\overline A$ is closed and is the smallest closed set containing $A$
+\end{theorem}
+\begin{proof}
+    First we show it's the smallest closed set containing $A$. Let $B$ be a closed set such that $A \subseteq B$. Now as $B$ is closed and $A \subseteq B$, $B$ contains all the limit points of $A$ so we have $L \subseteq B$ so we get $A \cup L \subseteq B$ or $\overline A \subseteq B$. Hence, $\overline A$ is contained in any closed set containing $A$ and hence is the smallest.
+
+    \vspace{1em}
+    
+    If $L$ is the set of limit points of $A$ then by construction we have $\overline A = A \cup L$ so $A$ contains all it's limit points. Now in addition we need to show that no new limit points are introduced by taking the union of $A$ and  $L$. We show two things,
+
+    \vspace{1em}
+    
+    (1) $L$ is closed
+
+    (2) If $x$ is the limit point of $A \cup L$ then it is of $A$ as well.
+
+    \vspace{1em}
+    
+    (1) Consider any $x_n \in L$. We have for some sequence $\{a_{mn}\}$ in $A$ that $\lim a_{mn} = x_n$. We need to show that $L$ contains it's limit points. So consider a sequence in $L, (x_n)$ such that $\lim x_n = x$. So for $n > N$ and $m > M$ we have that, 
+    \[
+        |a_{mn} - x| < |a_{mn} - x_n| + |x_n - x| < \epsilon / 2 + \epsilon / 2 = \epsilon
+    \]
+
+    Which makes $x$ the limit of a sequence from $A$ and hence a limit point of $A$ and hence in $L$. So $L$ contains all of it's limit points.
+
+    \vspace{1em}
+    
+    (2) Consider $x_n \in A \cup L$ such that $\lim x_n = x$. Now it's possible to find a sub sequence of $x_n$ that is either all in $A$ or all in $L$ the limit of whom is still $x$. If that sub sequence belongs to only $A$ then $x$ is a limit points of $A$ and is in $L$ therefore $x \in A \cup L$. If it only belongs to $L$ as $L$ is closed it contains it's limit points and hence $x \in L $ so $x \in A \cup L$.
+
+
+    \vspace{1em}
+    
+    Hence, we complete the proof.
+\end{proof}
+\subsection*{Complement}
+$$A\subseteq R, A^{c} = \{x \in \R \mid x \not \in A\}$$
+
+\begin{theorem}
+    A set $O$ is open if and only if $O^{c}$ is closed and $F$ is closed if and only if $F^{c}$ is open.
+\end{theorem}
+\begin{proof}
+    ($\implies$) Assume $O$ is open. Now consider $O^{c}$ and take $x$ a limit point  of it. So for every $\epsilon > 0$  the deleted neighborhood is in $O^{c}$ so it cannot be in $O$ but that must mean that $x$ cannot be in $O$ as $O$ is open so $x$ must have a $\epsilon- $neighborhood. Hence $x \in O^{c}$ and $O^{c}$ is closed.
+
+     \vspace{1em}
+     
+     ($\impliedby$) 
+\end{proof}
+
+
+\begin{theorem}
+    The intersection of an arbitrary collection of closed sets is closed.
+\end{theorem}
+\begin{theorem}
+    The union of a finite collection of closed sets is closed. 
+\end{theorem}
+
+
+
+\begin{definition}[Compactness]
+    A set $K \subseteq R$ is compact if every sequence in $K$ has a subsequence that converges to a limit in $K$.
+\end{definition}
+
+\begin{definition}
+     A set $A \subseteq R$ is bounded if $\exists M > 0$ such that $|x| \le M, \forall x \in A$.
+\end{definition}
+
+\begin{theorem}
+    A set $K \subseteq R$ is compact if and only if it is closed and bounded. 
+\end{theorem}
+\begin{proof}
+\end{proof}
+
+\begin{theorem}
+\end{theorem}
+
+\section{Open Covers}
+\begin{definition}
+    Let $A \subseteq \R$ \dots
+\end{definition}
+
+
+\begin{theorem}[Heine-Borel Theorem]
+    Let $K$ be a subset of $\R$. Then the following are equivalent,
+    \begin{enumerate}
+        \item $K$ is compact
+        \item $K$ is closed and bounded
+        \item Every open cover of $K$ has a finite subcover.
+    \end{enumerate}
+\end{theorem}
+
+
+\section{Perfect sets and Connected sets}
+\begin{definition}
+    $P \subseteq \R$  is perfect if it is closed and contains no isolated points.
+\end{definition}
+\begin{remark}
+    So all points in $P$ are it's limit points.
+\end{remark} 
+
+\begin{eg}
+    Closed interval $[a, b]$ where $a \ne b$ has no isolated points.
+\end{eg}
+\begin{eg}
+    For $a < b < c$ we have $[a, b] \cup \{c\}$ is closed but not perfect.
+\end{eg}
+
+\begin{definition}
+    Two sets $A, b \subseteq \R$ are separated if $\overline A \cup B$ and $A \cup \overline B$ are empty. $E \subseteq \R$ is disconnected if it can be written as $A \cup B$ where $A, B$ are nonempty separated sets.
+\end{definition}
+\begin{note}
+    Here $\overline A$ is the closure of the set not the complement.
+\end{note}

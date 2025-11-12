@@ -1,0 +1,101 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\title{Real Analysis: HW8}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+
+\section{Exercise 4.4.1}
+
+(a) We have $f(x) = x^{3}$. Now we need for any arbitrary point $x_{0} \in \R$ we have for any $\epsilon > 0$  a $\delta > 0$ such that if $|x - x_{0}| < \delta$ then we get $|f(x) - f(x_{0})| < \epsilon$.
+
+\vspace{1em}
+
+First for an arbitrary $x_{0}$ let, $M = (1 + x_{0})^2 + x_{0}^2 + |x_{0}(1 + x_{0})|$ and take $\delta = \min \{\frac{\epsilon}{M}, 1\}$. Then we get the following,
+
+\begin{align*}
+    |x^{3} - x_{0}^{3}| &=     |(x - x_{0})(x^2 + x_{0}^2 + x x_{0})|\\
+                        &= |x - x_{0}||(x^2 + x_{0}^2 + x x_{0}|
+\end{align*}
+
+Now as we have $|x - x_{0}| < \delta = \min {\frac{\epsilon}{M}, 1}$ then we have $|x - x_{0}| < 1$. But this can be written as $x_{0} -1 \le x  \le 1 + x_{0}$ and this gives us $|x^2 + x_{0}^2 + x x_{0}| \le |(1 + x_{0})^2 +  x^2 + (1 + x_{0}) x_{0}| \le M$. So we have, 
+\begin{align*}
+    |x^{3} - x_{0}^3| &\le |x - x_{0}| |x^2 + x_{0}^2 + x x_{0}|\\
+                      &\le |x - x_{0}| M
+\end{align*}
+
+Now as we have $|x - x_{0}| \le \frac{\epsilon}{M}$ we have, 
+
+\begin{align*}
+    |x^{3} - x_{0}^3| &\le |x - x_{0}| M\\
+                      &\le \frac{\epsilon}{M}M = \epsilon
+\end{align*}
+
+So for any $x_{0}$ if we define $M$  as above then for any $\epsilon$ by choosing $\delta = \min \{\frac{\epsilon}{M}, 1\}$ we get $|f(x) - f(x_{0})| < \epsilon$ which makes $f$ continuous on all points in $R$.
+
+
+\vspace{1em}
+
+(b). Choose $\epsilon = 1$ and let the sequence be $(x_n) = n$ and $(y_n) = n + \frac{1}{n}$. Then we have $|x_n - y_n| = |\frac{1}{n}| \to 0$. But now we get, 
+\begin{align*}
+    |f(x_n) - f(y_n)| &=  \left |(n + \frac{1}{n})^3 - n^3 \right|\\
+                      &=  \left |n^{3} + \frac{1}{n^3} + \frac{3n}{n^2} + \frac{3n^2}{n} - n^3 \right|\\
+                      &= \left |3n + \frac{1}{n^{3}}+ \frac{3}{n} \right |\\
+                      &\ge \left | 3n\right |
+\end{align*}
+
+Now as $n \to \infty$ we have $3n$ is unbounded and hence we get $|f(x_n) - f(y_n)| \ge |3n| \ge \epsilon = 1$. So $f(x) = x^{3}$ is not uniformly continuous in $R$.
+
+
+\vspace{1em}
+
+(c). Consider any bounded subset of $R$. So we have $|x| \le M$ for some $M > 0$. Now note that for any point in this subset we have $x_{0} \le M$ as well. So now let $M_{0} = (1 + x_{0})^2 + x_{0}^2 + |x_{0}(1 + x_{0})| \le (1 + M)^2 + M^2 + M(1 + M)$ and we can choose $\delta = \min \{\frac{\epsilon}{M_{0}}, 1\}$.
+
+\vspace{1em}
+
+Note that for any point $x_{0}$ we have $M_{0}$ is independent of $x_{0}$ or $x$, i.e. $M_{0}$ is a constant given the subset. Hence, we have as $|x - x_{0}| \le 1$ and $x \le M$ which gives us $|x^2 + x_{0}^2 + x x_{0}| \le M_{0}$   and similarly as $|x - x_{0}| < \frac{\epsilon}{M_{0}}$ we get $|x^{3} - x_{0}^{3}| \le |x - x_{0}| |x^2 + x_{0}^2 + x x_{0}| \le \frac{\epsilon}{M_{0}} M_{0} = \epsilon$  and hence we found a fixed $\delta$ that works with  any $x_{0}$ in the subset.
+
+
+
+\section{Exercise 4.4.2}
+
+(a). $\frac{1}{x}$ is not uniformly continuous on $(0, 1)$. Consider the sequence $(x_n) = \frac{1}{n + 1}$ and $(y_n) = \frac{1}{n + 2}$. We have $|x_n - y_n| = \frac{1}{n + 1} - \frac{1}{n + 2} = \frac{1}{(n + 2)(n + 1)} \to 0$. But we see that $|f(x_n) - f(y_n)| = |n + 2 - n - 1| = 1$. So if we choose $\epsilon_{0} = .5$ then we have $|f(x_n) - f(y_n)| \ge \epsilon_{0}$ and hence $\frac{1}{x}$ is not uniformly continuous.
+
+(b). Is uniformly continuous on $(0, 1)$. We can see this as follows, 
+\begin{align*}
+    |f(x) - f(x_{0})| &= \left | \sqrt{x^2+ 1} - \sqrt{x_{0}^2 + 1}\right |\\
+                      &=  \left | \frac{x^2 - x_{0}^2}{\sqrt{x^2+ 1} + \sqrt{x_{0}^2 + 1}}\right |\\
+                      &=  \left | \frac{(x + x_{0})(x - x_{0})}{\sqrt{x^2+ 1} + \sqrt{x_{0}^2 + 1}}\right |\\
+\end{align*}         
+
+Now note that in $(0, 1)$ we have $(x + x_{0})$ is bounded above by $2$. And we also have $|\sqrt{x^2 + 1} + \sqrt{x_{0}^2 + 1}| \ge |\sqrt{1} + \sqrt{1}| \ge 2$  i.e it's bounded below by $2$ and hence we can write, 
+\[
+    \left | \frac{(x + x_{0})(x - x_{0})}{\sqrt{x^2 + 1} + \sqrt{x_{0}^2 + 1}}\right | \le |x - x_{0}|
+\]
+
+Hence, we just need to take $\delta = \epsilon$
+
+\vspace{1em}
+
+(c) We have $x \sin (\frac{1}{x})$. Define $h(x) = 0$ if $x = 0$ then we get that $h$ is continuous on $[0, 1]$ but we have $[0, 1]$ is a compact set and hence it is uniformly continuous on $[0, 1]$ which means that it is uniformly continuous on the interval $(0, 1)$ as well.
+
+\section{Exercise 4.4.11}
+We have $B \subset R$ and $g^{-1}(B) = \{x \in \R : g(x) \in B\}$.
+
+\vspace{1em}
+
+($\implies$) We have $g$ is continuous which means that for any $x_{0} \in \R$ for all $\epsilon > 0$ we have a $\delta > 0$  such that $|x - x_{0}| < \delta \implies |g(x) - g(x_{0})| < \epsilon$. Now consider an arbitrary open set $O \subset \R$ so we have, 
+\[
+    g^{-1}(O) = \{x \in \R, g(x) \in O\}
+\]
+
+we need to show that this is open. First consider some $o \in g^{-1}(O)$ which maps to $g(o) \in O$. As $O$ is open there is some $\epsilon-$neighborhood of $g(o)$  which is contained within $O$. So for $z$ such that $|g(o) - z| < \epsilon$ is a subset of $O$. Now as $g$ is continuous choose $\epsilon$ and we delta such that for $|o - x| < \delta$ we get $|g(o) - g(x)| < \epsilon$. So now in $O$ for the value such that $g(x) = z$ we have for the $x \in g^{-1}(O)$ is in the $\delta$ neighborhood of $o$ and hence is a subset of $g^{-1}(O)$. So for any value $o \in g^{-1}(O)$ we found a delta neighborhood that is also in the set which means that it's open.
+
+
+\vspace{1em}
+
+($\impliedby$)
+Consider the contrary that for any open subset of $R$ the preimage is also open. So consider an arbitrary point in $g^{-1}(O)$ say $x_{0}$. Now we have $g(x_{0}) \in O$ and has an $\epsilon$ neighborhood in $O$ as its open. Now consider this open subset of $O$, i.e. the set $(g(x_{0}) - \epsilon, g(x_{0}) + \epsilon)$, note that the preimage of this is a subset of $g^{-1}{O}$ call $S$ and is open as well. Now since $S$ is open there is a delta neighborhood for $x_{0}$ that is contained within $S$. So now for that $\delta$ we have for all points $|x - x_{0}| < \delta $ in $S$ that $|g(x) - g(x_{0})| < \epsilon$ in $O$ and hence for an arbitrary $x_{0}$ for any $\epsilon > 0$ we found a $\delta$ such that for any $x$ in the delta neighborhood of $x_{0}$ we have $f(x_{0})$ in the $\epsilon$ neighborhood of $f(x)$.
+\end{document}

@@ -1,0 +1,194 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Probability Theory: HW2}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+
+
+
+\section*{Exercise 3.8}
+Let $X$ be the count of aces and $Y$ be for num of kings.
+
+\begin{tabular}{ |c| c| c| c| }
+ \hline
+          & X = 0 & X=1 & X=2  \\ 
+    Y = 0 & ${44 \choose 2}/{52 \choose 2}$ & ${4 \choose 1}{44 \choose 1}/ {52 \choose 2}$& ${4 \choose 2}/{52 \choose 2}$ \\  
+    Y = 1 & ${4 \choose 1}{44 \choose 1}/ {52 \choose 2}$ & ${4 \choose 1}{4 \choose 1}/{52 \choose 2}$ & 0 \\  
+    Y = 2 & ${4 \choose 2}/{52 \choose 2}$ & 0  & 0  \\
+ \hline
+\end{tabular}
+
+\section*{Exercise 3.25}
+We have $X, Y$ are independent r.v which means that we have $\P(X  = x\text{ and } Y = y) = \P(X = x) \P(Y = y)$. Now we have $g(X)$ and $h(Y)$ which are r.v we need to show that $g, h$ are independent as well. Consider,
+
+\begin{align*}
+    \P(g(X) = x' \text{ and } h(Y) = y') &= \P(X \in g^{-1}(x') \text{ and } Y \in h^{-1}(y')) \\
+                                         &=  \P(X \in g^{-1}(x')) \P(Y \in h^{-1}(y')) \text{ as $X, Y$ are independent }\\
+                                         &= \P(g(X) = x') \P(h(Y) = y')
+\end{align*}
+
+Hence we show that $g(X)$  and $g(Y)$ are also independent.
+\section*{Exercise 3.42}
+$N$ is the number of events $A_{1}, \dots, A_n$ that occur. Now let $1_{A_i}$ be the indicator function for event $A_i$ which is $1$ if the event occurs i.e. $\omega \in A_i$ and $0$ if $\omega \not \in  A_i$. So we have $N = 1_{A_1} + \dots + 1_{A_n}$. So,
+\begin{align*}
+    E(N) &= E(1_{A_1} + \dots + 1_{A_n})\\
+          &= E(1_{A_1}) + \dots + E(1_{A_n})\\
+\end{align*}
+
+Now expected value of $E(1_{A_i}) = \P(A_i) \cdot 1 + (1 - \P(A_i)) \cdot 0 $ where $\P(A_i)$ is the probability the $\omega \in A_i$ or the event occurring. So $\E(1_{A_i})  = \P(A_i)$. So we have,
+\begin{align*}
+    E(N) &= P(A_1) + \dots + P(A_n)\\
+         &= \sum_{i = 1}^{n} \P(A_i)
+\end{align*}
+
+\section*{Problem 4}
+We have $X_{1}, X_{2}, \dots, X_n$ are independent discrete random variable and we have $\P(X_i = k) = \frac{1}{N}$ where $k$ goes from $1, \dots, N$
+
+\vspace{1em}
+
+We have $U_n = \min\{X_{1}, \dots, X_n\}$. So $\P(U_n = k)$ is the probability that the least value that any $X_i$ takes is $k$. So none of the $X_i$ can take values smaller than $k$. We have $\P(X_i \ge k) = \sum_{n = k}^{N} \P(X_i = k) = (N - k + 1) / N$. Now as each $X$ is independent we have probability that each of them are larger than equal to $k$ is, $((N - k+ 1) / N)^{n}$. So we have,
+\begin{align*}
+    \P(U_n \ge k) =  \left (\frac{N - k + 1}{N}  \right )^{n}\\
+    \P(U_n \ge k + 1) =  \left (\frac{N - k}{N}  \right )^{n}
+\end{align*}
+
+Which gives us $\P(U_n = k) = \P(U_n \ge k) = \P(U_n \ge k + 1) = \left (\frac{N - k + 1}{N}  \right )^{n} -  \left (\frac{N - k}{N}  \right )^{n}$
+
+
+
+\vspace{1em}
+
+Now similarly we have $V_n$ is the max so $V_n = k$ means that no $X_i$ takes on a value larger than $k$. Hence at least one $X_i$ takes on the value $k$ and the rest can take on other values. So first we have $\P(U_n \le k) = (k) / N$ so, 
+\begin{align*}
+    \P(V_n \le k) = \left (\frac{k }{N}  \right )^{n}\\
+    \P(V_n \le k - 1) = \left (\frac{k - 1}{N}  \right )^{n}
+\end{align*}
+
+And for $\P(V_n = k)$ we have probability that it's smaller than k minus probability that it's smaller than $k - 1$ which would be the case where it's equal to k so,
+\begin{align*}
+    \P(V_n = k) = \left (\frac{k}{N}  \right )^{n} -  \left (\frac{k - 1}{N}  \right )^{n}
+\end{align*}
+\section*{Problem 7}
+We have $X_{1}, X_{2}, \dots$ are discrete random variables with mean $\mu$. We have $N$ a r.v whic his independent of the $X_i$. We have,
+\begin{align*}
+    E(X_{1} + \dots + X_N) &= \sum_n E((X_{1} + \dots + X_N) \mid N = n) \P(N = n)
+\end{align*}
+
+Now given $N = n$ we have,
+
+\begin{align*}
+    E(X_{1} + \dots + X_n) &= E(X_{1}) + \dots + E(X_n) \\
+                           &= \mu n
+\end{align*}
+
+So we get,
+\begin{align*}
+    E(X_{1} + \dots + X_N) &= \sum_n \mu n \P(N = n)\\
+                           &= \mu \sum_n n \P(N = n)\\
+                           &= \mu \E(N)
+\end{align*}
+\section*{Exercise 4.18}
+
+We have $X$ a random variable with $G_X(s)$ and $k$ a positive integer. We have $Y = kX$ and $Z = Y + k$. We need to find the probability generating function of both.
+
+\vspace{1em}
+
+We have $\P(Y = y) = \P(X = y / k)$. So if we have,
+\begin{align*}
+    G_X(s) = u_{0} + u_{1}s + u_{2}s^2 + \dots
+\end{align*}
+
+So give $X = x$ as $Y$ takes on the value $kx$. Here $x$ is the exponent so we need the corresponding coefficient to be that of $kx$. This is equivalent to, 
+$$
+    G_Y(s) = u_{0} + u_{1}s^{k} + u_{2}s^{2k} + \dots
+$$
+
+Which is $G_Y(s) = G_X(s^{k})$
+
+\vspace{1em}
+
+Now consider $Z = X + k$.  Here for a given $Z = z$ the probability of this is the same as $X = z - k$. So given an exponent $x$ for $Z$ the coefficient  / probability must be for $x + k$  and hence we have,
+\begin{align*}
+    G_X(s) &= u_{0} + u_{1}s^{1} + u_{2}s^{2} + \dots\\
+    G_Z(s) &= u_{0}^{k} + u_{1}s^{1 + k } + u_{2}s^{2 + k} + \dots\\
+    G_Z(s) &= s^{k} (u_{0} + u_{1}s + u_{2}s^2 + \dots)\\
+    G_Z(s) &= s^{k} G_X(s)\\
+\end{align*}
+
+\section*{Exercise 4.41}
+We have $X,Y$ independent r.v. $X$ is a binomial distribution with $m, p$ and $Y$ is binomial with $n, p$.
+
+\vspace{1em}
+
+For binomial we have $G_X(s) = (q + ps)^{n}$ and $G_Y(s) = (q + ps)^{m}$. So for $X + Y$ we have, 
+$$
+G_{X + Y}(s) = G_X(s) G_Y(s) = (q + ps)^{m} + (q + ps)^{n} = (q + ps)^{n + m}
+$$
+
+which is also a binomial with parameters $p$ and $m + n$.
+
+
+\vspace{1em}
+
+Now we know the generating function of a bernoulli with parameter $p$  is $G_{X_i}(s) = (q + ps)$. As we have $n$ independent bernoullis say $X_{1} + \dots + X_n$ is, 
+\begin{align*}
+    G_{X_{1} + \dots + X_n}(s) &= G_{X_{1}}(s) \dots G_{X_n}(s)\\
+                               &= (q + PS)^{n}
+\end{align*}
+
+Which we see is the binomial with parameter $p$ and $n$.
+\section*{Exercise 5.13}
+We have $Y = \max \{0, X\}$. We know that $Y$ cannot take on values smaller than zero. And for greater than zero we have it as the same as $X$ so we have,
+\begin{align*}
+    F_Y(u) = \begin{cases}
+        F_X(y) \text{ if $y \ge 0$ }\\
+        0 \text{ if $y < 0$ }
+    \end{cases}
+\end{align*}
+\section*{Problem 5}
+(a) We have probaility of $n$ flowers is $(1 - p)p^{n}$. Now the generating function for this is if we take $q = 1- p$ then,
+\begin{align*}
+    G_X(s) &= q + qps + q(ps)^2 + \dots\\
+           &= q(1 + ps + (ps)^2 + \dots)\\
+           &= \frac{q}{1 - ps}
+\end{align*}
+
+Now take $Y$ to be 1 if we get a ripe fruit and 0 if we don't so we have,
+\begin{align*}
+    G_Y(s) &= \frac{1}{2} + \frac{1}{2}s
+\end{align*}
+
+Now if $Z$ is r.v. for num of ripe fruits we get,
+\begin{align*}
+    G_Z(s) &= G_X(G_Y(s))\\
+           &= \frac{1 - p}{1 - p(\frac{1}{2} + \frac{1}{2s})}\\
+           &=  2\frac{1 - p}{2 - p} \cdot \frac{1}{1 - \frac{ps}{2 -p}}\\
+\end{align*}
+
+We see the second term is a geometric series as well so we have probability that $Z = r$ is the coefficient of the $s^{r}$ term which would be,
+\begin{align*}
+    \P(Z = r) = \frac{2(1 - p)}{2 - p} \left ( \frac{p}{2 - p} \right )^{r}
+\end{align*}
+
+\vspace{1em}
+
+(b) We need now the probability of having $n$ flowers given that it produces $r$ ripe fruits. Which is,
+\begin{align*}
+    \P(X = n \mid Z = r) = \P(Z = r \mid X = n) \frac{\P(X = n)}{ \P(Z = r)}
+\end{align*}
+
+Now given $n$ the probability of getting $r$ ripe fruits is $\P(Z = r \mid X = n) = {n \choose r}\frac{1}{2^{n}}$. And we have $\P(X = n) = (1 - p)p^{n}$ and $\P(Z = r) =\frac{2(1 - p)}{2 - p} \left ( \frac{p}{2 - p} \right )^{r} $. This gives 
+
+\begin{align*}
+    \P(X = n \mid Z = r) &= {n \choose r}\frac{1}{2^{n}} \frac{ (1 - p)p^{n}}{\frac{2(1 - p)}{2 - p} \left ( \frac{p}{2 - p} \right )^{r}}\\
+                         &=  {n \choose r} \frac{p^{n - r} (2 - p)^{r + 1}}{2^{n + 1}}\\
+\end{align*}
+
+
+
+
+
+\end{document}
