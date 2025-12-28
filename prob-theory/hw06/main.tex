@@ -1,0 +1,211 @@
+\documentclass[a4paper]{report}
+\input{preamble.tex}
+\title{Probability Theory: HW5}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+
+\textbf{Exercise 7.60}
+We have $X$ is normal with $\mu$ and $\sigma^2$ and we need to find $\E(X^{3})$. We know the Moment generating function of a normal is $M_X(t) = E(e^{tX}) = e^{\mu t + \frac{1}{2} \sigma^2 t^2}$. And note that at $s = 0$ we have $(e^{sX})^{(3)} = X^{3}$ and hence we have $M_X(0)^{(3)} = E(X^{3})$. Third derivative of $e^{\mu t + \frac{1}{2} \sigma^2 t^2}$ is $[(\mu + \sigma^2 t)^{3} + 3 \sigma^2(\mu + \sigma^2 t] e^{\mu t + \frac{1}{2} \sigma^2 t^2}$ and evaluated at $s = 0$ is $\mu^{3} + 3\sigma^2 \mu$
+
+
+\vspace{1em}
+
+\textbf{Exercise 7.75}
+
+We have, 
+\[
+    \frac{1}{\eta} = \frac{1}{n} \sum_{i = 1}^{n} \frac{1}{x_i}
+\]
+
+We need to show that $\sqrt[n]{x_{1} \dots x_n} \ge \eta$ or that $\frac{1}{\eta} \ge \frac{1}{\sqrt[n]{x_{1} \dots x_n}}$
+
+\vspace{1em}
+
+First we know that $AM \ge GM$ which means, 
+\[
+    \frac{1}{n} \sum x_i \ge \left (\prod_i x_i\right)^{\frac{1}{n}}
+\]
+
+Now note if we take reciprocals then we get, 
+
+\[
+    \frac{1}{n} \sum \frac{1}{x_i} \ge \left ( \prod_i \frac{1}{x_i}\right )^{\frac{1}{n}}
+\]
+
+Note the left side is $\frac{1}{\eta}$ and the right side is $\frac{1}{\sqrt[n]{x_{1} \dots x_n}}$ which gives us, 
+\[
+    \frac{1}{HM} \ge \frac{1}{GM}
+\]
+
+or that $GM \ge HM$.
+
+\vspace{1em}
+
+\textbf{Exercise 8.10}
+We have $N_n$ is the number of occurrence of $5$ or $6$ in $ n$ throws of a fair die. We need to show that, 
+\[
+    \frac{1}{n}N_n \to \frac{1}{3} \quad \text{ in mean square }
+\]
+
+Let $N_n = X_{1} + \dots + X_n$ where each $X_i$ is a r.v. that takes on $1$ if we get a $5$ or $6$ else $0$. So we have  $\P (X_i = 1) = \frac{1}{3}$ which gives us $E(X_i) = \frac{1}{3}$ and some $\sigma^2$ variance. According to theorem 8.6 we have, 
+\begin{align*}
+    \frac{1}{n}(X_{1} + \dots + X_n) \to \mu \text{ in mean square}
+\end{align*}
+
+But we have $N_n = X_{1} + \dots + X_n$ and $\mu = \frac{1}{3}$ so we get, 
+\begin{align*}
+    \frac{1}{n}N_n \to \frac{1}{3} \quad \text{ in mean square }
+\end{align*}
+
+which is what we want to prove.
+\vspace{1em}
+
+
+\textbf{8.11}
+We assume that each $X_i$ is uncorrelated instead of the stronger condition that it's independent. Each being uncorrelated implies that we have $Cov(X_i, X_j) = 0$. Now similarly consider we have, 
+\[
+    S_n = X_{1} + \dots + X_n
+\]
+
+Then we get, 
+\[
+    E \left ( \frac{1}{n} S_n\right ) = \frac{1}{n} E(X_{1} + \dots + X_n) = \frac{1}{n} n \mu = \mu
+\]
+
+Now for mean square we need to show that $E([Z_n - Z]^2) \to 0$ as $n \to \infty $. We have,
+\begin{align*}
+    E \left ( \left [ \frac{1}{n}S_n - \mu\right]^2\right ) &= \text{var} \left ( \frac{1}{n} S_n\right )\\
+                                                            &= \frac{1}{n^2}\text{var}(X_{1} + \dots + X_n)
+\end{align*} 
+
+Now note the following. As $X_i, X_j$ are independent for any $i, j$ then for the list $X_{1}, \dots, X_n$ we have $var(X_{1} + \dots + X_n) = var(X_{1}) + \dots + var(X_n)$. This is true because of the following proof by induction.
+
+\vspace{1em}
+
+First note for base case we have this as trivially true as we have $var(X_{1} + X_{2}) = var(X_{1}) + 2Cov(X_{1}, X_{2}) + var(X_{2})$ but as $X_{1}, X_{2}$ are uncorrelated we have the second term is false and hence we get $var(X_{1} + X_{2}) = var(X_{1}) + var(X_{2})$. Now assume true for arbitrary $k$ i.e we have $var(X_{1} + \dots + X_k) = var(X_{1}) + \dots + var(X_k)$ now we need to show that we also have $var(X_{1} + \dots + X_{k + 1}) = var(X_{1}) + \dots + var(X_{k + 1})$. First take $X_{1} + \dots + X_k = Y$ then we have, 
+\begin{align*}
+    var(X_{1} + \dots + X_{k + 1}) &= var(Y + X_{k + 1})\\
+                                   &= var(Y) + var(X_{k + 1}) + 2Cov(Y, X_{k + 1})
+\end{align*}
+
+But now note that we have $Cov(X_{1} + \dots + X_k, X_{k + 1}) = Cov(X_{1}, X_{k + 1}) + \dots + Cov(X_k, X_{k + 1}) = 0$ hence we have, 
+
+\begin{align*}
+    var(X_{1} + \dots + X_{k + 1}) &= var(Y) + var(X_{k + 1}) \\
+                                   &= var(X_{1}) + \dots + var(X_k) + var(X_{k + 1})
+\end{align*}
+
+Which is the case for $k + 1$. Hence, by induction we have shown that this is true.
+
+\vspace{1em}
+
+Now using this statement we have,
+
+\begin{align*}
+    E \left ( \left [ \frac{1}{n}S_n - \mu\right]^2\right ) &= \frac{1}{n^2}\text{var}(X_{1} + \dots + X_n)\\
+                                                            &=  \frac{1}{n^2}(\text{var}X_{1} + \dots + \text{var}X_n)\\
+                                                            &=\frac{1}{n^2} n \sigma^2\\
+                                                            &= \frac{1}{n} \sigma^2
+\end{align*} 
+
+Now note that trivially we have $\frac{1}{n} \sigma^2 \to 0$ as $n \to \infty$. Hence, we show just being uncorrelated is enough for convergence in mean square.
+
+
+
+
+
+\vspace{1em}
+
+\textbf{Exercise 8.32}
+Let $S = X_{1} + \dots + X_{12000}$ where $X_i$ is a Bernoulli with $p = \frac{1}{6}$ and takes on $1$ if we hit a $6$. Now note that we have $E(X_i) = \frac{1}{6}$ and $Var(X_i) = \frac{5}{36}$. Now we know that using CLT for large enough $n$ we have the distribution of the standardized version of $S$ goes to a normal standard. 
+\[
+    S' = \frac{S - n \mu}{\sqrt{N} \sigma} = \frac{S - 2000}{\sqrt{12000}\frac{\sqrt{5}}{6}} = \frac{6S - 12000}{\sqrt{60000}}
+\]
+
+So for $n$ large enough we have $S'$ is equivalent to a normal standard. Now note,
+\begin{align*}
+    \P(1900 < S < 2200) &= \P(6 \cdot 1900 < 6 \cdot S < 6 \cdot 2200)\\
+                        &=  \P(-600 < 6 \cdot S - 12000 < 1200)\\
+                        &=   \P(\frac{-600}{\sqrt{60000}} < \frac{6 \cdot S - 12000}{\sqrt{60000}} < \frac{1200}{\sqrt{60000}})\\
+                        &=    \P(-2.449 < S' < 4.899)\\
+\end{align*}
+
+And as $S'$ is standard normal this is equal to $\int_{-2.449}^{4.889} \frac{1}{\sqrt{2}\pi} e^{-\frac{1}{2}x^2}$ so we have $a = -2.449$ and $b = 4.889$.
+
+
+
+\vspace{1em}
+\textbf{Problem 8}
+We have $S = X_{1} + \dots + X_N$  where both $N$ and $X_i$ are r.v. Now the moment generating function of $S$ would be,
+\begin{align*}
+    M_S(t) &= E(e^{tS})\\
+           &= E(e^{t(X_{1} + \dots + X_n)})\\
+           &=  \sum_{n = 1}^{\infty} E(e^{t (X_{1} + \dots + X_n)}) \P(N = n)\\
+           &=  \sum_{n = 1}^{\infty} E(e^{t X_{1}} \dots e^{t X_n}) \P(N = n)\\
+           &=  \sum_{n = 1}^{\infty} E(e^{t X_{1}}) \dots E(e^{t X_n}) \P(N = n) \quad \text{ cause of independence of $X_i$ }\\
+           &= \sum_{n = 1}^{\infty} M_X(t)^{n} \P(N = n)
+\end{align*}
+
+Now note that the MGF of $N$ is, 
+\begin{align*}
+    M_N(s) &=  E(e^{sN})\\
+           &= \sum_{n = 1}^{\infty} e^{s n} \P(N = n)
+\end{align*}
+
+Now note that we need $s$ in this equation such that $e^{sn} = M_X(t)^{n}$ so we have $e^{s} = M_X(t)$ or $s = \log M_X(t)$. Which will give us $M_N(s) = \sum_{n = 1}^{\infty} M_X(t)^{n} \P(N = n) = M_S(t) $. So we have, 
+\[
+    M_S(t) = M_N(\log M_X_1(t))
+\]
+
+Or in terms of the GF of N we have, 
+\[
+    M_S(t) = G_N(M_X_1(t))
+\]
+
+\vspace{1em}
+\textbf{Problem 11}
+We have, 
+\[
+    M(s, t) = E(e^{sX + tY})
+\]
+
+First we know that we can write $f(x,y) = f_{Y \mid X}(y \mid x) f_X(x)$ where $Y$ given $X = x$ is a normal with mean $\rho x$ and variance $1 - \rho^2$ and $X$ is just standard normal. So we have, 
+\begin{align*}
+    M(s, t) &= E(e^{sX + tY}) \\
+            &= E (E [e^{sX + tY} \mid X])\\
+            &= E(e^{sX} E(e^{tY} \mid X))
+\end{align*}
+
+But note the $e^{tY} \mid X$ has MGF of, 
+\[
+    e^{\rho x t + \frac{1}{2} (1 - \rho^2) t^2}
+\]
+
+So we have, 
+\begin{align*}
+    M(s, t) &= E(e^{sx} e^{\rho xt + \frac{1}{2}(1 - \rho^2)t^2})\\
+            &= E(e^{\rho xt + \frac{1}{2}(1 - \rho^2)t^2 + sx})\\
+            &= E(e^{\rho xt + sx} e^{\frac{1}{2}(1 - \rho^2)t^2})\\
+            &= e^{\frac{1}{2}(1 - \rho^2)t^2} E(e^{\rho xt + sx})\\
+            &= e^{\frac{1}{2}(1 - \rho^2)t^2} e^{\frac{1}{2}(\rho t + s)^2}\\
+            &= e^{\frac{1}{2}(1 - \rho^2)t^2 + \frac{1}{2}(\rho t + s)^2}\\
+            &= e^{\frac{1}{2}(s^2 + 2\rho s t + t^2)}
+\end{align*}
+
+Note that for standard bivariate in $X,Y$ we can write $U = X \sigma_1 + \mu_1$ and $V = Y \sigma_2 + \mu_2$ where $U, V$ are our required bivariate with the relevant parameters. So now we have,
+\begin{align*}
+    M_{U,V}(s, t) &= E(e^{sU + tV})\\
+            &= E(e^{s(X\sigma_1 + \mu_1) + t(Y \sigma_2 + \mu_2)})\\
+            &= E(e^{s X\sigma_1 + t Y \sigma_2 }  e^{s\mu_1 + t\mu_2)})\\
+            &=  e^{(s\mu_1 + t\mu_2)}E(e^{s X\sigma_1 + t Y \sigma_2 } )\\
+            &=  e^{(s\mu_1 + t\mu_2)} M_{X,Y}(s\sigma_1, t \sigma_2)
+\end{align*}
+
+
+
+
+\end{document}
+

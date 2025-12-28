@@ -1,0 +1,38 @@
+at most 10 problems
+    - no connected sets, perfect sets, cantor sets, gdelta, fsigma
+
+------------------------------------------------------------------
+
+- know important definitions, convergence of sequence, series, continuity of functions, uniform continuity, convergence of sequences of functions, convergence of series of functions,  limits of functions
+    - use the definitions to justify 
+        - eg given series/sequences prove they are convergent or not
+
+- true/false
+
+- topology
+    - only closed, open, compact
+
+- know countable uncountable, infinite finite
+
+- know diff between pointwise and uniform convergence of series
+    - eg. Uniform convergence gives us continutiy
+        - what if we don't have uniform convergence, counter example for properties that f_n might have but f does not inherit if pointwise convergence.
+    - eg. given a property, each function satisfy the property, but the limit might not satisfy if not uniform convergence.
+
+- know given a sequence, if it's not uniform convergent
+    - know how to prove uniform convergence fails
+
+- know how to play with power series
+    - show uniform convergence for power series etc. 
+
+- bernstein polynomial to construct polynomials that is uniformly close to continuous function. 
+    - play with bernstein polynomial, all formulas will be given
+
+- 1/2 tricky problems
+
+- similar to IVT problem on midterm 2, manipulate problem to apply abels theorem
+
+- power series
+    - cauchy critier/M test
+    - converge at one point, then absolute at smaller x
+    - convergence abs then uniform convergence

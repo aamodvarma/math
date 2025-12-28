@@ -1,0 +1,75 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\title{Real Analysis: HW11}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+\textbf{Exercise 6.4.2}
+\vspace{1em}
+
+(a).  True. If $\sum_{n = 1}^{\infty} g_n$ converges uniformly, then using the Cauchy Criterion for Uniform convergence of series we have $\forall \epsilon > 0$ there is some $N \in \N$ such that for $n > m \ge N$ we have, 
+\[
+    |g_{m + 1} + \dots + g_n| < \epsilon
+\]
+
+Now choose $m = n - 1$  then we have, 
+\[
+    |g_n| < \epsilon
+\]
+
+for $n > N$ which is equivalent to saying $(g_n) \to 0$.
+
+\vspace{1em}
+
+(b). True. By Weierstrass M-Test we have if $|f_n(n)| \le M_n$ and $\sum M_n$  converges we also have $\sum f_n$ converges uniformly on $A$. In this cas ewe have $0 \le f_n (x) \le g_n(x)$ now as they're both positive we satisfy the inequality $|f_n| \le g_n$ and we have $\sum g_n$ converges so $\sum f_n$ converges uniformly.
+
+\vspace{1em}
+
+(c). False. 
+
+
+
+\textbf{Exercise 6.4.5}
+
+(a). We have, 
+\[
+    h(x) = \sum_{n = 1}^{\infty} h_n = \sum \frac{x^{n}}{n^2} = x + \frac{x^2}{4} + \dots
+\]
+
+Now we will have $h(x)$ is continuous if we show that $\sum h_n  $ converges to $h$ uniformly and each $h_n$ is continuous. First clears we have $h_n$ is continuous on $[-1, 1]$ as we have $h_n = \frac{x^n}{n^2}$ and $x^{n}$ is obviously continuous when $n \ge 1$. Now we show uniform convergence. Note first that because our domain is $[-1, 1]$ we have for each $n$ that $|h_n(x)| = \left | \frac{x^{n}}{n^2}\right | \le \frac{1}{n^2}$. Now let $\frac{1}{n^2} = M_n$. So we have $|h_n(x)| \le M_n$ for all $n$. And we also have $\sum \frac{1}{n^2}$ converges. Hence, we have uniform convergence of $\sum h_n$. 
+
+
+\vspace{1em}
+
+Now uniform convergence to $h$ and continuity of each $h_n$ ensures that $h$ is continuous as well.
+
+\vspace{1em}
+
+(b). Let $x_{0} \in (-1, 1)$. We  need to show continuity of $f$ at $x_{0}$. First note we can find a point $y \in (-1, 1)$ such that $-y < |x_{0}| < y$. Now note that this gives us $x_{0}^{n} \le a^{n}$ and thus $\frac{x_{0}^{n}}{n} \le \frac{a^{n}}{n}$. So if we choose $M_n = \frac{a^{n}}{n}$ we have $|f_n| \le M_n$. Now further note that as we have $|y| < 1$. This means we have $\sum y_n$ converges as $x^{n}$ exponentially decrease faster than the denominator. Hence in that subdomain from $[-y, y]$ we have uniform convergence of $\sum f_n$ meaning we have continuity for $f$.
+
+
+\textbf{Exercise 6.5.11}
+(a). We are given a series that converges to a limit $L$ say $g_n$. So we have, 
+\[
+    \sum^{\infty} g_n
+\]
+converges to $L$. Which is the same as saying $\sum g_n x^{n}$ converges to $L$ at $x = 1$. This means that using Abel's Theorem we have $g(x) = \sum_{n = 0}^{\infty} g_n x^{n}$ converges uniformly in the in interval $[0, 1)$. But this also means that we have $g(x)$ to be continuous in this domain and hence we have the series is Able-summable to L.
+
+\vspace{1em}
+
+(b). We have $\sum_{n = 0}^{\infty} (-1)^{n}$. We need to consider $\sum_{n = 0}^{\infty} (-1)^{n} x^{n}$ for all $x \in [0, 1)$. Now note that as $0 \le x < 1$ we also have $(x^{n}) \to 0$ and by alternating series test we have that the series converges to $\frac{1}{1 + x}$ as we get,
+
+\begin{align*}
+    S &= 1 - x + x^2 -x^{3} + \dots \\
+    Sx &= x - x^2 + x^{3} + \dots\\
+    S(1 + x) &= 1\\
+    S &= \frac{1}{1 + x}
+\end{align*}
+
+and we have this function converges to $\frac{1}{2}$ for $x \to 1^{-}$.
+
+
+
+\end{document}

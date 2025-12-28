@@ -1,0 +1,269 @@
+\chapter{Sequences and Series of Functions}
+
+\section{Uniform Convergence of a Sequence of Functions}
+ 
+\subsection*{Pointwise Convergence}
+\begin{definition}
+    For each $n \in \N$ let $f_n$ be defined on $A \subseteq R$, then the sequence $(f_n)$ of functions converges  pointwise on $A$ to $f$ if, forall $x \in \A$, the sequennce of real numbers $f_n(x)$ converges to $f(x)$.
+
+    \vspace{1em}
+    
+    Alternate definition is
+    \vspace{1em}
+
+    Let $(f_n)$ be a sequence of functions defined on $A \subseteq R$. Then, $(f_n)$ converges pointwise on $A$ to limit function $f$ defined on $A$ if $\forall \epsilon > 0$ for $x \in A$ there exists $N \in \N$ such that we have $|f_n(x) - f(x)| < \epsilon$ whenever $n \ge N$.
+\end{definition}
+\begin{note}
+    When we consider pointwise convergence, as we can have different choices of $N$ for different $x$ it's hard to have the limit function behave properly to get continuity. TO fix this we introduce Uniform Convergence.
+\end{note}
+\subsection*{Uniform Convergence}
+\begin{definition}
+    Let $(f_n)$ be a sequence of functions defined on $A \subseteq R$. Then, $(f_n)$ converges uniformly on $A$ to limit function $f$ defined on $A$ if $\forall \epsilon > 0, \exists N$ such that we have $|f_n(x) - f(x)| < \epsilon$ whenever $n \ge N$ for all $x \in A$.
+\end{definition}
+
+
+
+\subsection*{Cauchy Criterion}
+\begin{theorem}
+    A sequence of function $(f_n)$ on $A \subseteq \R$ converges uniformly on $A$ if and only if for every $\epsilon > 0$ we have $N \in \N$ such that $|f_n(x) - f_m(x)| < \epsilon$ whenever $m, n > N$ and $x \in A$
+\end{theorem}
+\begin{proof}
+    $(\implies)$ Assume that we have uniform convergence, so we have a fixed $N$ such that for any $n > N$ we have, 
+    \[
+        |f_n(x) - f(x)| < \frac{\epsilon}{2}
+    \]
+
+    Now note we also have,
+    \begin{align*}
+        |f_m(x) - f_n(x)| &= |f_m(x)  -f (x) + f(x)- f_n(x)|\\
+                          &\le  |f_m(x)  -f (x)| +| f(x)- f_n(x)|\\
+                          &\le  |f_m(x)  -f (x)| +| f(x)- f_n(x)|\\
+    \end{align*}
+
+    Now if we take $m, n > N$ we get, 
+    \begin{align*}
+        |f_m(x) - f_n(x)| &= \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+    \end{align*}
+
+    $(\impliedby)$ Here we have a given $N$ such that for any $m, n > N$ we get, 
+    \[
+        |f_m(x) - f_n(x) |< \epsilon
+    \]
+
+    Now note that we can write for some $n, m$ that,
+    \begin{align*}
+        |f_n(x) - f(x)|  &= |f_n(x) - f_m(x) + f_m(x)- f(x)| \\
+                         &\le |f_n(x) - f_m(x)| + |f_m(x)- f(x)| \\ 
+                         &\le \frac{\epsilon}{2}+ |f_m(x)- f(x)| \\ 
+    \end{align*}
+
+    Now for each $x$ note that because of the cauchy criterion we have pointwise convergence which means we can choose $m$ large enough (note that this doesn't change the value of our choice of $N$, i.e $N$ is still independent of $x$) such that we have $|f_m(x) - f(x)| < \epsilon / 2$ hence we get, 
+    \[
+        |f_n(x) - f(x)| < \epsilon
+    \]
+
+    and uniform convergence.
+\end{proof}
+
+\subsection*{Continuity}
+
+\begin{theorem}{Continuous Limit Theorem}
+    Let $(f_n)$ be a sequence of functions on $A \subseteq R$ that converges uniformly on $A$ to $f$. If each $f_n$ is continuous on $A$, then $f$ is continuous at $c$.
+\end{theorem}
+\begin{proof}
+    We need to show that $f$ is continuous at $c$ or that $\forall \epsilon > 0$ we have $\delta$ such that if $|x - c| < \delta$ then we have $|f(x) - f(c)| < \epsilon$. Now note the following, 
+    \begin{align*}
+        |f(x) - f(c)| &= |f(x) - f_n(x) + f_n(x) - f_n(c)  + f_n(c) - f(c)|\\
+                      &\le|f(x) - f_n(x)|  + |f_n(x) - f_n(c)|  + | f_n(c) - f(c)|
+    \end{align*}
+
+    Now from uniform convergence we get for all $\epsilon$ an $N$ such that if $n > N$
+    \[
+        |f_n(x) - f(x)| < \frac{\epsilon}{3} \text{ and }        |f_n(c) - f(c)| < \frac{\epsilon}{3}
+    \]
+
+    And as we have each $f_n$ is continuous we get $\delta$ such that if $|x - c| < \delta$ then $|f_n(x) - f_n(c)| < \epsilon$. 
+
+    Putting all together we get, 
+    \begin{align*}
+        |f(x) - f(c)| < \epsilon 
+    \end{align*}
+
+\end{proof}
+
+\section{Series of Functions}
+\begin{definition}
+    If $f_n$ and $f$ are functions defined on $A$ then, 
+    \[
+        \sum f_n(x) = f_{1}(x) + f_{2}(x) + \dots
+    \]
+    converges pointwise on $A$ to $f(x)$ if the sequence of partial sums $s_k(x)$ defined as, 
+    \[
+        s_k(x) = f_{1}(x) + \dots + f_k(x)
+    \]
+    converges point wise to $f(x)$. Similarly the series converges uniformly if $s_k(x)$ converges uniformly to $f(x)$.
+\end{definition}
+
+\begin{note}
+    Note that if each $f_n$ are continuous then we have $s_k$ is continuous as well and if we have uniform convergence then $f$ is as well.
+\end{note}
+
+\begin{theorem}
+    Let $f_n$ be continuous on $A \subseteq R$  and assume $\sum f_n$  converges uniformly to $f$. Then $f$ is continuous on $A$.
+\end{theorem}
+\begin{proof}
+    We have uniform convergence  to $f$, which means we have that the sequence of partial sums $s_k$ uniformly converges to $f$. Now note we have, 
+    \[
+        s_k = f_{1} + \dots + f_k
+    \]
+
+    But each $f_i$ is conscious and by algebraic continuity theorem we have $s_k$ the sum of conscious functions is continuous as well. Now we have a sequence of continuous functions $s_k$ uniformly converges to $f$ by theorem in the previous section we have $f$ is continuous.
+\end{proof}
+
+\begin{theorem}[Cauchy Criterion for Uniform Convergence of Series]
+    A series $\sum f_n$ converges uniformly on $A$ if and only if $\forall \epsilon > 0$ there is $N \in \N$ such that, 
+    \[
+        |f_{m + 1}(x) + \dots + f_n(x)| < \epsilon
+    \]
+
+    whenever $n > m \ge N$ and $x \in A$
+\end{theorem}
+\begin{proof}
+    $(\implies)$ Assume we have uniform convergence. This means that we get $(s_k) \to f$ uniformly. Now using the Cauchy criterion for sequence of functions this means that we have $N$ such that for $ n > m > N$, 
+    \[
+        |s_n(x) - s_m(x) | < \epsilon
+    \]
+
+    But note $s_k(x) = \sum_{n = 1}^{k} f_n(x)$ so we have, $s_n(x) - s_m(x) = |f_{m + 1}(x) + \dots + f_n(x)|$ so, 
+    \[
+        |f_{m + 1}(x) + \dots + f_n(x)| < \epsilon
+    \]
+
+    as desired.
+
+    \vspace{1em}
+    
+    $(\impliedby)$ Now assume we have for a given $N$ that,
+    \[
+        |f_{m + 1}(x) + \dots + f_n(x)| < \epsilon
+    \]
+    for any choice of $n > m > N$. Similarly we rewrite this as $|s_m - s_n| < \epsilon$ and note that we showed in the previous section that this implies uniform convergence.
+\end{proof}         
+
+\begin{corollary}[Weierstrass M-Test]
+    For each $n \in \N$ let $f_n$ be a function defined on $A$, and let $M_n > 0$ such that, 
+    \[
+        |f_n(x)| \le M_n
+    \]
+    for all $x \in \A$. If $\sum M_n$ converges then $\sum f_n$ converges uniformly on $A$
+\end{corollary}
+\begin{proof}
+    Note we have, 
+    \begin{align*}
+        |s_k(x)| &= |f_{1}(x) + \dots + f_k(x)|\\
+                 &\le |f_{1}(x)| + \dots + |f_k(x)|\\ 
+                 &\le M_{1} + \dots + M_n
+    \end{align*}
+
+    Now this gives us $|s_n - s_m| \le M_{m + 1} + \dots + M_n$
+    
+
+    But by Cauchy criterion for series we have $N$ such that for $n, m > N$ we have $\sum_{m + 1}^{n} M_i < \epsilon$ hence we get $|s_n -s_m| < \epsilon$ and by above theorem we have $f_n$ uniformly converges.
+\end{proof}
+
+\section{Power Series}
+We have functions of the form, 
+\[
+    f(x) = \sum_{n = 0}^{\infty}  = a_{0} + a_{1}x + \dots
+\]
+
+\begin{theorem}
+    If $\sum_{n = 0}^{\infty} a_n x^{n}$ converges at some point $x_{0} \in \R$, then it converges absolutely for any $x$ satisfying $|x| < |x_{0}|$.
+\end{theorem}
+\begin{proof}
+    First note that if we have $\sum_{n = 0}^{\infty} a_n x_{0}^{n}$ then that means we have $|a_n x_{0}^{n}|$ is bounded and infact goes to zero. So we can write $\left | a_n x_{0}^{n}\right | \le M$ for some $M > 0$ for all $n \in \N$. Now take $x \in \R$ such that we have $|x| \le |x_{0}|$ we have the following, 
+    \begin{align*}
+        \left |a_n x^{n} \right | &\le         \left |a_n x_{0}^{n} \right | \left | \frac{x^{n}}{x_{0}^{n}}\right |\\
+                                  &\le M \left | \frac{x^{n}}{x_{0}^{n}}\right |
+    \end{align*}
+
+    But note we have $|x| < |x_{0}|$ which implies that $\left | \frac{x}{x_{0}}\right | < 1$. So now if we consider the sum $\sum_{n = 0}^{\infty} |a_n x^{n}|$ note for each term in the sequence we have that it's smaller than $M \left | \frac{x^{n}}{x_{0}^{n}}\right |$. But now we have $\sum_{n = 0}^{\infty} M \left | \frac{x^{n}}{x_{0}^{n}}\right |$ is a convergent sequence as $M$ is a constant and $\frac{x}{x_{0}}$ is smaller than 1  so the geometric series converges and hence by comparison test we have that $\sum_{n = 0}^{\infty} |x_n x^{n}|$ converges as well for $|x| < |x_{0}|$
+\end{proof}
+\begin{note}
+    This means that a given power series must either converge for just $0$ or $\R$ or some bounded interval around $0$ (we don't know if it's open or closed or etc).
+\end{note}
+
+\subsection*{Uniform Convergence}
+\begin{theorem}
+    If $\sum_{n = 0}^{\infty} a_n x^{n}$ converges absolutely at some point $x_{0}$, then it converges uniformly on $[-c, c]$ where $c = |x_{0}|$
+\end{theorem}
+\begin{proof}
+    Weierstrass M-Test tells us that if we have $|f_n(x)| \le M_n$ for all $x \in A$ and if $\sum M_n$ converges then $\sum f_n$ converges uniformly on $A$. First note we have $|x| \le |x_{0}|$ which gives us,
+    \[
+        |a_n x^{n}| \le |a_n x_{0}^{n}| = M_n
+    \]
+
+    But if we have absolute convergence at $x_{0}$ this means we have $\sum M_n$ converges. So by Weierstrass M-Test we have $\sum a_n x^{n}$ converges in $[-c,c]$ where $c = |x_{0}|$.
+\end{proof}
+\begin{remark}
+    Using Theorem 4.1 and 4.2 we basically get that if $\sum_{n = 0}^{\infty} a x^{n}$ converges at some point $x_{0} \in \R$ then for any $0 < r < |x_{0}|$ we have uniform convergence on $[-r, r]$. But note does not mean we have uniform convergence on $[0, x_{0})$.
+\end{remark}
+
+\subsection*{Abels Theorem}
+\begin{lemma}
+    If we have $b_{1} \ge b_{2} \ge \dots \ge 0$ and $\sum_{n = 1}^{\infty} a_n$ is a series with bounded partial i.e. $|a_{1} + \dots + a_n | \le A$ for all $n$ then we have, 
+    \[
+        |a_{1}b_{1} + \dots + a_n b_nn| \le Ab_{1}
+    \]
+\end{lemma}
+\begin{proof}
+    Let $s_n= a_{1} + \dots + a_n$. Now we can rewrite this as,
+    \begin{align*}
+        \left | \sum_{k = 1}^{n} a_k b_k\right | &= \left | s_n b{n + 1} + \sum_{k = 1}^{n} s_k (b_k - b_{k + 1})\right |\\
+                                                 &\le A b_{n + 1} + \sum_{k = 1}^{n} A (b_k - b_{k + 1})\\
+                                                 &= A b_{n + 1} + (Ab_{1} - Ab_{n + 1}) = Ab_{1}
+    \end{align*}
+\end{proof}
+\begin{note}
+   Note that in the above lemma if we had $\sum_{n = 1}^{\infty} |a_n|$ and $A$ is the upper bound of the partial sums of the absolutes, then this is a lot more trivial as we can simply use triangle inequality. 
+\end{note}
+
+\begin{theorem}[Abel's Theorem] Let $g(x) = \sum_{n = 0}^{\infty} a_n x^{n}$ be a power series that converges to $x = R > 0$. Then the series uniformly converges on $[0, R]$. 
+\end{theorem}
+\begin{remark}
+    We can say the same if $x = -R$
+\end{remark}
+\begin{remark}
+    The main difference between  Abel's Theorem and the conclusion from theorem 4.1 and 4.2 is that we can establish uniform convergence in the entire set $[0, R]$ not just a subinterval $[0, r]$ where $r < R$ if we have convergence at $x = R > 0$.
+\end{remark}
+\begin{proof}
+    First we can write, 
+    \[
+        g(x) = \sum_{n = 0}^{\infty} a_n x^{n} = \sum_{n = 0}^{\infty} (a_n R^{n}) \left ( \frac{x}{R}\right )^{n}
+    \]
+
+    Now by Cauchy criterion for uniform convergence it is enough to show that for any $\epsilon > 0$ we have an $N$ such that if $n > m \ge N$ then we have,
+    \begin{align*}
+        \left | (a_{m + 1} R^{m + 1}) \left ( \frac{x}{R}\right )^{m + 1} + \dots + (a_nR^{n}) \left ( \frac{x}{R}\right )^{n}\right |  < \epsilon
+    \end{align*}
+
+    Now clearly at $x = R$ we have convergence so we can use Cauchy criterion on that to get $N$ and $n,m$ such that,
+    \[
+        \left | a_{m + 1}R^{m + 1} + \dots + a_n R^{n}\right |  < \frac{\epsilon}{2}
+    \]
+
+    Now we use Abels lemma on the equation above this one to get, 
+    \begin{align*}
+        \left | (a_{m + 1} R^{m + 1}) \left ( \frac{x}{R}\right )^{m + 1} + \dots + (a_nR^{n}) \left ( \frac{x}{R}\right )^{n}\right |  &\le         \left | a_{m + 1}R^{m + 1} + \dots + a_n R^{n}\right | \left ( \frac{x}{R}\right )^{m + 1}\\
+        & \frac{\epsilon}{2} \left ( \frac{x}{R}\right )^{m + 1}
+    \end{align*}
+
+    But we have $\left ( \frac{x}{R}\right ) < 1$ so we easily get $\frac{\epsilon}{2} \left ( \frac{x}{R}\right )^{m + 1} < \epsilon$ hence completing the  proof.
+\end{proof}
+
+\begin{theorem}
+    If a power series converges on a set $A \subseteq R$  then it converges uniformyl on any compact set $K \subseteq A$
+\end{theorem}
+\begin{proof}
+    If $K$ is compact then it contains it's maximum and minim say $x_{0}$ and $x_{1}$ which by assumption is also in $A$. Now if the series converges on $A$ then it converges for both points $x_{1}$ and $x_{0}$. Now if $x_{1},x_{0}$ are positive then by Abel's theorem we have convergence for $[0, x_{0}]$ and $[0, x_{1}]$ and hence $[x_{0}, x_{1}]$. If $x_{1},x_{0}$ are negative then similarly we have uniform convergence on $[x_{0}, 0]$ and $[x_{1}, 0]$ and hence on $[x_{0}, x_{1}]$ as well. Lastly, assume $x_{0}$ is negative then we have convergence for $[x_{0}, 0]$ and for $[0, x_{1}]$ and hence also in the union $[x_{0}, x_{1}]$ by picking the larger $N$. 
+\end{proof}

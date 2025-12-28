@@ -1,0 +1,36 @@
+\begin{theorem}
+    The Diophantine equation, 
+    \[
+        x^{4} + y^{4} = z^{2}
+    \]
+    has no solutions in non-zero integers $x,y,z$
+\end{theorem}
+\begin{note}
+    Showing that the above has no solutions imply that $x^{4} +y^{4} + z^{4}$ has no solutions (the other way doesn't work however).
+\end{note}
+\begin{remark}
+    The idea of the proof is we assume there exists a solution, and then construct another solution in positive integers having one component strictly smaller than the same component of the original solution. This process can't be continued ad infinitum since it is not possible to construct an infinite strictly decreasing sequence of positive integers.
+\end{remark}
+\begin{proof}
+    Assume by way of contradiction that $x^{4} + y^{4} = z^2$ has a solution. in the non-zero integers. We may assume that they are all positive and $(x_{1},y_{1}) = 1$. We will show that there is another solution $x_{2}, y_{2}, z_{2}$ in the positive integers such that $(x_{2}, y_{2}) = 1$ and $0 < z_{2} < z_{1}$. Now $x_{1}^2, y_{1}^2, z_{1}$ is a P.T with $(x_{1}^2, y_{1}^2, z_{1}) = 1$ and WLOG assume that $y_{1}^2$ is even thus $y_{1}$ is even.
+
+    \vspace{1em}
+    
+    Now by previous theorem there exists $m, n $ such that $ m> n > 0$ and $(m,n) = 1$ exactly one of $m, n$  is even and,
+    \[
+        x_{1}^2 = m^2 - n^2, y_{1}^2 = 2mn, z_{1} = m^2 + n^2
+    \]
+
+    Now rearrange the first to get $x_{1}^2 + n^2 = m^2$. Now $x_{1}, m, n$ is a PT with $(x_{1}, n, m) = 1$ and $n$ is even. So $m$ is odd and by theorem we have $a, b \in \Z$ such that, $ a > b > 0, (a, b) = 1$ exactly one of $a$ or $b$ is even. and, 
+    \[
+        d_{1} = a^2 - b^2, n = 2ab, m = a^2 + b^2
+    \]
+
+    We wish to prove that $m, a, b $ are perfect squares. Since $y_{1}^2 = 2mn$ or $y_{1}^2 = m(2n)$ and $(m, 2n) = 1$ so we have $m$  and $2n$  are perfect squares. So as $2n$ is perfect squares take $C \in \Z$ s.t. $2n = C^2$ and we can write $C = 2c$ as $2 \mid C$ so we have  $2n = 4c^2$ or $n = 2c^2$. Now we have $c^2 = ab$ and as $(a, b) = 1$ we have that $a, b$ must be perfect squares and we have $x_{2}, y_{2}, z_{2} \in \Z$ all positive such that $m = z_{2}^2, a = x_{2}^2, b = y_{2}^2$. And plugging this we have, 
+    \begin{align*}
+        m &= a^2 + b^2\\
+        z_{2}^2 &= x^{4} + y^{4}
+    \end{align*}
+
+    Now note that $0 < z_{2} \ge z_{2}$ and $z_{2}^2 = m \le m^2 < m^2 + n^2 = z_{1}$. Now we have constructed another solution $x_{2}, y_{2}, z_{2}$ of $x^{4} + y^{4} = z^2$ with $x_{2} y_{2}, z_{2} > 0$ and $z_{2} < z_{1}$ as desired. Apply ad infinitum gives a contradiction.
+\end{proof}

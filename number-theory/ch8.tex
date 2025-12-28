@@ -1,0 +1,66 @@
+\chapter{Applications}
+
+\section{Cryptography; RSA Encryption}
+\textbf{The RSA Encryption Scheme}
+\begin{enumerate}
+    \item The Public Key
+
+        We have $p, q$ are distinct odd primes (very large) with $m = pq$ and $e$ a positive integer such that $(e, \phi(m)) = 1$. The pair $(e, m)$ is the public key.
+
+        \vspace{1em}
+        
+        Here $p, q, \phi(m)$ are not disclosed, only $e, m$.
+
+    \item Formatting
+
+        Each letter of plain text can be converted to a numerical encoding (say position in the alphabet). Now format these numerical versions into blocks of maximal even length s.t each block of digits viewed as a single positive integer is less than $m$.
+
+    \item Encryption Scheme
+
+        Each block $P$ viewed as a positive integer is encrypted as, 
+        \[
+            P^{e} \equiv C \pmod m
+        \]
+
+        to obtain block $C$ viewed as a single positive integer.
+\end{enumerate}
+
+
+\textbf{RSA Decryption Scheme}
+
+\begin{enumerate}
+    \item Decryption Key
+
+        If $(e, m)$ is the public key, then $(d, m)$ is the private key where $d$ is the inverse of $e$ modulo $\phi(m)$.
+
+    \item Decryption Scheme
+
+        Now each block $C$ viewed as a single positive integer can be decrypted by, 
+        \[
+            C^{d} \equiv P \pmod m
+        \]
+
+    \item Deformatting
+
+        Replace each two-digit block with it's alphabetical form.
+
+\end{enumerate}
+
+
+
+\textbf{Theory}
+Given that $P^{e} \equiv C \pmod m$. Since $d$ is the inverse of $e$ modulo $\phi(m)$ we have $ed \equiv 1 \pmod \phi(m)$ or, 
+\[
+    ed = k \phi(m) + 1 \quad \text{ for some } k \in \Z
+\]
+Then if $(P, m) = 1$ we have, 
+\[
+    C^{d} \equiv (P^{e})^{d} \equiv P^{k \phi(m) + 1} \equiv (P^{\phi(m)k}) P \equiv P \pmod m
+\]
+
+The last is true because of Euler's Theorem. So we have $C^{d} \equiv P \pmod m$.
+
+
+\begin{remark}
+    What if $P, m$ are not coprime?
+\end{remark}

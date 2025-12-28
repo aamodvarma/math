@@ -1,0 +1,165 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\title{Real Analysis: HW8}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+
+\textbf{Exercise 4.5.3}
+Let $f$ be such a function for which for $x < y$  in $[a, b]$ we have for any $L$ s.t. $f(x) \le L \le f(y)$ some $c$ for which we get $f(c) = L$. We need to show that $f$ is continuous on $[a,b]$.
+
+\vspace{1em}
+
+Consider any arbitrary $c \in [a, b]$ now we'll show continuity at $c$. First consider the left side of $c$  i.e. $x$ for which we have $a \le x  < c$. Note that between $f(a)$ and $f(c)$ using the IVP (on $[a, c]$) for any value between them we can find  an $x$ satisfying it.  So for the arbitrary $\epsilon$ consider the region $(f(a), f(c)) \cap (f(c) - \epsilon , f(c))$ and note that we can find some $x_1$ in  $[a, c)$ for which we have $f(x_1) = \max{f(c) - \epsilon , f(a)}$ so for any value $x \in (x_1, c)$ we have $ - \epsilon < f(x) - f(c)$. Similarly for the case of $c < x \le b$ we can find some $x_{2}$ such that we have for $x \in (c, x_{2})$ we get $f(x) - f(c) < \epsilon$. So choose $\delta = \min \{|x_{1} - c|, |x_{2} - c|\}$  then for any $|x - c| < \delta$ we get $|f(x) - f(c)| < \epsilon$.
+
+\vspace{1em}
+
+\textbf{Exercise 4.5.7}
+We have $f$ is continuous on $[0, 1]$ with range in there as well. To show there is some $x$ for which we have $f(x) = x$. Let $g(x) = f(x) - x$. It is enough to show that $g(x)$ has a root.
+
+\vspace{1em}
+
+Consider $x = 0$ we have $g(0) = f(0) - 0$ so the possible value of $g(0)$ are in $[0, 1]$. Now consider $g(1) = f(1) - 1$ we have $f(1) \in [0, 1]$ so $f(1) - 1 \in [-1, 0]$. Now consider the two cases, 
+
+\vspace{1em}
+
+Case 1: Either $g(0) = 0$ or $g(1) = 0$. For the first we get $g(0) = f(0) - 0 = 0$ or $f(0) = 0$ which gives us a fixed point $0$. For the second we have $g(1) = f(1) - 1 = 0$ which means $f(1) = 1$ and we have a fixed point $1$.
+
+\vspace{1em}
+
+Case 2: We have both $g(0) \ne 0 \implies g(0) \in (0, 1]$ and $g(1) \ne 0 \implies g(1) \in [-1, 0)$. This means that $g(0)$  is necessarily negative and $g(1)$ positive. So using the intermediate value theorem as $g$ is continuous as $f$ and $x$ are both continuous we have for any $L \in [g(0), g(1)]$ there is some $x$ such that $g(x) = L$. But as $g(0)$  is negative and $g(1)$ is positive we have $0 \in [g(0), g(1)]$ so there must be some $x \in [0, 1]$  such that we have $g(x) = L = 0 = f(x) - x$ which gives us $f(x) = x$ for some $x \in [0, 1]$
+
+\vspace{1em}
+
+\textbf{Exercise 6.2.1}
+We have, 
+\[
+    f_n(x) = \frac{nx}{1 + nx^2}
+\]
+
+(a). Pointwise limit is $f(x) = \frac{1}{x}$. Consider any arbitrary $x \in (0, \infty)$. Now for any $\epsilon > 0$ choose  $N = \frac{1}{\epsilon x^3}$. For any $n > N$ we have,
+
+\begin{align*}
+    \left | \frac{nx}{1 + nx^2} - \frac{1}{x}\right | &=\left | \frac{nx^2}{x(1 + nx^2)} - \frac{(1 + nx^2)}{x(1 + nx^2)}\right |\\
+                                                      &= \left | \frac{1}{x + nx^{3}}\right |\\
+                                                      &\le \left | \frac{1}{nx^{3}}\right |
+\end{align*}
+
+
+But we have $n > N = \frac{1}{\epsilon x^{3}}$ which gives us $\frac{1}{nx^{3}} < \epsilon$ so we have,
+
+\begin{align*}
+        \left | \frac{nx}{1 + nx^2} - \frac{1}{x}\right | \le \left | \frac{1}{nx^{3}}\right | < \epsilon
+\end{align*}
+
+Which means for any $x$ we have the sequence of numbers $f_n(x)$ converge to $f(x)$.
+
+
+\vspace{1em}
+
+(b). Note that the bounds are dependent on $x$, so the convergence is not uniform on $(0, \infty)$. For instance if there was a fixed bound $n$ choosing $x = \frac{1}{n}$ we see that $|f_n(x) - f(x)| = \frac{1}{\frac{1}{n}(1 + \frac{1}{n})} = \frac{n^2}{1 + n} > \frac{n^2}{2n} = \frac{n}{2}$. Hence it cannot be uniformly convergent.
+
+(c). It is not uniformly convergent for the same reason as (b), we can pick $x = \frac{1}{n}$ which will be in $(0, 1)$.
+
+
+(d). It is uniformly convergent. Note that we have, 
+\begin{align*}
+    \left | \frac{nx}{1 + nx^2} - \frac{1}{x}\right | &= \left | \frac{1}{x + nx^{3}}\right |\\
+                                                      &\le \left | \frac{1}{nx^{3}}\right |
+\end{align*}
+
+But as $x \in (1, \infty)$ we have $\frac{1}{nx^{3}} < \frac{1}{n}$ so we get, 
+\begin{align*}
+    \left | \frac{nx}{1 + nx^2} - \frac{1}{x}\right | &\le \left | \frac{1}{nx^{3}}\right | \le \left | \frac{1}{n}\right | < \epsilon
+\end{align*}
+
+So for any choice of $\epsilon$ we can choose $N = \frac{1}{\epsilon}$  such that for $n > N$ we get, 
+\[
+    \left | \frac{nx}{1 + nx^2} - \frac{1}{x}\right | < \epsilon
+\]
+
+and the choice of $N$ is independent of $x$.
+
+
+\vspace{1em}
+
+\textbf{Exercise 6.2.2}
+
+(a). We have, 
+\[
+    f_n(x) = \begin{cases}
+        1 &\text{ if } x = 1, \frac{1}{2}, \dots, \frac{1}{n}\\
+        0 &\text{ otherwise }
+    \end{cases}
+\]
+
+Each $f_n$ is continuous at $0$ as for any choice of $\epsilon$ we can choose $\delta = \frac{1}{n + 1}$ which gives us $|x| < \frac{1}{n + 1}$ which means $f_n(x) = 0$ so $|f_n(x) - f(0)| = 0 < \epsilon$ hence making it continuous.
+
+
+\vspace{1em}
+
+We see that $f$ is not continuous  as for any $\delta$ we choose we can find $n$ large enough such that $x = \frac{1}{n}  < \delta$ but $f(x) = 1 \ne 0$ hence making it discontinue.
+
+\vspace{1em}
+
+As $f$ is discontinue we can say that $f_n$ does not uniformly converge to $f$ as if it did then $f$ would also have to be continuous but it is not.
+
+(b). 
+
+\[
+    g_n(x) = \begin{cases}
+        x &\text{ if } x = 1, \frac{1}{2}, \dots, \frac{1}{n}\\
+        0 &\text{ otherwise }
+    \end{cases}
+\]
+
+Here, note that $g_n$ is continuous at zero for the same reason as above, for all $x < \frac{1}{n}$ the function returns $0$ and hence is equal to $f(0)$ as well.
+
+\vspace{1em}
+
+Here $f$ is continuous as for any $\epsilon$ choose $\delta = \epsilon$ then for $x < \delta$ we have either $x$ is of the form $\frac{1}{n}$ which gives us $|f(x) - f(0)| = |f(x)| = |x| < \delta = \epsilon$ or it is not in that form which means $|f(x) - f(0)| = 0 < \epsilon$ and hence it is continuous.
+
+\vspace{1em}
+
+The convergence is uniform as we can choose $N = \frac{1}{\epsilon}$ and for any $n > \frac{1}{\epsilon}$ we get, 
+\[
+    |g_n(x) - g(x)| < \epsilon
+\]
+
+(c). 
+
+Here each $h_n$ is continuous at $0$, and the limit $h$ is continuous as for any $\epsilon$. However note that in this case the convergence is not uniform as if we consider the sequence $x_n = \frac{1}{n}$ then we have $|h(x_n) - h_n(x_n)| = |1 - \frac{1}{n}|$ which cannot be made arbitrarily small as $\frac{1}{n}$ decreases as $n$ increases.
+
+
+\vspace{1em}
+
+\textbf{Exercise 6.2.5}
+
+($\Rightarrow$) First assume that $f_n$ converges to $f$ uniformly, so we can find $N$ large enough such that for any $\epsilon > 0$ we have for all $x$ that $|f_n(x)- f(x)| < \epsilon / 2$. Now note that for any $m, n > N$ we have,
+\begin{align*}
+    |f_m(x) - f_n(x)| &=     |f_m(x) - f(x) + f(x) - f_n(x)\\
+                      &\le |f_m(x) - f(x) | + |f_n(x) - f(x)\\
+                      & \le \epsilon
+\end{align*}
+
+which is the forward direction.
+
+($\Leftarrow$) Assume we have $N$ such that for $m, n > N$ we get $|f_m(x) - f_n(x)| < \epsilon$ for any $\epsilon > 0$ for all $x$. Now consider some arbitrary $x$ then using cauchy criteron for sequences we get that that the sequence of numbers $f_i(x)$ has a limit say $f(x) = L$. Now as this is true for arbitrary $x$ we have pointwise convergence to some function $f$. Now we need to show that it is uniform convergence.
+
+\vspace{1em}
+
+Now for $n \ge N$ we have, 
+\[
+    \left |f_n(x) - f(x)\right | \le \left | f_n(x) - f_m(x)\right| + \left | f_m(x) - f(x)\right |
+\]
+
+Now because of cauchy critera we have $\left | f_n(x) - f_m(x)\right | < \epsilon / 2$.  And now as $f_i$ converges to $f$ for any $x$ we can choose $m$ large enough such that we get $|f_m(x) - f(x)| < \epsilon / 2$ so this give sus, 
+\[
+    |f_n(x) - f(x)| < \epsilon
+\]
+for all $x$ for a fixed $N$ hence it's uniform convergence.
+
+
+\end{document}

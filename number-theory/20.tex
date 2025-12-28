@@ -1,0 +1,107 @@
+\section{Pythagorean Triples}
+\begin{definition}
+   Atriple $x,y,z$  are positive integers satisfying the Diophantine equation,
+   \[
+    x^2 + y^2 = z^2
+   \]
+   is said to be a \emph{Pythagorean Triplet}
+\end{definition}
+\begin{eg}
+    3, 4, 5 and 5, 12, 13 are triplets
+\end{eg}
+\begin{remark}
+    -3, 4, 5 and 0, 1, 1 are solutions but are not PTs.
+\end{remark}
+
+\textbf{Conventions}
+\begin{enumerate}
+    \item We only care about solutions where $x,y,z > 0$
+    \item If $x, y, z$ is a PT and $(x,y,z) = d$ then $\frac{x}{d}, \frac{y}{d}, \frac{z}{d}$ is also a Pythagorean Triple.
+    \item We will only describe PTs $x,y,z$ with $(x,y,z) = 1$. These are called primitive.
+    \item Under the assumption that $x,y,z$ is a primitive PT, we show that exactly one of $x$ or $y$ is even.
+\end{enumerate}     
+
+\begin{theorem}
+    If $x,y,z$ is a primitive PT then exactly one of $x$ or $y$ is even.
+\end{theorem}
+\begin{proof}
+    Assume that both $2 \mid x$ and $2 \mid y$ then we have $2 \mid z$ but then they are not primitive.
+
+    \vspace{1em}
+    
+    Assume that $x,y$ are both odd, then $z$ is even and $x^2 \equiv y^2 \pmod 4$ and $z^2 \equiv 0 \pmod 4$. Since $x^2 + y^2 = z^2$ we have $1 + 1 \equiv 0 \pmod 4$ a contradiction.
+
+    \vspace{1em}
+    
+    Thus exactly one of $x$ or $y$ is even. So, without loss of generality we will describe $PTs$ where $y$ is even.
+\end{proof}
+
+
+\begin{theorem}
+    There are infinitely many primitive Pythagorean triples $x,y,z$ with $y$ even and are given by, 
+    \[
+        x = m^2 -n^2, y = 2mn, z = m^2 + n^2
+    \]
+    where $m, n \in \Z, m > n > 0, (m,n) = 1$ and exactly one of $m$ or $n$ is even.
+\end{theorem}
+
+\begin{proof}
+    ($\implies$) We first show that given a primitive PT with $y$ even, there is $m, n \in \Z$ with the properties described in the theorem. Since $y$ is even $x$ and $z$ are both odd. Similarly we have $(x,y) = (y,z) = (x,z) = 1$.
+
+    \vspace{1em}
+    
+    Now $y^2 = z^2 - x^2 = (z + x)(z  - x)$. So we have $\left ( \frac{y}{2}\right )^2 = \left ( \frac{z + x}{2}\right )\left ( \frac{z - x}{2}\right )$. Now we claim that $(\frac{z + x}{2}, \frac{z - x}{2}) = 1$. First let $d = \left ( \frac{z + x}{2}, \frac{z - x}{2}\right )$ then $d \mid \frac{z + x}{2}$ and $d \mid \frac{z - x}{2}$. Then by Prop 1.2 we have that $d \mid \frac{z + x}{2} + \frac{z - x}{2}$ or $d \mid z$ and $d \mid x$ but we know that $(z,x) = 1$ so this is not possible. However, this implies that we have $\frac{z + x}{2}$ and $\frac{z - x}{2}$ are perfect squares.
+
+    \vspace{1em}
+    Now let $m, n \in \Z$ be such that $\frac{z + x}{2} = m^2$ and $\frac{z - x}{2} = n^2$. We can conclude that $m > n > 0$ and $(m, n) = 1$. So $m^2 - n^2 = x$ and $2mn = y$ and $m^2 + n^2 = z$. Now $(m, n) = 1$ implies that not both $m, n$ are even. Now if $m, n$  are both odd then $x, z$ are both even but we have $(x,z) = 1$ hence they can't both be odd or even. Hence, exactly one of $m,n$ is even.
+
+    \vspace{1em}
+    
+    ($\impliedby$) Now we show that given $m, n$ as described we get primitive PTs if we take $x = m^2 - n^2, y = 2mn, z = m^2 + n^2$. First note subbing in we get $x^2 + y^2 = (m^2 - n^2)^2 + 4m^2n^2 = m^{4} + n^{4} - 2m^2n^2 + 4m^2n^2 = m^{4} + n^{4} + 2m^2n^2 = (m^2 + n^2)^2 = z^2$. So $x,y,z$ is a PT with $y$ even.
+
+    \vspace{1em}
+    
+    Now to show it's primitive or that $(x,y,z ) = d$. Let $(x,y,z) = d$. Since exactly one of $n$ or $m$ is even, we have that $x$ and $z$ are both odd so $d$ has to be odd. So either we have $d = 1$ or $p \mid d$ for some odd prime $p$. In the second case we have $p \mid x$ and $p \mid z$ so $p \mid x + z$ and $p \mid z - x$ but note this means we have $p \mid 2m^2$ and $p \mid 2n^2$. Now this means we have $p \mid m^2$ and $p \mid n^2$ which means $p \mid m$ and $p \mid n$ or that $(m, n) \ne 1$ a contradiction. Hence we need $d = 1$.
+\end{proof}         
+
+\vspace{1em}
+
+\textbf{Fermat's Last Theorem}
+
+\begin{remark}
+Natural to consider $x^{n} + y^{n} + z^{n}$ for each integer $n \ge 3$. 
+\end{remark}
+\begin{theorem}[Wiles-Taylor]
+    The Diophantine equation, 
+    \[
+        x^{n} + y^{n} = z^{n}
+    \]
+    has no solutions in non-zero integers $x,y,z$ for any integer $n \ge 3$.
+\end{theorem}
+\begin{remark}
+    For special values of $n$ for instance $n = 4$ we can show using the tools in the class that $x^{4} + y^{4} = z^{4}$ have no solutions.
+\end{remark}
+
+Find all solutions to, 
+\[
+    x^2 + 2y^2 = z^2
+\]
+
+\begin{align*}
+    2y^2 = (z - x)(z + x)\\
+    y^2 = \frac{1}{2}(z - x)(z + x)
+\end{align*}
+Now both $z - x$ and $z + x$ have to be even so,
+\begin{align*}
+    y^2 \frac{1}{4} = \frac{1}{8}(z - x)(z + x)\\
+    (\frac{y}{2})^2 =  \frac{1}{2}(z - x)\frac{1}{2}(z + x)\frac{1}{2}\\
+\end{align*}
+
+Here we have $a^2 = \frac{1}{2} b c$ where $(b,c) =1$ so one of $b$ or $c$ are even. so let $b$ be the even then we have $\frac{b}{2} = m^2$ and $c = n^2$. So $m^2 = (\frac{z - x}{4})$ and $n^2 = \frac{z + x}{2}$. We have $y = 2mn$. And $z = (2m^2 + n^2)$ and $x = (n^2 - 2m^2)$
+
+
+% m = 2, n = 3
+
+% x = 9 - 8 = 1
+% y = 12
+% z = 17

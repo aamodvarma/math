@@ -1,7 +1,6 @@
 - chapter 3, chapter 4 (no 4.6), 6.2 (thrm 6.2.6)
 - no perfect set, no baire thoery
 
-
 Q1)
 - 4 statements pick 1
 eg. Complement of closed is open
@@ -10,24 +9,15 @@ eg. Continuous functions on compact set achieves maxim and minim.
 eg. Continuous function on compact set is uniformly continuous
 eg. theorem 7.2.6 (what if we don't have uniform continuous then what happens eg piece wise functions that converge to a delta function)
 
-
-
-
-
 Q2) 4 questions - T/F
 T/F
 - About chapter 3 - topology
 eg. know definition of limit points and isolated points
 eg. justify if sets are open sets and closed sets 
 
-
-
-
 Q3)
 About limits of functions, what does it mean to say a limit of a function exists.
-
 - Use definition of limits to justify if a function has limits
-
 
 Q4) tricky Q here
 - About continuity of functions, know definition of continuity (show the limit exists and show it's the value of the function)
@@ -35,7 +25,6 @@ Q4) tricky Q here
     eg. cont function on compact sets achieve it's max and min (u have negative function and the max has to be negative as well)
     eg. cont function on compact set is uniformly cont
     eg. cont function on an interval then (IVT)
-
 
 Q5)
 4 T/F problems

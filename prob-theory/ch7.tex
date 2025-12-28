@@ -1,0 +1,207 @@
+\chapter{Moments, and moment generating functions}
+
+\section{Moments}
+\begin{definition}
+We define the $k'th$ moment of a r.v $X$ as $\E(X^{k})$
+\end{definition}
+\begin{note}
+    The exponential distribution has moments of all orders (so for any $k \ge 1\in \N$). But for instance the Cuachy distribution does \textbf{NOT} have moments for $k \ge 1$.
+\end{note}
+
+\begin{theorem}
+    If all the moments $\E(X), \E(X^2), \dots$ and the series, 
+    \[
+        \sum_{n = 0}^{\infty}  \frac{1}{k!} t^{k} \E(X^{k})
+    \]
+
+    is absolutely convergent for some $t > 0$. Then the sequence of moments uniquely determines the distribution of $X$.
+\end{theorem}
+
+\section{Variance and Covariance}
+Variance is just $Var(X) = \E([X - \mu]^2)$ where $\mu = \E(X)$. Now this gives us some notion of dispersion from the mean $\mu$. 
+\begin{note}
+    We can technically "quantify" dispersion in other ways as well like $|X - \mu|$ or $[X - \mu]^{3}$ but the square is convenient.
+\end{note}
+
+Note that we have $\E(X^2) = 0 \iff \P(X = 0) = 1$. This is because we have $\E(X^2) = \sum_0^{\infty} x^2 \P(X  = x)$. But note that $x^2$ and $\P(X = x)$ is always non-negative. So for $x > 0$ it is necessarily a non-negative product. But if we have $\E(X^2) = 0$ then we need for all $x \ge 1$ the probability to be zero which gives us $\P(X = 0) = 1$ as probability should still add up to 1.
+
+\vspace{1em}
+We have,
+\begin{equation}
+    Var(X) &= \E([X - \mu]^2) = \E([X - \mu][X - \mu]) = \E(X^2 - 2X\mu + \mu^2) \\
+           &= \E(X^2) - \mu^2
+\end{equation}
+
+Further, 
+\begin{align}
+    Var(aX + b) = a^2 Var(X)
+\end{align}
+
+
+Now consider the sum of two r.v $X, Y$ we have,
+\begin{align*}
+    Var(X + Y) &= \E([(X + Y) - \E(X + Y)]^2)\\
+               &= Var(X) + 2\E([X - \E(X)][Y - \E(Y)]) + Var(Y)
+\end{align*}
+
+We now call the term in the middle as the covariance.
+\begin{definition}[Covariance]
+    The cov of two r.v. $X, Y$ is $cov(X,Y)$ and given by, 
+    \[
+        cov(X,Y) = \E([X - \E(X)][Y - \E(Y)])
+    \]
+\end{definition}
+\begin{note}
+    We can expand this to get $cov(X,Y) = \E(XY) - \E(X)\E(Y)$
+\end{note}
+\begin{note}
+    So if we have $cov(X,Y) = 0$ then we get $Var(X + Y) = Var(X) + Var(Y)$. In such cases we call $X,Y$ to be uncorrelated (note this is \textbf{NOT} the same as being independent although being independent  implies being uncorrelated)
+\end{note}
+\begin{remark}
+    Co variance is generally unscaled we can scale it to be between $-1, 1$  by divide by $\sqrt{Var(X), Var(Y)}$
+\end{remark}
+
+\begin{theorem}[Cauchy-Schwarz inequality]
+    For $X,Y$ tow r.v we have, 
+    \[
+        [\E(XY)]^2 \le \E(X^2) \E(Y^2)
+    \]
+\end{theorem}
+\begin{proof}
+     Define $Z = sX + Y$ then as $Z^2 \ge 0$ we have, 
+     \begin{align*}
+         0 &\le \E(Z^2) = \E(s^2X^2 + 2sXY + Y^2)\\
+           &= as^2 + bs + c
+     \end{align*}
+
+     if we define $a = \E(X^2), b = \E(2XY), c = E(Y^2)$. Now in the above quadratic equation $0\le g(s) = as^2 + bs + c$ we have $g(s) = 0$ at most 1 time and for $g(s) = 0$ has at most one real root so we get $b^2 - 4ac\le 0$ or that, 
+     \[
+         [2\E(XY)]^2 - 4\E(X^2)\E(Y^2) \le 0
+     \]
+\end{proof}
+\begin{remark}
+    Now given two r.v $U,V$ if we set $X = U - \E(U)$ and $Y = V - \E(V)$ in the above equation then we get,
+    \[
+        cov(U,V)^2 \le Var(U)Var(V)
+    \]
+\end{remark}
+
+\section{Moment Generating functions}
+We know the probability generating function of $X$ as,
+\[
+    G_X(s) = \E(s^{X}) = \sum s^{k} \P(X = k)
+\]
+
+\begin{definition}[MGF]
+    The mgf of a r.v $X$ is, 
+    \[
+        M_X(t) = \E(e^{tX})
+    \]
+\end{definition}
+\begin{note}
+    This is basically the same as saying $M_X(t) = G_X(e^{t})$
+\end{note}
+\begin{note}
+    Not every r.v has a moment generating function (for instance Cauchy r.v does not have one) but all r.v do have the characteristic function $\phi_X(t) = \E(e^{itX})$ which is a complex valued function.
+\end{note}
+\begin{eg}
+    For normal dist we have, 
+    \[
+        M_X(t) = e^{\frac{1}{2}t^2}
+    \]
+\end{eg}
+
+\begin{eg}
+    We can write the mgf as follows, 
+    \begin{align*}
+        M_X(t) &= \E(e^{tX}) = \E(\sum \frac{(tX)^{n}}{n!})\\
+               &= 1 + t\E(X) + \frac{1}{2!}t^2 \E(X^2) + \dots
+    \end{align*}
+\end{eg}
+This gives us the following,
+\begin{theorem} 
+    If $M_X(t)$ exists for some neighborhood of $0$ then for $k = 1,2 \dots$ we have,
+    $$\E(X^{k}) = M_X^{(k)}(0)$$
+\end{theorem}
+
+\vspace{1em}
+
+
+For a linear function of a r.v $X$ we have,
+\begin{align*}
+    M_{aX + b} = \E(e^{t(aX + b)}) = \E(e^{atX} e^{tb}) = e^{tb} \E(e^{(at)X})
+\end{align*}
+
+annd for sums of r.v we have,
+\begin{theorem}
+    For $X,Y$ independent r.v we have, 
+    \[
+        M_{X + Y}(t) = M_{X}(t) M_{Y}(t)
+    \]
+\end{theorem}
+\begin{proof}
+    We have $M_{X + Y}(t) = \E(e^{t(X + Y)}) = \E(e^{tX} e^{tY})$ as $X,Y$ are independent this gives us $\E(e^{tX}) \E(e^{tY})$.
+\end{proof}
+% \begin{remark}
+%     We also get similar to generating function 
+% \end{remark}
+\begin{theorem}
+    If the moment generating function is finite in some $\delta-$neighborhood of $0$, then it uniquely determines a distribution. And we have, 
+    \begin{align*}
+        M_X(t) = \sum_{k = 0}^{\infty} \frac{1}{k!}t^{k} \E(X^{k}) \text{ for } |t| < \delta
+    \end{align*}
+\end{theorem}
+\begin{note}
+    This is basically the Laplace inverse theorem as we have $M_X(t)$ is the Laplace transform of the density function $f_X(x)$.
+\end{note}
+
+\section{Markov and Jenson's inequality}
+\begin{theorem}[Markovs]
+    We have for non-negative r.v  $X$, 
+    \[
+        \P(X > t) \le \frac{\E(X)}{t} \text{ for $t > 0$ }
+    \]
+\end{theorem}
+\begin{theorem}[Jensons Inequality]
+   For $X$ a r.v taking values in $(a,b)$  such that $\E(X)$ exists and $g: (a,b) \to \R$ is a convex function then we have, 
+   \[
+    \E(g(X)) \ge g(\E(X))
+   \]
+\end{theorem}
+\begin{note}
+    An intuition for this is for a convex function (if you connect two points, the line segment lies above the graph of the function) the function evaluated at a weighted average is smaller than the weighted average of the function at those two points.
+\end{note}
+
+\sectin{Characteristic functions}
+
+\begin{definition}
+    The characeristic function of $X$ is, 
+    \[
+        \phi_X(t) = \E(e^{itX}) \text{ for $t \in \R$ }
+    \]
+\end{definition}
+\begin{remark}
+    Unlike the MGF where we deal with exponential like $e^{tX}$ which is unbounded we have that $e^{itX}$ is bounded and more specifically we have $|e^{itX}| = 1$ which gives us $|\phi_X(t)| \le 1$.
+\end{remark}
+
+\begin{eg}
+    For normal dist we have, 
+    \[
+        \phi_X(t) = M_X(it) = e^{-\frac{1}{2}t^2}
+    \]
+\end{eg}
+
+We have similar properties to mgf when it comes to linear functions and sums of r.v.
+\begin{theorem}
+    $X,Y$ have the same distribution if and only if $\phi_X(t) = \phi_Y(t)$.
+\end{theorem}
+
+\begin{theorem}
+    Let $X$ have characteristic function $\phi$ and density function $f$ then, 
+    \[
+        f(x) = \frac{1}{2\pi} \int_{-\infty}^{\infty}  e^{-itx} \phi(t) \: dt
+    \]
+\end{theorem}
+\begin{note}
+    Note this is a version of the Fourier inverse transform as the characteristic function is simply a Fourier transform in disguise.
+\end{note}

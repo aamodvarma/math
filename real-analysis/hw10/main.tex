@@ -1,0 +1,156 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\title{Real Analysis: HW10}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\date{}
+
+
+\textbf{Exercise 6.2.3}
+
+(a). For $g_n$ we see that if $x \in [0, 1)$ then $x^{n} \to 0$, if $x = 1$ then $x^{n} \to x$ and if $x \in (1, \infty)$ then $x^{n} \to \infty$. So considering these three cases we have, $(g_n) \to g$ where, 
+
+
+\[
+    g(x) = \begin{cases}
+        \text{x}, & x \in [0, 1)\\
+        \frac{1}{2}, & x = 1\\
+        0, & x \in (1, \infty)
+    \end{cases}
+\]
+
+For case 1 note, we have $\left |\frac{x}{1 + x^{n}} - x \right| < |\frac{x^{n + 1}}{x^{n} + 1}| < |x^{n + 1}}|$ and as we can make $x^{n}$ arbitrarily small we can also make $x^{n + 1}$ and hence for any $\epsilon$ we can find $N$ to make it arbitrarily smaller than $\epsilon$. For case 2, we have $g_n(x) = \frac{1}{1 + 1^{n}} = \frac{1}{2}$ which just the sequence of the constant which obviously converges to the same constant. For case 3 we have $\left | \frac{x}{1 + x^{n}} - 0\right | < \left | \frac{x}{x^{n}}\right | =| \frac{1}{x^{n - 1}}|$. Note this goes to $0$ as $n \to \infty$ and hence the limit goes to zero.
+
+\vspace{1em}
+
+Note as $n \to \infty$ we have $\frac{1}{n} \to \infty$. So, $\forall \epsilon > 0$ we have $N$ s.t if $n > N$ then $|\frac{1}{n}| < \epsilon$. However note that $h_n(x)$ takes on the value $nx$ only if $0 \le x < \frac{1}{n}$. So we have for any $\epsilon > 0$ some $N$ for which we get $0 \le x < \frac{1}{n} < \epsilon$ but this implies that $x = 0$. So the rest of the cases we have $x > \frac{1}{n}$ for arbitrarily large $n$ and hence in that case we have the constant function $1$ which converges to $1$. This give us,
+\begin{align*}
+    h_n(x) = \begin{cases}
+        1 &\text{ if } x \in (0, \infty)\\
+        0 &\text{ if } x = 0
+    \end{cases}
+\end{align*}
+
+\vspace{1em}
+
+(b) First note that for any $n$ we have $g_n(x)$ is a continuous function (using algebraic continuity tearoom) and note that $g(x)$ is a piece wise function which is not continuous (for instance has a jump at $x = 1$ as limit from left is $1$ but function is equal to $\frac{1}{2}$ at $x = 1$). Now, if the convergence were to be uniform on $[0, \infty)$ then that would imply that $g(x)$ will retain the continuity of $g_n(x)$, however we know $g(x)$ is not continuous, hence the convergence cannot be uniform.
+
+\vspace{1em}
+
+Similarly we see that $h_n(x)$ is continuous (at point $x = \frac{1}{n}$ note limit from leftside is also just $1$ as we have $nx = 1$) but $h(x)$ is not as limit at $0$ is $1$ but the function is equal to $0$ at that point. Hence convergence cannot be uniform as $h$ would also have to be uniform which it is not.
+
+\vspace{1em}
+
+(c). For $g_n(x)$ consider the set $[0, k)$ where $k \in (0, 1)$. In this set we have $g_n(x)$ is continuous and the convergence to $g(x) = x$ is uniform.
+
+\vspace{1em}
+
+
+For all $x \in [0, k)$ we see, 
+\begin{align*}
+    \left | \frac{x}{1 + x^{n}} - x\right | &= \left | \frac{x^{n + 1}}{x^{n} + 1}\right |\\
+                                            &\le \left | \frac{x^{n + 1}}{1}\right |\\
+                                            &\le \left | t^{n + 1}\right | < \left | t^{n}\right |
+\end{align*}
+
+Now note that we can choose $n$ arbitarrily large to make $t^{n} < \epsilon$ for any $\epsilon$. More specifically choose $N =\frac{\log \epsilon}{\log t} = log_t \epsilon$ and for $n > N$ we get $\left | \frac{x}{1 + x^{n}} - x\right | \le |t^{n}| < \epsilon$.
+
+\vspace{1em}
+
+This gives us uniform convergence to $g(x) = x$  which is also continuous in $(0, k)$.
+
+\vspace{1em}
+
+For $h_n(x)$ choose the domain as $(1, \infty)$. Note that for any choice of $n > 1$ we have $\frac{1}{n} < 1$ which means as $x \in (1, \infty)$ we have $x > \frac{1}{n}$ or $h_n(x) = 1$. Now trivially this is just constant for every $n$ and hence uniformly convergence for any $N > 1$ as if we take $h(x) = 1$ then we have $|h_n(x) - h(x)| = 0$ for all $n > 1$. 
+
+\vspace{1em}
+
+\textbf{Exercise 6.2.8}
+We have $(g_n)$ a sequence of continuous functions that converge uniformly to $g$ on a compact set $K$. Note the following,
+
+\begin{align*}
+    \left | \frac{1}{g_n} - \frac{1}{g}\right |&= \left | \frac{g_n - g}{ g_n g}\right |\\
+                                               &= |g_n - g| \left | \frac{1}{g_ng}\right |
+\end{align*}
+
+First note that $(g_n) $ converges uniformly to $g$ and as all $g_n$ is continuous we have $g$ is continuous. As $K$ is compact we also have $g(K)$ is compact and hence $g$ is bounded in $K$ which means it attains a max and min. Let the min be $m$ which means $g(x) \ge m$ for all $x \in K$ or that $\frac{1}{g(x)} \le m$ for all $x \in K$.
+
+\vspace{1em}
+
+Now to bound $g_n$. We know $g_n$ converges uniformly to $g$. So for any $\epsilon$ for large enough $N$ we have for $n > N$ that $|g_n - g| < \epsilon$ which means $g - \epsilon<g_n < g + \epsilon$. But we have $ m \le g$ so $m - \epsilon \le g - \epsilon < g_n$ or that $\frac{1}{g_n} < \frac{1}{m - \epsilon}$. Now if we choose $\epsilon$ small enough so that $m - \epsilon$ is positive then we  have a positive upper bound for $g_n$ or that $\left | \frac{1}{g_n}\right | < \frac{1}{m - \epsilon}$ this  gives us, 
+\begin{align*}
+    \left | \frac{1}{g_n} - \frac{1}{g}\right | &= |g_n - g| \left | \frac{1}{g_n g}\right |\\
+                                                &< |g_n - g| \frac{1}{m(m - \epsilon)}
+\end{align*}
+
+Now let $M = \frac{1}{m(m - \epsilon)}$ and as $g_n$ is uniformly continuous to $g$ choose $N$ large enough so that  we have $|g_n - g| < \frac{1}{M} \epsilon$. This gives us, 
+\[
+    \left | \frac{1}{g_n} - \frac{1}{g}\right | \le |g_n - g| M \le \epsilon \frac{M}{M} = \epsilon
+\]
+
+And hence we get uniform convergence as $N$ is independent of $x$.
+
+
+\vspace{1em}
+
+\textbf{Exercise 6.2.9}
+(a). We have $(f_n)$ and $(g_n)$ are uniformly convergent to $f$ and $g$. Now note by definition this means we have $\forall \epsilon > 0$ a $N_{1}$ such that if $n > N_{1}$ then we get, 
+\[
+    |f_n - f| < \frac{\epsilon}{2} \quad \forall x
+\]
+and similarly a $N_{2}$ such that if $n > N_{2}$  then we get, 
+\[
+    |g_n - g| < \frac{\epsilon}{2} \quad \forall x
+\]
+
+Now choose $N =\max \{N_{1} N_{2}\}$ and we have both, 
+
+\[
+    |f_n - f| < \frac{\epsilon}{2} \text{ and }     |g_n - g| <\frac{\epsilon}{2}
+\]
+
+Note this gives us,  
+\begin{align*}
+    |(f_n + g_n) - (f + g)| &=     |(f_n - f) + (g_n + g)|\\
+                            &\le |f_n - f|  + |g_n - g|\\
+                            &< \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+\end{align*}
+
+Hence we found $\forall \epsilon > )$ an  $N = \max \{N_{1}, N_{2}\} $ independent of $x$ such that if $n > N$ then we have $|(f_n + g_n) - (f + g)| < \epsilon$ which by definition means we have uniform convergence to $f + g$.
+
+\vspace{1em}
+
+(b). Consider the function $f_n = x^2$ which is trivially uniformly convergent to $f = x^2$ on $[1, \infty)$. Now consider $g_n = \frac{1}{n(1 + x)}$ which also is uniform convergent to $0$ on $[1, \infty)$. Now consider the product and we have $(f_n g_n) = \frac{x^2}{n(1 + x)}$. Now note that does not converge uniformly to $0$ on $[1, \infty)$ as it would depend on the value of $x$ now as we have $\left | \frac{x^2}{n(1 + x)}\right | \le \left | \frac{x^2}{nx}\right | = \left | \frac{x}{n}\right | < \epsilon$ so we need $n > \frac{x}{\epsilon}$.
+
+\vspace{1em}
+
+(c). Consider the case we have $M > 0$ such that $|f_n| \le M$ and $|g_n| \le M$ for all $n \in N$, now note the following,
+\begin{align*}
+    \left | f_n g_n - fg\right | &= \left | f_n g_n - f_n g + f_n g - fg\right |\\
+                                 &\le  \left | f_n g_n - f_n g \right| +\left| f_n g - fg\right |\\
+                                 &\le |f_n| \left | g_n - g\right | + \left | g\right \left | |f_n - f\right |
+\end{align*}
+
+With the additional constraint now note that we get $|f_n| \le M$ and $g \le M$ which gives us, 
+\begin{align*}
+    \left | f_n g_n - f g\right | &\le M \left | g_n - g\right | + M \left | f_n - f\right |
+\end{align*}
+
+Now as $f_n$ and $g_n$ are uniformly convergent to $f$ and $g$ similar to in $(a)$ we can find for all $\epsilon > 0$ an $N$ such that if $n > N$ then we get, 
+\[
+    |f_n - f| < \frac{\epsilon}{2M} \text{ and } |g_n - g| < \frac{\epsilon}{2M}
+\]
+
+So putting the two together we get,
+
+\begin{align*}
+    \left | f_n g_n - f g\right | &\le M \left | g_n - g\right | + M \left | f_n - f\right |\\
+                                  &= M \frac{\epsilon}{2M} + M \frac{\epsilon}{2M}\\
+                                  &= \epsilon
+\end{align*}
+
+Hence we show that $f_n g_n$ is uniformly convergent to $f g$.
+
+
+\end{document}

@@ -1,0 +1,158 @@
+\chapter{The main limit theorems}
+
+\section{Law of averages}
+Consider we have $X_{1}, \dots, X_n$ that are i.i.d and consider, 
+\[
+    S_n = \frac{1}{n}(X_{1} + \dots + X_n)
+\]
+
+note that we have, 
+\[
+    \E(S_n) = \frac{1}{n} \E(X_{1} + \dots + X_n) = \frac{1}{n} (n \mu) = \mu
+\]
+
+and, 
+\[
+    Var(S_n) = \frac{1}{n^2} Var(X_{1} + \dots + X_n) = \frac{\sigma^2}{n}
+\]
+
+(note that we used independent of $X_i$ to split the variance) and as $n \to \infty$ this goes to 0.
+
+\begin{definition}
+    A sequence  of r.v $Z_{1}, Z_{2}, \dots$  \emph{\textbf{converges in mean square to $Z$}} if, 
+    \[
+        \E([Z_n -Z]^2) \to 0 \quad \text{ as } n \to \infty
+    \]
+
+    If this is true we write $Z_n \to Z$ in mean square as $n \to \infty$
+\end{definition}
+
+\begin{note}
+    Note in the above example we showed the we have $Var(S_n) = \E([S_n - \E(S)]^2) \to 0$ as $n \to \infty$ so we can say that $S_n \to \E(S) = \mu$ in mean square as $n \to \infty$
+\end{note}
+
+This note gives us the theorem,
+\begin{theorem}
+    If $X_{1}, X_{2}, \dots$ are independent r.v with mean $\mu$ and var $\sigma^2$ then we have, 
+    \[
+        \frac{1}{n}(X_{1} + \dots + X_n) \to \mu \quad \text{ in mean square }
+    \]
+\end{theorem}
+
+\section{Weak law of large numbers}
+\begin{definition}
+    The sequence $Z_{1}, Z_{2}, \dots$ of r.v converges in probability to $Z$ as $n \to \infty$ if, 
+    \[
+        \forall \epsilon > 0, \quad \P(|Z_n - Z| > \epsilon) \to \infty \text{ as } n \to \infty
+    \]
+\end{definition}
+\begin{remark}
+    Convergence in mean square is more powerful than convergence in probability and more specifically implies convergence in probability
+\end{remark}
+
+\begin{theorem}[Weak law of large numbers]
+    If $X_{1}, X_{2}, \dots$ are independent r.v with $\mu, \sigma^2$ then, 
+    \[
+        \frac{1}{n}(X_{1} + \dots + X_n) \to \mu \quad \text{ in probability }
+    \]
+\end{theorem}
+\begin{note}
+    The proof is just in mean square and as mean square implies in probability we get the theorem.
+\end{note}
+
+\section{CLT}
+Consider i.i.d r.v $X_{1}, X_{2} \dots $ now define, 
+\[
+    S_n = X_{1} + \dots + X_n
+\]
+
+But now consider a standardized version of $S_n$ i.e, 
+\begin{align*}
+    Z_n &= \frac{S_n - \E(S_n)}{ \sqrt{\Var(S_n)}}\\
+        &=  \frac{S_n - n \mu}{ \sqrt{n} \sigma}\\
+\end{align*}
+\begin{theorem}
+    If $X_{1}, X_{2}, \dots$ are independent and identically distributed r.v, with $\mu, \sigma^2$  then, 
+    \[
+        Z_n = \frac{S_n - n \mu}{\sigma \sqrt{n}}
+    \]
+    where $S_n$ is the sum of the r.v satisfies as $n \to \infty$, 
+    \[
+    \P(Z_n \le x) \to \int_{-\infty}^{x}  \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}u^2} \: du
+    \]
+\end{theorem}
+\begin{note}
+    This is essentially saying that the distribution of the standardized version point wise converges to a normal standard.
+\end{note}
+\begin{remark}
+    Note that as it's pointwise and not uniform for each $x$ we have a different $N$ where the convergence happens, so the number of samples for a given error bound changes with different values of $x$.
+\end{remark}
+
+\begin{theorem}
+    Given $Z_{1}, Z_{2}, \dots$ a sequence or r.v with mgf's then if $n \to \infty$we have, 
+    \[
+        M_n(t) \to e^{\frac{1}{2}t^2} \quad \text{ for } t \in \R
+    \]
+    then we have,
+
+    \[
+    \P(Z_n \le x) \to \int_{-\infty}^{x}  \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}u^2} \: du
+    \]
+\end{theorem}
+\begin{note}
+    This is basically saying if the mgf converges to the mgf of a normal standard then the underlying distribution function converges to that of a normal standard as well.
+\end{note}
+\begin{proof} of CLT
+
+    We have, 
+    
+    \[
+        Z_n = \frac{S_n - n \mu}{\sigma \sqrt{n}} = \frac{1}{\sigms \sqrt{n}} \sum_{i = 1}^{n} U_i
+    \]
+    where $U_i = X_i - \mu$. Now note that we have $M_U(t) = \E(e^{t(X - \mu)} = e^{-t \mu} M_X(t)$
+
+    So now the mgf of $Z_n$ is, 
+    \begin{align*}
+        M_n(t) &= \E(e^{tZ_n})) = \E \left ( e^{\frac{t}{\sigma \sqrt{n}}\sum_{i = 1}^{n}  U_i}\right )\\
+               &= \left[\E \left ( e^{\frac{t}{\sigma \sqrt{n} } U_i }\right )\right]^{n}\\
+               &= \left [ M_U \left ( \frac{t}{\sigma \sqrt{n}}\right )\right]^{n}
+    \end{align*}
+
+    Now note that we can consider a power series around $x = 0$ to get,
+    \begin{align*}
+        M_U(x) &= 1 + x\E(U_{1}) + \frac{1}{2}x^2 \E(U_1^2) + o(x^2)\\
+               &= 1 + \frac{1}{2} \sigma^2 x^2 + o(x^2)
+    \end{align*}
+
+    Here $o(x^2)$ means that the terms decrease faster than $x^2$ (note we're considering a power series about $x = 0$ so $|x| < 1$)
+
+    \vspace{1em}
+    
+    But now we have,
+    \begin{align*}
+        M_n(t) = \left [ 1 + \frac{t^2}{2n} + o\left (\frac{1}{n}\right)\right]^{n} \to e^{\frac{1}{2}t^2} \quad \text{ as } n \to \infty
+    \end{align*} 
+
+    which by the theorem above gives us that the distribution function converges to that of a normal standard.
+\end{proof}
+
+\begin{eg}[Statistical sampling]
+    One of the main uses of CLT is in stats. Say a fraction of the population are categorized as $X = 1$ (could be say are men) then how many people do we need to survey to estimate $p$ with error not exceeding $0.005$. 
+\end{eg}
+\begin{solution}
+   Let $X_i$  be the indicated of the $i'th$ person being in the category i.e. $X = 1$. Then we have, 
+   \[
+    S_n = \sum^{n} X_i
+   \]
+
+   Now we have the sample mean as $p' = \frac{1}{n} S_n$. So we basically need $n$ large enough so that we have $|p' - p| \le 0.005$. Now technically we can only do this in probability i.e. $\P(|p' - p| \le 0.005) \ge 0.95$ or so. But now by CLT we can write, 
+   \[
+    \P(\left | \frac{S_n}{ n} - p\right | \le 0.005) = \P \left ( |S_n - \E(S_n)| \frac{1}{\sqrt{var(S_n)}} \le 0.005 \sqrt{\frac{n}{p(1 - p)}}\right )
+   \]
+
+   But by clt the right side converges to distribution function of a normal standard. So we have approximately $\P(|N| \le 0.005 \sqrt{4n})$ where $N$ is normal with mean 0 and variance 1. So our solution is, 
+   \[
+    \P(|p' - p| \le 0.005) \ge \int_{-0.005 \sqrt{4n}}^{0.005 \sqrt{4n}}  \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}u^2} du
+   \]
+   Which is $2 \phi(0.005 \sqrt{4n}) - 1$. And for probabiltiy greater than 0.95 we ned $0.005 \sqrt{4n} \ge 1.96$ or that $n \ge 40,000$
+\end{solution}

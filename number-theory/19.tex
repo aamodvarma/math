@@ -1,4 +1,129 @@
 \chapter{Diophantine Equations}
-\begin{definition}
-    Any equation with one or more variables to be solved in the integers.
+\begin{definition}[Diophantine equation]
+    Any equation with one or more variables to be solved in the integers is called a \emph{Diophantine equation}
 \end{definition}
+\begin{eg}
+    
+    \[
+        5x^2 -2x +1 = 0 \text{  for $x \in \Z$}
+    \]
+\end{eg}
+
+\section{Linear Diophantine Equation}
+
+\begin{definition}[Linear Diophantine Equation]
+    Let $a_{1}, \dots, a_n \in \Z$ and $ b \in \Z$ with $a_i \ne 0$. A Diophantine equation of the fomr, 
+    \[
+        a_{1}x_{1} + \dots + a_n x_n = b
+    \]
+    is called a \emph{Linear Diophantine Equation}
+\end{definition}
+
+\begin{theorem}
+    Let $ax = b$ be a linear D.E in the variable $x$. If $a \mid b$ then  there is a unique solution $x = \frac{b}{a}$ else there is no solution.
+\end{theorem}
+
+\begin{theorem}
+    Let $ax + by = c$ be a linear D.E in variables $x, y$. Let $d = (a, b)$. If $d \nmid c$ there are no solutions. Else there are infinitely many solutions. Furthermore, if $x_{0},y_{0} \in \Z$ is a particular solution, then all solutions $x,y$ are given by, 
+    \begin{align*}
+        x &= x_{0} + (b / d)n\\
+        y &= y_{0} - (a / d)n
+    \end{align*}
+\end{theorem}
+
+\begin{proof}
+    Since $d \mid a$ and $d \mid b$ then $d \mid c$ by Prop 1.2, thus if $d \nmid c$ then we have no solution. By Prop 1.11 there exists $r, s \in \Z$ such that, 
+    \[
+        d = (a,b) = ra + sb
+    \]
+    Further, if $d \mid c$, then $c = dq$. So we may write, 
+    \[
+        c = (ra + sb)q = a(rq) + b(sq)
+    \]
+
+    And thus $x = rq, y = sq$ is a particular solution.
+
+    \vspace{1em}
+    
+    Let $x_{0}, y_{0}$ be any solution and let $x, y$ be given as shown above. Then, 
+    \begin{align*}
+        ax + by &= a(x_{0} + (b / d) n) + b (y_{0} - (a / d)n)\\
+                &= ax_{0} + by_{0} = c
+    \end{align*}
+
+    So $x,y$ is an integer solution for any integer $n$.
+
+    \vspace{1em}
+    
+    Now we show that every solution is of this form. Let $x, y$ a solution. Note, 
+    \begin{align*}
+        (ax + by) - (ax_{0} + by_{0}) &= 0\\
+        a(x - x_{0}) &= b(y_{0} - y) 
+    \end{align*}
+
+    Divide both by $d$ and we have, 
+    \begin{align*}
+        (a / d) (x - x_{0}) = (b / d)(y_{0} - y)
+    \end{align*}
+    Thus we have $(a / d) \mid (b / d) (y_{0} - y)$ and we get $(a / d) \mid (y_{0} - y)$ and we get, 
+    \[
+        y = y_{0} - (a / d)n
+    \]
+
+    and similarly we get, 
+    \[
+        x = x_{0} + (b / d)n
+    \]
+\end{proof}
+\begin{eg}
+    Determine if $803x + 154y = 22$ has any solutions and calculate all of them.
+\end{eg}
+\begin{sol}
+    We have $(803, 154) = 11$ so $803 \cdot 5 - 26 \cdot 154 = 11$.
+\end{sol}
+
+\section{Nonlinear Diophantine Equations}
+
+We can show that some equations are not solvable using the following method,
+
+\vspace{1em}
+If a D.E has solutions, then the equation when viewed as a congruence modulo any modulus, will also have solutions. The contrapositive of this is that if a particular congruence is not solvable then neither is the original.
+
+\begin{eg}
+    Show that $3x^2 + 2 = y^2$ is not solvable. We have,
+    \[
+    3x^2 - y^2 = -2
+    \]
+    Assume it's solvable, then it's solvable modulo $3$ so we have, 
+    \[
+    y^2 \equiv 2 \pmod 3
+    \]
+    But this says that $2$ is a residue modulo $3$ which is untrue. So there are no solutions.
+\end{eg}
+
+\begin{eg}
+    Show that $7x^{3} + 2 = y^{3}$ has no solutions. 
+
+    \vspace{1em}
+    
+    Consider equation modulo $7$ we have, 
+    \[
+        y^{3} \equiv 2 \pmod 7
+    \]
+
+\end{eg}
+\begin{eg}
+    Prove that $x^2 + y^2 + 1 = 4z$ has no solutions.
+
+
+    \vspace{1em}
+
+    Modulo $4$ we have $x^2 + y^2 \equiv 3 \pmod 4$. Do odd even thingy
+\end{eg}
+
+\begin{eg}
+   Show  x^2 + 2y^2 \equiv 5 \pmod 8
+   4m^2 + 4m + 3
+\end{eg}
+
+
