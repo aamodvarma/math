@@ -1,0 +1,277 @@
+\documentclass[11pt]{article}
+\usepackage{enumitem}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{xcolor}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{automata}
+
+\setlength{\textheight}{8.5in}
+\setlength{\textwidth}{6.0in}
+\setlength{\headheight}{0in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\oddsidemargin}{-.5in}
+
+\input{preamble.tex}
+
+\newcommand{\solution}[1]{\paragraph{Solution}  }
+\newcommand{\bl}[1]{\textcolor{blue}{#1}}
+\newcommand{\rd}[1]{\textcolor{red}{#1}}
+
+\begin{document}
+\hw{1: Finite Automata}{01/15/2026}{}{Due:01/29/2026}
+
+This assignment is due on \textbf{11:59 PM EST, Thursday, Jan 29, 2026}. You may turn it in up to 48 hours late, but assignments turned in by the deadline receive 3\% extra credit.  Additionally, late submission means late feedback, which means less time to study before an exam.
+
+You should submit a typeset or \emph{neatly} written pdf on Gradescope. The grading TA should not have to struggle to read what you've written; if your handwriting is hard to decipher, you will be asked to typeset your future assignments. Enter your work using the \bl{answer} environment we have provided for you, like so:
+\begin{verbatim}
+                        \begin{answer}
+                            <YOUR WORK GOES HERE> 
+                        \end{answer}
+\end{verbatim}
+
+You may collaborate with other students, but any written work should be your own. 
+
+
+\begin{enumerate}
+    \item[0.] \textbf{Background Knowledge} (0 points)
+    
+    You should be familiar with concepts such as sets and set operations, functions, graphs, and proofs by contradiction and induction. The following problems in the book can help you review them. (Do not turn these in! We will not grade them.)
+    
+    0.2 b,e,f
+    
+    0.3 e,f
+
+    0.5
+
+    0.6
+
+    0.8
+
+    0.11
+    
+    \item \textbf{Explicit Construction} \textit{**Section A only**} 
+    
+    Give the state diagrams for the DFA's that accept the following languages:
+    
+    a) (4 points) $\{x | x$ is a binary string, which, when interpreted as a binary number, is equivalent to  $2\ mod\ 5\}$
+
+    \begin{answer}
+        
+    \end{answer}
+    
+    b) (4 points) $\{x | x$ is a binary string which contains an even number of $0$'s and ends in $110\}$ (Hint: language operations)
+
+    \begin{answer}
+        
+    \end{answer}
+    
+    \item \textbf{Closure} (4 points) 
+    
+    Let $TWO-OF-OR-NONE(L_1, L_2, L_3)$ be the set which contains all strings which are contained in \emph{exactly} two of the three languages or none of the languages. Show that, if $L_1, L_2$, and $L_3$ are regular, then $TWO-OF-OR-NONE(L_1, L_2, L_3)$ is also regular. 
+
+    \begin{answer}
+        For a string to be in exactly two languages and not the third it's equivalent to the intersection of the first two languages minus the elements shared with the third. So to be in exactly $L_{1}$ and $L_{2}$ and not in $L_{3}$ we have $(L_{1}\cap L_{2}) \setminus L_{3} =L_{1}\cap L_{2} \cap L_{3}^{c}  $. Now for all of them we have, 
+        \begin{align*}
+            TWO-OF-OR-NONE(L_{1}, L_{2}, L_{3}) &= (L_{1} \cap L_{2} \cap  L_{3}^{c})\\
+                                                &\cup (L_{3} \cap L_{2} \cap  L_{1}^{c})\\
+                                                &\cup (L_{1} \cap L_{3} \cap  L_{2}^{c})\\
+                                                &\cup (L_{1} \cup L_{2} \cup L_{3})^{c}
+        \end{align*}
+
+        Now note that if $A$ is a regular language then $A^{c}$ is also regular. Let $M$ be the finite automata that accepts $A$ so we have $M = (Q, \Sigma, \delta, q_{0}, F)$. Now note that all strings in $A$ are such that the string ends in some accepting state in $F$, this means that all strings not in $A$ i.e are in $A^{c}$ end in a non-accepting state. Hence, consider the automata $M' = (Q, \Sigma, \delta, q_{0}, F^{c})$ where the accepting states are interchanged in comparison to $M$. Note that now any string in $A^{c}$ will end in an accepting state in $M'$ and no string outside $M'$ will be accepted (as they are in $A$ and therefore by construction won't be accepted). Hence we found a finite automata that accepts $A^{c}$ and therefore $A^{c}$ is regular.
+
+        \vspace{1em}
+        
+        Now we'll show that regular languages are closed under intersections i.e. if $A$ and $B$ are regular then $A \cap B$ are too. We can see this by writing $A \cap B = (A^{c} \cup B^{c})^{c}$. And note that $A^{c}$ and $B^{c}$ are regular and consequently so is $(A^{c} \cup B^{c})$  and then $(A^{c} \cup B^{c})^{c}$ using the same logic.  
+
+        \vspace{1em}
+        
+        Now we have,
+        \begin{align*}
+            TWO-OF-OR-NONE(L_{1}, L_{2}, L_{3}) &= (L_{1} \cap L_{2} \cap  L_{3}^{c})\\
+                                                &\cup (L_{3} \cap L_{2} \cap  L_{1}^{c})\\
+                                                &\cup (L_{1} \cap L_{3} \cap  L_{2}^{c})\\
+                                                &\cup (L_{1} \cup L_{2} \cup L_{3})^{c}
+        \end{align*}
+
+        Here we have $L_{1}, L_{2}, L_{3}$ are regular. All our operations are just complements, unions and intersections. Therefore this produceses a regular language
+    \end{answer}
+    
+    \item \textbf{More Closure} (4 points)
+    
+    Let $L[double]$ be defined formally as $\{x_1x_1...x_nx_n | x_i \in \Sigma, x_1...x_n \in L\}$. In other words, strings of $L[double]$ are formed by taking a string from $L$ and inserting a copy of the previous character after each character of the word, so that if $L = \{\bl{11}, \bl{1010}\}$, then $L[double] = \{\bl{1}\rd{1}\bl{1}\rd{1}, \bl{1}\rd{1}\bl{0}\rd{0}\bl{1}\rd{1}\bl{0}\rd{0}\}$.  Prove that if $L$ is regular, so is $L[double]$.
+
+    \begin{answer}
+       The goal is to construct a new automata $M'$ that simulates the original automata $M$ only when the same alphabet is given twice. More specifically, let the following by an arbitrary state in $M$, 
+       \begin{center}
+           \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto,scale=0.17]
+            \tikzset{accepting/.style={double distance=1mm}}
+            \node[state, label=center:{$q$}] (0) at (34,-36.2) {};
+            \node[state, label=center:{$p_1$}] (1) at (48,-36.2) {};
+            \node[state, label=center:{$p_2$}] (2) at (40.2,-22.9) {};
+            \node[state, label=center:{$p_3$}] (3) at (24,-25.9) {};
+            \path[->] (0) edge node [swap] {$a$} (1);
+            \path[->] (0) edge node [swap] {$b$} (2);
+            \path[->] (0) edge node [swap] {$c$} (3);
+            \end{tikzpicture}
+       \end{center}
+
+       we modify this to,
+
+       \begin{center}
+        \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto,scale=0.17]
+\tikzset{accepting/.style={double distance=1mm}}
+\node[state, label=center:{$q$}] (0) at (32.8,-37.4) {};
+\node[state, label=center:{$p_1$}] (1) at (55.9,-36.2) {};
+\node[state, label=center:{$p_2$}] (2) at (43.7,-20.3) {};
+\node[state, label=center:{$p_3$}] (3) at (19.1,-22.8) {};
+\node[state, label=center:{$qa$}] (5) at (44.6,-36.8) {};
+\node[state, label=center:{$qb$}] (6) at (38.3,-28.4) {};
+\node[state, label=center:{$qc$}] (7) at (26.1,-30.6) {};
+\node[state, label=center:{$bad$}] (8) at (51.4,-5.5) {};
+\path[->] (0) edge node [swap] {$a$} (5);
+\path[->] (5) edge node [swap] {$a$} (1);
+\path[->] (0) edge node [swap] {$b$} (6);
+\path[->] (6) edge node [swap] {$b$} (2);
+\path[->] (0) edge node [swap] {$c$} (7);
+\path[->] (7) edge node [swap] {$c$} (3);
+\path[->] (5) edge[bend right=50 , swap] node {$b,c$} (8);
+\path[->] (7) edge[bend left=50 ] node {$a,b$} (8);
+\path[->] (2) edge node [swap] {$a,c$} (8);
+\end{tikzpicture}
+       \end{center}
+
+       Now we define a new automata $M'$ with the introduction of these intermediate states. An accepting state of $M'$ is such that it corresponds to an accepting state of $M$ . If $\delta'$ is the transition function we define it so that $\delta'(q, x_i) = q_{x_i}$ an intermediate state and we have $\delta'(q_{x_i}, x_i) = \delta(q, x_i)$ where $\delta$ is the transition function for $M$ and $\delta'(q_{x_i}, x_j) = bad$  if $i \ne j$. So we have we have $\delta'(\delta'(q, x_i), x_i) = \delta(q, x_i)$ and if $i \ne j$ then, $\delta'(\delta'(q, x_i), x_j) = bad$. So in essence we simulate $M$ in $M'$ whenever we get a double, otherwise we go to bad. As we simulated $M$, the language that $M'$ recognizes will be $L[double]$ as that is the condition we imposed in order to simulate $M$.
+       
+
+    \end{answer}
+    
+    \item \textbf{Even More Closure} \textit{**Section X only**} (4 points)
+    
+    Let $END(L) = \{x\ |\ $ for some $y \in \Sigma^*$, $yx \in L\}$. Thus $END(L)$ is the set of strings which could appear as a suffix of a string in $L$. Prove that if $L$ is regular, $END(L)$ is regular.
+
+    \begin{answer}
+        Note that for any suffix of a string $x_{1}\dots x_n$, $x_i \dots x_n$, there exists a prefix of $REVERSE(x) = x_n \dots x_1$ of the form $x_n \dots x_i$ that is the reverse of the suffix.
+
+        \vspace{1em}
+
+        Point is, it is enough to show that regular languages are closed under reversal and closed under taking prefixes and we can write our problem as,
+        \[
+            END(L) = REVERSE(Prefix(REVERSE(L)))
+        \]
+
+        So first we need to show that if $L$ is regular than $REVERSE(L)$ is regular  as well. We can use a NFA first. Let the DFA associated with $L$ be $M$. Now we convert the start state of $M$ to be an accept state and have the various accept states of $M$ to be start states (possible as we're using an NFA). Now we reverse each transition as well. For instance if we have the following DFA,
+        \begin{center}
+        \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto,scale=0.17]
+            \tikzset{accepting/.style={double distance=1mm}}
+            \node[state,initial, label=center:{$p$}] (0) at (23.4,-39.5) {};
+            \node[state, label=center:{$q$}] (1) at (40.6,-39.5) {};
+            \node[state,accepting, label=center:{$r$}] (2) at (56.8,-39.5) {};
+            \path[->] (2) edge[loop right] node {$b$} ();
+            \path[->] (2) edge[loop above] node {$a$} ();
+            \path[->] (0) edge node [swap] {$a$} (1);
+            \path[->] (1) edge node [swap] {$b$} (2);
+            \path[->] (1) edge[loop above] node {$a$} ();
+            \path[->] (0) edge[loop above] node {$b$} ();
+        \end{tikzpicture}
+        \end{center}
+
+        we construct the NFA as follows,
+
+        \begin{center}
+            \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto,scale=0.17]
+            \tikzset{accepting/.style={double distance=1mm}}
+            \node[state,accepting, label=center:{$p$}] (0) at (53.8,-36.2) {};
+            \node[state, label=center:{$q$}] (1) at (34.2,-36.2) {};
+            \node[state,initial, label=center:{$r$}] (2) at (18.2,-36.2) {};
+            \path[->] (2) edge[loop right] node {$b$} ();
+            \path[->] (2) edge[loop above] node {$a$} ();
+            \path[->] (1) edge[loop above] node {$a$} ();
+            \path[->] (0) edge[loop above] node {$b$} ();
+            \path[->] (2) edge[bend right=50 , swap] node {$b$} (1);
+            \path[->] (1) edge node [swap] {$a$} (0);
+            \end{tikzpicture}
+        \end{center}
+        So in our new construction of $M'$ if $\delta'$ is the transition function and $\delta$ is of $M$, then if $\delta(p, a) = q$ we have $\delta'(q, a) = p$. Now note that the produced DFA from this accepts only the reverse language $L$ and hence we have $M'$ is regular.
+
+        \vspace{1em}
+        
+        Now we just need to show that given a language $L$ with automaton $M$ we can construct a automaton $M'$ that accepts that language $L$ along with all it's prefixes. To do this, all we need to do is find every path to an accept state and for all states along that path we modify it to be a accept state itself. For instance we have,
+ \begin{center}
+        \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto,scale=0.17]
+            \tikzset{accepting/.style={double distance=1mm}}
+            \node[state,initial, label=center:{$p$}] (0) at (23.4,-39.5) {};
+            \node[state, label=center:{$q$}] (1) at (40.6,-39.5) {};
+            \node[state,accepting, label=center:{$r$}] (2) at (56.8,-39.5) {};
+            \path[->] (2) edge[loop right] node {$b$} ();
+            \path[->] (2) edge[loop above] node {$a$} ();
+            \path[->] (0) edge node [swap] {$a$} (1);
+            \path[->] (1) edge node [swap] {$b$} (2);
+            \path[->] (1) edge[loop above] node {$a$} ();
+            \path[->] (0) edge[loop above] node {$b$} ();
+        \end{tikzpicture}
+        \end{center}
+        modified to,
+
+ \begin{center}
+     \begin{tikzpicture}[shorten >=1pt,node distance=2cm,on grid,auto,scale=0.17]
+\tikzset{accepting/.style={double distance=1mm}}
+\node[state,initial,accepting, label=center:{$p$}] (0) at (15.4,-16.4) {};
+\node[state,accepting, label=center:{$q$}] (1) at (33.1,-16.4) {};
+\node[state,accepting, label=center:{$r$}] (2) at (52.7,-16.4) {};
+\path[->] (2) edge[loop right] node {$b$} ();
+\path[->] (2) edge[loop above] node {$a$} ();
+\path[->] (1) edge[loop above] node {$a$} ();
+\path[->] (0) edge[loop above] node {$b$} ();
+\path[->] (0) edge node [swap] {$a$} (1);
+\path[->] (1) edge node [swap] {$b$} (2);
+\end{tikzpicture}
+        \end{center}
+
+        If $q_{0}$ is the start state and $p$ is the accepting state, then we define the states in a path to be all states $q_{1}, \dots, q_n$ (repetitions allowed) such that we have $\delta(q_n, x_n) = p$ and $\delta(q_i, x_i) = q_{i + 1}$ for $i < n$ where $x_1 \dots x_n$ are alphabets (repetitions allowed). So then we have all $q_i$ where  $i = 1, \dots, n$ to be accepting. (So for instance if an accepting state points to another state from which there is no path back to an accepting state, then it won't be marked accepting).
+
+        \vspace{1em}
+        
+        So this proves that the set of prefixes of a language is also regular. Hence we have $REVERSE(L)$ is regular, so $Prefix(REVERSE(L))$ is regular and lastly $REVERSE(Prefix(REVERSE(L)))$ is also regular and we showed that this is equivalent to $SUFFIX(L)$.
+    \end{answer}
+
+    
+    
+    \item \textbf{Minimal DFA's} \textit{**Section X only**} (4 points)
+    
+    Let $L_k$ be the regular language over $\{0,1\}$ which contains all strings which have a $1$ as the $k$'th character from the right end of the string. Prove that any DFA that recognizes $L_k$ must contain at least $2^k$ states.
+
+    \begin{answer}
+        First let us assume there exists a DFA that has less than $2^{k}$ states and is able to recognize whether there is a $1$ in the $k'th$ character from the right end of the string. Now note that there are $2^{k}$ different distinct strings of length $k$. Let us consider the ordering from smallest to highest. For each string being computed by our automata, let the string end at state $q_i$ where $i$ is the position of our string in our lowest-highest ordering. So we have,
+        \begin{align*}
+            000\dots0 &\to q_{0}\\
+            000\dots1 &\to q_{1}\\
+                      &\vdots\\
+            111\dots1& \to q_{2^{k} - 1}
+        \end{align*}
+
+        Now clearly we have defined $q_i$ for each string and hence we have  $2^{k}$ states defined above, however by assumption we have less than $2^{k}$ states in our automata, hence there must be at least a pair of strings say $x_i, x_j$ such that they have the same state i.e $q_i = q_j$. Now we know that $x_i \ne x_j$ so there must be some position in the string where they differ. More specifically, WLOG let $x_i$ contain a $1$ in the $l$'th position from the right and $x_j$ contain a $0$ in the $l$'th position from the right as well. So we have for example,
+        \begin{align*}
+            x_i &= *\dots 1 \dots * \to q_i = q_j\\
+            x_j &= * \dots 0 \dots * \to q_j = q_i\\
+        \end{align*}
+        where $*$ denotes an arbitrary value of either 0 or 1.
+
+        Now let us add $k - l + 1$ zeroes to the rightmost side for both strings to get,
+        \begin{align*}
+            1 \dots * 0 \dots 0\\
+            0 \dots * 0 \dots 0
+        \end{align*}
+
+        Now note that with respect to the new string, the $l$'th position ends at $q_i = q_j$ for both strings, however as now we added a bunch of zeroes, the computation is equivalent for both strings i.e. the new state $q_{i0}$ of the new string would be equivalent to $q_{j0}$ of the second string. But note that both strings are of length $k$ and string 1 starts with a 1 while string 2 starts with a 0. By assumption our DFA accept string 1 and rejects string 2, so we cannot have both strings end at the same state as that would mean either both are accepting or both are rejecting, a contradiction. Hence, our assumption must have been wrong and there is no DFA with fewer than $2^{k}$ states that can solve our problem.
+
+
+    \end{answer}
+    
+
+\end{enumerate}
+\end{document}

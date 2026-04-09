@@ -1,0 +1,225 @@
+
+
+\documentclass[11pt]{article}
+\usepackage[margin = 1in]{geometry}
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,graphicx,amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{changepage}
+\usepackage{braket}
+\usepackage{mathtools}
+\usepackage{cite}
+\usepackage{qcircuit}
+\usetikzlibrary{arrows.meta}
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+
+%
+% The following macro is used to generate the header.
+%
+\newcommand{\lecture}[4]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{lecnum}{#1}
+   \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf CS 4510-X
+		\hfill } }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill Parikh's Theorem  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.28in { {\it Name: #3 \hfill} }
+      \vspace{2mm}}
+   }
+   \end{center}
+   \markboth{Lecture #1: #2}{Lecture #1: #2}
+
+   \vspace*{4mm}
+}
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+			\vspace{#2}
+			\begin{center}
+			Figure \thelecnum.#1:~#3
+			\end{center}
+	}
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{attempt}[theorem]{Attempted Proof}
+\newtheorem{badclaim}[theorem]{Dubious Claim}
+\newtheorem{goodclaim}[theorem]{Correct Claim}
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+\newcommand\E{\mathbb{E}}
+
+\begin{document}
+%FILL IN THE RIGHT INFO.
+%\lecture{**LECTURE-NUMBER**}{**DATE**}{**LECTURER**}{**SCRIBE**}
+\lecture{1}{August 24}{Frederic Faulkner, John Hill}{a}
+
+\section{Deliverables}
+There are 9 problems on this sheet (five during the proof and four at the end). Turn in 6 of the 9.
+
+\section{Introduction}
+Parikh's theorem states that context-free languages are equivalent to regular languages if you ignore the order of the letters in a word. We will prove the theorem together by working through several flawed proofs, and then explore some consequences of the theorem. \hbreak \newline
+
+\begin{definition}
+Given an alphabet $\Sigma$ with characters $s_1, ..., s_{|\Sigma|}$, define the function $\Psi: \Sigma^* \rightarrow \mathbb{N}^{|\Sigma|}$ by $\Psi(w) = [n_1, ..., n_{|\Sigma|}]$ where $n_i$ is the number of occurrences of $s_i$ in $w$. As an example, let $\Sigma = \{a, b, c\}$. Then $\Psi(ababa) = [3, 2, 0]$.
+\end{definition}
+
+\begin{definition}
+For a language $L$, define $\Psi(L) = \{\Psi(w) ~|~ w \in L\}$
+\end{definition}
+
+\begin{theorem}[Parikh's Theorem]
+For any context-free language $L$, there is a regular language $R$ such that $\Psi(L) = \Psi(R)$. We say that $L$ and $R$ are ``letter-equivalent".
+\end{theorem}
+
+\underline{Problem 1:} Let $L_1 = \{a^nb^n ~|~ n \in \mathbb{N}\}$ and let $L_2 = \{w ~|~ w$ is a palindrome$\}$. Give regular languages $R_1$ and $R_2$ such that $\Psi(L_1) = \Psi(R_1)$ and $\Psi(L_2) = \Psi(R_2)$. \hbreak \newline 
+
+\begin{proof}
+Let $R_{1}$ be defined by the regular expression $(ab)^{*}$. First we show that $\Psi(L_{1}) \subseteq \Psi(R_{1})$. Choosing any $x \in \Psi(L_{1})$ so this $x$ must be some set $[i_{a},i_{b}]$ which corresponds to some $a^{n}b^{n} \in L_{1}$. Specifically $x$ has to be of the form $[n, n]$. Now consider the string $\underbrace{ab \dots ab}_{\text{ab } n \text{ times}}$. This string consists of $n$ a's and $n$ b's and hence curresponds to $[n,n]$. Hence we have $x \in \Psi(R_{1})$ as well. Now similarly we now show that $\Psi(R_{1}) \subseteq \Psi(L_{1})$ consider some $x \in \Psi(R_{1})$ corresponding to some $[i_a, i_b]$, note again in this case as well because all strings are of the form $(ab)^{*}$, the count of $a$ and $b$ are equal and hence it's all of the form $[n,n]$. But for any of this form we can find a corresponding $w \in L_{1}$ defined as $a^{n}b^{n}$ such that $\Psi(w) = [n,n]$ and hence for any $x \in \Psi{R_{1}} $ we have $x \in \Psi(L_{1})$ because for any word in $R_{1}$ we can find a corresponding word in $L_{1}$ that have the same $\Psi$ and vice versa. Hence we have $\Psi(R_{1}) = \Psi(L_{1})$
+
+\vspace{1em}
+
+Let $R_{2}$ be defined by $ \{(a \cup \epsilon)(aa)^{*}(bb)^{*} \cup (b \cup \epsilon)(aa)^{*}(bb)^{*} \}$. Note that this string is essentially a string with an even count of each letter OR an even count of individual letters plus an additional single letter. Now take some $x \in \Psi(L_{1})$, so we have some $[i_a, i_b]$ such that either both are even or only one of them is odd. Now assume both are even. Now let them be $[2m, 2n]$. Using the construct $a^{2m}b^{2n}$ and note that this string is in the regular language that we defined and hence we have $x \in \Psi(R_{1})$ and WLOG if we have $[2m + 1, 2n]$ then consider $a a^{2m}b^{2n}$ and this is in our regular language as defined by the regex above. So we have $\Psi(L_{1}) \subseteq \Psi(R_{1})$. Now consider the other direction  and take some $x \in \Psi(R_{1})$ and note that we have again we have the same $[i_a, i_b]$ as above. So assume again we have $[2m, 2n]$ in this case just consider $a^{m}b^{n}b^{n}a^{m}$, clearly this is a palindrome with $[2m, 2n]$ and hence we have $x \in \Psi(L_{1})$ in this case. Consider WLOG the case where we have $[2m + 1, 2n]$. In this case consider the string $a^{m}b^{n}ab^{n}a^{m}$, clearly again we hvae $\Psi(a^{m}b^{n}ab^{n}a^{m}) = [2m + 1, 2n]$ and hence we have $x \in \Psi(L_{1})$. This gives us $\Psi(R_{1}) \subseteq \Psi(L_{1})$ which gives us $\Psi(R_{1}) = \Psi(L_{1})$
+\end{proof}
+
+How do we prove Parikh's theorem? The core idea of the proof relies on the concept from the pumping lemma of pumping downwards. Making a shorter string from a longer string allows us to do strong induction on the length of the string.  Furthermore, there are a finite number of ways to pump a string downwards, and finite sets play nice with regular languages.scope.com/
+
+\begin{definition}
+Given a context-free language $L$, let $G$ be a grammar that generates $L$ and let $p$ be the pumping length of $L$. Define $B$ = $\{w \in L ~|~ |w| < p\}$ and $C = \{xy \in \Sigma^* ~|~ |xy| \leq p$ and for some nonterminal $A$ in $G$, $A \xRightarrow{*} xAy\}$.
+\end{definition}
+
+\begin{badclaim}
+ Clearly $BC^*$ is a regular language. Perhaps we could show that $\Psi(L) = \Psi(BC^*)$.
+\end{badclaim}
+
+\underline{Problem 2:} Show that $\Psi(L) \subseteq \Psi(BC^*)$, using the pumping lemma and strong induction on the length of the string. \hbreak \newline
+\begin{proof}
+  First note that for any $w \in L$ for which we have $|w| < p$ clearly we have $w \in  B$ and hence $w \in BC^{*}$ so this automatically gives us $\Psi(w) \in \Psi(L)$ and $\Psi(w) \in \Psi(BC^{*})$. Now we'll do induction, the base case is for $|w|$ from $1$ to $p$ which is clearly true as we showed above. Now let's assume true for some arbitrary string of length $n-p, \dots, n$ (from strong induction). Now we need to show that the case for $n + 1$ is true. Now if the case for $n + 1$ is true first we write $w = uvxyz$ (as per the pumping lemma), now note that we can find this such that $|vxy| \le p$. Now rearrange the string to $uz vxy$, first note that $uz x$ is in $L$ ($i = 0$ in pumping lemma) and because of strong induction base cases (note by removing $vy$ we're removing at most $p$ elements, so our assumption step i.e the last p steps are true covers this case) we have some rearrangement of this is in $BC^{*}$ as well so WLOG let this be $b c$ such that $|b| < p$ and $c \in C^{*}$, now consider $uz vxy$ consider the rearrangement $uzx vy$ and as $uzx = bc$ we have this as $b c vy$ such that $|b| < p, c \in C^{*}$  and $v y$ are from the pumping lemma. It is enough now to show that $vy \in C$ because concat is closed in $C^{*}$. Now as per the pumping lemma we can pump $v^{i}xy^{i}$ for any arbitrary $i$, this necessarily implies that there  is a production such that $A \to^{*} v A y$ as we need to keep the center constant and $v,y$ increase together. So this means that $vy  \in C^{*}$ and hence $c vy \in C^{*}$. Let $cvy = k \in C^{*}$, so we just wrote the rearrangement as $b c'$ where $|b| < p$ and $c' \in C^{*}$ and hence this implies that we have $\Psi(w) \in \Psi(BC^{*})$.
+\end{proof}
+\vspace{1em}
+
+
+Now we try to prove $\Psi(BC^n) \subseteq \Psi(L)$ for all $n$ by induction. Since $B \subseteq L$, $\Psi(B) \subseteq \Psi(L)$. Now, suppose $\Psi(BC^i) \subseteq \Psi(L)$. If $w \in BC^{i+1}$, we can write $w = w_0s$, where $w_0 \in BC^i$ and $s \in C$. By the inductive hypothesis, there is a word $w' \in L$ with $\Psi(w') = \Psi(w_0)$.  We know that there is some nonterminal $A$ such that $s = xy$ and $A \xRightarrow{*} xAy$. Unfortunately, there is no way to complete this step, since the derivation of $w$ doesn't necessarily contain $A$.\footnote{Of course, failing to prove a statement doesn't mean that the statement is false. Can you give an example of a grammar $G$ such that $\Psi(BC^*) \not \subseteq \Psi(L(G))$?}
+\hbreak \newline
+
+So what do we do? Well, the inductive proof above would have worked out if we had a way of forcing the derivation of $w$ to contain the terminals we need. This gives rise to the following idea: separate the words of $L$ into subsets as determined by the nonterminals used in their derivations.  Then, if we can show that each subset is letter-equivalent to a regular language, we will be done. (Why?)
+
+\begin{definition}
+For any $U$, a subset of the nonterminals of $G$, define $L_U = \{w ~|~ w \in L$ and some derivation of $w$ by $G$ contains every nonterminal in $U\}$. (Note that $\cup_{U}L_U = L$.)  Then define $B_U$ = $\{w \in L_U ~|~ |w| < p\}$ and $C_U = \{xy \in \Sigma^* ~|~ |xy| \leq p$ and for some nonterminal $A$ in $U$, $A \xRightarrow{*} xAy\}$.
+\end{definition}
+
+\begin{badclaim}
+$\Psi(L_U) = \Psi (B_UC_U^*)$
+\end{badclaim}
+
+\underline{Problem 3:} Following the proof outline at the bottom of page 1, show that $\Psi(B_UC_U^n) \subseteq \Psi(L_U)$ for $n \in \mathbb{N}$. \hbreak \newline
+
+\begin{proof}
+  First consider $B_UC^{1}_U$ and take a string of the form $wxy$ such that $w \in B_U$ and $xy \in C_U$, now let $A$ be the non-terminal such that in $C_U$ we have $A \to^{*} xAy$, now as $w \in L_U$, the derivations of $w$ contains every non-terminal which means it also contains $A$. So say we have $S \to^{*} ... A ... \to^{*} w$, but note we have $A \to^{*} xAy$ this means that we can have $S \to^{*} ... A... \to^{*} ... xAy ...$ and now let if we do the same productions as we did to generate $w$, we essentially generate a string such that it contains the substrings $w, x$ and $y$. Hence the string we generate say $w'$ is a rearrangement of $wxy$ and therefore $\Psi(wxy) = \Psi(w')$  and $wxy \in B_UC_U$ and $w' \in L_U$. Now assume true for some arbitrary $i$ so we have $B_UC^{i}_U$ and a string $w x_1y_1 x_2y_{2} \dots x_iy_i$ (repetitions allowed) such that $w \in B_U$ and $x_jy_j \in C_U$ for $1 \le j \le i$.  Now we need to show the case for $i + 1$. So we have $w x_1y_1 x_2y_{2} \dots x_iy_i$, now consider the $i + 1$ so say we have, $w x_1y_1 x_2y_{2} \dots x_iy_i x_{i + 1}y_{i + 1}$. Now clearly for $w x_1y_1 x_2y_{2} \dots x_iy_i$ because of the inductive assumption, some rearrangement of this is in $L_U$ so let that rearrangement by $r$ now as $r \in L_U$ we have some $S \to^{*} r$ that contains all the productions in $L_U$. But note now that considering $x_{i +1 }y_{i + 1}$ this is in $C_U$ and hence for some $A$ we have $A \to^{*} x_{i + 1}y_{i +1}$ so we must have this non terminal $A$ in the production of $r$ so we have $S \to^{*} ... A... \to^{*} r$, doing the same as above we do $A \to^{*} x_{i + 1}y_{i + 1}$ and hence introduce the string $r'$ which contains $r, x_{i +1}, y_{i +1}$ or in other words is one rearrangement of $r x_{i + 1}y_{i + 1}$ and hence that implies $\Psi(r x_{i + 1}y_{i + 1}) = \Psi(r')$ and consequently we have $\Psi (w x_1y_1 x_2y_{2} \dots x_iy_i x_{i + 1}y_{i + 1}) \in \Psi(L_U)$ implying that $\Psi(B_UC^{i + 1}_U) \subseteq \Psi(L_U)$, and this completes our inductive step. This shows that for any $n \in \N$ we have $\Psi(B_UC_U^{n}) \subseteq \Psi(L_U)$.
+
+\end{proof}
+
+\vspace{1em}
+
+
+Unfortunately, now the inductive proof that you gave above for $\Psi(L) \subseteq \Psi(BC^*)$ doesn't work to show $\Psi(L_U) \subseteq \Psi(B_UC_U^*)$. \hbreak \newline
+
+\underline{Problem 4:} Why not? (Hint: pumping down doesn't quite work anymore, as we're no longer inducting over strings of $L$!) \hbreak \newline
+
+\begin{proof}
+  The reason why it doesn't work anymore is because our the inductive assumption for the cases $1$ to $n$ don't work as when we consider substrings of length $n$ we are guaranteed strings in $L$ and not in $L_U$. And as in this case we're considering the set $L_U$ and so as we can't guarantee that the strings are not in $L_U$  we cannot use any of our inductive hypothesis.
+\end{proof}
+
+We're almost there! But we need a slightly stronger version of the pumping lemma.
+
+\begin{theorem} [Stronger Pumping Lemma for Context-Free Languages]
+Let $L$ be a context-free language. Then there exists a $p$ such that, if $w \in L$ and $|w| \geq p^k$, then there is some terminal $A$ such that $S \xRightarrow{*} uAz \xRightarrow{*} uv_1Ay_1z \xRightarrow{*} uv_1v_2Ay_2y_1z \xRightarrow{*} ... \xRightarrow{*} uv_1v_2...v_kAy_k...y_2y_1z \xRightarrow{*} uv_1v_2...v_kxy_k...y_2y_1z = w$, with $|v_1v_2...v_kxy_k...y_2y_1| \leq p^k$. Note that for $k=1$ this is just the ordinary pumping lemma.
+\end{theorem}
+
+The proof of this stronger form of the pumping lemma follows the same structure as the proof of the normal pumping lemma: if a derivation tree is tall enough, it must contain a long path, and a long enough path must contain some nonterminal repeated at least $k+1$ times. \hbreak \newline
+
+Now, let $k = |U|$ and after the following definitions we can finally prove Parikh's theorem.
+
+\begin{definition}
+Let $B_U'$ = $\{w \in L_U ~|~ |w| < p^k\}$ and $C_U' = \{xy \in \Sigma^* ~|~ |xy| \leq p^k$ and for some nonterminal $A$ in $U$, $A \xRightarrow{*} xAy\}$.
+\end{definition}
+
+\begin{goodclaim}
+$\Psi(L_U) = \Psi(B_U'C_U'^*)$ 
+\end{goodclaim}
+
+\underline{Problem 5:} $\Psi(B_U'C_U'^*) \subseteq \Psi(L_U)$ follows almost unchanged from the proof you gave in problem 3. Now, using the Stronger Pumping Lemma for CFL's, prove the reverse direction, i.e. that $\Psi(L_U) \subseteq \Psi(B_U'C_U'^*)$. (The proof closely follows the original proof in problem 2, but now you can pump down in a certain way to stay in $L_U$.)
+
+
+
+\begin{proof}
+  First note that for any $w \in L_U$  clearly if $|w|  < p^{k}$ clearly it's in $B'_UC'_U^{0} = B'_U$. So take $|w| > p^{k}$. Now if this is the case using the stronger pumping lemma we have a terminal $A$ such that $S \to^{*} uAz \to^{*} uv_{1}Ay_{1}z \to^{*} uv_{1}v_{2} Ay_{2}y_{1} z \to^{*} uv_{1} \dots v_kA y_k \dots y_{1}z \to^{*} u v_{1} \dots v_k x y_k \dots y_{1} z = w$ with the middle again being smaller than $p^{k}$. Now note that we can rearrange this string $w =u v_{1} \dots v_k x y_k \dots y_{1} z $ as $uz  v_{1} \dots v_k x y_k \dots y_{1}$ such that $ v_{1} \dots v_k x y_k \dots y_{1} < p^{k}$. Now clearly if we remove $v_{1} \dots v_k y_k \dots y_{1}$ we don't remove more than $p^{k}$ strings (note strong inducison here gives us the first $1$ to $p^{k}$ strings so we can assume that the previous $p^{k}$ from a given $n$ is true, right now we're showing for the case $n$ assuming the previous are true.). Now note that the string $uxz$ can be derived by taking $S \to^{*} uAz \to^{*} u x z$ and hence $\Psi(uxz)$ is in $\Psi(B'_UC'_U^{*})$ as well. So we can write this as $a b$ for which $a \in B'_U$ and $b \in C'_U^{*}$, now note that $b$ is such that it is a collection of strings in $C'_U$ such that for each string we can go from $A \to^{*} xAy$, now clearly the strings we removed $v_{1} v_{2} \dots v_k y_k \dots y_{1}$ are such that there is some non termainla such that for any $1 \le i \le k$ we have $A \to^{*}v_{i} A y_i$ and hence each of them are in $C'_U$ and hence the collection of the $k$ strings we removed are in $C'_U$. Using the same idea putting them back in the string $uz x = ab$ we still have $ab v_{1}y_{1} \dots v_k y_k$ (note we're putting them back in a differnet ordering but we're preserving the counts of each i.e the result of $\Psi$ for simplicity we don't arrange in the exact order because it doesn't matter), so because the strings we added are in $C'_U^*$ and so is $b$ their concat is in it as well and as $a$ is in $B_U$ we essentially have the string that $w =u v_{1} \dots v_k x y_k \dots y_{1} z $ is in $B'_UC'_U^{*}$ as well, completing our inductive step.
+\end{proof}
+
+\newpage
+\section{Additional Problems}
+
+ \hbreak \newline
+\begin{itemize}
+\item\underline{Problem 6:} Show that $L_U$ is in fact a context-free language. \hbreak \newline
+
+
+\item \underline{Problem 7:} Use Parikh's theorem to show that every context-free language over a unary alphabet is regular. \hbreak \newline
+
+  \begin{proof}
+  Consider the CFL $L$ defined over a unary alphabet. Using Parikh's theorem there is some $R$ such that $\Psi(L) = \Psi(R)$. I.e for any string $w \in L$ there is some string in $R$ such that they are letter equivalent. Now take $w \in L$ let our unary alphabet be some $a$. Now note that $|w| = n \implies w = a^{n}$. Now clearly there must exist some string $w' \in R$ such that $\Psi(w') = \Psi(w)$ or in other words $|w'| = n$ as well. But if we define only on $a$ then the only choice is if $w' = a^{n} = w$. So we just showed for any $w \in L$ we have $w \in R$. Similarly for any string $w \in R$ we can show that if $ w= a^{n} \implies |w| = n$ and if $w' \in L$ such that $|w'| = n$ then we have $w' = a^{n} = w$  and hence $w \in L$. This gives us $L = R$.
+  \end{proof}
+
+\item \underline{Problem 8:} A set $S$ is linear if for some fixed $a_0, a_1, ..., a_n$, we can write $S = \{a_0 + x_1a_1 + x_2a_2 + ... + x_na_n ~|~ x_i \in \mathbb{N}\}$. A set is semi-linear if it can be written as the union of linear sets. Show that if $L$ is context-free, $\Psi(L)$ is semi-linear. (Hint: use the fact that $\Psi(L_U) = \Psi(B_U'C_U^{'*}))$ \hbreak \newline
+
+\item \underline{Problem 9:} Show that if $\Psi(L)$ is semi-linear, then there is a regular language $R$ such that $\Psi(R) = \Psi(L)$. (Hint: start with the linear case, then use the union property for regular languages.)
+
+\end{itemize}
+\end{document}
+
+
+
+
+

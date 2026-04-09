@@ -1,0 +1,77 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\title{Analysis 2: HW9}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\textbf{Problem 1.}
+We have $f$ is conformal which implies that $ \partial_2 f(x) = i \partial_1 f(x)$. Now we need to show that $\lim_{h \to 0} \frac{f(x + h) -f(x)}{h}$ exists. Note that we have, $f(x + h) - f(x) \approx f'(x) (h_{1}, h_{2}) = h_{1} \partial_1 f(x) + h_{2} \partial_{2} f(x) =h_{1} \partial_1 f(x) + h_{2} i \partial_{1} f(x) = (h_{1} + ih_{2}) \partial_1 f(x)$. So this gives us, 
+\[
+  \frac{f(x + h) - f(x)}{h_{1} + i h_{2}} = f'(x)
+\]
+
+i.e we have complex differentiability. Now assume complex differentiability. We need to show it's conformal. We take the limit from the real and complex lines, on the real we get $\lim_{t \to 0} \frac{f(z+ t) - f(z)}{t} = \partial_1 f(z)$ and on the complex we get $\lim_{t \to 0} \frac{f(z + it) - f(z)}{t} = \frac{1}{i} \partial_2 f(z)$, note that if it's complex differentiable, these two must be equal and hence we have $\partial_2 f(z)  = i \partial_1 f(z)$  i.e it's conformal.
+
+\vspace{1em}
+
+
+\textbf{Problem 2.} 
+First consider the clockwise contour (the rectangle) whose top is $R + iD$ bottom is $R$ (right to left) and the sides are $x + iy$ where $y$ goes from $D$ to $0$ and $-x + iy$ for $y$ from $0$ to $D$ and where these lines go to infinity i.e $x \to \infty$. Note that this is a closed loop and hence over this contour is zero. Now note that if we show that the vertical lines (left and right side of our rectangle) cancel each other out that implies that for any $D$ we have $\int_{\gamma_D}^{}  e^{-z^2} = -\int_{R}^{} e^{-z^2}$. So first we'll show that for a fixed $x$ if $\gamma_{l} = -x + ir$, $r$ from $0$ to $D$ and $\gamma_{r} = x + ir$, $r$ from $D$ to $0$ sum to $0$.
+
+\vspace{1em}
+
+So consider,
+\begin{align*}
+  \int_{\gamma_l}^{} e^{-z^2}  &=  \int_{0}^{D} e^{- (-x + ir)^2}  \ dr\\
+                               &=  \int_{0}^{D} e^{- (x^2 - r^2 - 2x i r)}  \ dr\\
+                               &= e^{-x^2}  \int_{0}^{D}  e^{r^2 + 2x i r}  \ dr\\
+  \left | \int_{\gamma_l}^{} e^{-z^2} \right | &= \left | e^{-x^2}  \int_{0}^{D}  e^{r^2 + 2x i r}  \ dr \right | \\
+                                               &\le e^{-x^2}  \int_{0}^{D}   \left |e^{r^2 + 2x i r} \right | \ dr  \\
+                                               &\le e^{-x^2}  \int_{0}^{D}   \left| e^{r^2} \right | \left | e^{2x i r} \right | \ dr  \\
+                                               &\le e^{-x^2}  \int_{0}^{D}   \left| e^{r^2} \right | \ dr  \\
+\end{align*}
+
+Now note that we have $ \left| e^{r^2} \right |$ is independent of $x$ and hence does not blow up when $x \to \infty$ hence it's bounded and we have  say by some constant $C_{1}$ for a $D$. So we have, 
+\[
+  \left | \int_{\gamma_l}^{} e^{-z^2}\right | \le e^{-x^2} C_{1}
+\]
+
+\vspace{1em}
+
+similarly,
+\begin{align*}
+  \int_{\gamma_r}^{} e^{-z^2}  &=  \int_{D}^{0} e^{- (-x + ir)^2}  \ dr\\
+                               &= -\int_{0}^{D} e^{- (x + ir)^2}  \ dr\\
+                               &= - \int_{0}^{D} e^{- (x^2 - r^2 + 2x i r)}  \ dr\\
+                               &= - e^{-x^2} C_{2}
+\end{align*}
+
+Now note that we can take $x \to \infty$ that gives us zero for both these integrals and hence their sum if zero. Hence the vertical sides contribute nothing to our integral for any choice of $D$. This must mean we have, 
+\[
+  \int_{\gamma_D}^{} e^{-z^2} + \int_{\gamma_R}^{}  e^{-z^2} = 0
+\]
+
+where $\gamma_R$ is just $\R$ oriented from right to left. Or in other words we have, 
+\[
+  \int_{\gamma_D}^{}  e^{-z^2} = \int_{R}^{} e^{-z^2} 
+\]
+
+or that the integral is constant in $D$.
+
+
+\vspace{1em}
+
+\textbf{Problem 3}
+
+We have $\gamma: [0, 1] \to \C \setminus \{0\}$ a smooth loop.
+
+
+\begin{enumerate}
+  \item 
+\end{enumerate}
+
+
+
+\end{document}
+

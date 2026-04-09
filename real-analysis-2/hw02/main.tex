@@ -1,0 +1,199 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\title{Analysis 2: HW1}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\textbf{Problem 1.}
+
+\qquad 1. We are given $f: R^{n} \to R^{m}$ which is Frechet differentiable everywhere and $f' = 0$. First write $f$ as it's component functions $f = (f_{1}, \dots, f_m)$. Now for each component function $f_i$ let us apply MVT. Consider $a, b \in R^{n}$, then as each $f_i$ is a real valued function if we restrict $f_i$ to the line segment joining $a, b$ then we can apply MVT to $f_i$ defined on that parametrized line i.e $a + (b - a)t$ to get,
+\[
+    f_i(b) - f_i(a) = \Delta f_i(c) (b - a)
+\]
+
+where $c$ is some point on the line segment connecting $a, b$. However, we are given that $\Delta f_i(x) = 0$  for all points $x$ in the domain, hence we have $\Delta f_i(c) = 0$ and equivalently, 
+\[
+    f_i(b) = f_i(a)
+\]
+
+So for each component function we have shown that that function must be constant throughout, and hence our function $f = (f_{1}, \dots, f_m)$ must also be constant throughout.
+
+
+\vspace{1em}
+
+\qquad 2. We are now given that $f'$ is a constant matrix $A$, using the same formulation as above we hvae, 
+\[
+    f_i(b) - f_i(a) = \Delta f_i(c) (b - a)
+\]
+
+However, now we have $\Delta f_i(c)$  is a constant vector for any $c$. This implies that our component function $f_i$ is an affine function. Hence, $f = (f_{1},\dots, f_i)$ is a affine transformation as well. i.e we have $f(x) = Ax + b$ for some $b$ and where $f'(x) = A$.
+
+
+$\hfill\qedsymbol$
+
+% \vspace{1em}
+\textbf{Problem 2}
+We have $\lim_{r \downarrow 0} r^{\alpha} \ln \left ( 10 + \frac{1}{r}\right )^{\beta}$. Rewriting it we get, 
+\begin{align*}
+    \lim_{r \downarrow 0} r^{\alpha} \ln \left ( 10 + \frac{1}{r}\right )^{\beta} &=     \lim_{r \downarrow 0} r^{\alpha} \beta \ln  \left ( 10 + \frac{1}{r}\right ) \\
+    &=  \lim_{r \downarrow 0} \frac{\beta \ln  \left ( 10 + \frac{1}{r}\right )}{\frac{1}{r^{\alpha}}} \\
+\end{align*}
+
+Now note that this is of the form $\frac{f(x)}{g(x)}$ where $f(x) \to \infty$ and $g(x) \to \infty$. So we can use L'Hospital's rule to get, 
+\begin{align*}
+    \lim_{r \downarrow 0} \frac{\beta \ln  \left ( 10 + \frac{1}{r}\right )}{\frac{1}{r^{\alpha}}} &=  \lim_{r \downarrow 0}  \frac{\beta \frac{1}{10 + \frac{1}{r}} \frac{-1}{r^2}}{-\alpha \frac{1}{r^{\alpha + 1}}}\\
+&=   \lim_{r \downarrow 0}  \frac{\beta}{\alpha} \frac{r^{\alpha + 1}}{10r^2 + r}\\
+\end{align*}            
+
+Now note this is of the form $f(x) / g(x) $ again where $f(x) \to 0$ and $g(x) \to 0$ so this is equal to, 
+\begin{align*}
+    \lim_{r \downarrow 0}  \frac{\beta}{\alpha} \frac{r^{\alpha + 1}}{10r^2 + r} &=     \lim_{r \downarrow 0}  \frac{\beta}{\alpha} \frac{(\alpha + 1)r^{\alpha}}{20r +  1}
+\end{align*}
+
+Clearly as $r \to 0^{+}$ we have the numerator goes to $0$ (as $\alpha > 0$ we have $r^{\alpha} \to 0$ when $r \to 0$) and the denominator goes to $1$ and hence we have the limit is equal to $0$.
+
+
+
+\vspace{1em}
+
+
+\textbf{Problem 3}. We are given $f: \R \to \R$ with $f''$ as a continuous function and $f$ is non-constant. To show the conditions are equivalent it is enough to show that $(1) \implies (3), (3) \implies (2)$ and $(2) \implies (3)$ as all the other equivalencies then follow.
+
+\vspace{1em}
+$(1) \implies (3)$ We are given $f'' \ge 0$. Now Taylors theorem in the second order states that,
+\[
+    f(a + h) = f(a) + hf'(a) + \frac{h^2}{2}f''(c) \quad \text{ $c$ between $a$ and $a + h$ }
+\]
+
+First we take $a = \alpha x + (1 - \alpha) y$ and $h = x - (\alpha x + (1 - \alpha) y) = x(1 - \alpha) - (1- \alpha)y = (1 - \alpha)(x - y)$ and we have,
+\begin{align*}
+    f(x) = f \left( \alpha x + (1 - \alpha)y \right) + (1 - \alpha)(x - y)f' \left( \alpha x + (1 - \alpha)y \right) +  h^2 f''(c_{1})
+\end{align*}
+
+Similarly we take $a = \alpha x + (1 - \alpha) y$ and $h = y - (\alpha x + (1 - \alpha) y) = y - (1 - \alpha)y - \alpha x = \alpha(y  - x)$
+\begin{align*}
+    f(y) = f \left(\alpha x + (1 - \alpha)y \right) + \alpha(y - x) f' \left(\alpha x + (1 - \alpha)y \right) + \frac{h^2}{2}f''(c_{2})
+\end{align*}
+
+
+Now as $f'' > 0$ we can write this as,
+\begin{align}
+    f(x) &\ge f \left( \alpha x + (1 - \alpha)y \right) + (1 - \alpha)(x - y)f' \left( \alpha x + (1 - \alpha)y \right)\\
+    f(y) &\ge f \left(\alpha x + (1 - \alpha)y \right) + \alpha(y - x) f' \left(\alpha x + (1 - \alpha)y \right)
+\end{align}
+
+Multiplying $(1)$ with $\alpha$ and $(2)$ with $(1 - \alpha)$ we get,
+
+\begin{align*}
+    \alpha f(x) &\ge (\alpha)f \left( \alpha x + (1 - \alpha)y \right) + (\alpha)(1 - \alpha)(x - y)f' \left( \alpha x + (1 - \alpha)y \right)\\
+    (1 - \alpha)f(y) &\ge (1 - \alpha)f \left(\alpha x + (1 - \alpha)y \right) + (1 - \alpha)\alpha(x - y) f' \left(\alpha x + (1 - \alpha)y \right)
+\end{align*}
+
+Summing the two  we have,
+\begin{align*}
+    \alpha f(x) + (1 - \alpha)f(y) &\ge (\alpha + 1 - \alpha) f \left( \alpha x + (1 - \alpha)y \right) + (\alpha)(1 - \alpha)((x - y) + (x - y))f' \left( \alpha x + (1 - \alpha)y \right)\\
+    \alpha f(x) + (1 - \alpha)f(y) &\ge f \left( \alpha x + (1 - \alpha)y \right) + (\alpha)(1 - \alpha)(0)f' \left( \alpha x + (1 - \alpha)y \right)\\
+\end{align*}
+
+Which gives us, 
+\[
+    \alpha f(x) + (1 - \alpha)f(y) \ge f \left ( \alpha x + (1 - \alpha) y\right )
+\]
+
+\vspace{1em}
+
+$(3) \implies (2)$ This is trivially true if we take $\alpha = \frac{1}{2}$
+\vspace{1em}
+
+
+$(2) \implies (1)$. First we have (2) which is, 
+\[
+    \frac{1}{2} f(x) + \frac{1}{2}f(y) \ge f \left(\frac{x + y}{2} \right)
+\]
+
+Now take $x = x + h$ and $y = x - h$ which gives us, 
+\begin{align*}
+    f(x) &\le \frac{1}{2}f(x + h) + \frac{1}{2}f(x - h)\\
+    2f(x) &\le f(x + h) + f(x - h)\\
+    f(x) - f(x - h) &\le f(x + h) - f(x)
+\end{align*}
+
+Now note this holds true for any  $x, h$ and hence on the left side we can take $y$ such that  $y + h = x$ and $y = x - h$ such that $y \ge x$ when $h > 0$. This gives us, 
+\begin{align*}
+    f(y + h) - f(y) &\le f(x + h) - f(x)\\
+    \frac{ f(y + h) - f(y)}{h} &\le \frac{ f(x + h) - f(x)}{h}\\
+\end{align*}
+
+Taking limit of both sides when $h \to 0^{+}$ we have,
+\begin{align*}
+    \lim_{h \downarrow 0}\frac{ f(y + h) - f(y)}{h} &\le \lim_{h \downarrow 0}\frac{ f(x + h) - f(x)}{h}\\
+    f'(y) &\le f'(x)
+\end{alignl*}
+for $y \le x$. Now we are given that $f''$ is continuous and we just showed that $f'$ is an increasing function. But this means that $f''$ is positive as mvt would tell us that, 
+\[
+    \frac{f'(x) - f'(y)}{h} = f''(c)
+\]
+And as $x \ge y$  which implies $f'(x) \ge f'(y)$ (as $f'$ is increasing) we have $f'' \ge 0$.
+
+$\hfill\qedsymbol$
+
+
+Now lastly we need to show that, 
+\[
+    f(x) = \sup \{g(x) : g \le f \text{ on } \R, g \text{ is a linear polynonmial }\}
+\]
+
+It is enough to show that for each $x_{0}$ there is a linear polynomial $g(x)$ such that $f(x_{0}) = g(x_{0})$ and $g \le f$ on $\R$. First for a given point $a$ consider the linear approximation of $f$ at $a$. By definition the derivative tells us that, 
+\[
+    f'(a) = \lim_{x \to a} \frac{f(x)  - f(a)}{ x - a}
+\]
+
+Now this tell us that when $x$ is arbitrarily close to $a$ we have the approximation, 
+\[
+    f(x) \approx f'(a)(x - a) + f(a)
+\]
+Now define $g(x) = f'(a) (x - a) + f(a)$, here $g$ is a linear approximation of $f$ at $a$ such that $g(a) = f'(a) (0) + f(a) = f(a)$. Now it is enough for us to show that $g \le f$. Now, let $x_{0}$ be some arbitrary value. We need to show that for all $x_{0}$ we have $g(x_{0}) \le f(x_{0})$. Firstly, our approximation $g$ at $x_{0}$ is equal to,
+\begin{align*}
+    g(x_{0}) &= f'(a) (x_{0} - a) + f(a)
+\end{align*}
+Now note that MVT gives us, 
+\[
+    \frac{f(x_{0}) - f(a)}{x_{0} - a} = f'(c) \quad \text{ where $c$ is between $a$ and $x_{0}$ }
+\]
+Now consider two cases, first $a \le x_{0}$. In this case we have $a \le c \le x_{0}$ which implies that $f'(a) \le f'(c)$ as $f'$ is an increasing function because $f''$ is positive by (1). Hence we can write, 
+\[
+    \frac{f(x_{0}) - f(a)}{x_{0} - a} = f'(c) \ge f'(a)
+\]
+
+In the second case we have $x_{0} \le a$ and here we get $x_{0} \le c \le a$ which means, $f'(c) \le f'(a)$. Putting this we get, 
+\[
+    \frac{f(a) - f(x_{0})}{a - x_{0}} = f'(c) \le f'(a)
+\]
+
+In the first case we have,
+\begin{align*}
+    g(x_{0}) &= f'(a) (x_{0} - a) + f(a)\\
+             &\le \frac{f(x_{0}) - f(a)}{x_{0} - a}(x_{0} - a) + f(a)\\
+             &= f(x_{0}) - f(a) + f(a) \\
+    g(x_{0}) &\le f(x_{0})
+\end{align*}
+
+And in the second case we have, 
+\begin{align*}
+    g(x_{0}) &= f(a) -  f'(a) (a - x_{0})\\
+    f'(a) (a - x_{0}) &= f(a) - g(x_{0})\\
+ - g(x_{0}) &\ge - f(x_{0})\\
+ g(x_{0}) & \le f(x_{0})
+\end{align*}
+
+So in both cases  we show that for any $x_{0}$ we have $g(x_{0}) \le f(x_{0})$ which means that $g$ is a linear function that approximates $f$ at $a$ and is smaller than equal to $f$ in $\R$. As $g(a) = f(a)$ we have $g(a) \ge g'(a)$  where $g'$ is any function smaller than $f$ as if there were a $g'$ such that $g'(a) > g(a)$ then we have $g'(a) > f(a)$ which implies that $g' \not \le f$ at all points, a contradiction.  So we have shown that,
+\[
+    f(x) = \sup \{g(x) : g \le f \text{ on } \R \text{ where $g$ is a linear polynomial}\}
+\]
+
+
+
+
+
+\end{document}
+

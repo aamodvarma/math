@@ -1,0 +1,580 @@
+\chapter{Integration}
+
+\section{Riemann integral}
+
+Let $f: [a, b] \to \R$  and $f$ be a bounded function. Then for any partition $P$  of $[a, b]$ in the form, 
+\[
+    P =(a, t_{1}, t_{2} \dots, t_n, b)
+\]
+where $a < t_{1} < \dots, t_n < b$
+
+we define the mesh of $P$ as, 
+\[
+    \text{mesh}(P) = \sup_i |t_{i + 1} -t_i|
+\]
+\begin{remark}
+    So a small mesh means a fine partition and a big mesh means a coarse partition.
+\end{remark}
+
+
+\begin{definition}[Darbaux sum]
+    The Upper Darbaux sum is defined as, 
+    \[
+        U(P, f) = \sum_{i = 1}^{n}   (t_{i + 1} - t_i) \sup_{[t_i, t_{i + 1}]} f
+    \]
+
+    the Lower Darboux sum is, 
+    
+    \[
+        L(P, f) = \sum_{i = 1}^{n}   (t_{i + 1} - t_i) \inf_{[t_i, t_{i + 1}]} f
+    \]
+
+    and the Riemann sum is when we pick an arbitrary value $c_i$
+\end{definition}
+\begin{note}
+    Note that we have, 
+    \[
+        L(P, f) \le R(P, f) \le U(P, f)
+    \]
+\end{note}
+
+
+We say that $f$ is Riemann-integrable when, 
+\[
+    \lim_{\text{mesh} P \to 0} U(P ,f) = \lim_{\text{mesh} P \to 0} L(P, f) = L
+\]
+
+which also by squeeze theorem implies that $\lim R(P, f) = L$
+
+\begin{theorem}
+    If $f$ is continuous and bounded then $f$ is Riemann integrable.
+\end{theorem}
+\begin{proof}
+    First note that if $f$ is continuous in a bounded interval (a compact set) then it is uniformly continuous. So fix an $\epsilon > 0$  and we have a $\delta_{\epsilon}$ such that,
+    \[
+        d_{\epsilon}(x, y) < \delta \implies d(f(x), f(y)) < \epsilon  \quad \forall x, y
+    \]
+
+    Note that $d(x, y) < \delta_{\epsilon}$ implies that if we have $\text{mesh} (P) < \delta_{\epsilon}$ then,
+    \[
+        |\sup_{|t_{i + 1} -t_i|} f - \inf_{|t_{i + 1} -t_i|} f|  \le \epsilon
+    \]
+
+    Then we have, 
+    \begin{align*}
+        |U(P, f) - L(P, f)| &\le \sum_{i = 0} \epsilon |t_{i + 1} - t_i|\\
+                            &= \epsilon \sum_{i = 0} |t_{i + 1} - t_i| = \epsilon (b - a)
+    \end{align*}
+    Note that our partition bounds are fixed i.e $a$ and $b$. So if choose $\delta$ for $\frac{\epsilon}{|b - a|}$ then we get our desired inequality.
+
+    \vspace{1em}
+    
+    Now, we've shown that $\lim |U - L| \to 0$ which is not to say that the limits $\lim U$ and $\lim L$ exists. In order to prove the existence, we need to show that two arbitrary sequences of $U$ where the mesh of the partition goes to zero converge to the same value. 
+
+    \vspace{1em}
+
+    Let $P$ and $P'$ be two partitions, we define the common refinement of the both as the partition formed by interleaving both the partitions. Let the common refinement be denoted as $P \cup P'$. Now if we have mesh$(P)$ and mesh$(P') < \delta$  then we also have mesh$(P \cup P') < \delta$ and we get, 
+    \begin{align*}
+        U(P \cup P', f) &\le U (P, f)\\
+        U(P \cup P', f) &\le U (P', f)
+    \end{align*}
+    
+    Now using the uniformly continuity as above we can show that, 
+    \[
+        |U(P \cup P', f) - U (P, f)| \le \epsilon
+    \]
+
+    and similarly 
+
+    \[
+        |U(P \cup P', f) - U (P', f)| \le \epsilon
+    \]
+
+    and we can easily conclude that, 
+
+    \[
+        |U(P, f) - U (P', f)| \le \epsilon
+    \]
+
+    Now this implies that two sequences of upper darboux sum wrt to tow sequences of partitions as the mesh of both go to zero converge to the same which imply that there is only one subsequence limit.
+
+\end{proof}
+\begin{remark}
+    The reason why we need the common refinement  of the partitions are because partitions are partially ordered, i.e we cannot compare every pair of partitions - we can only compare them if one is a subset of the other. However, with the common refinement we can compare two partitions to the common refinement and hence have some common comparison.
+\end{remark}
+
+
+
+\vspace{1em}
+\section{Discontinuities} 
+We showed above that a continuous function $f$ on a bounded interval is Riemann Integrable, however, consider now a function $f$ with a discontinuity at point $c$.
+\begin{theorem}
+    If $f$ is continuous on $[a, b]$ except at a single point $c$, then $f $is Riemann integrable 
+\end{theorem}
+\begin{proof}
+    $c$ is some point in $[a, b]$. As $f$ has a discontinuity at $c$ that means the uniform continuity breaks when we get close to $c$. So all we need to do is restrict the bad interval around $c$. So consider an interval around $c, [c- k, c + k]$, in this interval the maximum height of the function is at most $\sup_f - \inf_f = M$. And now consider our partition as,
+    \[
+        P = (a, \dots, c - k, c + k, \dots, b)
+    \] 
+    where $k \min \{\frac{\epsilon}{2M}, \delta_{\epsilon}\}$, here $\delta$ comes from the delta of the uniform continuity. Now  we get, 
+    \begin{align*}
+        |U(P, f) - L(P, f)| &\le \frac{\epsilon}{|b - a|} |c - k - a| + M \cdot 2k +  \frac{\epsilon}{|b - a|} |b - c - k|\\
+                            &\le \epsilon + M \cdot 2 \frac{\epsilon}{2M}\\
+                            &= 2 \epsilon
+    \end{align*}
+\end{proof} 
+\begin{note}
+    Doing the same process we can Riemann integrate any $f$ that has finitely many discontinuities in a bounded set. More specifically where the discontinuities are measure-zero.
+\end{note}
+
+
+\vspace{1em}
+
+More generally now, discontinuities can mainly take form in two ways, a set with Jordan content zero and a set with Lebesgue Measure zero.
+
+\begin{definition}[Jordan content zero]
+    A set $A$ has Jordan content zero if for any $\epsilon$ we can find finitely many balls, 
+    \[
+        B_{1}, \dots, B_m \text{ such that }
+    \]
+    
+    \[
+        \sum_{i = 1}^{m} \text{length}(B_i) < \epsilon
+    \]
+\end{definition}
+
+\begin{definition}[Lebesgue measure zero]
+    A set $A$ has Lebesgue measure zero if for any $\epsilon$ we can find a countable set of balls,
+    \[
+        B_{1}, B_{2}, \dots, \text{ such that }
+    \]
+    
+    \[
+        \sum_{i = 1} \text{length}(B_i) < \epsilon
+    \]
+\end{definition}
+
+\begin{note}
+    Note that Jordan content zero is stronger as it implies Lebesgue measure zero. If we have a finite number of balls then we have a countable number of balls and hence it is also measure zero
+\end{note}
+\begin{note}
+    It's easy to show that functions with Jordan content zero discontinuity sets that are continuous in a bounded set by considering the finite balls that center the discontinues points and performing the same idea shown in the previous section.
+\end{note}
+\begin{eg}
+    The set $\{1\}$ is both Jordan content zero and Lebesgue measure zero. But the set $\Q \cap [0, 1]$ is NOT Jordan content zero (as we cannot cover it with a finite number of balls) but is Lebesgue Measure zero.
+\end{eg}
+
+\begin{definition}
+    The oscillation of a function $f$ is defined as, 
+    \[
+        \text{osc}_f(x) = \inf \text{diameter}f(B(x, r))
+    \]
+    where the diameter is maximum distance between two points in a set i.e $\text{diam} = \sup_{x,y \in E} d(x, y)$ 
+\end{definition}
+\begin{note}
+    Note that as we shrink the radius, the diameter of $f$ decreaes (as the smaller is contained within the larger and hence can only be at most as much as the larger)
+\end{note}
+\begin{remark}
+    If a function is continuous then $osc_f(x) = 0$ and similarly if we have $osc_f(x) = 0$ at all points $x$ then $f$ is continuous (as for any $\epsilon$ as we have oscillations as zero we can find a radius - the $\delta$ - small enough that the points inside are arbitrarily close and hence by definition we have continuity)
+\end{remark}
+\begin{theorem}
+    If a function $f$ is continuous on $[a, b]$ with a measure zero discontinuity set, then $f$ is Riemann integrable.
+\end{theorem}
+\begin{proof}
+    As $f$ is continuous we have that the $osc_f(x) = 0$  where $x$ is not discontinuous is zero. And we can say that, 
+    \[
+        Dis(f) = \{x: osc(x) > 0\}
+    \]
+
+    Now define two sets, 
+    \begin{align*}
+        D_n &= \left \{x : osc_x \ge \frac{1}{n} \right \}\\
+        D_n^{c} &= \left \{ x : osc_x < \frac{1}{n}\right\}\\
+    \end{align*}
+
+    Note that $D_n$ is closed and $D_n^{c}$ is open. Now we can define, 
+    \[
+        Dis(f) = \cup_{n = 1}^{\infty} D_n
+    \]
+    So we have $Dis(f)$ is the countable union of closed sets. Now note that because $Dis(f)$ is also measure zero we can cover it with countably many balls. Clearly we have $D_n$ is also covered by countably many balls. But note $D_n$ is compact and hence we can find a finite subcover of these sets to cover it. More specifically we can find $N = N(n)$ such that,
+    \[
+        D_n \subseteq  \bigcup_{i = 1}^{N} B_i
+    \]
+
+    so that $B_{1}, \dots, B_N$ gives finite bad intervals that we need to restrict width for. Now on the other hand for, 
+    \[
+        I \subseteq D_n^{c}
+    \]
+
+    we have $U - L$ (upper - lower) as, 
+    \[
+        |U - L| \le \frac{1}{n} \text{diam}(I) \le \frac{\epsilon}{10|b - a| } \text{diam}(I)
+    \]
+
+    Now note that summing over all intervals $I$ will still be only as big as $|b - a|$ which means we still have $\frac{\epsilon}{10}$ to work with for the finite bad intervals we want to restrict.
+\end{proof}
+
+
+\begin{theorem}[Weak Dominated Convergence]
+    Let $f \ge 0$ be Riemann integrable on $[a, b]$ with $f_n(x) \to f(x)$ as $n \to \infty$ for all $x \in [a, b]$ (except for a possibly measure-zero subset), then, 
+    \[
+        \int_a^{b} f_n \to \int_{a}^{b} f
+    \]
+    as $n \to \infty$
+    
+\end{theorem}
+
+we can use this to interchange the order to derivative and integral as follows, 
+
+\begin{align*}
+    \partial_x \left ( \int_{a}^{b} f(x, y)dy\right )&= \lim_{h \to 0} \int_{a}^{b}\frac{f(x + h, y) - f(x, y)}{h} dy\\
+ &= \int_{a}^{b} \lim_{h \to 0} \frac{f(x + h, y) - f(x, y)}{h} dy\\
+ &= \int_{a}^{b} \partial f(x, y) dy
+\end{align*}
+
+Now if,
+\[
+    g_{n,x}(y) = \frac{f(x + h, y) - f(x, y)}{h} 
+\]
+Note that we can only apply this when each $d_{n, x}(y)$ is dominated by some function that is a Riemann Integrable function. So if, $f$ is $C^{1}$ by MVT we have, 
+\[
+    g_{n, x}(y) = \partial_1 f (c_{n,x}, y)
+\]
+where $c_n$ is between $x$ and $x + h$ and as $\partial f$ is bounded and continuous by $C^{1}$ so is $g$ and hence we can use the theorem.
+
+\section{Fundamental Theorem of Calculus}
+
+\begin{theorem}
+Let $f$ be a continuous function  on $[a,b]$ such that $\forall x \in [a, b]$ we have, 
+\[
+    \partial_x \left ( \int_{a}^{x} f(x, y) d(y)\right ) = f(x)
+\]
+\end{theorem}
+\begin{proof}
+    We have, 
+    \[
+    \partial_x \left ( \int_{a}^{x} f(x, y) d(y)\right ) =    \lim_{h \to 0} \frac{1}{h} \left ( \int_{a}^{x + h} f - \int_{a}^{x} f \right)
+    \]
+
+    For $\epsilon > 0$ as $f$ is continuous we have $\delta > 0$ such that for all $|h| < h_{0}$  we have $|f(x + h) - f(x)| < \epsilon$. Now note that $\left (\int_{x}^{x + h}f \right) - f(x) =  \int_{x}^{x + h}f - f(x) $ and hence we have, 
+    \[
+        \left | \int_{x}^{x + h} f - f(x)\right | \le \epsilon
+    \]
+\end{proof}
+
+\begin{theorem}
+    If $f \in C^{1}$ on $[a, b]$ then, 
+    \[
+        \int_{a}^{b} f' = f(b) - f(a)
+    \]
+\end{theorem}
+\begin{proof}
+    Note we can write $\int_{a}^{x} f' = f(x) - f(a)$. Now using the theorem from above we have, 
+    \[
+        \partial_x \left ( \int_{a}^{x} f'\right ) = f'(x)
+    \]
+    and note that we also have $\partial_x(f(x) - f(a)) = f'(x)$ which means that the function only differs by a constant. That is because we have, 
+    
+    \[
+        \partial_x(LHS - RHS) = 0
+    \]
+
+    We have that $LHS - RHS = constant$ and as $LHS(a) = 0 = RHS(a)$ we have the constant as zero and hence $LHS = RHS$
+\end{proof}
+
+
+
+\section{Integral in \R^{n}}
+We have $U \subseteq R^{n}$ a bounded open set i.e $\overline{U} = U \cup \partial U$. Assume that $\partial U$ is piecewise continuous. Here we partition $U$ into squares with disjoint interior. The mesh of these squares are defined as the diameter. So our partition is $P = \bigcup_i s_i$ where $s_i$ is a square. Then we have $\text{mesh } P = \max_i \text{diam} s_i$. We can then define the upper, lower and riemann sum normally,
+
+
+\[
+  U(P, f) = \sum_{i}^{} \left ( \sup_{s_i} f\right )  \text{vol}(s_i)
+\]
+we can define the lower and riemann integral similarly.
+
+\vspace{1em}
+
+\subsection{Indicator function}
+Let $E \subseteq R^{n}$ then, 
+\[
+  1_{E}(x) = \begin{cases}
+    1 \quad &\text{ if } x \in E\\
+    0 \quad &\text{ if } x \not \in E\\
+  \end{cases}
+\]
+\subsection{Simple function}
+Linear combination of indicators. 
+
+\begin{eg}
+  Let $f$ be bounded on $U$ as above and define, 
+  \[
+    F = \sum_{i}^{} 1_{s_i} f(\text{center of $s_i$})
+  \]
+note that here $F$ is basically the discretized version of $f$, in that for a given "cube" it has the same value which is just a scaled version of the indicator.
+\end{eg}
+
+Here if we have, 
+\[
+  \int_{U}^{}  F = \sum_{i}^{} \text{vol}(s_i)f(\text{center of $s_i$}) = R(P, f)
+\]
+
+Now note that as we take the mesh of the partitions to zero i.e the cubes become smaller and smaller, we end up approximating the true function $f$. Hence, the limit of a simple function as the partition goes to zero ends up being our underlying function. 
+\vspace{1em}
+
+In other words if $s_n$ is our simple  function such that $\lim_{n \to \infty} s_n(x) = f(x)$ then using DCT we have, 
+\[
+  \lim_{n \to \infty}  \int_{U}^{} s_n = \int_{U}^{} \lim_{n \to \infty} s_n = \int_{U}^{} f
+\]
+
+But note the first is just the limit of rieman sum which is the definition of the riemann integral.
+
+\vspace{1em}
+
+We can also extend this to function $f$ that have measure-zero discontinuity, where in $R^{n}$ any set that are "k-dim" objects where $k < n$ are measure zero sets. For instance $[0, 1]$ has measure zero in $R^2$.
+
+
+\section{Change of Variables}
+Let $f$ be $C^{1}$ on $\overline{U}$ and let $v \subseteq R^{n}$ be open and bounded. And let, 
+\[
+  \phi: \overline{V} \to \overline{U} \text{ be bijective and } C^{1}
+\]
+
+and $\forall y \in \overline{V}: \phi'(y)$ is invertible, then, 
+\[
+  \int_{\overline{U}}^{}  f = \int_{V}^{}  | \det \phi'| (f \circ \phi)
+\]
+
+\begin{proof}
+  In order to prove this, it's enough to show it's true for indicator functions. So let, $f = 1_E$, $f \circ \phi = 1_{\phi^{-1}(E)}$ then we have, 
+  \[
+    \int_{}^{} f = \text{vol }E
+  \]
+
+  And we have $\int_{}^{}(f \circ \phi) |\det \phi'| = \int_{\phi^{-1}(E)}^{}  | \det \phi'| $
+\end{proof}
+
+\section{Extra topics on integration}
+\begin{enumerate}
+  \item \textbf{Integration is linear: }We have, 
+\[
+  \int_{a}^{b} (\lambda_{1}  f + \lambda_{2} g) = \lambda_{1} \int_{a}^{b} f+ \lambda_{2} \int_{a}^{b} g
+\]
+
+This is straightforward when we think of integrals as the limit of the riemann sums.
+
+\item \textbf{Triangle Inequality:} We traditionally have $|a + b| \le |a| + |b|$, extending this we get, 
+\[
+  \left | \int_{a}^{b} f\right |\le \int_{a}^{b} |f|
+\]
+
+\item If $f$ is riemannn-integrable on $[a, b]$ and if we have, 
+\[
+  \int_{a}^{b} |f| = 0
+\]
+
+then $f = 0$ on $Dis(f)^{c}$
+
+\item \textbf{Holder Inequality: } We have, 
+\[
+  \int_{a}^{b} |fg| \le \left (\int_{a}^{b} |f|^{p} \right)^{1 / p} \left (\int_{a}^{b} |g|^{q} \right)^{1 / q}
+\]
+
+where $\frac{1}{p} + \frac{1}{q} = 1$. Note here if $q \to \infty$ then we have, 
+\[
+  \left ( \int_{a}^{b} |g|^{q}\right )^{1 / q} \to \max_{[a,b]} |g|
+\]
+
+In this context the notation $\left | \left | f\right |\right |_{L^{p}}$ is equal to $\left ( \int_{}^{} |f(x)|^{p}\right )^{1 / p}$
+
+\item \textbf{Integration by Parts: } Is simply FTC on a function $h = fg$ we have, 
+  \begin{align*}
+    h(b) - h(a) &= \int_{a}^{b}  h'(x) \ dx\\
+    f(b)g(b) - f(a)g(a) &= \int_{a}^{b}  f'g + g'f \ dx\\
+    \int_{a}^{b}  f'g  &=     [f(y)g(y)\big]_a^{b} - \int_{a}^{b}  g'f 
+  \end{align*}
+
+  Note that this is essentially integration by parts if we consider $f'$ 
+\item \textbf{Improper Integral:} To show improper integrals the goal is for a set $U$ we need to show that any sequence of sets that are contained in each other ie. $E_{1}, E_{2}, \dots$  where $E_i \subseteq E_{i + 1}$ where $E_i \to U$ will converge to the same integral.
+
+  \vspace{1em}
+  
+Note that we can only do this for $f$ that is increasing for instance alternating signs series can cancel out to different values based on how you do it. Now if we know that $f$ is increasing then we can use a common refinement of two arbitrary sequence $E_i \to U$ and $F_i \to U$. This gives us the same integral for two arbitrary sequence and hence establishes the improper integral.
+
+\end{enumerate}
+
+\subsection*{Hilbert Space}
+A Hilbert space is a vector space that has an inner product and is complete (Cauchy sequences converge). So if we consider the $L^2$ space, this is a Hilbert space as we have a natural inner product, 
+\[
+  \langle f,g \rangle_{L^2} = \int_{}^{} f \overline{g}
+\]
+
+
+If we consider the trace of the jacobian i.e the divergence $\Delta f(x,y) = (\partial_{11} + \partial_{22} ) f$, the spectral theorem for $\Delta$ on $L^2$ is the Fourier transform, this gives rise to harmonic analysis.
+
+
+
+\section{Fubini}
+\begin{theorem}
+  Let $f \in L^{1}([a, b] \times [c, d])$ then, 
+  \[
+    \int_{c}^{d} \int_{a}^{b}  f(x, y) \ dx \ dy = \int_{a}^{b} \int_{d}^{b} f(x, y) \ dy \ dx
+  \]
+\end{theorem}
+\begin{proof}
+  First we split $f$ into real and imaginary parts and WLOG assume $f$ is real valued. Now split $f$ into the positive and negative parts so we have $f = f^{+} - f^{-}$, so WLOG assume that $f \ge 0$. Now note that it is enough to show for indicator functions (of cubes) as then we have simple function of cubes which using DCT gives us integrable functions on $R^2$.
+
+  \vspace{1em}
+  
+  So let $f = 1_{[a_{0}, b_{0}] \times [c_{0}, d_{0}]}$ now the problem is essentially to show that $(d_{0} - c_{0})(b_{0} - a_{0}) = (b_{0} - a_{0})(d_{0} - c_{0})$ which is obviously true.
+\end{proof}
+\section{High-dimensional FTC}
+
+Let $f$ be $C^2$ on $[a, b] \times [c, d]$. Then we have, 
+\begin{align*}
+  \int_{c}^{d} \int_{a}^{b}  \partial_1 \partial_{2} f(x, y) \ dx \ dy &=  \int_{c}^{d}  (\partial_{2} f(b, y) - \partial_{2} f(a, y)) \ dy\\
+            &= \int_{c}^{d}  \partial_{2} f(b, y) - \int_{c}^{d} \partial_{2} f(a, y) \ dy\\
+            &=  f(b, d) - f(b, c)  - (f(a, d) - f(a, c))\\
+            &= f(b, d) - f(b, c) - f(a, d) + f(a, c)
+\end{align*}
+
+\section{Green's Theorem}
+It is enough to show greens theorem for an arbitrary rectangle as we can then generalize this by splitting any set into a bunch of rectangles. So let $E = [a, b] \times [c, d] \subseteq R^2$ then if $f = (f_{1}, f_{2})$ then we have $\text{curl }f = \partial_{1} f_{2} - \partial_{2}f_{1}$ and we get,
+\begin{align*}
+  \int_{c}^{d}  \int_{a}^{b} (\partial_{1} f_{2} - \partial_{2} f_{1}) \ dx \ dy &=   \int_{c}^{d}  \int_{a}^{b} \partial_{1} f_{2}  \ dx \ dy -   \int_{c}^{d}  \int_{a}^{b}  \partial_{2} f_{1} \ dx \ dy\\
+&=   \int_{c}^{d}  \int_{a}^{b} \partial_{1} f_{2}  \ dx \ dy -  \int_{a}^{b}  \int_{c}^{d}   \partial_{2} f_{1} \ dy \ dx\\
+&=   \int_{c}^{d}  f_{2}(a, y) - f_{2}(b, y) \ dy -  \int_{a}^{b} f_{1}(x, d) - f_{1}(x, c) dx\\
+&=   \int_{c}^{d}  f_{2}(a, y) -  \int_{c}^{d}f_{2}(b, y) -  \int_{a}^{b} f_{1}(x, d) + \int_{a}^{b}  f_{1}(x, c)
+\end{align*}
+But note the quantity on the right is the integral over the boundary for the rectangle
+
+\section{Divergence Theorem}
+Divergence theorem is shown in HW5, the idea is to use partition of unity to get our ball as the union of open balls, and then we write $f = \sum f_i$ where each $f_i$ has compact support. Then we use spherical coordinates.
+
+\vspace{1em}
+
+\section{Stokes Theorem}
+Stokes theorem is shown in Problem 3, HW5. We can use the exterior derivative.
+
+\section{Inverse Function Theorem}
+
+Shown in Problem 2 of HW5. The idea of inverse function theorem is that if $f$ is $C^{1}$ and our derivative is invertible at a point (so the determinant of the Jacobian is non-zero). Then for a neighborhood around that point $f$ has an inverse which is also $C^{1}$.
+
+% \vspace{1em}
+
+% We can generalize this notion to high dimension as well. Note that in higher dimention we have the Jacobian which is a matrix. And the inverse of a matrix is a smooth function (we can show this easily by looking at the formula of the inverse).
+
+\section{Implicit Function Theorem}
+We can use the above notion of an inverse function to get the implicit function theorem.
+\begin{theorem}
+   Let $f: U \to R$  where $U \subseteq R^2$ an open set and $f$ is $C^{1}$. Now let $(x_{0}, y_{0}) \in U$ be such that, 
+   \[
+    \partial_y f(x_{0}, y_{0}) \ne 0
+   \]
+
+   and let $a = f(x_{0}, y_{0})$ then locally near $(x_{0}, y_{0})$ the level set $\{f = a\}$ is a graph i.e $y = g(x)$
+\end{theorem}
+\begin{note}
+    The condition $\partial_y f(x_{0}, y_{0}) \ne 0$ means the curve is not vertical. Think the unit circle in $R^2$, in this case the left and right endpoint have $\partial_y$ as zero i.e a vertical line. The point of this theorem is that for all the other points we can essentially a neighborhood around that point where we can flatten it.
+\end{note}
+
+\begin{proof}
+    Define $H: \U_{0} \to V_{0}$ as $(x,y) \to (x, f(x,y))$. Note that for the level set $\{f = a\}$ this just maps to $(x, a)$ i.e a straight horizontal line. Now we can easily show that $\det H'(x_{0}, y_{0}) \n e_{0}$ as it will just be equal to $\partial_y f(x_{0}, y_{0})$ which we know is non-zero. So use IFT for $H$ and there is an inverse function $H^{-1}$ at that neighborhood that maps back to $(x, y)$. But now let $\pi_{2}$ be the function that projects onto $y$ axis. Then we have ,
+    \[
+        y = \pi_{2}(H^{-1}(x, a))
+    \]
+
+    So essentially for the level curve $\{f = a\}$ we found a function $g(x) = \pi_{2} (H^{-1}(x, a)$ such that $y = g(x)$
+\end{proof}
+
+\begin{remark}
+    We have $f(x, g(x)) = a$ for $x$ near $x_{0}$ if we differentiate it we get, 
+    \[
+        \partial_x f(x, g(x)) + \partial_y f(x, g(x)) g'(x) = 0
+    \] 
+    this is essentially, 
+    \[
+        \frac{\partial y}{\partial x} = g'(x) = - \frac{\partial_x f}{\partial_y f}
+    \]
+\end{remark}
+The implicit function theorem essentially tells us that regular level sets of smooth function are manifolds.
+
+
+\section{Generalization of IFT}
+We can generalize IFT to high dimentions i.e $x \in R^{m}$ and $y \in R^{n}$. So consider we have a functoin, 
+\[
+    f: R^{m} \times R^{n} \to R^{n}, C^{1}
+\]
+
+Similarly say $\partial_y f(x_{0}, y_{0}) $ is invertible and if $a = f(x_{0},y_{0})$ then $\{f = a\}$ is locally a graph i.e $y = g(x)$
+
+\vspace{1em}
+
+Let $f: U \subseteq R^{m + n} \to R^{n}$. Let $p \in U$ and if $f'(p)$ is surjective then locally we can straighten to turn $f$ into $(x, y) \to y$. That is, we can write $y = g(x)$ where $x \in R^{m}$ and $y \in R^{n}$
+
+\begin{proof}
+    Let $A = f'(p)$ i.e the Jacobian. Note that $A$ is a $n \times (m + n)$ matrix. Now if $A$ is surjective we know that the columns span all of $R^{n}$. So we can find a basis of $R^{n}$ in the columns. Take this collection of vectors ($n$ vectors) to be $y$ and the rest $m$ vectors to be for $x$. Now we have $\partial_y f(x_{0}, y_{0})$ is invertible.
+\end{proof}
+
+
+\section{Constant rank theorem}
+\begin{theorem}
+    Let $f: U \subseteq R^{m + n}$ be $C^{1}$ and $U$ be  $R^{n}$. If $p_{0} \in U$ and $f'(p)$ has constant rank $r$ for $p$ near $p_{0}$. Then we can locally straighten $f$ into , 
+    \[
+        (x,y) \to (y_{1}, \dots, y_r, 0, \dots, 0)
+    \]
+\end{theorem}
+
+\begin{proof}
+  Proof is in HW6 P1
+\end{proof}
+ 
+
+\section{Lagrange multipliers}
+Let $G: \R^{n} \to \R$ and $g: U \subseteq \R^{n} \to \R$. Note that we have $M = \{G = a\}$ a compact constraint. We assume that $G'$ is surjective on $M$. Now let $f$ be $C^{1}$ on a neighborhood of $M$. We need to optimize $f$ on $M$.
+
+
+
+\vspace{1em}
+
+First assume that $p_{0} = (\overline{p}, p^{*})$ where $\overline{p} \in \R^{n - 1}$ and $p \in \R$. Now by IFT, WLOG we have locally $M$ (near $p_{0}$) is a graph and $\partial_{x_n} G(p_{0}) \ne 0$. Now because it's a graph we have $x_n = g(x_{1}, \dots, x_{n - 1}) = g(\overline{x})$. Now for each $i = 1, \dots, n - 1$ we have, 
+\[
+  \partial_{x_i} \left ( f(\overline{x}, g(\overline{x}))\right ) = 0
+\]
+
+so this means that, 
+\begin{align*}
+  \partial_{x_i} f(\overline{p}, g(\overline{p})) + \partial_{x_n} f(\overline{p}, g(\overline{p})) \partial_{x_i} g(\overline{p}) = 0\\
+  \partial_{x_i} f(\overline{p}, g(\overline{p})) = - \partial_{x_n} f(\overline{p}, g(\overline{p})) \partial_{x_i} g(\overline{p})
+\end{align*}
+
+Now observe that $G(\overline{x}, g(\overline{x})) = a$ where $a$ is the max / min. So we have, 
+\begin{align*}
+  \partial_{x_i}(G(\overline{x}, g(\overline{x}))) &= 0\\
+  \partial_{x_i} G(\overline{p}, g(\overline{p})) = - \partial_{x_n} G(\overline{p}, g(\overline{p})) \partial_{x_i} g(\overline{p})
+\end{align*}
+
+Now dividing the two we have, 
+\[
+  \nabla f(p_{0}) = \lambda \nabla G(p_{0})
+\]
+
+where $$\lambda = \frac{\partial_{x_n} f}{\partial_{x_n} G}(p_{0})$$
+
+
+\section{Sard's theorem}
+
+\begin{theorem}
+  Let $f:U \to R^{n}$ with $U \subseteq R^{n}$ open and $f$ is smooth. Now first any $y \in R^{n}$ is called a \underline{regular value} when $f'$ is surjective on $\{f = y\}$. \textbf{Sards Theorem} says that the set of \underline{critical values} (non-regular values) has measure zero (in $R^{n}$).
+\end{theorem}
+\begin{note}
+  This theorem essentially states that most level sets are manifolds
+\end{note}
+\begin{eg}
+  Consider $f:\R^2 \to \R$ with $f(x, y) = x^2 + y^2$. Now take the level set $\{x^2 + y^2 = a\}$. Here for $a \ne 0$ we have regular values but $a = 0$ is a critical value and note that this is a measure zero set (finite amount of elements in this case).
+\end{eg}
+\begin{proof}
+  The proof is due to consatnt rank theorem. That is, where $f'$ has local ran $r < n$ then $f$ maps locally to a submanifold of dim $< n$ which is measure zero in $\R^{n}$.
+\end{proof}
+
+

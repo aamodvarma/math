@@ -1,0 +1,185 @@
+
+
+\documentclass[11pt]{article}
+\usepackage[margin = 1in]{geometry}
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,graphicx,amssymb}
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usepackage{changepage}
+\usepackage{braket}
+\usepackage{mathtools}
+\usepackage{cite}
+\usepackage{qcircuit}
+\usetikzlibrary{arrows.meta}
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+
+%
+% The following macro is used to generate the header.
+%
+\newcommand{\lecture}[4]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{lecnum}{1}
+   \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf CS 4510-X
+		\hfill } }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill The Myhill-Nerode Theorem  \hfill} }
+       \vspace{2mm}
+       \hbox to 6.28in { {\it Name: #3 \hfill} }
+      \vspace{2mm}}
+   }
+   \end{center}
+   %\markboth{Lecture #1: #2}{Lecture #1: #2}
+
+   \vspace*{4mm}
+}
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+			\vspace{#2}
+			\begin{center}
+			Figure \thelecnum.#1:~#3
+			\end{center}
+	}
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+% **** IF YOU WANT TO DEFINE ADDITIONAL MACROS FOR YOURSELF, PUT THEM HERE:
+
+\newcommand\E{\mathbb{E}}
+
+\begin{document}
+%FILL IN THE RIGHT INFO.
+%\lecture{**LECTURE-NUMBER**}{**DATE**}{**LECTURER**}{**SCRIBE**}
+\lecture{2}{}{Abrahim Ladha, Frederic Faulkner, John Hill}{a}
+%\footnotetext{These notes are partially based on those of Nigel Mansell.}
+\section{Pumping}
+The pumping lemma is not a perfect characterization of non-regular languages. There exist languages which can satisfy the conditions of the pumping lemma, but be non-regular. 
+
+\section{Myhill-Nerode}
+Lucky for us, there does exist a perfect characterization. It helps us prove non-regular languages to be non-regular, or regular languages to be regular. It also implies a unique and minimal\footnote{with respect to the number of states} DFA for each regular language. 
+
+To give a high level idea, for any DFA $D$, and two strings which end on the same state in $D$, say $x,y$. Since it is deterministic, there is one outgoing transition from that state on 0, so $x0,y0$ will also end in the same state given $x,y$ ended in the same state. We can abuse this! Lets generalize. 
+
+For a language $L$, let $\sim_L$ be an equivalence relation on $\Sigma^*$ defined by $x\sim_L y$ if for all $z \in \Sigma^*$, $xz \in L \iff yz \in L$. Note that taking $z = \varepsilon$ shows that, if $x\sim_L y$, then either both $x$ and $y$ are members of $L$, or neither is.
+
+\begin{theorem}
+L is regular if and only if $\sim_L$ partitions $\Sigma^*$ into a finite number of equivalence classes. 
+\end{theorem}
+
+\begin{itemize}
+    \item[$(\implies)$] Suppose $L$ is regular, and thus has a DFA to decide it, lets denote as $D$. For each $x \in \Sigma^*$, running $x$ on $D$ will stop in some state. Let $[q_i]$ be the set of all strings which stop on state $q_i$. Notice there are a finite number of such sets, one for each state, and $\Sigma^* = \cup_{i = 1}^n [q_i]$, with each disjoint\footnote{And for $q_f$ the final state, $L = [q_f]$}. Let $x,y \in [q_i]$, and let $z \in \Sigma^*$, and let $q_j$ be the state $D$ finishes if it starts in $q_i$ and reads $z$. Then $xz$ and $yz$ both cause the machine to end in $q_j$. If $q_j$ is an accept state, $xz, yz \in L$; if $q_j$ is a non-accept state, $xz, yz \notin L$. This implies $xz \in L \iff yz \in L$ whenever $x \sim y$. Each set $[q_i]$ is then an equivalence class of $\sim_L$, and there are a finite number of them. 
+    \item[$(\impliedby)$] Let $\sim_L$ partition $\Sigma^*$ into a finite number of equivalence classes. We can construct a DFA to decide $L$. Recall a DFA has the form $(Q, \Sigma, \delta, q_0, F)$. Let $q_i \in Q$ be the states and $[q_i]$ be the equivalence class for $q_i$. 
+    
+    \begin{itemize}
+        \item $Q:$ Form $n$ states, one for each equivalence class of $\sim_L$. 
+        \item $\Sigma:$ is the alphabet of $L$. 
+        \item $\delta:$ For each $q_i \in Q$, $a \in \Sigma$, and $x \in [q_i]$, define $\delta(q_i,a)= $ the state for the class which contains $xa$.  \footnote{For this function to be well defined, we need that $x \sim_L y$ \implies $xz \sim_L yz$. Do you see why?}
+        
+        \item $q_0:$ Let the start state be the state for the equivalence class which contains $\varepsilon$
+        
+        \item $F:$ For each state $q_j \in Q$, determine if an element of $L$ is contained in the equivalence class for $q_j$. 
+    \end{itemize}
+    This is a well defined DFA, which decides $L$. This implies that $L$ is regular. 
+\end{itemize}
+
+\section{Usage}
+To use the theorem to prove a language is regular, show that $\sim_L$ exhibits a finite number of equivalence classes.
+
+As an example, we prove $\{1^{2n} ~|~ n \in \mathbb{N}\}$ is regular\footnote{You should see this is regular quickly as this is just $(11)^*$, and existence of a regular expression implies it is regular.}. Consider the sets $[q_0], [q_1], [q_2]$ where $[q_2]$ is all string containing at least one zero, $[q_0]$ is all even strings of ones, and $[q_1]$ is odd strings of ones. Notice that each of these sets partition $\Sigma^* = [q_0] \cup [q_1] \cup [q_2]$, and they are pairwise disjoint. For any $x,y \in [q_2]$ then $xz, yz \in [q_2]$ since they still contain a zero. For $x,y$ both even or both odd length, and $z$ no zeroes, then the parity of $xz, yz$ is the same if the parity of $x,y$ is. If $z$ has a zero, then $xz,yz$ again both are in $[q_2]$.  \\
+
+To use the theorem to prove a language is non-regular, give an infinite set $S$ of strings, such that for each pair of strings $x,y \in S$ there is a least one string $z$ such that $xz \in L, yz \notin L$ or vice versa. Then each string of $S$ must belong to a separate equivalence class of $\sim_L$, so if $S$ is infinite, there are infinitely many equivalence classes. Note that you may have a different $z$ for each pair $x,y$.  
+
+As an example, we prove $\{0^n1^n ~|~ n \in \mathbb{N}\}$ is not regular. Let $S = \{0^i | i \in \mathbb{N}\}$. Then, for any two elements $x,y = 0^j, 0^k$ in S with $j \neq k$, $z = 1^j$ gives $xz \in L$, but $yz \not \in L$. \\
+
+Note that, if you are trying to prove a language regular, there is almost always a simpler method available than the Myhill-Nerode theorem. Similarly, to prove the non-regularity of a language on exams and homeworks, we encourage you to use the pumping lemma rather than the Myhill-Nerode theorem. It is a powerful tool, but can be difficult to use correctly.
+
+\section{Problems}
+Turn in number 1 and two of the remaining problems.
+\begin{enumerate}
+    \item Prove that $\sim_L$ is an equivalence relation.
+
+        \begin{proof}
+            We need to show reflexive, symmetric and transitivity. Let $\sim_L = R$
+
+            \begin{enumerate}
+                \item Reflexive: We need $xRx$. Clearly for any given string $z\in \Sigma^{*}$ we have $xz \in L \iff xz \in L$ as they are both the same statement. So trivially $xRx$.
+                \item Symmetric: We need to show $xRy \implies yRx$. If $xRy$ then for any $z \in \Sigma^{*}$ we have $xz \in L \iff yz \in L$, but this is equivalent to $yz \in L\iff xz \in L$ (as we have if and only if), but this is just $yRx$ by definition. Hence, we showed $xRy \implies yRx$.
+                \item Transitive: We need $xRy$ and $yRz$ implies $xRz$. Let $k \in \Sigma^{*}$ be our arbitrary string.  Clearly $xRy$ means $xk \in L \implies yk \in L$ similarly $yRz$ means $yk \in L \implies zk \in L$. Since they are all if and only if, it means they are all equivalent statements (more precise we can show $xk \in L \implies yk \in L \implies zk \in L$ and the reverse as well). Hence we have $xk \in L \iff zk \in L$ which is just $xRz$.
+            \end{enumerate}
+
+            
+        \end{proof}
+    
+    \item Give an example of a non-regular language that cannot be proved to be non-regular using the pumping lemma. (Prove your work, do not just state the language.)
+
+
+    
+    \item Let $L_{n,c} = \{1^k\ ~|~ k \equiv c \pmod n\}$. Prove this language is regular for any $c,n$ WITHOUT constructing a DFA.
+
+    \begin{proof}
+      We have the equivalence relation $\sim L$ on $\Sigma^{*}$. Now consider the following partition $[0], \dots, [n - 1]$ where for a string $x = 1^{a} \in \Sigma^{*}$ we have $x \in [k] \iff a \equiv k \pmod n$. Now note that we have $\Sigma^{*} = [0] \cup \dots \cup [n - 1]$ as for any strings $1^{k}$ we have some $j \in \{0, \dots, n - 1\}$ for which $k \equiv j \pmod n$ hence $1^{k} \in [j]$ uniquely. So we need to two elements in an equivalence class are equivalent. Consider for any $0 \le j \le n-1$ the class $[j]$ note that if $x = 1^{a}, y = 1^{b} \in [j]$ then we have $a \equiv j \pmod n$ and $b \equiv j \pmod n$. So note that for any string $z  = 1^{d}$ we have $xz \in L \implies 1^{a + d} \in L \implies a + d \equiv c \pmod n \implies b+ d \equiv c \pmod n \implies yz \in L$ similarly if $xz \not \in L$ we have $a + d \not \equiv c \pmod n \implies b + d \not \equiv c \pmod n$ whcih means $yz \not \in L$. Hence we show that $x \sim L y$. So we have paritioned our set $\Sigma^{*}$ under the relation $\sim L$ into a finite number of equivalence classes.
+
+    \end{proof}
+    
+    \item Prove that the DFA from the proof in 1.2 is minimal (i.e. there is no DFA for L with fewer states.)
+    
+    \item Let $L = \{1^{n^2} ~|~ n \in \mathbb{N}\}$. Prove that $L$ is not regular using the theorem. 
+
+      \begin{proof}
+        We need an infinite set $S$ of strings such that for each distinct pair $x, y \in S$ for some $z$ we have $xz \in L$ and $yz \not \in L$. Simply consider $S = L$. Now note that for any $x, y \in L$ we have $x = 1^{n^2}, y= 1^{m^2}$  for some $n \ne m \in N$. Now WLOG assume $n < m$ and take $z = 1^{2n + 1}$. Now note that we have, $xz = 1^{n^2} 1^{2n + 1} = 1^{n^2 + 2n + 1} = 1^{(n + 1)^2}$ and $yz = 1^{m^2}1^{2n + 1} = 1^{m^2 + 2n + 1}$. Clearly $xz \in L$ and $n \in N \implies n + 1 \in N$. Now we need to show that $1^{m^2 + 2n + 1 } \not \in L$. Note the next square after $m$ is $(m + 1)^2 = m^2 + 2m + 1$. Now clearly there cannot be any square between $m^2$ and $(m + 1)^2$. But if $m > n$ then $2m + 1 > 2n + 1$ which implies that $m^2 + 2m + 1 > m^2 + 2n + 1$. This gives us, 
+        \[
+          m^2 < m^2 + 2n + 1 < m^2 + 2m + 1 = (m + 1)^2
+        \]
+
+        This means there is no natural number whose square gives us $m^2 + 2n + 1$ which implies that $1^{m^2 + 2n + 1} \not \in L$. Hence for any distinct $x, y$ we found a $z$ such that neither are in $L$ or outside $L$ at the same time. This concludes our proof.
+      \end{proof}
+\end{enumerate}
+
+Of additional interest to you may be problems 1.47,1.48\footnote{1.34, 1.35 in the first edition} from the Sipper book. 
+\end{document}
+
+
+
+
+

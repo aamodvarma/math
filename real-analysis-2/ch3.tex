@@ -1,0 +1,555 @@
+\chapter{Additional Topics}
+
+\section{Contraction Mapping Theorem}
+\begin{theorem}
+  Let $E$ be a Cuachy-complete metric space (meaning every Cauchy sequence converges within the set) and let $f:E \to E$ be continuous. Let $\alpha \in (0, 1)$ and if we have, 
+  \[
+    |f(x) -f(y)| \le \alpha |x - y|,\quad  \forall x, y \in E
+  \]
+  then there is a \underline{unique} fixed point $a \in E$ such that, 
+  \[
+    f(a) = a
+  \]
+\end{theorem}
+\begin{proof}
+  Idea is to consider the sequence $x, f(x), f(f(x)), \dots$ and show that this is a Cauchy sequence that converges to a fixed point. Full proof in HW6, Q2
+\end{proof}
+
+
+\section{Picards's  Theorem  (for autonomous ODE)}
+\begin{theorem}
+  Let $F: \R^{n} \to \R^{n}$ be smooth, then the ODE, 
+  \begin{align*}
+    x'(t) &= F(x(t))\\
+    x(0) & = p \in \R^{n}
+  \end{align*}
+  has a \underline{local-in-time} solution i.e $x: (-\epsilon, \epsilon) \to \R^{n}$.
+\end{theorem}
+
+\begin{proof}
+  We essentially need to solve (using FTC),
+  \begin{align*}
+    x(t) - x(0) &= \int_{0}^{t}  F(x(s)) \ ds\\
+              x(t) &= p +  \int_{0}^{t}  F(x(s)) \ ds\\
+  \end{align*}
+
+  Now define $\Phi$ (an operator so $\Phi(x)$ takes in the function $x$ and outputs another function $\Phi(x)$ a function of $t$) where $$\Phi(x)(t) = p + \int_{0}^{1}  F(x(s)) \ ds$$
+
+  Now  our question becomes, 
+  \[
+    x = \Phi(x)
+  \] 
+
+  Now note that if we pick our domain as, 
+  \[
+    X = C^{0}([-\epsilon, \epsilon] \to \overline{B(p, R)})
+  \]
+
+  Now note that $\overline{B(p, R)}$ is Cauchy complete. Note that we still need to choose $\epsilon$ and $R$.
+
+  \vspace{1em}
+  
+  First pick $R = 1$. Let $M_R = \max_{B(p, R)} \{|F|, |F'|\}$. Then assuming $x \in X: x(s) \in B(p, R)$ for all $s$. We have, 
+  \begin{align*}
+    \left | \int_{0}^{t}  F(x(s))\right | &\le |t| M_R\\
+                                          &\le \epsilon M_R
+  \end{align*}
+
+  Now we want $\epsilon M_R < R$. So simply pick, 
+  \[
+    \epsilon = \frac{R}{100 M_R} \text{ (for $R = 1$) }
+  \]
+
+  Now this means we have $\Phi:X \to X$ and for contraction we need, 
+  \[
+    d_x (\Phi(x), \Phi(y)) \le \alpha d_x (x, y)
+  \]
+
+  we see this as follows,
+  \begin{align*}
+    \sup_t \left | \Phi(x)(t) - \Phi(y)(t)\right | &= \sup_t \left | \int_{0}^{t} (F(x(s)) - F(y(s)))\right |\\
+                                                   &\le \sup_t \left | \int_{0}^{t} (\max_{B(p, R)} | F' |) |x(s) - y(s)|\right |\\
+                                                   &\le \epsilon \max |F'| d_x(x, y)
+  \end{align*}
+
+  and we have $\max |F'| \le M_R$ and hence we have a contraction which implies the existence of a solution and local uniqueness.
+
+  \vspace{1em}
+  
+  Now we need to show global uniqueness... 
+\end{proof}
+
+
+\section{Foundational ODE}
+Consider the ODE $f'(t) = f(t)$ and $f(0) = 1$ where $f$ is real valued. Now Piccards theorem gives us a unique solution to this problem, we call this the exponential function.Here we have the following, 
+\begin{enumerate}
+  \item $f$ is smooth
+  \item $f'(0) = f(0) = 1$
+  \item  By Taylors theorem we have, 
+    \begin{align*}
+      f(x) &= f(0) + f'(0)x + \frac{f^{(2)}(0)}{2!}x^2 + \dots\\
+           &= 1 + x + \frac{x^2}{2!} + \frac{x^{3}}{3!}\\
+           &= \sum_{k = 0}^{\infty} \frac{x^{k + 1}}{(k + 1)!} = e^{x}
+    \end{align*}
+  \item We have $e^{x}e^{y} = e^{x + y}$. We see this by defining $f(x) = e^{x}e^{y}$ and $g(x) = e^{x + y}$. Now note that $f'(x) = e^{x}e^{y} = f(x)$ and $f(0) = e^{y}$, similarly note that $g'(x) = g(x)$ and $g(0) = e^{y}$. But by picards the solution to this is the same i.e $f = g$.
+  \item $f(x) > 0, \forall x \in \R$. Note that for positive $x$ we trivially have $f(x) > 0$ because of the Taylor expansion. Now consider $e^{0} = 1$ note that by the previous thing we also have for any $x$ that $e^{0} = e^{x - x} = e^{x} e^{-x}$. Now choose any $x \in \R$ and note that either $x$ or $-x$ is positive. Consider WLOG $e^{x}$ is positive so we have $e^{x} e^{-x} = 1$ and $e^{x}$ is positive which gives us $e^{-x}$ is positive. So clearly for every $x$ we need $e^{x}$ as positive.
+  \item $e:\R \to (0, \infty)$ is bijective. 
+    \begin{proof}
+      First note that $e$ is strictly increasing, which makes it injective. Now note that $e^{n}$ as $n \to \infty$ is $\infty$ and $e^{-n}$ as $n \to \infty$ is 0. And because $e$ is smooth by IVT we have it's surjective. Hence, we showed it's bijective.
+    \end{proof}
+
+  \item Defining $\ln x$. Because it's bijective we define the inverse as $\ln x: (0, \infty) \to \R$. So we have $\exp(\ln x) = x$. Chain rule gives us, 
+    \begin{align*}
+      \exp(\ln x)' &= x'\\
+      \exp(\ln x) (\ln x)' &= 1\\
+      x(\ln x)' &= 1\\
+      (\ln x)' &= \frac{1}{x}\\
+    \end{align*}
+\end{enumerate}
+
+
+
+\section{Normed Vector Space}
+
+Let $V$ be a vector space over $\F$. A norm $\norm{\cdot}$ is a function $\norm{\cdot}: V \to [0,  \infty)$ such that, 
+\begin{enumerate}
+  \item $\norm{v} = 0 \iff v = 0$
+  \item $\norm{\lambda v} = |\lambda| \norm{v}, \forall \lambda \in \F, \forall v \in V$
+  \item $\norm{u + v} \le \norm{u} + \norm {v}, \forall u, v \in V$
+\end{enumerate}
+
+The norm induces a metric space, 
+\[
+  d(x, y) = \norm{x - y}
+\]
+
+this allows us to define concepts such as open, closed, convergence and Cauchy sequences.
+\vspace{1em}
+
+If a Normed Vector Space is \underline{Cauchy Complete} (meaning every Cauchy sequence converges within the vector space) we call it a \underline{Banach space}.
+
+\begin{eg}
+  $R^{n}$ with Euclidian norm, 
+  \[
+    \norm{v} = \sqrt{v_{1}^2 + \dots + v_n^2}
+  \]
+  is a Banach space.
+\end{eg}
+
+Now let $U, V$ be Banach, define, 
+\[
+  L(U, V) = \{f: U \to V \mid f \text{ is linear and continuous }\}
+\]
+
+
+Now we can define an operator norm on $L$ itself as, 
+\[
+  \norm{f}_{L(U,V)} = \sup_{u \ne 0} \frac{\norm{f(u)}_V}{\norm{u}_U} = \sup_{\norm{u} = 1} \frac{\norm{f(u)}}{\norm{u}} 
+\]
+
+So here $L$ is called the bounded linear map.
+
+
+\vspace{1em}
+
+\begin{theorem}
+Now we can show that $f$ is continuous $\iff$ $f$ is bounded.
+\end{theorem}
+\begin{remark}
+  Note that if $f$ is continuous then for any $x_n \to x \implies f x_n \to f x$, which is the same as $x_n - x  = y_n \to 0 \implies f (x_n - x) = f y_n \to 0$.
+\end{remark}
+\begin{proof}
+  First assume that $f$ is bounded (on the unit ball). So we have, 
+  \[
+    \norm{y} \le 1 \implies \norm{f y} \le M
+  \]
+  Note from the remark above that it's enough to show that if $y \to 0$ then $f y \to 0$. So now note for all $y$ we have $\norm{fy} \le M \norm {y}$. So trivially we see that $y_n \to 0$ implies that $\norm{fy_n}  \le M \norm{y_n} \to 0$, hence $f$ is continuous.
+
+  \vspace{1em}
+  Now assume that $f$ is continuous. So fix an $\epsilon > 0$, then we have a $\delta_{\epsilon} > 0$ such that, 
+  \[
+    \norm{x}  \le \delta_{\epsilon} \implies \norm{f x} \le \epsilon
+  \]
+  so, 
+  \[
+    \norm{x} \le 1 \implies \norm{fx} \le \delta_{\epsilon}^{-1} \epsilon
+  \]
+
+  hence we showed boundedness in the unitball.
+\end{proof}
+
+\subsection{Sub-multiplicative}
+Let $T_{1} \in L(U_{0}, U_{2})$ and $T_{2} \in L(U_{1}, U_{2})$, then, 
+\[
+  \norm{T_{2} \circ T_{1}} \le \norm{T_{2}} \norm{T_{1}}
+\]
+\begin{proof}
+  We have, 
+  \[
+    \frac{\left | T_{2} T_{1} v\right |}{|v|} \le \frac{\norm{T_{2}} | T_{1} v|}{|v|}
+  \]
+  smaller than $\norm{T_{2}} \norm{T_{1}}$. Now just take sup over it.
+\end{proof}
+
+Essentially this gives us that $\norm{T^{n}} \le \norm{T}$.
+\begin{corollary}
+  We can show that $\exp(T) = \sum_{k = 0}^{\infty}  \frac{T^{k}}{k!} \in L(V, V)$ 
+\end{corollary}
+\begin{proof}
+  Proof is HW8. Essentially we just need to show that the infinite sum  converges within the set. Do this by considering the partial sums and showing it's Cauchy and because $L(V)$ is Cuachy complete, it converges within the set.
+\end{proof}
+
+
+\subsection{Inner Product}
+Let $V$ be a complex vector space. The Inner product is a function, 
+\[
+  \langle \cdot, \cdot \rangle: V \times V \to \C
+\]
+
+
+If $V$ is an inner product space that is also Banach, we call $V$ a \underline{Hilbert Space}. So a hilbert space has, 
+\begin{center}
+  vector space + topology (norm) + complete (cauchy) + geometry (inner product)
+\end{center}
+
+\subsection{$L^{p}$ spaces}
+
+For any $f \in C_c^{\infty}(\R^{n})$ (smooth function with compact support) we define the $L^{p}$ norm as,
+\[
+  \norm{f}_{L^{p}} = \left ( \int_{}^{} |f|^{p} \right )^{\frac{1}{p}}
+\]
+
+Now if we complete $C_c^{\infty}(\R^{n})$ under the $\norm{\cdot}_{\L^{p}}$ norm we get the $L^{p}(\R^{n})$ spaces. So note that this new space does not necessarily need to have smooth functions, for instance the limit of a series of functions could be the step function which is not smooth.
+
+\vspace{1em}
+
+\begin{note}
+that all $L^{p}$ spaces are \underline{Banach} as we define it by the \underline{Cauchy-completeness} and we also have norms. 
+\end{note}
+
+\vspace{1em}
+When we take $p = 2$ we have our inner product as, 
+\[
+  \langle f, g \rangle_{L^2} = \int_{\R^{n}}^{} f \overline{g}
+\]
+
+so this makes $L^2$ a Hilbert space.
+\begin{remark}
+  In fact none of the other norms is induced by an inner product for the other $L^{p}$ spaces, so $L^2$ is the only $L^{p}$ space that is \underline{Hilbert}
+\end{remark}
+
+\subsection{Pythagoras}
+Let $V$ be Hilbert and let $x,y \in V$, then, 
+\[
+  \langle x, y \rangle = 0
+\]
+
+this implies that $\norm{x + y}^2 = \norm{x}^2 + \norm{y}^2 \implies Re(\langle x, y \rangle = 0$
+
+
+\subsection{Cauchy-Schwartz}
+Let $x, y \in V$ with $V$ Hilbert. Then, 
+\[
+  | \langle x, y \rangle | \le \norm{x} \norm{y}
+\]
+\begin{proof}
+  We can replace $x$ with $\alpha x$ and now note that for any $t \in \R$ we have, 
+  \begin{align*}
+    \langle tx - y, tx - y \rangle &\ge 0\\
+    \norm{x^2}t^2 - 2\langle x, y \rangle t + \norm{y}^2 &\ge 0
+  \end{align*}
+  this means that,  
+  \[
+    | \langle x, y \rangle |^2 \le \norm{x}^2 \norm{y}^2
+  \]
+\end{proof}
+
+\subsection{Spectral Theorem}
+\begin{theorem}
+  Let $A$ be a $n \times n$ matrix which is symmetric. Then fix an orthonormal basis $(b_i)_{i = 1}^{n}$ of $\R^{n}$ such that, 
+  \[
+    A b_i = \lambda_i b_i
+  \]
+  when $\lambda_i \in \R$. Let $(e_i)^{n}_{i = 1} $ be the canonical basis of $\R^{n}$. Then there is a change of basis matrix $P$ (between $B$ and $E$) such that, 
+  \[
+    A = P \begin{pmatrix}
+      \lambda_{1}  &  \\
+      &  \ddots &  \\
+      &  & \lambda_n \\
+    \end{pmatrix} P^{T}
+  \]
+
+  where $P^{T} = P^{-1}$ is an orthogonal matrix.
+\end{theorem}
+
+\section{Torus}
+The 1-D torus is $\mathbb{T} = \R \mod \Z$, this is the quotient notation, so essentially we're considering the equivalence classes modulo $\Z$. For instance the value $0.3, 1.3, 2.3, -4.7$ all belong to the same equivalence class. Essentially the Torus is $[0, 1)$ in this case where we wrap around to $0$ from the right side. We see that this is also homeomorphic to $S^{1}$  (the circle). More traditionally for the circle consider $\R \mod 2 \pi \Z$ i.e $[0, 2\pi)$.
+
+\vspace{1em}
+
+$\mathbb{T}$ is also called a periodic domain and is also compact. We define $\mathbb{T}^{n} = \mathbb{T} \times \dots \times \mathbb{T}$.
+
+\vspace{1em}
+
+Consider smooth functions defined on the torus i.e $C^{\infty}(\mathbb{T}^{n})$ then $L^{p}(\mathbb{T}^{n})$ is the Cauchy competition of this (and hence is Banach) under the $L^{p}$ norm.
+
+
+\[
+  \norm{f}_{L^{p}} = \left ( \int_{\mathbb{T}^{n}}^{} |f|^{p}\right )^{\frac{1}{p}}
+\]
+
+\subsection{Hilbert Spaces}
+Let $V$ be a Hilbert Spaces (Banach + innerproduct). 
+
+\begin{enumerate}
+  \item $B \subseteq V$ is an (algebraic) basis when, 
+    \begin{enumerate}
+      \item $B$ is linearly independent
+      \item Span $B = V$
+  \end{enumerate}
+\item $B \subseteq V$ is a \underline{Hilbert Basis} when
+  \begin{enumerate}
+    \item $B$ is linearly independent
+    \item Closure of Span $ B = V$
+  \end{enumerate}
+\end{enumerate}
+
+\begin{eg}
+  $L^2$  has a countable Hilbert basis but uncountable algebraic basis. Let $\{e_{1}, e_{2}, \dots \}$ be an orthonormal Hilbert basis of $V$. 
+\end{eg}
+Let $V_n = span \{e_{1}, \dots, e_n\}$. Then for any $v \in V$ (note not $V_n$, $V$ is the Hilbert space) we have, 
+\[
+  \text{proj}_{V_n}(v) = \sum_{n = 1}^{n}  (v \cdot e_i) e_i
+\]
+
+
+\subsection{Fourier transform on 1D torus}
+Let $f \in C(\mathbb{T} \to \C)$ so $f$ is in the space of continuous functions from the torus to the complex numbers.  Then the \underline{fourier transform} of $f$ is a function $\hat{f}$ from $\Z \to \C$, 
+\[
+  \hat{f}(k) = \int_{\mathbb{T}}^{} f(x) e^{-i 2\pi k x}\ dx
+\]
+
+We know that $L^2(\mathbb{T})$ is a Hilbert space (because the $L^2$ norm is induced from an inner product) with Hilbert basis $\{e_k\}_{k \in \Z}$ where, 
+\[
+  e_k  = e^{i 2\pi k x}
+\]
+
+We have, 
+\[
+  \Delta e_k = e''_k = -(2\pi)^2 |k|^2 e_k
+\]
+
+So $e_k$ is an eigenvector (eigenfucntion rather) of $\Delta$. We have, 
+\[
+  \norm{e_k}_{L^2} = \left ( \int_{\mathbb{T}}^{} |e_k|^2\right )^{\frac{1}{2}} = 1
+\]
+
+And for all $k \ne l$ we have, 
+\[
+  e_k \cdot e_l = \int_{\mathbb{T}}^{} e^{i \2pi k x} e^{\overline{i 2\pi l x}} \ dx = 0
+\]
+
+So this gives us, 
+\[
+  \sum_{k \in \Z}^{} (f \cdot e_k) e_k \to^{L^2} f 
+\]
+
+Note that the left side is essentially projecting $f$ onto each of the basis. Using inner product on $L^2$ we have $f \cdot e_k = \hat{f}(k)$
+
+\vspace{1em}
+
+What this means is that $f \in L^2$ can be decomposed into an infinite sum where each term describes $f$ at a certain frequency i.e $\hat{f}(k) e_k$ is $f$ at frequency $k$.
+
+\vspace{1em}
+
+Another way to see it is that the Fourier transform diagonalzes the $\Delta$ (laplacian) operator and other differential operators (so we're able to turn a PDE problem into a polynomial or ODE problem).
+
+
+\subsection{Fourier on nD torus}
+Instead of taking $k \in \Z$ we take $k \in \Z^{n}$. So $\forall x \in \mathbb{T}^{n}$ we have $e_k(x) = e^{i 2\pi (k \cdot x)}$. Note that $\{e_k\}_{k \in \Z^{n}}$ is still orthonormal. So we have, 
+\[
+  \hat{f}(k) = \int_{\mathbb{T}^{n}}^{} f(x) e^{-i 2 \pi (k \cdot x)} \ dx
+\]
+
+which gives us, 
+\[
+  f =^{L^2} \sum_{k \in Z^{n}}^{}  \hat{f}(k) e_k
+\]
+
+\begin{eg}
+  Let $g \in C^{\infty}(\mathbb{T}^{n})$, we need to find $f$ such that $\Debta f = g$.
+\end{eg}
+\begin{solution}
+ We can apply the Fourier transform to both sides to get, 
+ \[
+   -(2\pi)^2 |k|^2 \hat{f}(k) = \hat{g}(k)
+ \]
+
+ Note that this is only solvable when $\hat{g}(0) = 0 = \int_{\mathbb{T}^{n}}^{} g$. Now simply take for $k \ne 0$, 
+ \[
+   \hat{f}(k) = - \frac{\hat{g}(k)}{(2\pi)^2 |k|^2}
+ \]
+ where $\hat{f}(0)$ can be any constant. Then we get, 
+ \[
+   f = C + \sum_{k \ne 0}^{} \hat{f}(k) e_k 
+ \]
+
+\end{solution}
+
+
+\subsection{Pythagoras}
+If $u \perp v$ then we have, 
+\[
+  \norm{\lambda_{1} u + \lambda_{2} v}^2 = \left |\lambda_{1} \right |^2 \norm{u}^2 + \left |\lambda_{2} \right |^2 \norm{v}^2
+\]
+
+Similarly we have, 
+\begin{align*}
+  \norm{f}^2_{L^2} &= \norm{\sum_{k \in Z^{n}}^{\infty} \hat{f}(k) e_k}_{L^2}^2\\
+                   &= \sum_{k \in Z^{n}}^{\infty}  | \hat{f}(k)|^2
+\end{align*}
+
+So this essentially tells us that, 
+\[
+  \norm{f}_{L^2(\mathbb{T}^{n})} = \norm{\hat{f}}_{L^2(\Z^{n})}
+\]
+
+So essentially the Fourier transform is an invertible isometry (a distance preserving map between metric spaces that preserves, length angles and areas).
+
+\vspace{1em}
+
+Properties of this map are,
+\begin{enumerate}
+  \item Linear (so the Fourier transform is a linear map between Hilbert spaces)
+  \item For $f \in C^{\infty}(\mathbb{T}^{n})$ we have, 
+    \begin{align*}
+      \widehat{\partial_{x_j} f}(k) &= \int_{\mathbb{T}^{n}}^{}  \partial_x f(x) e^{-i 2\pi (k \cdot x)}\ dx\\
+                          &= i 2\pi k_j \int_{\mathbb{T}^{n}}^{}  f(x) e^{-i 2\pi (k \cdot x)}\ dx
+    \end{align*}
+
+    This implies that, 
+    \[
+      \widehat{\Delta f}(k) = - (2\pi)^2 |k|^2 \hat{f}(k)
+    \]
+
+    So essentially the Laplacian $\Delta \le 0$
+\end{enumerate}
+
+\section{Some Notation}
+
+\subsection{Sim}
+We write, 
+\[
+  x \lesssim_a y
+\]
+
+to mean, 
+\[
+  x \le C(a) y
+\]
+
+where $C(a)$ is a constant depending on $a$. 
+\vspace{1em}
+
+We write, 
+\[
+  x \sim_a y
+\]
+
+When we have both $x \lesssim_a y$ and $y \lesssim_a x$
+
+\begin{eg}
+  If we have $a, b \ge 0$ then, 
+  \[
+    (a + b)^2 \sim a^2 + b^2
+  \]
+
+  As we have $a^2 + b^2 \le (a + b)^2 \le 2(a^2 + b^2)$
+\end{eg}
+
+\subsection{Japanese bracket}
+
+Let $x \in \C^{n}$ then, $\langle x \rangle = \sqrt{1 + \norm{x}^2}$. So note that for $\norm{x} > 1$ we have $\langle x \rangle \sim |x|$ as, 
+\[
+  |x| \le \sqrt{1 + |x|^2} \le \sqrt{2} |x|
+\]
+
+And for $|x| < 1$ we have $\langle x \rangle \sim 1$. Also we have $x \to \langle x \rangle$ is \underline{smooth}.
+
+
+
+
+\section{Test Functions}
+$D(\mathbb{T}^{n}) = C^{\infty}(\mathbb{T}^{n}) = \bigcap_{k \ge 1} C^{k} (\mathbb{T}^{n})$
+
+\vspace{1em}
+
+Note that in this case $D(\mathbb{T}^{n})$ is not a normed vector space, it's a Frechet space. But we say $v_n \to^{n \to \infty} v$ in $D(\mathbb{T}^{n})$ when, $v_n \to v$ in $C^{k} (\mathbb{T}^{n}) \forall k$
+
+\vspace{1em}
+A linear operator $\phi: D(\mathbb{T}^{n}}) \to \C$ is \underline{continuous} when, 
+\[
+  \forall v_n \to^{D} v \implies \phi(v_n) \to^{\C} \phi(v)
+\]
+
+$\phi$ is then called a \underline{distribution} (a generalized function). We define $D'$ the space of distributions and hence $\phi \in D'$.
+
+
+\begin{eg}
+  Let $f \in C(\mathbb{T}^{n})$ then define $\phi_f$ as, 
+  \[
+    \phi_f(v) = \int_{\mathbb{T}^{n}}^{}  fv \ \forall v \in D
+  \]
+
+  here we can identify $f$ with $\phi_f$. In this case we have, $C(\mathbb{T}^{n}) \hookrightarrow D'$ (a continuous injection, this means for any $f \in C(\mathbb{T}^{n})$ we can associate it unify  with a $\phi_f \in D'$)
+\end{eg}
+
+\vspace{1em}
+
+Essentially we got, 
+\[
+  D = C^{\infty} \hookrightarrow C \hookrightarrow L^2 \hookrightarrow D'
+\]
+
+Note take some $f, \phi_f$ such that $f$ is $C^{1}(\mathbb{T})$ then, 
+\[
+  \int_{\mathbb{T}^{n}}^{}  f'v  = - \int_{\mathbb{T}^{n}}^{}  f v' = \phi_f (-v')
+\]
+
+using integration by parts.  But note that LHS is undefined if $f \not \in C^{1}$. But the RHS is still defined. Point being we can still identify $f'$ with some function $v \to \phi_f (-v')$.
+
+\vspace{1em}
+
+So $\forall v \in D, \forall \phi \in D':$, 
+\[
+  \phi'(v) := \phi(-v')
+\]
+so we can \underline{differentiate} any distribution.
+
+\vspace{1em}
+
+The dirac delta is $\delta_0(v) = v(0) \forall v \in D$ so we have $\delta_0 \in D'$
+
+
+\section{Sobolev functions}
+A distribution $\phi \in D'$ is in $L^2$ when, $\forall v \in D:$, 
+\[
+  |\phi(v) | \lesssim \norm{v}_{L^2}
+\]
+
+so $\phi$ extends to a bounded linear functional on $L^2$. This gives the representation theorem i.e, 
+\begin{center}
+  Any continuous linear functional on $L^2$  can be \underline{represented} by an $L^2$ function.
+\end{center}
+
+\textbf{Sobolev function}
+Let $f \in D'(\mathbb{T}^{n})$ we say that $f \in H^{m}(\mathbb{T}^{n})$ when, 
+\[
+  \partial^{\alpha} f \in L^2 \ \forall |\alpha| \le m
+\]
+
+so $f, f', \dots  f^{(m)} \in L^2$
+
+\vspace{1em}
+
+Note that $H^{m}$ is a normed vector space,

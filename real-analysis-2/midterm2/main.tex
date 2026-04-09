@@ -1,0 +1,141 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\title{Analysis 2: Midterm 1}
+% \author{Aamod Varma}
+\begin{document}
+\maketitle
+\textbf{Problem 1.}
+
+Consider the function $g(t) = f(t) e^{-t}$ now doing MVT on this assuming a positive $t$ we have,
+\begin{align*}
+    g(t) &= g(0) + t g'(c) \quad \text{ for some $c$ between $0$ and $t$ }\\
+    f(t) e^{-t} &=  f(0) e^{0} + t (f'(c) e^{-c} - f(c) e^{-c})\\
+ &= f(0) + t e^{-c} (f'(c) - f(c)) \\
+ f(t) &= f(0)e^{t} + t e^{t-c} (f'(c) - f(c)) \\
+ f(t)  -  f(0)e^{t}  &= t e^{t-c} (f'(c) - f(c)) \\
+\end{align*}
+
+Now note that clearly $t \ge 0$  and clearly $e^{t - c}$ is positive as well since $e^{x}$ always returns a positive number. So this gives us, 
+\[
+    t e^{t - c} \ge 0
+\]
+
+But now note that we have $f'(t) \le f(t)$ for all $t$ which means that $f'(c) - f(c) \le 0$ so clearly we have, 
+\[
+    (te^{t - c})(f'(c) - f(c)) \le 0
+\]
+
+Putting this back in we have, 
+
+\begin{align*}
+ f(t)  -  f(0)e^{t}  &= t e^{t-c} (f'(c) - f(c)) \le 0
+\end{align*}
+
+Or that, 
+\begin{align*}
+    f(t) - f(0) \ e^{t} &\le 0\\
+    f(t) &\le f(0)\ e^{t}
+\end{align*}
+
+for any choice of $t$.
+
+
+\textbf{Problem 2.}
+
+We have $F:U \to \R^2$ a smooth vector field where $U \subseteq \R^2$. We also have $\curl F = \nabla \times F = 0$. So if $F= (F_{1}, F_{2})$ then we have $\partial_x F_{2} - \partial_y F_{1} = 0$ or $\partial_x F_{2} = \partial_y F_{1}$
+
+\vspace{1em}
+
+1. We have $U = B(0, 2)$. We need to find some $f:U \to R$  such that $\nabla f = F$. Or we need some $f$ such that $\partial_x f = F_{1}$ and $\partial_y f = F_{2}$ and note we have $\partial_x F_{2} = \partial_y F_{1}$. 
+
+\vspace{1em}
+
+Now let $r$ be some path from a point $a$ to $(x,y)$. Now let $p$ be another arbitrary path from the same starting and endpoints. Note now that if we move through $r$ and then move through $-p$ we have a closed loop. We now define $f$ as follows,
+\[
+    f(x,y) = \int_{r} F_{1} \ dx + F_{2} \ dy
+\]
+
+Now note that if we consider $\int_{r}  F_{1} \ dx + F_{2} \ dy - \int_{p} F_{1} \ dx + F_{2} \ dy$ then this forms a closed loop and because of greens theorem this is equal to zero. Point being from some fixed point $a$ if we choose any path to $(x,y)$ we have the same value for $f$.  So we can choose some  fixed point $a$ and define, 
+\[
+    f(x,y) = \int_{a}^{(x,y)}  F_{1} \ dx + F_{2} \ dy
+\]
+
+Now we can simply check that $\partial_x f = \partial_x \int_{a}^{(x,y)} F_{1} \ dx = F_{1}$ and similarly we have $\parial_y f = F_{2}$ which means $\nabla f = F$.
+
+
+\vspace{1em}
+
+2. If we have $U = B(0, 2) \setminus \{0\}$ we can't find a potential function for $f$. This is because when we remove the 0, the ball is no longer simply connected. So for any loop around the circle containing $0$ we can never shrink it down to a single point.
+
+\vspace{1em}
+
+Consider the function $F(x,y) = \left ( -\frac{y}{x^2 + y^2}, \frac{x}{x^2 + y^2}\right )$. Clearly $F$ is smooth in $U$ because it is not defined at the singularities i.e $x,y = 0$. We can note that the curl is, 
+
+\[
+    \partial_x F_{2} - \partial_y F_{1} = \frac{y^2 - x^2}{(x^2 + y^2)^2} - \frac{y^2 - x^2}{(x^2 + y^2)^2} = 0
+\]
+
+However now consider a closed curve around $0$, we know that the integral of $F$ around this curve must be zero according to greens theorem. So let $r(t) = (\cos t, \sin t), 0 \le t \le 2 \pi$, so we have $F(r(t)) r'(t) = (-\sin t, \cos t)(-\sin t, \cos t) = \sin^2 + \cos^2 = 1$. So around the circle we have $\int_{0}^{2\pi}  1 \ dt = 2\pi \ne 0$. So we can never find a function $f$ to satisfy this.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\textbf{Problem 3.}
+
+We have the function $f(x, y) = x^{4} + y^{4}$ given the constraint $x^2 + y^2 = 1$. We will use the notion of the lagrange multipliers to find the extreme  values subject to the constraints. Let us define our constraint as the level set $G(x,y) = x^2 + y^2 = 1$. So we need, $\nabla f = \lambda \nabla G$.
+
+\vspace{1em}
+
+We have $\nabla f = (4x^{3}, 4y^{3})$ and we have $\nabla G = (2x, 2y)$. So we have the following equalities, 
+\begin{align*}
+    4x^{3} &= \lambda 2x\\
+    4y^{3} &= \lambda 2y\\
+    x^2 + y^2 &= 1
+\end{align*}
+
+Solving the first two we get $2x^{2} &= \lambda$ OR $x = 0$. Clearly the second gives us the same i.e $2y^2 = \lambda$ or that $y = 0$. Now let us look at these cases,
+
+\vspace{1em}
+
+\textbf{Case 1.} $x, y = 0$. Clearly $x^2 + y^2 = 0 \ne 1$. Not possible
+
+\vspace{1em}
+
+\textbf{Case 2.} $2x^2 = \lambda, y = 0$. Here we have $x^2 + y^2 = 1$ so $x^2 = 1$ implies that $x = \pm 1$. In both cases we have $\lambda = 2$. So this case gives us two choices $(\pm 1, 0)$.
+
+\vspace{1em}
+
+\textbf{Case 3.} $2y^2 = \lambda, x = 0$. $x,y$ are symmetric so similar to case 2 we have, the choices $(0, \pm 1)$.
+
+\vspace{1em}
+
+\textbf{Case 4.} $2x^2 = \lambda = 2y^2$. This gives us $x^2 = y^2$, so clearly we have $x^2 = y^2 = \frac{1}{2}$ so $x = y = \pm \frac{1}{\sqrt{2}}$. So we have 4 choices here, represented by,
+\[
+    \left ( \pm \frac{1}{\sqrt{2}}, \pm \frac{1}{\sqrt{2}}\right )
+\]
+
+\vspace{1em}
+
+So note that putting all our cases together we have 8 critical points represented by, 
+\[
+    (\pm 1, 0), (0, \pm 1), \left ( \pm \frac{1}{\sqrt{2}}, \pm \frac{1}{\sqrt{2}}\right )
+\]
+
+Now note that we're doing $x^{4}$ and $y^{4}$ in our equation of $f$ so essentially we have an even function. Hence note we have, 
+\[
+    f(\pm 1, 0) = 1, f(0, \pm 1) = 1, f \left ( \pm \frac{1}{\sqrt{2}}, \pm \frac{1}{\sqrt{2}}\right ) = \frac{1}{4} + \frac{1}{4} = \frac{1}{2}
+
+\]
+
+So the maximum value is $1$ occurring at $(\pm 1, 0), (0, \pm 1)$ the minimum is $\frac{1}{2}$ at $\left ( \pm \frac{1}{\sqrt{2}}, \pm \frac{1}{\sqrt{2}}\right )$
+
+\end{document}

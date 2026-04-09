@@ -1,0 +1,224 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\title{Analysis 2: Midterm 1}
+% \author{Aamod Varma}
+\begin{document}
+\maketitle
+\textbf{Problem 1.}
+
+\vspace{1em}
+Let $$g_i(x) = \begin{cases}
+    \sin(x) \quad &2\pi (i - 1) \le x < 2\pi i\\
+    0 \quad & \text{ otherwise }
+\end{cases}$$
+
+Now define,
+\[
+    f(x) = \sum_{i = 1}^{\infty} \frac{1}{i} g_i(x)
+\]
+
+
+First, clearly $f$ is bounded as for each interval of $2\pi$ starting from $0$ as it's defined as $g_i$ for each interval and trivially we know that $|\sin| \le 1$. Now we also know that $g_i$ itself is continuous because $\sin$ is continuous. Now we need to show that $f$ is continuous at the points $2\pi i$ where $i = 0, 1, 2, \dots$. Note that $g_i$ is defined from $[2\pi (i - 1), 2\pi i)$ so we need to test continuity at $2\pi i$. Note limit as $g_i$ approaches $2 \pi i$ is simply $0$ and similarly we have $g_{i+1}$ at $2\pi i$ as $0$. Hence, our functions is continuous.
+
+\vspace{1em}
+
+As $f$ is continuous and bounded it is Riemann-inntegrable on each $[0, n]$. Now we compute $\int_0^{n} f$. Note that in the range $[0, n]$ $f$ can be defined as a finite sum i.e $\sum_{i = 1}^{\lceil\frac{n}{2\pi} \rceil}\frac{1}{i}g_i(x)$ and hence we can write, 
+\begin{align*}
+    \int_{0}^{n} f(x) &= \int_{0}^{n} \sum_{i = 1}^{\lceil \frac{n}{2\pi} \rceil} \frac{1}{i} g_i(x)\\
+                      &= \sum_{i = 1}^{\lceil \frac{n}{2\pi} \rceil} \frac{1}{i} \int_{0}^{n} g_i(x)\\
+\end{align*}
+
+Now clearly integrating each $g_i$ from $[0, n]$ is equivalent to integrating it where it's define non-zero in this domain. So we can rewrite this as,
+\begin{align*}
+    \int_{0}^{n} f(x) &= \sum_{i = 1}^{\lceil\frac{n}{2\pi}\rceil} \frac{1}{i} \int_{0}^{n} g_i(x)\\
+                      &= \int_{0}^{2\pi} g_1(x) + \frac{1}{2} \int_{2\pi}^{4\pi} g_2(x) + \dots + \frac{1}{\lceil\frac{n}{2\pi}\rceil} \int_{2\pi (\lceil\frac{n}{2\pi}\rceil - 1)}^{n}  g_{\lceil\frac{n}{2\pi}\rceil}(x)
+\end{align*}
+
+Note that each $g_i$ integrated where it's defined is simply just zero as the positive and negative cancel each other out.  So we have, 
+\[
+\int_{0}^{n} f(x) = \frac{1}{\lceil\frac{n}{2\pi}\rceil} \int_{2\pi (\lceil\frac{n}{2\pi}\rceil - 1)}^{n}  g_{\lceil\frac{n}{2\pi}\rceil}(x)
+\]
+
+However, now note that as $\sin$ is bounded above by 1, we have $ \left |\int_{2\pi (\lceil\frac{n}{2\pi}\rceil - 1)}^{n}  g_{\lceil\frac{n}{2\pi}\rceil}(x)\right| \le 2$ and hence, 
+\begin{align*}
+    \int_{0}^{n} f(x) &= \frac{1}{\lceil\frac{n}{2\pi}\rceil} \int_{2\pi (\lceil\frac{n}{2\pi}\rceil - 1)}^{n}  g_{\lceil\frac{n}{2\pi}\rceil}(x)\\
+                      &\le \frac{1}{\lceil\frac{n}{2\pi}\rceil} 2
+\end{align*}
+
+So, 
+\[
+    \lim_{n \to \infty} \int_{0}^{n} f(x) \le \lim_{n \to \infty}   \frac{2}{\lceil \frac{n}{2\pi}\rceil} = 0
+\]
+
+So we have the integral converges to 0. Now if we consider $|f|$ instead. And note that this is equivalent to $\sum_{n = 1}^{\infty} \frac{1}{i}|g_i(x)|$. Following the same logic we get, 
+\begin{align*}
+    \int_{0}^{n} |f(x)| &= \int_{0}^{n} \sum_{n = 1}^{\lceil n / 2\pi \rceil} \frac{1}{i}|g_i(x)|\\
+                        &=  \sum_{i = 1}^{\lceil n / 2\pi \rceil} \frac{1}{i} \int_{0}^{n}|g_i(x)|\\
+\end{align*}
+
+However, note here that we have $\int_{0}^{n} |g_i(x)| = \int_{2\pi (i - 1)}^{2\pi i} |\sin(x)|$, $\sin$ is positive in the first half of the interval so this is equivalent to $2 \int_{2\pi (i - 1)}^{\pi} \sin(x) = 4$. So we have,
+
+\begin{align*}
+    \int_{0}^{n} |f| &\ge \sum_{i = 1}^{\lceil n / 2 \pi  \rceil -1} \frac{4}{i}  
+\end{align*}
+
+Note that we can ignore the last (possibly incomplete integral for simplicity) this gives us. But this means that, 
+\[
+    \lim_{n \to \infty} \int_{0}^{n} |f| &\ge 4 \lim_{n \to \infty} \sum_{i = 1}^{\lceil n / 2 \pi  \rceil -1} \frac{1}{i}
+\]
+
+Note the right hand side is the harmonic series as $n \to \infty$  and we know that it diverges.  Since we just showed that the left side is greater than the sum of the harmonic series, this means that the left side diverges. 
+
+
+\vspace{1em}
+\textbf{Problem 2.}
+
+\quad Given that $f$ is $C^{1}$ on $U \subset R^{n}$. Now note that $f$ is a vector valued function so we can write it component wise as $f = (f_{1}, \dots, f_n)$ where $f_i:R^{n} \to R$. Now consider the parametrization of the line joining $x, y$ as $g(t) = y + (x - y)t$ where $0 \le t \le 1$. Now note again that in order to show, 
+\[
+    f(x) - f(y) = \int_{0}^{1}  f'(y + t(x - y)) \cdot (x - y) dt
+\]
+
+It is enough to show this for each component (as vector integration is defined component wise). This means we just need to show,
+
+\[
+    f_i(x) - f_i(y) = \int_{0}^{1}  f_i'(y + t(x - y)) \cdot (x - y) dt
+\]
+
+Now consider the function $f_i \circ g$ and as $g: R \to R^{n}$ and $f_i: R^{n} \to R$ we have $f_i \circ g: R \to R$ a 1D function. We can now apply the 1D fundamental theorem of calculus to this function to get, 
+\begin{align*}
+    (f_i \circ g)(1) -  (f_i \circ g)(0) &= \int_{0}^{1} (f_i \circ g)' \ dt\\
+                f_i(g(1)) - f_i(g(0)) &= \int_{0}^{1} f_i'(g(t)) g'(t) \ dt\\
+                f_i(x) - f_i(y) &= \int_{0}^{1} f_i'(y + t(x - y)) (x - y) \ dt
+\end{align*}
+
+As this is true for any component for $f$ we have, 
+\begin{align*}
+    f(x) - f(y) &= (f_0(x) - f_0(y), \dots, f_n(x) - f_n(y))\\
+                &= \left(\int_{0}^{1} f_0'(y + t(x - y)) (x - y) \ dt, \dots \int_{0}^{1} f_1'(y + t(x - y)) (x - y) \ dt \right)\\
+                &= \int_{0}^{1} f'(y + t(x - y)) \cdot (x - y) \ dt
+\end{align*}        
+
+
+
+\vspace{1em}
+\textbf{Problem 3.}
+
+\quad 1. We have $ || f'(x) - I| | \le \frac{\epsilon}{2}$, now using definition of operator norm we get, 
+\[
+   \frac{ \left | f'(x)v - v \right | }{|v|}\le \left | \left | f'(x) - I \right |\right | \le \frac{\epsilon}{2}
+\]
+
+Now using the theorem from Problem 2 taking $x = v$ and $y = 0$ we get, 
+\begin{align*}
+    f(v) - f(0) &= \int_{0}^{1} f'(tv) v \ dt\\
+        f(v) &= \int_{0}^{1} f'(tv) v \ dt \\
+        f(v) - v &= \int_{0}^{1} f'(tv) v - v \ dt \\
+\end{align*}
+
+Now taking the norm from both sides we have, 
+\begin{align*}
+    f(v) - v &= \int_{0}^{1} f'(tv) v - v \ dt \\
+    |f(v) - v| &= \left | \int_{0}^{1}  f'(tv) v - v \ dt\right |\\
+               &\le  \int_{0}^{1} | f'(tv) v - v |\ dt\\
+\end{align*}
+
+But note from above we have, 
+\begin{align*}
+    \frac{|f'(x)v - v|}{|v|} &\le \frac{\epsilon}{2}\\
+    |f'(x) v - v| &\le |v| \frac{\epsilon}{2}
+\end{align*}
+
+Now as $v \in U$ we have $tv \in U$ for $t \in [0, 1]$ hence we also get, $ |f'(tv) v - v| &\le |v| \frac{\epsilon}{2}$ and that,
+
+\begin{align*}
+    |f(v) - v| \le \int_{0}^{1} |f'(tv)v - v| dt  &\le \int_{0}^{1} |v| \frac{\epsilon}{2} \ dt\\
+                                                  &= \frac{|v|\epsilon}{2} [t]_0^{1} = \frac{|v| \epsilon}{2}
+\end{align*}
+
+Dividing by $|v|$ we have, 
+\[
+    \frac{|f(v) - v|}{|v|} \le \frac{\epsilon}{2} < \epsilon
+\]
+
+Now using this I use the triangle inequality to get $\frac{|f(v) - v|}{|v|} \ge | |f(v)| - |v| | / |v|$ so,
+\begin{align*}
+    \frac{| | f(v) |- |v| |}{|v|} &\le \epsilon\\
+{| | f(v) | / |v|- |v|/ |v| |} &\le \epsilon\\
+\left| \frac{|f(v)|}{|v|} - 1 \right| &\le \epsilon
+\end{align*}
+
+which is equivalent to $\frac{|f(v)|}{|v|} \in (1 - \epsilon, 1 + \epsilon)$
+
+
+
+\vspace{1em}
+
+\quad 2. We need to show that, 
+\[
+    B(0, 1 - \epsilon) \subset f(U) \subset B(0, 1 + \epsilon)
+\]
+
+First we need to show that for any $y \in B(0, 1 - \epsilon)$ we have some $x \in U$ such that $f(x) = y$. First consider $f(y)$ and we have, 
+\begin{align*}
+    |f(y) - y| < \epsilon |y|
+\end{align*}
+
+
+Now let we need to take a step in order to get a better estimate which is $x_{1} = y + (y - f(y))$ and now note that, 
+\[
+    |x_{1} - y| = |f(y) - y| < \epsilon |y|
+\]
+
+now define our steps in terms of our previous estimates such that we have $x_{n + 1} = x_n + (y - f(x_n))$. First we need to show that $f(x_k)$ is defined i.e $x_k \in U$. Note we have, 
+\begin{align*}
+    |x_{n} - y| &= |f(x_{n - 1}) - x_{n - 1}| \le \epsilon |x_{n - 1}|\\
+    |x_{n}| &\le \epsilon |x_{n - 1}| + |y|\\
+                &\le \epsilon (\epsilon |x_{n - 2}| + |y|) + |y|\\
+                &\le |y| + \epsilon |y| + \epsilon^2 |y| + \dots + \epsilon^{n} |y|\\
+                &= |y| (1 + \epsilon + \dots + \epsilon^{n})\\
+                &= |y| \frac{1}{1 - \epsilon} \le \frac{1 - \epsilon}{1 - \epsilon} = 1
+\end{align*}
+
+So we have $|x_n| < 1$ for all $n$ which means $x_n \in U$.
+
+
+\vspace{1em}
+
+Now we need to show that with each new estimate  we get to a better solution and thus get to some limit of a solution which is the perfect solution. I.e we need to show the sequence $y, x_{1}, \dots$ has a limit. We first have, 
+\begin{align*}
+    |x_{n + 1} - x_n| &= |x_n + y - f(x_n) - (x_{n - 1} + y - f(x_{n - 1}))|\\
+                      &= |(f(x_{n - 1}) - x_{n - 1}) - (f(x_n) - x_n))|
+\end{align*}
+
+First note that if we consider $f(x) - x$ then using FTC on this function we have, 
+\begin{align*}
+    (f(a) - a) - (f(b) - b) &= \int_{0}^{1}  (f(x) - x)^{(1)}(b + t(a - b)) (a - b) \ dt\\
+    |(f(a) - a) - (f(b) - b)| &\le \int_{0}^{1}  \frac{\epsilon}{2} (a - b) = \frac{\epsilon}{2} (a - b)
+\end{align*}
+
+
+So we have, 
+\[
+    |x_{n + 1} - x_n|  \le \frac{\epsilon}{2} |x_n - x_{n - 1}|
+\]
+
+Using this we get, 
+\[
+    |x_m - x_n| < \epsilon
+\]
+
+Or that it's a Cauchy sequence and hence has a limit. But if it has a limit say $x$ then applying that to $x_{n + 1} = x_n + (y - f(x_n))$ we get $x = x + (y - f(x))$ or that $f(x) = y$ and as each $x_n \in U$ we have the limit in $U$ as well. Now this proves that $B(0, 1 - \epsilon) \subset f(U)$. We need to now show that $f(U) \subset B(0, 1 + \epsilon)$ or that for any $x$ we have $|f(x)| \le 1 + \epsilon$. 
+
+\vspace{1em}
+
+First note that for $x \in U$ we have $|x| \le 1$. So using 1. we get, 
+\begin{align*}
+    \frac{|f(x)|}{|x|} &< 1 + \epsilon\\
+    |f(x)| &< (1 + \epsilon)|x| \le  1 + \epsilon
+\end{align*}
+
+So we get $|f(x)| \le 1 + \epsilon$ for all $x \in U$. 
+
+\end{document}
+
+

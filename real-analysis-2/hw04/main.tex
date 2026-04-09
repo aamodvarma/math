@@ -1,0 +1,138 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\title{Analysis 2: HW1}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\textbf{Problem 1.}
+\begin{proof}
+  
+We have, 
+\[
+  \int_{0}^{1} f^{2} = 1
+\]
+
+Integrating by parts we have, 
+
+\begin{align*}
+  \int_{0}^{1} f(x)^2  &= \int_{0}^{1} 1 \cdot f^2(x)\\
+                       &= \left [ f^2(x) x\right]_0^{1}  - \int_{0}^{1} 2 f(x) f'(x) \int_{0}^{x} t \ dt \ dx\\
+\end{align}
+
+Clearly $f(1)  = f^2(1)= f(0) = f^2(0) = 0$ so we have,
+\begin{align*}
+  \int_{0}^{1} f^2(x) &= - \int_{0}^{1} 2x f(x) f'(x) \ dx\\
+\end{align*}
+
+Now as $\int_{0}^{1} f^2(x) = 1$ we have, 
+
+\[
+  \int_{0}^{1} x f(x) f'(x) = \frac{-1}{2}
+\]
+
+Now note holders inequality with $p = q = 2$ we have for $g, h$ that,
+\[
+\int_{a}^{b} |g h| \le \left ( \int_{a}^{b} |g|^2\right )^{1 / 2} \left ( \int_{a}^{b} |h|^2\right )^{1 / 2}
+\]
+
+Take $g = f'(x)$ and $h= xf(x)$ with $a = 0, b = 1$ and note the following,
+\begin{align*}
+  \left |\int_{0}^{1} x f'(x) f(x) \right | &\le   \int_{0}^{1} \left |x f'(x) f(x) \right |\\
+                                            &\le \left ( \int_{a}^{b} |f'(x)|^2\right )^{1 / 2} \left ( \int_{a}^{b} |x f(x)|^2\right )^{1 / 2}
+\end{align*}
+
+But if $\int_{0}^{1} x'f(x) f(x) = \frac{-1}{2}$ then the absolute value is $\frac{1}{2}$ so we have, 
+\begin{align*}
+  \frac{1}{2} &\le \left ( \int_{a}^{b} |f'(x)|^2\right )^{1 / 2} \left ( \int_{a}^{b} |x f(x)|^2\right )^{1 / 2}
+\end{align*}
+squaring both sides we get, 
+\begin{align*}
+  \frac{1}{4} &\le \left ( \int_{a}^{b} |f'(x)|^2\right ) \left ( \int_{a}^{b} |x f(x)|^2\right )
+\end{align*}
+
+which is what we want.
+
+\end{proof}
+
+\vspace{1em}
+
+\textbf{Problem 2}
+
+\vspace{1em}
+
+\qquad 1. We construct $C_j$ as follows. First consider the union $\bigcup B_i$. Now let $r_{1}$ be an arbitrary radius and $k_{1}$ be some value greater than $r_{1}$ and $k_{1}$ defines the distance from the boundary. Now for each $B_i$ consider the subset of $B_i$ such that each point is distance at least $k_1$ from the boundary. Let $U$ be the union of this set of all our balls $B_i$. Now within this set $U$, we'll choose centers that are separated by some $\delta_{1}$. Now using these centers, we'll make an open ball with radius $r_{1}$. Let this set of balls be $W_{1}$. Now consider the region not covered by $W_{1}$ in $\bigcup B_i$ and we repeat the same process by consider $r_{1} /2, k_{1} / 2, \delta_{1} / 2$ in that we'll find points that are of distance atleast $k_{1} / 2$ from the boundary and ones that are separated by $\delta_{1}/2$ and we draw balls of radius $r_{1} / 2$ such that these balls don't cover any of the centers we've created earlier. We then repeat this process infinitely. Now note that we'll trivially have a countable number of centers which implies a countable set of $C_i's$. Similarly, we we're controlling the overlap by making sure a center isn't covered by more than one ball, and as distance from the boundary goes to zero, we ensure that any point in the union $\bigcup C_j$ is covered by some finite amount of $C_j$.
+
+\vspace{1em}
+
+\qquad 2. First we apply part 1 to get our countable $C_j$ such that $C_j \subset \overline C_j \subset B_i$. Now consider each $C_j$ and it's associative $B_i$. We will first define a smooth function $g_j$ such that $g_j$ is 1 inside $C_j$. To do this first consider the function $h(x) = e^{-1 / x} 1_{(0, \infty)}$. Now let $x_j \in R^{n}$ be the center of $C_j$, $r_j$ be the radius of $C_j$ and $\delta_j$ be the smallest distance from the boundaries. Now we define $g_j$ as,
+
+\[
+  g_j = \begin{cases}
+    1 \quad &\text{ for }dist(x, x_j) \le r_j / 2\\
+    \frac{h((r_j) - dist(x, x_j))}{h((r_j / 2) - dist(x, x_j)) +h(dist(x, x_j) - r_j / 2)} \quad &\text{ for } r_j / 2 \le dist(x, x_j) \le r_j \\
+    0 \quad &\text{ for } dist(x, x_j) \ge r_j
+  \end{cases}
+\]  
+
+Note essentially what we're doing is that we define our function to return $1$ in the ball centered at $x_j$ with radius  $r_j / 2$, we have it go from $0$ to $1$ in the ring i.e between the ball with radius $r_j$ and ball with radius $r_j / 2$ and $0$ outside $C_j$. Note that this also means that support of the function i.e where it's non-zero is $C_j$ (technically the limit as we go towards the boundary should be 0) and $g_j$ is also smooth as shown in previous hw.
+
+
+\vspace{1em}
+
+Now given an $x \in B_i$ define $f_j(x) = \frac{ g_j(x)}{\sum_j g_j(x)}$. The crux here is that because of local finiteness the bottom sum i.e $\sum_j g_j(x)$ is a finite sum as there is only a finite number of balls that cover $x$ and because of our construction of $g_j$ there is only a finite number of functions $g_j$ that have it's support as $C_j$ hence we have a finite sum. See that for $x$ $\sum_j f_j(x) = \sum_j  \frac{ g_j(x)}{\sum_j g_j(x)} = 1$ as required.
+
+
+\vspace{1em}
+
+\textbf{Problem 3}
+
+\qquad 1. We need to show that the set  $\overline{\{x : f  * \psi_{k}(x) \ne 0\}}$ is a compact set. It is enough to show it's closed and bounded. Now note that if $f * \psi_k(x)$ is non-zero then we know it is necessarily true that for some $y$ we have $f(y) \ne 0$ and $\psi_k(x - y) \ne 0$. In other words we need $y$ in support $f$ and $x - y$ in support $\psi_k$ or $x$ in $\text{supp } \psi_k + y$. Now note that we need to consider each $y \in \text{supp } f$. So we need to show that $\text{supp }\psi_k + \text{supp }f = \{x + y \mid x \in \text{supp }\psi_k, y \in \text{supp } f\}$ is compact. Clearly it's bounded because for any $x, y$ as defined in our set if we have $|x| \le M$ (as support $\psi$ is compact and hence bounded) and $|y| \le N$ then clearly we have $|x + y| \le |x| + |y| \le M + N$ for all $x,y$ and hence the sum is bounded. Now we  need to show that it's closed. In other words show that every convergent sequence converges within the set. Consider any sequence $(z_n)$ where $z_i$ is in $\supp \psi_k + \supp f$ now clearly $z_i = x_i + y_i$ where $x_i \in \supp \psi_k$ and $y_i \in \supp f$ by definition. Assume that $(z_n) \to z$. Now note that we have $(x_n) \to x$ and $(y_n) \to y$, we have this because both the supports are compact any sequence has a convergent subsequence. Now this implies $(z_n) = (x_n + y_n) \to (a + b)$ (note that technically we're considering the convergent subsequence of x and y but because $(z_n)$ is it's convergent by defintion, it is enough to find the limit of any subsequence of $(z_n)$ as all subsequent of a convergent subsequent share the same limit). But $x$ and $y$ are in the supports of $\psi_k$ and $f$ which imply $x + y \in \supp \psi_k + \supp f$ and hence $(z_n) $ converges to some limit that is within the set, making it closed. As we have closed and bounded we have compactness.
+
+\vspace{1em}
+
+Now we need to show smoothness. To show smoothness we essentially need to show that $\partial_x^{k} (f * \psi_k(x))$ exists for any $k \in N$. Start with $\partial (f * \psi_k)(x)$ and note that we're essentially doing, 
+\[
+  \lim_{h \to 0} \frac{\int_{R^{n}}^{}  f(y) \psi_k((x + hu)- y) \ dy - \int_{R^{n}}^{}  f(y) \psi_k(x- y) \ dy}{h}
+\]
+
+This can be rewritten as, 
+\begin{align*}
+  \lim_{h \to 0} \int_{R^{n}}^{} f(y) \frac{ ( \psi_k(x + hu- y) - \psi_k(x - y)}{h} \ dy
+\end{align*}
+
+We can non use weak dominated convergence to take the limit inside. To apply this first we note that we have $\lim_{h \to 0}  \frac{ ( \psi_k(x + hu- y) - \psi_k(x - y)}{h}  =\partial_x \psi_k(x - y)$ just by definition of derivative - this gives us pointwise convergence. Now note that we also bound  $ f(y) \frac{ ( \psi_k(x + hu- y) - \psi_k(x - y)}{h}$  above by some function of $\partial_x \psi_k$ we get this because $\psi_k$ is bounded - being smooth itself and the supports being compact. This allows us to take the limit inside the integral to get, 
+\[
+  \partial_x (f * \psi_k)(x) = \int_{R^{n}}^{} f(y) \partial_x \psi_k(x - y) \ dy
+\]
+
+However now note that we can continue doing this because $\partial_x^{n} \psi_k(x - y)$ exists because $\psi_k$ is a smooth function and hence is infinitely differentiable. Hence for any $n$ we can have $\partial_x^{n}(f * \psi_k)(x) = \int_{R^{n}}^{}  f(y) \partial_x^{n} \psi_k(x - y) \ dy$. This gives us smoothness of $f * \psi_k(x)$
+
+
+\vspace{1em}
+
+\qquad 2. We need to show that $\sup |f * \psi_k - f| \longrightarrow 0$ as $k \to \infty$. So we have, 
+\begin{align*}
+  |f * \psi_k(x) - f| &= \int_{R^{n}}^{}  f(y) \psi_k(x - y)  \ dy - f(x)  
+\end{align*}
+
+now we have $\int_{R^{n}}^{} \psi_k(x) \ dx = 1$ so we can use this to get, 
+
+\begin{align*}
+  |f * \psi_k(x) - f| &= \int_{R^{n}}^{}  f(y) \psi_k(x - y)  \ dy - \int_{R^{n}}^{}  f(x) \psi_k(x - y) \ dy\\
+                      &=  \int_{R^{n}}^{}  (f(y) - f(x)) \psi_k(x - y)  \ dy
+\end{align*}
+
+Now as $f$ is continuous and has a compact support it is uniformly continuous  and for any $\epsilon$ we have a $\delta$ such that when $|x - y| < \delta$ we have $|f(x) - f(y)| < \epsilon$. Now we note that using this $\delta$ as $k \to \infty$. Now as $\psi$ has a compact support we can cover it with a ball of radius say $R$. Now note that as $k \to \infty$ the support shrinks in size as well and hence the radius $R$ goes to zero. We see this as, if we need $\psi_k(x) > 0$ then we need $k^{n} \psi(kx) > 0$ or $\psi(kx)  > 0$ but this means we're outside the ball we made so $kx$ must be outside the ball and hence we just need a ball of radius $R / k$ i.e a smaller ball, implying as $k \to \infty$ the ball where $\psi_k$ is non-zero shrinks. 
+
+\vspace{1em}
+
+Now note that this means as $k \to \infty$ we just need to consider the integral over the ball $R / k$ which goes to zero, but as $f$ is uniformly continuous we can ensure that $|f(x) - f(y)| < \epsilon$ whenever $ |x- y| < \delta$. So we just need to take $k$ large enough such that $\psi_k$ is zero outside this $\delta$ ball. So we have something like, 
+\[
+  |f * \psi_k(x) - f(x)| \le \left ( \sup_{|x - y| \le R / k} |f(y ) - f(x)|\right ) \int_{R^{n}}^{}  \psi_k(x - y) \ dy
+\]
+note the reason why we just need to consider the supremum inside the ball of radius $R / k$ is becuase $\psi_k$ is zero outside anyways so the values of $f(y) - f(x)$ don't contribute. Now note that the integral on the right anyways goes to $1$ and as $f$ is uniformly continuous for all $\epsilon$ greater than zero we have some $\delta$ for which $|f(y) - f(x)| < \epsilon$ now we just need to pick $k$ such that $R / k < \delta $ or $k > R / \delta$. Which will then give us, 
+\[
+  \sup | f * \psi_k - f| \le \epsilon
+\]
+
+\end{document}

@@ -1,0 +1,157 @@
+\chapter{Euclidean Spaces}
+
+\section{Smooth Functions on Euclidean Space}
+Note that coordinates on $R^{n}$ are notated as $x^{1}, \dots, x^{n}$ so $p = (p^{1}, \dots, p^{n})$ is a point in some open set $U$ in $R^{n}$.
+
+\subsection{Smooth vs Analytic function}
+\begin{definition}[Smooth functions]
+  $f:U \to \R$ is $C^{k}$ at $p \in U$ if it's partial derivatives, 
+  \[
+    \frac{\partial^{j} f}{\partial x^{i_{1}} \dots \partial x^{i_j}}
+  \]
+  of all orders $j \le k$ exists and are continuous at $p$. Similarly $f$ is said to be $C^{\infty}$ or smooth if this is true for all $k \ge 0$.
+\end{definition}
+\begin{note}
+ The $i$'s in the denominator allow repeated index. 
+\end{note}
+\begin{eg}
+  \begin{enumerate}
+    \item A $C^{0}$ function  on $U$ is any continuous function on $U$.
+    \item If $f: \R \to \R$ be $f(x) = x^{1 / 3}$ then $f$ is $C^{0}$ but not $C^{1}$ at $x = 0$.
+    \item If we take the integral of $x^{1 / 3}$ that function is $C^{1}$ but not $C^2$ at $x = 0$.
+  \end{enumerate}
+\end{eg}
+
+
+
+\begin{definition}[Real-analytic function]
+  A function $f$ is real-analytic at $p$ if in some neighborhood of $p$ it is equal to it's Taylor series at $p$. So we have, 
+  \[
+    f(x) = f(p) + \sum_i \partial_{x^{i}} f(x^{i} - p^{i}) + \frac{1}{2!} \sum_{i, j} \partial_{x^{i}} \partial_{x^{j}} f(p) (x^{i} - p^{i})(x^{j} - p^{j}) + \dots
+  \]
+\end{definition}
+\begin{note}
+  Here, the function is not just approximated but is equal to it's Taylor series at that neighborhood.
+\end{note}
+\begin{remark}
+  A real-analytic function is \textbf{necessarily} smooth. We see this as we can infinitely differentiate the power series and because the function is equal to it we have infinitely differentiability of the function. Note however that a smooth function \textbf{need not} be real-analytic.
+\end{remark}
+\begin{eg}
+  Here is a smooth function that is not real-analytic,
+  
+  \[
+    f(x) = \begin{cases}
+      e^{-1 / x}  &\text{ for } x > 0\\
+      0 &\text{ for } x \le 0\\
+    \end{cases}
+  \]
+
+  We can easily show by induction this is smooth. But note the Taylor series at $x = 0$ in any neighborhood of zero is identically zero since all the derivatives $f^{(k)}(0)$ equal to $0$. But if we take any neighborhood around the origin for any $x > 0$ note that $f$ is a non-zero value. Hence, the function can never be equal to the Taylor series at any neighborhood around the origin.
+\end{eg}
+
+\subsection{Taylor's Theorem with Remainder}
+A subset $S$ of $R^{n}$ is star-shaped with respect to a point $p$ in $S$ if for every $x \in S$, the line segment from $p$ to $x$ lies in $S$.
+\begin{lemma}[Taylor's theorem with remainder]
+  Let $f$ be a smooth function on an open subset $U$ of $R^{n}$ star-shaped wrt a point $p = (p^{1}, \dots, p^{n})$. Then there are functions $g_{1}(x), \dots, g_n(x)$ smooth, such that, 
+  \[
+    f(x) = f(p) + \sum_{i = 1}^{n} (x^{i} - p^{i}) g_i(x), \quad g_i(p) = \partial_{x^{i}}  f(p)
+  \]
+\end{lemma}
+\begin{remark}
+  The usual taylors theorem linear approximation gives us a remainder term, but here the "error" correction is absorbed using the functions $g_i$ defined using $x^{i}$th derivative of $f$.
+\end{remark}
+\begin{proof}
+  As $U$ is star shaped for any $x$ in $U$ there is a line segment connecting $x$ and $p$, i.e $p + t(x - p)$ for $t \in [0, 1]$. So $f(p + t(x - p))$ is defined. Now we have, 
+  \[
+    \frac{d}{dt}f(p + t(x - p)) = \sum_{}^{} (x^{i} - p^{i}) \frac{\partial f}{\partial x^{i}} (p + t(x - p))
+  \]
+
+  Now integrating both sides we get, 
+  \[
+    f(p + t(x - p))]_0^{1} = \sum_{}^{} (x^{i} - p^{i})  \int_{0}^{1} \partial_{x^{i}} (p + t(x - p)) \ dt
+  \]
+
+  Now take, 
+  \[
+    g_i(x) = \int_{0}^{1}  \partial_{x^{i}}(p + t(x - p)) \ dt
+  \]
+
+  Now $g_i$ is smooth and we have,
+  \[
+    f(x) - f(p)  = \sum_{x^{}}^{}  (x^{i} - p^{i}) g_i(x)
+  \]
+
+  and, 
+  \[
+    g_i(p) = \partial_{x^{i}}(p)
+  \]
+  Now when $n = 1$ and $p = 0$ the lemma gives us, 
+  \[
+    f(x) = f(0) + xg_1(x)
+  \]
+
+  and as $g$ is smooth we can write, 
+  \[
+    g_i(x) = g_i(0) + xg_{i+ 1}(x)
+  \]
+
+  So doing this repeatedly we get, 
+  \begin{align*}
+    f(x) &= f(0) + x(g_{1}(0) + xg_{2}(x))\\
+         &= f(0) + xg_{1}(0) + x^2(g_{2}(0) + xg_{3}(x))\\
+         &\qquad \vdots\\
+         &= f(0) + g_{1}(0)x + g_{2}(0)x^2 + \dots + g_i(0)x^{i} + g_{i + 1}(x)x^{i + 1}
+  \end{align*}
+
+\end{proof}
+\subsection{Problems}
+
+
+\begin{problem}
+  Consider $f(x) = e^{-1 / x}1_{[0, \infty)}$, note that this function is smooth and we have $f^{(k)}(0) = 0$ for all $k \ge 0$. So the function is very flat at $0$.
+\end{problem}
+
+\begin{problem}
+  A diffeomorphism of an open interval with $\R$. A smooth function $f: U \to V$ is called a diffeomorphism if it is bijective and has a smooth inverse.
+  \vspace{1em}
+  
+  (a). Show that $f:[-\pi / 2, \pi / 2] \to \R, f(x) = \tan x$  is a diffeomorphism. First we need to show it's bijective. For injectivity note we have $f(x) = f(y) \implies \tan (x) = \tan(y)$ but as our domain is $[-\pi / 2, \pi / 2]$ and we know that $\tax x = \tan y$ implies that $y = 2pi i + x$ but the only value of $i$ for which $y$ is within our domain is $i = 0$ which gives us $x = y$. 
+
+  \vspace{1em}
+  
+  Now note that the codomain of the $\tan$ function is $\R$. So there exist some $x$ such that $\tan (x) = y$. Now as the cycle is length $2\pi$ there exists some $x_{0} \in [-\pi / 2, \pi / 2]$ such that $\tan(x_{0}) = \tan(x)$. So we have $\tax(x_{0}) = y$, so we have a surjection.
+
+  \vspace{1em}
+
+  Now we need to show the inverse is a smooth map. Note the inverse of $\tan (x)$ is $\tan^{-1}(x)$ whose derivative is $\frac{1}{1 + x^2}$. Note that however $\frac{1}{1 + x^2}$ is a smooth map. Hence, $\tan^{-1}$ is a smooth function.
+
+
+  \vspace{1em}
+  
+  (b). We need a function $h:[a,b] \to [-1, 1]$ that is a diffeomorphism. Just consider the linear function, 
+  \[
+    y= 1 + \frac{2\left(x-b\right)}{\left(b-a\right)}
+  \]
+
+\end{problem}
+
+\begin{problem}
+  $f: \R \to \R$ and $f(x) = x^{3}$. Then we have $f$ is bijective smooth map, but $f^{-1}(x) = x^{1 / 3}$ is not a smooth inverse map. So we can have a bijective smooth  map whose inverse is not smooth.
+\end{problem}
+\begin{remark}
+  For complex functions not that a bijective holomorphic (complex-differentiable) map necessarily has a holomorphic inverse.
+\end{remark}
+
+\section{Tangent Vectors in $\R^{n}$ as Derivations}
+We traditionally define a vector, 
+\[
+  v = \begin{bmatrix}
+    v^{1} \\ v^{2} \\ v^{3}
+  \end{bmatrix}
+\]
+
+as an arrow from the origin pointing to the point.
+\vspace{1em}
+
+A secant plane in a surface in $R^{3}$ is a plane determined by three points of the surface. As the three points approach a point $p$ the limit of the plane is the tangent plane. So a vector at $p$ is tangent to a surface if it lies in the tangent plane at $p$.
+

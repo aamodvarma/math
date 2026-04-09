@@ -1,0 +1,78 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\title{Analysis 2: HW1}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\textbf{Problem 1.}
+First let's apply taylors theorem on $f(x + h)$ and we have, 
+\[
+    f(x + h) = f(x) + hf'(x) + \frac{h^2}{2}f''(c)
+\]
+
+this gives us, 
+\[
+    f'(x) = \frac{f(x + h) -f(x)}{h} - \frac{h}{2}f''(c)
+\]
+
+Now bounding this we get, 
+\[
+    |f'(x)| \le \frac{|f(x + h) - f(x)|}{|h|} + \frac{|h|}{2}|f''(c)|
+\]
+
+But note we can bound the right side with $|f(x + h) - f(x)| \le 2m_{0}$ and $|f''(c) | \le m_{2}$ and this gives us, 
+\[
+    |f'(x)| \le \frac{2m_{0}}{|h|} + \frac{m_{2}|h|}{2}
+\]
+
+We know that $|f'(x)| \le m_{1}$ so our tightest bound is $m_{1}$ and since $x$ ranges from $(a, b)$ i.e the entire domain, we must also have $$m_{1} \le \frac{2m_{0}}{h} + \frac{h}{2}m_{2}$$
+
+Now as this inequality holds for all $x$ we can modify $h$ to further minimize the right hand size in order to get better bounds. We know that the maximum and minimum of the function is attained when it's derivative is zero. Clearly the function on the right does not have a maximum (as when $h \to 0$ $\frac{1}{h}$ is unbounded). Now for the minima, note the derivative of the right side is $\frac{-2m_{0}}{h^2} + \frac{m_{2}}{2}$ which is equal to zero. Solving for $h$ we have $h^2 = \frac{4m_{0}}{ m_{2}}$. Now squaring our inequality we have, 
+\begin{align*}
+    m_{1}^2 &\le 4m_{0}^2 \frac{1}{h^2} + h^2 \frac{1}{2^2} m_{2}^2 + 2m_{0}m_{2}\\
+    m_{1}^2  &\le m_{2}m_{0}  +m_{0}m_{2} + 2m_{0}m_{2} = 4m_{0}m_{2}
+\end{align*}
+
+
+
+
+
+\textbf{Problem 2.}
+\vspace{1em}
+
+(1.) Take $f(x) = \begin{cases}
+    x^2 \sin\left(\frac{1}{x} \right) & x \ne 0\\
+    0 & x = 0
+\end{cases}$ and note that this function in differenitable over $\R$ with derivative as, $f'$ which when $x \ne 0$ is $2x \sin \left ( \frac{1}{x}\right ) - \cos \left ( \frac{1}{x}\right )$  and when $x = 0$ is $0$ as we have, 
+
+
+    \begin{align*}
+        \lim_{h \to 0} \left((x^2 + h^2 + 2xh)\sin \left ( \frac{1}{x + h}\right ) - x^2 \sin \left ( \frac{1}{x}\right ) \right) \frac{1}{h}
+    \end{align*}
+    and at $x = 0$ note we get, 
+    \begin{align*}
+        \lim_{h \to 0}  h \sin \left ( \frac{1}{h}\right ) = 0
+    \end{align*}
+
+
+
+However, this means that $f'$ is not continuous at zero as $f'(0) = 0$ but $\lim_{x \to 0} f'(x)$ is not defined as $\cos \left ( \frac{1}{x}\right )$ does not converge to zero while $2x \sin \left ( \frac{1}{x}\right )$ goes to zero because of the $x$ term. More specifically we can show this as if we take the two sequence $(a_n) = \frac{1}{2n \pi}$  and $(b_n) = \frac{1}{(2n + 1)\pi}$ then the sequence $\left(\cos \left ( \frac{1}{a_n}\right ) \right)$  goes to $1$ but the sequence $\left ( \cos \left ( \frac{1}{b_n}\right )\right )$ goes to $0$. Since they converge to different values we can conclude that the limit doesn't exist.
+
+\vspace{1em}
+
+(2.) First consider the function $g(t) = f(t) - m(t - x)$. Note that we need to show there is $t$ such that $f'(t) = m$. Now first consider the case where we have $f'(x) < m < f'(y)$ (we can repeat the same argument in the other case as well), the first set of inequality gives us $f'(x) < m \implies f'(x) - m < 0$ but also note that $g'(x) = f'(x) - m$ so we have $g'(x) < 0$. Now, similarly we have $f'(y) > m \implies f'(y) - m > 0$ which means $g'(y) = f'(y) - m > 0$. So we have two inequalities, 
+\[
+    g'(x) < 0 \text{ and } g'(y) > 0
+\]
+
+Now if $g'(x) < 0$ we have $\lim_{h \to 0^{+}} \frac{g(x + h) - g(x)}{h} < 0$  which means for $h$ sufficiently close we have $g(x + h) - g(x) < 0$ or that $g(x + h)  < g(x)$ and hence for some $a_{1} \in (x, y)$ we have $g(a_{1}) < g(x)$, similarly we can find some $b_{1} \in (x, y)$ such that $g(b_{1}) < g(y)$. Now note that $[a_{1}, b_{1}]$ is a compact set and as $f$ is differenitable on $(x, y)$ it is also continuous in there and hence $g$ is also continuous in $(x, y)$  and therefore $[a_{1}, b_{1}]$. So $g$ attains it's maximum and minimum within the set. Consider the minimum and we have some $z \in [a_{1}, b_{2}]$ such that $g(z)$ is the minimum in this set. In other words $g(z) < g(z')$ for $z' \in [a_{1}, b_{1}]$, but this means we also have $g(z)$ the local minima in $(x, y)$ as we have $g(a_{1}) < g(x), g(b_{1}) < g(y)$. But now using rolles theorem we have that $g'(z) = 0$. But this gives us, 
+\begin{align*}
+    f'(z) - m &= g'(z)\\
+              &= 0
+\end{align*}
+Or that there is some $z \in (x, y)$ such that  $f'(z) = m$
+
+
+
+
+\end{document}

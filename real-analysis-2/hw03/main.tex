@@ -1,0 +1,117 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\title{Analysis 2: HW1}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\textbf{Problem 2.}
+\quad 1. We have $f(x) = e^{-1 / x} 1_{(0, \infty)}$. Now if we represent $g(x) = e^{x}$ and $h(x) = -\frac{1}{x}$ then we have $f(x) = g(h(x))$ and therefore $f'(x)= g'(h(x)) h'(x)$. which is $f'(x) = e^{-1 / x} \frac{1}{x^2} 1_{(0, \infty)}$. However, note we still need to show that it's differentiable at $0$. We have $\lim_{h \to 0} f(x + h) - f(x) / h =\lim_{h \to 0}  (e^{-1 / h} - 0) / h$. Clearly as $e^{x}$  exponentially increases compared to $x$, the expo natal term dominantes and the terms converge to $0$. So we can now write, 
+\[
+    f'(x) = e^{-1 / x} \frac{1}{x^2} 1_(0, \infty)
+\]
+
+which means when $x \in (0, \infty)$ the derivative is $e^{-1 / x} \frac{1}{x^2}$ otherwise it's $0$.
+
+Now note we can also represent this as $f'(x) = f(x) h'(x)$. Now we need to show that for any $n \in N$ that $f^{(n)}$ exists and is differential. We will do this using induction. We claim that for each $n \in N$, $f^{(n)}$ is of the form $f(x) P_n(h)$ where $P_n$ is some polynomial representation  of the derivatives of $h$ from 1 to $n$. Note that $h$ is smooth as we have $h^{(n)} = (-1)^{n + 1} \frac{1}{x^{n + 1}}$. If our inductive hypothesis is true this means that each our derivatives i.e $f^{(n)}$ is the product of two differentiable functions and we can then easily show the product is also differentiable by giving a formulation for the derivative. Our base case is trivial as we just showed it above i.e $f'(x) = f(x) h'(x)$. Now assume true for case $i$, so we have, 
+\[
+    f^{(i)}(x) = f(x) P_n(h)
+\]
+
+now find the derivative of this and we get, 
+\[
+    f^{(i + 1)}(x) = f'(x) P_n(h) + f(x) P_n(h)'
+\]
+But $f'(x) = f(x) h'(x)$ so, 
+\begin{align*}
+    f^{(i + 1)}(x) &= f(x) h'(x) P_n(h) + f(x) P_n(h)'\\
+                   &= f(x) (h'(x) P_n(h) + P_n(h)')
+\end{align*}
+
+Note however that $h'(x) P_n(h) + P_n(h)'$  will return just another polynomial say $P'_{n + 1}(h)$ and hence is of the same form. So we have, 
+\[
+    f^{(i + 1)} = f(x) P'_{n + 1}(h)
+\]
+Hence we show by induction that this is true for any arbitrary $n$. Now note that differentiaibility at $0$  is also guaranteed because of the exponential domination and is implicitly contained in the above formulation because of the definition of $f$ (0 at 0).
+
+\vspace{1em}
+
+\quad 2. Consider the following function, 
+\[
+    H(x)= \begin{cases}
+        0 \quad &\text{ for } x \le 0\\
+        \frac{f\left(x\right)}{f\left(1-x\right)+f\left(x\right)} \quad &\text{ for } 0 < x \le 1\\
+        1 \quad &\text{ otherwise }
+    \end{cases}
+\]
+
+
+\quad 3. We essentially need $\psi$ to be $1$ inside $B(0, 1)$, between 0 and 1 between the two balls and $0$ outside the $B(0, 2)$ ball. For a real valued function in $R^2$ we have, 
+
+\[
+    \psi(x, y) = \begin{cases}
+        1 \quad &\text{ for } \sqrt{x^2 + y^2} \le 1\\
+        \frac{f\left(2-\sqrt{x^{2}+y^{2}}\right)}{f\left(2-\sqrt{x^{2}+y^{2}}\right)+f\left(\sqrt{x^{2}+y^{2}}-1\right)} &\text{ for }1 < \sqrt{x^{2}+y^{2}} < 2\\
+        0 \quad &\text{ for } 2 \le \sqrt{x^2 + y^2} 
+    \end{cases}
+\]
+
+And for $\psi$ in $\R^{n}$ consider $x = (x_{1}, \dots, x_n)$, and denote $r = |x| = \sqrt{x_{1}^2 + \dots + x_n^2}$. Then our function is, 
+\[
+    \psi(x) = \begin{cases}
+        1 \quad &\text{ for } r \le 1\\
+        \frac{f\left(2-r\right)}{f\left(2-r\right)+f\left(r-1\right)} &\text{ for }1 < r < 2\\
+        0 \quad &\text{ for } 2 \le r 
+    \end{cases}
+\]
+
+\vspace{1em}
+
+% \textbf{Problem 3}
+
+% \qquad 1. Assume that $Q \cap [0, 1]$ is content zero, which imply that there exists finitely many open balls say $B_{1}, \dots, B_n$ that cover $Q \cap [0, 1]$. Now let these balls have centers and radius as $x_{1}, \dots, x_n$ and $r_{1}, \dots, r_n$ ordered $x_{1} < x_{2} < \dots < x_n$. Now, note that we have two cases
+% \begin{enumerate}
+%     \item All pairs $B_i$ and $B_{i + 1}$ have a non-empty intersection. Now note that this means if $L = \min \{x_i - r_i, x_{i + 1} - r_{i + 1}\}$ and $R = \max \{x_i + r_i, x_{i +1} + r_{i + 1}\}$ then we have $B_i \cup  B_{i + 1} = (L, R)$. The inclusion $B_i \cup  B_{i + 1}\subset (L, R)$ is trivial by construction of $(L, R)$. Now assume the other direction is false, so we have some $x \in (L, R)$ that is not in the union.  But now this $x$ cannot be to the left of both balls or to the right of both balls as $x$ is in $(L, R)$ which by construction prevents this issue. So the only option is $x$ is between the two balls. However if it's between the two balls then we have $x_i + r_i < x < x_{i + 1} - r_{i + 1}$ but  $x_i + r_i < x_{i + 1} - r_{i + 1}$ implies that the balls don't intersect and hence have an empty intersection. A contradiction. So we have $(L, R) \subset B_i \cup B_{i + 1}$. We can use induction to extend this to all of our balls $B_i, \dots, B_{i + 1}$. This gives us an interval $(L', R')$ that contains all of our balls. But now note that clearly $0, 1 \in (L', R')$  as it's a rational. This means  that $[0, 1] \subset (L', R')$ but. $[0, 1]$ is a set with measure $> 0$ which must mean that the total size of all our balls is not smaller than $\epsilon$ a contradiction.
+%     \item There exists one pair $B_i$ and $B_{i + 1}$ that have an empty intersection. Note that this means we have $x_i + r_i < x_{i + 1} - r_{i + 1}$. Now the rationals are dense in $\R$ so we can find a new rational between any two reals. Let the above two values be the reals we consider. So we can find a $q \in Q$ such that $x_i + r_i < q < x_{i + 1} - r_{i + 1}$. Clearly $q$ is not in either of the open balls and more generally is not in any of our open balls. This means that our finite balls do not cover $\Q$. A contradiction.
+% \end{enumerate} 
+
+% Both cases result in a contradiction which imply our assumption is wrong that our set is content-zero so we conclude the set is not content zero.
+
+% \vspace{1em}
+
+% To show that it is measure zero we need to produce a countable number of open sets that cover $Q$ such that the total size is smaller than $\epsilon$. Now as $\Q \cap [0, 1]$ is countable. So we can write it as $(q_{1}, q_{2}, \dots, )$. Now for each $n \in N$ given a fixed $\epsilon$ consider the open ball surrounding $q_i$ as $B(q_i, \frac{\epsilon}{2^{i + 2}})$. Now clearly in our construction for every rational we have a ball centered in it, so trivially we have $Q \cap [0, 1] \subset \bigcup_{i \in N} B_{i}$. Now we need to show that the total size of $B_i$ is smaller than $\epsilon$. Now if $r_i$ is the radius of each ball then the total size is, 
+% \begin{align*}
+%     \sum_{n = 1}^{\infty} 2 r_i &=  \sum_{n = 1}^{\infty} 2 \frac{\epsilon}{2^{i + 2}}\\
+%                                 &=  \frac{\epsilon}{2} \sum_{n = 1}^{\infty}  \frac{1}{2^{i}}\\
+%                                 &= \frac{\epsilon}{2} \cdot 1
+% \end{align*}
+
+% as $\sum_{n = 1}^{\infty} \frac{1}{2^{i}} = 1$. So we have the total size is $\frac{\epsilon}{2} < \epsilon$. 
+
+
+% \vspace{1em}
+
+% \qquad 2. No, $1_\Q$ is not Riemann-integrable on $[0, 1]$ as the discontinuity set is not measure zero. More specifically the discontinuity set is all of $[0, 1]$ as assume that a point $x_{0}$ continuous, so for a given choice of $\epsilon$ there is some $\delta$ such that for points in the $\delta$ neighborhood of $x_{0}$ we have $f(x)$ is the $\epsilon$ neighrbohood of $f(x_{0})$. Now choose $\epsilon = 1 / 2$, and we have $\delta = \delta_{1 / 2}$. First if $x_{0}$ is a rational, as irrationals are dense in $\R$ we can find a irrational in the delta neighborhood of $x_{0}$. Let this be $x_{1}$. This meannns we have $|x_{0} - x_{1}| < \delta_{ \frac{1}{ 2}}$ but note $f(x_{0}) = 1$  and $f(x_{1}) = 0$ which means $|f(x_{0}) - f(x_{1})| > \epsilon$ a contradiction. We can do the same for the case where $x_{0}$ is irrational as the rationals are dense in $\R$ as well. This means that for any point  $x_{0} \in [0, 1]$ our function is discontinuous.
+
+% \vspace{1em}
+
+% \qquad 3. Consider the function, 
+% \[
+%     f(x) = \begin{cases}
+%         \frac{1}{q} \quad &\text{ if $p, q$ coprime and } x = p / q, p \in \Z+, q \in \N  \\
+%         0 \quad &\text{ otherwise }
+%     \end{cases}
+% \]
+
+
+% Now we show the discontinuity set is $\Q \cap [0, 1]$. Consider some $x_{0} \in  \Q \cap [0, 1]$. As $x_{0}$ is rational we can write it as $p / q$ where $p, q$ co prime and $q \ne 0$. So by definition we have $f(x_{0}) = 1 / q$. Now choose $\epsilon = 1 / q$ and consider the corresponding $\delta$. Clearly because of density or irrationals in reals we can find some irrational in $B(x_{0}, \delta)$ say $x_{1}$. So we have $x_{1} \in I$ such that $|x_{1} - x_{0} | < \delta$ but we have $|f(x_{1}) - f(x_{0})| = |f(x_{0})| = 1 / q \ge \epsilon$ which means that $f$ is discontinuous at $x_{0}$.
+
+% \vspace{1em}
+
+% Now we need to show continuity at irrationals, note we essentially need to show there exists some $\delta$ neighborhood around every irrational $z \in I$  such that for any rational $x_{0} = p / q$ in that neighborhood we have $|1 / q| < \epsilon$ or $q > 1 / \epsilon$. Now consider the points in $[0, 1]$ for which this is not true, i.e for which we have $f(x) = f(p / q) = 1 / q \ge \epsilon$ for a choice of $\epsilon$. Now clearly as $q \in N$ there are only a finite number of natural numbers that satisfy this, and as $p \in N$ as well there are only finite ways to choose $p$ such that $p / q \in [0, 1]$. The point being there are only finite numbers of $x's$ for which for a given $\epsilon$ we have $f(x)  = 1 / q \ge \epsilon$. So for a given irrational $z$ we just need to compute the distance from $z$ to each of these finite points and choose the minimum say $d$. And choose $\delta = d / 2$. So clearly in this delta neighborhood we don't have points for which $f(x) = 1 / q \ge \epsilon$ which must mean we have $|f(x) - f(z)| = f(x) = 1 / q < \epsilon$ and hence we have continuity. (if we choose an irrational in the neighborhood it's trivial as f returns 0 for irrationals.)
+
+% \vspace{1em}
+
+
+% Where $f$ is continuous $f$ is always $0$, hence the integral must be $0$ as well.
+\end{document}
+

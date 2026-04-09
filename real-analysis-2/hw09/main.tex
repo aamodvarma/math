@@ -1,0 +1,57 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\title{Analysis 2: HW9}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\textbf{Problem 1.}
+First denote the minimum distance from a point in $U$ to $v$ as $d$ so we have $d = inf_{u \in U} \norm{v - u}$ and now we need to show that there exists a sequence in $U$ i.e $(u_n)$ that converges to some $u$ such that $u$ has the smallest distance from $v$ and $u$ is denoted the projection of $v$ onto $U$. So essentially we  need to show that $(u_n)$ is a Cauchy sequence in $U$ and converges within the set. So note that we have, 
+\[
+  \norm{u_m - u_n}^2 = \norm{(u_m - v) - (u_n - v)}^2 = 2 \norm{u_m - v}^2 + 2 \norm{u_n - v}^2 - \norm{u_m + u_n - 2v}^2
+\]
+
+We can now bound this to $\norm{u_m - u_n}^2 \le 0$ which means it Cauchy. So this means that $(u_n) \to u$ and hence there exists a limit which is the projection of $v$ onto $U$. We can now easily show that if we have $u$ and $u'$ two limits that they need to be equal because using the parallelogram law again but with $u$ and $u'$.
+
+\vspace{1em}
+Now take some arbitrary $v$ and let $u_{0}$ be the projection on $U$ as defined above. Now we need that $v - u_{0}$ is perpendicular to $U$ or that for any $u \in U^{\perp}$ we have $u \perp (v - u_{0})$. 
+
+\vspace{1em}
+
+Now we need to show that $U \bigoplus U^{\perp} = H$, first clealry we know that $U \cap U^{\perp} = \{0\}$ because if $x$ is in the intersection then $\langle x, x \rangle = 0$ which implies that $x = 0$. Now we need to show that $H = U + U^{\perp}$. So take some $v \in H$ and note that $u_{0} = proj_U (v)$ then we have $v = u_{0} + (v - u_{0})$ where $u_{0} \in U$ and $v-u_{0} \in U^{\perp}$ as above, hence we have $v \in U + U^{\perp}$.
+
+% \textbf{Problem 2.}
+% \begin{enumerate}
+%   \item Since $\phi$ is continuous and bounded, we know that $H_{0} = \phi^{-1}(\{0\})$ is the preimage of a closed set and hence is also closed (because of continuity). Now note that we cannot have $H_{0}^{\perp} = \{0\}$ because we know that $\phi \not \equiv 0$ which implies that there is some $v \in H$ such that $\phi(v) \ne 0$ hence we have $v \not \in H_{0}$ or that $H_{0} \ne H$, but if $H_{0}^{\perp} = \{0\}$ then we have $H = H_{0}$ hence we cannot have $H_{0}^{\perp} = \{0\}$.
+
+%     \vspace{1em}
+    
+%     Now we need to show that every element of $H_{0}^{\perp}$ is a scalar multiple of some arbitrary choice of $v \in H_{0}^{\perp}$ with $v \ne 0$. First note that $v \not \in H_{0}$ and we know that since $\norm{v}^2 > 0$ we have $\phi(v) \ne 0$. Now take some other $w \in H_{0}^{\perp}$ and note we get, 
+%     \[
+%       w - \frac{\phi(w)}{\phi(v)}v \in H
+%     \]
+%     Now apply $\phi$ on this and we get this equal to $0$ implying that the above is in $H_{0}^{\perp}$ (since it's in the null space of $\phi$). But that means we have $w = \frac{\phi(w)}{\phi(v)} v$ or essentially that $w$ is a scalar multiple of $v$ which is what we want.
+
+%   \item We need to find $\alpha_{\phi} \in H$ such that $\phi(v) = \langle v, \alpha_{\phi} \rangle$, $\forall v \in V$. Choose $v \in H_{0}^{\perp}$ with $v \ne 0$ and since $H = H_{0} \bigoplus H_{0}^{\perp}$ from  Q1 we have $v = v_{0} + \lambda u$ for $u \in H_{0}^{\perp}$ and note that $\phi(v) = \phi(v_{0}) + \lambda \phi(u) = \lambda \phi(u)$  as $v_{0}$ is in the null space of $\phi$. Now note that, 
+%   \[
+%     \phi(v) = \lambda \phi(u) = \frac{ \phi(u)}{\norm{e}^2} \langle v, u \rangle = \langle v, \frac{\phi(u)}{\norm{u}^2}u\rangle
+%   \]
+
+%   So note we can choose $\alpha_{\phi}$ as the rightsize of inside the inner product in the above.
+
+% \end{enumerate}
+
+% \textbf{Problem 3}
+% We have, 
+% \[
+%   \sum_{k \in Z^{n}}^{} \langle k \rangle^{2 \alpha} = \sum_{k \in Z^{n}}^{}  (1 + |k|^2)^{\alpha}
+% \]
+
+% Note that the norm itself is the square root of the above, but showing that the above is smaller than $\infty$  would be enough.
+
+% \vspace{1em}
+
+% Now note that we have $|k|^{2\alpha} \lesssim (1 + |k|^2)^{\alpha} \lesssim |k|^{2\alpha}$. So it is enough to show that $\sum_{k \in Z^{n}}^{} |k|^{2\alpha} < \infty$. Now we can rewrite this as $\sum_{K = 0}^{\infty} \sum_{k \in Z^{n}}^{} |k|^{2\alpha}$  where we take on the inner sum that $K \le |k| \le K + 1$ so this is sim to $\sum_{K = 1}^{\infty}  K^{2\alpha} K^{n - 1} = \sum_{K = 1}^{\infty} K^{2\alpha + n - 1}$ but for this to converge we need $2\alpha -n$ clearly so that the exponent is $-1$ or smaller.
+\end{document}
+
+

@@ -1,0 +1,73 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\title{Analysis 2: HW8}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\textbf{Problem 1.}
+
+1. So we know that, 
+\[
+  C_{1} \norm{v}_2  \le \norm{v}_1 \le C_{2} \norm{v}_2, \forall v
+\]
+
+now consider an open set $V$ under $\norm{\cdot}_1$, so for all $v \in V$ we have exists some $\epsilon$ such that for any $v'$ for which we have $\norm{v - v'}_1 < \epsilon$ we have $v' \in V$. Now note that we have, 
+\[
+  C_{1} \norm{v - v'}_2  \le \norm{v - v'}_1 \le C_{2} \norm{v - v'}_2
+\]
+
+or that $C_{1} \norm{v - v'}_2  \le \norm{v - v'}_1 < \epsilon$ which implies that,  $\norm{v - v'}_2 < \frac{\epsilon}{C_{1}} = \epsilon'$. So essentially we have for all $v \in V$, there is some $\epsilon$ i.e $\epsilon' = \epsilon C_{1}$ such that for any $v'$ for which we have $\norm{v - v'}_2 < \epsilon'$ we have $v' \in V$ implying that that $V$ is open under $\norm{\cdot}_2$.
+
+
+\vspace{1em}
+2. We need to show that for any two norms $\norm{\cdot}_1$ and $\norm{\cdot}_2$ in $R^{n}$ we have, 
+\[
+  C_{1} \norm{v}_2  \le \norm{v}_1 \le C_{2} \norm{v}_2, \forall v
+\]
+
+First we show that for any norm $\norm{\cdot}_*$ we have $\norm{\cdot}_* \le C\norm{\cdot}_{l^{\infty}}$. Or essentially we need to show that for any $v \in V$ that $\norm{v}_* \le C \max_i |v_i|$. First let $m = \max_i |v_i|$, now consider $ u =  v / m$  i.e $v = m u$ where $m$ is scalar and $u$ is a vector. Now using properties of norm take, $\norm{v}_* = \norm{mu}_* = |m| \norm{u}_*$. But note that $u$ is such that for all components $u_i$ we have $|u_i| \le 1$. Now it is enough to show that $\norm{u}_*$ is bounded in the unit sphere (of the $l^{\infty}$ norm). We can do this by showing that the norm is a continuous function and that the set we're considering is compact which by EVT implies that we have a maximum and hence the norm is bounded. First for compactness choose any sequence in $(u_n)$ in our unit sphere. Now note that when considering the limit of this sequence in $R^{n}$, for each individual components as all of them are smaller than equal to 1, the maximum value they can converge to is $1$ and hence is still in the unit sphere. This gives us closedness and clearly these values are bounded. So we have compactness. Next note that using triangle inequality property of norms, for any $\epsilon$ we have $| \norm{v}_* - \norm{u}_* | \le \norm{v - u}_* < \epsilon$ (essentially if we take $\delta = \epsilon$ we have by definition continuity). So by this we have the norm is bounded above in the unit circle defined above and hence we have $\norm{v}_* \le C \norm{v}_{l^{\infty}}$. Now note that for any norm $\norm{v}_2$ we also have $\norm{v}_{l^{\infty}} \le C_{2}\norm{v}_2$. So note this gives us $\norm{v}_1 \le C_{2} \norm{v}_2$. Now point the same in the other direction we have $\norm{v}_2 \le C \norm{v}_{l^{\infty}} \le C C' \norm{v}_1$ and hence $\frac{1}{CC'}} \norm{v_{2}} \le \norm {v_{1}}$. Putting this all together we have, 
+\[
+  C_{1}\norm{v_{2}} \le \norm{v}_1 \le C_{2} \norm{v}_2
+\]
+
+
+\vspace{1em}
+
+\textbf{Problem 2.} We have $T \in L(V)$ where $V$ is Banach. We also have $L(V)$ is Banach. Now because $L(V)$ is Banach we know that any Cauchy sequence in it will converge within the set. So it is enough to show that the sequence of partial sums, 
+\[
+  S_n = \sum_{k = 0}^{n} \frac{T^{k}}{k!}
+\]
+forms a Cauchy sequence. Note that $S_m - S_n$  is, 
+\[
+  \norm{S_m - S_n} = \norm{\sum_{k = n + 1}^{m}  \frac{T^{k}}{k!}}
+\]
+
+Now $L(V)$ has the operator norm ie. $\norm{A} = \sup_{\norm{v} =1}\norm{{T(v)}}$ note that this gives us $\norm{T^{k}} \le \norm{T}^{k}$. So we have, 
+\begin{align*}
+  \norm{S_m - S_n}  &=  \norm{\sum_{k = n + 1}^{m}  \frac{T^{k}}{k!}} \\
+                    &= \norm{\frac{T^{n + 1}}{(n + 1!)} + \dots +\frac{T^{m}}{m!}}\\
+                    &\le  \norm{\frac{T^{n + 1}}{(n + 1!)}} \dots \norm{\frac{T^{m}}{m!}}\\
+                    &\le \frac{\norm{T}^{n + 1}}{(n + 1)!} + \dots  + \frac{\norm{T}^{m}}{m!}\\
+\end{align*}
+
+now note that $\norm{T} = x \in \R$  and hence on the right we have the sums $S'_m - S'_n$ of the sequence $\sum_{k = 1}^{\infty} \frac{x^{k}}{k!}$ which is convergent (as in $R$ it's just $e^{x}$). This means that for all $\epsilon > 0$ we have some $N$ such that for any $m >  n > N$  we have $|S_m' - S_n'| < \epsilon$ and hence take the same $m, n, N$ we also get, 
+\[
+  \norm{S_m - S_n} \le |S_m' - S_n'| \le \epsilon
+\]
+which implies that we have  a cauchy sequence and hence convergence as $L(V)$ is  Cauchy complete.
+
+
+\vspace{1em}
+
+\textbf{Problem 3.}
+
+First we show it's a solution. So we have $u'(t) = Ae^{tA}p = A u(t)$ and we also have $u(0) = e^{0A}p = p$. Hence it's a solution. Now to show it's unique assume we have another solution say $w(t) = e^{tA} f(t)$, so we have $w'(t) = Ae^{tA} f(t) + f'(t) e^{tA} = A w(t) + f'(t) e^{tA} = A w(t)$ which implies that $f'(t) e^{tA} = 0$ but we know that $e^{tA}$ is non-zero, so this must mean $f'(t) = 0$ or $f$ is constant. But if it's constant then it has to be $p$ to satisfy $w(0) = p$.
+
+\vspace{1em}
+
+Now we have $A$ is symmetric with all negative eigenvalues. Now using spectral decomposition we have $A = \sum_{n = 1}^{n} \lambda_i v_i v_i^{T}$ so this means we get $e^{tA} = \sum_{i = 1}^{n} e^{t\lambda_i} v_i v_i^{T} $ now take the limit as $t$ goes to zero and since $\lambda_i$ is negative note that $e^{t\lambda_i}$ is smaller than zero and we can show that $u(t) = e^{tA} \to 0$
+
+
+\end{document}
+

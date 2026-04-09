@@ -1,0 +1,117 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\title{Analysis 2: HW6}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+% \textbf{Problem 1.}
+% We have $\Delta u = \sum_{i= 1}^{n} \partial_{ii} u = 0$
+
+% \qquad 1. First we show that $u(x) = \frac{1}{|\partial B(x, r) |} \int_{\partial B(x, r)}^{}  u \ dS$. So consider,
+% \[
+%     \frac{1}{|\partial B(x, r) |} \int_{\partial B(x, r)}^{}  u \ dS
+% \]
+
+% and we can write this as, 
+
+
+% \[
+%     \int_{\partial B(x, \rho)}^{} u \ dS = \int_{\partial B(0, 1)}^{} u (x + r \theta) r^{n - 1} dS(\theta)
+% \]
+
+% Now differentiating and applying $\Delta u = 0$ we can get, 
+% \[
+%     u(x) = \frac{1}{\left |\partial B(x, r) \right |} \int_{\partial B(x, r)}^{} u \ dS
+% \]
+
+% now we need to show the volume average part, so we can write the volume integral as, 
+% \begin{align*}
+%     \int_{B(x,r)}^{}  u = \int_{0}^{r} \left ( \int_{\partial B(x, \rho)}^{} u \ dS\right ) \ d \rho
+% \end{align*}
+
+% but note that we have, 
+% \[
+%     \int_{\partial B(x, \rho)}^{} u dS = \left | \partial B(x, \rho)\right | u(x)
+% \]
+
+% putting that in we get, 
+% \[
+%     \int_{B(x, r)}^{} u = u(x) \int_{0}^{r} \left | \partial B(x, \rho)\right | d \rho = u(x) \left | B(x, r)\right |
+% \]
+
+% which gives us, 
+% \[
+%     u(x) = \frac{1}{\left | B(x, r)\right |} \int_{B(x, r)}^{} u
+% \]
+
+
+% \vspace{1em}
+
+% 2.  We have $\phi$ such that $\int_{R^{n}}^{}  \phi = 1$. So,
+% \begin{align*}
+%     u(x) = (u * \phi)(x) = \int_{R^{n}}^{} u(x - y)\phi(y) \ dy
+% \end{align*}
+
+% Now given $\Delta (u * \phi)(x)$ and  that $\Delta u = 0$ we can apply $\Delta$ to both to get $\Delta (u * \phi) = 0$. Now apply (1) to the function $f = (u * \phi)$ to get,
+% \[
+%     f(x) = \int_{}^{} u(x - y) \phi(y) dy = u(x)
+% \]
+
+% so this means $f = u * \phi = u$. And since $u * \phi$ is smooth, we have $u$ is smooth.
+
+
+% \vspace{1em}
+
+% \textbf{Problem 2}
+% \qquad  Choose $x \ne y$ and take $u(x), u(y)$ as, 
+% \[
+%     u(x) = \frac{1}{\left | \partial B (x, r)\right |} \int_{\partial B(x, r)}^{} u(x) d S
+% \]
+% and, 
+
+% \[
+%     u(y) = \frac{1}{\left | \partial B (y, r)\right |} \int_{\partial B(y, r)}^{} u(y) d S
+% \]
+
+% now choose large enough $r$ relative to $x$ and $y$ so that the surfaces of the balls centered at $x$ and $y$ are basically the same. Now note that, 
+% \[
+%     |u(x) - u(y)| = \left | \frac{1}{\left | \partial B (x, r)\right |} \int_{\partial B(x, r)}^{} u(x)  -  \frac{1}{\left | \partial B (y, r)\right |} \int_{\partial B(y, r)}^{} u(y)  \right |
+% \]
+
+% now note that this can be bounded inversely by $r$  so we have, 
+% \[
+%     |u(x)  - u(y) | \le \frac{C}{r}
+% \]
+
+% for some constant $C$. So if $r$ is very large we have this goes to zero and $u(x) = u(y)$
+
+
+% \vspace{1em}
+
+\textbf{Problem 3}.
+We have $u$ is continuous and that, 
+\[
+    \int_{R^{n}}^{}  u \Delta \psi = 0
+\]
+
+we need to show that $u$ is smooth and $\Delta u = 0$.
+\vspace{1em}
+
+We can approximate $u$ using the convolution between $u$ and $\phi$ where we define $\phi = \frac{1}{\epsilon^{n}} f$ where $\int_{}^{}f = 1 $. And now note that we  get $u_{\epsilon} = u * \phi$ but if we take $n$ to infinity then we have the approximation of $u_{\epsilon} \to u$. Now note that, 
+\[
+    \Delta u_{\epsilon} = u * \Delta \phi = \int_{R^{n}}^{}  u(y) \Delta \phi(x - y) dy
+\]
+
+but the RHS is zero so we have $\Delta u_{\epsilon} = 0$. But now use the notating from (1) to get, 
+\[
+    u_{\epsilon}(x) = \frac{1}{\left | B(x, r)\right |} \int_{B(x, r)}^{}  u_{\epsilon}(y) dy
+\]
+
+and take $\epsilon \to 0$ then as we have $u_{\epsilon} \to 0$ we have $u$ also gets the same property.
+
+\vspace{1em}
+
+So we showed that $u$ is smooth and  $\Delta u = 0$
+
+\end{document}
+

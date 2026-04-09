@@ -1,0 +1,349 @@
+\chapter{Differentiation}
+    
+\section{Differentiability}
+\begin{definition}
+    Let $f: R^{n} \to R^{m}$. We say that $f$ is \textbf{Gateaux-differentiable} at $p \in R^{n}$ when there is  a \textbf{linear function} $f'(p): R^{n} \to R^{m}$ such that, 
+    
+    \[
+        \lim_{t \to 0} \frac{f(p + tu) - f(p)}{t} = f'(p) u
+    \]
+    for any $u \in R^{n}$
+\end{definition}
+\begin{remark}
+    This is basically just the directional derivative with a linear function as the derivative at a specif
+\end{remark}
+
+\begin{definition}
+    We say $f$ is \textbf{Frechet-differentiable} at $p$ when $f$ is Gateuax-differenitable at $p$ and, 
+    \[
+        f(p + u) = f(p) + f'(p) u + \epsilon(u)\left | \left | u\right |\right |
+    \]
+    where $\epsilon: R^{n} \to R$ satisfies, 
+    \[
+        \lim_{u \to 0} \epsilon(u) = 0
+    \]
+\end{definition}
+\begin{remark}
+    The point here is that in all directions the error uniformly goes to zero.
+\end{remark}
+\begin{remark}
+    In 1D, they are both the same.
+\end{remark}
+
+\begin{eg}
+    Consider, 
+    \[
+        f(x, y) = \begin{cases}
+            \frac{x^{3}}{x^2 + y^2} & \text{ at }(x, y)  \ne 0\\
+            0 & \text{ at }(x, y) = 0
+        \end{cases}
+    \]
+
+    Now note we have the derivative at $(x, y) = 0$ as, 
+    \begin{align*}
+        f'(0, 0) (a, b) &= \lim_{t \to 0} \frac{f((0, 0) + t(a, b))}{t}\\
+                        &= \lim_{t \to 0} \frac{f(ta, tb)}{t}\\
+                        &= \frac{1}{t}\frac{(ta)^{3}}{(ta)^2 + (tb)^2}\\
+                        &= \frac{t^2a^{3}}{(ta)^2 + (tb)^2}\\
+                        &=  \frac{a^{3}}{a^2 + b^2}
+    \end{align*}
+
+    however note that the derivative is not linear in the direction.
+\end{eg}
+\begin{eg}
+    Consider, 
+    \[
+        f(x, y) = \begin{cases}
+            \frac{x^{3} y}{x^2 + y^2} & \text{ at }(x,y) \ne 0\\
+                                      0& \text{ at }(x, y) = 0
+        \end{cases}
+    \]
+
+    We have, 
+    \begin{align*}
+        f'(0)(a, b) &= \lim_{t \to 0} \frac{f(ta, tb) - f(0)}{t}\\
+                    &= \lim_{t \to 0} t \frac{a^{3}b}{a^2 + b^2}\\
+                    &= 0
+    \end{align*}
+
+    Which is linear in direction. So it is Gateaux differentiable, now note for Frechet differentiable we have, 
+    \begin{align*}
+        \lim_{(a, b) \to 0}  \frac{f(a, b)}{\left | \left | (a, b)\right |\right |} &= \lim_{(a, b) \to 0}  \frac{a^{3}b}{a^2 + b^2} \frac{1}{\sqrt{a^2 + b^2}} \\
+                                                                                    &= \lim_{(a, b) \to 0} \left | \left ( \frac{a^2}{a^2 + b^2} \right)\left ( \frac{a}{\sqrt{a^2 + b^2}}\right )b\right |\\
+                                                                                    &\le \lim |b| = 0
+    \end{align*}
+\end{eg}
+
+
+\begin{theorem}
+    If $f $ is differentiable at point $c$ then $f$ is continuous at that point as well.j
+\end{theorem}
+\begin{proof}
+    Let $f$ be differentiable at $c$, by definition we have, $\forall \epsilon > 0$ exists $\delta $ such that if $|x - c| < \delta_{0} $ then we have, 
+    \[
+        \left| \frac{f(x) - f(c)}{x - c} - f'(c)\right| < \epsilon
+    \]
+
+    Now expanding this out we have, 
+    \begin{align*}
+        \left| f(x) - f(c) - f'(c)(x - c)\right| &< \epsilon |x - c|\\
+        \left| f(x) - f(c) \right |  &< \epsilon |x - c| + |f'(c)(x - c)|\\
+                                     &<  \epsilon |x - c| + |f'(c)| |(x - c)|\\
+                                     &< |x - c| (\epsilon  + |f'(c)| )
+    \end{align*}
+
+    Now simply choose $\epsilon = 1$  and we have,
+    \begin{align*}
+        \left| f(x) - f(c) \right |  &< |x - c|(1 + |f'(c)|)\\
+    \end{align*}
+
+    Now note that we simply can choose $\delta$ such that $|x - c| < \delta = \min \{\delta_{0}, \frac{\epsilon}{1 + |f'(c)|}\}$ for any choice of $\epsilon$ and we have $\forall \epsilon > 0$ a $\delta$ such that, 
+    \[
+        \left| f(x) - f(c) \right |  &< |x - c|(1 + |f'(c)|) < \epsilon
+    \]
+    which by definition mean that $f$ is continuous at $c$.
+\end{proof}
+\begin{note}
+    Note that the converse is not true that if a function is continuous it is differential. Take for example $f(x) = |x|$
+\end{note}
+
+\section{Mean Value Theorems}
+
+Let $f: A \to B$ and $f$ be continuous. Then if $A$ is compact, so is $f(A) \subseteq B$, and if $B \subseteq R$, then $f$ has a max and min on $A$.
+
+\begin{theorem}[Interior Maximum Theorem]
+    Let $A \subseteq R^{n}$. Assume that $p \in int(A)$ is a local max point for $f:A \to R$. Then if $f$ is Gateaux differentiable at $p$, then, 
+    \[
+        f'(p) = 0
+    \] 
+\end{theorem}
+\begin{proof}
+    First note that,
+    \begin{align*}
+        f'(p) u &= \lim_{t \to 0^{+}} \frac{f(p + tu) - f(p)}{t}
+    \end{align*}
+
+    And as $f(p)$ is the max then $f(p + tu) \le f(p)$ and $f(p + tu) - f(p) \le 0$ which gives us $f'(p) u \le 0$
+
+    Simlalrly we have, 
+    \begin{align*}
+        f'(p) u &= \lim_{t \to 0^{-}} \frac{f(p + tu) - f(p)}{t}
+    \end{align*}
+    And here we have $f'(p) u\ge 0$. Both these give us, 
+    \[
+        f'(p) = 0
+    \]
+\end{proof}
+\begin{theorem}[Rolle's Theorem]
+    Suppose that $f$ is continuous on $[a, b]$ and derivative exists in $(a, b)$ and that $f(a) = f(b) = 0$. Then there exists a point $c$ in $(a, b)$ such that $f'(c) = 0$.
+\end{theorem}
+\begin{proof}
+    
+   Case 1: $f$ is identically zero  in it's domain. In this case for all points in $c \in (a, b)$ we have $f'(c) = 0$
+
+   \vspace{1em}
+   
+   Case 2. If $f$ is not identically zero, there there exists some value in $(a, b)$ that is either smaller or greater than $0$. Now clearly $[a, b]$ is compact and hence a continuous function $f$ attains it's maximum or minimum within the set. We also established that $f(a)$ and $f(b)$ cannot be the maximum and minimum in this case. Hence, there must exists some $c \in (a, b)$ which is either the local maxima or the local minima. In either of the cases we have $f'(c) = 0$
+\end{proof}
+
+
+\begin{theorem}[Mean value theorem]
+    Let $f$ be a real valued function continous on $[a, b]$ and differentiate on $(a, b)$. Then, there is a $c \in (a, b)$ such that, 
+    \[
+        \frac{f(b) - f(a)}{b - a} = f'(c)
+    \]
+\end{theorem}
+\begin{proof}
+    First we'll construct $h$ which is the slope of the points connecting $a$ and $b$. Consider $h(x) = mx + p$. So we need $h(a) = f(a)$ and $h(b) = f(b)$. So we have, $h(a) = ma + p = f(a)$ and $mb + p = f(b)$ which give us $m = \frac{f(b) - f(a)}{b - a}$ and $p = f(a) - ma$.
+
+    \vspace{1em}
+    
+    Now consider $g(x) = f(x) - h(x)$ and note that $g(a) = g(b) = 0$. Clearly we can use Rolles theorem to get some $c \in (a, b)$ such that $g'(c) = 0$. But we have $g'(x) = f'(x) - h'(x)$ so $f'(c) = h'(c)$. But $h'(c) = m = \frac{f(b) - f(a)}{b - a}$. Hence, we found $c$ such that $f'(c) = \frac{f(b) - f(a)}{b - a}$. 
+\end{proof}
+
+\begin{theorem}[Cauchy MVT]
+    Let $f, g$ be defensible on $(a, b)$ and continuous on $[a, b]$. Then if $g(b) \ne g(a)$ there exists $c \in (a, b)$  such that, 
+    \[
+        \frac{f(b) - f(a)}{g(b) - g(a)} =\frac{f'(c)}{g'(c)}
+    \]
+\end{theorem}
+\begin{note}
+    This is a more generalized version  of MVT. This implies MVT if $g$ is the trivial function $g(x) = x$.
+\end{note}
+\begin{proof}
+    We attempt to construct a function $h$ again to simplify the problem and apply Rolles theorem. First note that what we want is, 
+    \[
+        (f(b) - f(a)) g'(c) - (g(b) - g(a)) f'(c) = 0
+    \]
+    Now Rolles theorem gives us that if $h(a) = h(b) = 0$ then for some $c$ we have $h'(c) = 0$. So in some sense we want $h'(c)$ to be of the form above. Using this intuition construct $h$ as, 
+    \[
+        h(x) = (f(b) - f(a)) g(x) - (g(b) - g(a)) f(x)
+    \]
+
+    Note we get $h(a) = f(b)g(a) - f(a)g(a) - g(b)f(a) - g(a) f(a) = f(b)g(a) - f(a) g(a)$. Similarly $h(b) = f(b)g(b) - f(a)g(b) - g(b)f(b) + g(a)f(b) = g(a)f(b) - f(a)g(b)$. So we have $h(a) = h(b)$. And using rolle we have some $c \in (a, b)$ such that $h'(c) = 0$ or that, 
+    \begin{align*}
+        h'(c) = g'(c) (f(b) - f(a)) - f'(c)(g(b) - g(a)) = 0
+    \end{align*}
+    which gives us our required result.
+\end{proof}
+
+\subsection{Applications}
+First note that MVT is basically just the first order Taylor series. We can see this as follows. Take $a = x$ and $b = x + h$ then we have
+
+\begin{align*}
+    \frac{ f(x + h) - f(x)}{h} &= f'(c)\quad \text{ for some $c$ between $x$ and $x + h$ }\\
+    f(x + h) &= f(x) + hf'(c)
+\end{align*}    
+
+So the first order taylor approximation would be of form $f(x + h) \approx f(x) + h f'(x)$ for small enough $h$. Now we can further apply MVT to get a second order approximation. First note if we apply MVT to $f'$ we have, 
+\begin{align*}
+    \frac{f'(x + h) - f'(x)}{h} &= f''(c)
+\end{align*}
+
+Now consider this as a function of $h$ and we have $F'(h) = f'(x + h) - f'(x)$ which gives us $F(h) = f(x + h) - f'(x)h$. So we get, 
+\[
+    \frac{F'(h)}{h} = f''(c)
+\]
+
+
+Now apply Cauchy MVT on the functions $F(h)$ and $h$ between $0$ and $h$ to get, 
+\[
+   \frac{F(h)  - F(0)}{\frac{h^2}{2} - 0} = \frac{F'(h)}{h} = f''(c)
+\]
+
+So we have, 
+\begin{align*}
+    f(a + h)  - f'(a)h - f(a) &= f''(c) \frac{h^2}{2}\\
+                            f(a + h)&=  f(a) + hf'(a) + \frac{h^2}{2}f''(c)
+\end{align*}
+
+Which is the final form of our second order taylor expansion.
+
+\begin{note}
+    Note that MVT fails for vectors valued functions from $R^{n} \to R^{m}$ where $m > 1$. This is because in the range-space between any two points depending on what components we consider, the slopes might be different which result in varying results. Note that regardless of $n$ if $m = 1$ it still holds as we can parametrize a line in $R^{n}$ and it becomes $R \to R$ again.
+\end{note}
+
+
+\subsection*{L'Hopital's rule}
+\begin{theorem}[Version 1]
+    
+    Assume $g$ and $g'$ are nonzero near a and that $\lim_{x \to a} f(x) = 0 = \lim_{x \to a} g(x)$. Note that $f(a), g(a)$ might not be defined. Assuming that $\lim_{x \to a} \frac{f'(x)}{g'(x)}$ exists, then, 
+    \[
+        \lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)}
+    \]
+\end{theorem}
+\begin{proof}
+    The only tool till now to connect two functions and their derivative is to use Cauchy MVT which tell us that, 
+    \[
+        \frac{f(b) - f(a)}{g(b) - g(a)} = \frac{f'(c)}{g'(c)}
+    \]
+
+    Now define $\lim_{x \to a} \frac{f'(x)}{g'(x)} = L$ and by definition we have $\forall \epsilon > 0, \exists \delta$ such that if $x$  is in a delta neighborhood of $a$ then we have, 
+    \[
+        \left | \frac{f'(x)}{g'(x)} - L\right| < \frac{\epsilon}{100}
+    \]
+
+    Now note we established that $\lim_{x \to a} f(x) = 0$ and we have the same for $g(x)$, so in other words for any $\epsilon$ if $x$ is in some delta neighborhood of $a$ then $f(x)$ and $g(x)$ is in an $\epsilon$ neighborhood of $0$. Choose the smallest $\delta$ now. And now given the delta neighborhood of $a$ i.e $(a - \delta, a + \delta)$ we have, 
+    \begin{align*}
+        \lim_{x \to a} f(x) &= 0\\
+        \lim_{x \to a} g(x) &= 0\\
+    \end{align*}
+
+    Now pick a $y$ in our $\delta$ ball around $a$ and note that we then have $|f(y) -0| < \epsilon$, doing the same for $g$ and using our limit theorems we can now say that, 
+    \[
+        \lim_{x \to a}\frac{f(x)}{g(x)} &= \lim{x \to a} \frac{f(x) - f(y)}{g(x) - g(y)}
+    \]
+
+    for simplicity we can choose $a < y < x$. But note that now the RHS can be written as, 
+    \[
+        \lim_{x \to a} \frac{f(x) - f(y)}{g(x) - g(y)} = \lim_{x \to a} \frac{f'(c)}{g'(c)}
+    \]
+
+    where $c$ is between $y$ and $x$ and thus in the $\delta-$neighborhoods given an $\epsilon$ and hence we have that, 
+    \[
+        \lim_{x \to a} \frac{f(x)}{g(x)} = \lim_{x \to a} \frac{f'(x)}{g'(x)}
+    \]
+\end{proof}
+
+\subsection*{Clairant's theorem}
+\begin{theorem}
+    Let $f: U \to \R$ where $U \subseteq R^{n}$ open. Let $f$ be $C^2$ on $U, (\partial_i f, \partial_i \partial_j f  \text{ are continuous }\\ \forall i, j)$. Then, 
+    \[
+        \partial_i \partial_j f = \partial_j \partial_i f \text{ for any } i,j \text{ on $u$ }
+    \]
+\end{theorem}
+\begin{proof}
+    First consider $\partial_i \partial_j f(x, y)$. Now apply MVT to the first coordinate and we have, 
+    \[
+        \frac{\partial_j f(x + h_1, y) - \partial_j f(x, y)}{h_1} =  \partial_i \partial_j f(c_{1}, y)
+    \]
+
+    Now define $g(y) = f(x + h_{1}, y) - f(x, y)$ which gives us $g(y + h_{2}) = f(x + h_{1}, y + h_{2}) - f(x, y + h_{2})$
+
+
+    Now using MVT on $g$ we have, 
+    \begin{align*}
+        \frac{g(y + h_{2}) - g(y)}{h_{2}} &= \partial_j g(c_{2})\\
+                                          &= \partial_j f(x + h_{1}, c_{2}) -  \partial_j f(x, c_{2})\\
+                                          &= h_{1} \partial_i \partial_j f(c_{1}, c_{2})
+    \end{align*}
+
+    Simplifying the left side we have, 
+    \begin{align*}
+         \partial_i \partial_j f(c_{1}, c_{2}) &= \frac{1}{h_{1}h_{2}} (f(x + h_{1}, y  + h_{2}) - f(x, y + h_{2}) - f(x + h_{1}, y) + f(x, y))
+    \end{align*}
+
+    Note here that taking $h$ to zero we are able to choose the value for $c$ given $x, y$ (and we've shown this is true for any $x, y$). 
+    \vspace{1em}
+    
+    Now in the above equation we see that it's symmetric between both the coordinates. Which means we're able to do the same to $\partial_j \partial_i f(x, y)$ as well to get the same representation and hence proving it's equal. Or we could reverse MVT to get our desired solution.
+\end{proof} 
+
+\section{Jacobian}
+\begin{definition}
+    Let $f: \R^{n} \to \R^{n}$ be (Frechet) differentialble at $p$.  Then, 
+    \[
+        D f(p) = f'(p) 
+    \]
+    is a matrix such that, 
+    \[
+        Df(p) \cdot e_j = \partial_j f(p) = (\partial_j f_{1}(p), \dots, \partial_j f_n(p))
+    \]
+\end{definition}
+\begin{remark}
+    $f$ can be written as $f = (f_{1}, \dots, f_n)$. So this would mean that the $j'th$ column of the Jacobian would be the partial of the $j'th$ component for $f_{1}, \dots, f_n$
+\end{remark}
+\begin{note}
+    We have, 
+    \[
+        \begin{pmatrix}
+            \partial_{1} f_{1}(p) & \dots & \partial_n f_1 (p)\\
+            \vdots & \ddots & \vdots\\
+            \partial_{1} f_{n}(p) & \dots & \partial_n f_n (p)
+        \end{pmatrix}
+    \]
+\end{note}
+
+\subsection*{Chain rule}
+Let $f: \R^{n} \to \R^{m}$ and $g: R^{m} \to R^{k}$ where $f$ is diff (Frechet) at $p$ and $g$ is at $f(p)$. Then we have, 
+\[
+    (g \circ f)'(p) = g'(f(p)) f'(p)
+\]
+
+So a concrete formula would be, 
+\begin{align*}
+    (g \circ f)'(p) &= g'(f(p)) f'(p)\\
+    \partial_1 (g \circ f)(p)&= (g \circ f)'(p) \cdot e_1\\
+                             &= g'(f(p)) f'(p) \cdot e_{1}\\
+                             &= g'(f(p)) \pratial_{1} f(p)
+\end{align*}
+
+Note here that $g'(f(p))$ is a matrix and $\partial_{1} f(p)$ would be the partial wrt the first variable component for each component in $f$. So we have, 
+\begin{align*}
+    \partial_1 (g \circ f)(p)&=  g'(f(p)) \pratial_{1} f(p)\\
+                             &=  g'(f(p)) \left ( \sum_{\alpha=1}^{m} \partial_{1} f_{\alpha}(p) e_{\alpha}\right )\\
+                             &= \sum_{\alpha=1}^{m} \partial_{1} f_{\alpha}(p) g'(f(p)) e_{\alpha}\\
+                             &= \sum_{\alpha =1}^{m} \partial_{\alpha}g(f(p)) \partial_{1} f_{\alpha}(p)
+\end{align*}
+
+

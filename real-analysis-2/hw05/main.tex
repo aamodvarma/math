@@ -1,0 +1,242 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\title{Analysis 2: HW5}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\textbf{Problem 1.}
+We have $M = B(0, 1)$, $F: R^{3} \to R^{3}$ a smooth vector field. And $n$ an outward unit vector on $\partial M = S^2$ the boundary of $M$.
+
+\vspace{1em}
+
+\qquad 1. We have our collection of open sets $\cup_i B_i$, now note that using result from prev hw, first we have a collection of functions $f_j$  for $j \in J$ such that for each $f_j$ we have some $i$ for which $\supp f_j \subseteq B_i$ and that we have $\sum_{j \in J} f_j = 1$. Note that these functions are locally  finite in that for each $x \in M$ there are only a finite  amount of function $f$ that are non-zero at that point. Now simply define $F_j = F f_j$. Since both $F$ and $f_j$ are smooth their product is smooth. And note we now have $\sum F_j = \sum F f_j = F \sum f_j = F$
+
+\vspace{1em}
+\qquad 2. We have, 
+\begin{align*}
+  \int \int \int_{R_{+}^{3}}^{} \text{div} G &=\int \int \int_{R_{+}^{3}}^{} \partial_x G_1 + \partial_y G_2 + \partial_z G_3
+\end{align*}
+
+Now note that we can consider the triple integral individually for the three functions above. When we do this as $G$ has a compact support this means that the improper integral $\int_{-\infty}^{\infty} \partial_x G_1 = 0$ and $\int_{-\infty}^{\infty}\partial_y G_2 = 0$ simply by using FTC. More specifically as the support is compact it's bounded hence when we consider the improper integral we'll be well outside the support region where $G_1, G_2, G_3$ will all be zero. Hence using FTC since we have $G_i(b) - G_i(a) = \int_{b}^{a} \partial_i G_i$ we end up getting $0 - 0 = 0$ (note the abuse of notation here, $G$ is technically $R^{3} \to R$, but above we're using $a,b$ as scalars although they should be vectors, in this case as we go to infinity from any direction we'll end up outside the compact support so it doesn't matter). So we end up rewrite our equation as, 
+\begin{align*}
+  \int \int \int_{R_{+}^{3}}^{} \text{div} G &= \int\int\int \partial_z G_3
+\end{align*}
+
+Now we can apply FTC again on the right side and note we have $\int_{0}^{\infty} \partial_z G_3 = G_3(x, y, \infty) - G_3(x, y, 0)$. Again since $G$ has compact support $G_3(x, y, \infty) = 0$ and hence we have $\int_{0}^{\infty} \partial_z G_3 = -G_3(x, y, 0)$. But note that $-G_3$ is simply $G \cdot (-e_3)$ and as $z= 0$ and we're integrating over $x, y$ we're essentially integrating over $\partial R_+^{3}$ and hence we get, 
+\begin{align*}
+  \int \int \int_{R_{+}^{3}}^{} \text{div} G &= \int\int\int \partial_z G_3 \\
+                                             &=  \int\int -G_3(x, y, 0) \ dx \ dy\\
+                                             &=  \int\int_{\partial R_+^{3}} G \cdot (-e_3) \ dS
+\end{align*}
+
+
+\vspace{1em}
+
+\qquad 3. Using spherical coordinates we have, 
+\begin{align*}
+  \iiint_M \divv F &= \int_{0}^{\pi} \int_{0}^{2\pi} \int_{0}^{1}  (\divv F)(Jacobian) \ dr \ d\theta \ d\phi\\
+  \iiint_M \divv F &= \int_{0}^{\pi} \int_{0}^{2\pi} \int_{0}^{1}  \partial_r(r^2 F_r \sin \theta) + \partial_{\theta} (r \sin \theta F_{\theta}) + \partial_{\phi}(r F_{\phi}) \ dr \ d\theta \ d\phi
+\end{align*}
+
+Now we know that $F = \sum F_j$, so we have $F_r = (F \circ W) \partial_R W = ((\sum F_j) \circ W) \partial_r W = \sum (F_j \circ W) \partial_r W$. If we define $F_{r j} = (F_j \circ W) \partial_r W$ then we have $F_r = \sum F_rj$. Now do the same for both $\theta$ and $\phi$. So this gives us,
+\[
+  \iiint_M \divv F &= \int_{0}^{\pi} \int_{0}^{2\pi} \int_{0}^{1}  \partial_r\left(r^2 \sum F_{rj} \sin \theta\right) + \partial_{\theta} \left(r \sin \theta \sum F_{\theta j}\right) + \partial_{\phi}\left(r \sum F_{\phi j}\right) \ dr \ d\theta \ d\phi
+\]
+
+Now consider each of the terms separately, starting with $\theta$ we have,
+
+\[
+ \int_{0}^{\pi} \int_{0}^{1} \int_{0}^{2\pi}  \partial_{\theta} \left(r \sin \theta \sum F_{\theta j}\right) \ d\theta \ dr \ d\phi
+\]
+
+Now note that as $F_{j}$ has a compact support, so does $F_{\theta j} = (F_{j} \circ W) \partial_r W$. This means that in the interval $0 \to 2\pi$ we have some $a, b$ such that the function $F_j$ is identically zero at $a$ and $b$, or in other words the compact support is defined from $a \to b$ and the function is zero outside this. So if we consider each of the terms in the sum separately i.e for an arbitrary $F_{\theat j}$ note that,
+
+\begin{align*}
+  \int_{0}^{\pi} \int_{0}^{1} \int_{0}^{2\pi}  \partial_{\theta} \left(r \sin \theta  F_{\theta j}\right) \ d\theta \ dr \ d\phi &=   \int_{0}^{\pi} \int_{0}^{1}r \int_{a}^{b}  \partial_{\theta} \left( \sin \theta  F_{\theta j}\right) \ d\theta \ dr \ d\phi \\
+\end{align*}
+
+Now we can use FTC to write $\sin \theta F_{\theta j}(b) -\sin \theta F_{\theta j}(b)  = \int_{a}^{b} \partial_{\theta}(\sin \theta F_{\theta j}) \ d\theta  $. But at $a,b$ $F_{\theta j}$ is identically zero as we showed above. Hence the LHS is just zero. So the integral evaluates to zero.  So we have,
+\begin{align*}
+  \int_{0}^{\pi} \int_{0}^{1} \int_{0}^{2\pi}  \partial_{\theta} \left(r \sin \theta  F_{\theta j}\right) \ d\theta \ dr \ d\phi &=   \int_{0}^{\pi} \int_{0}^{1}r \int_{a}^{b}  \partial_{\theta} \left( \sin \theta  F_{\theta j}\right) \ d\theta \ dr \ d\phi\\
+                                                                                                                                   &= \int_{0}^{\pi} \int_{0}^{1} r \cdot 0 = 0
+\end{align*}
+
+Now as each arbitrary $F_{\theta j}$ go to zero, the sum goes to zero. And we get, 
+\[
+ \int_{0}^{\pi} \int_{0}^{1} \int_{0}^{2\pi}  \partial_{\theta} \left(r \sin \theta \sum F_{\theta j}\right) \ d\theta \ dr \ d\phi = 0
+\]
+
+Similarly for $\phi$ we have, 
+
+\[
+ \int_{0}^{1} \int_{0}^{2\pi} \int_{0}^{\pi}  \partial_{\phi} \left(r  \sum F_{\phi j }\right) \ d\phi \ d\theta \ dr = 0
+\]
+
+However, now note that for $r $ from $0, 1$, the function $F_{rj}$ need not go to zero at the endpoints necessarily. So when we're considering $F_{rj}$ then note that for arbitrary $j $ we have $(r^2F_{rj})(1) - (r^2F_{rj})(0) = \int_{0}^{1} \partial_r (r^2 F_{rj} \sin \theta)$ but here the LHS evaluates to $F_{rj}(1)$, so overall we get,
+\begin{align*}
+  \int_{0}^{2\pi} \int_{0}^{\pi}   \int_{0}^{1} \partial_{r} \left(r^2  \sum F_{r j }\right) \ d\phi \ d\theta \ dr &= \int_{0}^{2\pi} \int_{0}^{\pi} \sum F_{rj}(1)\\
+ &= \int_{0}^{2\pi} \int_{0}^{\pi} F_r(1, \theta, \phi) \ dr \ d \phi \ d \theta \\
+ &= \int_{0}^{2\pi} \int_{0}^{\pi} F(W(1, \theta, \phi)) \partial_r W \ dr \ d \phi \ d \theta \\
+\end{align*}
+
+But now note that the inputs to $F$ are with $r = 1$ which is the boundary of our ball i.e the 2-D sphere. So this is essentially evaluating $F$ at the boundary. So as long as we consider just the boundary with radius $1$ we can just evaluate $F$ directly. In addition note that $|\partial_r W| =\left | (\sin \theta \cos \theta, \sin \theta, \sin \phi, \cos \theta) \right |  = 1$ so the outward normal vector is basically just $\partial_r W$. Hence we end up with, 
+\[
+  \iiint_M \divv F = \iint_{\partial M} (F \cdot n) \ dS
+\]
+
+\vspace{1em}
+
+\textbf{Problem 2.} 
+
+\vspace{1em}
+
+\qquad 1. Firstly we know that $f'$ is continuous and that $f'(p)$ is invertible. Now note that we known that the determinant of a matrix is a continuous function - which means that $\det f'$ is a continuous function as well. Now if $f'(p)$ is invertible then this means $\det f'(p) = k \ne 0$. Now choose $\epsilon = \left | \frac{k}{2} \right |< |k|$, then we have some $\delta$  such that, 
+\[
+  |\det f'(p) - \det f'(x)|< \epsilon \quad \text{ when }  \quad |x - p| < \delta
+\]
+
+But note this gives us, 
+\begin{align*}
+  |\det f'(p)|  - \epsilon&< |\det f'(x)|\\
+  \frac{k}{2} &< |\det f'(x)|
+\end{align*}
+
+
+Note that this means $\det f'(x) \ne 0$ or that $f'$ is invertible in the $\delta$-neighborhood around $p$. 
+
+\vspace{1em}
+
+Now let $A = f'(p)$, and define $g(p) = A^{-1} f(p)$. Note that $A$ is a matrix and is unique for each point $p$. Then at $p$ note that $g'(p) = A^{-1} f'(p) = A^{-1}A = I$. Now as $f'$ is continuous and as in our $\delta$ neighborhood we have invertible matrices, so can approximate the matrices $f'(x)$ with $A$ within some error. This gives us, 
+\[
+  \left | \left | g'(x)  - I\right |\right | < \epsilon / 1000
+\]
+
+Now WLOG, take $p = 0$ (note we can do this because all we're doing is translating the graph of $f$ so that the point we're considering is at $0$, but linear translations and so on doesn't affect the invariability) so we have $f(0) = 0, f'(0) = Id$ or that $g(0) = A^{-1}f(0) = 0$, so we can do  (basically from problem 3 of the exam)
+\begin{align*}
+  g(p + h) - g(p) &= \int_{0}^{1} g'(th)h \ dt\\
+            g(h) - h &= \int_{0}^{1}  g'(th)h- h \ dt\\
+            |g(h) - h| &\le \int_{0}^{1}  |g'(ht) h - h | \ dt \le |h| \epsilon
+\end{align*}
+
+Using triangle inequality this gives us, 
+\[
+  1 - \epsilon < \frac{|g(h)|}{|h|} < 1 + \epsilon
+\]
+
+Now consider $x,y $close to point $p = 0$ and using FTC we get, 
+\begin{align*}
+  g(x) - g(y) &= \int_{0}^{1}  g'(y + t(x - y))(x  - y) \ dt\\
+  (g(x) - g(y)) - (x - y)&= \int_{0}^{1}  g'(y + t(x - y))(x  - y) - (x - y) \ dt\\
+                         &\le  \epsilon (x - y)
+\end{align*}
+
+Using the same reasoning again we can get, 
+\[
+  |g(x) - g(y)| \ge (1 - \epsilon)|x- y|
+\]
+
+which means that $g(x) \ne g(y)$ or that we get injectivity for $x \ne y$.
+\vspace{1em}
+
+Now using part 2 of q3 of the exam we get some small radius for which we have, 
+\[
+  B(0, (1 - \epsilon)r) \subset g(U) \subset B(0, (1 + \epsilon)r)
+\]
+
+
+where $U$ is the open ball with radius $r$. Note that this is basically a scaled version of the exam problem, i.e scaled down using $r$. Now note that this gives us subjectivity as for any $y$ in the open ball around $B(0, (1 - \epsilon) r)$ that $y$ is in $g(U)$ and hence there is some $x$ for which $g(x) = y$. So we have surjectivity and hence bijectivity which means we have an inverse $g^{-1}$. 
+
+\vspace{1em}
+
+However, note that $g = A^{-1}f$ so $A g = f$ and $(Ag)^{-1} = g^{-1}A^{-1} = f^{-1}$. So we just showed there is some open set around that point $p$ given that the derivative has an inverse at $p$ where $f$ has an inverse.
+
+\vspace{1em}
+
+\qquad 2. Now we need to show that $g = \left ( f\right )^{-1}$ is $C^{k}$. Clearly we  have $g(f(x)) = x$, now we'll get a candidate function for $g'$ which in this case would look like $g'(f(x)) f'(x) = 1$ so $g'(f(x)) = f'^{-1}(x)$. Now we need to show that this is a frechet derivative. So let $x' = f(x)$ then we have $f(x + h) = x' + h'$, so notewe then have $g(x' + h') - g(x') = h$, now as $f'$ is  differential we have $h' = f'(x) h + remainder$ so $h$ would be $f'^{-1}(x)(h' - remainder)$. Now note that we then have $f'^{-1}h' = h + remainder f'^{-1}(x)$, so we get, $|g(x' + h') - g(x') - f'^{-1}h'| = f^{-1}(x)remainder$ but as $h$ goes to zero we have the remainder go to zero as well by definition, so we have $g$ has a frechet derivative. Now we have $g'$. We can do induction and now use $f''^{-1}$ to get a derivative for $g'$ i.e $g''$. As $f$  is $C^{k}$ we can simply do this $k$ times to get $g$ to be $C^{k}$ as well.
+
+
+
+
+\vspace{1em}
+
+\textbf{Problem 3.}
+We have the differential form $$\omega = f_{1}(x) dx_{2} \wedge dx_{3} - f_{2}(x) dx_{1} \wedge dx_{3} + f_{3}(x) dx_{1} \wedge dx_{2}$$
+
+
+We first do partition of unity on $F$  to get $F = \sum F_j$ where $F_j$ is supported a compact subset of $B_j$ where $\cup B_j$ is an open cover of $M$. Now we need to show that $\int_{\partial M}^{}  \omega = \int_{\partial M}^{}  (F \cdot n) dS$. First we have the parametrization of the boundary using $T$ i.e, 
+\[
+  T(y_{1}, y_{2}) = (x_{1}(y_{1}, y_{2}), x_{2}(y_{1}, y_{2}), x_{3}(y_{1}, y_{2}))
+\]
+and we know that,
+\[
+  n = \frac{\partial_{1} T \times \partial_{2}T }{\left | \partial_{1} T \times \partial_{2}T \right |}
+\]
+
+Now when we use the parametrization $T$ we have $dS = |\partial_{1} T \times \partial_{2} T| \ dy_{1} \ dy_{2}$ so essentially we get, 
+\[
+  \int_{\partial M}^{}  (F \cdot n) dS =   \int_{\partial M}^{}  F(T(y_{1}, y_{2})) \cdot (\partial_{1} T \times \partial_{2} T) \ dy_{1} \ dy_{2}
+\]
+
+Now using the formaula for $u \cdot (v \times w)$ this is equal to, 
+\begin{align*}
+  \int_{\partial M}^{}  F(T(y_{1}, y_{2})) \cdot (\partial_{1} T \times \partial_{2} T) \ dy_{1} \ dy_{2} =&\int_{\partial M}^{}  f_{1}(\partial_{1} x_{2}\partial_{2}x_{3} - \partial_{1}x_{3}\partial_{2}x_{2})\\ -&\int_{\partial_M}^{}   f_{2}(\partial_{1}x_{1}\partial_{2}x_{3} - \partial_{1}x_{3}\partial_{2}x_{1})  \\+ &\int_{\partial M}^{} f_{3}(\partial_{1} x_{1}\partial_{2}x_{2} - \partial_{1} x_{2}\partial_{2}x_{1})
+\end{align*}
+
+However, now note that $dx_{i} \wedge dx_j = \partial_{1} x_{i}\partial_{2}x_{j} - \partial_{1}x_{j}\partial_{2}x_{i}$, so we basically have, 
+
+\begin{align*}
+  \int_{\partial M}^{}  F(T(y_{1}, y_{2})) \cdot (\partial_{1} T \times \partial_{2} T) \ dy_{1} \ dy_{2} &= \int_{\partial M}^{}  \omega
+\end{align*}
+
+putting everything together we get, 
+\[
+  \int_{\partiam M}^{} (F \cdot n) dS = \int_{\partial M}^{}  \omega
+\]
+
+
+% \begin{align*}
+%   \int_{\partial M }^{}  \omega &= \int_{\partial M}^{} f_{1}(x) dx_{2} \wedge dx_{3} - f_{2}(x) dx_{1} \wedge dx_{3} + f_{3}(x) dx_{1} \wedge dx_{2}
+% \end{align*}
+
+% Now define $T(y_{1}, y_{2}) = (x_{1}, x_{2}, x_{3})$. Now note we have $dx_i = \frac{\parital x_i}{\partial y_1} dy_{1} + \frac{\partial x_i}{\partial y_{2}} dy_{2}$ computing the wedge product we get $dx_{2} \wedge dx_{3} = \frac{\partial x_{2} \partial x_{3}}{\partial y_{1} \partial y_{2} } (d y_{1} \wedge dy_{2})$. Doing this for $1,3$ and $1,2$ we end up getting, 
+% \[
+%   \int_{\partial M}^{} F(T(y)) \cdot (\partial_1 T \cross  \partial_{2}T) dy_{1}dy_{2}
+% \]
+
+% But note the expression for the unit normal and this then gives us, 
+% \[
+%   \int_{\partial M }^{}\omega  = \int_{\partial M}^{}  (F \cdot n) dS
+% \]
+
+Now for the next equality,  apply the exterior derivative on $\omega$, for that we first apply it on some $f_i$, so we have, 
+\[
+  df_i = \frac{\partial f_i}{\partial x_1} dx_1 + \frac{\partial f_2}{\partial x_2} dx_2 + \frac{\partial f_i}{\partial x_3} dx_3
+\]
+
+Now note that for $df_{1}$ if we consider $df_{1}(x) (dx_{2} \wedge dx_{3})$, then most terms will vanish as $dx_i \wedge dx_i = 0$ so we get, 
+\[
+  df_{1}(x) (dx_{2} \wedge dx_{3}) =  \frac{\partial f_i}{\partial x_1} dx_1 \wedge dx_{2} \wedge dx_{3}
+\]
+
+doing this for each $f_i$ we have, 
+\[
+ d \omega = \left ( \frac{\partial f_1}{\partial x_{1}} + \frac{\partial f_2}{\partial x_{2}} + \frac{\partial f_3}{\partial x_{3}}\right ) dx_{1} \wedge dx_{2} \wedge dx_{3}
+\]
+
+So we have, 
+\[
+  \int_{M}^{} d\omega = \int_{M}^{}  \left ( \frac{\partial f_1}{\partial x_{1}} + \frac{\partial f_2}{\partial x_{2}} + \frac{\partial f_3}{\partial x_{3}}\right ) dx_{1} \wedge dx_{2} \wedge dx_{3}
+\]
+
+But the right side is basically, 
+\[
+  \int_{M}^{} \divv F
+\]
+
+so we have, 
+\[
+  \int_{M}^{} d\omega = \int_{M}^{} \divv F
+\]
+
+
+\end{document}

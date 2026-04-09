@@ -1,0 +1,183 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\title{Analysis 2: HW6}
+\author{Aamod Varma}
+\begin{document}
+\maketitle
+\textbf{Problem 1.}
+% We have $f: U \to R^{n}$ and $f$ is $C^{1}$ with $U \subseteq R^{d}$ an open set. We are given that $f'$ has a constant rank $r$ near point $p \in U$. We need to show that there is a local $C^{1}$ diffeomorphism $\phi$ and $\psi$ such that, 
+% \[
+%     \psi \circ f \circ \phi(\widetilde{x_{1}}, \dots, \widetilde{x_d}) = \left ( \widetilde{x_{d - r + 1}}, \dots, \widetilde{x_d}, 0, \dots ,0\right )
+% \]
+%  for all $(\widetilde{x_{1}}, \dots, \widetilde{x_d})$ near $\phi^{-1}(p)$.
+
+%  \vspace{1em}
+
+
+First consider $f'$ i.e the Jacobian of $f$. Now we know that this is a $n \times d$ matrix with rank $r$. So we can find $r$ columns of the $d$ columns of this matrix which are linearly independent and hence form a basis for some $r$ dimensional subspace of $R^{n}$. So consider these coordinates (the ones that correspond to these $r$ columns) beginning (we're permuting it toward the beginning) and the $n - r$ to the end such that we have $(x, y) \in R^{d - r} \times R^{r}$. Now note that the matrix also has $r$ independent rows which correspond to the output of the function. So divide our function $f$ into $f = (f_{1}, f_{0})$ such that $f_{1}: U \to R^{r}$  and $f_{0}: U \to R^{n - r}$. Here $f_{1}$ corresponds to the $r$ components and $f_{0}$ the $n - r$ components of our function. This gives us $\partial_y f_{1}(x, y)$ is an invertible matrix. 
+
+\vspace{1em}
+
+Now note that as $\partial_y f_{1}(x, y)$ is an invertible matrix, we can apply the implicit function theorem so locally we have a diffeomorphism i.e $\phi(x, y) = (x, f_{1}(x, y))$. Note that $\phi : R^{d} \to R^{d}$. Now let $x' = x$ and $y' = f_{1}(x, y)$. So we have $\phi(x, y) = (x', y')$ and we have $(x, y) = \phi^{-1}(x', y')$ because $\phi$ has an inverse. Now note that we get, 
+\[
+    f \circ \phi^{-1} (x', y') = f(x, y) = (f_{1}(x, y), f_{0}(x, y))  = (y', f_{0} \circ \phi^{-1}(x', y'))
+\]
+
+Now let $h(x', y') = f_{0}(\phi^{-1}(x', y'))$ so we can rewrite the above as, 
+\[
+    f \circ \phi^{-1}(x', y') = (y', h(x', y'))
+\]
+
+so we have a map from $(x', y') \to (y', h(x', y'))$. Now this map has rank $r$ because of $y'$, so the jacobian is zero as if it was non-zero then that means we would have a higher rank derivative. So this means that $h$ is a constant say $c$. This gives us, 
+\[
+    f \circ \phi^{-1}(x', y') = (y', c)
+\]
+
+Now we can just find a map $\psi$ that centers $c$ at $0$. So define $\psi(a, b) = (a, b - c)$ so if we apply this to $(y', c)$ we have $\psi(y', c) = (y', 0)$. Clearly $\psi$ is a diffeomorphism. So we have, 
+\[
+    \psi \circ f \circ \phi^{-1}(x', y') = (y', 0, \dots ,0)
+\]
+
+
+which is what we want to show.
+
+\textbf{Problem 2.}
+We have $E \subseteq R^{d}$ a closed set and $f:E \to E$ continuous such that, 
+\[
+  |f(x) - f(y)| \le \alpha | x- y|
+\]
+f
+for some $\alpha \in (0, 1)$. We need to show that there is unique fixed point $p$ such that $f(p) = p$. Consider an arbitrary point $p_{1}$ now define $p_{i + 1} = f(p_{i})$, so we have $p_{2} = f(p_{1})$ and so on. Our goal will be to show that the sequence $(p_i)$ is a convergent sequence and converges to a unique limit say $p$.
+
+\vspace{1em}
+
+Firstly applying the above condition we know that,
+\[
+  |f(p_{i}) - f(p_{i - 1})| \le \alpha |p_{i} - p_{i - 1}|
+\]
+
+but we have $f(p_{i}) = p_{i + 1}$ so this give us,
+
+\[
+  | p_{i + 1} - p_{i}| \le \alpha |p_{i} - p_{i - 1}|
+\]
+
+Now clearly we can inductively continue this to get, 
+
+\[
+  | p_{i + 1} - p_{i}| \le \alpha |p_{i} - p_{i - 1}| \le  \alpha (\alpha |p_{i - 1} - p_{i - 2}|) \le \dots  \le \alpha^{i - 1} |p_2 - p_1|
+\]
+
+But note that $p_{2} = f(p_{1})$ so we have,
+\begin{align*}
+  |p_{i + 1} - p_i| \le \alpha^{i - 1}|p_{2} - p_{1}| \le  \alpha^{i - 1}|f(p_{1}) - p_{1}|
+\end{align*}
+
+Now note that as we fixed $p_{1}$ we have $|f(p_{1}) - p_{1}|$ is just a constant say $c > 0$. So we have,
+
+\begin{align*}
+  |p_{i + 1} - p_i|\le  \alpha^{i - 1} c
+\end{align*}
+
+Now consider $|p_m - p_n|$ for $m > n$ we have, 
+\begin{align*}
+  |p_m - p_{m - 1} + p_{m - 1} + \dots - p_n| &\le |p_m - p_{m - 1}| + |p_{m - 1} + p_{m - 2}|+\dots+|p_{n + 1} - p_n|\\
+ &\le  \alpha^{m - 2}|p_{2} - p_{1}| + \alpha^{m - 3}|p_{2} - p_{1}|+\dots+\alpha^{n - 1}|p_{2} - p_{1}|\\
+ &\le  c (\alpha^{m - 2} + \alpha^{m - 3}+\dots+\alpha^{n - 1})\\
+ &\le c \alpha^{n - 1} (\alpha^{m -  n - 1} + \dots + 1)\\
+ &\le c  \alpha^{n - 1} \frac{1 - \alpha^{m - n}}{1 - \alpha}\\
+ &\le  c\frac{\alpha^{n - 1}}{1 - \alpha}\\
+\end{align*}
+
+Now for any $\epsilon > 0$ consider $n$ for which we have, 
+\begin{align*}
+  c\frac{\alpha^{n - 1}}{1 - \alpha} &< \epsilon\\
+  \alpha^{n - 1} &< \frac{\epsilon(1 - \alpha)}{c}\\
+  (n - 1) \log(\alpha) &<  \log \left(\frac{\epsilon(1 - \alpha)}{c} \right)\\
+  n - 1 &> \frac{ \log \left(\frac{\epsilon(1 - \alpha)}{c} \right)}{\log(\alpha) } \quad \text{ note because $\log(\alpha)$ is negative }\\
+  n  &> \frac{ \log \left(\frac{\epsilon(1 - \alpha)}{c} \right)}{\log(\alpha) }  + 1
+\end{align*}
+so let $N_{\epsilon} = \frac{ \log \left(\frac{\epsilon(1 - \alpha)}{c} \right)}{\log(\alpha) }  + 1$.
+\vspace{1em}
+
+So we have for any $\epsilon > 0$ there exists some $N_{\epsilon}$ such that if $m, n > N_{\epsilon}$ we have, 
+\[
+  |p_m - p_n| \le c \frac{\alpha^{n - 1}}{1 - \alpha} < \epsilon
+\]
+
+which means that we have $(p_i)$ is a Cauchy sequence and hence is a convergent sequence. Now this implies that we have $(p_i) \to p$ which is the limit of this sequence. Now note that we have for large enough $n$ (chosen for say $\frac{\epsilon}{2}$)
+\begin{align*}
+  |f(p) - p| &= |f(p) - f(p_n) + f(p_n) - p|\\
+             &\le |f(p) - f(p_n)| + |f(p_n) - p|\\ 
+             &\le  \alpha |p_n - p| + |p_{n + 1} - p|\\
+             &\le \alpha \frac{\epsilon}{2} + \frac{\epsilon}{2}\\
+             &\le \frac{\epsilon}{2} (1 + \alpha) \le \epsilon
+\end{align*}
+
+Or we can  also just apply the limit to $p_{i + 1} = f(p_n)$ to get $p = f(p)$.
+
+\vspace{1em}
+
+Now note that we showed this existance for the sequence $p_{1}, p_{2} \dots$. But we have yet to show that for any arbitrary starting point we converge to the same sequence. So consider the point $q_{1}$ and consider the sequence defined the same way as $p_{1}$, so $(q_{1}, f(q_{1}), \dots)$, we need to show the sequence converges to the same value $p$. Clearly using the same lines of reasoning we can establish a limit say $(q_i) \to q$. We need to show that $p = q$. First for  $\epsilon > 0$ choose $N_{1}, N_{2}$ (corresponding to $\frac{\epsilon}{3}$) for each of our sequences such that we have, 
+\[
+  |p_n - p| < \frac{\epsilon}{3} \quad \text{ and } \quad |q_n - q| < \frac{\epsilon}{3} \text{ respectively for $n > N_{1}$  and $n > N_{2}$}
+\]
+
+Now choose the larger of these two i.e $n > N = \max \{N_{1}, N_{2}\}$ so that we have both the above,
+
+\vspace{1em}
+
+Now note that we have for $i > N$ that
+\begin{align*}
+  |p - q| &= |p - p_i + p_i - q_i + q_i - q|\\
+          &\le  |p - p_i | +|p_i - q_i| + |q_i - q|\\
+\end{align*}
+
+Now note that we can use our contraction to get, 
+\begin{align*}
+  |p_i - q_i| &\le \alpha |p_{i - 1} - q_{i - 1}\\
+              &\le \alpha^{i - 1} |p_{1} - q_{1}|
+\end{align*}
+now clearly $|p_{1} - q_{1}|$ is a constant, so we can just make the above  arbitrarily small i.e smaller than $\frac{\epsilon}{3}$, putting this together we have, 
+\[
+  |p - q| < \frac{\epsilon}{3} +  \frac{\epsilon}{3} +  \frac{\epsilon}{3} = \epsilon
+\]
+
+for any $\epsilon > 0$ which means we have $p = q$.
+
+
+
+
+
+
+
+\textbf{Problem 3.}
+
+1. First we show that if $p$ is a local minima then $f'(p) = 0$ and $f''(p) \ge 0$. Our idea will be similar to the 1-D but we consider an arbitrary direction first say $v$. Then we have $g(t) = f(p + tv)$ where $t$ is some value. Now clearly the local minima of $g$ is when we have $g(t_{0}) = f(p)$ as $p$ is the local minima of $f$.  So we have $t = 0$. But note that $g'(t) = \nabla f(p + tv) v$. But we know that $g'(0) = 0$ (just the single variable case) so this means that $\nabla f(p)  v = 0$ for any direction $v$, this means that we have $\nabla (p) =0$.
+
+\vspace{1em}
+
+Now again note that we from the single variable case that $g''(0) \ge 0$, but if $g(t) = f(p + tv)$ then $g'(t) = f'(p + tv) v$ so $g''(t) = \frac{v^2}{2} f''(p + tv) $ we're putting $v^{T}$ in the start to make the dimensions match when computing the matrix multiplication. So we know that $g''(0) \ge 0$ which means that $v^{T} f''(p) v \ge 0$ for all $v$, clearly this means that we need $f''(p) \ge 0$.
+
+\vspace{1em}
+
+2.  Now we need to show that $f'(p) = 0$ and $f''(p) > 0$ means that $p$is the local minima. We can use the Taylor expansion to get, 
+\[
+    f(p + h) = f(p) + h f'(p) + \frac{h^2}{2} f''(p) + remainder
+\]
+
+But we knwo that $f'(p) = 0$ and that $f''(p) \ge 0$. So, 
+\[
+    f(p + h) = f(p) + \frac{h^2}{2} f''(p) + remainder 
+\]
+
+Now note that for small enough $h$ we have the remainders goes to zero (and we can ensure that $\frac{h^2}{2} f''(p) + remainder$ is positive) so this gives us, 
+\[
+    f(p + h) \ge f(p)
+\]
+for any $h$ close to $0$ and hence we have $p$ is a local minima.
+    
+
+
+
+\end{document}

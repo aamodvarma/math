@@ -1,0 +1,154 @@
+\documentclass[11pt]{article}
+\usepackage{enumitem}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{xcolor}
+
+\usepackage{tikz}
+\usetikzlibrary{arrows}
+\usetikzlibrary{automata}
+
+\setlength{\textheight}{8.5in}
+\setlength{\textwidth}{6.0in}
+\setlength{\headheight}{0in}
+\addtolength{\topmargin}{-.5in}
+\addtolength{\oddsidemargin}{-.5in}
+
+\input{preamble.tex}
+
+\newcommand{\solution}[1]{\paragraph{Solution}  }
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+
+\begin{document}
+\hw{5: Countability \& Decidability}{03/13/2026}{}{Due:04/08/2026}
+
+This assignment is due on \textbf{11:59 PM, April 8, 2026}. You may turn it in up to 48 hours late, but assignments turned in by the deadline receive 3\% extra credit.
+
+You should submit a typeset or \emph{neatly} written pdf on Gradescope.  The grading TA should not have to struggle to read what you've written; if your handwriting is hard to decipher, you will be asked to typeset your future assignments.
+
+You may collaborate with other students, but any written work should be your own. 
+
+\begin{enumerate}
+    
+\item \textbf{Countability} (4 points - Both Sections)
+
+Let P be the set of all polynomials with positive integer coefficients. An element of P is any function $f(x)=a_nx^n + a_{n-1}x^{n-1} .... + a_1x + a_0$ 
+where $ n \geq 0 $   and all coefficients $a_i \in Z^+$.
+
+Prove that P is countably infinite. \\
+\begin{answer}
+    Consider the set $A = A_{0} \cup A_{1} \cup \dots$ where $A_{i}$ is the set defined by the polynomials with degree $i$ (highest power is $i$). So note that for any element of $P$ i.e a polynomial as described above $p$ can be put uniquely into one of these sets based on the degree of $p$, so the sets $A_{0} \dots $ partition the set $P$. Now note that each $A_i$ is countable. We see this because the possibly polynomials we can define  are by enumerating each $a_0, \dots, a_i$, as each can take $Z^{+}$ (note $a_i$ takes $Z^{+} \setminus \{0\}$ to be more specific) so the possibly polynomials with degree $i$ are $Z^{+} \times \dots \times Z^{+} \times Z^{+} \setminus \{0\}$ or $(Z^{+})^{i} \times Z^{+} \setminus \{0\}$. Now note that this is a countable set be the finite Cartesian product of countable sets are countable (specifically we can use a diagonal argument to map them into the naturals). Now note that as each $A_i$ is countably infinite and we have $A = A_{0} \cup A_{1} \dots$ i.e A is the countable union of countably infinite sets, we have that $A$ is countable as well (again we can use a diagonal argument to show that a countably infinite union of countably infinite sets are countably infinite).
+\end{answer}
+
+\item \textbf{Uncountability} (4 points - Section B)
+
+Let P be a countably infinite set of planets in the universe (e.g., S={$p_1$,$p_2$,$p_3$,…}).
+
+Let $C_P$ be the set of all possible ways to define connections (relationships, wormholes, hyperspace routes, etc.) between these planets. A "connection map" $C \in C_P$ is simply a specification of which pairs of planets are connected.
+
+Use diagonalization to show that there are no surjections from the countable set of planets P to the set of all possible connection maps $C_P$.
+
+(Hint: consider a table like the ones we made in class, where the left side is all the vertices v1, v2, ... in V and the top row is all the graphs G1, G2, .... in GV . What condition should you check for in the cell corresponding to (vi, Gj ) that will allow you to diagonalize the table and form a new graph?)
+
+
+\begin{answer}
+    % Enter your solution here!
+\end{answer}
+
+\item \textbf{Decidability} (4 points - Section B)
+
+Let $L_1$ and $L_2$ be two decidable languages, and let $L_3$ be a language which is Turing-recognizable but not decidable. ``$-$" denotes set subtraction.
+
+(2 points) Must $L_3 - (L_1 \cap L_2)$ be Turing-recognizable? Prove your answer.
+
+\begin{answer}
+    % Enter your solution here!
+\end{answer}
+
+(2 points) Must $L_1 - (L_2 \cup L_3)$ be Turing-recognizable? Prove your answer. (Hint: $\Sigma^*$ is decidable.)
+
+\begin{answer}
+    % Enter your solution here!
+\end{answer}
+
+\item \textbf{Undecidability} (4 points - Both Sections)
+ 
+ Show that the following languages are undecidable. Do not use Rice's theorem as we do not cover it in the lectures.
+
+
+ (2 points) $L_3 = \{\langle M \rangle\ |\ 00110 \in L(M)\}$
+
+\begin{answer}
+    We know that if $A$ is reducible to $B$ then if $A$ is undecidable then $B$ is as well. So it is enough to show that $A_{TM}$ is reducible to $L_3$. First assume that $L_{3}$is decidable, decided by $R$. Now consider the input $A_{TM}: \langle M, w \rangle$, we will first construct a modified $TM, M_{1}$ defined as, 
+    
+        $M_{1}: $ on input $x$, does the following,
+
+    \begin{enumerate}
+        \item If $x = 00110$ then run $M$ on $w$ and return it's output
+        \item Else we accept.
+    \end{enumerate}
+
+    So clearly if $00110 \in L(M_{1})$ implies we that $M$ accepted $w$ or that $\langle M, w \rangle \in A_{TM}$. Similarly if we have $\langle M, w \rangle \in A_{TM}$ then we know  $M$ accepts $w$ and that we accept for $x = 00110 $ and hence $00110 \in L(M_{1})$.
+    \vspace{1em}
+    
+    This means if we can decide whether $00110 \in L(M_{1})$ then we can decide whether $\langle M, w \rangle \in A_{TM}$. Now take our decider $R$ from above, we can make the following construction for $S$,
+
+    S: on input $\langle M, w \rangle$
+    \begin{enumerate}
+        \item Construct $M_{1}$
+        \item Run $R$ on $\langle M_{1} \rangle$
+        \item If $R$ accepts ($00110 \in L(M_{1})$) then accept
+        \item If $R$ rejects then reject.
+    \end{enumerate}
+
+So $S$ is a decider for $A_{TM}$, a contradiction. Hence, we cannot decide whether $001100 \in L(M)$ i.e $L_{3}$ is undecidable.
+\end{answer}
+
+ (2 points) $L_4 = \{ (\langle M \rangle, q)\ |\ q$ is a useless state of $M\}$, where a state $q$ of a Turing machine $M$ is called ``useless" if there is no input that causes $M$ to enter state $q$.
+
+ \begin{answer}
+     We'll once again show that we can reduce $A_{TM}$ to $L_{4}$. First assume that $L_{4}$ is decidable and hence there is some decider $R$ for it. Now take an input of $A_{TM}$ i.e $\langle M, w \rangle$ and construct a modified TM, $M_{1}$ as follows, 
+
+     $M_{1}:$ on input $x$ does,
+     \begin{enumerate}
+         \item If $x = w$ then we simulate $M$ on $w$, and on $M$ accepting $w$ we jump to a new state $q$ and accept.
+         \item If $x \ne w$ then we just reject.
+     \end{enumerate}
+
+     So essentially we have $q$ is a useful state of $M$ if and only if $\langle M, w \rangle \in A_{TM}$. Using this we construct $S$ as follows,
+
+     S: on input $\langle M, w \rangle$
+     \begin{enumerate}
+         \item Construct $M_{1}$
+         \item Run $R$ on $\langle M_{1}, q\rangle$ (where $q$ is the new state we added for $w$)
+         \item If $R$ accepts it implies that $q$ is a useless state of $M_{1}$ and hence we reject
+         \item If $R$ rejects we accept.
+     \end{enumerate}
+     So here we have a decider for $A_{TM}$ a contradiction.
+
+
+     % \begin{enumerate}
+     %     \item 
+     % \end{enumerate}
+\end{answer}
+
+ \item \textbf{Homomorphisms} (4 points - Section X)
+ 
+ Let $\Sigma$ and $\Gamma$ be two alphabets. A homomorphism is a function $f: \Sigma^* \rightarrow \Gamma^*$ such that for all $x, y \in \Sigma^*$, $f(xy) = f(x) \circ f(y)$.  (You can think of $f$ as replacing each character in a word by a specific string in $\Gamma^*$.)  Show that decidable langauges are not closed under homomorphism, by giving a language $L$ and a homomorphism $f$ such that $L$ is decidable but $\{f(w) ~|~ w \in L\}$ is not.
+
+\begin{answer}
+    First consider $A_{TM} = \{\langle M, w \rangle \mid M \text{ accepts } w\}$. Now we transform this by encoding $A_{TM}$ in binary i.e in $\{0, 1\}$.Consider the $\Sigma = \{0, 1, |, t\}$. We will construct $L$ as follows, $L = \{x | t^{n} \mid \text{ if $M$ accpets $x$ within $n$ steps }\}$ where $M$ is a TM that recognizes $A_{TM}$. So note that $L$ is decidable because for any input i.e $x | t^{n}$ first we check if it's of the right form and then simply simulate $M$ for $t$ steps on $x$ and if it accepts we accept else we just reject. So our TM will always decide. Now define our hemoeomorphism $f$ such that $f(0) = 0, f(1) = 1, f(t) = \epsilon, f(|) = \epsilon$. Now note that we're left with $f(L) = \{x \mid \text{ there is some $t$ such that $M$ accepts $x$ is less than $t$ steps }\}$. But note that this is just $A_{TM}$ as we have the binary encoding of $M, w$ for which $M$ accepts $w$ in some finite number of steps.
+\end{answer}
+
+ \item \textbf{Busy Beavers} (4 points - Section X)
+ 
+ Let $BB(k)$ be a function from $\mathbb{N} \rightarrow \mathbb{N}$ such that $BB(k) = n$ if for all Turing machines with $k$ states that halt on input $\varepsilon$, $n$ is the maximum number of $1$'s left on the tape when started with $\varepsilon$ as input. Show that $BB(k)$ is not a computable function.
+
+ \begin{answer}
+     First let us assume that $BB(k)$ is a computable function. Hence, there must be an $TM$ say $M$ that computes it (assume the unary encoding so we have $k$ is encoded as $1^{k}$). Now let $M$ be such that on input $1^{k}$ will leave us with a maximum of $1^{BB(k)}$ ones on the tape after halting for all $k$. Now define a $TM$, $M'$ as follows. $M'$ writes $k$ 1s on the tape and then doubles it to $2k$ and then simulates $M$ and halts with $BB(2k)$. Now to write $k$ ones we need $k$ states and we need some constant number of steps say $m$ to double it and simulate $M$. So our total states is $m + n$ and we have $BB(m + n)$ is the max number of 1s a $m + n$ states TM halts with which implies that it halts with more 1s than the case for $2n$ state TM i.e we have $BB(n + c) \ge BB(2n)$, for every $n$. However, we know that $BB$ is a strictly increasing function, we can show this by considering $M$ an $n$-state TM that achieves the maximum 1's i.e $M$ halts writing $BB(n)$ 1's on the tape. Now construct $M'$ with $n + 1$ statessuch that $M'$ simulates $M$ first using the same $n$ states of $M$ and then instead of halting we jump to a new state and write a 1 where we didn't before, hence writing at least one extra one onto the tape. This means that $BB$ is strictly increasing and hence the above inequality is a contradiction.
+\end{answer}
+
+\end{enumerate}
+\end{document}
